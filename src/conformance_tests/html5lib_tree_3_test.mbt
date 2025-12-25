@@ -30,16 +30,16 @@ test "html5lib/tree/tests18_1085" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"abc\"
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
-      #||           <script>
-      #||             \"</style>\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "abc"
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
+      #|          <script>
+      #|            "</style>"
     ),
   )
 }
@@ -52,15 +52,15 @@ test "html5lib/tree/tests18_1086" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <caption>
-      #||         <style>
-      #||           \"</script>\"
-      #||         \"abc\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <caption>
+      #|        <style>
+      #|          "</script>"
+      #|        "abc"
     ),
   )
 }
@@ -71,17 +71,17 @@ test "html5lib/tree/tests18_1087" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
-      #||           <td>
-      #||             <style>
-      #||               \"</script>\"
-      #||             \"abc\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
+      #|          <td>
+      #|            <style>
+      #|              "</script>"
+      #|            "abc"
     ),
   )
 }
@@ -92,14 +92,14 @@ test "html5lib/tree/tests18_1088" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <select>
-      #||       <script>
-      #||         \"</style>\"
-      #||       \"abc\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <select>
+      #|      <script>
+      #|        "</style>"
+      #|      "abc"
     ),
   )
 }
@@ -112,15 +112,15 @@ test "html5lib/tree/tests18_1089" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <select>
-      #||       <script>
-      #||         \"</style>\"
-      #||       \"abc\"
-      #||     <table>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <select>
+      #|      <script>
+      #|        "</style>"
+      #|      "abc"
+      #|    <table>
     ),
   )
 }
@@ -133,17 +133,17 @@ test "html5lib/tree/tests18_1090" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <select>
-      #||       <script>
-      #||         \"</style>\"
-      #||       \"abc\"
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <select>
+      #|      <script>
+      #|        "</style>"
+      #|      "abc"
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
     ),
   )
 }
@@ -154,12 +154,12 @@ test "html5lib/tree/tests18_1091" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
-      #||   <noframes>
-      #||     \"abc\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
+      #|  <noframes>
+      #|    "abc"
     ),
   )
 }
@@ -172,13 +172,13 @@ test "html5lib/tree/tests18_1092" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
-      #||   <noframes>
-      #||     \"abc\"
-      #||   <!-- abc -->
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
+      #|  <noframes>
+      #|    "abc"
+      #|  <!-- abc -->
     ),
   )
 }
@@ -191,12 +191,12 @@ test "html5lib/tree/tests18_1093" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
-      #||   <noframes>
-      #||     \"abc\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
+      #|  <noframes>
+      #|    "abc"
     ),
   )
 }
@@ -209,13 +209,13 @@ test "html5lib/tree/tests18_1094" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
-      #||   <noframes>
-      #||     \"abc\"
-      #|| <!-- abc -->
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
+      #|  <noframes>
+      #|    "abc"
+      #|<!-- abc -->
     ),
   )
 }
@@ -226,14 +226,14 @@ test "html5lib/tree/tests18_1095" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
-      #||       <tfoot>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
+      #|      <tfoot>
     ),
   )
 }
@@ -244,17 +244,17 @@ test "html5lib/tree/tests18_1096" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
-      #||           <td>
-      #||             <svg svg>
-      #||             \"abc\"
-      #||           <td>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
+      #|          <td>
+      #|            <svg svg>
+      #|            "abc"
+      #|          <td>
     ),
   )
 }
@@ -265,13 +265,13 @@ test "html5lib/tree/tests19_1097" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math mn>
-      #||         definitionURL=\"foo\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math mn>
+      #|        definitionURL="foo"
     ),
   )
 }
@@ -282,11 +282,11 @@ test "html5lib/tree/tests19_1098" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <!-- foo -->
-      #||   <head>
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <!-- foo -->
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -297,11 +297,11 @@ test "html5lib/tree/tests19_1099" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <!-- foo -->
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <!-- foo -->
+      #|  <body>
     ),
   )
 }
@@ -312,12 +312,12 @@ test "html5lib/tree/tests19_1100" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||     <pre>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|    <pre>
     ),
   )
 }
@@ -328,12 +328,12 @@ test "html5lib/tree/tests19_1101" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||     <listing>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|    <listing>
     ),
   )
 }
@@ -344,12 +344,12 @@ test "html5lib/tree/tests19_1102" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||     <plaintext>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|    <plaintext>
     ),
   )
 }
@@ -360,12 +360,12 @@ test "html5lib/tree/tests19_1103" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||     <h1>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|    <h1>
     ),
   )
 }
@@ -376,12 +376,12 @@ test "html5lib/tree/tests19_1104" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <isindex>
-      #||       type=\"hidden\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <isindex>
+      #|      type="hidden"
     ),
   )
 }
@@ -392,13 +392,13 @@ test "html5lib/tree/tests19_1105" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <ruby>
-      #||       <p>
-      #||       <rp>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <ruby>
+      #|      <p>
+      #|      <rp>
     ),
   )
 }
@@ -409,14 +409,14 @@ test "html5lib/tree/tests19_1106" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <ruby>
-      #||       <div>
-      #||         <span>
-      #||           <rp>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <ruby>
+      #|      <div>
+      #|        <span>
+      #|          <rp>
     ),
   )
 }
@@ -427,14 +427,14 @@ test "html5lib/tree/tests19_1107" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <ruby>
-      #||       <div>
-      #||         <p>
-      #||         <rp>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <ruby>
+      #|      <div>
+      #|        <p>
+      #|        <rp>
     ),
   )
 }
@@ -445,13 +445,13 @@ test "html5lib/tree/tests19_1108" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <ruby>
-      #||       <p>
-      #||       <rt>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <ruby>
+      #|      <p>
+      #|      <rt>
     ),
   )
 }
@@ -462,14 +462,14 @@ test "html5lib/tree/tests19_1109" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <ruby>
-      #||       <div>
-      #||         <span>
-      #||           <rt>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <ruby>
+      #|      <div>
+      #|        <span>
+      #|          <rt>
     ),
   )
 }
@@ -480,14 +480,14 @@ test "html5lib/tree/tests19_1110" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <ruby>
-      #||       <div>
-      #||         <p>
-      #||         <rt>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <ruby>
+      #|      <div>
+      #|        <p>
+      #|        <rt>
     ),
   )
 }
@@ -498,14 +498,14 @@ test "html5lib/tree/tests19_1111" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <ruby>
-      #||       \"a\"
-      #||       <rb>
-      #||         \"b\"
-      #||       <rt>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <ruby>
+      #|      "a"
+      #|      <rb>
+      #|        "b"
+      #|      <rt>
     ),
   )
 }
@@ -516,14 +516,14 @@ test "html5lib/tree/tests19_1112" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <ruby>
-      #||       \"a\"
-      #||       <rp>
-      #||         \"b\"
-      #||       <rt>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <ruby>
+      #|      "a"
+      #|      <rp>
+      #|        "b"
+      #|      <rt>
     ),
   )
 }
@@ -534,14 +534,14 @@ test "html5lib/tree/tests19_1113" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <ruby>
-      #||       \"a\"
-      #||       <rt>
-      #||         \"b\"
-      #||       <rt>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <ruby>
+      #|      "a"
+      #|      <rt>
+      #|        "b"
+      #|      <rt>
     ),
   )
 }
@@ -552,17 +552,17 @@ test "html5lib/tree/tests19_1114" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <ruby>
-      #||       \"a\"
-      #||       <rtc>
-      #||         \"b\"
-      #||         <rt>
-      #||           \"c\"
-      #||       <rb>
-      #||         \"d\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <ruby>
+      #|      "a"
+      #|      <rtc>
+      #|        "b"
+      #|        <rt>
+      #|          "c"
+      #|      <rb>
+      #|        "d"
     ),
   )
 }
@@ -573,12 +573,12 @@ test "html5lib/tree/tests19_1115" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||     <foo>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|    <foo>
     ),
   )
 }
@@ -589,12 +589,12 @@ test "html5lib/tree/tests19_1116" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||     <foo>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|    <foo>
     ),
   )
 }
@@ -605,12 +605,12 @@ test "html5lib/tree/tests19_1117" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <div>
-      #||   <!-- foo -->
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <div>
+      #|  <!-- foo -->
     ),
   )
 }
@@ -621,15 +621,15 @@ test "html5lib/tree/tests19_1118" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <h1>
-      #||       <div>
-      #||         <h3>
-      #||           <span>
-      #||         \"foo\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <h1>
+      #|      <div>
+      #|        <h3>
+      #|          <span>
+      #|        "foo"
     ),
   )
 }
@@ -640,12 +640,12 @@ test "html5lib/tree/tests19_1119" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       \"foo\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      "foo"
     ),
   )
 }
@@ -656,14 +656,14 @@ test "html5lib/tree/tests19_1120" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <h3>
-      #||       <li>
-      #||         \"abc\"
-      #||     \"foo\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <h3>
+      #|      <li>
+      #|        "abc"
+      #|    "foo"
     ),
   )
 }
@@ -674,13 +674,13 @@ test "html5lib/tree/tests19_1121" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"abc\"
-      #||     <table>
-      #||       <!-- foo -->
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "abc"
+      #|    <table>
+      #|      <!-- foo -->
     ),
   )
 }
@@ -691,13 +691,13 @@ test "html5lib/tree/tests19_1122" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       \"  \"
-      #||       <!-- foo -->
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      "  "
+      #|      <!-- foo -->
     ),
   )
 }
@@ -708,13 +708,13 @@ test "html5lib/tree/tests19_1123" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \" b \"
-      #||     <table>
-      #||       <!-- foo -->
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    " b "
+      #|    <table>
+      #|      <!-- foo -->
     ),
   )
 }
@@ -725,13 +725,13 @@ test "html5lib/tree/tests19_1124" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <select>
-      #||       <option>
-      #||       <option>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <select>
+      #|      <option>
+      #|      <option>
     ),
   )
 }
@@ -742,12 +742,12 @@ test "html5lib/tree/tests19_1125" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <select>
-      #||       <option>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <select>
+      #|      <option>
     ),
   )
 }
@@ -758,13 +758,13 @@ test "html5lib/tree/tests19_1126" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <dd>
-      #||       <optgroup>
-      #||     <dd>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <dd>
+      #|      <optgroup>
+      #|    <dd>
     ),
   )
 }
@@ -775,15 +775,15 @@ test "html5lib/tree/tests19_1127" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <math math>
-      #||         <math mi>
-      #||           <p>
-      #||           <h1>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <math math>
+      #|        <math mi>
+      #|          <p>
+      #|          <h1>
     ),
   )
 }
@@ -794,15 +794,15 @@ test "html5lib/tree/tests19_1128" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <math math>
-      #||         <math mo>
-      #||           <p>
-      #||           <h1>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <math math>
+      #|        <math mo>
+      #|          <p>
+      #|          <h1>
     ),
   )
 }
@@ -813,15 +813,15 @@ test "html5lib/tree/tests19_1129" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <math math>
-      #||         <math mn>
-      #||           <p>
-      #||           <h1>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <math math>
+      #|        <math mn>
+      #|          <p>
+      #|          <h1>
     ),
   )
 }
@@ -832,15 +832,15 @@ test "html5lib/tree/tests19_1130" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <math math>
-      #||         <math ms>
-      #||           <p>
-      #||           <h1>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <math math>
+      #|        <math ms>
+      #|          <p>
+      #|          <h1>
     ),
   )
 }
@@ -851,15 +851,15 @@ test "html5lib/tree/tests19_1131" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <math math>
-      #||         <math mtext>
-      #||           <p>
-      #||           <h1>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <math math>
+      #|        <math mtext>
+      #|          <p>
+      #|          <h1>
     ),
   )
 }
@@ -870,10 +870,10 @@ test "html5lib/tree/tests19_1132" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
     ),
   )
 }
@@ -884,12 +884,12 @@ test "html5lib/tree/tests19_1133" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   a=\"b\"
-      #||   c=\"d\"
-      #||   <head>
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  a="b"
+      #|  c="d"
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -902,12 +902,12 @@ test "html5lib/tree/tests19_1134" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   a=\"b\"
-      #||   c=\"d\"
-      #||   <head>
-      #||   <frameset>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  a="b"
+      #|  c="d"
+      #|  <head>
+      #|  <frameset>
     ),
   )
 }
@@ -920,11 +920,11 @@ test "html5lib/tree/tests19_1135" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
-      #|| <!-- foo -->
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
+      #|<!-- foo -->
     ),
   )
 }
@@ -935,11 +935,11 @@ test "html5lib/tree/tests19_1136" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
-      #||   \"  \"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
+      #|  "  "
     ),
   )
 }
@@ -950,10 +950,10 @@ test "html5lib/tree/tests19_1137" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
     ),
   )
 }
@@ -964,10 +964,10 @@ test "html5lib/tree/tests19_1138" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
     ),
   )
 }
@@ -978,10 +978,10 @@ test "html5lib/tree/tests19_1139" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
     ),
   )
 }
@@ -992,9 +992,9 @@ test "html5lib/tree/tests19_1140" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
     ),
   )
 }
@@ -1005,10 +1005,10 @@ test "html5lib/tree/tests19_1141" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -1019,11 +1019,11 @@ test "html5lib/tree/tests19_1142" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
-      #||     <frame>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
+      #|    <frame>
     ),
   )
 }
@@ -1034,12 +1034,12 @@ test "html5lib/tree/tests19_1143" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       \"a\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      "a"
     ),
   )
 }
@@ -1050,11 +1050,11 @@ test "html5lib/tree/tests19_1144" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
-      #||     <frame>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
+      #|    <frame>
     ),
   )
 }
@@ -1065,11 +1065,11 @@ test "html5lib/tree/tests19_1145" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <pre>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <pre>
     ),
   )
 }
@@ -1080,11 +1080,11 @@ test "html5lib/tree/tests19_1146" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <listing>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <listing>
     ),
   )
 }
@@ -1095,11 +1095,11 @@ test "html5lib/tree/tests19_1147" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <li>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <li>
     ),
   )
 }
@@ -1110,11 +1110,11 @@ test "html5lib/tree/tests19_1148" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <dd>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <dd>
     ),
   )
 }
@@ -1125,11 +1125,11 @@ test "html5lib/tree/tests19_1149" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <dt>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <dt>
     ),
   )
 }
@@ -1140,11 +1140,11 @@ test "html5lib/tree/tests19_1150" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <button>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <button>
     ),
   )
 }
@@ -1155,11 +1155,11 @@ test "html5lib/tree/tests19_1151" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <applet>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <applet>
     ),
   )
 }
@@ -1170,11 +1170,11 @@ test "html5lib/tree/tests19_1152" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <marquee>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <marquee>
     ),
   )
 }
@@ -1185,11 +1185,11 @@ test "html5lib/tree/tests19_1153" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <object>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <object>
     ),
   )
 }
@@ -1200,11 +1200,11 @@ test "html5lib/tree/tests19_1154" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
     ),
   )
 }
@@ -1215,11 +1215,11 @@ test "html5lib/tree/tests19_1155" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <area>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <area>
     ),
   )
 }
@@ -1230,11 +1230,11 @@ test "html5lib/tree/tests19_1156" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||     <basefont>
-      #||   <frameset>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|    <basefont>
+      #|  <frameset>
     ),
   )
 }
@@ -1245,11 +1245,11 @@ test "html5lib/tree/tests19_1157" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||     <bgsound>
-      #||   <frameset>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|    <bgsound>
+      #|  <frameset>
     ),
   )
 }
@@ -1260,11 +1260,11 @@ test "html5lib/tree/tests19_1158" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <br>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <br>
     ),
   )
 }
@@ -1275,11 +1275,11 @@ test "html5lib/tree/tests19_1159" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <embed>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <embed>
     ),
   )
 }
@@ -1290,11 +1290,11 @@ test "html5lib/tree/tests19_1160" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <img>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <img>
     ),
   )
 }
@@ -1305,11 +1305,11 @@ test "html5lib/tree/tests19_1161" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <input>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <input>
     ),
   )
 }
@@ -1320,11 +1320,11 @@ test "html5lib/tree/tests19_1162" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <keygen>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <keygen>
     ),
   )
 }
@@ -1335,11 +1335,11 @@ test "html5lib/tree/tests19_1163" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <wbr>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <wbr>
     ),
   )
 }
@@ -1350,11 +1350,11 @@ test "html5lib/tree/tests19_1164" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <hr>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <hr>
     ),
   )
 }
@@ -1365,11 +1365,11 @@ test "html5lib/tree/tests19_1165" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <textarea>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <textarea>
     ),
   )
 }
@@ -1380,11 +1380,11 @@ test "html5lib/tree/tests19_1166" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <xmp>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <xmp>
     ),
   )
 }
@@ -1395,11 +1395,11 @@ test "html5lib/tree/tests19_1167" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <iframe>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <iframe>
     ),
   )
 }
@@ -1410,11 +1410,11 @@ test "html5lib/tree/tests19_1168" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <select>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <select>
     ),
   )
 }
@@ -1425,11 +1425,11 @@ test "html5lib/tree/tests19_1169" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
-      #||     <frame>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
+      #|    <frame>
     ),
   )
 }
@@ -1440,11 +1440,11 @@ test "html5lib/tree/tests19_1170" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
-      #||     <frame>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
+      #|    <frame>
     ),
   )
 }
@@ -1457,11 +1457,11 @@ test "html5lib/tree/tests19_1171" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
-      #||     <frame>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
+      #|    <frame>
     ),
   )
 }
@@ -1472,12 +1472,12 @@ test "html5lib/tree/tests19_1172" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       \"a\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      "a"
     ),
   )
 }
@@ -1488,11 +1488,11 @@ test "html5lib/tree/tests19_1173" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
-      #||     <frame>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
+      #|    <frame>
     ),
   )
 }
@@ -1503,10 +1503,10 @@ test "html5lib/tree/tests19_1174" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"aaa\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "aaa"
     ),
   )
 }
@@ -1517,10 +1517,10 @@ test "html5lib/tree/tests19_1175" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"a \"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "a "
     ),
   )
 }
@@ -1531,10 +1531,10 @@ test "html5lib/tree/tests19_1176" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
     ),
   )
 }
@@ -1545,11 +1545,11 @@ test "html5lib/tree/tests19_1177" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <div>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <div>
     ),
   )
 }
@@ -1560,13 +1560,13 @@ test "html5lib/tree/tests19_1178" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <math math>
-      #||     \"a\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <math math>
+      #|    "a"
     ),
   )
 }
@@ -1577,16 +1577,16 @@ test "html5lib/tree/tests19_1179" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <math math>
-      #||         <math mn>
-      #||           <span>
-      #||             <p>
-      #||             \"a\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <math math>
+      #|        <math mn>
+      #|          <span>
+      #|            <p>
+      #|            "a"
     ),
   )
 }
@@ -1597,11 +1597,11 @@ test "html5lib/tree/tests19_1180" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
     ),
   )
 }
@@ -1612,12 +1612,12 @@ test "html5lib/tree/tests19_1181" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||     <meta>
-      #||       charset=\"ascii\"
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|    <meta>
+      #|      charset="ascii"
+      #|  <body>
     ),
   )
 }
@@ -1630,13 +1630,13 @@ test "html5lib/tree/tests19_1182" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||     <meta>
-      #||       content=\"text/html;charset=ascii\"
-      #||       http-equiv=\"content-type\"
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|    <meta>
+      #|      content="text/html;charset=ascii"
+      #|      http-equiv="content-type"
+      #|  <body>
     ),
   )
 }
@@ -1649,13 +1649,13 @@ test "html5lib/tree/tests19_1183" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||     <!-- aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
-      #||     <meta>
-      #||       charset=\"utf8\"
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|    <!-- aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
+      #|    <meta>
+      #|      charset="utf8"
+      #|  <body>
     ),
   )
 }
@@ -1666,12 +1666,12 @@ test "html5lib/tree/tests19_1184" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   a=\"b\"
-      #||   c=\"d\"
-      #||   <head>
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  a="b"
+      #|  c="d"
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -1682,11 +1682,11 @@ test "html5lib/tree/tests19_1185" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <img>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <img>
     ),
   )
 }
@@ -1697,17 +1697,17 @@ test "html5lib/tree/tests19_1186" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"a\"
-      #||     <i>
-      #||       \"bc\"
-      #||       <b>
-      #||         \"de\"
-      #||       \"f\"
-      #||       <table>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "a"
+      #|    <i>
+      #|      "bc"
+      #|      <b>
+      #|        "de"
+      #|      "f"
+      #|      <table>
     ),
   )
 }
@@ -1718,26 +1718,26 @@ test "html5lib/tree/tests19_1187" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <i>
-      #||       \"a\"
-      #||       <b>
-      #||         \"b\"
-      #||     <b>
-      #||     <div>
-      #||       <b>
-      #||         <i>
-      #||           \"c\"
-      #||           <a>
-      #||             \"d\"
-      #||         <a>
-      #||           \"e\"
-      #||       <a>
-      #||         \"f\"
-      #||     <table>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <i>
+      #|      "a"
+      #|      <b>
+      #|        "b"
+      #|    <b>
+      #|    <div>
+      #|      <b>
+      #|        <i>
+      #|          "c"
+      #|          <a>
+      #|            "d"
+      #|        <a>
+      #|          "e"
+      #|      <a>
+      #|        "f"
+      #|    <table>
     ),
   )
 }
@@ -1748,25 +1748,25 @@ test "html5lib/tree/tests19_1188" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <i>
-      #||       \"a\"
-      #||       <b>
-      #||         \"b\"
-      #||     <b>
-      #||     <div>
-      #||       <b>
-      #||         <i>
-      #||           \"c\"
-      #||           <a>
-      #||             \"d\"
-      #||         <a>
-      #||           \"e\"
-      #||       <a>
-      #||         \"f\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <i>
+      #|      "a"
+      #|      <b>
+      #|        "b"
+      #|    <b>
+      #|    <div>
+      #|      <b>
+      #|        <i>
+      #|          "c"
+      #|          <a>
+      #|            "d"
+      #|        <a>
+      #|          "e"
+      #|      <a>
+      #|        "f"
     ),
   )
 }
@@ -1777,19 +1777,19 @@ test "html5lib/tree/tests19_1189" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <i>
-      #||       \"a\"
-      #||       <b>
-      #||         \"b\"
-      #||     <b>
-      #||       <div>
-      #||         <i>
-      #||           \"c\"
-      #||     <table>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <i>
+      #|      "a"
+      #|      <b>
+      #|        "b"
+      #|    <b>
+      #|      <div>
+      #|        <i>
+      #|          "c"
+      #|    <table>
     ),
   )
 }
@@ -1800,23 +1800,23 @@ test "html5lib/tree/tests19_1190" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <i>
-      #||       \"a\"
-      #||       <div>
-      #||         \"b\"
-      #||     <i>
-      #||       \"c\"
-      #||       <b>
-      #||         \"d\"
-      #||     <b>
-      #||       \"e\"
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <i>
+      #|      "a"
+      #|      <div>
+      #|        "b"
+      #|    <i>
+      #|      "c"
+      #|      <b>
+      #|        "d"
+      #|    <b>
+      #|      "e"
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
     ),
   )
 }
@@ -1827,24 +1827,24 @@ test "html5lib/tree/tests19_1191" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
-      #||           <td>
-      #||             <i>
-      #||               \"a\"
-      #||             <div>
-      #||               <i>
-      #||                 \"b\"
-      #||                 <b>
-      #||                   \"c\"
-      #||               <b>
-      #||                 \"d\"
-      #||             <table>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
+      #|          <td>
+      #|            <i>
+      #|              "a"
+      #|            <div>
+      #|              <i>
+      #|                "b"
+      #|                <b>
+      #|                  "c"
+      #|              <b>
+      #|                "d"
+      #|            <table>
     ),
   )
 }
@@ -1855,11 +1855,11 @@ test "html5lib/tree/tests19_1192" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <bgsound>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <bgsound>
     ),
   )
 }
@@ -1870,11 +1870,11 @@ test "html5lib/tree/tests19_1193" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <basefont>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <basefont>
     ),
   )
 }
@@ -1885,13 +1885,13 @@ test "html5lib/tree/tests19_1194" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <a>
-      #||       <b>
-      #||     <basefont>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <a>
+      #|      <b>
+      #|    <basefont>
     ),
   )
 }
@@ -1902,13 +1902,13 @@ test "html5lib/tree/tests19_1195" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <a>
-      #||       <b>
-      #||     <bgsound>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <a>
+      #|      <b>
+      #|    <bgsound>
     ),
   )
 }
@@ -1919,13 +1919,13 @@ test "html5lib/tree/tests19_1196" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <figcaption>
-      #||       <article>
-      #||     \"a\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <figcaption>
+      #|      <article>
+      #|    "a"
     ),
   )
 }
@@ -1936,13 +1936,13 @@ test "html5lib/tree/tests19_1197" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <summary>
-      #||       <article>
-      #||     \"a\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <summary>
+      #|      <article>
+      #|    "a"
     ),
   )
 }
@@ -1953,15 +1953,15 @@ test "html5lib/tree/tests19_1198" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <a>
-      #||     <plaintext>
-      #||       <a>
-      #||         \"b\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <a>
+      #|    <plaintext>
+      #|      <a>
+      #|        "b"
     ),
   )
 }
@@ -1972,18 +1972,18 @@ test "html5lib/tree/tests19_1199" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <div>
-      #||       \"a\"
-      #||       <a>
-      #||     <a>
-      #||       \"b\"
-      #||       <p>
-      #||         \"c\"
-      #||       \"d\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <div>
+      #|      "a"
+      #|      <a>
+      #|    <a>
+      #|      "b"
+      #|      <p>
+      #|        "c"
+      #|      "d"
     ),
   )
 }
@@ -1994,11 +1994,11 @@ test "html5lib/tree/tests2_1200" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"Test\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "Test"
     ),
   )
 }
@@ -2009,11 +2009,11 @@ test "html5lib/tree/tests2_1201" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <textarea>
-      #||       \"test</div>test\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <textarea>
+      #|      "test</div>test"
     ),
   )
 }
@@ -2024,13 +2024,13 @@ test "html5lib/tree/tests2_1202" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
-      #||           <td>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
+      #|          <td>
     ),
   )
 }
@@ -2041,14 +2041,14 @@ test "html5lib/tree/tests2_1203" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
-      #||           <td>
-      #||             \"test\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
+      #|          <td>
+      #|            "test"
     ),
   )
 }
@@ -2059,10 +2059,10 @@ test "html5lib/tree/tests2_1204" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"test\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "test"
     ),
   )
 }
@@ -2073,10 +2073,10 @@ test "html5lib/tree/tests2_1205" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
     ),
   )
 }
@@ -2087,11 +2087,11 @@ test "html5lib/tree/tests2_1206" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
-      #||     \"  \"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
+      #|    "  "
     ),
   )
 }
@@ -2102,11 +2102,11 @@ test "html5lib/tree/tests2_1207" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
-      #||   \"  \"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
+      #|  "  "
     ),
   )
 }
@@ -2117,10 +2117,10 @@ test "html5lib/tree/tests2_1208" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
     ),
   )
 }
@@ -2131,15 +2131,15 @@ test "html5lib/tree/tests2_1209" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <font>
-      #||     <p>
-      #||       <font>
-      #||         <b>
-      #||           \"test\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <font>
+      #|    <p>
+      #|      <font>
+      #|        <b>
+      #|          "test"
     ),
   )
 }
@@ -2150,13 +2150,13 @@ test "html5lib/tree/tests2_1210" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <dt>
-      #||       <div>
-      #||     <dd>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <dt>
+      #|      <div>
+      #|    <dd>
     ),
   )
 }
@@ -2167,11 +2167,11 @@ test "html5lib/tree/tests2_1211" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||     <script>
-      #||       \"</x\"
-      #||   <body>
+      #|<html>
+      #|  <head>
+      #|    <script>
+      #|      "</x"
+      #|  <body>
     ),
   )
 }
@@ -2182,12 +2182,12 @@ test "html5lib/tree/tests2_1212" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <plaintext>
-      #||       \"<td>\"
-      #||     <table>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <plaintext>
+      #|      "<td>"
+      #|    <table>
     ),
   )
 }
@@ -2198,11 +2198,11 @@ test "html5lib/tree/tests2_1213" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <plaintext>
-      #||       \"</plaintext>\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <plaintext>
+      #|      "</plaintext>"
     ),
   )
 }
@@ -2213,14 +2213,14 @@ test "html5lib/tree/tests2_1214" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"TEST\"
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "TEST"
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
     ),
   )
 }
@@ -2231,14 +2231,14 @@ test "html5lib/tree/tests2_1215" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     t1=\"1\"
-      #||     t2=\"2\"
-      #||     t3=\"3\"
-      #||     t4=\"4\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    t1="1"
+      #|    t2="2"
+      #|    t3="3"
+      #|    t4="4"
     ),
   )
 }
@@ -2249,9 +2249,9 @@ test "html5lib/tree/tests2_1216" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
+      #|<html>
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -2262,11 +2262,11 @@ test "html5lib/tree/tests2_1217" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"X\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "X"
     ),
   )
 }
@@ -2279,13 +2279,13 @@ test "html5lib/tree/tests2_1218" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||     <script>
-      #||       type=\"text/x-foobar;baz\"
-      #||       \"X</SCRipt\"
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|    <script>
+      #|      type="text/x-foobar;baz"
+      #|      "X</SCRipt"
+      #|  <body>
     ),
   )
 }
@@ -2296,10 +2296,10 @@ test "html5lib/tree/tests2_1219" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"&\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "&"
     ),
   )
 }
@@ -2310,10 +2310,10 @@ test "html5lib/tree/tests2_1220" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"&#\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "&#"
     ),
   )
 }
@@ -2324,10 +2324,10 @@ test "html5lib/tree/tests2_1221" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"&#X\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "&#X"
     ),
   )
 }
@@ -2338,10 +2338,10 @@ test "html5lib/tree/tests2_1222" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"&#x\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "&#x"
     ),
   )
 }
@@ -2352,10 +2352,10 @@ test "html5lib/tree/tests2_1223" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"-\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "-"
     ),
   )
 }
@@ -2366,10 +2366,10 @@ test "html5lib/tree/tests2_1224" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"&x-test\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "&x-test"
     ),
   )
 }
@@ -2380,12 +2380,12 @@ test "html5lib/tree/tests2_1225" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||     <li>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|    <li>
     ),
   )
 }
@@ -2396,12 +2396,12 @@ test "html5lib/tree/tests2_1226" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||     <dt>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|    <dt>
     ),
   )
 }
@@ -2412,12 +2412,12 @@ test "html5lib/tree/tests2_1227" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||     <dd>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|    <dd>
     ),
   )
 }
@@ -2428,12 +2428,12 @@ test "html5lib/tree/tests2_1228" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||     <form>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|    <form>
     ),
   )
 }
@@ -2444,12 +2444,12 @@ test "html5lib/tree/tests2_1229" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||     \"X\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|    "X"
     ),
   )
 }
@@ -2460,10 +2460,10 @@ test "html5lib/tree/tests2_1230" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"&\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "&"
     ),
   )
 }
@@ -2474,10 +2474,10 @@ test "html5lib/tree/tests2_1231" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"&AMp;\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "&AMp;"
     ),
   )
 }
@@ -2490,11 +2490,11 @@ test "html5lib/tree/tests2_1232" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <thisisasillytestelementnametomakesurecrazytagnamesareparsedcorrectly>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <thisisasillytestelementnametomakesurecrazytagnamesareparsedcorrectly>
     ),
   )
 }
@@ -2505,11 +2505,11 @@ test "html5lib/tree/tests2_1233" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"XX\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "XX"
     ),
   )
 }
@@ -2520,11 +2520,11 @@ test "html5lib/tree/tests2_1234" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <!--  X -->
-      #|| <html>
-      #||   <head>
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<!--  X -->
+      #|<html>
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -2537,17 +2537,17 @@ test "html5lib/tree/tests2_1235" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <caption>
-      #||         \"test TEST\"
-      #||       <tbody>
-      #||         <tr>
-      #||           <td>
-      #||             \"test\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <caption>
+      #|        "test TEST"
+      #|      <tbody>
+      #|        <tr>
+      #|          <td>
+      #|            "test"
     ),
   )
 }
@@ -2558,13 +2558,13 @@ test "html5lib/tree/tests2_1236" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <select>
-      #||       <option>
-      #||       <optgroup>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <select>
+      #|      <option>
+      #|      <optgroup>
     ),
   )
 }
@@ -2577,15 +2577,15 @@ test "html5lib/tree/tests2_1237" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <select>
-      #||       <optgroup>
-      #||         <option>
-      #||       <option>
-      #||     <option>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <select>
+      #|      <optgroup>
+      #|        <option>
+      #|      <option>
+      #|    <option>
     ),
   )
 }
@@ -2596,14 +2596,14 @@ test "html5lib/tree/tests2_1238" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <select>
-      #||       <optgroup>
-      #||         <option>
-      #||       <optgroup>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <select>
+      #|      <optgroup>
+      #|        <option>
+      #|      <optgroup>
     ),
   )
 }
@@ -2614,14 +2614,14 @@ test "html5lib/tree/tests2_1239" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <datalist>
-      #||       <option>
-      #||         \"foo\"
-      #||     \"bar\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <datalist>
+      #|      <option>
+      #|        "foo"
+      #|    "bar"
     ),
   )
 }
@@ -2632,13 +2632,13 @@ test "html5lib/tree/tests2_1240" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <font>
-      #||       <input>
-      #||       <input>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <font>
+      #|      <input>
+      #|      <input>
     ),
   )
 }
@@ -2649,11 +2649,11 @@ test "html5lib/tree/tests2_1241" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <!--  XXX - XXX  -->
-      #|| <html>
-      #||   <head>
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<!--  XXX - XXX  -->
+      #|<html>
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -2664,11 +2664,11 @@ test "html5lib/tree/tests2_1242" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <!--  XXX - XXX -->
-      #|| <html>
-      #||   <head>
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<!--  XXX - XXX -->
+      #|<html>
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -2679,11 +2679,11 @@ test "html5lib/tree/tests2_1243" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <!--  XXX - XXX - XXX  -->
-      #|| <html>
-      #||   <head>
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<!--  XXX - XXX - XXX  -->
+      #|<html>
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -2694,10 +2694,10 @@ test "html5lib/tree/tests2_1244" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -2708,11 +2708,11 @@ test "html5lib/tree/tests2_1245" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"test
-      #|test\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "test
+      #|test"
     ),
   )
 }
@@ -2723,12 +2723,12 @@ test "html5lib/tree/tests2_1246" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <title>
-      #||       \"test</body>\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <title>
+      #|      "test</body>"
     ),
   )
 }
@@ -2741,19 +2741,19 @@ test "html5lib/tree/tests2_1247" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <title>
-      #||       \"X\"
-      #||     <meta>
-      #||       name=\"z\"
-      #||     <link>
-      #||       rel=\"foo\"
-      #||     <style>
-      #||       \"
-      #|x { content:\"</style\" } \"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <title>
+      #|      "X"
+      #|    <meta>
+      #|      name="z"
+      #|    <link>
+      #|      rel="foo"
+      #|    <style>
+      #|      "
+      #|x { content:"</style" } "
     ),
   )
 }
@@ -2764,12 +2764,12 @@ test "html5lib/tree/tests2_1248" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <select>
-      #||       <optgroup>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <select>
+      #|      <optgroup>
     ),
   )
 }
@@ -2780,10 +2780,10 @@ test "html5lib/tree/tests2_1250" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -2796,17 +2796,17 @@ test "html5lib/tree/tests2_1251" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||     <script>
-      #||       \"
-      #|\"
-      #||     \"  \"
-      #||     <title>
-      #||       \"x\"
-      #||     \"  \"
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|    <script>
+      #|      "
+      #|"
+      #|    "  "
+      #|    <title>
+      #|      "x"
+      #|    "  "
+      #|  <body>
     ),
   )
 }
@@ -2817,11 +2817,11 @@ test "html5lib/tree/tests2_1252" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   id=\"x\"
-      #||   <head>
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  id="x"
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -2832,12 +2832,12 @@ test "html5lib/tree/tests2_1253" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   id=\"x\"
-      #||   <head>
-      #||   <body>
-      #||     \"X\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  id="x"
+      #|  <head>
+      #|  <body>
+      #|    "X"
     ),
   )
 }
@@ -2848,11 +2848,11 @@ test "html5lib/tree/tests2_1254" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   id=\"x\"
-      #||   <head>
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  id="x"
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -2863,11 +2863,11 @@ test "html5lib/tree/tests2_1255" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"XX\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "XX"
     ),
   )
 }
@@ -2878,11 +2878,11 @@ test "html5lib/tree/tests2_1256" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"X \"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "X "
     ),
   )
 }
@@ -2893,13 +2893,13 @@ test "html5lib/tree/tests2_1257" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"X\"
-      #||     <p>
-      #||       \"X\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "X"
+      #|    <p>
+      #|      "X"
     ),
   )
 }
@@ -2910,15 +2910,15 @@ test "html5lib/tree/tests2_1258" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"X\"
-      #||     <p>
-      #||       x=\"\"
-      #||       y=\"\"
-      #||       z=\"\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "X"
+      #|    <p>
+      #|      x=""
+      #|      y=""
+      #|      z=""
     ),
   )
 }
@@ -2929,11 +2929,11 @@ test "html5lib/tree/tests2_1259" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <!-- x -->
-      #|| <html>
-      #||   <head>
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<!-- x -->
+      #|<html>
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -2944,15 +2944,15 @@ test "html5lib/tree/tests2_1260" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
-      #||           <td>
-      #||             <p>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
+      #|          <td>
+      #|            <p>
     ),
   )
 }
@@ -2963,13 +2963,13 @@ test "html5lib/tree/tests2_1261" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE <!doctype>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \">\"
-      #||     <!-- <!--x -->
-      #||     \"-->\"
+      #|<!DOCTYPE <!doctype>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    ">"
+      #|    <!-- <!--x -->
+      #|    "-->"
     ),
   )
 }
@@ -2980,13 +2980,13 @@ test "html5lib/tree/tests2_1262" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <div>
-      #||       <form>
-      #||       <div>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <div>
+      #|      <form>
+      #|      <div>
     ),
   )
 }
@@ -2997,13 +2997,13 @@ test "html5lib/tree/tests20_1263" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||       <button>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|      <button>
     ),
   )
 }
@@ -3014,13 +3014,13 @@ test "html5lib/tree/tests20_1264" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <address>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <address>
     ),
   )
 }
@@ -3031,13 +3031,13 @@ test "html5lib/tree/tests20_1265" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <article>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <article>
     ),
   )
 }
@@ -3048,13 +3048,13 @@ test "html5lib/tree/tests20_1266" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <aside>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <aside>
     ),
   )
 }
@@ -3065,13 +3065,13 @@ test "html5lib/tree/tests20_1267" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <blockquote>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <blockquote>
     ),
   )
 }
@@ -3082,13 +3082,13 @@ test "html5lib/tree/tests20_1268" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <center>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <center>
     ),
   )
 }
@@ -3099,13 +3099,13 @@ test "html5lib/tree/tests20_1269" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <details>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <details>
     ),
   )
 }
@@ -3116,13 +3116,13 @@ test "html5lib/tree/tests20_1270" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <dialog>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <dialog>
     ),
   )
 }
@@ -3133,13 +3133,13 @@ test "html5lib/tree/tests20_1271" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <dir>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <dir>
     ),
   )
 }
@@ -3150,13 +3150,13 @@ test "html5lib/tree/tests20_1272" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <div>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <div>
     ),
   )
 }
@@ -3167,13 +3167,13 @@ test "html5lib/tree/tests20_1273" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <dl>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <dl>
     ),
   )
 }
@@ -3184,13 +3184,13 @@ test "html5lib/tree/tests20_1274" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <fieldset>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <fieldset>
     ),
   )
 }
@@ -3201,13 +3201,13 @@ test "html5lib/tree/tests20_1275" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <figcaption>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <figcaption>
     ),
   )
 }
@@ -3218,13 +3218,13 @@ test "html5lib/tree/tests20_1276" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <figure>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <figure>
     ),
   )
 }
@@ -3235,13 +3235,13 @@ test "html5lib/tree/tests20_1277" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <footer>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <footer>
     ),
   )
 }
@@ -3252,13 +3252,13 @@ test "html5lib/tree/tests20_1278" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <header>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <header>
     ),
   )
 }
@@ -3269,13 +3269,13 @@ test "html5lib/tree/tests20_1279" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <hgroup>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <hgroup>
     ),
   )
 }
@@ -3286,13 +3286,13 @@ test "html5lib/tree/tests20_1280" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <main>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <main>
     ),
   )
 }
@@ -3303,13 +3303,13 @@ test "html5lib/tree/tests20_1281" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <menu>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <menu>
     ),
   )
 }
@@ -3320,13 +3320,13 @@ test "html5lib/tree/tests20_1282" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <nav>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <nav>
     ),
   )
 }
@@ -3337,13 +3337,13 @@ test "html5lib/tree/tests20_1283" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <ol>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <ol>
     ),
   )
 }
@@ -3354,13 +3354,13 @@ test "html5lib/tree/tests20_1284" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <p>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <p>
     ),
   )
 }
@@ -3371,13 +3371,13 @@ test "html5lib/tree/tests20_1285" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <search>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <search>
     ),
   )
 }
@@ -3388,13 +3388,13 @@ test "html5lib/tree/tests20_1286" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <section>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <section>
     ),
   )
 }
@@ -3405,13 +3405,13 @@ test "html5lib/tree/tests20_1287" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <summary>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <summary>
     ),
   )
 }
@@ -3422,13 +3422,13 @@ test "html5lib/tree/tests20_1288" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <ul>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <ul>
     ),
   )
 }
@@ -3439,13 +3439,13 @@ test "html5lib/tree/tests20_1289" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <h1>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <h1>
     ),
   )
 }
@@ -3456,13 +3456,13 @@ test "html5lib/tree/tests20_1290" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <h6>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <h6>
     ),
   )
 }
@@ -3473,13 +3473,13 @@ test "html5lib/tree/tests20_1291" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <listing>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <listing>
     ),
   )
 }
@@ -3490,13 +3490,13 @@ test "html5lib/tree/tests20_1292" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <pre>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <pre>
     ),
   )
 }
@@ -3507,13 +3507,13 @@ test "html5lib/tree/tests20_1293" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <form>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <form>
     ),
   )
 }
@@ -3524,13 +3524,13 @@ test "html5lib/tree/tests20_1294" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <li>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <li>
     ),
   )
 }
@@ -3541,13 +3541,13 @@ test "html5lib/tree/tests20_1295" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <dd>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <dd>
     ),
   )
 }
@@ -3558,13 +3558,13 @@ test "html5lib/tree/tests20_1296" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <dt>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <dt>
     ),
   )
 }
@@ -3575,13 +3575,13 @@ test "html5lib/tree/tests20_1297" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <plaintext>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <plaintext>
     ),
   )
 }
@@ -3592,13 +3592,13 @@ test "html5lib/tree/tests20_1298" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <table>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <table>
     ),
   )
 }
@@ -3609,13 +3609,13 @@ test "html5lib/tree/tests20_1299" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <hr>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <hr>
     ),
   )
 }
@@ -3626,13 +3626,13 @@ test "html5lib/tree/tests20_1300" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <xmp>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <xmp>
     ),
   )
 }
@@ -3643,13 +3643,13 @@ test "html5lib/tree/tests20_1301" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <button>
-      #||         <p>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <button>
+      #|        <p>
     ),
   )
 }
@@ -3660,13 +3660,13 @@ test "html5lib/tree/tests20_1302" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <button>
-      #||       <p>
-      #||     \"x\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <button>
+      #|      <p>
+      #|    "x"
     ),
   )
 }
@@ -3677,13 +3677,13 @@ test "html5lib/tree/tests20_1303" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <address>
-      #||       <button>
-      #||     \"a\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <address>
+      #|      <button>
+      #|    "a"
     ),
   )
 }
@@ -3694,12 +3694,12 @@ test "html5lib/tree/tests20_1304" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <p>
-      #||       <table>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <p>
+      #|      <table>
     ),
   )
 }
@@ -3710,11 +3710,11 @@ test "html5lib/tree/tests20_1305" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
     ),
   )
 }
@@ -3725,12 +3725,12 @@ test "html5lib/tree/tests20_1306" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||     <figcaption>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|    <figcaption>
     ),
   )
 }
@@ -3741,12 +3741,12 @@ test "html5lib/tree/tests20_1307" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||     <summary>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|    <summary>
     ),
   )
 }
@@ -3757,12 +3757,12 @@ test "html5lib/tree/tests20_1308" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <form>
-      #||       <table>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <form>
+      #|      <table>
     ),
   )
 }
@@ -3773,12 +3773,12 @@ test "html5lib/tree/tests20_1309" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <form>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <form>
     ),
   )
 }
@@ -3789,12 +3789,12 @@ test "html5lib/tree/tests20_1310" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <form>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <form>
     ),
   )
 }
@@ -3805,13 +3805,13 @@ test "html5lib/tree/tests20_1311" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       <svg foreignObject>
-      #||         <p>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      <svg foreignObject>
+      #|        <p>
     ),
   )
 }
@@ -3822,13 +3822,13 @@ test "html5lib/tree/tests20_1312" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       <svg title>
-      #||         \"abc\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      <svg title>
+      #|        "abc"
     ),
   )
 }
@@ -3839,12 +3839,12 @@ test "html5lib/tree/tests20_1313" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <option>
-      #||       <span>
-      #||         <option>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <option>
+      #|      <span>
+      #|        <option>
     ),
   )
 }
@@ -3855,11 +3855,11 @@ test "html5lib/tree/tests20_1314" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <option>
-      #||     <option>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <option>
+      #|    <option>
     ),
   )
 }
@@ -3870,12 +3870,12 @@ test "html5lib/tree/tests20_1315" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math annotation-xml>
-      #||     <div>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math annotation-xml>
+      #|    <div>
     ),
   )
 }
@@ -3888,13 +3888,13 @@ test "html5lib/tree/tests20_1316" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math annotation-xml>
-      #||         encoding=\"application/svg+xml\"
-      #||     <div>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math annotation-xml>
+      #|        encoding="application/svg+xml"
+      #|    <div>
     ),
   )
 }
@@ -3907,13 +3907,13 @@ test "html5lib/tree/tests20_1317" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math annotation-xml>
-      #||         encoding=\"application/xhtml+xml\"
-      #||         <div>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math annotation-xml>
+      #|        encoding="application/xhtml+xml"
+      #|        <div>
     ),
   )
 }
@@ -3926,13 +3926,13 @@ test "html5lib/tree/tests20_1318" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math annotation-xml>
-      #||         encoding=\"aPPlication/xhtmL+xMl\"
-      #||         <div>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math annotation-xml>
+      #|        encoding="aPPlication/xhtmL+xMl"
+      #|        <div>
     ),
   )
 }
@@ -3943,13 +3943,13 @@ test "html5lib/tree/tests20_1319" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math annotation-xml>
-      #||         encoding=\"text/html\"
-      #||         <div>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math annotation-xml>
+      #|        encoding="text/html"
+      #|        <div>
     ),
   )
 }
@@ -3960,13 +3960,13 @@ test "html5lib/tree/tests20_1320" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math annotation-xml>
-      #||         encoding=\"Text/htmL\"
-      #||         <div>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math annotation-xml>
+      #|        encoding="Text/htmL"
+      #|        <div>
     ),
   )
 }
@@ -3977,13 +3977,13 @@ test "html5lib/tree/tests20_1321" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math annotation-xml>
-      #||         encoding=\" text/html \"
-      #||     <div>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math annotation-xml>
+      #|        encoding=" text/html "
+      #|    <div>
     ),
   )
 }
@@ -3994,12 +3994,12 @@ test "html5lib/tree/tests20_1322" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math annotation-xml>
-      #||         \" \"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math annotation-xml>
+      #|        " "
     ),
   )
 }
@@ -4010,12 +4010,12 @@ test "html5lib/tree/tests20_1323" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math annotation-xml>
-      #||         \"c\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math annotation-xml>
+      #|        "c"
     ),
   )
 }
@@ -4026,12 +4026,12 @@ test "html5lib/tree/tests20_1324" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math annotation-xml>
-      #||         <!-- foo -->
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math annotation-xml>
+      #|        <!-- foo -->
     ),
   )
 }
@@ -4042,12 +4042,12 @@ test "html5lib/tree/tests20_1325" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math annotation-xml>
-      #||         \"x\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math annotation-xml>
+      #|        "x"
     ),
   )
 }
@@ -4058,13 +4058,13 @@ test "html5lib/tree/tests20_1326" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math annotation-xml>
-      #||         <svg svg>
-      #||           \"x\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math annotation-xml>
+      #|        <svg svg>
+      #|          "x"
     ),
   )
 }
@@ -4075,11 +4075,11 @@ test "html5lib/tree/tests21_1327" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       \"foo\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      "foo"
     ),
   )
 }
@@ -4090,11 +4090,11 @@ test "html5lib/tree/tests21_1328" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       \"foo\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      "foo"
     ),
   )
 }
@@ -4105,11 +4105,11 @@ test "html5lib/tree/tests21_1329" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <div>
-      #||       <!-- [CDATA[foo]] -->
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <div>
+      #|      <!-- [CDATA[foo]] -->
     ),
   )
 }
@@ -4120,11 +4120,11 @@ test "html5lib/tree/tests21_1330" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       \"foo\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      "foo"
     ),
   )
 }
@@ -4135,10 +4135,10 @@ test "html5lib/tree/tests21_1331" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
     ),
   )
 }
@@ -4149,10 +4149,10 @@ test "html5lib/tree/tests21_1332" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
     ),
   )
 }
@@ -4163,11 +4163,11 @@ test "html5lib/tree/tests21_1333" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       \"]] >\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      "]] >"
     ),
   )
 }
@@ -4178,11 +4178,11 @@ test "html5lib/tree/tests21_1334" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       \"]]\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      "]]"
     ),
   )
 }
@@ -4193,11 +4193,11 @@ test "html5lib/tree/tests21_1335" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       \"]\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      "]"
     ),
   )
 }
@@ -4208,11 +4208,11 @@ test "html5lib/tree/tests21_1336" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       \"]>a\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      "]>a"
     ),
   )
 }
@@ -4223,12 +4223,12 @@ test "html5lib/tree/tests21_1337" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       \"foo]\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      "foo]"
     ),
   )
 }
@@ -4239,12 +4239,12 @@ test "html5lib/tree/tests21_1338" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       \"foo]]\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      "foo]]"
     ),
   )
 }
@@ -4255,12 +4255,12 @@ test "html5lib/tree/tests21_1339" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       \"foo]]]\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      "foo]]]"
     ),
   )
 }
@@ -4271,13 +4271,13 @@ test "html5lib/tree/tests21_1340" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       <svg foreignObject>
-      #||         <div>
-      #||           <!-- [CDATA[foo]] -->
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      <svg foreignObject>
+      #|        <div>
+      #|          <!-- [CDATA[foo]] -->
     ),
   )
 }
@@ -4288,11 +4288,11 @@ test "html5lib/tree/tests21_1341" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       \"<svg>\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      "<svg>"
     ),
   )
 }
@@ -4303,11 +4303,11 @@ test "html5lib/tree/tests21_1342" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       \"</svg>a\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      "</svg>a"
     ),
   )
 }
@@ -4318,11 +4318,11 @@ test "html5lib/tree/tests21_1343" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       \"<svg>a\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      "<svg>a"
     ),
   )
 }
@@ -4333,11 +4333,11 @@ test "html5lib/tree/tests21_1344" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       \"</svg>a\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      "</svg>a"
     ),
   )
 }
@@ -4348,12 +4348,12 @@ test "html5lib/tree/tests21_1345" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       \"<svg>\"
-      #||       <svg path>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      "<svg>"
+      #|      <svg path>
     ),
   )
 }
@@ -4364,11 +4364,11 @@ test "html5lib/tree/tests21_1346" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       \"<svg>\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      "<svg>"
     ),
   )
 }
@@ -4379,12 +4379,12 @@ test "html5lib/tree/tests21_1347" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       \"<svg>\"
-      #||       <!-- path -->
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      "<svg>"
+      #|      <!-- path -->
     ),
   )
 }
@@ -4395,11 +4395,11 @@ test "html5lib/tree/tests21_1348" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       \"<svg>path\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      "<svg>path"
     ),
   )
 }
@@ -4410,11 +4410,11 @@ test "html5lib/tree/tests21_1349" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       \"<!--svg-->\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      "<!--svg-->"
     ),
   )
 }
@@ -4425,20 +4425,20 @@ test "html5lib/tree/tests22_1350" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <a>
-      #||       <b>
-      #||         <big>
-      #||           <em>
-      #||             <strong>
-      #||     <big>
-      #||       <em>
-      #||         <strong>
-      #||           <div>
-      #||             <a>
-      #||               \"X\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <a>
+      #|      <b>
+      #|        <big>
+      #|          <em>
+      #|            <strong>
+      #|    <big>
+      #|      <em>
+      #|        <strong>
+      #|          <div>
+      #|            <a>
+      #|              "X"
     ),
   )
 }
@@ -4451,37 +4451,37 @@ test "html5lib/tree/tests22_1351" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <a>
-      #||       <b>
-      #||     <b>
-      #||       <div>
-      #||         id=\"1\"
-      #||         <a>
-      #||         <div>
-      #||           id=\"2\"
-      #||           <a>
-      #||           <div>
-      #||             id=\"3\"
-      #||             <a>
-      #||             <div>
-      #||               id=\"4\"
-      #||               <a>
-      #||               <div>
-      #||                 id=\"5\"
-      #||                 <a>
-      #||                 <div>
-      #||                   id=\"6\"
-      #||                   <a>
-      #||                   <div>
-      #||                     id=\"7\"
-      #||                     <a>
-      #||                     <div>
-      #||                       id=\"8\"
-      #||                       <a>
-      #||                         \"A\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <a>
+      #|      <b>
+      #|    <b>
+      #|      <div>
+      #|        id="1"
+      #|        <a>
+      #|        <div>
+      #|          id="2"
+      #|          <a>
+      #|          <div>
+      #|            id="3"
+      #|            <a>
+      #|            <div>
+      #|              id="4"
+      #|              <a>
+      #|              <div>
+      #|                id="5"
+      #|                <a>
+      #|                <div>
+      #|                  id="6"
+      #|                  <a>
+      #|                  <div>
+      #|                    id="7"
+      #|                    <a>
+      #|                    <div>
+      #|                      id="8"
+      #|                      <a>
+      #|                        "A"
     ),
   )
 }
@@ -4494,39 +4494,39 @@ test "html5lib/tree/tests22_1352" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <a>
-      #||       <b>
-      #||     <b>
-      #||       <div>
-      #||         id=\"1\"
-      #||         <a>
-      #||         <div>
-      #||           id=\"2\"
-      #||           <a>
-      #||           <div>
-      #||             id=\"3\"
-      #||             <a>
-      #||             <div>
-      #||               id=\"4\"
-      #||               <a>
-      #||               <div>
-      #||                 id=\"5\"
-      #||                 <a>
-      #||                 <div>
-      #||                   id=\"6\"
-      #||                   <a>
-      #||                   <div>
-      #||                     id=\"7\"
-      #||                     <a>
-      #||                     <div>
-      #||                       id=\"8\"
-      #||                       <a>
-      #||                         <div>
-      #||                           id=\"9\"
-      #||                           \"A\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <a>
+      #|      <b>
+      #|    <b>
+      #|      <div>
+      #|        id="1"
+      #|        <a>
+      #|        <div>
+      #|          id="2"
+      #|          <a>
+      #|          <div>
+      #|            id="3"
+      #|            <a>
+      #|            <div>
+      #|              id="4"
+      #|              <a>
+      #|              <div>
+      #|                id="5"
+      #|                <a>
+      #|                <div>
+      #|                  id="6"
+      #|                  <a>
+      #|                  <div>
+      #|                    id="7"
+      #|                    <a>
+      #|                    <div>
+      #|                      id="8"
+      #|                      <a>
+      #|                        <div>
+      #|                          id="9"
+      #|                          "A"
     ),
   )
 }
@@ -4539,41 +4539,41 @@ test "html5lib/tree/tests22_1353" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <a>
-      #||       <b>
-      #||     <b>
-      #||       <div>
-      #||         id=\"1\"
-      #||         <a>
-      #||         <div>
-      #||           id=\"2\"
-      #||           <a>
-      #||           <div>
-      #||             id=\"3\"
-      #||             <a>
-      #||             <div>
-      #||               id=\"4\"
-      #||               <a>
-      #||               <div>
-      #||                 id=\"5\"
-      #||                 <a>
-      #||                 <div>
-      #||                   id=\"6\"
-      #||                   <a>
-      #||                   <div>
-      #||                     id=\"7\"
-      #||                     <a>
-      #||                     <div>
-      #||                       id=\"8\"
-      #||                       <a>
-      #||                         <div>
-      #||                           id=\"9\"
-      #||                           <div>
-      #||                             id=\"10\"
-      #||                             \"A\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <a>
+      #|      <b>
+      #|    <b>
+      #|      <div>
+      #|        id="1"
+      #|        <a>
+      #|        <div>
+      #|          id="2"
+      #|          <a>
+      #|          <div>
+      #|            id="3"
+      #|            <a>
+      #|            <div>
+      #|              id="4"
+      #|              <a>
+      #|              <div>
+      #|                id="5"
+      #|                <a>
+      #|                <div>
+      #|                  id="6"
+      #|                  <a>
+      #|                  <div>
+      #|                    id="7"
+      #|                    <a>
+      #|                    <div>
+      #|                      id="8"
+      #|                      <a>
+      #|                        <div>
+      #|                          id="9"
+      #|                          <div>
+      #|                            id="10"
+      #|                            "A"
     ),
   )
 }
@@ -4584,23 +4584,23 @@ test "html5lib/tree/tests22_1354" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <cite>
-      #||       <b>
-      #||         <cite>
-      #||           <i>
-      #||             <cite>
-      #||               <i>
-      #||                 <cite>
-      #||                   <i>
-      #||       <i>
-      #||         <i>
-      #||           <div>
-      #||             <b>
-      #||               \"X\"
-      #||             \"TEST\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <cite>
+      #|      <b>
+      #|        <cite>
+      #|          <i>
+      #|            <cite>
+      #|              <i>
+      #|                <cite>
+      #|                  <i>
+      #|      <i>
+      #|        <i>
+      #|          <div>
+      #|            <b>
+      #|              "X"
+      #|            "TEST"
     ),
   )
 }
@@ -4613,38 +4613,38 @@ test "html5lib/tree/tests23_1355" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <font>
-      #||         size=\"4\"
-      #||         <font>
-      #||           color=\"red\"
-      #||           <font>
-      #||             size=\"4\"
-      #||             <font>
-      #||               size=\"4\"
-      #||               <font>
-      #||                 size=\"4\"
-      #||                 <font>
-      #||                   size=\"4\"
-      #||                   <font>
-      #||                     size=\"4\"
-      #||                     <font>
-      #||                       color=\"red\"
-      #||     <p>
-      #||       <font>
-      #||         color=\"red\"
-      #||         <font>
-      #||           size=\"4\"
-      #||           <font>
-      #||             size=\"4\"
-      #||             <font>
-      #||               size=\"4\"
-      #||               <font>
-      #||                 color=\"red\"
-      #||                 \"X\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <font>
+      #|        size="4"
+      #|        <font>
+      #|          color="red"
+      #|          <font>
+      #|            size="4"
+      #|            <font>
+      #|              size="4"
+      #|              <font>
+      #|                size="4"
+      #|                <font>
+      #|                  size="4"
+      #|                  <font>
+      #|                    size="4"
+      #|                    <font>
+      #|                      color="red"
+      #|    <p>
+      #|      <font>
+      #|        color="red"
+      #|        <font>
+      #|          size="4"
+      #|          <font>
+      #|            size="4"
+      #|            <font>
+      #|              size="4"
+      #|              <font>
+      #|                color="red"
+      #|                "X"
     ),
   )
 }
@@ -4657,26 +4657,26 @@ test "html5lib/tree/tests23_1356" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <font>
-      #||         size=\"4\"
-      #||         <font>
-      #||           size=\"4\"
-      #||           <font>
-      #||             size=\"4\"
-      #||             <font>
-      #||               size=\"4\"
-      #||     <p>
-      #||       <font>
-      #||         size=\"4\"
-      #||         <font>
-      #||           size=\"4\"
-      #||           <font>
-      #||             size=\"4\"
-      #||             \"X\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <font>
+      #|        size="4"
+      #|        <font>
+      #|          size="4"
+      #|          <font>
+      #|            size="4"
+      #|            <font>
+      #|              size="4"
+      #|    <p>
+      #|      <font>
+      #|        size="4"
+      #|        <font>
+      #|          size="4"
+      #|          <font>
+      #|            size="4"
+      #|            "X"
     ),
   )
 }
@@ -4689,30 +4689,30 @@ test "html5lib/tree/tests23_1357" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <font>
-      #||         size=\"4\"
-      #||         <font>
-      #||           size=\"4\"
-      #||           <font>
-      #||             size=\"4\"
-      #||             <font>
-      #||               size=\"5\"
-      #||               <font>
-      #||                 size=\"4\"
-      #||     <p>
-      #||       <font>
-      #||         size=\"4\"
-      #||         <font>
-      #||           size=\"4\"
-      #||           <font>
-      #||             size=\"5\"
-      #||             <font>
-      #||               size=\"4\"
-      #||               \"X\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <font>
+      #|        size="4"
+      #|        <font>
+      #|          size="4"
+      #|          <font>
+      #|            size="4"
+      #|            <font>
+      #|              size="5"
+      #|              <font>
+      #|                size="4"
+      #|    <p>
+      #|      <font>
+      #|        size="4"
+      #|        <font>
+      #|          size="4"
+      #|          <font>
+      #|            size="5"
+      #|            <font>
+      #|              size="4"
+      #|              "X"
     ),
   )
 }
@@ -4725,32 +4725,32 @@ test "html5lib/tree/tests23_1358" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <font>
-      #||         id=\"a\"
-      #||         size=\"4\"
-      #||         <font>
-      #||           id=\"b\"
-      #||           size=\"4\"
-      #||           <font>
-      #||             size=\"4\"
-      #||             <font>
-      #||               size=\"4\"
-      #||     <p>
-      #||       <font>
-      #||         id=\"a\"
-      #||         size=\"4\"
-      #||         <font>
-      #||           id=\"b\"
-      #||           size=\"4\"
-      #||           <font>
-      #||             size=\"4\"
-      #||             <font>
-      #||               size=\"4\"
-      #||               \"X\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <font>
+      #|        id="a"
+      #|        size="4"
+      #|        <font>
+      #|          id="b"
+      #|          size="4"
+      #|          <font>
+      #|            size="4"
+      #|            <font>
+      #|              size="4"
+      #|    <p>
+      #|      <font>
+      #|        id="a"
+      #|        size="4"
+      #|        <font>
+      #|          id="b"
+      #|          size="4"
+      #|          <font>
+      #|            size="4"
+      #|            <font>
+      #|              size="4"
+      #|              "X"
     ),
   )
 }
@@ -4763,32 +4763,32 @@ test "html5lib/tree/tests23_1359" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <b>
-      #||         id=\"a\"
-      #||         <b>
-      #||           id=\"a\"
-      #||           <b>
-      #||             id=\"a\"
-      #||             <b>
-      #||               <object>
-      #||                 <b>
-      #||                   id=\"a\"
-      #||                   <b>
-      #||                     id=\"a\"
-      #||                     \"X\"
-      #||     <p>
-      #||       <b>
-      #||         id=\"a\"
-      #||         <b>
-      #||           id=\"a\"
-      #||           <b>
-      #||             id=\"a\"
-      #||             <b>
-      #||               \"Y\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <b>
+      #|        id="a"
+      #|        <b>
+      #|          id="a"
+      #|          <b>
+      #|            id="a"
+      #|            <b>
+      #|              <object>
+      #|                <b>
+      #|                  id="a"
+      #|                  <b>
+      #|                    id="a"
+      #|                    "X"
+      #|    <p>
+      #|      <b>
+      #|        id="a"
+      #|        <b>
+      #|          id="a"
+      #|          <b>
+      #|            id="a"
+      #|            <b>
+      #|              "Y"
     ),
   )
 }
@@ -4799,11 +4799,11 @@ test "html5lib/tree/tests24_1360" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"≂̸\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "≂̸"
     ),
   )
 }
@@ -4814,11 +4814,11 @@ test "html5lib/tree/tests24_1361" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"≂̸A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "≂̸A"
     ),
   )
 }
@@ -4829,11 +4829,11 @@ test "html5lib/tree/tests24_1362" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"  \"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "  "
     ),
   )
 }
@@ -4844,11 +4844,11 @@ test "html5lib/tree/tests24_1363" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"  A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "  A"
     ),
   )
 }
@@ -4859,11 +4859,11 @@ test "html5lib/tree/tests24_1364" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"⊂⃒\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "⊂⃒"
     ),
   )
 }
@@ -4874,11 +4874,11 @@ test "html5lib/tree/tests24_1365" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"⊂⃒A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "⊂⃒A"
     ),
   )
 }
@@ -4889,11 +4889,11 @@ test "html5lib/tree/tests24_1366" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"𝔾\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "𝔾"
     ),
   )
 }
@@ -4904,11 +4904,11 @@ test "html5lib/tree/tests24_1367" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"𝔾A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "𝔾A"
     ),
   )
 }
@@ -4919,12 +4919,12 @@ test "html5lib/tree/tests25_1368" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <foo>
-      #||       \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <foo>
+      #|      "A"
     ),
   )
 }
@@ -4935,12 +4935,12 @@ test "html5lib/tree/tests25_1369" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <area>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <area>
+      #|    "A"
     ),
   )
 }
@@ -4951,12 +4951,12 @@ test "html5lib/tree/tests25_1370" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <base>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <base>
+      #|    "A"
     ),
   )
 }
@@ -4967,12 +4967,12 @@ test "html5lib/tree/tests25_1371" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <basefont>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <basefont>
+      #|    "A"
     ),
   )
 }
@@ -4983,12 +4983,12 @@ test "html5lib/tree/tests25_1372" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <bgsound>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <bgsound>
+      #|    "A"
     ),
   )
 }
@@ -4999,12 +4999,12 @@ test "html5lib/tree/tests25_1373" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <br>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <br>
+      #|    "A"
     ),
   )
 }
@@ -5015,11 +5015,11 @@ test "html5lib/tree/tests25_1374" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "A"
     ),
   )
 }
@@ -5030,12 +5030,12 @@ test "html5lib/tree/tests25_1375" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <command>
-      #||       \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <command>
+      #|      "A"
     ),
   )
 }
@@ -5046,12 +5046,12 @@ test "html5lib/tree/tests25_1376" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <embed>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <embed>
+      #|    "A"
     ),
   )
 }
@@ -5062,11 +5062,11 @@ test "html5lib/tree/tests25_1377" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "A"
     ),
   )
 }
@@ -5077,12 +5077,12 @@ test "html5lib/tree/tests25_1378" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <hr>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <hr>
+      #|    "A"
     ),
   )
 }
@@ -5093,12 +5093,12 @@ test "html5lib/tree/tests25_1379" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <img>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <img>
+      #|    "A"
     ),
   )
 }
@@ -5109,12 +5109,12 @@ test "html5lib/tree/tests25_1380" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <input>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <input>
+      #|    "A"
     ),
   )
 }
@@ -5125,12 +5125,12 @@ test "html5lib/tree/tests25_1381" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <keygen>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <keygen>
+      #|    "A"
     ),
   )
 }
@@ -5141,12 +5141,12 @@ test "html5lib/tree/tests25_1382" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <keygen>
-      #||     \"AB\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <keygen>
+      #|    "AB"
     ),
   )
 }
@@ -5157,10 +5157,10 @@ test "html5lib/tree/tests25_1383" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"A\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "A"
     ),
   )
 }
@@ -5171,11 +5171,11 @@ test "html5lib/tree/tests25_1384" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "A"
     ),
   )
 }
@@ -5186,11 +5186,11 @@ test "html5lib/tree/tests25_1385" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "A"
     ),
   )
 }
@@ -5201,11 +5201,11 @@ test "html5lib/tree/tests25_1386" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "A"
     ),
   )
 }
@@ -5216,11 +5216,11 @@ test "html5lib/tree/tests25_1387" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "A"
     ),
   )
 }
@@ -5231,12 +5231,12 @@ test "html5lib/tree/tests25_1388" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <link>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <link>
+      #|    "A"
     ),
   )
 }
@@ -5247,12 +5247,12 @@ test "html5lib/tree/tests25_1389" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <meta>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <meta>
+      #|    "A"
     ),
   )
 }
@@ -5263,12 +5263,12 @@ test "html5lib/tree/tests25_1390" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <param>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <param>
+      #|    "A"
     ),
   )
 }
@@ -5279,12 +5279,12 @@ test "html5lib/tree/tests25_1391" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <source>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <source>
+      #|    "A"
     ),
   )
 }
@@ -5295,12 +5295,12 @@ test "html5lib/tree/tests25_1392" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <track>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <track>
+      #|    "A"
     ),
   )
 }
@@ -5311,12 +5311,12 @@ test "html5lib/tree/tests25_1393" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <wbr>
-      #||     \"A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <wbr>
+      #|    "A"
     ),
   )
 }
@@ -5329,33 +5329,33 @@ test "html5lib/tree/tests26_1394" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <a>
-      #||       href=\"#1\"
-      #||       <nobr>
-      #||         \"1\"
-      #||       <nobr>
-      #||     <nobr>
-      #||       <br>
-      #||       <a>
-      #||         href=\"#2\"
-      #||     <a>
-      #||       href=\"#2\"
-      #||       <nobr>
-      #||         \"2\"
-      #||       <nobr>
-      #||     <nobr>
-      #||       <br>
-      #||       <a>
-      #||         href=\"#3\"
-      #||     <a>
-      #||       href=\"#3\"
-      #||       <nobr>
-      #||         \"3\"
-      #||       <nobr>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <a>
+      #|      href="#1"
+      #|      <nobr>
+      #|        "1"
+      #|      <nobr>
+      #|    <nobr>
+      #|      <br>
+      #|      <a>
+      #|        href="#2"
+      #|    <a>
+      #|      href="#2"
+      #|      <nobr>
+      #|        "2"
+      #|      <nobr>
+      #|    <nobr>
+      #|      <br>
+      #|      <a>
+      #|        href="#3"
+      #|    <a>
+      #|      href="#3"
+      #|      <nobr>
+      #|        "3"
+      #|      <nobr>
     ),
   )
 }
@@ -5368,22 +5368,22 @@ test "html5lib/tree/tests26_1395" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <b>
-      #||       <nobr>
-      #||         \"1\"
-      #||       <nobr>
-      #||     <nobr>
-      #||       <i>
-      #||     <i>
-      #||       <nobr>
-      #||         \"2\"
-      #||       <nobr>
-      #||     <nobr>
-      #||       \"3\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <b>
+      #|      <nobr>
+      #|        "1"
+      #|      <nobr>
+      #|    <nobr>
+      #|      <i>
+      #|    <i>
+      #|      <nobr>
+      #|        "2"
+      #|      <nobr>
+      #|    <nobr>
+      #|      "3"
     ),
   )
 }
@@ -5396,22 +5396,22 @@ test "html5lib/tree/tests26_1396" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <b>
-      #||       <nobr>
-      #||         \"1\"
-      #||         <nobr>
-      #||           <i>
-      #||         <i>
-      #||           <nobr>
-      #||             \"2\"
-      #||           <nobr>
-      #||         <nobr>
-      #||           \"3\"
-      #||         <table>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <b>
+      #|      <nobr>
+      #|        "1"
+      #|        <nobr>
+      #|          <i>
+      #|        <i>
+      #|          <nobr>
+      #|            "2"
+      #|          <nobr>
+      #|        <nobr>
+      #|          "3"
+      #|        <table>
     ),
   )
 }
@@ -5424,25 +5424,25 @@ test "html5lib/tree/tests26_1397" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <b>
-      #||       <nobr>
-      #||         \"1\"
-      #||         <table>
-      #||           <tbody>
-      #||             <tr>
-      #||               <td>
-      #||                 <nobr>
-      #||                   <i>
-      #||                 <i>
-      #||                   <nobr>
-      #||                     \"2\"
-      #||                   <nobr>
-      #||                 <nobr>
-      #||                   \"3\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <b>
+      #|      <nobr>
+      #|        "1"
+      #|        <table>
+      #|          <tbody>
+      #|            <tr>
+      #|              <td>
+      #|                <nobr>
+      #|                  <i>
+      #|                <i>
+      #|                  <nobr>
+      #|                    "2"
+      #|                  <nobr>
+      #|                <nobr>
+      #|                  "3"
     ),
   )
 }
@@ -5455,25 +5455,25 @@ test "html5lib/tree/tests26_1398" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <b>
-      #||       <nobr>
-      #||         \"1\"
-      #||     <div>
-      #||       <b>
-      #||         <nobr>
-      #||         <nobr>
-      #||       <nobr>
-      #||         <i>
-      #||       <i>
-      #||         <nobr>
-      #||           \"2\"
-      #||         <nobr>
-      #||       <nobr>
-      #||         \"3\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <b>
+      #|      <nobr>
+      #|        "1"
+      #|    <div>
+      #|      <b>
+      #|        <nobr>
+      #|        <nobr>
+      #|      <nobr>
+      #|        <i>
+      #|      <i>
+      #|        <nobr>
+      #|          "2"
+      #|        <nobr>
+      #|      <nobr>
+      #|        "3"
     ),
   )
 }
@@ -5486,23 +5486,23 @@ test "html5lib/tree/tests26_1399" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <b>
-      #||       <nobr>
-      #||         \"1\"
-      #||       <nobr>
-      #||     <div>
-      #||       <nobr>
-      #||         <i>
-      #||       <i>
-      #||         <nobr>
-      #||           \"2\"
-      #||         <nobr>
-      #||       <nobr>
-      #||         \"3\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <b>
+      #|      <nobr>
+      #|        "1"
+      #|      <nobr>
+      #|    <div>
+      #|      <nobr>
+      #|        <i>
+      #|      <i>
+      #|        <nobr>
+      #|          "2"
+      #|        <nobr>
+      #|      <nobr>
+      #|        "3"
     ),
   )
 }
@@ -5515,19 +5515,19 @@ test "html5lib/tree/tests26_1400" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <b>
-      #||       <nobr>
-      #||         \"1\"
-      #||       <nobr>
-      #||         <ins>
-      #||     <nobr>
-      #||       <i>
-      #||     <i>
-      #||       <nobr>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <b>
+      #|      <nobr>
+      #|        "1"
+      #|      <nobr>
+      #|        <ins>
+      #|    <nobr>
+      #|      <i>
+      #|    <i>
+      #|      <nobr>
     ),
   )
 }
@@ -5538,18 +5538,18 @@ test "html5lib/tree/tests26_1401" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <b>
-      #||       <nobr>
-      #||         \"1\"
-      #||         <ins>
-      #||       <nobr>
-      #||     <nobr>
-      #||       <i>
-      #||         \"2\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <b>
+      #|      <nobr>
+      #|        "1"
+      #|        <ins>
+      #|      <nobr>
+      #|    <nobr>
+      #|      <i>
+      #|        "2"
     ),
   )
 }
@@ -5560,18 +5560,18 @@ test "html5lib/tree/tests26_1402" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <b>
-      #||       \"1\"
-      #||       <nobr>
-      #||     <nobr>
-      #||       <i>
-      #||     <i>
-      #||       <nobr>
-      #||         \"2\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <b>
+      #|      "1"
+      #|      <nobr>
+      #|    <nobr>
+      #|      <i>
+      #|    <i>
+      #|      <nobr>
+      #|        "2"
     ),
   )
 }
@@ -5582,18 +5582,18 @@ test "html5lib/tree/tests26_1403" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <code>
-      #||         code=\"\"
-      #||         x<=\"\"
-      #||     <code>
-      #||       code=\"\"
-      #||       x<=\"\"
-      #||       \"
-      #|\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <code>
+      #|        code=""
+      #|        x<=""
+      #|    <code>
+      #|      code=""
+      #|      x<=""
+      #|      "
+      #|"
     ),
   )
 }
@@ -5604,16 +5604,16 @@ test "html5lib/tree/tests26_1404" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||       <svg foreignObject>
-      #||         <p>
-      #||           <i>
-      #||         <i>
-      #||           \"a\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|      <svg foreignObject>
+      #|        <p>
+      #|          <i>
+      #|        <i>
+      #|          "a"
     ),
   )
 }
@@ -5626,20 +5626,20 @@ test "html5lib/tree/tests26_1405" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
-      #||           <td>
-      #||             <svg svg>
-      #||               <svg foreignObject>
-      #||                 <p>
-      #||                   <i>
-      #||                 <i>
-      #||                   \"a\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
+      #|          <td>
+      #|            <svg svg>
+      #|              <svg foreignObject>
+      #|                <p>
+      #|                  <i>
+      #|                <i>
+      #|                  "a"
     ),
   )
 }
@@ -5650,16 +5650,16 @@ test "html5lib/tree/tests26_1406" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math mtext>
-      #||         <p>
-      #||           <i>
-      #||         <i>
-      #||           \"a\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math mtext>
+      #|        <p>
+      #|          <i>
+      #|        <i>
+      #|          "a"
     ),
   )
 }
@@ -5672,20 +5672,20 @@ test "html5lib/tree/tests26_1407" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
-      #||           <td>
-      #||             <math math>
-      #||               <math mtext>
-      #||                 <p>
-      #||                   <i>
-      #||                 <i>
-      #||                   \"a\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
+      #|          <td>
+      #|            <math math>
+      #|              <math mtext>
+      #|                <p>
+      #|                  <i>
+      #|                <i>
+      #|                  "a"
     ),
   )
 }
@@ -5696,13 +5696,13 @@ test "html5lib/tree/tests26_1408" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <div>
-      #||       <!-- /div -->
-      #||       \"a\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <div>
+      #|      <!-- /div -->
+      #|      "a"
     ),
   )
 }
@@ -5713,12 +5713,12 @@ test "html5lib/tree/tests26_1409" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <button>
-      #||       <p>
-      #||     <button>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <button>
+      #|      <p>
+      #|    <button>
     ),
   )
 }
@@ -5729,12 +5729,12 @@ test "html5lib/tree/tests26_1410" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||     <p>
-      #||     <foo>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|    <p>
+      #|    <foo>
     ),
   )
 }
@@ -5745,12 +5745,12 @@ test "html5lib/tree/tests26_1411" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <svg svg>
-      #||     <br>
-      #||     <foo>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <svg svg>
+      #|    <br>
+      #|    <foo>
     ),
   )
 }
@@ -5761,12 +5761,12 @@ test "html5lib/tree/tests26_1412" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||     <p>
-      #||     <foo>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|    <p>
+      #|    <foo>
     ),
   )
 }
@@ -5777,12 +5777,12 @@ test "html5lib/tree/tests26_1413" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||     <br>
-      #||     <foo>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|    <br>
+      #|    <foo>
     ),
   )
 }
@@ -5793,10 +5793,10 @@ test "html5lib/tree/tests3_1414" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||     <style>
-      #||   <body>
+      #|<html>
+      #|  <head>
+      #|    <style>
+      #|  <body>
     ),
   )
 }
@@ -5807,10 +5807,10 @@ test "html5lib/tree/tests3_1415" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||     <script>
-      #||   <body>
+      #|<html>
+      #|  <head>
+      #|    <script>
+      #|  <body>
     ),
   )
 }
@@ -5823,13 +5823,13 @@ test "html5lib/tree/tests3_1416" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||     <style>
-      #||     <script>
-      #||   <!--   -->
-      #||   <!--   -->
-      #||   <body>
+      #|<html>
+      #|  <head>
+      #|    <style>
+      #|    <script>
+      #|  <!--   -->
+      #|  <!--   -->
+      #|  <body>
     ),
   )
 }
@@ -5842,14 +5842,14 @@ test "html5lib/tree/tests3_1417" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <!--   -->
-      #||   <body>
-      #||     \"x\"
-      #||     <style>
-      #||     <!--   -->
-      #||     <script>
+      #|<html>
+      #|  <head>
+      #|  <!--   -->
+      #|  <body>
+      #|    "x"
+      #|    <style>
+      #|    <!--   -->
+      #|    <script>
     ),
   )
 }
@@ -5862,11 +5862,11 @@ test "html5lib/tree/tests3_1418" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <pre>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <pre>
     ),
   )
 }
@@ -5879,12 +5879,12 @@ test "html5lib/tree/tests3_1419" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <pre>
-      #||       \"foo\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <pre>
+      #|      "foo"
     ),
   )
 }
@@ -5897,13 +5897,13 @@ test "html5lib/tree/tests3_1420" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <pre>
-      #||       \"
-      #|foo\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <pre>
+      #|      "
+      #|foo"
     ),
   )
 }
@@ -5916,13 +5916,13 @@ test "html5lib/tree/tests3_1421" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <pre>
-      #||       \"foo
-      #|\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <pre>
+      #|      "foo
+      #|"
     ),
   )
 }
@@ -5935,15 +5935,15 @@ test "html5lib/tree/tests3_1422" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <pre>
-      #||       \"x\"
-      #||     <span>
-      #||       \"
-      #|\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <pre>
+      #|      "x"
+      #|    <span>
+      #|      "
+      #|"
     ),
   )
 }
@@ -5956,13 +5956,13 @@ test "html5lib/tree/tests3_1423" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <pre>
-      #||       \"x
-      #|y\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <pre>
+      #|      "x
+      #|y"
     ),
   )
 }
@@ -5975,15 +5975,15 @@ test "html5lib/tree/tests3_1424" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <pre>
-      #||       \"x\"
-      #||       <div>
-      #||         \"
-      #|y\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <pre>
+      #|      "x"
+      #|      <div>
+      #|        "
+      #|y"
     ),
   )
 }
@@ -5994,13 +5994,13 @@ test "html5lib/tree/tests3_1425" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <pre>
-      #||       \"
-      #|A\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <pre>
+      #|      "
+      #|A"
     ),
   )
 }
@@ -6011,11 +6011,11 @@ test "html5lib/tree/tests3_1426" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||     <meta>
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|    <meta>
+      #|  <body>
     ),
   )
 }
@@ -6026,10 +6026,10 @@ test "html5lib/tree/tests3_1427" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -6040,11 +6040,11 @@ test "html5lib/tree/tests3_1428" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <textarea>
-      #||       \"foo<span>bar</span><i>baz\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <textarea>
+      #|      "foo<span>bar</span><i>baz"
     ),
   )
 }
@@ -6055,11 +6055,11 @@ test "html5lib/tree/tests3_1429" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||     <title>
-      #||       \"foo<span>bar</em><i>baz\"
-      #||   <body>
+      #|<html>
+      #|  <head>
+      #|    <title>
+      #|      "foo<span>bar</em><i>baz"
+      #|  <body>
     ),
   )
 }
@@ -6070,11 +6070,11 @@ test "html5lib/tree/tests3_1430" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <textarea>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <textarea>
     ),
   )
 }
@@ -6085,12 +6085,12 @@ test "html5lib/tree/tests3_1431" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <textarea>
-      #||       \"foo\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <textarea>
+      #|      "foo"
     ),
   )
 }
@@ -6101,13 +6101,13 @@ test "html5lib/tree/tests3_1432" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <textarea>
-      #||       \"
-      #|foo\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <textarea>
+      #|      "
+      #|foo"
     ),
   )
 }
@@ -6120,15 +6120,15 @@ test "html5lib/tree/tests3_1433" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <ul>
-      #||       <li>
-      #||         <div>
-      #||           <p>
-      #||       <li>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <ul>
+      #|      <li>
+      #|        <div>
+      #|          <p>
+      #|      <li>
     ),
   )
 }
@@ -6139,13 +6139,13 @@ test "html5lib/tree/tests3_1434" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <nobr>
-      #||     <nobr>
-      #||     <nobr>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <nobr>
+      #|    <nobr>
+      #|    <nobr>
     ),
   )
 }
@@ -6156,13 +6156,13 @@ test "html5lib/tree/tests3_1435" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <nobr>
-      #||     <nobr>
-      #||     <nobr>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <nobr>
+      #|    <nobr>
+      #|    <nobr>
     ),
   )
 }
@@ -6175,12 +6175,12 @@ test "html5lib/tree/tests3_1436" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||     <table>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|    <table>
     ),
   )
 }
@@ -6191,11 +6191,11 @@ test "html5lib/tree/tests3_1437" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <table>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <table>
     ),
   )
 }
@@ -6206,12 +6206,12 @@ test "html5lib/tree/tests5_1447" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||     <style>
-      #||       \" <!-- \"
-      #||   <body>
-      #||     \"x\"
+      #|<html>
+      #|  <head>
+      #|    <style>
+      #|      " <!-- "
+      #|  <body>
+      #|    "x"
     ),
   )
 }
@@ -6222,13 +6222,13 @@ test "html5lib/tree/tests5_1448" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||     <style>
-      #||       \" <!-- \"
-      #||     \" \"
-      #||   <body>
-      #||     \"--> x\"
+      #|<html>
+      #|  <head>
+      #|    <style>
+      #|      " <!-- "
+      #|    " "
+      #|  <body>
+      #|    "--> x"
     ),
   )
 }
@@ -6239,12 +6239,12 @@ test "html5lib/tree/tests5_1449" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||     <style>
-      #||       \" <!--> \"
-      #||   <body>
-      #||     \"x\"
+      #|<html>
+      #|  <head>
+      #|    <style>
+      #|      " <!--> "
+      #|  <body>
+      #|    "x"
     ),
   )
 }
@@ -6255,12 +6255,12 @@ test "html5lib/tree/tests5_1450" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||     <style>
-      #||       \" <!---> \"
-      #||   <body>
-      #||     \"x\"
+      #|<html>
+      #|  <head>
+      #|    <style>
+      #|      " <!---> "
+      #|  <body>
+      #|    "x"
     ),
   )
 }
@@ -6271,12 +6271,12 @@ test "html5lib/tree/tests5_1451" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <iframe>
-      #||       \" <!---> \"
-      #||     \"x\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <iframe>
+      #|      " <!---> "
+      #|    "x"
     ),
   )
 }
@@ -6287,12 +6287,12 @@ test "html5lib/tree/tests5_1452" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <iframe>
-      #||       \" <!--- \"
-      #||     \"->x --> x\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <iframe>
+      #|      " <!--- "
+      #|    "->x --> x"
     ),
   )
 }
@@ -6303,13 +6303,13 @@ test "html5lib/tree/tests5_1453" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||     <script>
-      #||       \" <!-- \"
-      #||     \" \"
-      #||   <body>
-      #||     \"--> x\"
+      #|<html>
+      #|  <head>
+      #|    <script>
+      #|      " <!-- "
+      #|    " "
+      #|  <body>
+      #|    "--> x"
     ),
   )
 }
@@ -6320,13 +6320,13 @@ test "html5lib/tree/tests5_1454" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||     <title>
-      #||       \" <!-- \"
-      #||     \" \"
-      #||   <body>
-      #||     \"--> x\"
+      #|<html>
+      #|  <head>
+      #|    <title>
+      #|      " <!-- "
+      #|    " "
+      #|  <body>
+      #|    "--> x"
     ),
   )
 }
@@ -6339,12 +6339,12 @@ test "html5lib/tree/tests5_1455" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <textarea>
-      #||       \" <!--- \"
-      #||     \"->x --> x\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <textarea>
+      #|      " <!--- "
+      #|    "->x --> x"
     ),
   )
 }
@@ -6355,12 +6355,12 @@ test "html5lib/tree/tests5_1456" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||     <style>
-      #||       \" <!</-- \"
-      #||   <body>
-      #||     \"x\"
+      #|<html>
+      #|  <head>
+      #|    <style>
+      #|      " <!</-- "
+      #|  <body>
+      #|    "x"
     ),
   )
 }
@@ -6371,11 +6371,11 @@ test "html5lib/tree/tests5_1457" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||     <xmp>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|    <xmp>
     ),
   )
 }
@@ -6386,11 +6386,11 @@ test "html5lib/tree/tests5_1458" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <xmp>
-      #||       \" <!-- > --> \"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <xmp>
+      #|      " <!-- > --> "
     ),
   )
 }
@@ -6401,11 +6401,11 @@ test "html5lib/tree/tests5_1459" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||     <title>
-      #||       \"&\"
-      #||   <body>
+      #|<html>
+      #|  <head>
+      #|    <title>
+      #|      "&"
+      #|  <body>
     ),
   )
 }
@@ -6416,11 +6416,11 @@ test "html5lib/tree/tests5_1460" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||     <title>
-      #||       \"<!--&-->\"
-      #||   <body>
+      #|<html>
+      #|  <head>
+      #|    <title>
+      #|      "<!--&-->"
+      #|  <body>
     ),
   )
 }
@@ -6431,11 +6431,11 @@ test "html5lib/tree/tests5_1461" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||     <title>
-      #||       \"<!--\"
-      #||   <body>
+      #|<html>
+      #|  <head>
+      #|    <title>
+      #|      "<!--"
+      #|  <body>
     ),
   )
 }
@@ -6446,12 +6446,12 @@ test "html5lib/tree/tests5_1462" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||     <noscript>
-      #||       \"<!--\"
-      #||   <body>
-      #||     \"-->\"
+      #|<html>
+      #|  <head>
+      #|    <noscript>
+      #|      "<!--"
+      #|  <body>
+      #|    "-->"
     ),
   )
 }
@@ -6462,11 +6462,11 @@ test "html5lib/tree/tests5_1463" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||     <noscript>
-      #||       <!-- </noscript> -->
-      #||   <body>
+      #|<html>
+      #|  <head>
+      #|    <noscript>
+      #|      <!-- </noscript> -->
+      #|  <body>
     ),
   )
 }
@@ -6477,11 +6477,11 @@ test "html5lib/tree/tests6_1464" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   \" \"
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  " "
+      #|  <body>
     ),
   )
 }
@@ -6492,13 +6492,13 @@ test "html5lib/tree/tests6_1465" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <form>
-      #||       <div>
-      #||         <div>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <form>
+      #|      <div>
+      #|        <div>
     ),
   )
 }
@@ -6509,12 +6509,12 @@ test "html5lib/tree/tests6_1466" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||     <title>
-      #||       \"&\"
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|    <title>
+      #|      "&"
+      #|  <body>
     ),
   )
 }
@@ -6525,12 +6525,12 @@ test "html5lib/tree/tests6_1467" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||     <title>
-      #||       \"<!--&-->\"
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|    <title>
+      #|      "<!--&-->"
+      #|  <body>
     ),
   )
 }
@@ -6541,10 +6541,10 @@ test "html5lib/tree/tests6_1468" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE >
-      #|| <html>
-      #||   <head>
-      #||   <body>
+      #|<!DOCTYPE >
+      #|<html>
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -6555,10 +6555,10 @@ test "html5lib/tree/tests6_1469" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!-- -x -->
-      #|| <html>
-      #||   <head>
-      #||   <body>
+      #|<!-- -x -->
+      #|<html>
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -6569,11 +6569,11 @@ test "html5lib/tree/tests6_1471" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
-      #||   \"
-      #|\"
+      #|<html>
+      #|  <head>
+      #|  <frameset>
+      #|  "
+      #|"
     ),
   )
 }
@@ -6584,12 +6584,12 @@ test "html5lib/tree/tests6_1472" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
-      #||   \"
-      #|\"
-      #||   <noframes>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
+      #|  "
+      #|"
+      #|  <noframes>
     ),
   )
 }
@@ -6600,11 +6600,11 @@ test "html5lib/tree/tests6_1473" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
-      #||   \"
-      #|\"
+      #|<html>
+      #|  <head>
+      #|  <frameset>
+      #|  "
+      #|"
     ),
   )
 }
@@ -6615,11 +6615,11 @@ test "html5lib/tree/tests6_1474" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
-      #||   \"
-      #|\"
+      #|<html>
+      #|  <head>
+      #|  <frameset>
+      #|  "
+      #|"
     ),
   )
 }
@@ -6630,11 +6630,11 @@ test "html5lib/tree/tests6_1475" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
-      #||   \"
-      #|\"
+      #|<html>
+      #|  <head>
+      #|  <frameset>
+      #|  "
+      #|"
     ),
   )
 }
@@ -6645,10 +6645,10 @@ test "html5lib/tree/tests6_1476" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <form>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <form>
     ),
   )
 }
@@ -6659,11 +6659,11 @@ test "html5lib/tree/tests6_1477" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <button>
-      #||     <button>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <button>
+      #|    <button>
     ),
   )
 }
@@ -6674,13 +6674,13 @@ test "html5lib/tree/tests6_1478" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
-      #||           <td>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
+      #|          <td>
     ),
   )
 }
@@ -6691,14 +6691,14 @@ test "html5lib/tree/tests6_1479" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <caption>
-      #||       <tbody>
-      #||         <tr>
-      #||           <td>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <caption>
+      #|      <tbody>
+      #|        <tr>
+      #|          <td>
     ),
   )
 }
@@ -6709,12 +6709,12 @@ test "html5lib/tree/tests6_1480" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <caption>
-      #||         <div>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <caption>
+      #|        <div>
     ),
   )
 }
@@ -6725,12 +6725,12 @@ test "html5lib/tree/tests6_1482" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <caption>
-      #||         <div>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <caption>
+      #|        <div>
     ),
   )
 }
@@ -6741,11 +6741,11 @@ test "html5lib/tree/tests6_1483" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <caption>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <caption>
     ),
   )
 }
@@ -6758,11 +6758,11 @@ test "html5lib/tree/tests6_1485" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <caption>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <caption>
     ),
   )
 }
@@ -6773,12 +6773,12 @@ test "html5lib/tree/tests6_1486" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <caption>
-      #||         <div>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <caption>
+      #|        <div>
     ),
   )
 }
@@ -6791,13 +6791,13 @@ test "html5lib/tree/tests6_1487" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
-      #||           <td>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
+      #|          <td>
     ),
   )
 }
@@ -6808,12 +6808,12 @@ test "html5lib/tree/tests6_1489" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"foo\"
-      #||     <table>
-      #||       <colgroup>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "foo"
+      #|    <table>
+      #|      <colgroup>
     ),
   )
 }
@@ -6824,11 +6824,11 @@ test "html5lib/tree/tests6_1491" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <colgroup>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <colgroup>
     ),
   )
 }
@@ -6839,9 +6839,9 @@ test "html5lib/tree/tests6_1492" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
     ),
   )
 }
@@ -6852,9 +6852,9 @@ test "html5lib/tree/tests6_1494" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
     ),
   )
 }
@@ -6865,13 +6865,13 @@ test "html5lib/tree/tests6_1496" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <div>
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <div>
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
     ),
   )
 }
@@ -6882,14 +6882,14 @@ test "html5lib/tree/tests6_1499" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <div>
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
-      #||           <td>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <div>
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
+      #|          <td>
     ),
   )
 }
@@ -6900,11 +6900,11 @@ test "html5lib/tree/tests6_1501" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <tbody>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <tbody>
     ),
   )
 }
@@ -6917,11 +6917,11 @@ test "html5lib/tree/tests6_1503" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <tbody>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <tbody>
     ),
   )
 }
@@ -6932,11 +6932,11 @@ test "html5lib/tree/tests6_1504" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <tbody>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <tbody>
     ),
   )
 }
@@ -6947,11 +6947,11 @@ test "html5lib/tree/tests6_1505" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||     <table>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|    <table>
     ),
   )
 }
@@ -6964,10 +6964,10 @@ test "html5lib/tree/tests6_1506" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
     ),
   )
 }
@@ -6978,10 +6978,10 @@ test "html5lib/tree/tests6_1509" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
-      #||   \" \"
+      #|<html>
+      #|  <head>
+      #|  <frameset>
+      #|  " "
     ),
   )
 }
@@ -6994,10 +6994,10 @@ test "html5lib/tree/tests6_1510" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html \"-//W3C//DTD HTML 4.01//EN\" \"\">
-      #|| <html>
-      #||   <head>
-      #||   <body>
+      #|<!DOCTYPE html "-//W3C//DTD HTML 4.01//EN" "">
+      #|<html>
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -7008,9 +7008,9 @@ test "html5lib/tree/tests6_1511" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
     ),
   )
 }
@@ -7021,9 +7021,9 @@ test "html5lib/tree/tests6_1512" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
     ),
   )
 }
@@ -7034,9 +7034,9 @@ test "html5lib/tree/tests6_1513" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
     ),
   )
 }
@@ -7047,9 +7047,9 @@ test "html5lib/tree/tests6_1514" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
     ),
   )
 }
@@ -7060,9 +7060,9 @@ test "html5lib/tree/tests6_1515" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
     ),
   )
 }
@@ -7073,12 +7073,12 @@ test "html5lib/tree/tests7_1516" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <title>
-      #||       \"X\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <title>
+      #|      "X"
     ),
   )
 }
@@ -7089,13 +7089,13 @@ test "html5lib/tree/tests7_1517" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <title>
-      #||       \"X\"
-      #||     <table>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <title>
+      #|      "X"
+      #|    <table>
     ),
   )
 }
@@ -7106,12 +7106,12 @@ test "html5lib/tree/tests7_1518" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||     <title>
-      #||       \"X\"
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|    <title>
+      #|      "X"
+      #|  <body>
     ),
   )
 }
@@ -7122,12 +7122,12 @@ test "html5lib/tree/tests7_1519" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||     <title>
-      #||       \"X\"
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|    <title>
+      #|      "X"
+      #|  <body>
     ),
   )
 }
@@ -7138,12 +7138,12 @@ test "html5lib/tree/tests7_1520" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||     <base>
-      #||   <body>
-      #||     \"X\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|    <base>
+      #|  <body>
+      #|    "X"
     ),
   )
 }
@@ -7154,12 +7154,12 @@ test "html5lib/tree/tests7_1521" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||     <basefont>
-      #||   <body>
-      #||     \"X\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|    <basefont>
+      #|  <body>
+      #|    "X"
     ),
   )
 }
@@ -7170,12 +7170,12 @@ test "html5lib/tree/tests7_1522" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||     <bgsound>
-      #||   <body>
-      #||     \"X\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|    <bgsound>
+      #|  <body>
+      #|    "X"
     ),
   )
 }
@@ -7186,12 +7186,12 @@ test "html5lib/tree/tests7_1523" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <meta>
-      #||     <table>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <meta>
+      #|    <table>
     ),
   )
 }
@@ -7204,18 +7204,18 @@ test "html5lib/tree/tests7_1524" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"X\"
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
-      #||           <td>
-      #||             <meta>
-      #||             <table>
-      #||               \" \"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "X"
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
+      #|          <td>
+      #|            <meta>
+      #|            <table>
+      #|              " "
     ),
   )
 }
@@ -7226,10 +7226,10 @@ test "html5lib/tree/tests7_1525" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -7240,10 +7240,10 @@ test "html5lib/tree/tests7_1526" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -7254,14 +7254,14 @@ test "html5lib/tree/tests7_1527" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <style>
-      #||         \" <tr>x \"
-      #||       \" \"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <style>
+      #|        " <tr>x "
+      #|      " "
     ),
   )
 }
@@ -7274,15 +7274,15 @@ test "html5lib/tree/tests7_1528" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <tbody>
-      #||         <script>
-      #||           \" <tr>x \"
-      #||         \" \"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <tbody>
+      #|        <script>
+      #|          " <tr>x "
+      #|        " "
     ),
   )
 }
@@ -7293,14 +7293,14 @@ test "html5lib/tree/tests7_1529" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <applet>
-      #||         <p>
-      #||           \"X\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <applet>
+      #|        <p>
+      #|          "X"
     ),
   )
 }
@@ -7313,15 +7313,15 @@ test "html5lib/tree/tests7_1530" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <object>
-      #||         type=\"application/x-non-existant-plugin\"
-      #||         <p>
-      #||           \"X\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <object>
+      #|        type="application/x-non-existant-plugin"
+      #|        <p>
+      #|          "X"
     ),
   )
 }
@@ -7332,12 +7332,12 @@ test "html5lib/tree/tests7_1531" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <listing>
-      #||       \"X\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <listing>
+      #|      "X"
     ),
   )
 }
@@ -7348,13 +7348,13 @@ test "html5lib/tree/tests7_1532" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <select>
-      #||     <input>
-      #||     \"X\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <select>
+      #|    <input>
+      #|    "X"
     ),
   )
 }
@@ -7365,12 +7365,12 @@ test "html5lib/tree/tests7_1533" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <select>
-      #||     \"X\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <select>
+      #|    "X"
     ),
   )
 }
@@ -7381,13 +7381,13 @@ test "html5lib/tree/tests7_1534" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <input>
-      #||         type=\"hidDEN\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <input>
+      #|        type="hidDEN"
     ),
   )
 }
@@ -7398,14 +7398,14 @@ test "html5lib/tree/tests7_1535" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"X\"
-      #||     <table>
-      #||       <input>
-      #||         type=\"hidDEN\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "X"
+      #|    <table>
+      #|      <input>
+      #|        type="hidDEN"
     ),
   )
 }
@@ -7416,14 +7416,14 @@ test "html5lib/tree/tests7_1536" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       \"  \"
-      #||       <input>
-      #||         type=\"hidDEN\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      "  "
+      #|      <input>
+      #|        type="hidDEN"
     ),
   )
 }
@@ -7434,14 +7434,14 @@ test "html5lib/tree/tests7_1537" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       \"  \"
-      #||       <input>
-      #||         type=\"hidDEN\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      "  "
+      #|      <input>
+      #|        type="hidDEN"
     ),
   )
 }
@@ -7454,15 +7454,15 @@ test "html5lib/tree/tests7_1538" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <input>
-      #||       type=\" hidden\"
-      #||     <table>
-      #||       <input>
-      #||         type=\"hidDEN\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <input>
+      #|      type=" hidden"
+      #|    <table>
+      #|      <input>
+      #|        type="hidDEN"
     ),
   )
 }
@@ -7473,15 +7473,15 @@ test "html5lib/tree/tests7_1539" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <select>
-      #||       \"X\"
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <select>
+      #|      "X"
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
     ),
   )
 }
@@ -7492,12 +7492,12 @@ test "html5lib/tree/tests7_1540" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <select>
-      #||       \"X\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <select>
+      #|      "X"
     ),
   )
 }
@@ -7508,10 +7508,10 @@ test "html5lib/tree/tests7_1541" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -7522,10 +7522,10 @@ test "html5lib/tree/tests7_1542" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -7536,12 +7536,12 @@ test "html5lib/tree/tests7_1544" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <div>
-      #||       <p>
-      #||         \"a b\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <div>
+      #|      <p>
+      #|        "a b"
     ),
   )
 }
@@ -7552,15 +7552,15 @@ test "html5lib/tree/tests7_1545" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
-      #||           <td>
-      #||             <code>
-      #||             \" \"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
+      #|          <td>
+      #|            <code>
+      #|            " "
     ),
   )
 }
@@ -7571,19 +7571,19 @@ test "html5lib/tree/tests7_1546" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <b>
-      #||     <b>
-      #||       \"bbb\"
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
-      #||           <td>
-      #||             \"aaa\"
-      #||     <b>
-      #||       \"ccc\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <b>
+      #|    <b>
+      #|      "bbb"
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
+      #|          <td>
+      #|            "aaa"
+      #|    <b>
+      #|      "ccc"
     ),
   )
 }
@@ -7594,13 +7594,13 @@ test "html5lib/tree/tests7_1547" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"A B B\"
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "A B B"
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
     ),
   )
 }
@@ -7611,14 +7611,14 @@ test "html5lib/tree/tests7_1548" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"A BC\"
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
-      #||         \" \"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "A BC"
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
+      #|        " "
     ),
   )
 }
@@ -7629,11 +7629,11 @@ test "html5lib/tree/tests7_1549" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <select>
-      #||       <keygen>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <select>
+      #|      <keygen>
     ),
   )
 }
@@ -7644,15 +7644,15 @@ test "html5lib/tree/tests8_1550" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <div>
-      #||       \"
-      #|\"
-      #||       <div>
-      #||       \"
-      #|x\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <div>
+      #|      "
+      #|"
+      #|      <div>
+      #|      "
+      #|x"
     ),
   )
 }
@@ -7663,14 +7663,14 @@ test "html5lib/tree/tests8_1551" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <div>
-      #||       \"x\"
-      #||       <div>
-      #||       \"
-      #|x\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <div>
+      #|      "x"
+      #|      <div>
+      #|      "
+      #|x"
     ),
   )
 }
@@ -7681,13 +7681,13 @@ test "html5lib/tree/tests8_1552" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <div>
-      #||       \"x\"
-      #||       <div>
-      #||       \"xx\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <div>
+      #|      "x"
+      #|      <div>
+      #|      "xx"
     ),
   )
 }
@@ -7698,13 +7698,13 @@ test "html5lib/tree/tests8_1553" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <div>
-      #||       \"x\"
-      #||       <div>
-      #||       \"yz\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <div>
+      #|      "x"
+      #|      <div>
+      #|      "yz"
     ),
   )
 }
@@ -7715,14 +7715,14 @@ test "html5lib/tree/tests8_1554" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <div>
-      #||       \"x\"
-      #||       <div>
-      #||       \"xx\"
-      #||     <table>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <div>
+      #|      "x"
+      #|      <div>
+      #|      "xx"
+      #|    <table>
     ),
   )
 }
@@ -7733,12 +7733,12 @@ test "html5lib/tree/tests8_1555" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <li>
-      #||     <li>
-      #||     <table>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <li>
+      #|    <li>
+      #|    <table>
     ),
   )
 }
@@ -7749,11 +7749,11 @@ test "html5lib/tree/tests8_1556" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"xx\"
-      #||     <table>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "xx"
+      #|    <table>
     ),
   )
 }
@@ -7764,13 +7764,13 @@ test "html5lib/tree/tests8_1557" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"x\"
-      #||     <table>
-      #||     \"x\"
-      #||     <table>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "x"
+      #|    <table>
+      #|    "x"
+      #|    <table>
     ),
   )
 }
@@ -7781,15 +7781,15 @@ test "html5lib/tree/tests8_1558" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <b>
-      #||       \"a\"
-      #||       <div>
-      #||     <div>
-      #||       <b>
-      #||       \"y\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <b>
+      #|      "a"
+      #|      <div>
+      #|    <div>
+      #|      <b>
+      #|      "y"
     ),
   )
 }
@@ -7800,14 +7800,14 @@ test "html5lib/tree/tests8_1559" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <a>
-      #||     <div>
-      #||       <a>
-      #||       <p>
-      #||         <a>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <a>
+      #|    <div>
+      #|      <a>
+      #|      <p>
+      #|        <a>
     ),
   )
 }
@@ -7818,11 +7818,11 @@ test "html5lib/tree/tests9_1560" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
     ),
   )
 }
@@ -7833,11 +7833,11 @@ test "html5lib/tree/tests9_1561" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
     ),
   )
 }
@@ -7848,12 +7848,12 @@ test "html5lib/tree/tests9_1562" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math mi>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math mi>
     ),
   )
 }
@@ -7864,14 +7864,14 @@ test "html5lib/tree/tests9_1563" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math annotation-xml>
-      #||         <svg svg>
-      #||     <u>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math annotation-xml>
+      #|        <svg svg>
+      #|    <u>
     ),
   )
 }
@@ -7882,12 +7882,12 @@ test "html5lib/tree/tests9_1564" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <select>
-      #||       <math math>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <select>
+      #|      <math math>
     ),
   )
 }
@@ -7900,13 +7900,13 @@ test "html5lib/tree/tests9_1565" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <select>
-      #||       <option>
-      #||         <math math>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <select>
+      #|      <option>
+      #|        <math math>
     ),
   )
 }
@@ -7917,12 +7917,12 @@ test "html5lib/tree/tests9_1566" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||     <table>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|    <table>
     ),
   )
 }
@@ -7935,14 +7935,14 @@ test "html5lib/tree/tests9_1567" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math mi>
-      #||         \"foo\"
-      #||     <table>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math mi>
+      #|        "foo"
+      #|    <table>
     ),
   )
 }
@@ -7955,16 +7955,16 @@ test "html5lib/tree/tests9_1568" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math mi>
-      #||         \"foo\"
-      #||       <math mi>
-      #||         \"bar\"
-      #||     <table>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math mi>
+      #|        "foo"
+      #|      <math mi>
+      #|        "bar"
+      #|    <table>
     ),
   )
 }
@@ -7977,17 +7977,17 @@ test "html5lib/tree/tests9_1569" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math mi>
-      #||         \"foo\"
-      #||       <math mi>
-      #||         \"bar\"
-      #||     <table>
-      #||       <tbody>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math mi>
+      #|        "foo"
+      #|      <math mi>
+      #|        "bar"
+      #|    <table>
+      #|      <tbody>
     ),
   )
 }
@@ -8000,18 +8000,18 @@ test "html5lib/tree/tests9_1570" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math mi>
-      #||         \"foo\"
-      #||       <math mi>
-      #||         \"bar\"
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math mi>
+      #|        "foo"
+      #|      <math mi>
+      #|        "bar"
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
     ),
   )
 }
@@ -8024,19 +8024,19 @@ test "html5lib/tree/tests9_1571" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
-      #||           <td>
-      #||             <math math>
-      #||               <math mi>
-      #||                 \"foo\"
-      #||               <math mi>
-      #||                 \"bar\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
+      #|          <td>
+      #|            <math math>
+      #|              <math mi>
+      #|                "foo"
+      #|              <math mi>
+      #|                "bar"
     ),
   )
 }
@@ -8049,21 +8049,21 @@ test "html5lib/tree/tests9_1572" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
-      #||           <td>
-      #||             <math math>
-      #||               <math mi>
-      #||                 \"foo\"
-      #||               <math mi>
-      #||                 \"bar\"
-      #||             <p>
-      #||               \"baz\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
+      #|          <td>
+      #|            <math math>
+      #|              <math mi>
+      #|                "foo"
+      #|              <math mi>
+      #|                "bar"
+      #|            <p>
+      #|              "baz"
     ),
   )
 }
@@ -8076,19 +8076,19 @@ test "html5lib/tree/tests9_1573" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <caption>
-      #||         <math math>
-      #||           <math mi>
-      #||             \"foo\"
-      #||           <math mi>
-      #||             \"bar\"
-      #||         <p>
-      #||           \"baz\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <caption>
+      #|        <math math>
+      #|          <math mi>
+      #|            "foo"
+      #|          <math mi>
+      #|            "bar"
+      #|        <p>
+      #|          "baz"
     ),
   )
 }
@@ -8101,21 +8101,21 @@ test "html5lib/tree/tests9_1574" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <caption>
-      #||         <math math>
-      #||           <math mi>
-      #||             \"foo\"
-      #||           <math mi>
-      #||             \"bar\"
-      #||         <p>
-      #||           \"baz\"
-      #||     <p>
-      #||       \"quux\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <caption>
+      #|        <math math>
+      #|          <math mi>
+      #|            "foo"
+      #|          <math mi>
+      #|            "bar"
+      #|        <p>
+      #|          "baz"
+      #|    <p>
+      #|      "quux"
     ),
   )
 }
@@ -8128,20 +8128,20 @@ test "html5lib/tree/tests9_1575" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <caption>
-      #||         <math math>
-      #||           <math mi>
-      #||             \"foo\"
-      #||           <math mi>
-      #||             \"bar\"
-      #||           \"baz\"
-      #||     <p>
-      #||       \"quux\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <caption>
+      #|        <math math>
+      #|          <math mi>
+      #|            "foo"
+      #|          <math mi>
+      #|            "bar"
+      #|          "baz"
+      #|    <p>
+      #|      "quux"
     ),
   )
 }
@@ -8154,21 +8154,21 @@ test "html5lib/tree/tests9_1576" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math mi>
-      #||         \"foo\"
-      #||       <math mi>
-      #||         \"bar\"
-      #||     <p>
-      #||       \"baz\"
-      #||     <table>
-      #||       <colgroup>
-      #||     <p>
-      #||       \"quux\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math mi>
+      #|        "foo"
+      #|      <math mi>
+      #|        "bar"
+      #|    <p>
+      #|      "baz"
+      #|    <table>
+      #|      <colgroup>
+      #|    <p>
+      #|      "quux"
     ),
   )
 }
@@ -8181,24 +8181,24 @@ test "html5lib/tree/tests9_1577" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
-      #||           <td>
-      #||             <select>
-      #||               <math math>
-      #||                 <math mi>
-      #||                   \"foo\"
-      #||                 <math mi>
-      #||                   \"bar\"
-      #||               <p>
-      #||                 \"baz\"
-      #||     <p>
-      #||       \"quux\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
+      #|          <td>
+      #|            <select>
+      #|              <math math>
+      #|                <math mi>
+      #|                  "foo"
+      #|                <math mi>
+      #|                  "bar"
+      #|              <p>
+      #|                "baz"
+      #|    <p>
+      #|      "quux"
     ),
   )
 }
@@ -8211,21 +8211,21 @@ test "html5lib/tree/tests9_1578" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <select>
-      #||       <math math>
-      #||         <math mi>
-      #||           \"foo\"
-      #||         <math mi>
-      #||           \"bar\"
-      #||       <p>
-      #||         \"baz\"
-      #||     <table>
-      #||     <p>
-      #||       \"quux\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <select>
+      #|      <math math>
+      #|        <math mi>
+      #|          "foo"
+      #|        <math mi>
+      #|          "bar"
+      #|      <p>
+      #|        "baz"
+      #|    <table>
+      #|    <p>
+      #|      "quux"
     ),
   )
 }
@@ -8238,17 +8238,17 @@ test "html5lib/tree/tests9_1579" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math mi>
-      #||         \"foo\"
-      #||       <math mi>
-      #||         \"bar\"
-      #||     <p>
-      #||       \"baz\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math mi>
+      #|        "foo"
+      #|      <math mi>
+      #|        "bar"
+      #|    <p>
+      #|      "baz"
     ),
   )
 }
@@ -8261,17 +8261,17 @@ test "html5lib/tree/tests9_1580" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <math math>
-      #||       <math mi>
-      #||         \"foo\"
-      #||       <math mi>
-      #||         \"bar\"
-      #||     <p>
-      #||       \"baz\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <math math>
+      #|      <math mi>
+      #|        "foo"
+      #|      <math mi>
+      #|        "bar"
+      #|    <p>
+      #|      "baz"
     ),
   )
 }
@@ -8284,10 +8284,10 @@ test "html5lib/tree/tests9_1581" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
     ),
   )
 }
@@ -8300,10 +8300,10 @@ test "html5lib/tree/tests9_1582" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <frameset>
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <frameset>
     ),
   )
 }
@@ -8316,13 +8316,13 @@ test "html5lib/tree/tests9_1583" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     xlink:href=\"foo\"
-      #||     <math math>
-      #||       xlink href=\"foo\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    xlink:href="foo"
+      #|    <math math>
+      #|      xlink href="foo"
     ),
   )
 }
@@ -8335,16 +8335,16 @@ test "html5lib/tree/tests9_1584" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     xlink:href=\"foo\"
-      #||     xml:lang=\"en\"
-      #||     <math math>
-      #||       <math mi>
-      #||         xlink href=\"foo\"
-      #||         xml lang=\"en\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    xlink:href="foo"
+      #|    xml:lang="en"
+      #|    <math math>
+      #|      <math mi>
+      #|        xlink href="foo"
+      #|        xml lang="en"
     ),
   )
 }
@@ -8357,16 +8357,16 @@ test "html5lib/tree/tests9_1585" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     xlink:href=\"foo\"
-      #||     xml:lang=\"en\"
-      #||     <math math>
-      #||       <math mi>
-      #||         xlink href=\"foo\"
-      #||         xml lang=\"en\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    xlink:href="foo"
+      #|    xml:lang="en"
+      #|    <math math>
+      #|      <math mi>
+      #|        xlink href="foo"
+      #|        xml lang="en"
     ),
   )
 }
@@ -8379,17 +8379,17 @@ test "html5lib/tree/tests9_1586" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!DOCTYPE html>
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     xlink:href=\"foo\"
-      #||     xml:lang=\"en\"
-      #||     <math math>
-      #||       <math mi>
-      #||         xlink href=\"foo\"
-      #||         xml lang=\"en\"
-      #||       \"bar\"
+      #|<!DOCTYPE html>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    xlink:href="foo"
+      #|    xml:lang="en"
+      #|    <math math>
+      #|      <math mi>
+      #|        xlink href="foo"
+      #|        xml lang="en"
+      #|      "bar"
     ),
   )
 }
@@ -8400,16 +8400,16 @@ test "html5lib/tree/tricky01_1668" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <b>
-      #||     <p>
-      #||       <b>
-      #||         \"Bold \"
-      #||       \" Not bold\"
-      #||     \"
-      #|Also not bold.\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <b>
+      #|    <p>
+      #|      <b>
+      #|        "Bold "
+      #|      " Not bold"
+      #|    "
+      #|Also not bold."
     ),
   )
 }
@@ -8422,50 +8422,50 @@ test "html5lib/tree/tricky01_1669" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <font>
-      #||       color=\"red\"
-      #||       <i>
-      #||         \"Italic and Red\"
-      #||     <i>
-      #||       <p>
-      #||         <font>
-      #||           color=\"red\"
-      #||           \"Italic and Red \"
-      #||         \" Just italic.\"
-      #||       \" Italic only.\"
-      #||     \" Plain
-      #|\"
-      #||     <p>
-      #||       \"I should not be red. \"
-      #||       <font>
-      #||         color=\"red\"
-      #||         \"Red. \"
-      #||         <i>
-      #||           \"Italic and red.\"
-      #||     <font>
-      #||       color=\"red\"
-      #||       <i>
-      #||         \"
-      #|\"
-      #||     <p>
-      #||       <font>
-      #||         color=\"red\"
-      #||         <i>
-      #||           \"Italic and red. \"
-      #||         \" Red.\"
-      #||       \" I should not be red.\"
-      #||     \"
-      #|\"
-      #||     <b>
-      #||       \"Bold \"
-      #||       <i>
-      #||         \"Bold and italic\"
-      #||     <i>
-      #||       \" Only Italic \"
-      #||     \" Plain\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <font>
+      #|      color="red"
+      #|      <i>
+      #|        "Italic and Red"
+      #|    <i>
+      #|      <p>
+      #|        <font>
+      #|          color="red"
+      #|          "Italic and Red "
+      #|        " Just italic."
+      #|      " Italic only."
+      #|    " Plain
+      #|"
+      #|    <p>
+      #|      "I should not be red. "
+      #|      <font>
+      #|        color="red"
+      #|        "Red. "
+      #|        <i>
+      #|          "Italic and red."
+      #|    <font>
+      #|      color="red"
+      #|      <i>
+      #|        "
+      #|"
+      #|    <p>
+      #|      <font>
+      #|        color="red"
+      #|        <i>
+      #|          "Italic and red. "
+      #|        " Red."
+      #|      " I should not be red."
+      #|    "
+      #|"
+      #|    <b>
+      #|      "Bold "
+      #|      <i>
+      #|        "Bold and italic"
+      #|    <i>
+      #|      " Only Italic "
+      #|    " Plain"
     ),
   )
 }
@@ -8478,30 +8478,30 @@ test "html5lib/tree/tricky01_1670" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"
-      #|\"
-      #||     <p>
-      #||       <font>
-      #||         size=\"7\"
-      #||         \"First paragraph.\"
-      #||     <font>
-      #||       size=\"7\"
-      #||       \"
-      #|\"
-      #||       <p>
-      #||         \"Second paragraph.\"
-      #||     \"
-      #|\"
-      #||     <b>
-      #||     <p>
-      #||       <b>
-      #||         <i>
-      #||           \"Bold and Italic\"
-      #||       <i>
-      #||         \" Italic\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "
+      #|"
+      #|    <p>
+      #|      <font>
+      #|        size="7"
+      #|        "First paragraph."
+      #|    <font>
+      #|      size="7"
+      #|      "
+      #|"
+      #|      <p>
+      #|        "Second paragraph."
+      #|    "
+      #|"
+      #|    <b>
+      #|    <p>
+      #|      <b>
+      #|        <i>
+      #|          "Bold and Italic"
+      #|      <i>
+      #|        " Italic"
     ),
   )
 }
@@ -8512,23 +8512,23 @@ test "html5lib/tree/tricky01_1671" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <dl>
-      #||       \"
-      #|\"
-      #||       <dt>
-      #||         <b>
-      #||           \"Boo
-      #|\"
-      #||       <dd>
-      #||         <b>
-      #||           \"Goo?
-      #|\"
-      #||     <b>
-      #||       \"
-      #|\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <dl>
+      #|      "
+      #|"
+      #|      <dt>
+      #|        <b>
+      #|          "Boo
+      #|"
+      #|      <dd>
+      #|        <b>
+      #|          "Goo?
+      #|"
+      #|    <b>
+      #|      "
+      #|"
     ),
   )
 }
@@ -8541,20 +8541,20 @@ test "html5lib/tree/tricky01_1672" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"
-      #|\"
-      #||     <label>
-      #||       <a>
-      #||       <div>
-      #||         <a>
-      #||           \"Hello\"
-      #||           <div>
-      #||             \"World\"
-      #||         \"
-      #|\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "
+      #|"
+      #|    <label>
+      #|      <a>
+      #|      <div>
+      #|        <a>
+      #|          "Hello"
+      #|          <div>
+      #|            "World"
+      #|        "
+      #|"
     ),
   )
 }
@@ -8567,24 +8567,24 @@ test "html5lib/tree/tricky01_1673" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <center>
-      #||       \" \"
-      #||       <font>
-      #||         \"a\"
-      #||     <font>
-      #||       <img>
-      #||       \" \"
-      #||     <table>
-      #||       \" \"
-      #||       <tbody>
-      #||         <tr>
-      #||           <td>
-      #||             \" \"
-      #||           \" \"
-      #||         \" \"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <center>
+      #|      " "
+      #|      <font>
+      #|        "a"
+      #|    <font>
+      #|      <img>
+      #|      " "
+      #|    <table>
+      #|      " "
+      #|      <tbody>
+      #|        <tr>
+      #|          <td>
+      #|            " "
+      #|          " "
+      #|        " "
     ),
   )
 }
@@ -8595,17 +8595,17 @@ test "html5lib/tree/tricky01_1674" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       <a>
-      #||     <p>
-      #||       <a>
-      #||         \"You should see this text.\"
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      <a>
+      #|    <p>
+      #|      <a>
+      #|        "You should see this text."
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
     ),
   )
 }
@@ -8618,40 +8618,40 @@ test "html5lib/tree/tricky01_1675" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <center>
-      #||       <center>
-      #||     <font>
-      #||       \"
-      #|\"
-      #||     <table>
-      #||       \"
-      #|\"
-      #||       <tbody>
-      #||         <tr>
-      #||           \"
-      #|\"
-      #||           <td>
-      #||         <tr>
-      #||           \"
-      #|\"
-      #||     <table>
-      #||       <tbody>
-      #||         <tr>
-      #||     <font>
-      #||       \"
-      #|\"
-      #||       <p>
-      #||       \"
-      #|\"
-      #||       <a>
-      #||     <a>
-      #||       <font>
-      #||     <font>
-      #||       \"
-      #|This page contains an insanely badly-nested tag sequence.\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <center>
+      #|      <center>
+      #|    <font>
+      #|      "
+      #|"
+      #|    <table>
+      #|      "
+      #|"
+      #|      <tbody>
+      #|        <tr>
+      #|          "
+      #|"
+      #|          <td>
+      #|        <tr>
+      #|          "
+      #|"
+      #|    <table>
+      #|      <tbody>
+      #|        <tr>
+      #|    <font>
+      #|      "
+      #|"
+      #|      <p>
+      #|      "
+      #|"
+      #|      <a>
+      #|    <a>
+      #|      <font>
+      #|    <font>
+      #|      "
+      #|This page contains an insanely badly-nested tag sequence."
     ),
   )
 }
@@ -8664,23 +8664,23 @@ test "html5lib/tree/tricky01_1676" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"
-      #|\"
-      #||     <b>
-      #||       <nobr>
-      #||     <div>
-      #||       <b>
-      #||         <nobr>
-      #||           \"This text is in a div inside a nobr\"
-      #||         \"More text that should not be in the nobr, i.e., the
-      #|nobr should have closed the div inside it implicitly. \"
-      #||       <pre>
-      #||         \"A pre tag outside everything else.\"
-      #||       \"
-      #|\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "
+      #|"
+      #|    <b>
+      #|      <nobr>
+      #|    <div>
+      #|      <b>
+      #|        <nobr>
+      #|          "This text is in a div inside a nobr"
+      #|        "More text that should not be in the nobr, i.e., the
+      #|nobr should have closed the div inside it implicitly. "
+      #|      <pre>
+      #|        "A pre tag outside everything else."
+      #|      "
+      #|"
     ),
   )
 }
@@ -8691,10 +8691,10 @@ test "html5lib/tree/webkit01_1677" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     \"Test\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    "Test"
     ),
   )
 }
@@ -8705,10 +8705,10 @@ test "html5lib/tree/webkit01_1678" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <div>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <div>
     ),
   )
 }
@@ -8719,11 +8719,11 @@ test "html5lib/tree/webkit01_1679" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <div>
-      #||       \"Test\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <div>
+      #|      "Test"
     ),
   )
 }
@@ -8734,9 +8734,9 @@ test "html5lib/tree/webkit01_1680" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
+      #|<html>
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -8749,21 +8749,21 @@ test "html5lib/tree/webkit01_1681" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <div>
-      #||       \"Hello\"
-      #||     \"
-      #|\"
-      #||     <script>
-      #||       \"
-      #|console.log(\"PASS\");
-      #|\"
-      #||     \"
-      #|\"
-      #||     <div>
-      #||       \"Bye\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <div>
+      #|      "Hello"
+      #|    "
+      #|"
+      #|    <script>
+      #|      "
+      #|console.log("PASS");
+      #|"
+      #|    "
+      #|"
+      #|    <div>
+      #|      "Bye"
     ),
   )
 }
@@ -8774,12 +8774,12 @@ test "html5lib/tree/webkit01_1682" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <div>
-      #||       foo=\"bar\"
-      #||       \"Hello\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <div>
+      #|      foo="bar"
+      #|      "Hello"
     ),
   )
 }
@@ -8792,21 +8792,21 @@ test "html5lib/tree/webkit01_1683" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <div>
-      #||       \"Hello\"
-      #||     \"
-      #|\"
-      #||     <script>
-      #||       \"
-      #|console.log(\"FOO<span>BAR</span>BAZ\");
-      #|\"
-      #||     \"
-      #|\"
-      #||     <div>
-      #||       \"Bye\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <div>
+      #|      "Hello"
+      #|    "
+      #|"
+      #|    <script>
+      #|      "
+      #|console.log("FOO<span>BAR</span>BAZ");
+      #|"
+      #|    "
+      #|"
+      #|    <div>
+      #|      "Bye"
     ),
   )
 }
@@ -8819,13 +8819,13 @@ test "html5lib/tree/webkit01_1684" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <foo>
-      #||       bar=\"baz\"
-      #||     <potato>
-      #||       quack=\"duck\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <foo>
+      #|      bar="baz"
+      #|    <potato>
+      #|      quack="duck"
     ),
   )
 }
@@ -8838,13 +8838,13 @@ test "html5lib/tree/webkit01_1685" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <foo>
-      #||       bar=\"baz\"
-      #||       <potato>
-      #||         quack=\"duck\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <foo>
+      #|      bar="baz"
+      #|      <potato>
+      #|        quack="duck"
     ),
   )
 }
@@ -8857,11 +8857,11 @@ test "html5lib/tree/webkit01_1686" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <foo>
-      #||     <potato>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <foo>
+      #|    <potato>
     ),
   )
 }
@@ -8872,10 +8872,10 @@ test "html5lib/tree/webkit01_1687" {
   inspect(
     doc.dump(),
     content=(
-      #|| <!--  tttt -->
-      #|| <html>
-      #||   <head>
-      #||   <body>
+      #|<!--  tttt -->
+      #|<html>
+      #|  <head>
+      #|  <body>
     ),
   )
 }
@@ -8886,13 +8886,13 @@ test "html5lib/tree/webkit01_1688" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <div>
-      #||       foo=\"\"
-      #||       <img>
-      #||       <img>
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <div>
+      #|      foo=""
+      #|      <img>
+      #|      <img>
     ),
   )
 }
@@ -8903,11 +8903,11 @@ test "html5lib/tree/webkit01_1689" {
   inspect(
     doc.dump(),
     content=(
-      #|| <html>
-      #||   <head>
-      #||   <body>
-      #||     <p>
-      #||       \"TestTest2\"
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      "TestTest2"
     ),
   )
 }

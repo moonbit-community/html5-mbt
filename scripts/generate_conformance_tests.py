@@ -363,7 +363,7 @@ def load_tree_construction_tests() -> List[Dict[str, Any]]:
 def normalize_expected_tree(tree: str) -> str:
     """Normalize expected tree output for comparison.
 
-    - Strip leading/trailing whitespace from each line
+    - Strip the '| ' prefix from html5lib-tests format
     - Remove empty lines
     - Ensure consistent formatting
     """
@@ -371,19 +371,48 @@ def normalize_expected_tree(tree: str) -> str:
     for line in tree.strip().split('\n'):
         # Keep the line structure but normalize
         if line.strip():
+            # Remove the '| ' prefix from html5lib format
+            if line.startswith('| '):
+                line = line[2:]
             lines.append(line.rstrip())
     return '\n'.join(lines)
 
 
 def format_multiline_string(s: str) -> str:
-    """Format a string as MoonBit multi-line string with #| prefix."""
+    """Format a string as MoonBit multi-line string with #| prefix.
+
+    In #| strings, quotes don't need escaping.
+    """
     lines = s.split('\n')
-    # Escape any special chars within lines (but not newlines)
     result_lines = []
     for line in lines:
-        escaped_line = escape_moonbit_string(line)
+        # Only escape backslashes and control chars, not quotes
+        escaped_line = escape_for_multiline(line)
         result_lines.append(f'      #|{escaped_line}')
     return '\n'.join(result_lines)
+
+
+def escape_for_multiline(s: str) -> str:
+    """Escape a string for MoonBit #| multi-line literal.
+
+    Quotes don't need escaping in #| strings.
+    """
+    result = []
+    for c in s:
+        code = ord(c)
+        if c == '\\':
+            result.append('\\\\')
+        elif code == 0:
+            result.append('\\u{0}')
+        elif code < 0x20 and c not in '\t':
+            result.append(f'\\u{{{code:x}}}')
+        elif code == 0x7F:
+            result.append('\\u{7f}')
+        elif 0x80 <= code <= 0x9F:
+            result.append(f'\\u{{{code:x}}}')
+        else:
+            result.append(c)
+    return ''.join(result)
 
 
 def generate_tree_test(test: Dict[str, Any], index: int) -> Optional[str]:

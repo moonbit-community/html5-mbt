@@ -493,7 +493,7 @@ fn Document::dump_node(
   if depth > 100 {
     return
   }
-  let indent = "| " + String::make(depth * 2, ' ')
+  let indent = String::make(depth * 2, ' ')
   match self.get_node(id) {
     Some(DocumentTypeNode(name~, public_id~, system_id~)) => {
       buf.write_string(indent)
@@ -534,7 +534,7 @@ fn Document::dump_node(
       // Dump attributes in sorted order (html5lib-tests requirement)
       let attrs = elem.attributes.copy()
       attrs.sort_by(fn(a, b) { a.0.compare(b.0) })
-      let attr_indent = "| " + String::make((depth + 1) * 2, ' ')
+      let attr_indent = String::make((depth + 1) * 2, ' ')
       for pair in attrs {
         buf.write_string(attr_indent)
         buf.write_string(pair.0)

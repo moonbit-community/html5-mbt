@@ -111,6 +111,6 @@ test "smoke/tree/adoption_agency" {
   let doc = parse("<a><p></a></p>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <a>\n|     <p>\n|       <a>",
+    content="<html>\n  <head>\n  <body>\n    <a>\n    <p>\n      <a>",
   )
 }
