@@ -143,6 +143,10 @@ pub fn TreeBuilder::run_adoption_agency(
     // 13. Append new element to furthest block
     self.document.append_child(furthest_block, new_formatting_id)
     // 14. Remove old formatting element from list and insert new one
+    // Adjust bookmark if it's after the removed element
+    if formatting_idx < bookmark {
+      bookmark -= 1
+    }
     self.remove_from_active_formatting(formatting_node_id)
     self.insert_formatting_at(bookmark, new_formatting_id, tag_name)
     // 15. Remove old formatting element from stack and insert new one

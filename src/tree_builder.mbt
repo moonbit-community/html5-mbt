@@ -152,6 +152,16 @@ fn TreeBuilder::process_token(self : TreeBuilder, token : Token) -> Bool {
     return self.process_in_foreign_content(token)
   }
   // Dispatch to current insertion mode
+  self.process_token_in_html_mode(token)
+}
+
+///|
+/// Process a token using HTML rules (skipping foreign content check)
+/// Used when falling back from foreign content to HTML processing
+fn TreeBuilder::process_token_in_html_mode(
+  self : TreeBuilder,
+  token : Token,
+) -> Bool {
   match self.mode {
     Initial => self.process_initial_mode(token)
     BeforeHtml => self.process_before_html_mode(token)
