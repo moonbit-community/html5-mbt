@@ -179,3 +179,18 @@ test "smoke/tree/malformed_url_tag" {
     ),
   )
 }
+
+///|
+test "smoke/tree/body_attr_merge" {
+  let doc = parse("<body foo='bar'><body foo='baz' yo='mama'>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    foo="bar"
+      #|    yo="mama"
+    ),
+  )
+}

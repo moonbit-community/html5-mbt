@@ -535,8 +535,9 @@ fn Document::dump_node(
       buf.write_string(elem.tag_name)
       buf.write_string(">\n")
       // Dump attributes in sorted order (html5lib-tests requirement)
+      // Use lexicographic comparison (MoonBit's String.compare sorts by length first)
       let attrs = elem.attributes.copy()
-      attrs.sort_by(fn(a, b) { a.0.compare(b.0) })
+      attrs.sort_by(fn(a, b) { lex_compare(a.0, b.0) })
       let attr_indent = String::make((depth + 1) * 2, ' ')
       for pair in attrs {
         buf.write_string(attr_indent)
@@ -582,4 +583,30 @@ fn escape_dump_text(s : String) -> String {
     }
   }
   buf.to_string()
+}
+
+///|
+/// Lexicographic string comparison (MoonBit's String.compare uses length-first)
+fn lex_compare(a : String, b : String) -> Int {
+  let a_len = a.length()
+  let b_len = b.length()
+  let min_len = if a_len < b_len { a_len } else { b_len }
+  for i = 0; i < min_len; i = i + 1 {
+    let a_char = a[i].to_int()
+    let b_char = b[i].to_int()
+    if a_char < b_char {
+      return -1
+    }
+    if a_char > b_char {
+      return 1
+    }
+  }
+  // All common characters are equal, compare by length
+  if a_len < b_len {
+    -1
+  } else if a_len > b_len {
+    1
+  } else {
+    0
+  }
 }
