@@ -22,7 +22,7 @@ PROJECT_DIR = SCRIPT_DIR.parent
 HTML5LIB_TESTS_DIR = PROJECT_DIR / "html5lib-tests"
 TOKENIZER_TESTS_DIR = HTML5LIB_TESTS_DIR / "tokenizer"
 TREE_TESTS_DIR = HTML5LIB_TESTS_DIR / "tree-construction"
-OUTPUT_DIR = PROJECT_DIR / "generated_tests"
+OUTPUT_DIR = PROJECT_DIR / "src" / "conformance_tests"
 
 LICENSE_HEADER = """// ============================================================================
 // AUTO-GENERATED FILE - DO NOT MODIFY MANUALLY
@@ -117,8 +117,12 @@ def escape_moonbit_char(c: str) -> str:
     elif 0xD800 <= code <= 0xDFFF:
         # Surrogates - should be skipped, but escape if present
         return f'\\u{{{code:x}}}'
-    # Invisible formatting characters (U+2060-U+206F)
+    # Zero-width and invisible characters (U+200B-U+200F, U+2060-U+206F, U+FEFF)
+    elif 0x200B <= code <= 0x200F:
+        return f'\\u{{{code:x}}}'
     elif 0x2060 <= code <= 0x206F:
+        return f'\\u{{{code:x}}}'
+    elif code == 0xFEFF:
         return f'\\u{{{code:x}}}'
     else:
         # MoonBit displays all other characters literally
@@ -266,7 +270,7 @@ def generate_tokenizer_test(test: Dict[str, Any], index: int) -> Optional[str]:
 
     return f'''///|
 test "{test_name}" {{
-  let (tokens, _) = tokenize("{escaped_input}")
+  let (tokens, _) = @html.tokenize("{escaped_input}")
   inspect(tokens, content="{escape_moonbit_string(expected)}")
 }}
 
@@ -380,7 +384,7 @@ def generate_tree_test(test: Dict[str, Any], index: int) -> Optional[str]:
     # Just verify parsing doesn't crash for now
     return f'''///|
 test "{test_name}" {{
-  let doc = parse("{escaped_input}")
+  let doc = @html.parse("{escaped_input}")
   // Verify document was created
   inspect(doc.nodes.length() > 0, content="true")
 }}

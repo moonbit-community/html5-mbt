@@ -1,0 +1,9 @@
+{
+  "import": [
+    {
+      "path": "Milky2018/html/src",
+      "alias": "html"
+    }
+  ],
+  "warn-list": "-2"
+}

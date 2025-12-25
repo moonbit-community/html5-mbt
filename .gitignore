@@ -9,6 +9,7 @@ html5lib-tests/
 
 # Generated test files (can be regenerated with scripts)
 generated_tests/
+src/conformance_tests/*_test.mbt
 
 # Python cache
 __pycache__/
