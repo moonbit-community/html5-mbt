@@ -176,15 +176,22 @@ fn Tokenizer::run_hexadecimal_character_reference_state(
 ) -> Token? {
   match self.consume() {
     Some(c) if is_ascii_digit(c) => {
-      self.char_ref_code = self.char_ref_code * 16 + (c.to_int() - 0x30)
+      // Cap at a value larger than max Unicode to avoid overflow
+      if self.char_ref_code <= 0x10FFFF {
+        self.char_ref_code = self.char_ref_code * 16 + (c.to_int() - 0x30)
+      }
       None
     }
     Some(c) if is_ascii_upper_hex_digit(c) => {
-      self.char_ref_code = self.char_ref_code * 16 + (c.to_int() - 0x37)
+      if self.char_ref_code <= 0x10FFFF {
+        self.char_ref_code = self.char_ref_code * 16 + (c.to_int() - 0x37)
+      }
       None
     }
     Some(c) if is_ascii_lower_hex_digit(c) => {
-      self.char_ref_code = self.char_ref_code * 16 + (c.to_int() - 0x57)
+      if self.char_ref_code <= 0x10FFFF {
+        self.char_ref_code = self.char_ref_code * 16 + (c.to_int() - 0x57)
+      }
       None
     }
     Some(';') => {
@@ -210,7 +217,11 @@ fn Tokenizer::run_hexadecimal_character_reference_state(
 fn Tokenizer::run_decimal_character_reference_state(self : Tokenizer) -> Token? {
   match self.consume() {
     Some(c) if is_ascii_digit(c) => {
-      self.char_ref_code = self.char_ref_code * 10 + (c.to_int() - 0x30)
+      // Cap at a value larger than max Unicode (0x10FFFF) to avoid overflow
+      // while still detecting out-of-range values
+      if self.char_ref_code <= 0x10FFFF {
+        self.char_ref_code = self.char_ref_code * 10 + (c.to_int() - 0x30)
+      }
       None
     }
     Some(';') => {

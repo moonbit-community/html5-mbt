@@ -69,6 +69,8 @@ pub fn TreeBuilder::run_adoption_agency(
       self.remove_from_active_formatting(formatting_node_id)
       return
     }
+    // Store furthest block node_id (index becomes stale after removals)
+    let furthest_block_id = self.open_elements[furthest_block_idx].node_id
     // 6. Get common ancestor
     let common_ancestor_idx = self.find_stack_position(formatting_node_id)
     if common_ancestor_idx == -1 || common_ancestor_idx == 0 {
@@ -79,7 +81,7 @@ pub fn TreeBuilder::run_adoption_agency(
     let mut bookmark = formatting_idx
     // 8. Variables for inner loop
     let mut node_idx = furthest_block_idx
-    let mut last_node_id = self.open_elements[furthest_block_idx].node_id
+    let mut last_node_id = furthest_block_id
     // 9. Inner loop
     let mut inner_loop = 0
     while inner_loop < 3 {
@@ -113,7 +115,7 @@ pub fn TreeBuilder::run_adoption_agency(
       }
       self.replace_formatting_node(node_formatting_idx, replacement_id)
       // 9.6 Check if last node is furthest block
-      if last_node_id == self.open_elements[furthest_block_idx].node_id {
+      if last_node_id == furthest_block_id {
         bookmark = node_formatting_idx + 1
       }
       // 9.7 Move last node into replacement
@@ -134,14 +136,13 @@ pub fn TreeBuilder::run_adoption_agency(
     // 11. Create element for formatting element
     let new_formatting_id = self.create_element_for_formatting(formatting_idx)
     // 12. Move all children of furthest block into new element
-    let furthest_block = self.open_elements[furthest_block_idx].node_id
-    let children = self.document.get_children(furthest_block)
+    let children = self.document.get_children(furthest_block_id)
     for child_id in children {
-      self.document.remove_child(furthest_block, child_id)
+      self.document.remove_child(furthest_block_id, child_id)
       self.document.append_child(new_formatting_id, child_id)
     }
     // 13. Append new element to furthest block
-    self.document.append_child(furthest_block, new_formatting_id)
+    self.document.append_child(furthest_block_id, new_formatting_id)
     // 14. Remove old formatting element from list and insert new one
     // Adjust bookmark if it's after the removed element
     if formatting_idx < bookmark {
@@ -151,7 +152,7 @@ pub fn TreeBuilder::run_adoption_agency(
     self.insert_formatting_at(bookmark, new_formatting_id, tag_name)
     // 15. Remove old formatting element from stack and insert new one
     self.remove_from_stack(formatting_node_id)
-    self.insert_in_stack_after(furthest_block, new_formatting_id, tag_name)
+    self.insert_in_stack_after(furthest_block_id, new_formatting_id, tag_name)
   }
 }
 
