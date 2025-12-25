@@ -566,11 +566,13 @@ fn TreeBuilder::appropriate_insertion_point(self : TreeBuilder) -> Int {
 
 ///|
 /// Check if foster parenting is required
+/// Foster parenting is needed when inserting into table/tbody/tfoot/thead/tr
 fn TreeBuilder::is_foster_parenting_required(self : TreeBuilder) -> Bool {
   if self.open_elements.is_empty() {
     return false
   }
   let current = self.current_node()
+  // Check if current node is a table-related element that requires foster parenting
   current.tag_name == "table" ||
   current.tag_name == "tbody" ||
   current.tag_name == "tfoot" ||
@@ -613,26 +615,84 @@ fn TreeBuilder::insert_node_foster_parenting(
 }
 
 ///|
+/// Get the foster parenting insertion location
+/// Returns (parent_id, insert_before_id) where insert_before_id is NO_NODE for append
+fn TreeBuilder::get_foster_parent_location(self : TreeBuilder) -> (Int, Int) {
+  // Find the last table element in the stack
+  let mut table_idx = -1
+  for i = self.open_elements.length() - 1; i >= 0; i = i - 1 {
+    if self.open_elements[i].tag_name == "table" {
+      table_idx = i
+      break
+    }
+  }
+  if table_idx == -1 {
+    // No table found, insert into first element (html)
+    if self.open_elements.length() > 0 {
+      return (self.open_elements[0].node_id, NO_NODE)
+    }
+    return (0, NO_NODE)
+  }
+  // If table has a parent, insert before the table
+  let table_node_id = self.open_elements[table_idx].node_id
+  let parent = self.document.get_parent(table_node_id)
+  if parent != NO_NODE {
+    return (parent, table_node_id)
+  } else if table_idx > 0 {
+    // Otherwise insert into the element immediately above table in the stack
+    let foster_parent = self.open_elements[table_idx - 1].node_id
+    return (foster_parent, NO_NODE)
+  }
+  (0, NO_NODE)
+}
+
+///|
 /// Insert a character node
 pub fn TreeBuilder::insert_character(self : TreeBuilder, c : Char) -> Unit {
-  let parent_id = self.appropriate_insertion_point()
+  // Determine actual insertion location (considering foster parenting)
+  let (parent_id, insert_before) = if self.foster_parenting &&
+    self.is_foster_parenting_required() {
+    self.get_foster_parent_location()
+  } else {
+    (self.appropriate_insertion_point(), NO_NODE)
+  }
   // Try to append to existing text node
   let children = self.document.get_children(parent_id)
   if children.length() > 0 {
-    let last_child = children[children.length() - 1]
-    match self.document.get_node(last_child) {
-      Some(TextNode(text)) => {
-        // Replace with new text node containing old text + new char
-        let new_text = text + c.to_string()
-        self.document.nodes[last_child] = TextNode(new_text)
-        return
+    // When inserting before a node, check the previous sibling, not last child
+    let check_idx = if insert_before != NO_NODE {
+      // Find the index of insert_before and check the node before it
+      let mut idx = -1
+      for i, child in children {
+        if child == insert_before {
+          idx = i
+          break
+        }
       }
-      _ => ()
+      idx - 1
+    } else {
+      children.length() - 1
+    }
+    if check_idx >= 0 {
+      let prev_child = children[check_idx]
+      match self.document.get_node(prev_child) {
+        Some(TextNode(text)) => {
+          // Replace with new text node containing old text + new char
+          let new_text = text + c.to_string()
+          self.document.nodes[prev_child] = TextNode(new_text)
+          return
+        }
+        _ => ()
+      }
     }
   }
   // Create new text node
   let node_id = self.document.add_node(TextNode(c.to_string()))
-  self.insert_node(node_id)
+  if insert_before != NO_NODE {
+    self.document.insert_before(parent_id, node_id, insert_before)
+  } else {
+    self.document.append_child(parent_id, node_id)
+  }
 }
 
 ///|

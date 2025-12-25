@@ -111,6 +111,40 @@ test "smoke/tree/adoption_agency" {
   let doc = parse("<a><p></a></p>")
   inspect(
     doc.dump(),
-    content="<html>\n  <head>\n  <body>\n    <a>\n    <p>\n      <a>",
+    content=(
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <a>
+      #|    <p>
+      #|      <a>
+    ),
   )
+}
+
+///|
+test "smoke/tree/foster_parenting" {
+  let doc = parse("<table><a>1<p>2</a>3</p>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <a>
+      #|      "1"
+      #|    <p>
+      #|      <a>
+      #|        "2"
+      #|      "3"
+      #|    <table>
+    ),
+  )
+}
+
+///|
+test "smoke/tree/malformed_end_tag" {
+  // Test end tag with attribute-like content (no closing >)
+  let doc = parse("</b test")
+  inspect(doc.nodes.length() > 0, content="true")
 }

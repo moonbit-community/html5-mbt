@@ -252,14 +252,30 @@ fn TreeBuilder::insert_in_stack_after(
 
 ///|
 /// Insert after the appropriate place in the DOM
+/// The parent_id is the override target - we check if IT is table-related
 fn TreeBuilder::insert_after_appropriate_place(
   self : TreeBuilder,
   parent_id : Int,
   node_id : Int,
 ) -> Unit {
-  if self.foster_parenting && self.is_foster_parenting_required() {
+  // Check if the target (parent_id) is a table-related element
+  if self.foster_parenting && self.is_table_element(parent_id) {
     self.insert_node_foster_parenting(node_id)
   } else {
     self.document.append_child(parent_id, node_id)
+  }
+}
+
+///|
+/// Check if a node is a table-related element that requires foster parenting
+fn TreeBuilder::is_table_element(self : TreeBuilder, node_id : Int) -> Bool {
+  match self.document.get_tag_name(node_id) {
+    Some(tag) =>
+      tag == "table" ||
+      tag == "tbody" ||
+      tag == "tfoot" ||
+      tag == "thead" ||
+      tag == "tr"
+    None => false
   }
 }

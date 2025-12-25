@@ -20,6 +20,7 @@ pub struct Tokenizer {
   mut pos : Int
   mut line : Int
   mut column : Int
+  mut saw_eof : Bool // Track if last consume returned EOF
 
   // State machine
   mut state : State
@@ -64,6 +65,7 @@ pub fn Tokenizer::new(input : String) -> Tokenizer {
     pos: 0,
     line: 1,
     column: 1,
+    saw_eof: false,
     state: Data,
     return_state: Data,
     errors: [],
@@ -132,6 +134,7 @@ fn Tokenizer::peek_at(self : Tokenizer, offset : Int) -> Char? {
 /// Normalizes CR and CRLF to LF per WHATWG spec
 fn Tokenizer::consume(self : Tokenizer) -> Char? {
   if self.pos < self.input.length() {
+    self.saw_eof = false
     let mut c = self.input[self.pos]
     self.pos += 1
     // Normalize CR to LF (WHATWG preprocessing)
@@ -150,13 +153,19 @@ fn Tokenizer::consume(self : Tokenizer) -> Char? {
     }
     Some(c)
   } else {
+    self.saw_eof = true
     None
   }
 }
 
 ///|
 /// Reconsume current character (go back one position)
+/// If we're at EOF, stay at EOF (don't go back to last char)
 fn Tokenizer::reconsume(self : Tokenizer) -> Unit {
+  // If we just saw EOF, don't go back - we want to stay at EOF
+  if self.saw_eof {
+    return
+  }
   if self.pos > 0 {
     self.pos -= 1
     // Adjust line/column tracking
