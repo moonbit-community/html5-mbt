@@ -99,6 +99,18 @@ fn Tokenizer::run_script_data_end_tag_name_state(self : Tokenizer) -> Token? {
       self.temp_buffer.write_char(c)
       None
     }
+    None =>
+      // At EOF, if we have an appropriate end tag, emit it
+      if self.is_appropriate_end_tag() {
+        self.state = Data
+        let token = self.emit_current_tag()
+        self.pending_tokens.push(EOF)
+        Some(token)
+      } else {
+        self.emit_temp_buffer_as_chars('<', '/')
+        self.state = ScriptData
+        None
+      }
     _ => {
       self.reconsume()
       self.emit_temp_buffer_as_chars('<', '/')
@@ -322,6 +334,18 @@ fn Tokenizer::run_script_data_escaped_end_tag_name_state(
       self.temp_buffer.write_char(c)
       None
     }
+    None =>
+      // At EOF, if we have an appropriate end tag, emit it
+      if self.is_appropriate_end_tag() {
+        self.state = Data
+        let token = self.emit_current_tag()
+        self.pending_tokens.push(EOF)
+        Some(token)
+      } else {
+        self.emit_temp_buffer_as_chars('<', '/')
+        self.state = ScriptDataEscaped
+        None
+      }
     _ => {
       self.reconsume()
       self.emit_temp_buffer_as_chars('<', '/')
