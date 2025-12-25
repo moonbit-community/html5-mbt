@@ -360,6 +360,21 @@ def load_tree_construction_tests() -> List[Dict[str, Any]]:
     return tests
 
 
+def normalize_expected_tree(tree: str) -> str:
+    """Normalize expected tree output for comparison.
+
+    - Strip leading/trailing whitespace from each line
+    - Remove empty lines
+    - Ensure consistent formatting
+    """
+    lines = []
+    for line in tree.strip().split('\n'):
+        # Keep the line structure but normalize
+        if line.strip():
+            lines.append(line.rstrip())
+    return '\n'.join(lines)
+
+
 def generate_tree_test(test: Dict[str, Any], index: int) -> Optional[str]:
     """Generate a single tree construction test."""
     input_html = test.get('data', '').strip()
@@ -381,12 +396,14 @@ def generate_tree_test(test: Dict[str, Any], index: int) -> Optional[str]:
     test_name = f"html5lib/tree/{file_prefix}_{index}"
     escaped_input = escape_moonbit_string(input_html)
 
-    # Just verify parsing doesn't crash for now
+    # Normalize and escape expected tree
+    normalized_tree = normalize_expected_tree(expected_tree)
+    escaped_tree = escape_moonbit_string(normalized_tree)
+
     return f'''///|
 test "{test_name}" {{
   let doc = @html.parse("{escaped_input}")
-  // Verify document was created
-  inspect(doc.nodes.length() > 0, content="true")
+  inspect(doc.dump(), content="{escaped_tree}")
 }}
 
 '''

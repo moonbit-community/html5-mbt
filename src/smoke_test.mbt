@@ -104,3 +104,13 @@ test "smoke/tree/script_unclosed_with_comment" {
   let doc = parse("<script><!--<")
   inspect(doc.nodes.length() > 0, content="true")
 }
+
+///|
+test "smoke/tree/adoption_agency" {
+  // Test adoption agency algorithm produces correct tree
+  let doc = parse("<a><p></a></p>")
+  inspect(
+    doc.dump(),
+    content="| <html>\n|   <head>\n|   <body>\n|     <a>\n|     <p>\n|       <a>",
+  )
+}

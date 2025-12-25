@@ -509,6 +509,18 @@ pub fn TreeBuilder::insert_element_for_token(
 }
 
 ///|
+/// Create an element without inserting it (for adoption agency)
+pub fn TreeBuilder::create_element_for_token(
+  self : TreeBuilder,
+  name : String,
+  attrs : Array[(String, String)],
+  ns : Namespace,
+) -> Int {
+  let element = Element::new(name, ns, attrs)
+  self.document.add_node(ElementNode(element))
+}
+
+///|
 /// Insert an HTML element
 pub fn TreeBuilder::insert_html_element(
   self : TreeBuilder,

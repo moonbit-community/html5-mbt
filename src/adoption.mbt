@@ -183,19 +183,15 @@ fn TreeBuilder::find_formatting_node_index(
 }
 
 ///|
-/// Create element for a formatting entry
+/// Create element for a formatting entry (without inserting it)
 fn TreeBuilder::create_element_for_formatting(
   self : TreeBuilder,
   formatting_idx : Int,
 ) -> Int {
   let entry = self.active_formatting[formatting_idx]
   match entry {
-    Element(tag_name~, attributes~, ..) => {
-      let attrs : Array[Attribute] = attributes.map(fn(pair) {
-        { name: pair.0, value: pair.1 }
-      })
-      self.insert_html_element(tag_name, attrs)
-    }
+    Element(tag_name~, attributes~, ..) =>
+      self.create_element_for_token(tag_name, attributes, HTML)
     Marker => NO_NODE
   }
 }

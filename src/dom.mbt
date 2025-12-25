@@ -454,3 +454,114 @@ fn escape_html_attr(s : String) -> String {
   }
   buf.to_string()
 }
+
+///|
+/// Dump document in html5lib-tests format for conformance testing
+pub fn Document::dump(self : Document) -> String {
+  let buf = StringBuilder::new()
+  // Start from document children (node 0 is the document)
+  match self.nodes[0] {
+    DocumentNode(children~) =>
+      for child_id in children {
+        self.dump_node(child_id, 0, buf)
+      }
+    _ => ()
+  }
+  // Remove trailing newline to match html5lib-tests format
+  let s = buf.to_string()
+  let len = s.length()
+  if len > 0 && s[len - 1] == 10 {  // '\n' == 10
+    // Build string without trailing newline
+    let buf2 = StringBuilder::new()
+    for i = 0; i < len - 1; i = i + 1 {
+      buf2.write_char(Int::unsafe_to_char(s[i].to_int()))
+    }
+    buf2.to_string()
+  } else {
+    s
+  }
+}
+
+///|
+fn Document::dump_node(
+  self : Document,
+  id : Int,
+  depth : Int,
+  buf : StringBuilder,
+) -> Unit {
+  // Prevent infinite recursion from malformed trees
+  if depth > 100 {
+    return
+  }
+  let indent = "| " + String::make(depth * 2, ' ')
+  match self.get_node(id) {
+    Some(DocumentTypeNode(name~, public_id~, system_id~)) => {
+      buf.write_string(indent)
+      buf.write_string("<!DOCTYPE ")
+      buf.write_string(name)
+      if public_id != "" || system_id != "" {
+        buf.write_string(" \"")
+        buf.write_string(public_id)
+        buf.write_string("\" \"")
+        buf.write_string(system_id)
+        buf.write_string("\"")
+      }
+      buf.write_string(">\n")
+    }
+    Some(CommentNode(text)) => {
+      buf.write_string(indent)
+      buf.write_string("<!-- ")
+      buf.write_string(text)
+      buf.write_string(" -->\n")
+    }
+    Some(TextNode(text)) => {
+      buf.write_string(indent)
+      buf.write_string("\"")
+      buf.write_string(escape_dump_text(text))
+      buf.write_string("\"\n")
+    }
+    Some(ElementNode(elem)) => {
+      buf.write_string(indent)
+      // Add namespace prefix for non-HTML elements
+      match elem.ns {
+        SVG => buf.write_string("svg ")
+        MathML => buf.write_string("math ")
+        HTML => ()
+      }
+      buf.write_string("<")
+      buf.write_string(elem.tag_name)
+      buf.write_string(">\n")
+      // Dump attributes in sorted order (html5lib-tests requirement)
+      let attrs = elem.attributes.copy()
+      attrs.sort_by(fn(a, b) { a.0.compare(b.0) })
+      let attr_indent = "| " + String::make((depth + 1) * 2, ' ')
+      for pair in attrs {
+        buf.write_string(attr_indent)
+        buf.write_string(pair.0)
+        buf.write_string("=\"")
+        buf.write_string(pair.1)
+        buf.write_string("\"\n")
+      }
+      // Dump children
+      for child_id in elem.children {
+        self.dump_node(child_id, depth + 1, buf)
+      }
+    }
+    _ => ()
+  }
+}
+
+///|
+/// Escape text for dump output (show control chars)
+fn escape_dump_text(s : String) -> String {
+  let buf = StringBuilder::new()
+  for c in s {
+    let code = c.to_int()
+    if code == 0 {
+      buf.write_string("\\u0000")
+    } else {
+      buf.write_char(c)
+    }
+  }
+  buf.to_string()
+}
