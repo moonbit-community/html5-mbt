@@ -101,9 +101,16 @@ pub fn Tokenizer::get_position(self : Tokenizer) -> SourcePosition {
 
 ///|
 /// Peek at current character without consuming
+/// Returns LF for CR (normalization)
 fn Tokenizer::peek(self : Tokenizer) -> Char? {
   if self.pos < self.input.length() {
-    Some(self.input[self.pos])
+    let c = self.input[self.pos]
+    // Normalize CR to LF when peeking
+    if c == '\r' {
+      Some('\n')
+    } else {
+      Some(c)
+    }
   } else {
     None
   }
@@ -122,10 +129,19 @@ fn Tokenizer::peek_at(self : Tokenizer, offset : Int) -> Char? {
 
 ///|
 /// Consume and return current character
+/// Normalizes CR and CRLF to LF per WHATWG spec
 fn Tokenizer::consume(self : Tokenizer) -> Char? {
   if self.pos < self.input.length() {
-    let c = self.input[self.pos]
+    let mut c = self.input[self.pos]
     self.pos += 1
+    // Normalize CR to LF (WHATWG preprocessing)
+    if c == '\r' {
+      c = '\n'
+      // Skip following LF if present (CRLF -> single LF)
+      if self.pos < self.input.length() && self.input[self.pos] == '\n' {
+        self.pos += 1
+      }
+    }
     if c == '\n' {
       self.line += 1
       self.column = 1

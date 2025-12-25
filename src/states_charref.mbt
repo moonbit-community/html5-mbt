@@ -275,12 +275,15 @@ fn Tokenizer::flush_temp_buffer(self : Tokenizer) -> Unit {
 
 ///|
 /// Helper: emit character to current context (attribute value or token stream)
+/// Normalizes CR to LF per WHATWG spec
 fn Tokenizer::emit_char_to_current_context(self : Tokenizer, c : Char) -> Unit {
+  // Normalize CR to LF (applies to character references too)
+  let ch = if c == '\r' { '\n' } else { c }
   match self.return_state {
     AttributeValueDoubleQuoted
     | AttributeValueSingleQuoted
-    | AttributeValueUnquoted => self.current_attr_value.write_char(c)
-    _ => self.pending_tokens.push(Character(c))
+    | AttributeValueUnquoted => self.current_attr_value.write_char(ch)
+    _ => self.pending_tokens.push(Character(ch))
   }
 }
 

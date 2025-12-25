@@ -22,7 +22,7 @@ PROJECT_DIR = SCRIPT_DIR.parent
 HTML5LIB_TESTS_DIR = PROJECT_DIR / "html5lib-tests"
 TOKENIZER_TESTS_DIR = HTML5LIB_TESTS_DIR / "tokenizer"
 TREE_TESTS_DIR = HTML5LIB_TESTS_DIR / "tree-construction"
-OUTPUT_DIR = PROJECT_DIR / "src"
+OUTPUT_DIR = PROJECT_DIR / "generated_tests"
 
 LICENSE_HEADER = """// ============================================================================
 // AUTO-GENERATED FILE - DO NOT MODIFY MANUALLY
@@ -48,7 +48,10 @@ LICENSE_HEADER = """// =========================================================
 
 
 def escape_moonbit_string(s: str) -> str:
-    """Escape a string for MoonBit string literal."""
+    """Escape a string for MoonBit string literal.
+
+    Must match MoonBit's string display format.
+    """
     result = []
     for c in s:
         code = ord(c)
@@ -61,22 +64,23 @@ def escape_moonbit_string(s: str) -> str:
         elif c == '\t':
             result.append('\\t')
         elif c == '\r':
+            # Keep CR in input - tokenizer will normalize it
             result.append('\\r')
         elif code == 0:
-            result.append('\\u{0000}')
+            result.append('\\u{0}')
         elif code < 0x20:
-            result.append(f'\\u{{{code:04x}}}')
+            # Short hex format
+            result.append(f'\\u{{{code:x}}}')
         elif code == 0x7F:
-            result.append('\\u{007f}')
+            result.append('\\u{7f}')
         elif 0x80 <= code <= 0x9F:
-            result.append(f'\\u{{{code:04x}}}')
+            # Short hex format
+            result.append(f'\\u{{{code:x}}}')
         elif 0xD800 <= code <= 0xDFFF:
             # Surrogate characters - escape them
-            result.append(f'\\u{{{code:04x}}}')
-        elif code > 0xFFFF:
-            # Characters outside BMP
-            result.append(f'\\u{{{code:04x}}}')
+            result.append(f'\\u{{{code:x}}}')
         else:
+            # All other chars including high Unicode displayed literally
             result.append(c)
     return ''.join(result)
 
@@ -85,7 +89,8 @@ def escape_moonbit_char(c: str) -> str:
     """Escape a single character for MoonBit char literal.
 
     This must match MoonBit's inspect output format for characters.
-    MoonBit escapes control chars but NOT high Unicode chars.
+    MoonBit uses short hex format without leading zeros (e.g., \\u{81} not \\u{0081}).
+    MoonBit displays high Unicode chars (> U+FFFF) literally, not escaped.
     """
     code = ord(c)
     if c == '\\':
@@ -97,20 +102,26 @@ def escape_moonbit_char(c: str) -> str:
     elif c == '\t':
         return '\\t'
     elif c == '\r':
-        return '\\r'
+        # CR should be normalized to LF by tokenizer
+        return '\\n'
     elif code == 0:
-        return '\\u{0000}'
+        return '\\u{0}'
     elif code < 0x20:
-        return f'\\u{{{code:04x}}}'
+        # Short hex format without leading zeros
+        return f'\\u{{{code:x}}}'
     elif code == 0x7F:
-        return '\\u{007f}'
+        return '\\u{7f}'
     elif 0x80 <= code <= 0x9F:
-        return f'\\u{{{code:04x}}}'
+        # Short hex format without leading zeros
+        return f'\\u{{{code:x}}}'
     elif 0xD800 <= code <= 0xDFFF:
-        return f'\\u{{{code:04x}}}'
+        # Surrogates - should be skipped, but escape if present
+        return f'\\u{{{code:x}}}'
+    # Invisible formatting characters (U+2060-U+206F)
+    elif 0x2060 <= code <= 0x206F:
+        return f'\\u{{{code:x}}}'
     else:
-        # MoonBit displays all other characters literally, including
-        # high Unicode chars (> U+FFFF) and invisible chars
+        # MoonBit displays all other characters literally
         return c
 
 
@@ -157,6 +168,15 @@ def load_tokenizer_tests() -> List[Dict[str, Any]]:
     return tests
 
 
+def decode_html5lib_escapes(s: str) -> str:
+    """Decode html5lib test escape sequences like \\uFFFD to actual Unicode."""
+    import re
+    def replace_escape(m):
+        code = int(m.group(1), 16)
+        return chr(code)
+    return re.sub(r'\\u([0-9A-Fa-f]{4})', replace_escape, s)
+
+
 def format_expected_tokens(output: List) -> str:
     """Format expected token output for MoonBit."""
     tokens = []
@@ -197,10 +217,12 @@ def format_expected_tokens(output: List) -> str:
 
             elif token_type == "Comment":
                 data = item[1] if len(item) > 1 else ""
+                data = decode_html5lib_escapes(data)
                 tokens.append(f'Comment("{escape_moonbit_string(data)}")')
 
             elif token_type == "Character":
                 data = item[1] if len(item) > 1 else ""
+                data = decode_html5lib_escapes(data)
                 for c in data:
                     tokens.append(f"Character('{escape_moonbit_char(c)}')")
 
@@ -270,7 +292,7 @@ def generate_tokenizer_tests_files(tests: List[Dict[str, Any]], max_per_file: in
             current_count += 1
 
             if current_count >= max_per_file:
-                files.append((f"html5lib_tokenizer_test_{file_num}.mbt", ''.join(current_output)))
+                files.append((f"html5lib_tokenizer_{file_num}_test.mbt", ''.join(current_output)))
                 file_num += 1
                 current_count = 0
                 current_output = [LICENSE_HEADER]
@@ -280,7 +302,7 @@ def generate_tokenizer_tests_files(tests: List[Dict[str, Any]], max_per_file: in
 
     # Write remaining tests
     if current_count > 0:
-        files.append((f"html5lib_tokenizer_test_{file_num}.mbt", ''.join(current_output)))
+        files.append((f"html5lib_tokenizer_{file_num}_test.mbt", ''.join(current_output)))
 
     print(f"  Generated: {generated}, Skipped: {skipped}, Files: {len(files)}")
     return files
@@ -385,7 +407,7 @@ def generate_tree_tests_files(tests: List[Dict[str, Any]], max_per_file: int = 5
             current_count += 1
 
             if current_count >= max_per_file:
-                files.append((f"html5lib_tree_test_{file_num}.mbt", ''.join(current_output)))
+                files.append((f"html5lib_tree_{file_num}_test.mbt", ''.join(current_output)))
                 file_num += 1
                 current_count = 0
                 current_output = [LICENSE_HEADER]
@@ -395,7 +417,7 @@ def generate_tree_tests_files(tests: List[Dict[str, Any]], max_per_file: int = 5
 
     # Write remaining tests
     if current_count > 0:
-        files.append((f"html5lib_tree_test_{file_num}.mbt", ''.join(current_output)))
+        files.append((f"html5lib_tree_{file_num}_test.mbt", ''.join(current_output)))
 
     print(f"  Generated: {generated}, Skipped: {skipped}, Files: {len(files)}")
     return files

@@ -18,7 +18,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 ///|
 /// WHATWG HTML5 Named Character References (2,231 entities)
 /// https://html.spec.whatwg.org/multipage/named-characters.html
