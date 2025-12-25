@@ -65,6 +65,7 @@ fn Tokenizer::run_script_data_end_tag_name_state(self : Tokenizer) -> Token? {
         None
       } else {
         self.emit_temp_buffer_as_chars('<', '/')
+        self.pending_tokens.push(Character(c))
         self.state = ScriptData
         None
       }
@@ -74,6 +75,7 @@ fn Tokenizer::run_script_data_end_tag_name_state(self : Tokenizer) -> Token? {
         None
       } else {
         self.emit_temp_buffer_as_chars('<', '/')
+        self.pending_tokens.push(Character('/'))
         self.state = ScriptData
         None
       }
@@ -83,6 +85,7 @@ fn Tokenizer::run_script_data_end_tag_name_state(self : Tokenizer) -> Token? {
         Some(self.emit_current_tag())
       } else {
         self.emit_temp_buffer_as_chars('<', '/')
+        self.pending_tokens.push(Character('>'))
         self.state = ScriptData
         None
       }
@@ -285,6 +288,7 @@ fn Tokenizer::run_script_data_escaped_end_tag_name_state(
         None
       } else {
         self.emit_temp_buffer_as_chars('<', '/')
+        self.pending_tokens.push(Character(c))
         self.state = ScriptDataEscaped
         None
       }
@@ -294,6 +298,7 @@ fn Tokenizer::run_script_data_escaped_end_tag_name_state(
         None
       } else {
         self.emit_temp_buffer_as_chars('<', '/')
+        self.pending_tokens.push(Character('/'))
         self.state = ScriptDataEscaped
         None
       }
@@ -303,6 +308,7 @@ fn Tokenizer::run_script_data_escaped_end_tag_name_state(
         Some(self.emit_current_tag())
       } else {
         self.emit_temp_buffer_as_chars('<', '/')
+        self.pending_tokens.push(Character('>'))
         self.state = ScriptDataEscaped
         None
       }

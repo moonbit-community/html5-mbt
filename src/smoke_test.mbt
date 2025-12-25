@@ -148,3 +148,34 @@ test "smoke/tree/malformed_end_tag" {
   let doc = parse("</b test")
   inspect(doc.nodes.length() > 0, content="true")
 }
+
+///|
+test "smoke/tree/script_with_style_endtag" {
+  let doc = parse("<script></style></script>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|<html>
+      #|  <head>
+      #|    <script>
+      #|      "</style>"
+      #|  <body>
+    ),
+  )
+}
+
+///|
+test "smoke/tree/malformed_url_tag" {
+  let doc = parse("<rdar://problem/6869687>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <rdar:>
+      #|      6869687=""
+      #|      problem=""
+    ),
+  )
+}

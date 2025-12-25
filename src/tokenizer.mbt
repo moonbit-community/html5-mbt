@@ -223,6 +223,10 @@ fn Tokenizer::start_new_attribute(self : Tokenizer) -> Unit {
 /// Finish current attribute and add to list
 fn Tokenizer::finish_attribute(self : Tokenizer) -> Unit {
   let name = self.current_attr_name.to_string()
+  // Don't add empty attributes
+  if name.is_empty() {
+    return
+  }
   let value = self.current_attr_value.to_string()
   // Check for duplicate attribute
   let duplicate = self.current_attrs.iter().any(fn(attr) { attr.name == name })

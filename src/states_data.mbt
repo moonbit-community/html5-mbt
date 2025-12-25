@@ -253,6 +253,7 @@ fn Tokenizer::run_rcdata_end_tag_name_state(self : Tokenizer) -> Token? {
         None
       } else {
         self.emit_temp_buffer_as_chars('<', '/')
+        self.pending_tokens.push(Character(c))
         self.state = RCDATA
         None
       }
@@ -262,6 +263,7 @@ fn Tokenizer::run_rcdata_end_tag_name_state(self : Tokenizer) -> Token? {
         None
       } else {
         self.emit_temp_buffer_as_chars('<', '/')
+        self.pending_tokens.push(Character('/'))
         self.state = RCDATA
         None
       }
@@ -271,6 +273,7 @@ fn Tokenizer::run_rcdata_end_tag_name_state(self : Tokenizer) -> Token? {
         Some(self.emit_current_tag())
       } else {
         self.emit_temp_buffer_as_chars('<', '/')
+        self.pending_tokens.push(Character('>'))
         self.state = RCDATA
         None
       }
@@ -337,6 +340,7 @@ fn Tokenizer::run_rawtext_end_tag_name_state(self : Tokenizer) -> Token? {
         None
       } else {
         self.emit_temp_buffer_as_chars('<', '/')
+        self.pending_tokens.push(Character(c))
         self.state = RAWTEXT
         None
       }
@@ -346,6 +350,7 @@ fn Tokenizer::run_rawtext_end_tag_name_state(self : Tokenizer) -> Token? {
         None
       } else {
         self.emit_temp_buffer_as_chars('<', '/')
+        self.pending_tokens.push(Character('/'))
         self.state = RAWTEXT
         None
       }
@@ -355,6 +360,7 @@ fn Tokenizer::run_rawtext_end_tag_name_state(self : Tokenizer) -> Token? {
         Some(self.emit_current_tag())
       } else {
         self.emit_temp_buffer_as_chars('<', '/')
+        self.pending_tokens.push(Character('>'))
         self.state = RAWTEXT
         None
       }
