@@ -124,6 +124,14 @@ pub fn TreeBuilder::parse(self : TreeBuilder) -> Document {
     // Update tokenizer's foreign content flag based on current node
     self.tokenizer.in_foreign_content = self.is_in_foreign_content()
     let mut token = self.tokenizer.next_token()
+    // Skip leading newline after pre/listing/textarea
+    if self.skip_next_newline {
+      self.skip_next_newline = false
+      match token {
+        Character('\n') => continue
+        _ => ()
+      }
+    }
     // Process token, reprocessing if needed
     while true {
       let reprocess = self.process_token(token)
