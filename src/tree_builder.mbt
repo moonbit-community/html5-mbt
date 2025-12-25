@@ -502,6 +502,15 @@ pub fn TreeBuilder::insert_element_for_token(
   })
   let element = Element::new(name, ns, attributes)
   let node_id = self.document.add_node(ElementNode(element))
+  // For template elements, create a DocumentFragment for content
+  if ns == HTML && name == "template" {
+    let fragment_id = self.document.add_node(DocumentFragmentNode(children=[]))
+    // Set the template's content pointer
+    match self.document.nodes[node_id] {
+      ElementNode(elem) => elem.template_content = fragment_id
+      _ => ()
+    }
+  }
   // Insert into the appropriate location
   self.insert_node(node_id)
   // Push onto stack of open elements
@@ -572,8 +581,18 @@ fn TreeBuilder::appropriate_insertion_point(self : TreeBuilder) -> Int {
     // Insert into document
     0
   } else {
-    // Insert into current node
-    self.current_node().node_id
+    // Insert into current node, or its template content if it's a template
+    let current = self.current_node()
+    if current.tag_name == "template" && current.ns == HTML {
+      // Get the template's content fragment
+      match self.document.get_node(current.node_id) {
+        Some(ElementNode(elem)) if elem.template_content != NO_NODE =>
+          elem.template_content
+        _ => current.node_id
+      }
+    } else {
+      current.node_id
+    }
   }
 }
 
