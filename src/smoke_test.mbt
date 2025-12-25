@@ -97,3 +97,10 @@ test "smoke/tree/basic_structure" {
   )
   inspect(doc.nodes.length() > 0, content="true")
 }
+
+///|
+test "smoke/tree/script_unclosed_with_comment" {
+  // Regression test for reprocess loop bug
+  let doc = parse("<script><!--<")
+  inspect(doc.nodes.length() > 0, content="true")
+}

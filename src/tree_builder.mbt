@@ -121,16 +121,19 @@ pub fn TreeBuilder::new(html : String) -> TreeBuilder {
 pub fn TreeBuilder::parse(self : TreeBuilder) -> Document {
   // Main parsing loop
   while true {
-    let token = self.tokenizer.next_token()
-    let reprocess = self.process_token(token)
+    let mut token = self.tokenizer.next_token()
+    // Process token, reprocessing if needed
+    while true {
+      let reprocess = self.process_token(token)
+      if not(reprocess) {
+        break
+      }
+      // Reprocess same token in new mode
+    }
     // Handle EOF
     match token {
       EOF => break
       _ => ()
-    }
-    // Reprocess if needed
-    if reprocess {
-      continue
     }
   }
   // Collect tokenizer errors
