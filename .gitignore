@@ -1,0 +1,15 @@
+# Build artifacts
+target/
+
+# Dependencies
+.mooncakes/
+
+# Cloned test suites (can be regenerated)
+html5lib-tests/
+
+# Generated test files (can be regenerated with scripts)
+generated_tests/
+
+# Python cache
+__pycache__/
+*.pyc
