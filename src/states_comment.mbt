@@ -61,10 +61,14 @@ fn Tokenizer::run_markup_declaration_open_state(self : Tokenizer) -> Token? {
   if self.check_string("[CDATA[") {
     for _ in 0..<7 {
       let _ = self.consume()
-
     }
     // CDATA is only allowed in foreign content (SVG/MathML)
-    // For now, emit error and treat as bogus comment
+    if self.in_foreign_content {
+      // In foreign content, switch to CDATA section state
+      self.state = CDATASection
+      return None
+    }
+    // In HTML content, emit error and treat as bogus comment
     self.emit_error(CdataInHtmlContent)
     self.reset_comment()
     self.current_comment.write_string("[CDATA[")

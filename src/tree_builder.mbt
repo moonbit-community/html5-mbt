@@ -121,6 +121,8 @@ pub fn TreeBuilder::new(html : String) -> TreeBuilder {
 pub fn TreeBuilder::parse(self : TreeBuilder) -> Document {
   // Main parsing loop
   while true {
+    // Update tokenizer's foreign content flag based on current node
+    self.tokenizer.in_foreign_content = self.is_in_foreign_content()
     let mut token = self.tokenizer.next_token()
     // Process token, reprocessing if needed
     while true {
@@ -188,6 +190,17 @@ fn TreeBuilder::process_token_in_html_mode(
     AfterAfterFrameset => self.process_after_after_frameset_mode(token)
     InForeignContent => self.process_in_foreign_content(token)
   }
+}
+
+///|
+/// Check if the current node is in foreign content (SVG or MathML namespace)
+/// Used to tell the tokenizer whether to handle CDATA sections
+fn TreeBuilder::is_in_foreign_content(self : TreeBuilder) -> Bool {
+  if self.open_elements.is_empty() {
+    return false
+  }
+  let current = self.current_node()
+  current.ns != HTML
 }
 
 ///|
@@ -720,7 +733,7 @@ pub fn TreeBuilder::insert_doctype(
   public_id : String?,
   system_id : String?,
 ) -> Unit {
-  let doctype_name = name.unwrap_or("html")
+  let doctype_name = name.unwrap_or("")
   let pub_id = public_id.unwrap_or("")
   let sys_id = system_id.unwrap_or("")
   let node_id = self.document.add_node(

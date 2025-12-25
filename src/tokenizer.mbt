@@ -55,6 +55,9 @@ pub struct Tokenizer {
 
   // Pending tokens (some states emit multiple)
   pending_tokens : Array[Token]
+
+  // Foreign content flag (set by tree builder for CDATA handling)
+  mut in_foreign_content : Bool
 }
 
 ///|
@@ -86,6 +89,7 @@ pub fn Tokenizer::new(input : String) -> Tokenizer {
     temp_buffer: StringBuilder::new(),
     last_start_tag_name: "",
     pending_tokens: [],
+    in_foreign_content: false,
   }
 }
 

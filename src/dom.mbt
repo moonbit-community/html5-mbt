@@ -28,6 +28,8 @@ pub struct Element {
   // HTML-specific flags for integration points
   is_html_integration_point : Bool
   is_mathml_text_integration_point : Bool
+  // Template content (node ID of DocumentFragment, or NO_NODE)
+  mut template_content : Int
 } derive(Show)
 
 ///|
@@ -45,6 +47,7 @@ pub fn Element::new(
     parent: NO_NODE,
     is_html_integration_point: false,
     is_mathml_text_integration_point: false,
+    template_content: NO_NODE,
   }
 }
 
@@ -522,13 +525,13 @@ fn Document::dump_node(
     }
     Some(ElementNode(elem)) => {
       buf.write_string(indent)
-      // Add namespace prefix for non-HTML elements
+      buf.write_string("<")
+      // Add namespace prefix for non-HTML elements (inside angle brackets)
       match elem.ns {
         SVG => buf.write_string("svg ")
         MathML => buf.write_string("math ")
         HTML => ()
       }
-      buf.write_string("<")
       buf.write_string(elem.tag_name)
       buf.write_string(">\n")
       // Dump attributes in sorted order (html5lib-tests requirement)
@@ -542,9 +545,24 @@ fn Document::dump_node(
         buf.write_string(pair.1)
         buf.write_string("\"\n")
       }
-      // Dump children
-      for child_id in elem.children {
-        self.dump_node(child_id, depth + 1, buf)
+      // For template elements, dump "content" and its children
+      if elem.tag_name == "template" && elem.template_content != NO_NODE {
+        let content_indent = String::make((depth + 1) * 2, ' ')
+        buf.write_string(content_indent)
+        buf.write_string("content\n")
+        // Dump the template content's children
+        match self.get_node(elem.template_content) {
+          Some(DocumentFragmentNode(children~)) =>
+            for child_id in children {
+              self.dump_node(child_id, depth + 2, buf)
+            }
+          _ => ()
+        }
+      } else {
+        // Dump regular children
+        for child_id in elem.children {
+          self.dump_node(child_id, depth + 1, buf)
+        }
       }
     }
     _ => ()
