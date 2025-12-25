@@ -27,7 +27,14 @@ test "html5lib/tree/adoption01_0" {
   let doc = @html.parse("<a><p></a></p>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <a>\n|     <p>\n|       <a>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <a>
+      #||     <p>
+      #||       <a>
+    ),
   )
 }
 
@@ -36,7 +43,17 @@ test "html5lib/tree/adoption01_1" {
   let doc = @html.parse("<a>1<p>2</a>3</p>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <a>\n|       \"1\"\n|     <p>\n|       <a>\n|         \"2\"\n|       \"3\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <a>
+      #||       \"1\"
+      #||     <p>
+      #||       <a>
+      #||         \"2\"
+      #||       \"3\"
+    ),
   )
 }
 
@@ -45,7 +62,17 @@ test "html5lib/tree/adoption01_2" {
   let doc = @html.parse("<a>1<button>2</a>3</button>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <a>\n|       \"1\"\n|     <button>\n|       <a>\n|         \"2\"\n|       \"3\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <a>
+      #||       \"1\"
+      #||     <button>
+      #||       <a>
+      #||         \"2\"
+      #||       \"3\"
+    ),
   )
 }
 
@@ -54,7 +81,17 @@ test "html5lib/tree/adoption01_3" {
   let doc = @html.parse("<a>1<b>2</a>3</b>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <a>\n|       \"1\"\n|       <b>\n|         \"2\"\n|     <b>\n|       \"3\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <a>
+      #||       \"1\"
+      #||       <b>
+      #||         \"2\"
+      #||     <b>
+      #||       \"3\"
+    ),
   )
 }
 
@@ -63,7 +100,21 @@ test "html5lib/tree/adoption01_4" {
   let doc = @html.parse("<a>1<div>2<div>3</a>4</div>5</div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <a>\n|       \"1\"\n|     <div>\n|       <a>\n|         \"2\"\n|       <div>\n|         <a>\n|           \"3\"\n|         \"4\"\n|       \"5\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <a>
+      #||       \"1\"
+      #||     <div>
+      #||       <a>
+      #||         \"2\"
+      #||       <div>
+      #||         <a>
+      #||           \"3\"
+      #||         \"4\"
+      #||       \"5\"
+    ),
   )
 }
 
@@ -72,7 +123,18 @@ test "html5lib/tree/adoption01_5" {
   let doc = @html.parse("<table><a>1<p>2</a>3</p>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <a>\n|       \"1\"\n|     <p>\n|       <a>\n|         \"2\"\n|       \"3\"\n|     <table>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <a>
+      #||       \"1\"
+      #||     <p>
+      #||       <a>
+      #||         \"2\"
+      #||       \"3\"
+      #||     <table>
+    ),
   )
 }
 
@@ -81,7 +143,16 @@ test "html5lib/tree/adoption01_6" {
   let doc = @html.parse("<b><b><a><p></a>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <b>\n|       <b>\n|         <a>\n|         <p>\n|           <a>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <b>
+      #||       <b>
+      #||         <a>
+      #||         <p>
+      #||           <a>
+    ),
   )
 }
 
@@ -90,7 +161,17 @@ test "html5lib/tree/adoption01_7" {
   let doc = @html.parse("<b><a><b><p></a>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <b>\n|       <a>\n|         <b>\n|       <b>\n|         <p>\n|           <a>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <b>
+      #||       <a>
+      #||         <b>
+      #||       <b>
+      #||         <p>
+      #||           <a>
+    ),
   )
 }
 
@@ -99,7 +180,18 @@ test "html5lib/tree/adoption01_8" {
   let doc = @html.parse("<a><b><b><p></a>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <a>\n|       <b>\n|         <b>\n|     <b>\n|       <b>\n|         <p>\n|           <a>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <a>
+      #||       <b>
+      #||         <b>
+      #||     <b>
+      #||       <b>
+      #||         <p>
+      #||           <a>
+    ),
   )
 }
 
@@ -108,7 +200,27 @@ test "html5lib/tree/adoption01_9" {
   let doc = @html.parse("<p>1<s id=\"A\">2<b id=\"B\">3</p>4</s>5</b>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"1\"\n|       <s>\n|         id=\"A\"\n|         \"2\"\n|         <b>\n|           id=\"B\"\n|           \"3\"\n|     <s>\n|       id=\"A\"\n|       <b>\n|         id=\"B\"\n|         \"4\"\n|     <b>\n|       id=\"B\"\n|       \"5\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"1\"
+      #||       <s>
+      #||         id=\"A\"
+      #||         \"2\"
+      #||         <b>
+      #||           id=\"B\"
+      #||           \"3\"
+      #||     <s>
+      #||       id=\"A\"
+      #||       <b>
+      #||         id=\"B\"
+      #||         \"4\"
+      #||     <b>
+      #||       id=\"B\"
+      #||       \"5\"
+    ),
   )
 }
 
@@ -117,7 +229,20 @@ test "html5lib/tree/adoption01_10" {
   let doc = @html.parse("<table><a>1<td>2</td>3</table>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <a>\n|       \"1\"\n|     <a>\n|       \"3\"\n|     <table>\n|       <tbody>\n|         <tr>\n|           <td>\n|             \"2\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <a>
+      #||       \"1\"
+      #||     <a>
+      #||       \"3\"
+      #||     <table>
+      #||       <tbody>
+      #||         <tr>
+      #||           <td>
+      #||             \"2\"
+    ),
   )
 }
 
@@ -126,7 +251,17 @@ test "html5lib/tree/adoption01_11" {
   let doc = @html.parse("<table>A<td>B</td>C</table>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"AC\"\n|     <table>\n|       <tbody>\n|         <tr>\n|           <td>\n|             \"B\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"AC\"
+      #||     <table>
+      #||       <tbody>
+      #||         <tr>
+      #||           <td>
+      #||             \"B\"
+    ),
   )
 }
 
@@ -135,7 +270,15 @@ test "html5lib/tree/adoption01_12" {
   let doc = @html.parse("<a><svg><tr><input></a>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <a>\n|       <svg svg>\n|         <svg tr>\n|           <svg input>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <a>
+      #||       <svg svg>
+      #||         <svg tr>
+      #||           <svg input>
+    ),
   )
 }
 
@@ -146,7 +289,33 @@ test "html5lib/tree/adoption01_13" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       <a>\n|         <b>\n|       <b>\n|         <div>\n|           <a>\n|           <div>\n|             <a>\n|             <div>\n|               <a>\n|               <div>\n|                 <a>\n|                 <div>\n|                   <a>\n|                   <div>\n|                     <a>\n|                     <div>\n|                       <a>\n|                       <div>\n|                         <a>\n|                           <div>\n|                             <div>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       <a>
+      #||         <b>
+      #||       <b>
+      #||         <div>
+      #||           <a>
+      #||           <div>
+      #||             <a>
+      #||             <div>
+      #||               <a>
+      #||               <div>
+      #||                 <a>
+      #||                 <div>
+      #||                   <a>
+      #||                   <div>
+      #||                     <a>
+      #||                     <div>
+      #||                       <a>
+      #||                       <div>
+      #||                         <a>
+      #||                           <div>
+      #||                             <div>
+    ),
   )
 }
 
@@ -155,7 +324,22 @@ test "html5lib/tree/adoption01_14" {
   let doc = @html.parse("<div><a><b><u><i><code><div></a>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       <a>\n|         <b>\n|           <u>\n|             <i>\n|               <code>\n|       <u>\n|         <i>\n|           <code>\n|             <div>\n|               <a>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       <a>
+      #||         <b>
+      #||           <u>
+      #||             <i>
+      #||               <code>
+      #||       <u>
+      #||         <i>
+      #||           <code>
+      #||             <div>
+      #||               <a>
+    ),
   )
 }
 
@@ -164,7 +348,17 @@ test "html5lib/tree/adoption01_15" {
   let doc = @html.parse("<b><b><b><b>x</b></b></b></b>y")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <b>\n|       <b>\n|         <b>\n|           <b>\n|             \"x\"\n|     \"y\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <b>
+      #||       <b>
+      #||         <b>
+      #||           <b>
+      #||             \"x\"
+      #||     \"y\"
+    ),
   )
 }
 
@@ -173,7 +367,21 @@ test "html5lib/tree/adoption01_16" {
   let doc = @html.parse("<p><b><b><b><b><p>x")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <p>\n|       <b>\n|         <b>\n|           <b>\n|             <b>\n|     <p>\n|       <b>\n|         <b>\n|           <b>\n|             \"x\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       <b>
+      #||         <b>
+      #||           <b>
+      #||             <b>
+      #||     <p>
+      #||       <b>
+      #||         <b>
+      #||           <b>
+      #||             \"x\"
+    ),
   )
 }
 
@@ -182,7 +390,20 @@ test "html5lib/tree/adoption02_18" {
   let doc = @html.parse("<b>1<i>2<p>3</b>4")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <b>\n|       \"1\"\n|       <i>\n|         \"2\"\n|     <i>\n|       <p>\n|         <b>\n|           \"3\"\n|         \"4\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <b>
+      #||       \"1\"
+      #||       <i>
+      #||         \"2\"
+      #||     <i>
+      #||       <p>
+      #||         <b>
+      #||           \"3\"
+      #||         \"4\"
+    ),
   )
 }
 
@@ -191,7 +412,18 @@ test "html5lib/tree/adoption02_19" {
   let doc = @html.parse("<a><div><style></style><address><a>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <a>\n|     <div>\n|       <a>\n|         <style>\n|       <address>\n|         <a>\n|         <a>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <a>
+      #||     <div>
+      #||       <a>
+      #||         <style>
+      #||       <address>
+      #||         <a>
+      #||         <a>
+    ),
   )
 }
 
@@ -200,7 +432,18 @@ test "html5lib/tree/blocks_20" {
   let doc = @html.parse("<!doctype html><p>foo<address>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <address>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <address>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -209,7 +452,16 @@ test "html5lib/tree/blocks_21" {
   let doc = @html.parse("<!doctype html><address><p>foo</address>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <address>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <address>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -218,7 +470,18 @@ test "html5lib/tree/blocks_22" {
   let doc = @html.parse("<!doctype html><p>foo<article>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <article>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <article>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -227,7 +490,16 @@ test "html5lib/tree/blocks_23" {
   let doc = @html.parse("<!doctype html><article><p>foo</article>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <article>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <article>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -236,7 +508,18 @@ test "html5lib/tree/blocks_24" {
   let doc = @html.parse("<!doctype html><p>foo<aside>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <aside>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <aside>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -245,7 +528,16 @@ test "html5lib/tree/blocks_25" {
   let doc = @html.parse("<!doctype html><aside><p>foo</aside>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <aside>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <aside>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -254,7 +546,18 @@ test "html5lib/tree/blocks_26" {
   let doc = @html.parse("<!doctype html><p>foo<blockquote>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <blockquote>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <blockquote>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -263,7 +566,16 @@ test "html5lib/tree/blocks_27" {
   let doc = @html.parse("<!doctype html><blockquote><p>foo</blockquote>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <blockquote>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <blockquote>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -272,7 +584,18 @@ test "html5lib/tree/blocks_28" {
   let doc = @html.parse("<!doctype html><p>foo<center>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <center>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <center>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -281,7 +604,16 @@ test "html5lib/tree/blocks_29" {
   let doc = @html.parse("<!doctype html><center><p>foo</center>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <center>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <center>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -290,7 +622,18 @@ test "html5lib/tree/blocks_30" {
   let doc = @html.parse("<!doctype html><p>foo<details>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <details>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <details>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -299,7 +642,16 @@ test "html5lib/tree/blocks_31" {
   let doc = @html.parse("<!doctype html><details><p>foo</details>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <details>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <details>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -308,7 +660,18 @@ test "html5lib/tree/blocks_32" {
   let doc = @html.parse("<!doctype html><p>foo<dialog>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <dialog>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <dialog>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -317,7 +680,16 @@ test "html5lib/tree/blocks_33" {
   let doc = @html.parse("<!doctype html><dialog><p>foo</dialog>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <dialog>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <dialog>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -326,7 +698,18 @@ test "html5lib/tree/blocks_34" {
   let doc = @html.parse("<!doctype html><p>foo<dir>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <dir>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <dir>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -335,7 +718,16 @@ test "html5lib/tree/blocks_35" {
   let doc = @html.parse("<!doctype html><dir><p>foo</dir>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <dir>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <dir>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -344,7 +736,18 @@ test "html5lib/tree/blocks_36" {
   let doc = @html.parse("<!doctype html><p>foo<div>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <div>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <div>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -353,7 +756,16 @@ test "html5lib/tree/blocks_37" {
   let doc = @html.parse("<!doctype html><div><p>foo</div>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <div>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -362,7 +774,18 @@ test "html5lib/tree/blocks_38" {
   let doc = @html.parse("<!doctype html><p>foo<dl>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <dl>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <dl>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -371,7 +794,16 @@ test "html5lib/tree/blocks_39" {
   let doc = @html.parse("<!doctype html><dl><p>foo</dl>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <dl>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <dl>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -380,7 +812,18 @@ test "html5lib/tree/blocks_40" {
   let doc = @html.parse("<!doctype html><p>foo<fieldset>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <fieldset>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <fieldset>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -389,7 +832,16 @@ test "html5lib/tree/blocks_41" {
   let doc = @html.parse("<!doctype html><fieldset><p>foo</fieldset>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <fieldset>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <fieldset>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -398,7 +850,18 @@ test "html5lib/tree/blocks_42" {
   let doc = @html.parse("<!doctype html><p>foo<figcaption>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <figcaption>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <figcaption>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -407,7 +870,16 @@ test "html5lib/tree/blocks_43" {
   let doc = @html.parse("<!doctype html><figcaption><p>foo</figcaption>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <figcaption>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <figcaption>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -416,7 +888,18 @@ test "html5lib/tree/blocks_44" {
   let doc = @html.parse("<!doctype html><p>foo<figure>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <figure>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <figure>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -425,7 +908,16 @@ test "html5lib/tree/blocks_45" {
   let doc = @html.parse("<!doctype html><figure><p>foo</figure>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <figure>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <figure>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -434,7 +926,18 @@ test "html5lib/tree/blocks_46" {
   let doc = @html.parse("<!doctype html><p>foo<footer>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <footer>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <footer>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -443,7 +946,16 @@ test "html5lib/tree/blocks_47" {
   let doc = @html.parse("<!doctype html><footer><p>foo</footer>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <footer>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <footer>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -452,7 +964,18 @@ test "html5lib/tree/blocks_48" {
   let doc = @html.parse("<!doctype html><p>foo<header>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <header>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <header>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -461,7 +984,16 @@ test "html5lib/tree/blocks_49" {
   let doc = @html.parse("<!doctype html><header><p>foo</header>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <header>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <header>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -470,7 +1002,18 @@ test "html5lib/tree/blocks_50" {
   let doc = @html.parse("<!doctype html><p>foo<hgroup>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <hgroup>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <hgroup>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -479,7 +1022,16 @@ test "html5lib/tree/blocks_51" {
   let doc = @html.parse("<!doctype html><hgroup><p>foo</hgroup>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <hgroup>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <hgroup>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -488,7 +1040,18 @@ test "html5lib/tree/blocks_52" {
   let doc = @html.parse("<!doctype html><p>foo<listing>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <listing>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <listing>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -497,7 +1060,16 @@ test "html5lib/tree/blocks_53" {
   let doc = @html.parse("<!doctype html><listing><p>foo</listing>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <listing>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <listing>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -506,7 +1078,18 @@ test "html5lib/tree/blocks_54" {
   let doc = @html.parse("<!doctype html><p>foo<menu>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <menu>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <menu>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -515,7 +1098,16 @@ test "html5lib/tree/blocks_55" {
   let doc = @html.parse("<!doctype html><menu><p>foo</menu>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <menu>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <menu>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -524,7 +1116,18 @@ test "html5lib/tree/blocks_56" {
   let doc = @html.parse("<!doctype html><p>foo<nav>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <nav>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <nav>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -533,7 +1136,16 @@ test "html5lib/tree/blocks_57" {
   let doc = @html.parse("<!doctype html><nav><p>foo</nav>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <nav>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <nav>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -542,7 +1154,18 @@ test "html5lib/tree/blocks_58" {
   let doc = @html.parse("<!doctype html><p>foo<ol>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <ol>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <ol>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -551,7 +1174,16 @@ test "html5lib/tree/blocks_59" {
   let doc = @html.parse("<!doctype html><ol><p>foo</ol>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <ol>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ol>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -560,7 +1192,18 @@ test "html5lib/tree/blocks_60" {
   let doc = @html.parse("<!doctype html><p>foo<pre>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <pre>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <pre>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -569,7 +1212,16 @@ test "html5lib/tree/blocks_61" {
   let doc = @html.parse("<!doctype html><pre><p>foo</pre>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <pre>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <pre>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -578,7 +1230,18 @@ test "html5lib/tree/blocks_62" {
   let doc = @html.parse("<!doctype html><p>foo<section>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <section>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <section>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -587,7 +1250,16 @@ test "html5lib/tree/blocks_63" {
   let doc = @html.parse("<!doctype html><section><p>foo</section>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <section>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <section>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -596,7 +1268,18 @@ test "html5lib/tree/blocks_64" {
   let doc = @html.parse("<!doctype html><p>foo<summary>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <summary>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <summary>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -605,7 +1288,16 @@ test "html5lib/tree/blocks_65" {
   let doc = @html.parse("<!doctype html><summary><p>foo</summary>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <summary>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <summary>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -614,7 +1306,18 @@ test "html5lib/tree/blocks_66" {
   let doc = @html.parse("<!doctype html><p>foo<ul>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <ul>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <ul>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -623,7 +1326,16 @@ test "html5lib/tree/blocks_67" {
   let doc = @html.parse("<!doctype html><ul><p>foo</ul>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <ul>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ul>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -632,7 +1344,14 @@ test "html5lib/tree/comments01_68" {
   let doc = @html.parse("FOO<!-- BAR -->BAZ")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <!--  BAR  -->\n|     \"BAZ\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <!--  BAR  -->
+      #||     \"BAZ\"
+    ),
   )
 }
 
@@ -641,7 +1360,14 @@ test "html5lib/tree/comments01_69" {
   let doc = @html.parse("FOO<!-- BAR --!>BAZ")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <!--  BAR  -->\n|     \"BAZ\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <!--  BAR  -->
+      #||     \"BAZ\"
+    ),
   )
 }
 
@@ -650,7 +1376,13 @@ test "html5lib/tree/comments01_70" {
   let doc = @html.parse("FOO<!-- BAR --! >BAZ")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <!--  BAR --! >BAZ -->",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <!--  BAR --! >BAZ -->
+    ),
   )
 }
 
@@ -659,7 +1391,14 @@ test "html5lib/tree/comments01_71" {
   let doc = @html.parse("FOO<!-- BAR --!\n>BAZ")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <!--  BAR --!\n>BAZ -->",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <!--  BAR --!
+      #|>BAZ -->
+    ),
   )
 }
 
@@ -668,7 +1407,13 @@ test "html5lib/tree/comments01_72" {
   let doc = @html.parse("FOO<!-- BAR --   >BAZ")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <!--  BAR --   >BAZ -->",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <!--  BAR --   >BAZ -->
+    ),
   )
 }
 
@@ -677,7 +1422,14 @@ test "html5lib/tree/comments01_73" {
   let doc = @html.parse("FOO<!-- BAR -- <QUX> -- MUX -->BAZ")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <!--  BAR -- <QUX> -- MUX  -->\n|     \"BAZ\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <!--  BAR -- <QUX> -- MUX  -->
+      #||     \"BAZ\"
+    ),
   )
 }
 
@@ -686,7 +1438,14 @@ test "html5lib/tree/comments01_74" {
   let doc = @html.parse("FOO<!-- BAR -- <QUX> -- MUX --!>BAZ")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <!--  BAR -- <QUX> -- MUX  -->\n|     \"BAZ\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <!--  BAR -- <QUX> -- MUX  -->
+      #||     \"BAZ\"
+    ),
   )
 }
 
@@ -695,7 +1454,13 @@ test "html5lib/tree/comments01_75" {
   let doc = @html.parse("FOO<!-- BAR -- <QUX> -- MUX -- >BAZ")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <!--  BAR -- <QUX> -- MUX -- >BAZ -->",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <!--  BAR -- <QUX> -- MUX -- >BAZ -->
+    ),
   )
 }
 
@@ -704,7 +1469,14 @@ test "html5lib/tree/comments01_76" {
   let doc = @html.parse("FOO<!---->BAZ")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <!--  -->\n|     \"BAZ\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <!--  -->
+      #||     \"BAZ\"
+    ),
   )
 }
 
@@ -713,7 +1485,14 @@ test "html5lib/tree/comments01_77" {
   let doc = @html.parse("FOO<!--->BAZ")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <!--  -->\n|     \"BAZ\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <!--  -->
+      #||     \"BAZ\"
+    ),
   )
 }
 
@@ -722,7 +1501,14 @@ test "html5lib/tree/comments01_78" {
   let doc = @html.parse("FOO<!-->BAZ")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <!--  -->\n|     \"BAZ\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <!--  -->
+      #||     \"BAZ\"
+    ),
   )
 }
 
@@ -731,7 +1517,13 @@ test "html5lib/tree/comments01_79" {
   let doc = @html.parse("<?xml version=\"1.0\">Hi")
   inspect(
     doc.dump(),
-    content="| <!-- ?xml version=\"1.0\" -->\n| <html>\n|   <head>\n|   <body>\n|     \"Hi\"",
+    content=(
+      #|| <!-- ?xml version=\"1.0\" -->
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hi\"
+    ),
   )
 }
 
@@ -740,7 +1532,12 @@ test "html5lib/tree/comments01_80" {
   let doc = @html.parse("<?xml version=\"1.0\">")
   inspect(
     doc.dump(),
-    content="| <!-- ?xml version=\"1.0\" -->\n| <html>\n|   <head>\n|   <body>",
+    content=(
+      #|| <!-- ?xml version=\"1.0\" -->
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
   )
 }
 
@@ -749,7 +1546,12 @@ test "html5lib/tree/comments01_81" {
   let doc = @html.parse("<?xml version")
   inspect(
     doc.dump(),
-    content="| <!-- ?xml version -->\n| <html>\n|   <head>\n|   <body>",
+    content=(
+      #|| <!-- ?xml version -->
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
   )
 }
 
@@ -758,7 +1560,14 @@ test "html5lib/tree/comments01_82" {
   let doc = @html.parse("FOO<!----->BAZ")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <!-- - -->\n|     \"BAZ\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <!-- - -->
+      #||     \"BAZ\"
+    ),
   )
 }
 
@@ -769,7 +1578,14 @@ test "html5lib/tree/comments01_83" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <!--  comment  -->\n|   <head>\n|     <title>\n|       \"Comment before head\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <!--  comment  -->
+      #||   <head>
+      #||     <title>
+      #||       \"Comment before head\"
+      #||   <body>
+    ),
   )
 }
 
@@ -778,7 +1594,13 @@ test "html5lib/tree/doctype01_84" {
   let doc = @html.parse("<!DOCTYPE html>Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -787,7 +1609,13 @@ test "html5lib/tree/doctype01_85" {
   let doc = @html.parse("<!dOctYpE HtMl>Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -796,7 +1624,13 @@ test "html5lib/tree/doctype01_86" {
   let doc = @html.parse("<!DOCTYPEhtml>Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -805,7 +1639,13 @@ test "html5lib/tree/doctype01_87" {
   let doc = @html.parse("<!DOCTYPE>Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE >\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE >
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -814,7 +1654,13 @@ test "html5lib/tree/doctype01_88" {
   let doc = @html.parse("<!DOCTYPE >Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE >\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE >
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -823,7 +1669,13 @@ test "html5lib/tree/doctype01_89" {
   let doc = @html.parse("<!DOCTYPE potato>Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE potato>\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE potato>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -832,7 +1684,13 @@ test "html5lib/tree/doctype01_90" {
   let doc = @html.parse("<!DOCTYPE potato >Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE potato>\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE potato>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -841,7 +1699,13 @@ test "html5lib/tree/doctype01_91" {
   let doc = @html.parse("<!DOCTYPE potato taco>Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE potato>\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE potato>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -850,7 +1714,13 @@ test "html5lib/tree/doctype01_92" {
   let doc = @html.parse("<!DOCTYPE potato taco \"ddd>Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE potato>\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE potato>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -859,7 +1729,13 @@ test "html5lib/tree/doctype01_93" {
   let doc = @html.parse("<!DOCTYPE potato sYstEM>Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE potato>\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE potato>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -868,7 +1744,13 @@ test "html5lib/tree/doctype01_94" {
   let doc = @html.parse("<!DOCTYPE potato sYstEM    >Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE potato>\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE potato>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -877,7 +1759,13 @@ test "html5lib/tree/doctype01_95" {
   let doc = @html.parse("<!DOCTYPE   potato       sYstEM  ggg>Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE potato>\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE potato>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -886,7 +1774,13 @@ test "html5lib/tree/doctype01_96" {
   let doc = @html.parse("<!DOCTYPE potato SYSTEM taco  >Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE potato>\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE potato>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -895,7 +1789,13 @@ test "html5lib/tree/doctype01_97" {
   let doc = @html.parse("<!DOCTYPE potato SYSTEM 'taco\"'>Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE potato \"\" \"taco\"\">\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE potato \"\" \"taco\"\">
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -904,7 +1804,13 @@ test "html5lib/tree/doctype01_98" {
   let doc = @html.parse("<!DOCTYPE potato SYSTEM \"taco\">Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE potato \"\" \"taco\">\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE potato \"\" \"taco\">
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -913,7 +1819,13 @@ test "html5lib/tree/doctype01_99" {
   let doc = @html.parse("<!DOCTYPE potato SYSTEM \"tai'co\">Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE potato \"\" \"tai'co\">\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE potato \"\" \"tai'co\">
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -922,7 +1834,13 @@ test "html5lib/tree/doctype01_100" {
   let doc = @html.parse("<!DOCTYPE potato SYSTEMtaco \"ddd\">Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE potato>\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE potato>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -931,7 +1849,13 @@ test "html5lib/tree/doctype01_101" {
   let doc = @html.parse("<!DOCTYPE potato grass SYSTEM taco>Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE potato>\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE potato>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -940,7 +1864,13 @@ test "html5lib/tree/doctype01_102" {
   let doc = @html.parse("<!DOCTYPE potato pUbLIc>Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE potato>\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE potato>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -949,7 +1879,13 @@ test "html5lib/tree/doctype01_103" {
   let doc = @html.parse("<!DOCTYPE potato pUbLIc >Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE potato>\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE potato>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -958,7 +1894,13 @@ test "html5lib/tree/doctype01_104" {
   let doc = @html.parse("<!DOCTYPE potato pUbLIcgoof>Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE potato>\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE potato>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -967,7 +1909,13 @@ test "html5lib/tree/doctype01_105" {
   let doc = @html.parse("<!DOCTYPE potato PUBLIC goof>Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE potato>\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE potato>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -976,7 +1924,13 @@ test "html5lib/tree/doctype01_106" {
   let doc = @html.parse("<!DOCTYPE potato PUBLIC \"go'of\">Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE potato \"go'of\" \"\">\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE potato \"go'of\" \"\">
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -985,7 +1939,13 @@ test "html5lib/tree/doctype01_107" {
   let doc = @html.parse("<!DOCTYPE potato PUBLIC 'go'of'>Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE potato \"go\" \"\">\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE potato \"go\" \"\">
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -994,7 +1954,13 @@ test "html5lib/tree/doctype01_108" {
   let doc = @html.parse("<!DOCTYPE potato PUBLIC 'go:hh   of' >Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE potato \"go:hh   of\" \"\">\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE potato \"go:hh   of\" \"\">
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -1005,7 +1971,13 @@ test "html5lib/tree/doctype01_109" {
   )
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE potato \"W3C-//dfdf\" \"\">\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE potato \"W3C-//dfdf\" \"\">
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -1016,7 +1988,13 @@ test "html5lib/tree/doctype01_110" {
   )
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE html \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -1025,7 +2003,13 @@ test "html5lib/tree/doctype01_111" {
   let doc = @html.parse("<!DOCTYPE ...>Hello")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE ...>\n| <html>\n|   <head>\n|   <body>\n|     \"Hello\"",
+    content=(
+      #|| <!DOCTYPE ...>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Hello\"
+    ),
   )
 }
 
@@ -1036,7 +2020,12 @@ test "html5lib/tree/doctype01_112" {
   )
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n| <html>\n|   <head>\n|   <body>",
+    content=(
+      #|| <!DOCTYPE html \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
   )
 }
 
@@ -1047,7 +2036,12 @@ test "html5lib/tree/doctype01_113" {
   )
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html \"-//W3C//DTD XHTML 1.0 Frameset//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd\">\n| <html>\n|   <head>\n|   <body>",
+    content=(
+      #|| <!DOCTYPE html \"-//W3C//DTD XHTML 1.0 Frameset//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd\">
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
   )
 }
 
@@ -1058,7 +2052,13 @@ test "html5lib/tree/doctype01_114" {
   )
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE root-element>\n| <html>\n|   <head>\n|   <body>\n|     \"]>\"",
+    content=(
+      #|| <!DOCTYPE root-element>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"]>\"
+    ),
   )
 }
 
@@ -1069,7 +2069,12 @@ test "html5lib/tree/doctype01_115" {
   )
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html \"-//WAPFORUM//DTD XHTML Mobile 1.0//EN\" \"http://www.wapforum.org/DTD/xhtml-mobile10.dtd\">\n| <html>\n|   <head>\n|   <body>",
+    content=(
+      #|| <!DOCTYPE html \"-//WAPFORUM//DTD XHTML Mobile 1.0//EN\" \"http://www.wapforum.org/DTD/xhtml-mobile10.dtd\">
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
   )
 }
 
@@ -1080,7 +2085,14 @@ test "html5lib/tree/doctype01_116" {
   )
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html \"\" \"http://www.w3.org/DTD/HTML4-strict.dtd\">\n| <html>\n|   <head>\n|   <body>\n|     <b>\n|       \"Mine!\"",
+    content=(
+      #|| <!DOCTYPE html \"\" \"http://www.w3.org/DTD/HTML4-strict.dtd\">
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <b>
+      #||       \"Mine!\"
+    ),
   )
 }
 
@@ -1091,7 +2103,12 @@ test "html5lib/tree/doctype01_117" {
   )
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n| <html>\n|   <head>\n|   <body>",
+    content=(
+      #|| <!DOCTYPE html \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
   )
 }
 
@@ -1102,7 +2119,12 @@ test "html5lib/tree/doctype01_118" {
   )
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n| <html>\n|   <head>\n|   <body>",
+    content=(
+      #|| <!DOCTYPE html \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
   )
 }
 
@@ -1113,7 +2135,12 @@ test "html5lib/tree/doctype01_119" {
   )
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n| <html>\n|   <head>\n|   <body>",
+    content=(
+      #|| <!DOCTYPE html \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
   )
 }
 
@@ -1124,7 +2151,12 @@ test "html5lib/tree/doctype01_120" {
   )
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n| <html>\n|   <head>\n|   <body>",
+    content=(
+      #|| <!DOCTYPE html \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
   )
 }
 
@@ -1133,7 +2165,14 @@ test "html5lib/tree/domjs-unsafe_121" {
   let doc = @html.parse("<svg><![CDATA[foo\nbar]]>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <svg svg>\n|       \"foo\nbar\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <svg svg>
+      #||       \"foo
+      #|bar\"
+    ),
   )
 }
 
@@ -1142,7 +2181,14 @@ test "html5lib/tree/domjs-unsafe_122" {
   let doc = @html.parse("<svg><![CDATA[foo\nbar]]>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <svg svg>\n|       \"foo\nbar\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <svg svg>
+      #||       \"foo
+      #|bar\"
+    ),
   )
 }
 
@@ -1151,7 +2197,14 @@ test "html5lib/tree/domjs-unsafe_123" {
   let doc = @html.parse("<svg><![CDATA[foo\nbar]]>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <svg svg>\n|       \"foo\nbar\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <svg svg>
+      #||       \"foo
+      #|bar\"
+    ),
   )
 }
 
@@ -1160,7 +2213,13 @@ test "html5lib/tree/domjs-unsafe_124" {
   let doc = @html.parse("<script>a='\u{0}'</script>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       \"a='�'\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       \"a='�'\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1169,7 +2228,14 @@ test "html5lib/tree/domjs-unsafe_125" {
   let doc = @html.parse("<script type=\"data\"><!--\u{0}</script>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"<!--�\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"<!--�\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1178,7 +2244,14 @@ test "html5lib/tree/domjs-unsafe_126" {
   let doc = @html.parse("<script type=\"data\"><!--foo\u{0}</script>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"<!--foo�\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"<!--foo�\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1187,7 +2260,14 @@ test "html5lib/tree/domjs-unsafe_127" {
   let doc = @html.parse("<script type=\"data\"><!-- foo-\u{0}</script>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"<!-- foo-�\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"<!-- foo-�\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1196,7 +2276,14 @@ test "html5lib/tree/domjs-unsafe_128" {
   let doc = @html.parse("<script type=\"data\"><!-- foo--\u{0}</script>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"<!-- foo--�\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"<!-- foo--�\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1205,7 +2292,14 @@ test "html5lib/tree/domjs-unsafe_129" {
   let doc = @html.parse("<script type=\"data\"><!-- foo-")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"<!-- foo-\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"<!-- foo-\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1214,7 +2308,14 @@ test "html5lib/tree/domjs-unsafe_130" {
   let doc = @html.parse("<script type=\"data\"><!-- foo-<</script>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"<!-- foo-<\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"<!-- foo-<\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1223,7 +2324,14 @@ test "html5lib/tree/domjs-unsafe_131" {
   let doc = @html.parse("<script type=\"data\"><!-- foo-<S")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"<!-- foo-<S\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"<!-- foo-<S\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1232,7 +2340,14 @@ test "html5lib/tree/domjs-unsafe_132" {
   let doc = @html.parse("<script type=\"data\"><!-- foo-</SCRIPT>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"<!-- foo-\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"<!-- foo-\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1241,7 +2356,14 @@ test "html5lib/tree/domjs-unsafe_133" {
   let doc = @html.parse("<script type=\"data\"><!--<p></script>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"<!--<p>\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"<!--<p>\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1250,7 +2372,14 @@ test "html5lib/tree/domjs-unsafe_134" {
   let doc = @html.parse("<script type=\"data\"><!--<script></script></script>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"<!--<script></script>\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"<!--<script></script>\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1261,7 +2390,14 @@ test "html5lib/tree/domjs-unsafe_135" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"<!--<script>�</script>\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"<!--<script>�</script>\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1272,7 +2408,14 @@ test "html5lib/tree/domjs-unsafe_136" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"<!--<script>-�</script>\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"<!--<script>-�</script>\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1283,7 +2426,14 @@ test "html5lib/tree/domjs-unsafe_137" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"<!--<script>--�</script>\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"<!--<script>--�</script>\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1294,7 +2444,14 @@ test "html5lib/tree/domjs-unsafe_138" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"<!--<script>---</script>\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"<!--<script>---</script>\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1305,7 +2462,14 @@ test "html5lib/tree/domjs-unsafe_139" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"<!--<script></scrip></SCRIPT>\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"<!--<script></scrip></SCRIPT>\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1316,7 +2480,14 @@ test "html5lib/tree/domjs-unsafe_140" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"<!--<script></scrip </SCRIPT>\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"<!--<script></scrip </SCRIPT>\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1327,7 +2498,14 @@ test "html5lib/tree/domjs-unsafe_141" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"<!--<script></scrip/</SCRIPT>\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"<!--<script></scrip/</SCRIPT>\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1336,7 +2514,14 @@ test "html5lib/tree/domjs-unsafe_142" {
   let doc = @html.parse("<script type=\"data\"></scrip/></script>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"</scrip/>\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"</scrip/>\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1345,7 +2530,14 @@ test "html5lib/tree/domjs-unsafe_143" {
   let doc = @html.parse("<script type=\"data\"></scrip ></script>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"</scrip >\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"</scrip >\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1354,7 +2546,14 @@ test "html5lib/tree/domjs-unsafe_144" {
   let doc = @html.parse("<script type=\"data\"><!--</scrip></script>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"<!--</scrip>\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"<!--</scrip>\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1363,7 +2562,14 @@ test "html5lib/tree/domjs-unsafe_145" {
   let doc = @html.parse("<script type=\"data\"><!--</scrip </script>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"<!--</scrip \"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"<!--</scrip \"
+      #||   <body>
+    ),
   )
 }
 
@@ -1372,7 +2578,14 @@ test "html5lib/tree/domjs-unsafe_146" {
   let doc = @html.parse("<script type=\"data\"><!--</scrip/</script>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <script>\n|       type=\"data\"\n|       \"<!--</scrip/\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <script>
+      #||       type=\"data\"
+      #||       \"<!--</scrip/\"
+      #||   <body>
+    ),
   )
 }
 
@@ -1381,38 +2594,79 @@ test "html5lib/tree/domjs-unsafe_147" {
   let doc = @html.parse("<!DOCTYPE html><!DOCTYPE html>")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
   )
 }
 
 ///|
 test "html5lib/tree/domjs-unsafe_148" {
   let doc = @html.parse("<html><!DOCTYPE html>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <body>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
+  )
 }
 
 ///|
 test "html5lib/tree/domjs-unsafe_149" {
   let doc = @html.parse("<html><head><!DOCTYPE html></head>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <body>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
+  )
 }
 
 ///|
 test "html5lib/tree/domjs-unsafe_150" {
   let doc = @html.parse("<html><head></head><!DOCTYPE html>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <body>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
+  )
 }
 
 ///|
 test "html5lib/tree/domjs-unsafe_151" {
   let doc = @html.parse("<body></body><!DOCTYPE html>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <body>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
+  )
 }
 
 ///|
 test "html5lib/tree/domjs-unsafe_152" {
   let doc = @html.parse("<table><!DOCTYPE html></table>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <body>\n|     <table>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+    ),
+  )
 }
 
 ///|
@@ -1420,7 +2674,12 @@ test "html5lib/tree/domjs-unsafe_153" {
   let doc = @html.parse("<select><!DOCTYPE html></select>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <select>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <select>
+    ),
   )
 }
 
@@ -1429,7 +2688,13 @@ test "html5lib/tree/domjs-unsafe_154" {
   let doc = @html.parse("<table><colgroup><!DOCTYPE html></colgroup></table>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <colgroup>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <colgroup>
+    ),
   )
 }
 
@@ -1438,7 +2703,14 @@ test "html5lib/tree/domjs-unsafe_155" {
   let doc = @html.parse("<table><colgroup><!--test--></colgroup></table>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <colgroup>\n|         <!-- test -->",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <colgroup>
+      #||         <!-- test -->
+    ),
   )
 }
 
@@ -1447,7 +2719,13 @@ test "html5lib/tree/domjs-unsafe_156" {
   let doc = @html.parse("<table><colgroup><html></colgroup></table>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <colgroup>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <colgroup>
+    ),
   )
 }
 
@@ -1456,7 +2734,15 @@ test "html5lib/tree/domjs-unsafe_157" {
   let doc = @html.parse("<table><colgroup> foo</colgroup></table>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"foo\"\n|     <table>\n|       <colgroup>\n|         \" \"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"foo\"
+      #||     <table>
+      #||       <colgroup>
+      #||         \" \"
+    ),
   )
 }
 
@@ -1465,7 +2751,13 @@ test "html5lib/tree/domjs-unsafe_158" {
   let doc = @html.parse("<select><!--test--></select>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <select>\n|       <!-- test -->",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <select>
+      #||       <!-- test -->
+    ),
   )
 }
 
@@ -1474,32 +2766,65 @@ test "html5lib/tree/domjs-unsafe_159" {
   let doc = @html.parse("<select><html></select>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <select>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <select>
+    ),
   )
 }
 
 ///|
 test "html5lib/tree/domjs-unsafe_160" {
   let doc = @html.parse("<frameset><html></frameset>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <frameset>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <frameset>
+    ),
+  )
 }
 
 ///|
 test "html5lib/tree/domjs-unsafe_161" {
   let doc = @html.parse("<frameset></frameset><html>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <frameset>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <frameset>
+    ),
+  )
 }
 
 ///|
 test "html5lib/tree/domjs-unsafe_162" {
   let doc = @html.parse("<frameset></frameset><!DOCTYPE html>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <frameset>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <frameset>
+    ),
+  )
 }
 
 ///|
 test "html5lib/tree/domjs-unsafe_163" {
   let doc = @html.parse("<html><body></body></html><!DOCTYPE html>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <body>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
+  )
 }
 
 ///|
@@ -1507,7 +2832,12 @@ test "html5lib/tree/domjs-unsafe_164" {
   let doc = @html.parse("<svg><!DOCTYPE html></svg>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <svg svg>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <svg svg>
+    ),
   )
 }
 
@@ -1516,7 +2846,13 @@ test "html5lib/tree/domjs-unsafe_165" {
   let doc = @html.parse("<svg><font></font></svg>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <svg svg>\n|       <svg font>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <svg svg>
+      #||       <svg font>
+    ),
   )
 }
 
@@ -1525,7 +2861,14 @@ test "html5lib/tree/domjs-unsafe_166" {
   let doc = @html.parse("<svg><font id=foo></font></svg>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <svg svg>\n|       <svg font>\n|         id=\"foo\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <svg svg>
+      #||       <svg font>
+      #||         id=\"foo\"
+    ),
   )
 }
 
@@ -1534,7 +2877,14 @@ test "html5lib/tree/domjs-unsafe_167" {
   let doc = @html.parse("<svg><font size=4></font></svg>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <svg svg>\n|     <font>\n|       size=\"4\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <svg svg>
+      #||     <font>
+      #||       size=\"4\"
+    ),
   )
 }
 
@@ -1543,7 +2893,14 @@ test "html5lib/tree/domjs-unsafe_168" {
   let doc = @html.parse("<svg><font color=red></font></svg>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <svg svg>\n|     <font>\n|       color=\"red\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <svg svg>
+      #||     <font>
+      #||       color=\"red\"
+    ),
   )
 }
 
@@ -1552,7 +2909,14 @@ test "html5lib/tree/domjs-unsafe_169" {
   let doc = @html.parse("<svg><font font=sans></font></svg>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <svg svg>\n|       <svg font>\n|         font=\"sans\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <svg svg>
+      #||       <svg font>
+      #||         font=\"sans\"
+    ),
   )
 }
 
@@ -1561,7 +2925,12 @@ test "html5lib/tree/entities01_170" {
   let doc = @html.parse("FOO&gt;BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO>BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO>BAR\"
+    ),
   )
 }
 
@@ -1570,7 +2939,12 @@ test "html5lib/tree/entities01_171" {
   let doc = @html.parse("FOO&gtBAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO>BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO>BAR\"
+    ),
   )
 }
 
@@ -1579,7 +2953,12 @@ test "html5lib/tree/entities01_172" {
   let doc = @html.parse("FOO&gt BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO> BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO> BAR\"
+    ),
   )
 }
 
@@ -1588,7 +2967,12 @@ test "html5lib/tree/entities01_173" {
   let doc = @html.parse("FOO&gt;;;BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO>;;BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO>;;BAR\"
+    ),
   )
 }
 
@@ -1597,7 +2981,12 @@ test "html5lib/tree/entities01_174" {
   let doc = @html.parse("I'm &notit; I tell you")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"I'm ¬it; I tell you\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"I'm ¬it; I tell you\"
+    ),
   )
 }
 
@@ -1606,7 +2995,12 @@ test "html5lib/tree/entities01_175" {
   let doc = @html.parse("I'm &notin; I tell you")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"I'm ∉ I tell you\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"I'm ∉ I tell you\"
+    ),
   )
 }
 
@@ -1615,7 +3009,12 @@ test "html5lib/tree/entities01_176" {
   let doc = @html.parse("&ammmp;")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"&ammmp;\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"&ammmp;\"
+    ),
   )
 }
 
@@ -1626,7 +3025,12 @@ test "html5lib/tree/entities01_177" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"&ammmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmp;\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"&ammmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmp;\"
+    ),
   )
 }
 
@@ -1635,7 +3039,12 @@ test "html5lib/tree/entities01_178" {
   let doc = @html.parse("FOO& BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO& BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO& BAR\"
+    ),
   )
 }
 
@@ -1644,7 +3053,13 @@ test "html5lib/tree/entities01_179" {
   let doc = @html.parse("FOO&<BAR>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO&\"\n|     <bar>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO&\"
+      #||     <bar>
+    ),
   )
 }
 
@@ -1653,7 +3068,12 @@ test "html5lib/tree/entities01_180" {
   let doc = @html.parse("FOO&&&&gt;BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO&&&>BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO&&&>BAR\"
+    ),
   )
 }
 
@@ -1662,7 +3082,12 @@ test "html5lib/tree/entities01_181" {
   let doc = @html.parse("FOO&#41;BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO)BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO)BAR\"
+    ),
   )
 }
 
@@ -1671,7 +3096,12 @@ test "html5lib/tree/entities01_182" {
   let doc = @html.parse("FOO&#x41;BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOOABAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOOABAR\"
+    ),
   )
 }
 
@@ -1680,7 +3110,12 @@ test "html5lib/tree/entities01_183" {
   let doc = @html.parse("FOO&#X41;BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOOABAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOOABAR\"
+    ),
   )
 }
 
@@ -1689,7 +3124,12 @@ test "html5lib/tree/entities01_184" {
   let doc = @html.parse("FOO&#BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO&#BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO&#BAR\"
+    ),
   )
 }
 
@@ -1698,7 +3138,12 @@ test "html5lib/tree/entities01_185" {
   let doc = @html.parse("FOO&#ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO&#ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO&#ZOO\"
+    ),
   )
 }
 
@@ -1707,7 +3152,12 @@ test "html5lib/tree/entities01_186" {
   let doc = @html.parse("FOO&#xBAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOOºR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOOºR\"
+    ),
   )
 }
 
@@ -1716,7 +3166,12 @@ test "html5lib/tree/entities01_187" {
   let doc = @html.parse("FOO&#xZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO&#xZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO&#xZOO\"
+    ),
   )
 }
 
@@ -1725,7 +3180,12 @@ test "html5lib/tree/entities01_188" {
   let doc = @html.parse("FOO&#XZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO&#XZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO&#XZOO\"
+    ),
   )
 }
 
@@ -1734,7 +3194,12 @@ test "html5lib/tree/entities01_189" {
   let doc = @html.parse("FOO&#41BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO)BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO)BAR\"
+    ),
   )
 }
 
@@ -1743,7 +3208,12 @@ test "html5lib/tree/entities01_190" {
   let doc = @html.parse("FOO&#x41BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO䆺R\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO䆺R\"
+    ),
   )
 }
 
@@ -1752,7 +3222,12 @@ test "html5lib/tree/entities01_191" {
   let doc = @html.parse("FOO&#x41ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOOAZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOOAZOO\"
+    ),
   )
 }
 
@@ -1761,7 +3236,12 @@ test "html5lib/tree/entities01_192" {
   let doc = @html.parse("FOO&#x0000;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO�ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO�ZOO\"
+    ),
   )
 }
 
@@ -1770,7 +3250,12 @@ test "html5lib/tree/entities01_193" {
   let doc = @html.parse("FOO&#x0078;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOOxZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOOxZOO\"
+    ),
   )
 }
 
@@ -1779,7 +3264,12 @@ test "html5lib/tree/entities01_194" {
   let doc = @html.parse("FOO&#x0079;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOOyZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOOyZOO\"
+    ),
   )
 }
 
@@ -1788,7 +3278,12 @@ test "html5lib/tree/entities01_195" {
   let doc = @html.parse("FOO&#x0080;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO€ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO€ZOO\"
+    ),
   )
 }
 
@@ -1797,7 +3292,12 @@ test "html5lib/tree/entities01_196" {
   let doc = @html.parse("FOO&#x0081;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\u{81}ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\u{81}ZOO\"
+    ),
   )
 }
 
@@ -1806,7 +3306,12 @@ test "html5lib/tree/entities01_197" {
   let doc = @html.parse("FOO&#x0082;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO‚ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO‚ZOO\"
+    ),
   )
 }
 
@@ -1815,7 +3320,12 @@ test "html5lib/tree/entities01_198" {
   let doc = @html.parse("FOO&#x0083;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOOƒZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOOƒZOO\"
+    ),
   )
 }
 
@@ -1824,7 +3334,12 @@ test "html5lib/tree/entities01_199" {
   let doc = @html.parse("FOO&#x0084;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO„ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO„ZOO\"
+    ),
   )
 }
 
@@ -1833,7 +3348,12 @@ test "html5lib/tree/entities01_200" {
   let doc = @html.parse("FOO&#x0085;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO…ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO…ZOO\"
+    ),
   )
 }
 
@@ -1842,7 +3362,12 @@ test "html5lib/tree/entities01_201" {
   let doc = @html.parse("FOO&#x0086;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO†ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO†ZOO\"
+    ),
   )
 }
 
@@ -1851,7 +3376,12 @@ test "html5lib/tree/entities01_202" {
   let doc = @html.parse("FOO&#x0087;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO‡ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO‡ZOO\"
+    ),
   )
 }
 
@@ -1860,7 +3390,12 @@ test "html5lib/tree/entities01_203" {
   let doc = @html.parse("FOO&#x0088;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOOˆZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOOˆZOO\"
+    ),
   )
 }
 
@@ -1869,7 +3404,12 @@ test "html5lib/tree/entities01_204" {
   let doc = @html.parse("FOO&#x0089;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO‰ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO‰ZOO\"
+    ),
   )
 }
 
@@ -1878,7 +3418,12 @@ test "html5lib/tree/entities01_205" {
   let doc = @html.parse("FOO&#x008A;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOOŠZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOOŠZOO\"
+    ),
   )
 }
 
@@ -1887,7 +3432,12 @@ test "html5lib/tree/entities01_206" {
   let doc = @html.parse("FOO&#x008B;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO‹ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO‹ZOO\"
+    ),
   )
 }
 
@@ -1896,7 +3446,12 @@ test "html5lib/tree/entities01_207" {
   let doc = @html.parse("FOO&#x008C;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOOŒZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOOŒZOO\"
+    ),
   )
 }
 
@@ -1905,7 +3460,12 @@ test "html5lib/tree/entities01_208" {
   let doc = @html.parse("FOO&#x008D;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\u{8d}ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\u{8d}ZOO\"
+    ),
   )
 }
 
@@ -1914,7 +3474,12 @@ test "html5lib/tree/entities01_209" {
   let doc = @html.parse("FOO&#x008E;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOOŽZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOOŽZOO\"
+    ),
   )
 }
 
@@ -1923,7 +3488,12 @@ test "html5lib/tree/entities01_210" {
   let doc = @html.parse("FOO&#x008F;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\u{8f}ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\u{8f}ZOO\"
+    ),
   )
 }
 
@@ -1932,7 +3502,12 @@ test "html5lib/tree/entities01_211" {
   let doc = @html.parse("FOO&#x0090;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\u{90}ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\u{90}ZOO\"
+    ),
   )
 }
 
@@ -1941,7 +3516,12 @@ test "html5lib/tree/entities01_212" {
   let doc = @html.parse("FOO&#x0091;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO‘ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO‘ZOO\"
+    ),
   )
 }
 
@@ -1950,7 +3530,12 @@ test "html5lib/tree/entities01_213" {
   let doc = @html.parse("FOO&#x0092;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO’ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO’ZOO\"
+    ),
   )
 }
 
@@ -1959,7 +3544,12 @@ test "html5lib/tree/entities01_214" {
   let doc = @html.parse("FOO&#x0093;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO“ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO“ZOO\"
+    ),
   )
 }
 
@@ -1968,7 +3558,12 @@ test "html5lib/tree/entities01_215" {
   let doc = @html.parse("FOO&#x0094;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO”ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO”ZOO\"
+    ),
   )
 }
 
@@ -1977,7 +3572,12 @@ test "html5lib/tree/entities01_216" {
   let doc = @html.parse("FOO&#x0095;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO•ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO•ZOO\"
+    ),
   )
 }
 
@@ -1986,7 +3586,12 @@ test "html5lib/tree/entities01_217" {
   let doc = @html.parse("FOO&#x0096;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO–ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO–ZOO\"
+    ),
   )
 }
 
@@ -1995,7 +3600,12 @@ test "html5lib/tree/entities01_218" {
   let doc = @html.parse("FOO&#x0097;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO—ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO—ZOO\"
+    ),
   )
 }
 
@@ -2004,7 +3614,12 @@ test "html5lib/tree/entities01_219" {
   let doc = @html.parse("FOO&#x0098;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO˜ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO˜ZOO\"
+    ),
   )
 }
 
@@ -2013,7 +3628,12 @@ test "html5lib/tree/entities01_220" {
   let doc = @html.parse("FOO&#x0099;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO™ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO™ZOO\"
+    ),
   )
 }
 
@@ -2022,7 +3642,12 @@ test "html5lib/tree/entities01_221" {
   let doc = @html.parse("FOO&#x009A;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOOšZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOOšZOO\"
+    ),
   )
 }
 
@@ -2031,7 +3656,12 @@ test "html5lib/tree/entities01_222" {
   let doc = @html.parse("FOO&#x009B;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO›ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO›ZOO\"
+    ),
   )
 }
 
@@ -2040,7 +3670,12 @@ test "html5lib/tree/entities01_223" {
   let doc = @html.parse("FOO&#x009C;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOOœZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOOœZOO\"
+    ),
   )
 }
 
@@ -2049,7 +3684,12 @@ test "html5lib/tree/entities01_224" {
   let doc = @html.parse("FOO&#x009D;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\u{9d}ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\u{9d}ZOO\"
+    ),
   )
 }
 
@@ -2058,7 +3698,12 @@ test "html5lib/tree/entities01_225" {
   let doc = @html.parse("FOO&#x009E;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOOžZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOOžZOO\"
+    ),
   )
 }
 
@@ -2067,7 +3712,12 @@ test "html5lib/tree/entities01_226" {
   let doc = @html.parse("FOO&#x009F;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOOŸZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOOŸZOO\"
+    ),
   )
 }
 
@@ -2076,7 +3726,12 @@ test "html5lib/tree/entities01_227" {
   let doc = @html.parse("FOO&#x00A0;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO ZOO\"
+    ),
   )
 }
 
@@ -2085,7 +3740,12 @@ test "html5lib/tree/entities01_228" {
   let doc = @html.parse("FOO&#xD7FF;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO퟿ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO퟿ZOO\"
+    ),
   )
 }
 
@@ -2094,7 +3754,12 @@ test "html5lib/tree/entities01_229" {
   let doc = @html.parse("FOO&#xD800;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO�ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO�ZOO\"
+    ),
   )
 }
 
@@ -2103,7 +3768,12 @@ test "html5lib/tree/entities01_230" {
   let doc = @html.parse("FOO&#xD801;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO�ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO�ZOO\"
+    ),
   )
 }
 
@@ -2112,7 +3782,12 @@ test "html5lib/tree/entities01_231" {
   let doc = @html.parse("FOO&#xDFFE;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO�ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO�ZOO\"
+    ),
   )
 }
 
@@ -2121,7 +3796,12 @@ test "html5lib/tree/entities01_232" {
   let doc = @html.parse("FOO&#xDFFF;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO�ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO�ZOO\"
+    ),
   )
 }
 
@@ -2130,7 +3810,12 @@ test "html5lib/tree/entities01_233" {
   let doc = @html.parse("FOO&#xE000;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOOZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOOZOO\"
+    ),
   )
 }
 
@@ -2139,7 +3824,12 @@ test "html5lib/tree/entities01_234" {
   let doc = @html.parse("FOO&#x10FFFE;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO􏿾ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO􏿾ZOO\"
+    ),
   )
 }
 
@@ -2148,7 +3838,12 @@ test "html5lib/tree/entities01_235" {
   let doc = @html.parse("FOO&#x1087D4;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO􈟔ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO􈟔ZOO\"
+    ),
   )
 }
 
@@ -2157,7 +3852,12 @@ test "html5lib/tree/entities01_236" {
   let doc = @html.parse("FOO&#x10FFFF;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO􏿿ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO􏿿ZOO\"
+    ),
   )
 }
 
@@ -2166,7 +3866,12 @@ test "html5lib/tree/entities01_237" {
   let doc = @html.parse("FOO&#x110000;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO�ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO�ZOO\"
+    ),
   )
 }
 
@@ -2175,7 +3880,12 @@ test "html5lib/tree/entities01_238" {
   let doc = @html.parse("FOO&#xFFFFFF;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO�ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO�ZOO\"
+    ),
   )
 }
 
@@ -2184,7 +3894,12 @@ test "html5lib/tree/entities01_239" {
   let doc = @html.parse("FOO&#11111111111")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO�\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO�\"
+    ),
   )
 }
 
@@ -2193,7 +3908,12 @@ test "html5lib/tree/entities01_240" {
   let doc = @html.parse("FOO&#1111111111")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO�\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO�\"
+    ),
   )
 }
 
@@ -2202,7 +3922,12 @@ test "html5lib/tree/entities01_241" {
   let doc = @html.parse("FOO&#111111111111")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO�\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO�\"
+    ),
   )
 }
 
@@ -2211,7 +3936,12 @@ test "html5lib/tree/entities01_242" {
   let doc = @html.parse("FOO&#11111111111ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO�ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO�ZOO\"
+    ),
   )
 }
 
@@ -2220,7 +3950,12 @@ test "html5lib/tree/entities01_243" {
   let doc = @html.parse("FOO&#1111111111ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO�ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO�ZOO\"
+    ),
   )
 }
 
@@ -2229,7 +3964,12 @@ test "html5lib/tree/entities01_244" {
   let doc = @html.parse("FOO&#111111111111ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO�ZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO�ZOO\"
+    ),
   )
 }
 
@@ -2238,7 +3978,13 @@ test "html5lib/tree/entities02_245" {
   let doc = @html.parse("<div bar=\"ZZ&gt;YY\"></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       bar=\"ZZ>YY\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       bar=\"ZZ>YY\"
+    ),
   )
 }
 
@@ -2247,7 +3993,13 @@ test "html5lib/tree/entities02_246" {
   let doc = @html.parse("<div bar=\"ZZ&\"></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       bar=\"ZZ&\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       bar=\"ZZ&\"
+    ),
   )
 }
 
@@ -2256,7 +4008,13 @@ test "html5lib/tree/entities02_247" {
   let doc = @html.parse("<div bar='ZZ&'></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       bar=\"ZZ&\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       bar=\"ZZ&\"
+    ),
   )
 }
 
@@ -2265,7 +4023,13 @@ test "html5lib/tree/entities02_248" {
   let doc = @html.parse("<div bar=ZZ&></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       bar=\"ZZ&\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       bar=\"ZZ&\"
+    ),
   )
 }
 
@@ -2274,7 +4038,13 @@ test "html5lib/tree/entities02_249" {
   let doc = @html.parse("<div bar=\"ZZ&gt=YY\"></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       bar=\"ZZ&gt=YY\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       bar=\"ZZ&gt=YY\"
+    ),
   )
 }
 
@@ -2283,7 +4053,13 @@ test "html5lib/tree/entities02_250" {
   let doc = @html.parse("<div bar=\"ZZ&gt0YY\"></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       bar=\"ZZ&gt0YY\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       bar=\"ZZ&gt0YY\"
+    ),
   )
 }
 
@@ -2292,7 +4068,13 @@ test "html5lib/tree/entities02_251" {
   let doc = @html.parse("<div bar=\"ZZ&gt9YY\"></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       bar=\"ZZ&gt9YY\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       bar=\"ZZ&gt9YY\"
+    ),
   )
 }
 
@@ -2301,7 +4083,13 @@ test "html5lib/tree/entities02_252" {
   let doc = @html.parse("<div bar=\"ZZ&gtaYY\"></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       bar=\"ZZ&gtaYY\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       bar=\"ZZ&gtaYY\"
+    ),
   )
 }
 
@@ -2310,7 +4098,13 @@ test "html5lib/tree/entities02_253" {
   let doc = @html.parse("<div bar=\"ZZ&gtZYY\"></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       bar=\"ZZ&gtZYY\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       bar=\"ZZ&gtZYY\"
+    ),
   )
 }
 
@@ -2319,7 +4113,13 @@ test "html5lib/tree/entities02_254" {
   let doc = @html.parse("<div bar=\"ZZ&gt YY\"></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       bar=\"ZZ> YY\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       bar=\"ZZ> YY\"
+    ),
   )
 }
 
@@ -2328,7 +4128,13 @@ test "html5lib/tree/entities02_255" {
   let doc = @html.parse("<div bar=\"ZZ&gt\"></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       bar=\"ZZ>\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       bar=\"ZZ>\"
+    ),
   )
 }
 
@@ -2337,7 +4143,13 @@ test "html5lib/tree/entities02_256" {
   let doc = @html.parse("<div bar='ZZ&gt'></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       bar=\"ZZ>\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       bar=\"ZZ>\"
+    ),
   )
 }
 
@@ -2346,7 +4158,13 @@ test "html5lib/tree/entities02_257" {
   let doc = @html.parse("<div bar=ZZ&gt></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       bar=\"ZZ>\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       bar=\"ZZ>\"
+    ),
   )
 }
 
@@ -2355,7 +4173,13 @@ test "html5lib/tree/entities02_258" {
   let doc = @html.parse("<div bar=\"ZZ&pound_id=23\"></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       bar=\"ZZ£_id=23\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       bar=\"ZZ£_id=23\"
+    ),
   )
 }
 
@@ -2364,7 +4188,13 @@ test "html5lib/tree/entities02_259" {
   let doc = @html.parse("<div bar=\"ZZ&prod_id=23\"></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       bar=\"ZZ&prod_id=23\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       bar=\"ZZ&prod_id=23\"
+    ),
   )
 }
 
@@ -2373,7 +4203,13 @@ test "html5lib/tree/entities02_260" {
   let doc = @html.parse("<div bar=\"ZZ&pound;_id=23\"></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       bar=\"ZZ£_id=23\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       bar=\"ZZ£_id=23\"
+    ),
   )
 }
 
@@ -2382,7 +4218,13 @@ test "html5lib/tree/entities02_261" {
   let doc = @html.parse("<div bar=\"ZZ&prod;_id=23\"></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       bar=\"ZZ∏_id=23\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       bar=\"ZZ∏_id=23\"
+    ),
   )
 }
 
@@ -2391,7 +4233,13 @@ test "html5lib/tree/entities02_262" {
   let doc = @html.parse("<div bar=\"ZZ&pound=23\"></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       bar=\"ZZ&pound=23\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       bar=\"ZZ&pound=23\"
+    ),
   )
 }
 
@@ -2400,7 +4248,13 @@ test "html5lib/tree/entities02_263" {
   let doc = @html.parse("<div bar=\"ZZ&prod=23\"></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       bar=\"ZZ&prod=23\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       bar=\"ZZ&prod=23\"
+    ),
   )
 }
 
@@ -2409,7 +4263,13 @@ test "html5lib/tree/entities02_264" {
   let doc = @html.parse("<div>ZZ&pound_id=23</div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       \"ZZ£_id=23\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       \"ZZ£_id=23\"
+    ),
   )
 }
 
@@ -2418,7 +4278,13 @@ test "html5lib/tree/entities02_265" {
   let doc = @html.parse("<div>ZZ&prod_id=23</div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       \"ZZ&prod_id=23\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       \"ZZ&prod_id=23\"
+    ),
   )
 }
 
@@ -2427,7 +4293,13 @@ test "html5lib/tree/entities02_266" {
   let doc = @html.parse("<div>ZZ&pound;_id=23</div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       \"ZZ£_id=23\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       \"ZZ£_id=23\"
+    ),
   )
 }
 
@@ -2436,7 +4308,13 @@ test "html5lib/tree/entities02_267" {
   let doc = @html.parse("<div>ZZ&prod;_id=23</div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       \"ZZ∏_id=23\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       \"ZZ∏_id=23\"
+    ),
   )
 }
 
@@ -2445,7 +4323,13 @@ test "html5lib/tree/entities02_268" {
   let doc = @html.parse("<div>ZZ&pound=23</div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       \"ZZ£=23\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       \"ZZ£=23\"
+    ),
   )
 }
 
@@ -2454,7 +4338,13 @@ test "html5lib/tree/entities02_269" {
   let doc = @html.parse("<div>ZZ&prod=23</div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       \"ZZ&prod=23\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       \"ZZ&prod=23\"
+    ),
   )
 }
 
@@ -2463,7 +4353,13 @@ test "html5lib/tree/entities02_270" {
   let doc = @html.parse("<div>ZZ&AElig=</div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       \"ZZÆ=\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       \"ZZÆ=\"
+    ),
   )
 }
 
@@ -2472,7 +4368,12 @@ test "html5lib/tree/html5test-com_337" {
   let doc = @html.parse("<div<div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div<div>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div<div>
+    ),
   )
 }
 
@@ -2481,7 +4382,13 @@ test "html5lib/tree/html5test-com_338" {
   let doc = @html.parse("<div foo<bar=''>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       foo<bar=\"\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       foo<bar=\"\"
+    ),
   )
 }
 
@@ -2490,7 +4397,13 @@ test "html5lib/tree/html5test-com_339" {
   let doc = @html.parse("<div foo=`bar`>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       foo=\"`bar`\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       foo=\"`bar`\"
+    ),
   )
 }
 
@@ -2499,7 +4412,13 @@ test "html5lib/tree/html5test-com_340" {
   let doc = @html.parse("<div \\\"foo=''>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       \\\"foo=\"\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       \\\"foo=\"\"
+    ),
   )
 }
 
@@ -2508,7 +4427,13 @@ test "html5lib/tree/html5test-com_341" {
   let doc = @html.parse("<a href='\\nbar'></a>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <a>\n|       href=\"\\nbar\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <a>
+      #||       href=\"\\nbar\"
+    ),
   )
 }
 
@@ -2517,7 +4442,12 @@ test "html5lib/tree/html5test-com_342" {
   let doc = @html.parse("<!DOCTYPE html>")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
   )
 }
 
@@ -2526,20 +4456,41 @@ test "html5lib/tree/html5test-com_343" {
   let doc = @html.parse("&lang;&rang;")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"⟨⟩\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"⟨⟩\"
+    ),
   )
 }
 
 ///|
 test "html5lib/tree/html5test-com_344" {
   let doc = @html.parse("&apos;")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <body>\n|     \"'\"")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"'\"
+    ),
+  )
 }
 
 ///|
 test "html5lib/tree/html5test-com_345" {
   let doc = @html.parse("&ImaginaryI;")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <body>\n|     \"ⅈ\"")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"ⅈ\"
+    ),
+  )
 }
 
 ///|
@@ -2547,14 +4498,27 @@ test "html5lib/tree/html5test-com_346" {
   let doc = @html.parse("&Kopf;")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"𝕂\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"𝕂\"
+    ),
   )
 }
 
 ///|
 test "html5lib/tree/html5test-com_347" {
   let doc = @html.parse("&notinva;")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <body>\n|     \"∉\"")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"∉\"
+    ),
+  )
 }
 
 ///|
@@ -2562,7 +4526,12 @@ test "html5lib/tree/html5test-com_348" {
   let doc = @html.parse("<?import namespace=\"foo\" implementation=\"#bar\">")
   inspect(
     doc.dump(),
-    content="| <!-- ?import namespace=\"foo\" implementation=\"#bar\" -->\n| <html>\n|   <head>\n|   <body>",
+    content=(
+      #|| <!-- ?import namespace=\"foo\" implementation=\"#bar\" -->
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
   )
 }
 
@@ -2571,7 +4540,12 @@ test "html5lib/tree/html5test-com_349" {
   let doc = @html.parse("<!--foo--bar-->")
   inspect(
     doc.dump(),
-    content="| <!-- foo--bar -->\n| <html>\n|   <head>\n|   <body>",
+    content=(
+      #|| <!-- foo--bar -->
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
   )
 }
 
@@ -2580,7 +4554,12 @@ test "html5lib/tree/html5test-com_350" {
   let doc = @html.parse("<![CDATA[x]]>")
   inspect(
     doc.dump(),
-    content="| <!-- [CDATA[x]] -->\n| <html>\n|   <head>\n|   <body>",
+    content=(
+      #|| <!-- [CDATA[x]] -->
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
   )
 }
 
@@ -2589,7 +4568,14 @@ test "html5lib/tree/html5test-com_351" {
   let doc = @html.parse("<textarea><!--</textarea>--></textarea>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <textarea>\n|       \"<!--\"\n|     \"-->\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <textarea>
+      #||       \"<!--\"
+      #||     \"-->\"
+    ),
   )
 }
 
@@ -2598,7 +4584,14 @@ test "html5lib/tree/html5test-com_352" {
   let doc = @html.parse("<textarea><!--</textarea>-->")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <textarea>\n|       \"<!--\"\n|     \"-->\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <textarea>
+      #||       \"<!--\"
+      #||     \"-->\"
+    ),
   )
 }
 
@@ -2607,7 +4600,14 @@ test "html5lib/tree/html5test-com_353" {
   let doc = @html.parse("<style><!--</style>--></style>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <style>\n|       \"<!--\"\n|   <body>\n|     \"-->\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <style>
+      #||       \"<!--\"
+      #||   <body>
+      #||     \"-->\"
+    ),
   )
 }
 
@@ -2616,7 +4616,14 @@ test "html5lib/tree/html5test-com_354" {
   let doc = @html.parse("<style><!--</style>-->")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <style>\n|       \"<!--\"\n|   <body>\n|     \"-->\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <style>
+      #||       \"<!--\"
+      #||   <body>
+      #||     \"-->\"
+    ),
   )
 }
 
@@ -2625,7 +4632,17 @@ test "html5lib/tree/html5test-com_355" {
   let doc = @html.parse("<ul><li>A </li> <li>B</li></ul>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ul>\n|       <li>\n|         \"A \"\n|       \" \"\n|       <li>\n|         \"B\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ul>
+      #||       <li>
+      #||         \"A \"
+      #||       \" \"
+      #||       <li>
+      #||         \"B\"
+    ),
   )
 }
 
@@ -2636,7 +4653,17 @@ test "html5lib/tree/html5test-com_356" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <input>\n|     <div>\n|     <table>\n|       <form>\n|       <input>\n|         type=\"hidden\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <input>
+      #||     <div>
+      #||     <table>
+      #||       <form>
+      #||       <input>
+      #||         type=\"hidden\"
+    ),
   )
 }
 
@@ -2645,14 +4672,36 @@ test "html5lib/tree/html5test-com_357" {
   let doc = @html.parse("<i>A<b>B<p></i>C</b>D")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <i>\n|       \"A\"\n|       <b>\n|         \"B\"\n|     <b>\n|     <p>\n|       <b>\n|         <i>\n|         \"C\"\n|       \"D\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <i>
+      #||       \"A\"
+      #||       <b>
+      #||         \"B\"
+      #||     <b>
+      #||     <p>
+      #||       <b>
+      #||         <i>
+      #||         \"C\"
+      #||       \"D\"
+    ),
   )
 }
 
 ///|
 test "html5lib/tree/html5test-com_358" {
   let doc = @html.parse("<div></div>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <body>\n|     <div>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+    ),
+  )
 }
 
 ///|
@@ -2660,7 +4709,12 @@ test "html5lib/tree/html5test-com_359" {
   let doc = @html.parse("<svg></svg>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <svg svg>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <svg svg>
+    ),
   )
 }
 
@@ -2669,7 +4723,12 @@ test "html5lib/tree/html5test-com_360" {
   let doc = @html.parse("<math></math>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <math math>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <math math>
+    ),
   )
 }
 
@@ -2678,7 +4737,13 @@ test "html5lib/tree/inbody01_361" {
   let doc = @html.parse("<button>1</foo>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <button>\n|       \"1\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <button>
+      #||       \"1\"
+    ),
   )
 }
 
@@ -2687,7 +4752,15 @@ test "html5lib/tree/inbody01_362" {
   let doc = @html.parse("<foo>1<p>2</foo>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <foo>\n|       \"1\"\n|       <p>\n|         \"2\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <foo>
+      #||       \"1\"
+      #||       <p>
+      #||         \"2\"
+    ),
   )
 }
 
@@ -2696,7 +4769,13 @@ test "html5lib/tree/inbody01_363" {
   let doc = @html.parse("<dd>1</foo>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <dd>\n|       \"1\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <dd>
+      #||       \"1\"
+    ),
   )
 }
 
@@ -2705,7 +4784,15 @@ test "html5lib/tree/inbody01_364" {
   let doc = @html.parse("<foo>1<dd>2</foo>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <foo>\n|       \"1\"\n|       <dd>\n|         \"2\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <foo>
+      #||       \"1\"
+      #||       <dd>
+      #||         \"2\"
+    ),
   )
 }
 
@@ -2714,7 +4801,12 @@ test "html5lib/tree/isindex_365" {
   let doc = @html.parse("<isindex>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <isindex>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <isindex>
+    ),
   )
 }
 
@@ -2725,7 +4817,16 @@ test "html5lib/tree/isindex_366" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <isindex>\n|       action=\"B\"\n|       foo=\"D\"\n|       name=\"A\"\n|       prompt=\"C\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <isindex>
+      #||       action=\"B\"
+      #||       foo=\"D\"
+      #||       name=\"A\"
+      #||       prompt=\"C\"
+    ),
   )
 }
 
@@ -2734,7 +4835,13 @@ test "html5lib/tree/isindex_367" {
   let doc = @html.parse("<form><isindex>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <form>\n|       <isindex>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <form>
+      #||       <isindex>
+    ),
   )
 }
 
@@ -2743,7 +4850,15 @@ test "html5lib/tree/isindex_368" {
   let doc = @html.parse("<!doctype html><isindex>x</isindex>x")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <isindex>\n|       \"x\"\n|     \"x\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <isindex>
+      #||       \"x\"
+      #||     \"x\"
+    ),
   )
 }
 
@@ -2752,7 +4867,18 @@ test "html5lib/tree/main-element_369" {
   let doc = @html.parse("<!doctype html><p>foo<main>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <main>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <main>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -2761,7 +4887,16 @@ test "html5lib/tree/main-element_370" {
   let doc = @html.parse("<!doctype html><main><p>foo</main>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <main>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <main>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -2770,7 +4905,19 @@ test "html5lib/tree/main-element_371" {
   let doc = @html.parse("<!DOCTYPE html>xxx<svg><x><g><a><main><b>")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     \"xxx\"\n|     <svg svg>\n|       <svg x>\n|         <svg g>\n|           <svg a>\n|             <svg main>\n|     <b>",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"xxx\"
+      #||     <svg svg>
+      #||       <svg x>
+      #||         <svg g>
+      #||           <svg a>
+      #||             <svg main>
+      #||     <b>
+    ),
   )
 }
 
@@ -2779,14 +4926,26 @@ test "html5lib/tree/menuitem-element_380" {
   let doc = @html.parse("<menuitem>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <menuitem>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <menuitem>
+    ),
   )
 }
 
 ///|
 test "html5lib/tree/menuitem-element_381" {
   let doc = @html.parse("</menuitem>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <body>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
+  )
 }
 
 ///|
@@ -2794,7 +4953,14 @@ test "html5lib/tree/menuitem-element_382" {
   let doc = @html.parse("<!DOCTYPE html><body><menuitem>A")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <menuitem>\n|       \"A\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <menuitem>
+      #||       \"A\"
+    ),
   )
 }
 
@@ -2803,7 +4969,16 @@ test "html5lib/tree/menuitem-element_383" {
   let doc = @html.parse("<!DOCTYPE html><body><menuitem>A<menuitem>B")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <menuitem>\n|       \"A\"\n|       <menuitem>\n|         \"B\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <menuitem>
+      #||       \"A\"
+      #||       <menuitem>
+      #||         \"B\"
+    ),
   )
 }
 
@@ -2812,7 +4987,16 @@ test "html5lib/tree/menuitem-element_384" {
   let doc = @html.parse("<!DOCTYPE html><body><menuitem>A<menu>B</menu>")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <menuitem>\n|       \"A\"\n|       <menu>\n|         \"B\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <menuitem>
+      #||       \"A\"
+      #||       <menu>
+      #||         \"B\"
+    ),
   )
 }
 
@@ -2821,7 +5005,16 @@ test "html5lib/tree/menuitem-element_385" {
   let doc = @html.parse("<!DOCTYPE html><body><menuitem>A<hr>B")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <menuitem>\n|       \"A\"\n|       <hr>\n|       \"B\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <menuitem>
+      #||       \"A\"
+      #||       <hr>
+      #||       \"B\"
+    ),
   )
 }
 
@@ -2830,7 +5023,15 @@ test "html5lib/tree/menuitem-element_386" {
   let doc = @html.parse("<!DOCTYPE html><li><menuitem><li>")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <li>\n|       <menuitem>\n|     <li>",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <li>
+      #||       <menuitem>
+      #||     <li>
+    ),
   )
 }
 
@@ -2839,7 +5040,15 @@ test "html5lib/tree/menuitem-element_387" {
   let doc = @html.parse("<!DOCTYPE html><menuitem><p></menuitem>x")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <menuitem>\n|       <p>\n|         \"x\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <menuitem>
+      #||       <p>
+      #||         \"x\"
+    ),
   )
 }
 
@@ -2848,7 +5057,16 @@ test "html5lib/tree/menuitem-element_388" {
   let doc = @html.parse("<!DOCTYPE html><p><b></p><menuitem>")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       <b>\n|     <b>\n|       <menuitem>",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       <b>
+      #||     <b>
+      #||       <menuitem>
+    ),
   )
 }
 
@@ -2857,7 +5075,15 @@ test "html5lib/tree/menuitem-element_389" {
   let doc = @html.parse("<!DOCTYPE html><menuitem><asdf></menuitem>x")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <menuitem>\n|       <asdf>\n|     \"x\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <menuitem>
+      #||       <asdf>
+      #||     \"x\"
+    ),
   )
 }
 
@@ -2866,7 +5092,12 @@ test "html5lib/tree/menuitem-element_390" {
   let doc = @html.parse("<!DOCTYPE html></menuitem>")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
   )
 }
 
@@ -2875,7 +5106,12 @@ test "html5lib/tree/menuitem-element_391" {
   let doc = @html.parse("<!DOCTYPE html><html></menuitem>")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
   )
 }
 
@@ -2884,7 +5120,12 @@ test "html5lib/tree/menuitem-element_392" {
   let doc = @html.parse("<!DOCTYPE html><head></menuitem>")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
   )
 }
 
@@ -2893,7 +5134,14 @@ test "html5lib/tree/menuitem-element_393" {
   let doc = @html.parse("<!DOCTYPE html><select><menuitem></select>")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <select>\n|       <menuitem>",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <select>
+      #||       <menuitem>
+    ),
   )
 }
 
@@ -2902,7 +5150,14 @@ test "html5lib/tree/menuitem-element_394" {
   let doc = @html.parse("<!DOCTYPE html><option><menuitem>")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <option>\n|       <menuitem>",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <option>
+      #||       <menuitem>
+    ),
   )
 }
 
@@ -2911,7 +5166,14 @@ test "html5lib/tree/menuitem-element_395" {
   let doc = @html.parse("<!DOCTYPE html><menuitem><option>")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <menuitem>\n|       <option>",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <menuitem>
+      #||       <option>
+    ),
   )
 }
 
@@ -2920,7 +5182,13 @@ test "html5lib/tree/menuitem-element_396" {
   let doc = @html.parse("<!DOCTYPE html><menuitem></body>")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <menuitem>",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <menuitem>
+    ),
   )
 }
 
@@ -2929,7 +5197,13 @@ test "html5lib/tree/menuitem-element_397" {
   let doc = @html.parse("<!DOCTYPE html><menuitem></html>")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <menuitem>",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <menuitem>
+    ),
   )
 }
 
@@ -2938,7 +5212,14 @@ test "html5lib/tree/menuitem-element_398" {
   let doc = @html.parse("<!DOCTYPE html><menuitem><p>")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <menuitem>\n|       <p>",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <menuitem>
+      #||       <p>
+    ),
   )
 }
 
@@ -2947,7 +5228,14 @@ test "html5lib/tree/menuitem-element_399" {
   let doc = @html.parse("<!DOCTYPE html><menuitem><li>")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <menuitem>\n|       <li>",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <menuitem>
+      #||       <li>
+    ),
   )
 }
 
@@ -2958,7 +5246,20 @@ test "html5lib/tree/namespace-sensitivity_400" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"Foo\"\n|     <table>\n|       <tbody>\n|         <tr>\n|           <td>\n|             <svg svg>\n|               <svg td>\n|                 <svg foreignObject>\n|                   <span>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"Foo\"
+      #||     <table>
+      #||       <tbody>
+      #||         <tr>
+      #||           <td>
+      #||             <svg svg>
+      #||               <svg td>
+      #||                 <svg foreignObject>
+      #||                   <span>
+    ),
   )
 }
 
@@ -2967,7 +5268,13 @@ test "html5lib/tree/noscript01_401" {
   let doc = @html.parse("<head><noscript><!doctype html><!--foo--></noscript>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <noscript>\n|       <!-- foo -->\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <noscript>
+      #||       <!-- foo -->
+      #||   <body>
+    ),
   )
 }
 
@@ -2978,7 +5285,14 @@ test "html5lib/tree/noscript01_402" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   class=\"foo\"\n|   <head>\n|     <noscript>\n|       <!-- foo -->\n|   <body>",
+    content=(
+      #|| <html>
+      #||   class=\"foo\"
+      #||   <head>
+      #||     <noscript>
+      #||       <!-- foo -->
+      #||   <body>
+    ),
   )
 }
 
@@ -2987,7 +5301,12 @@ test "html5lib/tree/noscript01_403" {
   let doc = @html.parse("<head><noscript></noscript>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <noscript>\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <noscript>
+      #||   <body>
+    ),
   )
 }
 
@@ -2996,7 +5315,13 @@ test "html5lib/tree/noscript01_404" {
   let doc = @html.parse("<head><noscript>   </noscript>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <noscript>\n|       \"   \"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <noscript>
+      #||       \"   \"
+      #||   <body>
+    ),
   )
 }
 
@@ -3005,7 +5330,13 @@ test "html5lib/tree/noscript01_405" {
   let doc = @html.parse("<head><noscript><!--foo--></noscript>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <noscript>\n|       <!-- foo -->\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <noscript>
+      #||       <!-- foo -->
+      #||   <body>
+    ),
   )
 }
 
@@ -3014,7 +5345,14 @@ test "html5lib/tree/noscript01_406" {
   let doc = @html.parse("<head><noscript><basefont><!--foo--></noscript>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <noscript>\n|       <basefont>\n|       <!-- foo -->\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <noscript>
+      #||       <basefont>
+      #||       <!-- foo -->
+      #||   <body>
+    ),
   )
 }
 
@@ -3023,7 +5361,14 @@ test "html5lib/tree/noscript01_407" {
   let doc = @html.parse("<head><noscript><bgsound><!--foo--></noscript>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <noscript>\n|       <bgsound>\n|       <!-- foo -->\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <noscript>
+      #||       <bgsound>
+      #||       <!-- foo -->
+      #||   <body>
+    ),
   )
 }
 
@@ -3032,7 +5377,14 @@ test "html5lib/tree/noscript01_408" {
   let doc = @html.parse("<head><noscript><link><!--foo--></noscript>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <noscript>\n|       <link>\n|       <!-- foo -->\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <noscript>
+      #||       <link>
+      #||       <!-- foo -->
+      #||   <body>
+    ),
   )
 }
 
@@ -3041,7 +5393,14 @@ test "html5lib/tree/noscript01_409" {
   let doc = @html.parse("<head><noscript><meta><!--foo--></noscript>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <noscript>\n|       <meta>\n|       <!-- foo -->\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <noscript>
+      #||       <meta>
+      #||       <!-- foo -->
+      #||   <body>
+    ),
   )
 }
 
@@ -3052,7 +5411,14 @@ test "html5lib/tree/noscript01_410" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <noscript>\n|       <noframes>\n|         \"XXX</noscript>\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <noscript>
+      #||       <noframes>
+      #||         \"XXX</noscript>\"
+      #||   <body>
+    ),
   )
 }
 
@@ -3061,7 +5427,14 @@ test "html5lib/tree/noscript01_411" {
   let doc = @html.parse("<head><noscript><style>XXX</style></noscript>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <noscript>\n|       <style>\n|         \"XXX\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <noscript>
+      #||       <style>
+      #||         \"XXX\"
+      #||   <body>
+    ),
   )
 }
 
@@ -3070,7 +5443,14 @@ test "html5lib/tree/noscript01_412" {
   let doc = @html.parse("<head><noscript></br><!--foo--></noscript>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <noscript>\n|   <body>\n|     <br>\n|     <!-- foo -->",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <noscript>
+      #||   <body>
+      #||     <br>
+      #||     <!-- foo -->
+    ),
   )
 }
 
@@ -3081,7 +5461,13 @@ test "html5lib/tree/noscript01_413" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <noscript>\n|       <!-- foo -->\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <noscript>
+      #||       <!-- foo -->
+      #||   <body>
+    ),
   )
 }
 
@@ -3092,7 +5478,13 @@ test "html5lib/tree/noscript01_414" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <noscript>\n|       <!-- foo -->\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <noscript>
+      #||       <!-- foo -->
+      #||   <body>
+    ),
   )
 }
 
@@ -3101,7 +5493,13 @@ test "html5lib/tree/noscript01_415" {
   let doc = @html.parse("<head><noscript></p><!--foo--></noscript>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <noscript>\n|       <!-- foo -->\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <noscript>
+      #||       <!-- foo -->
+      #||   <body>
+    ),
   )
 }
 
@@ -3110,7 +5508,14 @@ test "html5lib/tree/noscript01_416" {
   let doc = @html.parse("<head><noscript><p><!--foo--></noscript>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <noscript>\n|   <body>\n|     <p>\n|       <!-- foo -->",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <noscript>
+      #||   <body>
+      #||     <p>
+      #||       <!-- foo -->
+    ),
   )
 }
 
@@ -3119,7 +5524,14 @@ test "html5lib/tree/noscript01_417" {
   let doc = @html.parse("<head><noscript>XXX<!--foo--></noscript></head>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <noscript>\n|   <body>\n|     \"XXX\"\n|     <!-- foo -->",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <noscript>
+      #||   <body>
+      #||     \"XXX\"
+      #||     <!-- foo -->
+    ),
   )
 }
 
@@ -3128,7 +5540,12 @@ test "html5lib/tree/noscript01_418" {
   let doc = @html.parse("<head><noscript>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <noscript>\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <noscript>
+      #||   <body>
+    ),
   )
 }
 
@@ -3137,14 +5554,27 @@ test "html5lib/tree/pending-spec-changes-plain-text-unsafe_419" {
   let doc = @html.parse("<body><table>\u{0}filler\u{0}text\u{0}")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"fillertext\"\n|     <table>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"fillertext\"
+      #||     <table>
+    ),
   )
 }
 
 ///|
 test "html5lib/tree/pending-spec-changes_420" {
   let doc = @html.parse("<input type=\"hidden\"><frameset>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <frameset>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <frameset>
+    ),
+  )
 }
 
 ///|
@@ -3152,7 +5582,17 @@ test "html5lib/tree/pending-spec-changes_421" {
   let doc = @html.parse("<!DOCTYPE html><table><caption><svg>foo</table>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <caption>\n|         <svg svg>\n|           \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <caption>
+      #||         <svg svg>
+      #||           \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -3161,7 +5601,19 @@ test "html5lib/tree/pending-spec-changes_422" {
   let doc = @html.parse("<table><tr><td><svg><desc><td></desc><circle>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <tbody>\n|         <tr>\n|           <td>\n|             <svg svg>\n|               <svg desc>\n|           <td>\n|             <circle>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <tbody>
+      #||         <tr>
+      #||           <td>
+      #||             <svg svg>
+      #||               <svg desc>
+      #||           <td>
+      #||             <circle>
+    ),
   )
 }
 
@@ -3170,38 +5622,80 @@ test "html5lib/tree/plain-text-unsafe_423" {
   let doc = @html.parse("FOO&#x000D;ZOO")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\nZOO\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO
+      #|ZOO\"
+    ),
   )
 }
 
 ///|
 test "html5lib/tree/plain-text-unsafe_424" {
   let doc = @html.parse("<html>\u{0}<frameset></frameset>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <frameset>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <frameset>
+    ),
+  )
 }
 
 ///|
 test "html5lib/tree/plain-text-unsafe_425" {
   let doc = @html.parse("<html> \u{0} <frameset></frameset>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <frameset>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <frameset>
+    ),
+  )
 }
 
 ///|
 test "html5lib/tree/plain-text-unsafe_426" {
   let doc = @html.parse("<html>a\u{0}a<frameset></frameset>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <body>\n|     \"aa\"")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"aa\"
+    ),
+  )
 }
 
 ///|
 test "html5lib/tree/plain-text-unsafe_427" {
   let doc = @html.parse("<html>\u{0}\u{0}<frameset></frameset>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <frameset>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <frameset>
+    ),
+  )
 }
 
 ///|
 test "html5lib/tree/plain-text-unsafe_428" {
   let doc = @html.parse("<html>\u{0}\n<frameset></frameset>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <frameset>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <frameset>
+    ),
+  )
 }
 
 ///|
@@ -3209,20 +5703,39 @@ test "html5lib/tree/plain-text-unsafe_429" {
   let doc = @html.parse("<html><select>\u{0}")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <select>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <select>
+    ),
   )
 }
 
 ///|
 test "html5lib/tree/plain-text-unsafe_430" {
   let doc = @html.parse("\u{0}")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <body>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
+  )
 }
 
 ///|
 test "html5lib/tree/plain-text-unsafe_431" {
   let doc = @html.parse("<body>\u{0}")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <body>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+    ),
+  )
 }
 
 ///|
@@ -3230,7 +5743,13 @@ test "html5lib/tree/plain-text-unsafe_432" {
   let doc = @html.parse("<plaintext>\u{0}filler\u{0}text\u{0}")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <plaintext>\n|       \"�filler�text�\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <plaintext>
+      #||       \"�filler�text�\"
+    ),
   )
 }
 
@@ -3239,7 +5758,13 @@ test "html5lib/tree/plain-text-unsafe_433" {
   let doc = @html.parse("<svg><![CDATA[\u{0}filler\u{0}text\u{0}]]>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <svg svg>\n|       \"�filler�text�\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <svg svg>
+      #||       \"�filler�text�\"
+    ),
   )
 }
 
@@ -3248,7 +5773,12 @@ test "html5lib/tree/plain-text-unsafe_434" {
   let doc = @html.parse("<body><!\u{0}>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <!-- � -->",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <!-- � -->
+    ),
   )
 }
 
@@ -3257,7 +5787,12 @@ test "html5lib/tree/plain-text-unsafe_435" {
   let doc = @html.parse("<body><!\u{0}filler\u{0}text>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <!-- �filler�text -->",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <!-- �filler�text -->
+    ),
   )
 }
 
@@ -3266,7 +5801,14 @@ test "html5lib/tree/plain-text-unsafe_436" {
   let doc = @html.parse("<body><svg><foreignObject>\u{0}filler\u{0}text")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <svg svg>\n|       <svg foreignObject>\n|         \"fillertext\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <svg svg>
+      #||       <svg foreignObject>
+      #||         \"fillertext\"
+    ),
   )
 }
 
@@ -3275,7 +5817,13 @@ test "html5lib/tree/plain-text-unsafe_437" {
   let doc = @html.parse("<svg>\u{0}filler\u{0}text")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <svg svg>\n|       \"�filler�text\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <svg svg>
+      #||       \"�filler�text\"
+    ),
   )
 }
 
@@ -3284,7 +5832,14 @@ test "html5lib/tree/plain-text-unsafe_438" {
   let doc = @html.parse("<svg>\u{0}<frameset>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <svg svg>\n|       \"�\"\n|       <svg frameset>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <svg svg>
+      #||       \"�\"
+      #||       <svg frameset>
+    ),
   )
 }
 
@@ -3293,7 +5848,14 @@ test "html5lib/tree/plain-text-unsafe_439" {
   let doc = @html.parse("<svg>\u{0} <frameset>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <svg svg>\n|       \"� \"\n|       <svg frameset>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <svg svg>
+      #||       \"� \"
+      #||       <svg frameset>
+    ),
   )
 }
 
@@ -3302,20 +5864,41 @@ test "html5lib/tree/plain-text-unsafe_440" {
   let doc = @html.parse("<svg>\u{0}a<frameset>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <svg svg>\n|       \"�a\"\n|       <svg frameset>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <svg svg>
+      #||       \"�a\"
+      #||       <svg frameset>
+    ),
   )
 }
 
 ///|
 test "html5lib/tree/plain-text-unsafe_441" {
   let doc = @html.parse("<svg>\u{0}</svg><frameset>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <frameset>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <frameset>
+    ),
+  )
 }
 
 ///|
 test "html5lib/tree/plain-text-unsafe_442" {
   let doc = @html.parse("<svg>\u{0} </svg><frameset>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <frameset>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <frameset>
+    ),
+  )
 }
 
 ///|
@@ -3323,20 +5906,40 @@ test "html5lib/tree/plain-text-unsafe_443" {
   let doc = @html.parse("<svg>\u{0}a</svg><frameset>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <svg svg>\n|       \"�a\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <svg svg>
+      #||       \"�a\"
+    ),
   )
 }
 
 ///|
 test "html5lib/tree/plain-text-unsafe_444" {
   let doc = @html.parse("<svg><path></path></svg><frameset>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <frameset>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <frameset>
+    ),
+  )
 }
 
 ///|
 test "html5lib/tree/plain-text-unsafe_445" {
   let doc = @html.parse("<svg><p><frameset>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <frameset>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <frameset>
+    ),
+  )
 }
 
 ///|
@@ -3344,7 +5947,15 @@ test "html5lib/tree/plain-text-unsafe_446" {
   let doc = @html.parse("<!DOCTYPE html><pre>\n\nA</pre>")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <pre>\n|       \"\nA\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <pre>
+      #||       \"
+      #|A\"
+    ),
   )
 }
 
@@ -3353,7 +5964,15 @@ test "html5lib/tree/plain-text-unsafe_447" {
   let doc = @html.parse("<!DOCTYPE html><pre>\n\nA</pre>")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <pre>\n|       \"\nA\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <pre>
+      #||       \"
+      #|A\"
+    ),
   )
 }
 
@@ -3362,7 +5981,14 @@ test "html5lib/tree/plain-text-unsafe_448" {
   let doc = @html.parse("<!DOCTYPE html><pre>\nA</pre>")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <pre>\n|       \"A\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <pre>
+      #||       \"A\"
+    ),
   )
 }
 
@@ -3371,7 +5997,19 @@ test "html5lib/tree/plain-text-unsafe_449" {
   let doc = @html.parse("<!DOCTYPE html><table><tr><td><math><mtext>\u{0}a")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <tbody>\n|         <tr>\n|           <td>\n|             <math math>\n|               <math mtext>\n|                 \"a\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <tbody>
+      #||         <tr>
+      #||           <td>
+      #||             <math math>
+      #||               <math mtext>
+      #||                 \"a\"
+    ),
   )
 }
 
@@ -3382,7 +6020,19 @@ test "html5lib/tree/plain-text-unsafe_450" {
   )
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <tbody>\n|         <tr>\n|           <td>\n|             <svg svg>\n|               <svg foreignObject>\n|                 \"a\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <tbody>
+      #||         <tr>
+      #||           <td>
+      #||             <svg svg>
+      #||               <svg foreignObject>
+      #||                 \"a\"
+    ),
   )
 }
 
@@ -3391,7 +6041,15 @@ test "html5lib/tree/plain-text-unsafe_451" {
   let doc = @html.parse("<!DOCTYPE html><math><mi>a\u{0}b")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <math math>\n|       <math mi>\n|         \"ab\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <math math>
+      #||       <math mi>
+      #||         \"ab\"
+    ),
   )
 }
 
@@ -3400,7 +6058,15 @@ test "html5lib/tree/plain-text-unsafe_452" {
   let doc = @html.parse("<!DOCTYPE html><math><mo>a\u{0}b")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <math math>\n|       <math mo>\n|         \"ab\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <math math>
+      #||       <math mo>
+      #||         \"ab\"
+    ),
   )
 }
 
@@ -3409,7 +6075,15 @@ test "html5lib/tree/plain-text-unsafe_453" {
   let doc = @html.parse("<!DOCTYPE html><math><mn>a\u{0}b")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <math math>\n|       <math mn>\n|         \"ab\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <math math>
+      #||       <math mn>
+      #||         \"ab\"
+    ),
   )
 }
 
@@ -3418,7 +6092,15 @@ test "html5lib/tree/plain-text-unsafe_454" {
   let doc = @html.parse("<!DOCTYPE html><math><ms>a\u{0}b")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <math math>\n|       <math ms>\n|         \"ab\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <math math>
+      #||       <math ms>
+      #||         \"ab\"
+    ),
   )
 }
 
@@ -3427,7 +6109,15 @@ test "html5lib/tree/plain-text-unsafe_455" {
   let doc = @html.parse("<!DOCTYPE html><math><mtext>a\u{0}b")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <math math>\n|       <math mtext>\n|         \"ab\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <math math>
+      #||       <math mtext>
+      #||         \"ab\"
+    ),
   )
 }
 
@@ -3438,7 +6128,14 @@ test "html5lib/tree/quirks01_456" {
   )
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html \"-//W3C//DTD XHTML 1.0 Frameset//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd\">\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|     <table>",
+    content=(
+      #|| <!DOCTYPE html \"-//W3C//DTD XHTML 1.0 Frameset//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd\">
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||     <table>
+    ),
   )
 }
 
@@ -3449,7 +6146,14 @@ test "html5lib/tree/quirks01_457" {
   )
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html \"\" \"http://www.ibm.com/data/dtd/v11/ibmxhtml1-transitional.dtd\">\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       <table>",
+    content=(
+      #|| <!DOCTYPE html \"\" \"http://www.ibm.com/data/dtd/v11/ibmxhtml1-transitional.dtd\">
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       <table>
+    ),
   )
 }
 
@@ -3458,7 +6162,14 @@ test "html5lib/tree/quirks01_458" {
   let doc = @html.parse("<!DOCTYPE html PUBLIC \"html\"><p><table>")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html \"html\" \"\">\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       <table>",
+    content=(
+      #|| <!DOCTYPE html \"html\" \"\">
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       <table>
+    ),
   )
 }
 
@@ -3469,7 +6180,14 @@ test "html5lib/tree/quirks01_459" {
   )
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html \"-//W3C//DTD HTML 3.2//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       <table>",
+    content=(
+      #|| <!DOCTYPE html \"-//W3C//DTD HTML 3.2//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       <table>
+    ),
   )
 }
 
@@ -3478,7 +6196,16 @@ test "html5lib/tree/ruby_460" {
   let doc = @html.parse("<html><ruby>a<rb>b<rb></ruby></html>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ruby>\n|       \"a\"\n|       <rb>\n|         \"b\"\n|       <rb>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ruby>
+      #||       \"a\"
+      #||       <rb>
+      #||         \"b\"
+      #||       <rb>
+    ),
   )
 }
 
@@ -3487,7 +6214,16 @@ test "html5lib/tree/ruby_461" {
   let doc = @html.parse("<html><ruby>a<rb>b<rt></ruby></html>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ruby>\n|       \"a\"\n|       <rb>\n|         \"b\"\n|       <rt>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ruby>
+      #||       \"a\"
+      #||       <rb>
+      #||         \"b\"
+      #||       <rt>
+    ),
   )
 }
 
@@ -3496,7 +6232,16 @@ test "html5lib/tree/ruby_462" {
   let doc = @html.parse("<html><ruby>a<rb>b<rtc></ruby></html>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ruby>\n|       \"a\"\n|       <rb>\n|         \"b\"\n|       <rtc>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ruby>
+      #||       \"a\"
+      #||       <rb>
+      #||         \"b\"
+      #||       <rtc>
+    ),
   )
 }
 
@@ -3505,7 +6250,16 @@ test "html5lib/tree/ruby_463" {
   let doc = @html.parse("<html><ruby>a<rb>b<rp></ruby></html>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ruby>\n|       \"a\"\n|       <rb>\n|         \"b\"\n|       <rp>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ruby>
+      #||       \"a\"
+      #||       <rb>
+      #||         \"b\"
+      #||       <rp>
+    ),
   )
 }
 
@@ -3514,7 +6268,16 @@ test "html5lib/tree/ruby_464" {
   let doc = @html.parse("<html><ruby>a<rb>b<span></ruby></html>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ruby>\n|       \"a\"\n|       <rb>\n|         \"b\"\n|         <span>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ruby>
+      #||       \"a\"
+      #||       <rb>
+      #||         \"b\"
+      #||         <span>
+    ),
   )
 }
 
@@ -3523,7 +6286,16 @@ test "html5lib/tree/ruby_465" {
   let doc = @html.parse("<html><ruby>a<rt>b<rb></ruby></html>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ruby>\n|       \"a\"\n|       <rt>\n|         \"b\"\n|       <rb>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ruby>
+      #||       \"a\"
+      #||       <rt>
+      #||         \"b\"
+      #||       <rb>
+    ),
   )
 }
 
@@ -3532,7 +6304,16 @@ test "html5lib/tree/ruby_466" {
   let doc = @html.parse("<html><ruby>a<rt>b<rt></ruby></html>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ruby>\n|       \"a\"\n|       <rt>\n|         \"b\"\n|       <rt>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ruby>
+      #||       \"a\"
+      #||       <rt>
+      #||         \"b\"
+      #||       <rt>
+    ),
   )
 }
 
@@ -3541,7 +6322,16 @@ test "html5lib/tree/ruby_467" {
   let doc = @html.parse("<html><ruby>a<rt>b<rtc></ruby></html>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ruby>\n|       \"a\"\n|       <rt>\n|         \"b\"\n|       <rtc>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ruby>
+      #||       \"a\"
+      #||       <rt>
+      #||         \"b\"
+      #||       <rtc>
+    ),
   )
 }
 
@@ -3550,7 +6340,16 @@ test "html5lib/tree/ruby_468" {
   let doc = @html.parse("<html><ruby>a<rt>b<rp></ruby></html>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ruby>\n|       \"a\"\n|       <rt>\n|         \"b\"\n|       <rp>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ruby>
+      #||       \"a\"
+      #||       <rt>
+      #||         \"b\"
+      #||       <rp>
+    ),
   )
 }
 
@@ -3559,7 +6358,16 @@ test "html5lib/tree/ruby_469" {
   let doc = @html.parse("<html><ruby>a<rt>b<span></ruby></html>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ruby>\n|       \"a\"\n|       <rt>\n|         \"b\"\n|         <span>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ruby>
+      #||       \"a\"
+      #||       <rt>
+      #||         \"b\"
+      #||         <span>
+    ),
   )
 }
 
@@ -3568,7 +6376,16 @@ test "html5lib/tree/ruby_470" {
   let doc = @html.parse("<html><ruby>a<rtc>b<rb></ruby></html>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ruby>\n|       \"a\"\n|       <rtc>\n|         \"b\"\n|       <rb>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ruby>
+      #||       \"a\"
+      #||       <rtc>
+      #||         \"b\"
+      #||       <rb>
+    ),
   )
 }
 
@@ -3577,7 +6394,19 @@ test "html5lib/tree/ruby_471" {
   let doc = @html.parse("<html><ruby>a<rtc>b<rt>c<rt>d</ruby></html>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ruby>\n|       \"a\"\n|       <rtc>\n|         \"b\"\n|         <rt>\n|           \"c\"\n|         <rt>\n|           \"d\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ruby>
+      #||       \"a\"
+      #||       <rtc>
+      #||         \"b\"
+      #||         <rt>
+      #||           \"c\"
+      #||         <rt>
+      #||           \"d\"
+    ),
   )
 }
 
@@ -3586,7 +6415,16 @@ test "html5lib/tree/ruby_472" {
   let doc = @html.parse("<html><ruby>a<rtc>b<rtc></ruby></html>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ruby>\n|       \"a\"\n|       <rtc>\n|         \"b\"\n|       <rtc>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ruby>
+      #||       \"a\"
+      #||       <rtc>
+      #||         \"b\"
+      #||       <rtc>
+    ),
   )
 }
 
@@ -3595,7 +6433,16 @@ test "html5lib/tree/ruby_473" {
   let doc = @html.parse("<html><ruby>a<rtc>b<rp></ruby></html>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ruby>\n|       \"a\"\n|       <rtc>\n|         \"b\"\n|         <rp>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ruby>
+      #||       \"a\"
+      #||       <rtc>
+      #||         \"b\"
+      #||         <rp>
+    ),
   )
 }
 
@@ -3604,7 +6451,16 @@ test "html5lib/tree/ruby_474" {
   let doc = @html.parse("<html><ruby>a<rtc>b<span></ruby></html>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ruby>\n|       \"a\"\n|       <rtc>\n|         \"b\"\n|         <span>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ruby>
+      #||       \"a\"
+      #||       <rtc>
+      #||         \"b\"
+      #||         <span>
+    ),
   )
 }
 
@@ -3613,7 +6469,16 @@ test "html5lib/tree/ruby_475" {
   let doc = @html.parse("<html><ruby>a<rp>b<rb></ruby></html>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ruby>\n|       \"a\"\n|       <rp>\n|         \"b\"\n|       <rb>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ruby>
+      #||       \"a\"
+      #||       <rp>
+      #||         \"b\"
+      #||       <rb>
+    ),
   )
 }
 
@@ -3622,7 +6487,16 @@ test "html5lib/tree/ruby_476" {
   let doc = @html.parse("<html><ruby>a<rp>b<rt></ruby></html>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ruby>\n|       \"a\"\n|       <rp>\n|         \"b\"\n|       <rt>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ruby>
+      #||       \"a\"
+      #||       <rp>
+      #||         \"b\"
+      #||       <rt>
+    ),
   )
 }
 
@@ -3631,7 +6505,16 @@ test "html5lib/tree/ruby_477" {
   let doc = @html.parse("<html><ruby>a<rp>b<rtc></ruby></html>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ruby>\n|       \"a\"\n|       <rp>\n|         \"b\"\n|       <rtc>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ruby>
+      #||       \"a\"
+      #||       <rp>
+      #||         \"b\"
+      #||       <rtc>
+    ),
   )
 }
 
@@ -3640,7 +6523,16 @@ test "html5lib/tree/ruby_478" {
   let doc = @html.parse("<html><ruby>a<rp>b<rp></ruby></html>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ruby>\n|       \"a\"\n|       <rp>\n|         \"b\"\n|       <rp>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ruby>
+      #||       \"a\"
+      #||       <rp>
+      #||         \"b\"
+      #||       <rp>
+    ),
   )
 }
 
@@ -3649,7 +6541,16 @@ test "html5lib/tree/ruby_479" {
   let doc = @html.parse("<html><ruby>a<rp>b<span></ruby></html>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ruby>\n|       \"a\"\n|       <rp>\n|         \"b\"\n|         <span>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ruby>
+      #||       \"a\"
+      #||       <rp>
+      #||         \"b\"
+      #||         <span>
+    ),
   )
 }
 
@@ -3660,7 +6561,18 @@ test "html5lib/tree/ruby_480" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <ruby>\n|       <rtc>\n|         <ruby>\n|           \"a\"\n|           <rb>\n|             \"b\"\n|           <rt>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <ruby>
+      #||       <rtc>
+      #||         <ruby>
+      #||           \"a\"
+      #||           <rb>
+      #||             \"b\"
+      #||           <rt>
+    ),
   )
 }
 
@@ -3669,7 +6581,15 @@ test "html5lib/tree/scriptdata01_481" {
   let doc = @html.parse("FOO<script>'Hello'</script>BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|       \"'Hello'\"\n|     \"BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||       \"'Hello'\"
+      #||     \"BAR\"
+    ),
   )
 }
 
@@ -3678,7 +6598,14 @@ test "html5lib/tree/scriptdata01_482" {
   let doc = @html.parse("FOO<script></script>BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|     \"BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||     \"BAR\"
+    ),
   )
 }
 
@@ -3687,7 +6614,14 @@ test "html5lib/tree/scriptdata01_483" {
   let doc = @html.parse("FOO<script></script >BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|     \"BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||     \"BAR\"
+    ),
   )
 }
 
@@ -3696,7 +6630,14 @@ test "html5lib/tree/scriptdata01_484" {
   let doc = @html.parse("FOO<script></script/>BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|     \"BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||     \"BAR\"
+    ),
   )
 }
 
@@ -3705,7 +6646,14 @@ test "html5lib/tree/scriptdata01_485" {
   let doc = @html.parse("FOO<script></script/ >BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|     \"BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||     \"BAR\"
+    ),
   )
 }
 
@@ -3714,7 +6662,15 @@ test "html5lib/tree/scriptdata01_486" {
   let doc = @html.parse("FOO<script type=\"text/plain\"></scriptx>BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|       type=\"text/plain\"\n|       \"</scriptx>BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||       type=\"text/plain\"
+      #||       \"</scriptx>BAR\"
+    ),
   )
 }
 
@@ -3723,7 +6679,14 @@ test "html5lib/tree/scriptdata01_487" {
   let doc = @html.parse("FOO<script></script foo=\">\" dd>BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|     \"BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||     \"BAR\"
+    ),
   )
 }
 
@@ -3732,7 +6695,15 @@ test "html5lib/tree/scriptdata01_488" {
   let doc = @html.parse("FOO<script>'<'</script>BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|       \"'<'\"\n|     \"BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||       \"'<'\"
+      #||     \"BAR\"
+    ),
   )
 }
 
@@ -3741,7 +6712,15 @@ test "html5lib/tree/scriptdata01_489" {
   let doc = @html.parse("FOO<script>'<!'</script>BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|       \"'<!'\"\n|     \"BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||       \"'<!'\"
+      #||     \"BAR\"
+    ),
   )
 }
 
@@ -3750,7 +6729,15 @@ test "html5lib/tree/scriptdata01_490" {
   let doc = @html.parse("FOO<script>'<!-'</script>BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|       \"'<!-'\"\n|     \"BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||       \"'<!-'\"
+      #||     \"BAR\"
+    ),
   )
 }
 
@@ -3759,7 +6746,15 @@ test "html5lib/tree/scriptdata01_491" {
   let doc = @html.parse("FOO<script>'<!--'</script>BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|       \"'<!--'\"\n|     \"BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||       \"'<!--'\"
+      #||     \"BAR\"
+    ),
   )
 }
 
@@ -3768,7 +6763,15 @@ test "html5lib/tree/scriptdata01_492" {
   let doc = @html.parse("FOO<script>'<!---'</script>BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|       \"'<!---'\"\n|     \"BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||       \"'<!---'\"
+      #||     \"BAR\"
+    ),
   )
 }
 
@@ -3777,7 +6780,15 @@ test "html5lib/tree/scriptdata01_493" {
   let doc = @html.parse("FOO<script>'<!-->'</script>BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|       \"'<!-->'\"\n|     \"BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||       \"'<!-->'\"
+      #||     \"BAR\"
+    ),
   )
 }
 
@@ -3786,7 +6797,15 @@ test "html5lib/tree/scriptdata01_494" {
   let doc = @html.parse("FOO<script>'<!-- potato'</script>BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|       \"'<!-- potato'\"\n|     \"BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||       \"'<!-- potato'\"
+      #||     \"BAR\"
+    ),
   )
 }
 
@@ -3795,7 +6814,15 @@ test "html5lib/tree/scriptdata01_495" {
   let doc = @html.parse("FOO<script>'<!-- <sCrIpt'</script>BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|       \"'<!-- <sCrIpt'\"\n|     \"BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||       \"'<!-- <sCrIpt'\"
+      #||     \"BAR\"
+    ),
   )
 }
 
@@ -3806,7 +6833,15 @@ test "html5lib/tree/scriptdata01_496" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|       type=\"text/plain\"\n|       \"'<!-- <sCrIpt>'</script>BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||       type=\"text/plain\"
+      #||       \"'<!-- <sCrIpt>'</script>BAR\"
+    ),
   )
 }
 
@@ -3817,7 +6852,15 @@ test "html5lib/tree/scriptdata01_497" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|       type=\"text/plain\"\n|       \"'<!-- <sCrIpt> -'</script>BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||       type=\"text/plain\"
+      #||       \"'<!-- <sCrIpt> -'</script>BAR\"
+    ),
   )
 }
 
@@ -3828,7 +6871,15 @@ test "html5lib/tree/scriptdata01_498" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|       type=\"text/plain\"\n|       \"'<!-- <sCrIpt> --'</script>BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||       type=\"text/plain\"
+      #||       \"'<!-- <sCrIpt> --'</script>BAR\"
+    ),
   )
 }
 
@@ -3837,7 +6888,15 @@ test "html5lib/tree/scriptdata01_499" {
   let doc = @html.parse("FOO<script>'<!-- <sCrIpt> -->'</script>BAR")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|       \"'<!-- <sCrIpt> -->'\"\n|     \"BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||       \"'<!-- <sCrIpt> -->'\"
+      #||     \"BAR\"
+    ),
   )
 }
 
@@ -3848,7 +6907,15 @@ test "html5lib/tree/scriptdata01_500" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|       type=\"text/plain\"\n|       \"'<!-- <sCrIpt> --!>'</script>BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||       type=\"text/plain\"
+      #||       \"'<!-- <sCrIpt> --!>'</script>BAR\"
+    ),
   )
 }
 
@@ -3859,7 +6926,15 @@ test "html5lib/tree/scriptdata01_501" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|       type=\"text/plain\"\n|       \"'<!-- <sCrIpt> -- >'</script>BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||       type=\"text/plain\"
+      #||       \"'<!-- <sCrIpt> -- >'</script>BAR\"
+    ),
   )
 }
 
@@ -3870,7 +6945,15 @@ test "html5lib/tree/scriptdata01_502" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|       type=\"text/plain\"\n|       \"'<!-- <sCrIpt '</script>BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||       type=\"text/plain\"
+      #||       \"'<!-- <sCrIpt '</script>BAR\"
+    ),
   )
 }
 
@@ -3881,7 +6964,15 @@ test "html5lib/tree/scriptdata01_503" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|       type=\"text/plain\"\n|       \"'<!-- <sCrIpt/'</script>BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||       type=\"text/plain\"
+      #||       \"'<!-- <sCrIpt/'</script>BAR\"
+    ),
   )
 }
 
@@ -3892,7 +6983,16 @@ test "html5lib/tree/scriptdata01_504" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|       type=\"text/plain\"\n|       \"'<!-- <sCrIpt\\'\"\n|     \"BAR\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||       type=\"text/plain\"
+      #||       \"'<!-- <sCrIpt\\'\"
+      #||     \"BAR\"
+    ),
   )
 }
 
@@ -3903,7 +7003,16 @@ test "html5lib/tree/scriptdata01_505" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|       type=\"text/plain\"\n|       \"'<!-- <sCrIpt/'</script>BAR\"\n|     \"QUX\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||       type=\"text/plain\"
+      #||       \"'<!-- <sCrIpt/'</script>BAR\"
+      #||     \"QUX\"
+    ),
   )
 }
 
@@ -3912,7 +7021,15 @@ test "html5lib/tree/scriptdata01_506" {
   let doc = @html.parse("FOO<script><!--<script>-></script>--></script>QUX")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"FOO\"\n|     <script>\n|       \"<!--<script>-></script>-->\"\n|     \"QUX\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"FOO\"
+      #||     <script>
+      #||       \"<!--<script>-></script>-->\"
+      #||     \"QUX\"
+    ),
   )
 }
 
@@ -3921,7 +7038,18 @@ test "html5lib/tree/search-element_507" {
   let doc = @html.parse("<!doctype html><p>foo<search>bar<p>baz")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <p>\n|       \"foo\"\n|     <search>\n|       \"bar\"\n|       <p>\n|         \"baz\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <p>
+      #||       \"foo\"
+      #||     <search>
+      #||       \"bar\"
+      #||       <p>
+      #||         \"baz\"
+    ),
   )
 }
 
@@ -3930,7 +7058,16 @@ test "html5lib/tree/search-element_508" {
   let doc = @html.parse("<!doctype html><search><p>foo</search>bar")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     <search>\n|       <p>\n|         \"foo\"\n|     \"bar\"",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <search>
+      #||       <p>
+      #||         \"foo\"
+      #||     \"bar\"
+    ),
   )
 }
 
@@ -3939,7 +7076,19 @@ test "html5lib/tree/search-element_509" {
   let doc = @html.parse("<!DOCTYPE html>xxx<svg><x><g><a><search><b>")
   inspect(
     doc.dump(),
-    content="| <!DOCTYPE html>\n| <html>\n|   <head>\n|   <body>\n|     \"xxx\"\n|     <svg svg>\n|       <svg x>\n|         <svg g>\n|           <svg a>\n|             <svg search>\n|     <b>",
+    content=(
+      #|| <!DOCTYPE html>
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"xxx\"
+      #||     <svg svg>
+      #||       <svg x>
+      #||         <svg g>
+      #||           <svg a>
+      #||             <svg search>
+      #||     <b>
+    ),
   )
 }
 
@@ -3948,7 +7097,15 @@ test "html5lib/tree/tables01_518" {
   let doc = @html.parse("<table><th>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <tbody>\n|         <tr>\n|           <th>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <tbody>
+      #||         <tr>
+      #||           <th>
+    ),
   )
 }
 
@@ -3957,7 +7114,15 @@ test "html5lib/tree/tables01_519" {
   let doc = @html.parse("<table><td>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <tbody>\n|         <tr>\n|           <td>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <tbody>
+      #||         <tr>
+      #||           <td>
+    ),
   )
 }
 
@@ -3966,7 +7131,15 @@ test "html5lib/tree/tables01_520" {
   let doc = @html.parse("<table><col foo='bar'>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <colgroup>\n|         <col>\n|           foo=\"bar\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <colgroup>
+      #||         <col>
+      #||           foo=\"bar\"
+    ),
   )
 }
 
@@ -3975,7 +7148,14 @@ test "html5lib/tree/tables01_521" {
   let doc = @html.parse("<table><colgroup></html>foo")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"foo\"\n|     <table>\n|       <colgroup>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"foo\"
+      #||     <table>
+      #||       <colgroup>
+    ),
   )
 }
 
@@ -3984,7 +7164,14 @@ test "html5lib/tree/tables01_522" {
   let doc = @html.parse("<table></table><p>foo")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|     <p>\n|       \"foo\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||     <p>
+      #||       \"foo\"
+    ),
   )
 }
 
@@ -3995,7 +7182,15 @@ test "html5lib/tree/tables01_523" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <tbody>\n|         <tr>\n|           <td>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <tbody>
+      #||         <tr>
+      #||           <td>
+    ),
   )
 }
 
@@ -4004,7 +7199,15 @@ test "html5lib/tree/tables01_524" {
   let doc = @html.parse("<table><select><option>3</select></table>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <select>\n|       <option>\n|         \"3\"\n|     <table>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <select>
+      #||       <option>
+      #||         \"3\"
+      #||     <table>
+    ),
   )
 }
 
@@ -4013,7 +7216,14 @@ test "html5lib/tree/tables01_525" {
   let doc = @html.parse("<table><select><table></table></select></table>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <select>\n|     <table>\n|     <table>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <select>
+      #||     <table>
+      #||     <table>
+    ),
   )
 }
 
@@ -4022,7 +7232,13 @@ test "html5lib/tree/tables01_526" {
   let doc = @html.parse("<table><select></table>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <select>\n|     <table>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <select>
+      #||     <table>
+    ),
   )
 }
 
@@ -4031,7 +7247,19 @@ test "html5lib/tree/tables01_527" {
   let doc = @html.parse("<table><select><option>A<tr><td>B</td></tr></table>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <select>\n|       <option>\n|         \"A\"\n|     <table>\n|       <tbody>\n|         <tr>\n|           <td>\n|             \"B\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <select>
+      #||       <option>
+      #||         \"A\"
+      #||     <table>
+      #||       <tbody>
+      #||         <tr>
+      #||           <td>
+      #||             \"B\"
+    ),
   )
 }
 
@@ -4042,7 +7270,16 @@ test "html5lib/tree/tables01_528" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <tbody>\n|         <tr>\n|           <td>\n|             \"foo\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <tbody>
+      #||         <tr>
+      #||           <td>
+      #||             \"foo\"
+    ),
   )
 }
 
@@ -4051,7 +7288,17 @@ test "html5lib/tree/tables01_529" {
   let doc = @html.parse("<table><td>A</table>B")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <tbody>\n|         <tr>\n|           <td>\n|             \"A\"\n|     \"B\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <tbody>
+      #||         <tr>
+      #||           <td>
+      #||             \"A\"
+      #||     \"B\"
+    ),
   )
 }
 
@@ -4060,7 +7307,15 @@ test "html5lib/tree/tables01_530" {
   let doc = @html.parse("<table><tr><caption>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <tbody>\n|         <tr>\n|       <caption>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <tbody>
+      #||         <tr>
+      #||       <caption>
+    ),
   )
 }
 
@@ -4071,7 +7326,16 @@ test "html5lib/tree/tables01_531" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <tbody>\n|         <tr>\n|           <td>\n|             \"foo\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <tbody>
+      #||         <tr>
+      #||           <td>
+      #||             \"foo\"
+    ),
   )
 }
 
@@ -4080,7 +7344,16 @@ test "html5lib/tree/tables01_532" {
   let doc = @html.parse("<table><td><tr>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <tbody>\n|         <tr>\n|           <td>\n|         <tr>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <tbody>
+      #||         <tr>
+      #||           <td>
+      #||         <tr>
+    ),
   )
 }
 
@@ -4089,7 +7362,17 @@ test "html5lib/tree/tables01_533" {
   let doc = @html.parse("<table><td><button><td>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <tbody>\n|         <tr>\n|           <td>\n|             <button>\n|           <td>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <tbody>
+      #||         <tr>
+      #||           <td>
+      #||             <button>
+      #||           <td>
+    ),
   )
 }
 
@@ -4098,7 +7381,18 @@ test "html5lib/tree/tables01_534" {
   let doc = @html.parse("<table><tr><td><svg><desc><td>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <tbody>\n|         <tr>\n|           <td>\n|             <svg svg>\n|               <svg desc>\n|           <td>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <tbody>
+      #||         <tr>
+      #||           <td>
+      #||             <svg svg>
+      #||               <svg desc>
+      #||           <td>
+    ),
   )
 }
 
@@ -4107,7 +7401,18 @@ test "html5lib/tree/tables01_535" {
   let doc = @html.parse("<div><table><svg><foreignObject><select><table><s>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       <svg svg>\n|         <svg foreignObject>\n|           <select>\n|       <table>\n|       <s>\n|       <table>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       <svg svg>
+      #||         <svg foreignObject>
+      #||           <select>
+      #||       <table>
+      #||       <s>
+      #||       <table>
+    ),
   )
 }
 
@@ -4116,7 +7421,13 @@ test "html5lib/tree/tables01_536" {
   let doc = @html.parse("<table>a<!doctype html>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     \"a\"\n|     <table>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     \"a\"
+      #||     <table>
+    ),
   )
 }
 
@@ -4125,7 +7436,14 @@ test "html5lib/tree/template_537" {
   let doc = @html.parse("<body><template>Hello</template>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <template>\n|       content\n|         \"Hello\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <template>
+      #||       content
+      #||         \"Hello\"
+    ),
   )
 }
 
@@ -4134,7 +7452,14 @@ test "html5lib/tree/template_538" {
   let doc = @html.parse("<template>Hello</template>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <template>\n|       content\n|         \"Hello\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <template>
+      #||       content
+      #||         \"Hello\"
+      #||   <body>
+    ),
   )
 }
 
@@ -4143,7 +7468,14 @@ test "html5lib/tree/template_539" {
   let doc = @html.parse("<template></template><div></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <template>\n|       content\n|   <body>\n|     <div>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <template>
+      #||       content
+      #||   <body>
+      #||     <div>
+    ),
   )
 }
 
@@ -4152,7 +7484,14 @@ test "html5lib/tree/template_540" {
   let doc = @html.parse("<html><template>Hello</template>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <template>\n|       content\n|         \"Hello\"\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <template>
+      #||       content
+      #||         \"Hello\"
+      #||   <body>
+    ),
   )
 }
 
@@ -4161,7 +7500,14 @@ test "html5lib/tree/template_541" {
   let doc = @html.parse("<head><template><div></div></template></head>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <template>\n|       content\n|         <div>\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <template>
+      #||       content
+      #||         <div>
+      #||   <body>
+    ),
   )
 }
 
@@ -4170,7 +7516,17 @@ test "html5lib/tree/template_542" {
   let doc = @html.parse("<div><template><div><span></template><b>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       <template>\n|         content\n|           <div>\n|             <span>\n|       <b>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       <template>
+      #||         content
+      #||           <div>
+      #||             <span>
+      #||       <b>
+    ),
   )
 }
 
@@ -4179,14 +7535,30 @@ test "html5lib/tree/template_543" {
   let doc = @html.parse("<div><template></div>Hello")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       <template>\n|         content\n|           \"Hello\"",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       <template>
+      #||         content
+      #||           \"Hello\"
+    ),
   )
 }
 
 ///|
 test "html5lib/tree/template_544" {
   let doc = @html.parse("<div></template></div>")
-  inspect(doc.dump(), content="| <html>\n|   <head>\n|   <body>\n|     <div>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+    ),
+  )
 }
 
 ///|
@@ -4194,7 +7566,14 @@ test "html5lib/tree/template_545" {
   let doc = @html.parse("<table><template></template></table>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <template>\n|         content",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <template>
+      #||         content
+    ),
   )
 }
 
@@ -4203,7 +7582,14 @@ test "html5lib/tree/template_546" {
   let doc = @html.parse("<table><template></template></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <template>\n|         content",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <template>
+      #||         content
+    ),
   )
 }
 
@@ -4212,7 +7598,15 @@ test "html5lib/tree/template_547" {
   let doc = @html.parse("<table><div><template></template></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|       <template>\n|         content\n|     <table>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||       <template>
+      #||         content
+      #||     <table>
+    ),
   )
 }
 
@@ -4221,7 +7615,15 @@ test "html5lib/tree/template_548" {
   let doc = @html.parse("<table><template></template><div></div>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <div>\n|     <table>\n|       <template>\n|         content",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <div>
+      #||     <table>
+      #||       <template>
+      #||         content
+    ),
   )
 }
 
@@ -4230,7 +7632,15 @@ test "html5lib/tree/template_549" {
   let doc = @html.parse("<table>   <template></template></table>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       \"   \"\n|       <template>\n|         content",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       \"   \"
+      #||       <template>
+      #||         content
+    ),
   )
 }
 
@@ -4239,7 +7649,15 @@ test "html5lib/tree/template_550" {
   let doc = @html.parse("<table><tbody><template></template></tbody>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <tbody>\n|         <template>\n|           content",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <tbody>
+      #||         <template>
+      #||           content
+    ),
   )
 }
 
@@ -4248,7 +7666,15 @@ test "html5lib/tree/template_551" {
   let doc = @html.parse("<table><tbody><template></tbody></template>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <tbody>\n|         <template>\n|           content",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <tbody>
+      #||         <template>
+      #||           content
+    ),
   )
 }
 
@@ -4257,7 +7683,15 @@ test "html5lib/tree/template_552" {
   let doc = @html.parse("<table><tbody><template></template></tbody></table>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <tbody>\n|         <template>\n|           content",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <tbody>
+      #||         <template>
+      #||           content
+    ),
   )
 }
 
@@ -4266,7 +7700,15 @@ test "html5lib/tree/template_553" {
   let doc = @html.parse("<table><thead><template></template></thead>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <thead>\n|         <template>\n|           content",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <thead>
+      #||         <template>
+      #||           content
+    ),
   )
 }
 
@@ -4275,7 +7717,15 @@ test "html5lib/tree/template_554" {
   let doc = @html.parse("<table><tfoot><template></template></tfoot>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <tfoot>\n|         <template>\n|           content",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <tfoot>
+      #||         <template>
+      #||           content
+    ),
   )
 }
 
@@ -4284,7 +7734,14 @@ test "html5lib/tree/template_555" {
   let doc = @html.parse("<select><template></template></select>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <select>\n|       <template>\n|         content",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <select>
+      #||       <template>
+      #||         content
+    ),
   )
 }
 
@@ -4295,7 +7752,15 @@ test "html5lib/tree/template_556" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <select>\n|       <template>\n|         content\n|           <option>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <select>
+      #||       <template>
+      #||         content
+      #||           <option>
+    ),
   )
 }
 
@@ -4306,7 +7771,15 @@ test "html5lib/tree/template_557" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <template>\n|       content\n|         <option>\n|         <option>\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <template>
+      #||       content
+      #||         <option>
+      #||         <option>
+      #||   <body>
+    ),
   )
 }
 
@@ -4315,7 +7788,15 @@ test "html5lib/tree/template_558" {
   let doc = @html.parse("<select><template></template><option></select>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <select>\n|       <template>\n|         content\n|       <option>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <select>
+      #||       <template>
+      #||         content
+      #||       <option>
+    ),
   )
 }
 
@@ -4324,7 +7805,15 @@ test "html5lib/tree/template_559" {
   let doc = @html.parse("<select><option><template></template></select>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <select>\n|       <option>\n|         <template>\n|           content",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <select>
+      #||       <option>
+      #||         <template>
+      #||           content
+    ),
   )
 }
 
@@ -4333,7 +7822,14 @@ test "html5lib/tree/template_560" {
   let doc = @html.parse("<select><template>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <select>\n|       <template>\n|         content",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <select>
+      #||       <template>
+      #||         content
+    ),
   )
 }
 
@@ -4342,7 +7838,15 @@ test "html5lib/tree/template_561" {
   let doc = @html.parse("<select><option></option><template>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <select>\n|       <option>\n|       <template>\n|         content",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <select>
+      #||       <option>
+      #||       <template>
+      #||         content
+    ),
   )
 }
 
@@ -4351,7 +7855,16 @@ test "html5lib/tree/template_562" {
   let doc = @html.parse("<select><option></option><template><option>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <select>\n|       <option>\n|       <template>\n|         content\n|           <option>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <select>
+      #||       <option>
+      #||       <template>
+      #||         content
+      #||           <option>
+    ),
   )
 }
 
@@ -4360,7 +7873,16 @@ test "html5lib/tree/template_563" {
   let doc = @html.parse("<table><thead><template><td></template></table>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <thead>\n|         <template>\n|           content\n|             <td>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <thead>
+      #||         <template>
+      #||           content
+      #||             <td>
+    ),
   )
 }
 
@@ -4369,7 +7891,15 @@ test "html5lib/tree/template_564" {
   let doc = @html.parse("<table><template><thead></template></table>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <template>\n|         content\n|           <thead>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <template>
+      #||         content
+      #||           <thead>
+    ),
   )
 }
 
@@ -4380,7 +7910,16 @@ test "html5lib/tree/template_565" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <template>\n|         content\n|           <td>\n|             <div>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <template>
+      #||         content
+      #||           <td>
+      #||             <div>
+    ),
   )
 }
 
@@ -4389,7 +7928,15 @@ test "html5lib/tree/template_566" {
   let doc = @html.parse("<table><template><thead></template></thead></table>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <template>\n|         content\n|           <thead>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <template>
+      #||         content
+      #||           <thead>
+    ),
   )
 }
 
@@ -4398,7 +7945,16 @@ test "html5lib/tree/template_567" {
   let doc = @html.parse("<table><thead><template><tr></template></table>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <thead>\n|         <template>\n|           content\n|             <tr>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <thead>
+      #||         <template>
+      #||           content
+      #||             <tr>
+    ),
   )
 }
 
@@ -4407,7 +7963,15 @@ test "html5lib/tree/template_568" {
   let doc = @html.parse("<table><template><tr></template></table>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <template>\n|         content\n|           <tr>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <template>
+      #||         content
+      #||           <tr>
+    ),
   )
 }
 
@@ -4416,7 +7980,17 @@ test "html5lib/tree/template_569" {
   let doc = @html.parse("<table><tr><template><td>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <tbody>\n|         <tr>\n|           <template>\n|             content\n|               <td>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <tbody>
+      #||         <tr>
+      #||           <template>
+      #||             content
+      #||               <td>
+    ),
   )
 }
 
@@ -4427,7 +8001,18 @@ test "html5lib/tree/template_570" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <template>\n|         content\n|           <tr>\n|             <template>\n|               content\n|                 <td>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <template>
+      #||         content
+      #||           <tr>
+      #||             <template>
+      #||               content
+      #||                 <td>
+    ),
   )
 }
 
@@ -4438,7 +8023,18 @@ test "html5lib/tree/template_571" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <template>\n|         content\n|           <tr>\n|             <template>\n|               content\n|                 <td>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <template>
+      #||         content
+      #||           <tr>
+      #||             <template>
+      #||               content
+      #||                 <td>
+    ),
   )
 }
 
@@ -4447,7 +8043,15 @@ test "html5lib/tree/template_572" {
   let doc = @html.parse("<table><template><td></template>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <template>\n|         content\n|           <td>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <template>
+      #||         content
+      #||           <td>
+    ),
   )
 }
 
@@ -4456,7 +8060,14 @@ test "html5lib/tree/template_573" {
   let doc = @html.parse("<body><template><td></td></template>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <template>\n|       content\n|         <td>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <template>
+      #||       content
+      #||         <td>
+    ),
   )
 }
 
@@ -4467,7 +8078,17 @@ test "html5lib/tree/template_574" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <template>\n|       content\n|         <template>\n|           content\n|             <tr>\n|         <td>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <template>
+      #||       content
+      #||         <template>
+      #||           content
+      #||             <tr>
+      #||         <td>
+    ),
   )
 }
 
@@ -4476,7 +8097,16 @@ test "html5lib/tree/template_575" {
   let doc = @html.parse("<table><colgroup><template><col>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <table>\n|       <colgroup>\n|         <template>\n|           content\n|             <col>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <table>
+      #||       <colgroup>
+      #||         <template>
+      #||           content
+      #||             <col>
+    ),
   )
 }
 
@@ -4487,7 +8117,12 @@ test "html5lib/tree/template_576" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <frameset>\n|     <frame>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <frameset>
+      #||     <frame>
+    ),
   )
 }
 
@@ -4498,7 +8133,13 @@ test "html5lib/tree/template_577" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <template>\n|       content\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <template>
+      #||       content
+      #||   <body>
+    ),
   )
 }
 
@@ -4509,7 +8150,16 @@ test "html5lib/tree/template_578" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|     <template>\n|       content\n|         <div>\n|           <span>\n|         <span>\n|   <body>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||     <template>
+      #||       content
+      #||         <div>
+      #||           <span>
+      #||         <span>
+      #||   <body>
+    ),
   )
 }
 
@@ -4520,7 +8170,16 @@ test "html5lib/tree/template_579" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <template>\n|       content\n|         <div>\n|           <span>\n|         <span>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <template>
+      #||       content
+      #||         <div>
+      #||           <span>
+      #||         <span>
+    ),
   )
 }
 
@@ -4531,7 +8190,16 @@ test "html5lib/tree/template_580" {
   )
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <template>\n|       content\n|         <script>\n|           \"var i = 1;\"\n|         <td>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <template>
+      #||       content
+      #||         <script>
+      #||           \"var i = 1;\"
+      #||         <td>
+    ),
   )
 }
 
@@ -4540,7 +8208,15 @@ test "html5lib/tree/template_581" {
   let doc = @html.parse("<body><template><tr><div></div></tr></template>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <template>\n|       content\n|         <tr>\n|         <div>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <template>
+      #||       content
+      #||         <tr>
+      #||         <div>
+    ),
   )
 }
 
@@ -4549,6 +8225,15 @@ test "html5lib/tree/template_582" {
   let doc = @html.parse("<body><template><tr></tr><td></td></template>")
   inspect(
     doc.dump(),
-    content="| <html>\n|   <head>\n|   <body>\n|     <template>\n|       content\n|         <tr>\n|         <tr>\n|           <td>",
+    content=(
+      #|| <html>
+      #||   <head>
+      #||   <body>
+      #||     <template>
+      #||       content
+      #||         <tr>
+      #||         <tr>
+      #||           <td>
+    ),
   )
 }

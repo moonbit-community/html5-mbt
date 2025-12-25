@@ -375,6 +375,17 @@ def normalize_expected_tree(tree: str) -> str:
     return '\n'.join(lines)
 
 
+def format_multiline_string(s: str) -> str:
+    """Format a string as MoonBit multi-line string with #| prefix."""
+    lines = s.split('\n')
+    # Escape any special chars within lines (but not newlines)
+    result_lines = []
+    for line in lines:
+        escaped_line = escape_moonbit_string(line)
+        result_lines.append(f'      #|{escaped_line}')
+    return '\n'.join(result_lines)
+
+
 def generate_tree_test(test: Dict[str, Any], index: int) -> Optional[str]:
     """Generate a single tree construction test."""
     input_html = test.get('data', '').strip()
@@ -396,14 +407,19 @@ def generate_tree_test(test: Dict[str, Any], index: int) -> Optional[str]:
     test_name = f"html5lib/tree/{file_prefix}_{index}"
     escaped_input = escape_moonbit_string(input_html)
 
-    # Normalize and escape expected tree
+    # Normalize expected tree and format as multi-line string
     normalized_tree = normalize_expected_tree(expected_tree)
-    escaped_tree = escape_moonbit_string(normalized_tree)
+    multiline_content = format_multiline_string(normalized_tree)
 
     return f'''///|
 test "{test_name}" {{
   let doc = @html.parse("{escaped_input}")
-  inspect(doc.dump(), content="{escaped_tree}")
+  inspect(
+    doc.dump(),
+    content=(
+{multiline_content}
+    ),
+  )
 }}
 
 '''
