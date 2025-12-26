@@ -931,7 +931,7 @@ test "html5lib/tree/tests19_1135" {
 
 ///|
 test "html5lib/tree/tests19_1136" {
-  let doc = @html.parse("<!doctype html><html><frameset></frameset></html>")
+  let doc = @html.parse("<!doctype html><html><frameset></frameset></html>  ")
   inspect(
     doc.dump(),
     content=(
@@ -2775,6 +2775,19 @@ test "html5lib/tree/tests2_1248" {
 }
 
 ///|
+test "html5lib/tree/tests2_1249" {
+  let doc = @html.parse(" \n ")
+  inspect(
+    doc.dump(),
+    content=(
+      #|<html>
+      #|  <head>
+      #|  <body>
+    ),
+  )
+}
+
+///|
 test "html5lib/tree/tests2_1250" {
   let doc = @html.parse("<!DOCTYPE html>  <html>")
   inspect(
@@ -2874,7 +2887,7 @@ test "html5lib/tree/tests2_1255" {
 
 ///|
 test "html5lib/tree/tests2_1256" {
-  let doc = @html.parse("<!DOCTYPE html>X</html>")
+  let doc = @html.parse("<!DOCTYPE html>X</html> ")
   inspect(
     doc.dump(),
     content=(
@@ -5578,7 +5591,7 @@ test "html5lib/tree/tests26_1402" {
 
 ///|
 test "html5lib/tree/tests26_1403" {
-  let doc = @html.parse("<p><code x</code></p>")
+  let doc = @html.parse("<p><code x</code></p>\n")
   inspect(
     doc.dump(),
     content=(
@@ -6441,8 +6454,10 @@ test "html5lib/tree/tests5_1461" {
 }
 
 ///|
-test "html5lib/tree/tests5_1462" {
-  let doc = @html.parse("<noscript><!--</noscript>--></noscript>")
+test "html5lib/tree/tests5_1462_script_on" {
+  let doc = @html.parse_with_scripting(
+    "<noscript><!--</noscript>--></noscript>",
+  )
   inspect(
     doc.dump(),
     content=(
@@ -6457,7 +6472,7 @@ test "html5lib/tree/tests5_1462" {
 }
 
 ///|
-test "html5lib/tree/tests5_1463" {
+test "html5lib/tree/tests5_1463_script_off" {
   let doc = @html.parse("<noscript><!--</noscript>--></noscript>")
   inspect(
     doc.dump(),
@@ -6974,7 +6989,7 @@ test "html5lib/tree/tests6_1506" {
 
 ///|
 test "html5lib/tree/tests6_1509" {
-  let doc = @html.parse("<html><frameset></frameset></html>")
+  let doc = @html.parse("<html><frameset></frameset></html> ")
   inspect(
     doc.dump(),
     content=(
@@ -8893,21 +8908,6 @@ test "html5lib/tree/webkit01_1688" {
       #|      foo=""
       #|      <img>
       #|      <img>
-    ),
-  )
-}
-
-///|
-test "html5lib/tree/webkit01_1689" {
-  let doc = @html.parse("<p>Test</p<p>Test2</p>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <p>
-      #|      "TestTest2"
     ),
   )
 }

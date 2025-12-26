@@ -47,10 +47,36 @@ LICENSE_HEADER = """// =========================================================
 """
 
 
+def is_noncharacter(code: int) -> bool:
+    """Check if a code point is a Unicode noncharacter."""
+    # U+FDD0-U+FDEF are noncharacters
+    if 0xFDD0 <= code <= 0xFDEF:
+        return True
+    # Last two code points in each plane (0xFFFE and 0xFFFF, 0x1FFFE and 0x1FFFF, etc.)
+    if (code & 0xFFFF) in (0xFFFE, 0xFFFF):
+        return True
+    return False
+
+
+def should_escape_high_unicode(code: int) -> bool:
+    """Check if MoonBit escapes this high Unicode code point.
+
+    MoonBit escapes: noncharacters and Supplementary Private Use Areas (planes 15-16).
+    """
+    if is_noncharacter(code):
+        return True
+    # Planes 15-16 (Supplementary Private Use Area A and B): 0xF0000-0x10FFFF
+    if code >= 0xF0000:
+        return True
+    return False
+
+
 def escape_moonbit_string(s: str) -> str:
     """Escape a string for MoonBit string literal.
 
     Must match MoonBit's string display format.
+    MoonBit uses \\b for backspace, \\u{0X} with leading zero for single-digit hex.
+    MoonBit escapes: soft hyphen (U+00AD), private use (U+E000), and noncharacters.
     """
     result = []
     for c in s:
@@ -66,21 +92,27 @@ def escape_moonbit_string(s: str) -> str:
         elif c == '\r':
             # Keep CR in input - tokenizer will normalize it
             result.append('\\r')
+        elif code == 0x08:
+            # Backspace - MoonBit uses \b
+            result.append('\\b')
         elif code == 0:
-            result.append('\\u{0}')
+            # Null - MoonBit uses \u{00}
+            result.append('\\u{00}')
+        elif code < 0x10:
+            # Single hex digit - MoonBit uses leading zero: \u{0X}
+            result.append(f'\\u{{0{code:x}}}')
         elif code < 0x20:
-            # Short hex format
+            # Two hex digits: \u{XX}
             result.append(f'\\u{{{code:x}}}')
         elif code == 0x7F:
             result.append('\\u{7f}')
-        elif 0x80 <= code <= 0x9F:
-            # Short hex format
-            result.append(f'\\u{{{code:x}}}')
+        # Note: 0x80-0x9F (C1 controls) are displayed literally in strings (may appear invisible)
         elif 0xD800 <= code <= 0xDFFF:
-            # Surrogate characters - escape them
+            # Surrogate characters - escape them (can't be displayed)
             result.append(f'\\u{{{code:x}}}')
         else:
-            # All other chars including high Unicode displayed literally
+            # All other chars displayed literally in strings
+            # (including noncharacters, soft hyphen, private use, supplementary planes)
             result.append(c)
     return ''.join(result)
 
@@ -89,8 +121,9 @@ def escape_moonbit_char(c: str) -> str:
     """Escape a single character for MoonBit char literal.
 
     This must match MoonBit's inspect output format for characters.
-    MoonBit uses short hex format without leading zeros (e.g., \\u{81} not \\u{0081}).
-    MoonBit displays high Unicode chars (> U+FFFF) literally, not escaped.
+    MoonBit uses specific escapes: \\n, \\t, \\r, \\b for common controls.
+    For other control chars, MoonBit uses \\u{XX} with 2-digit hex (leading zero if needed).
+    MoonBit escapes: soft hyphen (U+00AD), private use (U+E000), and noncharacters.
     """
     code = ord(c)
     if c == '\\':
@@ -104,19 +137,38 @@ def escape_moonbit_char(c: str) -> str:
     elif c == '\r':
         # CR should be normalized to LF by tokenizer
         return '\\n'
+    elif code == 0x08:
+        # Backspace - MoonBit uses \b
+        return '\\b'
     elif code == 0:
-        return '\\u{0}'
+        # Null - MoonBit uses \u{00}
+        return '\\u{00}'
+    elif code < 0x10:
+        # Single hex digit - MoonBit uses leading zero: \u{0X}
+        return f'\\u{{0{code:x}}}'
     elif code < 0x20:
-        # Short hex format without leading zeros
+        # Two hex digits: \u{XX}
         return f'\\u{{{code:x}}}'
     elif code == 0x7F:
         return '\\u{7f}'
     elif 0x80 <= code <= 0x9F:
-        # Short hex format without leading zeros
+        # Two hex digits: \u{XX}
         return f'\\u{{{code:x}}}'
+    elif code == 0x00AD:
+        # Soft hyphen - MoonBit escapes it
+        return '\\u{ad}'
     elif 0xD800 <= code <= 0xDFFF:
         # Surrogates - should be skipped, but escape if present
         return f'\\u{{{code:x}}}'
+    elif code == 0xE000:
+        # Private use area start - MoonBit escapes it
+        return '\\u{e000}'
+    elif should_escape_high_unicode(code):
+        # Unicode noncharacters and private use planes - MoonBit escapes them
+        if code >= 0x10000:
+            return f'\\u{{{code:06x}}}'
+        else:
+            return f'\\u{{{code:x}}}'
     # Zero-width and invisible characters (U+200B-U+200F, U+2060-U+206F, U+FEFF)
     elif 0x200B <= code <= 0x200F:
         return f'\\u{{{code:x}}}'
@@ -194,14 +246,15 @@ def format_expected_tokens(output: List) -> str:
         elif isinstance(item, list):
             token_type = item[0]
             if token_type == "DOCTYPE":
-                name = item[1] if len(item) > 1 and item[1] else None
-                public_id = item[2] if len(item) > 2 and item[2] else None
-                system_id = item[3] if len(item) > 3 and item[3] else None
+                # Use None only if value is actually null/None, not for empty string
+                name = item[1] if len(item) > 1 else None
+                public_id = item[2] if len(item) > 2 else None
+                system_id = item[3] if len(item) > 3 else None
                 correctness = item[4] if len(item) > 4 else True
 
-                name_str = f'Some("{escape_moonbit_string(name)}")' if name else 'None'
-                pub_str = f'Some("{escape_moonbit_string(public_id)}")' if public_id else 'None'
-                sys_str = f'Some("{escape_moonbit_string(system_id)}")' if system_id else 'None'
+                name_str = f'Some("{escape_moonbit_string(name)}")' if name is not None else 'None'
+                pub_str = f'Some("{escape_moonbit_string(public_id)}")' if public_id is not None else 'None'
+                sys_str = f'Some("{escape_moonbit_string(system_id)}")' if system_id is not None else 'None'
                 quirks = 'true' if not correctness else 'false'
                 tokens.append(f'DOCTYPE(name={name_str}, public_id={pub_str}, system_id={sys_str}, force_quirks={quirks})')
 
@@ -343,6 +396,13 @@ def load_tree_construction_tests() -> List[Dict[str, Any]]:
                             current_test['_file'] = test_file.stem
                             tests.append(current_test)
                         current_test = {}
+                    # script-on and script-off are flags, not content sections
+                    elif section_name == 'script-on':
+                        current_test['script-on'] = True
+                        continue  # Don't change current_section
+                    elif section_name == 'script-off':
+                        current_test['script-off'] = True
+                        continue  # Don't change current_section
                     current_section = section_name
                 else:
                     current_data.append(line)
@@ -393,16 +453,18 @@ def format_multiline_string(s: str) -> str:
 
 
 def escape_for_multiline(s: str) -> str:
-    """Escape a string for MoonBit #| multi-line literal.
+    r"""Escape a string for MoonBit #| multi-line literal.
 
-    Quotes don't need escaping in #| strings.
+    In #| strings:
+    - Backslash is literal, not an escape character
+    - Quotes don't need escaping
+    - Control characters still need escaping via \u{...}
     """
     result = []
     for c in s:
         code = ord(c)
-        if c == '\\':
-            result.append('\\\\')
-        elif code == 0:
+        # Backslash is literal in #| strings, don't escape it
+        if code == 0:
             result.append('\\u{0}')
         elif code < 0x20 and c not in '\t':
             result.append(f'\\u{{{code:x}}}')
@@ -415,32 +477,56 @@ def escape_for_multiline(s: str) -> str:
     return ''.join(result)
 
 
-def generate_tree_test(test: Dict[str, Any], index: int) -> Optional[str]:
-    """Generate a single tree construction test."""
-    input_html = test.get('data', '').strip()
-    expected_tree = test.get('document', '')
+def generate_tree_test(test: Dict[str, Any], index: int) -> Optional[List[str]]:
+    """Generate tree construction test(s).
+
+    Returns a list of test code strings.
+
+    html5lib-tests format:
+    - #script-on before #document means: expected tree when scripting is ON
+    - #script-off before #document means: expected tree when scripting is OFF
+    - neither means: expected tree with default scripting (we use OFF)
+    """
+    # Only strip leading newline (from .dat format), preserve trailing whitespace
+    input_html = test.get('data', '').lstrip('\n')
     file_prefix = test.get('_file', 'unknown')
 
-    # Skip if no input or expected output
-    if not input_html or not expected_tree:
+    # Skip if no input
+    if not input_html:
         return None
 
     # Skip fragment tests for now
     if 'document-fragment' in test:
         return None
 
-    # Skip scripting tests for now
-    if 'script-on' in test or 'script-off' in test:
+    escaped_input = escape_moonbit_string(input_html)
+    expected_tree = test.get('document', '')
+    if not expected_tree.strip():
         return None
 
-    test_name = f"html5lib/tree/{file_prefix}_{index}"
-    escaped_input = escape_moonbit_string(input_html)
-
-    # Normalize expected tree and format as multi-line string
+    tests = []
     normalized_tree = normalize_expected_tree(expected_tree)
     multiline_content = format_multiline_string(normalized_tree)
 
-    return f'''///|
+    # #script-on means this test requires scripting=true
+    if 'script-on' in test:
+        test_name = f"html5lib/tree/{file_prefix}_{index}_script_on"
+        tests.append(f'''///|
+test "{test_name}" {{
+  let doc = @html.parse_with_scripting("{escaped_input}")
+  inspect(
+    doc.dump(),
+    content=(
+{multiline_content}
+    ),
+  )
+}}
+
+''')
+    # #script-off means this test requires scripting=false (our default)
+    elif 'script-off' in test:
+        test_name = f"html5lib/tree/{file_prefix}_{index}_script_off"
+        tests.append(f'''///|
 test "{test_name}" {{
   let doc = @html.parse("{escaped_input}")
   inspect(
@@ -451,7 +537,24 @@ test "{test_name}" {{
   )
 }}
 
-'''
+''')
+    # No scripting section means use default (scripting=false)
+    else:
+        test_name = f"html5lib/tree/{file_prefix}_{index}"
+        tests.append(f'''///|
+test "{test_name}" {{
+  let doc = @html.parse("{escaped_input}")
+  inspect(
+    doc.dump(),
+    content=(
+{multiline_content}
+    ),
+  )
+}}
+
+''')
+
+    return tests if tests else None
 
 
 def generate_tree_tests_files(tests: List[Dict[str, Any]], max_per_file: int = 500) -> List[Tuple[str, str]]:
@@ -466,18 +569,19 @@ def generate_tree_tests_files(tests: List[Dict[str, Any]], max_per_file: int = 5
     file_num = 1
 
     for i, test in enumerate(tests):
-        test_code = generate_tree_test(test, i)
-        if test_code:
-            current_output.append(test_code)
-            generated += 1
-            current_count += 1
+        test_codes = generate_tree_test(test, i)
+        if test_codes:
+            for test_code in test_codes:
+                current_output.append(test_code)
+                generated += 1
+                current_count += 1
 
-            if current_count >= max_per_file:
-                files.append((f"html5lib_tree_{file_num}_test.mbt", ''.join(current_output)))
-                file_num += 1
-                current_count = 0
-                current_output = [LICENSE_HEADER]
-                current_output.append("///|\n/// html5lib Tree Construction Conformance Tests (continued)\n/// Source: https://github.com/html5lib/html5lib-tests\n\n")
+                if current_count >= max_per_file:
+                    files.append((f"html5lib_tree_{file_num}_test.mbt", ''.join(current_output)))
+                    file_num += 1
+                    current_count = 0
+                    current_output = [LICENSE_HEADER]
+                    current_output.append("///|\n/// html5lib Tree Construction Conformance Tests (continued)\n/// Source: https://github.com/html5lib/html5lib-tests\n\n")
         else:
             skipped += 1
 

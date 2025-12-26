@@ -1222,13 +1222,13 @@ test "html5lib/tokenizer/namedEntities_named_entity_shortparallel_with_a_semicol
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_shy_without_a_semicolon_3715" {
   let (tokens, _) = @html.tokenize("&shy")
-  inspect(tokens, content="[Character('­'), EOF]")
+  inspect(tokens, content="[Character('\\u{ad}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_shy_with_a_semicolon_3716" {
   let (tokens, _) = @html.tokenize("&shy;")
-  inspect(tokens, content="[Character('­'), EOF]")
+  inspect(tokens, content="[Character('\\u{ad}'), EOF]")
 }
 
 ///|

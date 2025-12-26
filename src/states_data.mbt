@@ -27,7 +27,7 @@ fn Tokenizer::run_data_state(self : Tokenizer) -> Token? {
     }
     Some('\u{0000}') => {
       self.emit_error(UnexpectedNullCharacter)
-      Some(Character('\u{FFFD}'))
+      Some(Character('\u{0000}'))
     }
     Some(c) => Some(Character(c))
     None => Some(EOF)

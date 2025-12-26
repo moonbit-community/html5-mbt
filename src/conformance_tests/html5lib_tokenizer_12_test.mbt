@@ -27,7 +27,7 @@ test "html5lib/tokenizer/test3_doctypea_public_5636" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''-")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=true), EOF]",
   )
 }
 
@@ -36,7 +36,7 @@ test "html5lib/tokenizer/test3_doctypea_public_5637" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''/")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=true), EOF]",
   )
 }
 
@@ -45,7 +45,7 @@ test "html5lib/tokenizer/test3_doctypea_public0_5638" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''0")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=true), EOF]",
   )
 }
 
@@ -54,7 +54,7 @@ test "html5lib/tokenizer/test3_doctypea_public1_5639" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''1")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=true), EOF]",
   )
 }
 
@@ -63,7 +63,7 @@ test "html5lib/tokenizer/test3_doctypea_public9_5640" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''9")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=true), EOF]",
   )
 }
 
@@ -72,7 +72,7 @@ test "html5lib/tokenizer/test3_doctypea_public_5641" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''<")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=true), EOF]",
   )
 }
 
@@ -81,7 +81,7 @@ test "html5lib/tokenizer/test3_doctypea_public_5642" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''=")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=true), EOF]",
   )
 }
 
@@ -90,7 +90,7 @@ test "html5lib/tokenizer/test3_doctypea_public_5643" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''>")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=false), EOF]",
   )
 }
 
@@ -99,7 +99,7 @@ test "html5lib/tokenizer/test3_doctypea_public_5644" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''?")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=true), EOF]",
   )
 }
 
@@ -108,7 +108,7 @@ test "html5lib/tokenizer/test3_doctypea_public_5645" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''@")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=true), EOF]",
   )
 }
 
@@ -117,7 +117,7 @@ test "html5lib/tokenizer/test3_doctypea_publica_5646" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''A")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=true), EOF]",
   )
 }
 
@@ -126,7 +126,7 @@ test "html5lib/tokenizer/test3_doctypea_publicb_5647" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''B")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=true), EOF]",
   )
 }
 
@@ -135,7 +135,7 @@ test "html5lib/tokenizer/test3_doctypea_publicy_5648" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''Y")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=true), EOF]",
   )
 }
 
@@ -144,7 +144,7 @@ test "html5lib/tokenizer/test3_doctypea_publicz_5649" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''Z")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=true), EOF]",
   )
 }
 
@@ -153,7 +153,7 @@ test "html5lib/tokenizer/test3_doctypea_public_5650" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''`")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=true), EOF]",
   )
 }
 
@@ -162,7 +162,7 @@ test "html5lib/tokenizer/test3_doctypea_publica_5651" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''a")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=true), EOF]",
   )
 }
 
@@ -171,7 +171,7 @@ test "html5lib/tokenizer/test3_doctypea_publicb_5652" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''b")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=true), EOF]",
   )
 }
 
@@ -180,7 +180,7 @@ test "html5lib/tokenizer/test3_doctypea_publicy_5653" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''y")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=true), EOF]",
   )
 }
 
@@ -189,7 +189,7 @@ test "html5lib/tokenizer/test3_doctypea_publicz_5654" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''z")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=true), EOF]",
   )
 }
 
@@ -198,7 +198,7 @@ test "html5lib/tokenizer/test3_doctypea_public_5655" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''{")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=true), EOF]",
   )
 }
 
@@ -207,7 +207,7 @@ test "html5lib/tokenizer/test3_doctypea_publicudbc0udc00_5656" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''􀀀")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=true), EOF]",
   )
 }
 
@@ -288,7 +288,7 @@ test "html5lib/tokenizer/test3_doctypea_public_5665" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'>")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=Some(\"\"), system_id=None, force_quirks=true), EOF]",
   )
 }
 
@@ -618,7 +618,7 @@ test "html5lib/tokenizer/test3_doctypea_system_5701" {
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu0000_5702" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\u{0}")
+  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\u{00}")
   inspect(
     tokens,
     content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
@@ -627,7 +627,7 @@ test "html5lib/tokenizer/test3_doctypea_systemu0000_5702" {
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu0008_5703" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\u{8}")
+  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\b")
   inspect(
     tokens,
     content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
@@ -654,7 +654,7 @@ test "html5lib/tokenizer/test3_doctypea_systemu000a_5705" {
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000b_5706" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\u{b}")
+  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\u{0b}")
   inspect(
     tokens,
     content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
@@ -663,7 +663,7 @@ test "html5lib/tokenizer/test3_doctypea_systemu000b_5706" {
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000c_5707" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\u{c}")
+  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\u{0c}")
   inspect(
     tokens,
     content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
@@ -711,13 +711,13 @@ test "html5lib/tokenizer/test3_doctypea_system_5712" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=true), EOF]",
   )
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu0000_5713" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"\u{0}")
+  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"\u{00}")
   inspect(
     tokens,
     content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"�\"), force_quirks=true), EOF]",
@@ -744,19 +744,19 @@ test "html5lib/tokenizer/test3_doctypea_systemu000a_5715" {
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000b_5716" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"\u{b}")
+  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"\u{0b}")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\\u{b}\"), force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\\u{0b}\"), force_quirks=true), EOF]",
   )
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000c_5717" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"\u{c}")
+  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"\u{0c}")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\\u{c}\"), force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\\u{0c}\"), force_quirks=true), EOF]",
   )
 }
 
@@ -783,7 +783,7 @@ test "html5lib/tokenizer/test3_doctypea_system_5720" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"\"")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=true), EOF]",
   )
 }
 
@@ -882,7 +882,7 @@ test "html5lib/tokenizer/test3_doctypea_system_5731" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\">")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=true), EOF]",
   )
 }
 
@@ -1026,13 +1026,13 @@ test "html5lib/tokenizer/test3_doctypea_system_5747" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=true), EOF]",
   )
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu0000_5748" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'\u{0}")
+  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'\u{00}")
   inspect(
     tokens,
     content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"�\"), force_quirks=true), EOF]",
@@ -1059,19 +1059,19 @@ test "html5lib/tokenizer/test3_doctypea_systemu000a_5750" {
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000b_5751" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'\u{b}")
+  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'\u{0b}")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\\u{b}\"), force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\\u{0b}\"), force_quirks=true), EOF]",
   )
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000c_5752" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'\u{c}")
+  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'\u{0c}")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\\u{c}\"), force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\\u{0c}\"), force_quirks=true), EOF]",
   )
 }
 
@@ -1116,25 +1116,25 @@ test "html5lib/tokenizer/test3_doctypea_system_5757" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=true), EOF]",
   )
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu0000_5758" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\u{0}")
+  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\u{00}")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu0008_5759" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\u{8}")
+  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\b")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1143,7 +1143,7 @@ test "html5lib/tokenizer/test3_doctypea_systemu0009_5760" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\t")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=true), EOF]",
   )
 }
 
@@ -1152,25 +1152,25 @@ test "html5lib/tokenizer/test3_doctypea_systemu000a_5761" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\n")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=true), EOF]",
   )
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000b_5762" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\u{b}")
+  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\u{0b}")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000c_5763" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\u{c}")
+  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\u{0c}")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=true), EOF]",
   )
 }
 
@@ -1179,7 +1179,7 @@ test "html5lib/tokenizer/test3_doctypea_systemu000d_5764" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\r")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=true), EOF]",
   )
 }
 
@@ -1188,7 +1188,7 @@ test "html5lib/tokenizer/test3_doctypea_systemu001f_5765" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\u{1f}")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1197,7 +1197,7 @@ test "html5lib/tokenizer/test3_doctypea_system__5766" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'' ")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=true), EOF]",
   )
 }
 
@@ -1206,7 +1206,7 @@ test "html5lib/tokenizer/test3_doctypea_system_5767" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''!")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1215,7 +1215,7 @@ test "html5lib/tokenizer/test3_doctypea_system_5768" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\"")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1224,7 +1224,7 @@ test "html5lib/tokenizer/test3_doctypea_system_5769" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''&")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1233,7 +1233,7 @@ test "html5lib/tokenizer/test3_doctypea_system_5770" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'''")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1242,7 +1242,7 @@ test "html5lib/tokenizer/test3_doctypea_system_5771" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''-")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1251,7 +1251,7 @@ test "html5lib/tokenizer/test3_doctypea_system_5772" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''/")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1260,7 +1260,7 @@ test "html5lib/tokenizer/test3_doctypea_system0_5773" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''0")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1269,7 +1269,7 @@ test "html5lib/tokenizer/test3_doctypea_system1_5774" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''1")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1278,7 +1278,7 @@ test "html5lib/tokenizer/test3_doctypea_system9_5775" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''9")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1287,7 +1287,7 @@ test "html5lib/tokenizer/test3_doctypea_system_5776" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''<")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1296,7 +1296,7 @@ test "html5lib/tokenizer/test3_doctypea_system_5777" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''=")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1305,7 +1305,7 @@ test "html5lib/tokenizer/test3_doctypea_system_5778" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''>")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1314,7 +1314,7 @@ test "html5lib/tokenizer/test3_doctypea_system_5779" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''?")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1323,7 +1323,7 @@ test "html5lib/tokenizer/test3_doctypea_system_5780" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''@")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1332,7 +1332,7 @@ test "html5lib/tokenizer/test3_doctypea_systema_5781" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''A")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1341,7 +1341,7 @@ test "html5lib/tokenizer/test3_doctypea_systemb_5782" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''B")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1350,7 +1350,7 @@ test "html5lib/tokenizer/test3_doctypea_systemy_5783" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''Y")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1359,7 +1359,7 @@ test "html5lib/tokenizer/test3_doctypea_systemz_5784" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''Z")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1368,7 +1368,7 @@ test "html5lib/tokenizer/test3_doctypea_system_5785" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''`")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1377,7 +1377,7 @@ test "html5lib/tokenizer/test3_doctypea_systema_5786" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''a")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1386,7 +1386,7 @@ test "html5lib/tokenizer/test3_doctypea_systemb_5787" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''b")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1395,7 +1395,7 @@ test "html5lib/tokenizer/test3_doctypea_systemy_5788" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''y")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1404,7 +1404,7 @@ test "html5lib/tokenizer/test3_doctypea_systemz_5789" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''z")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1413,7 +1413,7 @@ test "html5lib/tokenizer/test3_doctypea_system_5790" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''{")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1422,7 +1422,7 @@ test "html5lib/tokenizer/test3_doctypea_systemudbc0udc00_5791" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''􀀀")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=false), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=false), EOF]",
   )
 }
 
@@ -1503,7 +1503,7 @@ test "html5lib/tokenizer/test3_doctypea_system_5800" {
   let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'>")
   inspect(
     tokens,
-    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
+    content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=Some(\"\"), force_quirks=true), EOF]",
   )
 }
 
@@ -1860,7 +1860,7 @@ test "html5lib/tokenizer/test3_doctypea_a_5839" {
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_au0000_5840" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a\u{0}")
+  let (tokens, _) = @html.tokenize("<!DOCTYPEa a\u{00}")
   inspect(
     tokens,
     content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
@@ -1887,7 +1887,7 @@ test "html5lib/tokenizer/test3_doctypea_au000a_5842" {
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_au000b_5843" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a\u{b}")
+  let (tokens, _) = @html.tokenize("<!DOCTYPEa a\u{0b}")
   inspect(
     tokens,
     content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
@@ -1896,7 +1896,7 @@ test "html5lib/tokenizer/test3_doctypea_au000b_5843" {
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_au000c_5844" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a\u{c}")
+  let (tokens, _) = @html.tokenize("<!DOCTYPEa a\u{0c}")
   inspect(
     tokens,
     content="[DOCTYPE(name=Some(\"a\"), public_id=None, system_id=None, force_quirks=true), EOF]",
@@ -2553,7 +2553,7 @@ test "html5lib/tokenizer/test3__5921" {
 
 ///|
 test "html5lib/tokenizer/test3_u0000_5922" {
-  let (tokens, _) = @html.tokenize("</\u{0}")
+  let (tokens, _) = @html.tokenize("</\u{00}")
   inspect(tokens, content="[Comment(\"�\"), EOF]")
 }
 
@@ -2571,14 +2571,14 @@ test "html5lib/tokenizer/test3_u000a_5924" {
 
 ///|
 test "html5lib/tokenizer/test3_u000b_5925" {
-  let (tokens, _) = @html.tokenize("</\u{b}")
-  inspect(tokens, content="[Comment(\"\\u{b}\"), EOF]")
+  let (tokens, _) = @html.tokenize("</\u{0b}")
+  inspect(tokens, content="[Comment(\"\\u{0b}\"), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000c_5926" {
-  let (tokens, _) = @html.tokenize("</\u{c}")
-  inspect(tokens, content="[Comment(\"\\u{c}\"), EOF]")
+  let (tokens, _) = @html.tokenize("</\u{0c}")
+  inspect(tokens, content="[Comment(\"\\u{0c}\"), EOF]")
 }
 
 ///|
@@ -2589,7 +2589,7 @@ test "html5lib/tokenizer/test3___5927" {
 
 ///|
 test "html5lib/tokenizer/test3__u0000_5928" {
-  let (tokens, _) = @html.tokenize("</ \u{0}")
+  let (tokens, _) = @html.tokenize("</ \u{00}")
   inspect(tokens, content="[Comment(\" �\"), EOF]")
 }
 
@@ -2793,7 +2793,7 @@ test "html5lib/tokenizer/test3__5961" {
 
 ///|
 test "html5lib/tokenizer/test3_u0000_5962" {
-  let (tokens, _) = @html.tokenize("<?\u{0}")
+  let (tokens, _) = @html.tokenize("<?\u{00}")
   inspect(tokens, content="[Comment(\"?�\"), EOF]")
 }
 
@@ -2811,14 +2811,14 @@ test "html5lib/tokenizer/test3_u000a_5964" {
 
 ///|
 test "html5lib/tokenizer/test3_u000b_5965" {
-  let (tokens, _) = @html.tokenize("<?\u{b}")
-  inspect(tokens, content="[Comment(\"?\\u{b}\"), EOF]")
+  let (tokens, _) = @html.tokenize("<?\u{0b}")
+  inspect(tokens, content="[Comment(\"?\\u{0b}\"), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000c_5966" {
-  let (tokens, _) = @html.tokenize("<?\u{c}")
-  inspect(tokens, content="[Comment(\"?\\u{c}\"), EOF]")
+  let (tokens, _) = @html.tokenize("<?\u{0c}")
+  inspect(tokens, content="[Comment(\"?\\u{0c}\"), EOF]")
 }
 
 ///|
@@ -2829,7 +2829,7 @@ test "html5lib/tokenizer/test3___5967" {
 
 ///|
 test "html5lib/tokenizer/test3__u0000_5968" {
-  let (tokens, _) = @html.tokenize("<? \u{0}")
+  let (tokens, _) = @html.tokenize("<? \u{00}")
   inspect(tokens, content="[Comment(\"? �\"), EOF]")
 }
 
@@ -3048,7 +3048,7 @@ test "html5lib/tokenizer/test3_a_6001" {
 
 ///|
 test "html5lib/tokenizer/test3_au0000_6002" {
-  let (tokens, _) = @html.tokenize("<a\u{0}>")
+  let (tokens, _) = @html.tokenize("<a\u{00}>")
   inspect(
     tokens,
     content="[StartTag(name=\"a�\", attrs=[], self_closing=false), EOF]",
@@ -3057,10 +3057,10 @@ test "html5lib/tokenizer/test3_au0000_6002" {
 
 ///|
 test "html5lib/tokenizer/test3_au0008_6003" {
-  let (tokens, _) = @html.tokenize("<a\u{8}>")
+  let (tokens, _) = @html.tokenize("<a\b>")
   inspect(
     tokens,
-    content="[StartTag(name=\"a\\u{8}\", attrs=[], self_closing=false), EOF]",
+    content="[StartTag(name=\"a\\b\", attrs=[], self_closing=false), EOF]",
   )
 }
 
@@ -3084,16 +3084,16 @@ test "html5lib/tokenizer/test3_au000a_6005" {
 
 ///|
 test "html5lib/tokenizer/test3_au000b_6006" {
-  let (tokens, _) = @html.tokenize("<a\u{b}>")
+  let (tokens, _) = @html.tokenize("<a\u{0b}>")
   inspect(
     tokens,
-    content="[StartTag(name=\"a\\u{b}\", attrs=[], self_closing=false), EOF]",
+    content="[StartTag(name=\"a\\u{0b}\", attrs=[], self_closing=false), EOF]",
   )
 }
 
 ///|
 test "html5lib/tokenizer/test3_au000c_6007" {
-  let (tokens, _) = @html.tokenize("<a\u{c}>")
+  let (tokens, _) = @html.tokenize("<a\u{0c}>")
   inspect(
     tokens,
     content="[StartTag(name=\"a\", attrs=[], self_closing=false), EOF]",
@@ -3129,7 +3129,7 @@ test "html5lib/tokenizer/test3_a__6010" {
 
 ///|
 test "html5lib/tokenizer/test3_a_u0000_6011" {
-  let (tokens, _) = @html.tokenize("<a \u{0}>")
+  let (tokens, _) = @html.tokenize("<a \u{00}>")
   inspect(
     tokens,
     content="[StartTag(name=\"a\", attrs=[{name: \"�\", value: \"\"}], self_closing=false), EOF]",
@@ -3138,10 +3138,10 @@ test "html5lib/tokenizer/test3_a_u0000_6011" {
 
 ///|
 test "html5lib/tokenizer/test3_a_u0008_6012" {
-  let (tokens, _) = @html.tokenize("<a \u{8}>")
+  let (tokens, _) = @html.tokenize("<a \b>")
   inspect(
     tokens,
-    content="[StartTag(name=\"a\", attrs=[{name: \"\\u{8}\", value: \"\"}], self_closing=false), EOF]",
+    content="[StartTag(name=\"a\", attrs=[{name: \"\\b\", value: \"\"}], self_closing=false), EOF]",
   )
 }
 
@@ -3165,16 +3165,16 @@ test "html5lib/tokenizer/test3_a_u000a_6014" {
 
 ///|
 test "html5lib/tokenizer/test3_a_u000b_6015" {
-  let (tokens, _) = @html.tokenize("<a \u{b}>")
+  let (tokens, _) = @html.tokenize("<a \u{0b}>")
   inspect(
     tokens,
-    content="[StartTag(name=\"a\", attrs=[{name: \"\\u{b}\", value: \"\"}], self_closing=false), EOF]",
+    content="[StartTag(name=\"a\", attrs=[{name: \"\\u{0b}\", value: \"\"}], self_closing=false), EOF]",
   )
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_u000c_6016" {
-  let (tokens, _) = @html.tokenize("<a \u{c}>")
+  let (tokens, _) = @html.tokenize("<a \u{0c}>")
   inspect(
     tokens,
     content="[StartTag(name=\"a\", attrs=[], self_closing=false), EOF]",
@@ -3426,7 +3426,7 @@ test "html5lib/tokenizer/test3_a_a_6043" {
 
 ///|
 test "html5lib/tokenizer/test3_a_au0000_6044" {
-  let (tokens, _) = @html.tokenize("<a a\u{0}>")
+  let (tokens, _) = @html.tokenize("<a a\u{00}>")
   inspect(
     tokens,
     content="[StartTag(name=\"a\", attrs=[{name: \"a�\", value: \"\"}], self_closing=false), EOF]",
@@ -3435,10 +3435,10 @@ test "html5lib/tokenizer/test3_a_au0000_6044" {
 
 ///|
 test "html5lib/tokenizer/test3_a_au0008_6045" {
-  let (tokens, _) = @html.tokenize("<a a\u{8}>")
+  let (tokens, _) = @html.tokenize("<a a\b>")
   inspect(
     tokens,
-    content="[StartTag(name=\"a\", attrs=[{name: \"a\\u{8}\", value: \"\"}], self_closing=false), EOF]",
+    content="[StartTag(name=\"a\", attrs=[{name: \"a\\b\", value: \"\"}], self_closing=false), EOF]",
   )
 }
 
@@ -3462,16 +3462,16 @@ test "html5lib/tokenizer/test3_a_au000a_6047" {
 
 ///|
 test "html5lib/tokenizer/test3_a_au000b_6048" {
-  let (tokens, _) = @html.tokenize("<a a\u{b}>")
+  let (tokens, _) = @html.tokenize("<a a\u{0b}>")
   inspect(
     tokens,
-    content="[StartTag(name=\"a\", attrs=[{name: \"a\\u{b}\", value: \"\"}], self_closing=false), EOF]",
+    content="[StartTag(name=\"a\", attrs=[{name: \"a\\u{0b}\", value: \"\"}], self_closing=false), EOF]",
   )
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000c_6049" {
-  let (tokens, _) = @html.tokenize("<a a\u{c}>")
+  let (tokens, _) = @html.tokenize("<a a\u{0c}>")
   inspect(
     tokens,
     content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\"}], self_closing=false), EOF]",
@@ -3507,7 +3507,7 @@ test "html5lib/tokenizer/test3_a_a__6052" {
 
 ///|
 test "html5lib/tokenizer/test3_a_a_u0000_6053" {
-  let (tokens, _) = @html.tokenize("<a a \u{0}>")
+  let (tokens, _) = @html.tokenize("<a a \u{00}>")
   inspect(
     tokens,
     content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\"}, {name: \"�\", value: \"\"}], self_closing=false), EOF]",
@@ -3516,10 +3516,10 @@ test "html5lib/tokenizer/test3_a_a_u0000_6053" {
 
 ///|
 test "html5lib/tokenizer/test3_a_a_u0008_6054" {
-  let (tokens, _) = @html.tokenize("<a a \u{8}>")
+  let (tokens, _) = @html.tokenize("<a a \b>")
   inspect(
     tokens,
-    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\"}, {name: \"\\u{8}\", value: \"\"}], self_closing=false), EOF]",
+    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\"}, {name: \"\\b\", value: \"\"}], self_closing=false), EOF]",
   )
 }
 
@@ -3543,16 +3543,16 @@ test "html5lib/tokenizer/test3_a_a_u000a_6056" {
 
 ///|
 test "html5lib/tokenizer/test3_a_a_u000b_6057" {
-  let (tokens, _) = @html.tokenize("<a a \u{b}>")
+  let (tokens, _) = @html.tokenize("<a a \u{0b}>")
   inspect(
     tokens,
-    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\"}, {name: \"\\u{b}\", value: \"\"}], self_closing=false), EOF]",
+    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\"}, {name: \"\\u{0b}\", value: \"\"}], self_closing=false), EOF]",
   )
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_u000c_6058" {
-  let (tokens, _) = @html.tokenize("<a a \u{c}>")
+  let (tokens, _) = @html.tokenize("<a a \u{0c}>")
   inspect(
     tokens,
     content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\"}], self_closing=false), EOF]",
@@ -3975,7 +3975,7 @@ test "html5lib/tokenizer/test3_a_a_6104" {
 
 ///|
 test "html5lib/tokenizer/test3_a_au0000_6105" {
-  let (tokens, _) = @html.tokenize("<a a=\u{0}>")
+  let (tokens, _) = @html.tokenize("<a a=\u{00}>")
   inspect(
     tokens,
     content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"�\"}], self_closing=false), EOF]",
@@ -3984,10 +3984,10 @@ test "html5lib/tokenizer/test3_a_au0000_6105" {
 
 ///|
 test "html5lib/tokenizer/test3_a_au0008_6106" {
-  let (tokens, _) = @html.tokenize("<a a=\u{8}>")
+  let (tokens, _) = @html.tokenize("<a a=\b>")
   inspect(
     tokens,
-    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\\u{8}\"}], self_closing=false), EOF]",
+    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\\b\"}], self_closing=false), EOF]",
   )
 }
 
@@ -4011,16 +4011,16 @@ test "html5lib/tokenizer/test3_a_au000a_6108" {
 
 ///|
 test "html5lib/tokenizer/test3_a_au000b_6109" {
-  let (tokens, _) = @html.tokenize("<a a=\u{b}>")
+  let (tokens, _) = @html.tokenize("<a a=\u{0b}>")
   inspect(
     tokens,
-    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\\u{b}\"}], self_closing=false), EOF]",
+    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\\u{0b}\"}], self_closing=false), EOF]",
   )
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000c_6110" {
-  let (tokens, _) = @html.tokenize("<a a=\u{c}>")
+  let (tokens, _) = @html.tokenize("<a a=\u{0c}>")
   inspect(
     tokens,
     content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\"}], self_closing=false), EOF]",
@@ -4074,7 +4074,7 @@ test "html5lib/tokenizer/test3_a_a_6115" {
 
 ///|
 test "html5lib/tokenizer/test3_a_au0000_6116" {
-  let (tokens, _) = @html.tokenize("<a a=\"\u{0}\">")
+  let (tokens, _) = @html.tokenize("<a a=\"\u{00}\">")
   inspect(
     tokens,
     content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"�\"}], self_closing=false), EOF]",
@@ -4101,19 +4101,19 @@ test "html5lib/tokenizer/test3_a_au000a_6118" {
 
 ///|
 test "html5lib/tokenizer/test3_a_au000b_6119" {
-  let (tokens, _) = @html.tokenize("<a a=\"\u{b}\">")
+  let (tokens, _) = @html.tokenize("<a a=\"\u{0b}\">")
   inspect(
     tokens,
-    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\\u{b}\"}], self_closing=false), EOF]",
+    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\\u{0b}\"}], self_closing=false), EOF]",
   )
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000c_6120" {
-  let (tokens, _) = @html.tokenize("<a a=\"\u{c}\">")
+  let (tokens, _) = @html.tokenize("<a a=\"\u{0c}\">")
   inspect(
     tokens,
-    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\\u{c}\"}], self_closing=false), EOF]",
+    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\\u{0c}\"}], self_closing=false), EOF]",
   )
 }
 

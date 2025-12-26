@@ -23,6 +23,21 @@
 /// Source: https://github.com/html5lib/html5lib-tests
 
 ///|
+test "html5lib/tree/webkit01_1689" {
+  let doc = @html.parse("<p>Test</p<p>Test2</p>")
+  inspect(
+    doc.dump(),
+    content=(
+      #|<html>
+      #|  <head>
+      #|  <body>
+      #|    <p>
+      #|      "TestTest2"
+    ),
+  )
+}
+
+///|
 test "html5lib/tree/webkit01_1690" {
   let doc = @html.parse("<rdar://problem/6869687>")
   inspect(
@@ -735,8 +750,8 @@ test "html5lib/tree/webkit02_1729" {
 }
 
 ///|
-test "html5lib/tree/webkit02_1730" {
-  let doc = @html.parse(
+test "html5lib/tree/webkit02_1730_script_on" {
+  let doc = @html.parse_with_scripting(
     "<p id=\"status\"><noscript><strong>A</strong></noscript><span>B</span></p>",
   )
   inspect(
@@ -756,7 +771,7 @@ test "html5lib/tree/webkit02_1730" {
 }
 
 ///|
-test "html5lib/tree/webkit02_1731" {
+test "html5lib/tree/webkit02_1731_script_off" {
   let doc = @html.parse(
     "<p id=\"status\"><noscript><strong>A</strong></noscript><span>B</span></p>",
   )

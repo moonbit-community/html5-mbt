@@ -5526,7 +5526,7 @@ test "html5lib/tree/tests16_860" {
 
 ///|
 test "html5lib/tree/tests16_861" {
-  let doc = @html.parse("<!doctype html><script></SCRIPT")
+  let doc = @html.parse("<!doctype html><script></SCRIPT ")
   inspect(
     doc.dump(),
     content=(
@@ -5637,7 +5637,7 @@ test "html5lib/tree/tests16_867" {
 
 ///|
 test "html5lib/tree/tests16_868" {
-  let doc = @html.parse("<!doctype html><script></script")
+  let doc = @html.parse("<!doctype html><script></script ")
   inspect(
     doc.dump(),
     content=(
@@ -5812,7 +5812,7 @@ test "html5lib/tree/tests16_878" {
 
 ///|
 test "html5lib/tree/tests16_879" {
-  let doc = @html.parse("<!doctype html><script><!--</script")
+  let doc = @html.parse("<!doctype html><script><!--</script ")
   inspect(
     doc.dump(),
     content=(
@@ -5860,7 +5860,7 @@ test "html5lib/tree/tests16_881" {
 
 ///|
 test "html5lib/tree/tests16_882" {
-  let doc = @html.parse("<!doctype html><script><!--<script")
+  let doc = @html.parse("<!doctype html><script><!--<script ")
   inspect(
     doc.dump(),
     content=(
@@ -5972,7 +5972,7 @@ test "html5lib/tree/tests16_888" {
 
 ///|
 test "html5lib/tree/tests16_889" {
-  let doc = @html.parse("<!doctype html><script><!--<script </script")
+  let doc = @html.parse("<!doctype html><script><!--<script </script ")
   inspect(
     doc.dump(),
     content=(
@@ -6084,7 +6084,7 @@ test "html5lib/tree/tests16_895" {
 
 ///|
 test "html5lib/tree/tests16_896" {
-  let doc = @html.parse("<!doctype html><script><!--<script </script </script")
+  let doc = @html.parse("<!doctype html><script><!--<script </script </script ")
   inspect(
     doc.dump(),
     content=(
@@ -6292,7 +6292,7 @@ test "html5lib/tree/tests16_908" {
 
 ///|
 test "html5lib/tree/tests16_909" {
-  let doc = @html.parse("<!doctype html><script><!--<script --></script")
+  let doc = @html.parse("<!doctype html><script><!--<script --></script ")
   inspect(
     doc.dump(),
     content=(
@@ -6350,7 +6350,7 @@ test "html5lib/tree/tests16_912" {
       #|<html>
       #|  <head>
       #|    <script>
-      #|      "<!--<script><\\/script>-->"
+      #|      "<!--<script><\/script>-->"
       #|  <body>
     ),
   )
@@ -6733,8 +6733,8 @@ test "html5lib/tree/tests16_933" {
 }
 
 ///|
-test "html5lib/tree/tests16_934" {
-  let doc = @html.parse(
+test "html5lib/tree/tests16_934_script_on" {
+  let doc = @html.parse_with_scripting(
     "<!doctype html><noscript><!--<noscript></noscript>--></noscript>",
   )
   inspect(
@@ -6752,7 +6752,7 @@ test "html5lib/tree/tests16_934" {
 }
 
 ///|
-test "html5lib/tree/tests16_935" {
+test "html5lib/tree/tests16_935_script_off" {
   let doc = @html.parse(
     "<!doctype html><noscript><!--<noscript></noscript>--></noscript>",
   )
@@ -6770,8 +6770,8 @@ test "html5lib/tree/tests16_935" {
 }
 
 ///|
-test "html5lib/tree/tests16_936" {
-  let doc = @html.parse(
+test "html5lib/tree/tests16_936_script_on" {
+  let doc = @html.parse_with_scripting(
     "<!doctype html><noscript><!--</noscript>X<noscript>--></noscript>",
   )
   inspect(
@@ -6791,7 +6791,7 @@ test "html5lib/tree/tests16_936" {
 }
 
 ///|
-test "html5lib/tree/tests16_937" {
+test "html5lib/tree/tests16_937_script_off" {
   let doc = @html.parse(
     "<!doctype html><noscript><!--</noscript>X<noscript>--></noscript>",
   )
@@ -6809,8 +6809,10 @@ test "html5lib/tree/tests16_937" {
 }
 
 ///|
-test "html5lib/tree/tests16_938" {
-  let doc = @html.parse("<!doctype html><noscript><iframe></noscript>X")
+test "html5lib/tree/tests16_938_script_on" {
+  let doc = @html.parse_with_scripting(
+    "<!doctype html><noscript><iframe></noscript>X",
+  )
   inspect(
     doc.dump(),
     content=(
@@ -6826,7 +6828,7 @@ test "html5lib/tree/tests16_938" {
 }
 
 ///|
-test "html5lib/tree/tests16_939" {
+test "html5lib/tree/tests16_939_script_off" {
   let doc = @html.parse("<!doctype html><noscript><iframe></noscript>X")
   inspect(
     doc.dump(),
@@ -7170,7 +7172,7 @@ test "html5lib/tree/tests16_959" {
 
 ///|
 test "html5lib/tree/tests16_960" {
-  let doc = @html.parse("<script></SCRIPT")
+  let doc = @html.parse("<script></SCRIPT ")
   inspect(
     doc.dump(),
     content=(
@@ -7274,7 +7276,7 @@ test "html5lib/tree/tests16_966" {
 
 ///|
 test "html5lib/tree/tests16_967" {
-  let doc = @html.parse("<script></script")
+  let doc = @html.parse("<script></script ")
   inspect(
     doc.dump(),
     content=(
@@ -7438,7 +7440,7 @@ test "html5lib/tree/tests16_977" {
 
 ///|
 test "html5lib/tree/tests16_978" {
-  let doc = @html.parse("<script><!--</script")
+  let doc = @html.parse("<script><!--</script ")
   inspect(
     doc.dump(),
     content=(
@@ -7483,7 +7485,7 @@ test "html5lib/tree/tests16_980" {
 
 ///|
 test "html5lib/tree/tests16_981" {
-  let doc = @html.parse("<script><!--<script")
+  let doc = @html.parse("<script><!--<script ")
   inspect(
     doc.dump(),
     content=(
@@ -7588,7 +7590,7 @@ test "html5lib/tree/tests16_987" {
 
 ///|
 test "html5lib/tree/tests16_988" {
-  let doc = @html.parse("<script><!--<script </script")
+  let doc = @html.parse("<script><!--<script </script ")
   inspect(
     doc.dump(),
     content=(
@@ -7693,7 +7695,7 @@ test "html5lib/tree/tests16_994" {
 
 ///|
 test "html5lib/tree/tests16_995" {
-  let doc = @html.parse("<script><!--<script </script </script")
+  let doc = @html.parse("<script><!--<script </script </script ")
   inspect(
     doc.dump(),
     content=(
@@ -7858,7 +7860,7 @@ test "html5lib/tree/tests16_1005" {
 
 ///|
 test "html5lib/tree/tests16_1006" {
-  let doc = @html.parse("<script><!--<script --></script")
+  let doc = @html.parse("<script><!--<script --></script ")
   inspect(
     doc.dump(),
     content=(
@@ -7910,7 +7912,7 @@ test "html5lib/tree/tests16_1009" {
       #|<html>
       #|  <head>
       #|    <script>
-      #|      "<!--<script><\\/script>-->"
+      #|      "<!--<script><\/script>-->"
       #|  <body>
     ),
   )
@@ -8260,8 +8262,10 @@ test "html5lib/tree/tests16_1030" {
 }
 
 ///|
-test "html5lib/tree/tests16_1031" {
-  let doc = @html.parse("<noscript><!--<noscript></noscript>--></noscript>")
+test "html5lib/tree/tests16_1031_script_on" {
+  let doc = @html.parse_with_scripting(
+    "<noscript><!--<noscript></noscript>--></noscript>",
+  )
   inspect(
     doc.dump(),
     content=(
@@ -8276,7 +8280,7 @@ test "html5lib/tree/tests16_1031" {
 }
 
 ///|
-test "html5lib/tree/tests16_1032" {
+test "html5lib/tree/tests16_1032_script_off" {
   let doc = @html.parse("<noscript><!--<noscript></noscript>--></noscript>")
   inspect(
     doc.dump(),
@@ -8291,8 +8295,10 @@ test "html5lib/tree/tests16_1032" {
 }
 
 ///|
-test "html5lib/tree/tests16_1033" {
-  let doc = @html.parse("<noscript><!--</noscript>X<noscript>--></noscript>")
+test "html5lib/tree/tests16_1033_script_on" {
+  let doc = @html.parse_with_scripting(
+    "<noscript><!--</noscript>X<noscript>--></noscript>",
+  )
   inspect(
     doc.dump(),
     content=(
@@ -8309,7 +8315,7 @@ test "html5lib/tree/tests16_1033" {
 }
 
 ///|
-test "html5lib/tree/tests16_1034" {
+test "html5lib/tree/tests16_1034_script_off" {
   let doc = @html.parse("<noscript><!--</noscript>X<noscript>--></noscript>")
   inspect(
     doc.dump(),
@@ -8324,8 +8330,8 @@ test "html5lib/tree/tests16_1034" {
 }
 
 ///|
-test "html5lib/tree/tests16_1035" {
-  let doc = @html.parse("<noscript><iframe></noscript>X")
+test "html5lib/tree/tests16_1035_script_on" {
+  let doc = @html.parse_with_scripting("<noscript><iframe></noscript>X")
   inspect(
     doc.dump(),
     content=(
@@ -8340,7 +8346,7 @@ test "html5lib/tree/tests16_1035" {
 }
 
 ///|
-test "html5lib/tree/tests16_1036" {
+test "html5lib/tree/tests16_1036_script_off" {
   let doc = @html.parse("<noscript><iframe></noscript>X")
   inspect(
     doc.dump(),
@@ -8484,7 +8490,7 @@ test "html5lib/tree/tests16_1044" {
 
 ///|
 test "html5lib/tree/tests16_1045" {
-  let doc = @html.parse("<!doctype html><table>")
+  let doc = @html.parse("<!doctype html><table>\n")
   inspect(
     doc.dump(),
     content=(
@@ -8823,7 +8829,7 @@ test "html5lib/tree/tests18_1064" {
 }
 
 ///|
-test "html5lib/tree/tests18_1065" {
+test "html5lib/tree/tests18_1065_script_off" {
   let doc = @html.parse(
     "<!doctype html><html><noscript><plaintext></plaintext>",
   )

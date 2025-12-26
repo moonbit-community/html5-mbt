@@ -51,7 +51,7 @@ test "html5lib/tokenizer/domjs_non_bmpcharref_in_attribute_46" {
 
 ///|
 test "html5lib/tokenizer/domjs_nul_in_comment__47" {
-  let (tokens, _) = @html.tokenize("<!----!\u{0}-->")
+  let (tokens, _) = @html.tokenize("<!----!\u{00}-->")
   inspect(tokens, content="[Comment(\"--!�\"), EOF]")
 }
 

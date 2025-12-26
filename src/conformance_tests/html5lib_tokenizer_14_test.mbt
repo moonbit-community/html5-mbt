@@ -115,7 +115,7 @@ test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00ac_6680" {
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00ad_6681" {
   let (tokens, _) = @html.tokenize("­")
-  inspect(tokens, content="[Character('­'), EOF]")
+  inspect(tokens, content="[Character('\\u{ad}'), EOF]")
 }
 
 ///|
@@ -619,7 +619,7 @@ test "html5lib/tokenizer/unicodeChars_valid_unicode_character_ud7ff_6764" {
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_ue000_6765" {
   let (tokens, _) = @html.tokenize("")
-  inspect(tokens, content="[Character(''), EOF]")
+  inspect(tokens, content="[Character('\\u{e000}'), EOF]")
 }
 
 ///|
@@ -811,29 +811,29 @@ test "html5lib/tokenizer/unicodeChars_valid_unicode_character_uefffd_6796" {
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_uf0000_6797" {
   let (tokens, _) = @html.tokenize("󰀀")
-  inspect(tokens, content="[Character('󰀀'), EOF]")
+  inspect(tokens, content="[Character('\\u{0f0000}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_uffffd_6798" {
   let (tokens, _) = @html.tokenize("󿿽")
-  inspect(tokens, content="[Character('󿿽'), EOF]")
+  inspect(tokens, content="[Character('\\u{0ffffd}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u100000_6799" {
   let (tokens, _) = @html.tokenize("􀀀")
-  inspect(tokens, content="[Character('􀀀'), EOF]")
+  inspect(tokens, content="[Character('\\u{100000}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u10fffd_6800" {
   let (tokens, _) = @html.tokenize("􏿽")
-  inspect(tokens, content="[Character('􏿽'), EOF]")
+  inspect(tokens, content="[Character('\\u{10fffd}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeCharsProblematic_cr_followed_by_u0000_6805" {
-  let (tokens, _) = @html.tokenize("\r\u{0}")
-  inspect(tokens, content="[Character('\\n'), Character('\\u{0}'), EOF]")
+  let (tokens, _) = @html.tokenize("\r\u{00}")
+  inspect(tokens, content="[Character('\\n'), Character('\\u{00}'), EOF]")
 }

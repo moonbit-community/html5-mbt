@@ -2210,7 +2210,7 @@ test "html5lib/tree/domjs-unsafe_123" {
 
 ///|
 test "html5lib/tree/domjs-unsafe_124" {
-  let doc = @html.parse("<script>a='\u{0}'</script>")
+  let doc = @html.parse("<script>a='\u{00}'</script>")
   inspect(
     doc.dump(),
     content=(
@@ -2225,7 +2225,7 @@ test "html5lib/tree/domjs-unsafe_124" {
 
 ///|
 test "html5lib/tree/domjs-unsafe_125" {
-  let doc = @html.parse("<script type=\"data\"><!--\u{0}</script>")
+  let doc = @html.parse("<script type=\"data\"><!--\u{00}</script>")
   inspect(
     doc.dump(),
     content=(
@@ -2241,7 +2241,7 @@ test "html5lib/tree/domjs-unsafe_125" {
 
 ///|
 test "html5lib/tree/domjs-unsafe_126" {
-  let doc = @html.parse("<script type=\"data\"><!--foo\u{0}</script>")
+  let doc = @html.parse("<script type=\"data\"><!--foo\u{00}</script>")
   inspect(
     doc.dump(),
     content=(
@@ -2257,7 +2257,7 @@ test "html5lib/tree/domjs-unsafe_126" {
 
 ///|
 test "html5lib/tree/domjs-unsafe_127" {
-  let doc = @html.parse("<script type=\"data\"><!-- foo-\u{0}</script>")
+  let doc = @html.parse("<script type=\"data\"><!-- foo-\u{00}</script>")
   inspect(
     doc.dump(),
     content=(
@@ -2273,7 +2273,7 @@ test "html5lib/tree/domjs-unsafe_127" {
 
 ///|
 test "html5lib/tree/domjs-unsafe_128" {
-  let doc = @html.parse("<script type=\"data\"><!-- foo--\u{0}</script>")
+  let doc = @html.parse("<script type=\"data\"><!-- foo--\u{00}</script>")
   inspect(
     doc.dump(),
     content=(
@@ -2386,7 +2386,7 @@ test "html5lib/tree/domjs-unsafe_134" {
 ///|
 test "html5lib/tree/domjs-unsafe_135" {
   let doc = @html.parse(
-    "<script type=\"data\"><!--<script>\u{0}</script></script>",
+    "<script type=\"data\"><!--<script>\u{00}</script></script>",
   )
   inspect(
     doc.dump(),
@@ -2404,7 +2404,7 @@ test "html5lib/tree/domjs-unsafe_135" {
 ///|
 test "html5lib/tree/domjs-unsafe_136" {
   let doc = @html.parse(
-    "<script type=\"data\"><!--<script>-\u{0}</script></script>",
+    "<script type=\"data\"><!--<script>-\u{00}</script></script>",
   )
   inspect(
     doc.dump(),
@@ -2422,7 +2422,7 @@ test "html5lib/tree/domjs-unsafe_136" {
 ///|
 test "html5lib/tree/domjs-unsafe_137" {
   let doc = @html.parse(
-    "<script type=\"data\"><!--<script>--\u{0}</script></script>",
+    "<script type=\"data\"><!--<script>--\u{00}</script></script>",
   )
   inspect(
     doc.dump(),
@@ -4417,7 +4417,7 @@ test "html5lib/tree/html5test-com_340" {
       #|  <head>
       #|  <body>
       #|    <div>
-      #|      \\"foo=""
+      #|      \"foo=""
     ),
   )
 }
@@ -4432,7 +4432,7 @@ test "html5lib/tree/html5test-com_341" {
       #|  <head>
       #|  <body>
       #|    <a>
-      #|      href="\\nbar"
+      #|      href="\nbar"
     ),
   )
 }
@@ -5264,7 +5264,7 @@ test "html5lib/tree/namespace-sensitivity_400" {
 }
 
 ///|
-test "html5lib/tree/noscript01_401" {
+test "html5lib/tree/noscript01_401_script_off" {
   let doc = @html.parse("<head><noscript><!doctype html><!--foo--></noscript>")
   inspect(
     doc.dump(),
@@ -5279,7 +5279,7 @@ test "html5lib/tree/noscript01_401" {
 }
 
 ///|
-test "html5lib/tree/noscript01_402" {
+test "html5lib/tree/noscript01_402_script_off" {
   let doc = @html.parse(
     "<head><noscript><html class=\"foo\"><!--foo--></noscript>",
   )
@@ -5297,7 +5297,7 @@ test "html5lib/tree/noscript01_402" {
 }
 
 ///|
-test "html5lib/tree/noscript01_403" {
+test "html5lib/tree/noscript01_403_script_off" {
   let doc = @html.parse("<head><noscript></noscript>")
   inspect(
     doc.dump(),
@@ -5311,7 +5311,7 @@ test "html5lib/tree/noscript01_403" {
 }
 
 ///|
-test "html5lib/tree/noscript01_404" {
+test "html5lib/tree/noscript01_404_script_off" {
   let doc = @html.parse("<head><noscript>   </noscript>")
   inspect(
     doc.dump(),
@@ -5326,7 +5326,7 @@ test "html5lib/tree/noscript01_404" {
 }
 
 ///|
-test "html5lib/tree/noscript01_405" {
+test "html5lib/tree/noscript01_405_script_off" {
   let doc = @html.parse("<head><noscript><!--foo--></noscript>")
   inspect(
     doc.dump(),
@@ -5341,7 +5341,7 @@ test "html5lib/tree/noscript01_405" {
 }
 
 ///|
-test "html5lib/tree/noscript01_406" {
+test "html5lib/tree/noscript01_406_script_off" {
   let doc = @html.parse("<head><noscript><basefont><!--foo--></noscript>")
   inspect(
     doc.dump(),
@@ -5357,7 +5357,7 @@ test "html5lib/tree/noscript01_406" {
 }
 
 ///|
-test "html5lib/tree/noscript01_407" {
+test "html5lib/tree/noscript01_407_script_off" {
   let doc = @html.parse("<head><noscript><bgsound><!--foo--></noscript>")
   inspect(
     doc.dump(),
@@ -5373,7 +5373,7 @@ test "html5lib/tree/noscript01_407" {
 }
 
 ///|
-test "html5lib/tree/noscript01_408" {
+test "html5lib/tree/noscript01_408_script_off" {
   let doc = @html.parse("<head><noscript><link><!--foo--></noscript>")
   inspect(
     doc.dump(),
@@ -5389,7 +5389,7 @@ test "html5lib/tree/noscript01_408" {
 }
 
 ///|
-test "html5lib/tree/noscript01_409" {
+test "html5lib/tree/noscript01_409_script_off" {
   let doc = @html.parse("<head><noscript><meta><!--foo--></noscript>")
   inspect(
     doc.dump(),
@@ -5405,7 +5405,7 @@ test "html5lib/tree/noscript01_409" {
 }
 
 ///|
-test "html5lib/tree/noscript01_410" {
+test "html5lib/tree/noscript01_410_script_off" {
   let doc = @html.parse(
     "<head><noscript><noframes>XXX</noscript></noframes></noscript>",
   )
@@ -5423,7 +5423,7 @@ test "html5lib/tree/noscript01_410" {
 }
 
 ///|
-test "html5lib/tree/noscript01_411" {
+test "html5lib/tree/noscript01_411_script_off" {
   let doc = @html.parse("<head><noscript><style>XXX</style></noscript>")
   inspect(
     doc.dump(),
@@ -5439,7 +5439,7 @@ test "html5lib/tree/noscript01_411" {
 }
 
 ///|
-test "html5lib/tree/noscript01_412" {
+test "html5lib/tree/noscript01_412_script_off" {
   let doc = @html.parse("<head><noscript></br><!--foo--></noscript>")
   inspect(
     doc.dump(),
@@ -5455,7 +5455,7 @@ test "html5lib/tree/noscript01_412" {
 }
 
 ///|
-test "html5lib/tree/noscript01_413" {
+test "html5lib/tree/noscript01_413_script_off" {
   let doc = @html.parse(
     "<head><noscript><head class=\"foo\"><!--foo--></noscript>",
   )
@@ -5472,7 +5472,7 @@ test "html5lib/tree/noscript01_413" {
 }
 
 ///|
-test "html5lib/tree/noscript01_414" {
+test "html5lib/tree/noscript01_414_script_off" {
   let doc = @html.parse(
     "<head><noscript><noscript class=\"foo\"><!--foo--></noscript>",
   )
@@ -5489,7 +5489,7 @@ test "html5lib/tree/noscript01_414" {
 }
 
 ///|
-test "html5lib/tree/noscript01_415" {
+test "html5lib/tree/noscript01_415_script_off" {
   let doc = @html.parse("<head><noscript></p><!--foo--></noscript>")
   inspect(
     doc.dump(),
@@ -5504,7 +5504,7 @@ test "html5lib/tree/noscript01_415" {
 }
 
 ///|
-test "html5lib/tree/noscript01_416" {
+test "html5lib/tree/noscript01_416_script_off" {
   let doc = @html.parse("<head><noscript><p><!--foo--></noscript>")
   inspect(
     doc.dump(),
@@ -5520,7 +5520,7 @@ test "html5lib/tree/noscript01_416" {
 }
 
 ///|
-test "html5lib/tree/noscript01_417" {
+test "html5lib/tree/noscript01_417_script_off" {
   let doc = @html.parse("<head><noscript>XXX<!--foo--></noscript></head>")
   inspect(
     doc.dump(),
@@ -5536,7 +5536,7 @@ test "html5lib/tree/noscript01_417" {
 }
 
 ///|
-test "html5lib/tree/noscript01_418" {
+test "html5lib/tree/noscript01_418_script_off" {
   let doc = @html.parse("<head><noscript>")
   inspect(
     doc.dump(),
@@ -5551,7 +5551,7 @@ test "html5lib/tree/noscript01_418" {
 
 ///|
 test "html5lib/tree/pending-spec-changes-plain-text-unsafe_419" {
-  let doc = @html.parse("<body><table>\u{0}filler\u{0}text\u{0}")
+  let doc = @html.parse("<body><table>\u{00}filler\u{00}text\u{00}")
   inspect(
     doc.dump(),
     content=(
@@ -5634,7 +5634,7 @@ test "html5lib/tree/plain-text-unsafe_423" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_424" {
-  let doc = @html.parse("<html>\u{0}<frameset></frameset>")
+  let doc = @html.parse("<html>\u{00}<frameset></frameset>")
   inspect(
     doc.dump(),
     content=(
@@ -5647,7 +5647,7 @@ test "html5lib/tree/plain-text-unsafe_424" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_425" {
-  let doc = @html.parse("<html> \u{0} <frameset></frameset>")
+  let doc = @html.parse("<html> \u{00} <frameset></frameset>")
   inspect(
     doc.dump(),
     content=(
@@ -5660,7 +5660,7 @@ test "html5lib/tree/plain-text-unsafe_425" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_426" {
-  let doc = @html.parse("<html>a\u{0}a<frameset></frameset>")
+  let doc = @html.parse("<html>a\u{00}a<frameset></frameset>")
   inspect(
     doc.dump(),
     content=(
@@ -5674,7 +5674,7 @@ test "html5lib/tree/plain-text-unsafe_426" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_427" {
-  let doc = @html.parse("<html>\u{0}\u{0}<frameset></frameset>")
+  let doc = @html.parse("<html>\u{00}\u{00}<frameset></frameset>")
   inspect(
     doc.dump(),
     content=(
@@ -5687,7 +5687,7 @@ test "html5lib/tree/plain-text-unsafe_427" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_428" {
-  let doc = @html.parse("<html>\u{0}\n<frameset></frameset>")
+  let doc = @html.parse("<html>\u{00}\n<frameset></frameset>")
   inspect(
     doc.dump(),
     content=(
@@ -5700,7 +5700,7 @@ test "html5lib/tree/plain-text-unsafe_428" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_429" {
-  let doc = @html.parse("<html><select>\u{0}")
+  let doc = @html.parse("<html><select>\u{00}")
   inspect(
     doc.dump(),
     content=(
@@ -5714,7 +5714,7 @@ test "html5lib/tree/plain-text-unsafe_429" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_430" {
-  let doc = @html.parse("\u{0}")
+  let doc = @html.parse("\u{00}")
   inspect(
     doc.dump(),
     content=(
@@ -5727,7 +5727,7 @@ test "html5lib/tree/plain-text-unsafe_430" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_431" {
-  let doc = @html.parse("<body>\u{0}")
+  let doc = @html.parse("<body>\u{00}")
   inspect(
     doc.dump(),
     content=(
@@ -5740,7 +5740,7 @@ test "html5lib/tree/plain-text-unsafe_431" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_432" {
-  let doc = @html.parse("<plaintext>\u{0}filler\u{0}text\u{0}")
+  let doc = @html.parse("<plaintext>\u{00}filler\u{00}text\u{00}")
   inspect(
     doc.dump(),
     content=(
@@ -5755,7 +5755,7 @@ test "html5lib/tree/plain-text-unsafe_432" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_433" {
-  let doc = @html.parse("<svg><![CDATA[\u{0}filler\u{0}text\u{0}]]>")
+  let doc = @html.parse("<svg><![CDATA[\u{00}filler\u{00}text\u{00}]]>")
   inspect(
     doc.dump(),
     content=(
@@ -5770,7 +5770,7 @@ test "html5lib/tree/plain-text-unsafe_433" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_434" {
-  let doc = @html.parse("<body><!\u{0}>")
+  let doc = @html.parse("<body><!\u{00}>")
   inspect(
     doc.dump(),
     content=(
@@ -5784,7 +5784,7 @@ test "html5lib/tree/plain-text-unsafe_434" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_435" {
-  let doc = @html.parse("<body><!\u{0}filler\u{0}text>")
+  let doc = @html.parse("<body><!\u{00}filler\u{00}text>")
   inspect(
     doc.dump(),
     content=(
@@ -5798,7 +5798,7 @@ test "html5lib/tree/plain-text-unsafe_435" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_436" {
-  let doc = @html.parse("<body><svg><foreignObject>\u{0}filler\u{0}text")
+  let doc = @html.parse("<body><svg><foreignObject>\u{00}filler\u{00}text")
   inspect(
     doc.dump(),
     content=(
@@ -5814,7 +5814,7 @@ test "html5lib/tree/plain-text-unsafe_436" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_437" {
-  let doc = @html.parse("<svg>\u{0}filler\u{0}text")
+  let doc = @html.parse("<svg>\u{00}filler\u{00}text")
   inspect(
     doc.dump(),
     content=(
@@ -5829,7 +5829,7 @@ test "html5lib/tree/plain-text-unsafe_437" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_438" {
-  let doc = @html.parse("<svg>\u{0}<frameset>")
+  let doc = @html.parse("<svg>\u{00}<frameset>")
   inspect(
     doc.dump(),
     content=(
@@ -5845,7 +5845,7 @@ test "html5lib/tree/plain-text-unsafe_438" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_439" {
-  let doc = @html.parse("<svg>\u{0} <frameset>")
+  let doc = @html.parse("<svg>\u{00} <frameset>")
   inspect(
     doc.dump(),
     content=(
@@ -5861,7 +5861,7 @@ test "html5lib/tree/plain-text-unsafe_439" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_440" {
-  let doc = @html.parse("<svg>\u{0}a<frameset>")
+  let doc = @html.parse("<svg>\u{00}a<frameset>")
   inspect(
     doc.dump(),
     content=(
@@ -5877,7 +5877,7 @@ test "html5lib/tree/plain-text-unsafe_440" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_441" {
-  let doc = @html.parse("<svg>\u{0}</svg><frameset>")
+  let doc = @html.parse("<svg>\u{00}</svg><frameset>")
   inspect(
     doc.dump(),
     content=(
@@ -5890,7 +5890,7 @@ test "html5lib/tree/plain-text-unsafe_441" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_442" {
-  let doc = @html.parse("<svg>\u{0} </svg><frameset>")
+  let doc = @html.parse("<svg>\u{00} </svg><frameset>")
   inspect(
     doc.dump(),
     content=(
@@ -5903,7 +5903,7 @@ test "html5lib/tree/plain-text-unsafe_442" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_443" {
-  let doc = @html.parse("<svg>\u{0}a</svg><frameset>")
+  let doc = @html.parse("<svg>\u{00}a</svg><frameset>")
   inspect(
     doc.dump(),
     content=(
@@ -5994,7 +5994,7 @@ test "html5lib/tree/plain-text-unsafe_448" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_449" {
-  let doc = @html.parse("<!DOCTYPE html><table><tr><td><math><mtext>\u{0}a")
+  let doc = @html.parse("<!DOCTYPE html><table><tr><td><math><mtext>\u{00}a")
   inspect(
     doc.dump(),
     content=(
@@ -6016,7 +6016,7 @@ test "html5lib/tree/plain-text-unsafe_449" {
 ///|
 test "html5lib/tree/plain-text-unsafe_450" {
   let doc = @html.parse(
-    "<!DOCTYPE html><table><tr><td><svg><foreignObject>\u{0}a",
+    "<!DOCTYPE html><table><tr><td><svg><foreignObject>\u{00}a",
   )
   inspect(
     doc.dump(),
@@ -6038,7 +6038,7 @@ test "html5lib/tree/plain-text-unsafe_450" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_451" {
-  let doc = @html.parse("<!DOCTYPE html><math><mi>a\u{0}b")
+  let doc = @html.parse("<!DOCTYPE html><math><mi>a\u{00}b")
   inspect(
     doc.dump(),
     content=(
@@ -6055,7 +6055,7 @@ test "html5lib/tree/plain-text-unsafe_451" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_452" {
-  let doc = @html.parse("<!DOCTYPE html><math><mo>a\u{0}b")
+  let doc = @html.parse("<!DOCTYPE html><math><mo>a\u{00}b")
   inspect(
     doc.dump(),
     content=(
@@ -6072,7 +6072,7 @@ test "html5lib/tree/plain-text-unsafe_452" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_453" {
-  let doc = @html.parse("<!DOCTYPE html><math><mn>a\u{0}b")
+  let doc = @html.parse("<!DOCTYPE html><math><mn>a\u{00}b")
   inspect(
     doc.dump(),
     content=(
@@ -6089,7 +6089,7 @@ test "html5lib/tree/plain-text-unsafe_453" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_454" {
-  let doc = @html.parse("<!DOCTYPE html><math><ms>a\u{0}b")
+  let doc = @html.parse("<!DOCTYPE html><math><ms>a\u{00}b")
   inspect(
     doc.dump(),
     content=(
@@ -6106,7 +6106,7 @@ test "html5lib/tree/plain-text-unsafe_454" {
 
 ///|
 test "html5lib/tree/plain-text-unsafe_455" {
-  let doc = @html.parse("<!DOCTYPE html><math><mtext>a\u{0}b")
+  let doc = @html.parse("<!DOCTYPE html><math><mtext>a\u{00}b")
   inspect(
     doc.dump(),
     content=(
@@ -6990,7 +6990,7 @@ test "html5lib/tree/scriptdata01_504" {
       #|    "FOO"
       #|    <script>
       #|      type="text/plain"
-      #|      "'<!-- <sCrIpt\\'"
+      #|      "'<!-- <sCrIpt\'"
       #|    "BAR"
     ),
   )

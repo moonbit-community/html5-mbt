@@ -120,17 +120,17 @@ test "error recovery - unclosed tag" {
 ///|
 test "error recovery - null character" {
   let (tokens, errors) = tokenize("hello\u{0000}world")
-  // Null should be replaced with replacement character and emit error
+  // Null should be emitted as-is per WHATWG spec (tree builder ignores it)
   inspect(errors.length() > 0, content="true")
-  let has_replacement = tokens
+  let has_null = tokens
     .iter()
     .any(fn(t) {
       match t {
-        Character('\u{FFFD}') => true
+        Character('\u{0000}') => true
         _ => false
       }
     })
-  inspect(has_replacement, content="true")
+  inspect(has_null, content="true")
 }
 
 ///|

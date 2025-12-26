@@ -97,6 +97,15 @@ pub struct TreeBuilder {
 ///|
 /// Create a new tree builder for parsing HTML
 pub fn TreeBuilder::new(html : String) -> TreeBuilder {
+  TreeBuilder::new_with_options(html, scripting=false)
+}
+
+///|
+/// Create a new tree builder with options
+pub fn TreeBuilder::new_with_options(
+  html : String,
+  scripting~ : Bool,
+) -> TreeBuilder {
   {
     tokenizer: Tokenizer::new(html),
     document: Document::new(),
@@ -107,7 +116,7 @@ pub fn TreeBuilder::new(html : String) -> TreeBuilder {
     template_modes: [],
     head_element: NO_NODE,
     form_element: NO_NODE,
-    scripting: false,
+    scripting,
     frameset_ok: true,
     foster_parenting: false,
     pending_table_chars: [],
@@ -1201,6 +1210,13 @@ fn adjust_svg_tag_name(name : String) -> String {
 /// Parse an HTML string and return the document
 pub fn parse(html : String) -> Document {
   let builder = TreeBuilder::new(html)
+  builder.parse()
+}
+
+///|
+/// Parse an HTML string with scripting enabled
+pub fn parse_with_scripting(html : String) -> Document {
+  let builder = TreeBuilder::new_with_options(html, scripting=true)
   builder.parse()
 }
 

@@ -177,7 +177,7 @@ test "html5lib/tokenizer/test3_a_a_6152" {
 
 ///|
 test "html5lib/tokenizer/test3_a_au0000_6153" {
-  let (tokens, _) = @html.tokenize("<a a='\u{0}'>")
+  let (tokens, _) = @html.tokenize("<a a='\u{00}'>")
   inspect(
     tokens,
     content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"�\"}], self_closing=false), EOF]",
@@ -204,19 +204,19 @@ test "html5lib/tokenizer/test3_a_au000a_6155" {
 
 ///|
 test "html5lib/tokenizer/test3_a_au000b_6156" {
-  let (tokens, _) = @html.tokenize("<a a='\u{b}'>")
+  let (tokens, _) = @html.tokenize("<a a='\u{0b}'>")
   inspect(
     tokens,
-    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\\u{b}\"}], self_closing=false), EOF]",
+    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\\u{0b}\"}], self_closing=false), EOF]",
   )
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000c_6157" {
-  let (tokens, _) = @html.tokenize("<a a='\u{c}'>")
+  let (tokens, _) = @html.tokenize("<a a='\u{0c}'>")
   inspect(
     tokens,
-    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\\u{c}\"}], self_closing=false), EOF]",
+    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\\u{0c}\"}], self_closing=false), EOF]",
   )
 }
 
@@ -276,7 +276,7 @@ test "html5lib/tokenizer/test3_a_a_6163" {
 
 ///|
 test "html5lib/tokenizer/test3_a_au0000_6164" {
-  let (tokens, _) = @html.tokenize("<a a=''\u{0}>")
+  let (tokens, _) = @html.tokenize("<a a=''\u{00}>")
   inspect(
     tokens,
     content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\"}, {name: \"�\", value: \"\"}], self_closing=false), EOF]",
@@ -285,10 +285,10 @@ test "html5lib/tokenizer/test3_a_au0000_6164" {
 
 ///|
 test "html5lib/tokenizer/test3_a_au0008_6165" {
-  let (tokens, _) = @html.tokenize("<a a=''\u{8}>")
+  let (tokens, _) = @html.tokenize("<a a=''\b>")
   inspect(
     tokens,
-    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\"}, {name: \"\\u{8}\", value: \"\"}], self_closing=false), EOF]",
+    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\"}, {name: \"\\b\", value: \"\"}], self_closing=false), EOF]",
   )
 }
 
@@ -312,16 +312,16 @@ test "html5lib/tokenizer/test3_a_au000a_6167" {
 
 ///|
 test "html5lib/tokenizer/test3_a_au000b_6168" {
-  let (tokens, _) = @html.tokenize("<a a=''\u{b}>")
+  let (tokens, _) = @html.tokenize("<a a=''\u{0b}>")
   inspect(
     tokens,
-    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\"}, {name: \"\\u{b}\", value: \"\"}], self_closing=false), EOF]",
+    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\"}, {name: \"\\u{0b}\", value: \"\"}], self_closing=false), EOF]",
   )
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000c_6169" {
-  let (tokens, _) = @html.tokenize("<a a=''\u{c}>")
+  let (tokens, _) = @html.tokenize("<a a=''\u{0c}>")
   inspect(
     tokens,
     content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"\"}], self_closing=false), EOF]",
@@ -942,7 +942,7 @@ test "html5lib/tokenizer/test3_a_aa_6237" {
 
 ///|
 test "html5lib/tokenizer/test3_a_aau0000_6238" {
-  let (tokens, _) = @html.tokenize("<a a=a\u{0}>")
+  let (tokens, _) = @html.tokenize("<a a=a\u{00}>")
   inspect(
     tokens,
     content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"a�\"}], self_closing=false), EOF]",
@@ -951,10 +951,10 @@ test "html5lib/tokenizer/test3_a_aau0000_6238" {
 
 ///|
 test "html5lib/tokenizer/test3_a_aau0008_6239" {
-  let (tokens, _) = @html.tokenize("<a a=a\u{8}>")
+  let (tokens, _) = @html.tokenize("<a a=a\b>")
   inspect(
     tokens,
-    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"a\\u{8}\"}], self_closing=false), EOF]",
+    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"a\\b\"}], self_closing=false), EOF]",
   )
 }
 
@@ -978,16 +978,16 @@ test "html5lib/tokenizer/test3_a_aau000a_6241" {
 
 ///|
 test "html5lib/tokenizer/test3_a_aau000b_6242" {
-  let (tokens, _) = @html.tokenize("<a a=a\u{b}>")
+  let (tokens, _) = @html.tokenize("<a a=a\u{0b}>")
   inspect(
     tokens,
-    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"a\\u{b}\"}], self_closing=false), EOF]",
+    content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"a\\u{0b}\"}], self_closing=false), EOF]",
   )
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aau000c_6243" {
-  let (tokens, _) = @html.tokenize("<a a=a\u{c}>")
+  let (tokens, _) = @html.tokenize("<a a=a\u{0c}>")
   inspect(
     tokens,
     content="[StartTag(name=\"a\", attrs=[{name: \"a\", value: \"a\"}], self_closing=false), EOF]",
@@ -1563,7 +1563,7 @@ test "html5lib/tokenizer/test3_a_6306" {
 
 ///|
 test "html5lib/tokenizer/test3_au0000_6307" {
-  let (tokens, _) = @html.tokenize("<a/\u{0}>")
+  let (tokens, _) = @html.tokenize("<a/\u{00}>")
   inspect(
     tokens,
     content="[StartTag(name=\"a\", attrs=[{name: \"�\", value: \"\"}], self_closing=false), EOF]",
@@ -1590,16 +1590,16 @@ test "html5lib/tokenizer/test3_au000a_6309" {
 
 ///|
 test "html5lib/tokenizer/test3_au000b_6310" {
-  let (tokens, _) = @html.tokenize("<a/\u{b}>")
+  let (tokens, _) = @html.tokenize("<a/\u{0b}>")
   inspect(
     tokens,
-    content="[StartTag(name=\"a\", attrs=[{name: \"\\u{b}\", value: \"\"}], self_closing=false), EOF]",
+    content="[StartTag(name=\"a\", attrs=[{name: \"\\u{0b}\", value: \"\"}], self_closing=false), EOF]",
   )
 }
 
 ///|
 test "html5lib/tokenizer/test3_au000c_6311" {
-  let (tokens, _) = @html.tokenize("<a/\u{c}>")
+  let (tokens, _) = @html.tokenize("<a/\u{0c}>")
   inspect(
     tokens,
     content="[StartTag(name=\"a\", attrs=[], self_closing=false), EOF]",
@@ -2056,7 +2056,7 @@ test "html5lib/tokenizer/test3__6361" {
 ///|
 test "html5lib/tokenizer/test3_udbc0udc00_6362" {
   let (tokens, _) = @html.tokenize("<􀀀")
-  inspect(tokens, content="[Character('<'), Character('􀀀'), EOF]")
+  inspect(tokens, content="[Character('<'), Character('\\u{100000}'), EOF]")
 }
 
 ///|
@@ -2360,7 +2360,7 @@ test "html5lib/tokenizer/test4_nonbmp_numeric_entity_6427" {
 ///|
 test "html5lib/tokenizer/test4_maximum_nonbmp_numeric_entity_6428" {
   let (tokens, _) = @html.tokenize("&#X10FFFF;")
-  inspect(tokens, content="[Character('􏿿'), EOF]")
+  inspect(tokens, content="[Character('\\u{10ffff}'), EOF]")
 }
 
 ///|
@@ -2406,7 +2406,7 @@ test "html5lib/tokenizer/test4_surrogate_code_point_edge_cases_6435" {
   )
   inspect(
     tokens,
-    content="[Character('퟿'), Character('�'), Character('�'), Character('�'), Character('�'), Character(''), EOF]",
+    content="[Character('퟿'), Character('�'), Character('�'), Character('�'), Character('�'), Character('\\u{e000}'), EOF]",
   )
 }
 
@@ -2526,20 +2526,20 @@ test "html5lib/tokenizer/test4_doctype_system_casesensitivity_2_6449" {
 
 ///|
 test "html5lib/tokenizer/test4_u0000_in_lookahead_region_after_nonmatching_charac_6450" {
-  let (tokens, _) = @html.tokenize("<!doc>\u{0}")
-  inspect(tokens, content="[Comment(\"doc\"), Character('\\u{0}'), EOF]")
+  let (tokens, _) = @html.tokenize("<!doc>\u{00}")
+  inspect(tokens, content="[Comment(\"doc\"), Character('\\u{00}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/test4_u0000_in_lookahead_region_6451" {
-  let (tokens, _) = @html.tokenize("<!doc\u{0}")
+  let (tokens, _) = @html.tokenize("<!doc\u{00}")
   inspect(tokens, content="[Comment(\"doc�\"), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/test4_u0080_in_lookahead_region_6452" {
-  let (tokens, _) = @html.tokenize("<!doc\u{80}")
-  inspect(tokens, content="[Comment(\"doc\\u{80}\"), EOF]")
+  let (tokens, _) = @html.tokenize("<!doc")
+  inspect(tokens, content="[Comment(\"doc\"), EOF]")
 }
 
 ///|
@@ -2715,68 +2715,68 @@ test "html5lib/tokenizer/test4_eof_in_after_attribute_value_state_6477" {
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0001_6478" {
-  let (tokens, _) = @html.tokenize("\u{1}")
-  inspect(tokens, content="[Character('\\u{1}'), EOF]")
+  let (tokens, _) = @html.tokenize("\u{01}")
+  inspect(tokens, content="[Character('\\u{01}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0002_6479" {
-  let (tokens, _) = @html.tokenize("\u{2}")
-  inspect(tokens, content="[Character('\\u{2}'), EOF]")
+  let (tokens, _) = @html.tokenize("\u{02}")
+  inspect(tokens, content="[Character('\\u{02}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0003_6480" {
-  let (tokens, _) = @html.tokenize("\u{3}")
-  inspect(tokens, content="[Character('\\u{3}'), EOF]")
+  let (tokens, _) = @html.tokenize("\u{03}")
+  inspect(tokens, content="[Character('\\u{03}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0004_6481" {
-  let (tokens, _) = @html.tokenize("\u{4}")
-  inspect(tokens, content="[Character('\\u{4}'), EOF]")
+  let (tokens, _) = @html.tokenize("\u{04}")
+  inspect(tokens, content="[Character('\\u{04}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0005_6482" {
-  let (tokens, _) = @html.tokenize("\u{5}")
-  inspect(tokens, content="[Character('\\u{5}'), EOF]")
+  let (tokens, _) = @html.tokenize("\u{05}")
+  inspect(tokens, content="[Character('\\u{05}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0006_6483" {
-  let (tokens, _) = @html.tokenize("\u{6}")
-  inspect(tokens, content="[Character('\\u{6}'), EOF]")
+  let (tokens, _) = @html.tokenize("\u{06}")
+  inspect(tokens, content="[Character('\\u{06}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0007_6484" {
-  let (tokens, _) = @html.tokenize("\u{7}")
-  inspect(tokens, content="[Character('\\u{7}'), EOF]")
+  let (tokens, _) = @html.tokenize("\u{07}")
+  inspect(tokens, content="[Character('\\u{07}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0008_6485" {
-  let (tokens, _) = @html.tokenize("\u{8}")
-  inspect(tokens, content="[Character('\\u{8}'), EOF]")
+  let (tokens, _) = @html.tokenize("\b")
+  inspect(tokens, content="[Character('\\b'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u000b_6486" {
-  let (tokens, _) = @html.tokenize("\u{b}")
-  inspect(tokens, content="[Character('\\u{b}'), EOF]")
+  let (tokens, _) = @html.tokenize("\u{0b}")
+  inspect(tokens, content="[Character('\\u{0b}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u000e_6487" {
-  let (tokens, _) = @html.tokenize("\u{e}")
-  inspect(tokens, content="[Character('\\u{e}'), EOF]")
+  let (tokens, _) = @html.tokenize("\u{0e}")
+  inspect(tokens, content="[Character('\\u{0e}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u000f_6488" {
-  let (tokens, _) = @html.tokenize("\u{f}")
-  inspect(tokens, content="[Character('\\u{f}'), EOF]")
+  let (tokens, _) = @html.tokenize("\u{0f}")
+  inspect(tokens, content="[Character('\\u{0f}'), EOF]")
 }
 
 ///|
@@ -2884,397 +2884,397 @@ test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u007f_6505" {
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdd0_6506" {
   let (tokens, _) = @html.tokenize("﷐")
-  inspect(tokens, content="[Character('﷐'), EOF]")
+  inspect(tokens, content="[Character('\\u{fdd0}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdd1_6507" {
   let (tokens, _) = @html.tokenize("﷑")
-  inspect(tokens, content="[Character('﷑'), EOF]")
+  inspect(tokens, content="[Character('\\u{fdd1}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdd2_6508" {
   let (tokens, _) = @html.tokenize("﷒")
-  inspect(tokens, content="[Character('﷒'), EOF]")
+  inspect(tokens, content="[Character('\\u{fdd2}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdd3_6509" {
   let (tokens, _) = @html.tokenize("﷓")
-  inspect(tokens, content="[Character('﷓'), EOF]")
+  inspect(tokens, content="[Character('\\u{fdd3}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdd4_6510" {
   let (tokens, _) = @html.tokenize("﷔")
-  inspect(tokens, content="[Character('﷔'), EOF]")
+  inspect(tokens, content="[Character('\\u{fdd4}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdd5_6511" {
   let (tokens, _) = @html.tokenize("﷕")
-  inspect(tokens, content="[Character('﷕'), EOF]")
+  inspect(tokens, content="[Character('\\u{fdd5}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdd6_6512" {
   let (tokens, _) = @html.tokenize("﷖")
-  inspect(tokens, content="[Character('﷖'), EOF]")
+  inspect(tokens, content="[Character('\\u{fdd6}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdd7_6513" {
   let (tokens, _) = @html.tokenize("﷗")
-  inspect(tokens, content="[Character('﷗'), EOF]")
+  inspect(tokens, content="[Character('\\u{fdd7}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdd8_6514" {
   let (tokens, _) = @html.tokenize("﷘")
-  inspect(tokens, content="[Character('﷘'), EOF]")
+  inspect(tokens, content="[Character('\\u{fdd8}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdd9_6515" {
   let (tokens, _) = @html.tokenize("﷙")
-  inspect(tokens, content="[Character('﷙'), EOF]")
+  inspect(tokens, content="[Character('\\u{fdd9}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdda_6516" {
   let (tokens, _) = @html.tokenize("﷚")
-  inspect(tokens, content="[Character('﷚'), EOF]")
+  inspect(tokens, content="[Character('\\u{fdda}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufddb_6517" {
   let (tokens, _) = @html.tokenize("﷛")
-  inspect(tokens, content="[Character('﷛'), EOF]")
+  inspect(tokens, content="[Character('\\u{fddb}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufddc_6518" {
   let (tokens, _) = @html.tokenize("﷜")
-  inspect(tokens, content="[Character('﷜'), EOF]")
+  inspect(tokens, content="[Character('\\u{fddc}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufddd_6519" {
   let (tokens, _) = @html.tokenize("﷝")
-  inspect(tokens, content="[Character('﷝'), EOF]")
+  inspect(tokens, content="[Character('\\u{fddd}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdde_6520" {
   let (tokens, _) = @html.tokenize("﷞")
-  inspect(tokens, content="[Character('﷞'), EOF]")
+  inspect(tokens, content="[Character('\\u{fdde}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufddf_6521" {
   let (tokens, _) = @html.tokenize("﷟")
-  inspect(tokens, content="[Character('﷟'), EOF]")
+  inspect(tokens, content="[Character('\\u{fddf}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufde0_6522" {
   let (tokens, _) = @html.tokenize("﷠")
-  inspect(tokens, content="[Character('﷠'), EOF]")
+  inspect(tokens, content="[Character('\\u{fde0}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufde1_6523" {
   let (tokens, _) = @html.tokenize("﷡")
-  inspect(tokens, content="[Character('﷡'), EOF]")
+  inspect(tokens, content="[Character('\\u{fde1}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufde2_6524" {
   let (tokens, _) = @html.tokenize("﷢")
-  inspect(tokens, content="[Character('﷢'), EOF]")
+  inspect(tokens, content="[Character('\\u{fde2}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufde3_6525" {
   let (tokens, _) = @html.tokenize("﷣")
-  inspect(tokens, content="[Character('﷣'), EOF]")
+  inspect(tokens, content="[Character('\\u{fde3}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufde4_6526" {
   let (tokens, _) = @html.tokenize("﷤")
-  inspect(tokens, content="[Character('﷤'), EOF]")
+  inspect(tokens, content="[Character('\\u{fde4}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufde5_6527" {
   let (tokens, _) = @html.tokenize("﷥")
-  inspect(tokens, content="[Character('﷥'), EOF]")
+  inspect(tokens, content="[Character('\\u{fde5}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufde6_6528" {
   let (tokens, _) = @html.tokenize("﷦")
-  inspect(tokens, content="[Character('﷦'), EOF]")
+  inspect(tokens, content="[Character('\\u{fde6}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufde7_6529" {
   let (tokens, _) = @html.tokenize("﷧")
-  inspect(tokens, content="[Character('﷧'), EOF]")
+  inspect(tokens, content="[Character('\\u{fde7}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufde8_6530" {
   let (tokens, _) = @html.tokenize("﷨")
-  inspect(tokens, content="[Character('﷨'), EOF]")
+  inspect(tokens, content="[Character('\\u{fde8}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufde9_6531" {
   let (tokens, _) = @html.tokenize("﷩")
-  inspect(tokens, content="[Character('﷩'), EOF]")
+  inspect(tokens, content="[Character('\\u{fde9}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdea_6532" {
   let (tokens, _) = @html.tokenize("﷪")
-  inspect(tokens, content="[Character('﷪'), EOF]")
+  inspect(tokens, content="[Character('\\u{fdea}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdeb_6533" {
   let (tokens, _) = @html.tokenize("﷫")
-  inspect(tokens, content="[Character('﷫'), EOF]")
+  inspect(tokens, content="[Character('\\u{fdeb}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdec_6534" {
   let (tokens, _) = @html.tokenize("﷬")
-  inspect(tokens, content="[Character('﷬'), EOF]")
+  inspect(tokens, content="[Character('\\u{fdec}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufded_6535" {
   let (tokens, _) = @html.tokenize("﷭")
-  inspect(tokens, content="[Character('﷭'), EOF]")
+  inspect(tokens, content="[Character('\\u{fded}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdee_6536" {
   let (tokens, _) = @html.tokenize("﷮")
-  inspect(tokens, content="[Character('﷮'), EOF]")
+  inspect(tokens, content="[Character('\\u{fdee}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdef_6537" {
   let (tokens, _) = @html.tokenize("﷯")
-  inspect(tokens, content="[Character('﷯'), EOF]")
+  inspect(tokens, content="[Character('\\u{fdef}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufffe_6538" {
   let (tokens, _) = @html.tokenize("￾")
-  inspect(tokens, content="[Character('￾'), EOF]")
+  inspect(tokens, content="[Character('\\u{fffe}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_uffff_6539" {
   let (tokens, _) = @html.tokenize("￿")
-  inspect(tokens, content="[Character('￿'), EOF]")
+  inspect(tokens, content="[Character('\\u{ffff}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u1fffe_6540" {
   let (tokens, _) = @html.tokenize("🿾")
-  inspect(tokens, content="[Character('🿾'), EOF]")
+  inspect(tokens, content="[Character('\\u{01fffe}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u1ffff_6541" {
   let (tokens, _) = @html.tokenize("🿿")
-  inspect(tokens, content="[Character('🿿'), EOF]")
+  inspect(tokens, content="[Character('\\u{01ffff}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u2fffe_6542" {
   let (tokens, _) = @html.tokenize("𯿾")
-  inspect(tokens, content="[Character('𯿾'), EOF]")
+  inspect(tokens, content="[Character('\\u{02fffe}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u2ffff_6543" {
   let (tokens, _) = @html.tokenize("𯿿")
-  inspect(tokens, content="[Character('𯿿'), EOF]")
+  inspect(tokens, content="[Character('\\u{02ffff}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u3fffe_6544" {
   let (tokens, _) = @html.tokenize("𿿾")
-  inspect(tokens, content="[Character('𿿾'), EOF]")
+  inspect(tokens, content="[Character('\\u{03fffe}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u3ffff_6545" {
   let (tokens, _) = @html.tokenize("𿿿")
-  inspect(tokens, content="[Character('𿿿'), EOF]")
+  inspect(tokens, content="[Character('\\u{03ffff}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u4fffe_6546" {
   let (tokens, _) = @html.tokenize("񏿾")
-  inspect(tokens, content="[Character('񏿾'), EOF]")
+  inspect(tokens, content="[Character('\\u{04fffe}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u4ffff_6547" {
   let (tokens, _) = @html.tokenize("񏿿")
-  inspect(tokens, content="[Character('񏿿'), EOF]")
+  inspect(tokens, content="[Character('\\u{04ffff}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u5fffe_6548" {
   let (tokens, _) = @html.tokenize("񟿾")
-  inspect(tokens, content="[Character('񟿾'), EOF]")
+  inspect(tokens, content="[Character('\\u{05fffe}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u5ffff_6549" {
   let (tokens, _) = @html.tokenize("񟿿")
-  inspect(tokens, content="[Character('񟿿'), EOF]")
+  inspect(tokens, content="[Character('\\u{05ffff}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u6fffe_6550" {
   let (tokens, _) = @html.tokenize("񯿾")
-  inspect(tokens, content="[Character('񯿾'), EOF]")
+  inspect(tokens, content="[Character('\\u{06fffe}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u6ffff_6551" {
   let (tokens, _) = @html.tokenize("񯿿")
-  inspect(tokens, content="[Character('񯿿'), EOF]")
+  inspect(tokens, content="[Character('\\u{06ffff}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u7fffe_6552" {
   let (tokens, _) = @html.tokenize("񿿾")
-  inspect(tokens, content="[Character('񿿾'), EOF]")
+  inspect(tokens, content="[Character('\\u{07fffe}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u7ffff_6553" {
   let (tokens, _) = @html.tokenize("񿿿")
-  inspect(tokens, content="[Character('񿿿'), EOF]")
+  inspect(tokens, content="[Character('\\u{07ffff}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u8fffe_6554" {
   let (tokens, _) = @html.tokenize("򏿾")
-  inspect(tokens, content="[Character('򏿾'), EOF]")
+  inspect(tokens, content="[Character('\\u{08fffe}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u8ffff_6555" {
   let (tokens, _) = @html.tokenize("򏿿")
-  inspect(tokens, content="[Character('򏿿'), EOF]")
+  inspect(tokens, content="[Character('\\u{08ffff}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u9fffe_6556" {
   let (tokens, _) = @html.tokenize("򟿾")
-  inspect(tokens, content="[Character('򟿾'), EOF]")
+  inspect(tokens, content="[Character('\\u{09fffe}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u9ffff_6557" {
   let (tokens, _) = @html.tokenize("򟿿")
-  inspect(tokens, content="[Character('򟿿'), EOF]")
+  inspect(tokens, content="[Character('\\u{09ffff}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_uafffe_6558" {
   let (tokens, _) = @html.tokenize("򯿾")
-  inspect(tokens, content="[Character('򯿾'), EOF]")
+  inspect(tokens, content="[Character('\\u{0afffe}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_uaffff_6559" {
   let (tokens, _) = @html.tokenize("򯿿")
-  inspect(tokens, content="[Character('򯿿'), EOF]")
+  inspect(tokens, content="[Character('\\u{0affff}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ubfffe_6560" {
   let (tokens, _) = @html.tokenize("򿿾")
-  inspect(tokens, content="[Character('򿿾'), EOF]")
+  inspect(tokens, content="[Character('\\u{0bfffe}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ubffff_6561" {
   let (tokens, _) = @html.tokenize("򿿿")
-  inspect(tokens, content="[Character('򿿿'), EOF]")
+  inspect(tokens, content="[Character('\\u{0bffff}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ucfffe_6562" {
   let (tokens, _) = @html.tokenize("󏿾")
-  inspect(tokens, content="[Character('󏿾'), EOF]")
+  inspect(tokens, content="[Character('\\u{0cfffe}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ucffff_6563" {
   let (tokens, _) = @html.tokenize("󏿿")
-  inspect(tokens, content="[Character('󏿿'), EOF]")
+  inspect(tokens, content="[Character('\\u{0cffff}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_udfffe_6564" {
   let (tokens, _) = @html.tokenize("󟿾")
-  inspect(tokens, content="[Character('󟿾'), EOF]")
+  inspect(tokens, content="[Character('\\u{0dfffe}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_udffff_6565" {
   let (tokens, _) = @html.tokenize("󟿿")
-  inspect(tokens, content="[Character('󟿿'), EOF]")
+  inspect(tokens, content="[Character('\\u{0dffff}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_uefffe_6566" {
   let (tokens, _) = @html.tokenize("󯿾")
-  inspect(tokens, content="[Character('󯿾'), EOF]")
+  inspect(tokens, content="[Character('\\u{0efffe}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ueffff_6567" {
   let (tokens, _) = @html.tokenize("󯿿")
-  inspect(tokens, content="[Character('󯿿'), EOF]")
+  inspect(tokens, content="[Character('\\u{0effff}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_uffffe_6568" {
   let (tokens, _) = @html.tokenize("󿿾")
-  inspect(tokens, content="[Character('󿿾'), EOF]")
+  inspect(tokens, content="[Character('\\u{0ffffe}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufffff_6569" {
   let (tokens, _) = @html.tokenize("󿿿")
-  inspect(tokens, content="[Character('󿿿'), EOF]")
+  inspect(tokens, content="[Character('\\u{0fffff}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u10fffe_6570" {
   let (tokens, _) = @html.tokenize("􏿾")
-  inspect(tokens, content="[Character('􏿾'), EOF]")
+  inspect(tokens, content="[Character('\\u{10fffe}'), EOF]")
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u10ffff_6571" {
   let (tokens, _) = @html.tokenize("􏿿")
-  inspect(tokens, content="[Character('􏿿'), EOF]")
+  inspect(tokens, content="[Character('\\u{10ffff}'), EOF]")
 }
 
 ///|
