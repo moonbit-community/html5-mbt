@@ -264,8 +264,33 @@ pub fn TreeBuilder::find_furthest_block(
           entry.tag_name == "annotation-xml"
     }
     if is_special {
-      return i
+      // Verify this element is actually a DOM descendant of the formatting element
+      // This handles cases where adoption agency left the stack out of sync with DOM
+      if self.is_dom_descendant(entry.node_id, formatting_node_id) {
+        return i
+      }
     }
   }
   -1
+}
+
+///|
+/// Check if node_id is a DOM descendant of ancestor_id
+fn TreeBuilder::is_dom_descendant(
+  self : TreeBuilder,
+  node_id : Int,
+  ancestor_id : Int,
+) -> Bool {
+  let mut current = node_id
+  while true {
+    let parent = self.document.get_parent(current)
+    if parent == NO_NODE {
+      return false
+    }
+    if parent == ancestor_id {
+      return true
+    }
+    current = parent
+  }
+  false
 }

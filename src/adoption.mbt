@@ -82,12 +82,12 @@ pub fn TreeBuilder::run_adoption_agency(
     // 8. Variables for inner loop
     let mut node_idx = furthest_block_idx
     let mut last_node_id = furthest_block_id
-    // 9. Inner loop - spec says check if > 3
+    // 9. Inner loop - counter limit of 3
     let mut inner_loop = 0
     while true {
-      // Increment inner loop counter by one
+      // Increment counter first
       inner_loop += 1
-      // If inner loop counter > 3, abort
+      // Check if > 3, break
       if inner_loop > 3 {
         break
       }
