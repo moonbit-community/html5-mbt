@@ -267,7 +267,15 @@ fn TreeBuilder::insert_after_appropriate_place(
   if self.foster_parenting && self.is_table_element(parent_id) {
     self.insert_node_foster_parenting(node_id)
   } else {
-    self.document.append_child(parent_id, node_id)
+    // If parent is a template, insert into template content
+    let actual_parent = match self.document.get_tag_name(parent_id) {
+      Some("template") => {
+        let content = self.document.get_template_content(parent_id)
+        if content != NO_NODE { content } else { parent_id }
+      }
+      _ => parent_id
+    }
+    self.document.append_child(actual_parent, node_id)
   }
 }
 

@@ -46,8 +46,9 @@ fn TreeBuilder::process_initial_mode(self : TreeBuilder, token : Token) -> Bool 
       false
     }
     _ => {
-      // Parse error, but continue
+      // Parse error: no DOCTYPE - set quirks mode per WHATWG 13.2.6.4.1
       self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
+      self.document.quirks_mode = Quirks
       self.mode = BeforeHtml
       true // Reprocess
     }
@@ -2272,11 +2273,18 @@ fn TreeBuilder::process_in_foreign_content(
           return false
         }
         if entry.ns == HTML {
-          // Pop all foreign content elements before processing in HTML mode
-          while self.open_elements.length() > i + 1 {
-            let _ = self.pop_element()
+          // Some end tags in HTML mode can insert elements (e.g., </p>, </br>)
+          // For these, we need to pop foreign elements first
+          // For others, we just process without popping
+          match token {
+            EndTag(name~) if name == "p" || name == "br" => {
+              // Pop all foreign content elements before processing in HTML mode
+              while self.open_elements.length() > i + 1 {
+                let _ = self.pop_element()
+              }
+            }
+            _ => ()
           }
-          // Process using rules for current mode (skip foreign content check)
           return self.process_token_in_html_mode(token)
         }
       }

@@ -172,6 +172,16 @@ pub fn Document::insert_before(
       }
       children.insert(idx, child_id)
     }
+    DocumentFragmentNode(children~) => {
+      let mut idx = children.length()
+      for i, id in children {
+        if id == reference_id {
+          idx = i
+          break
+        }
+      }
+      children.insert(idx, child_id)
+    }
     _ => ()
   }
 }

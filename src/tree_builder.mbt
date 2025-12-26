@@ -582,18 +582,27 @@ pub fn TreeBuilder::in_list_item_scope(
 }
 
 ///|
-/// Table scope elements
-fn table_scope_elements() -> Array[String] {
-  ["html", "table", "template"]
-}
-
-///|
 /// Check if tag is in table scope
+/// Table scope ONLY checks for html, table, template - NOT SVG/MathML elements
 pub fn TreeBuilder::in_table_scope(
   self : TreeBuilder,
   tag_name : String,
 ) -> Bool {
-  self.in_scope(tag_name, table_scope_elements())
+  for i = self.open_elements.length() - 1; i >= 0; i = i - 1 {
+    let entry = self.open_elements[i]
+    if entry.tag_name == tag_name && entry.ns == HTML {
+      return true
+    }
+    // Only html, table, template are table scope markers (per WHATWG 13.2.4.2)
+    if entry.ns == HTML {
+      if entry.tag_name == "html" ||
+        entry.tag_name == "table" ||
+        entry.tag_name == "template" {
+        return false
+      }
+    }
+  }
+  false
 }
 
 ///|
@@ -785,84 +794,62 @@ fn TreeBuilder::insert_node_foster_parenting(
   self : TreeBuilder,
   node_id : Int,
 ) -> Unit {
-  // First check for template element on the stack
-  for i = self.open_elements.length() - 1; i >= 0; i = i - 1 {
-    if self.open_elements[i].tag_name == "template" {
-      // Insert into template content, after its last child
-      let template_id = self.open_elements[i].node_id
-      let content_id = self.document.get_template_content(template_id)
-      if content_id != NO_NODE {
-        self.document.append_child(content_id, node_id)
-        return
-      }
-    }
-  }
-  // Find the last table element in the stack
-  let mut table_idx = -1
-  for i = self.open_elements.length() - 1; i >= 0; i = i - 1 {
-    if self.open_elements[i].tag_name == "table" {
-      table_idx = i
-      break
-    }
-  }
-  if table_idx == -1 {
-    // No table found, insert into first element (html)
-    if self.open_elements.length() > 0 {
-      let parent_id = self.open_elements[0].node_id
-      self.document.append_child(parent_id, node_id)
-    }
-    return
-  }
-  // If table has a parent, insert before the table
-  let table_node_id = self.open_elements[table_idx].node_id
-  let parent = self.document.get_parent(table_node_id)
-  if parent != NO_NODE {
-    self.document.insert_before(parent, node_id, table_node_id)
-  } else if table_idx > 0 {
-    // Otherwise insert into the element immediately above table in the stack
-    let foster_parent = self.open_elements[table_idx - 1].node_id
-    self.document.append_child(foster_parent, node_id)
+  let (parent_id, insert_before) = self.get_foster_parent_location()
+  if insert_before != NO_NODE {
+    self.document.insert_before(parent_id, node_id, insert_before)
+  } else {
+    self.document.append_child(parent_id, node_id)
   }
 }
 
 ///|
-/// Get the foster parenting insertion location
+/// Get the foster parenting insertion location (WHATWG 13.2.6.1)
 /// Returns (parent_id, insert_before_id) where insert_before_id is NO_NODE for append
 fn TreeBuilder::get_foster_parent_location(self : TreeBuilder) -> (Int, Int) {
-  // First check for template element on the stack
+  // Find last template and last table in the stack
+  let mut last_template_idx = -1
+  let mut last_table_idx = -1
   for i = self.open_elements.length() - 1; i >= 0; i = i - 1 {
-    if self.open_elements[i].tag_name == "template" {
-      // Insert into template content, after its last child
-      let template_id = self.open_elements[i].node_id
-      let content_id = self.document.get_template_content(template_id)
-      if content_id != NO_NODE {
-        return (content_id, NO_NODE)
+    if self.open_elements[i].tag_name == "template" && last_template_idx == -1 {
+      last_template_idx = i
+    }
+    if self.open_elements[i].tag_name == "table" && last_table_idx == -1 {
+      last_table_idx = i
+    }
+  }
+  // Step 3: If template exists and (no table OR template is lower than table)
+  if last_template_idx != -1 &&
+    (last_table_idx == -1 || last_template_idx < last_table_idx) {
+    let template_id = self.open_elements[last_template_idx].node_id
+    let content_id = self.document.get_template_content(template_id)
+    if content_id != NO_NODE {
+      // If table is inside this template, insert before the table
+      if last_table_idx != -1 {
+        let table_node_id = self.open_elements[last_table_idx].node_id
+        let table_parent = self.document.get_parent(table_node_id)
+        if table_parent == content_id {
+          return (content_id, table_node_id)
+        }
       }
+      return (content_id, NO_NODE)
     }
   }
-  // Find the last table element in the stack
-  let mut table_idx = -1
-  for i = self.open_elements.length() - 1; i >= 0; i = i - 1 {
-    if self.open_elements[i].tag_name == "table" {
-      table_idx = i
-      break
-    }
-  }
-  if table_idx == -1 {
-    // No table found, insert into first element (html)
+  // Step 4: No table found, insert into first element (html)
+  if last_table_idx == -1 {
     if self.open_elements.length() > 0 {
       return (self.open_elements[0].node_id, NO_NODE)
     }
     return (0, NO_NODE)
   }
-  // If table has a parent, insert before the table
-  let table_node_id = self.open_elements[table_idx].node_id
+  // Step 5: If table has a parent, insert before the table
+  let table_node_id = self.open_elements[last_table_idx].node_id
   let parent = self.document.get_parent(table_node_id)
   if parent != NO_NODE {
     return (parent, table_node_id)
-  } else if table_idx > 0 {
-    // Otherwise insert into the element immediately above table in the stack
-    let foster_parent = self.open_elements[table_idx - 1].node_id
+  }
+  // Step 6: Insert into element above table in stack
+  if last_table_idx > 0 {
+    let foster_parent = self.open_elements[last_table_idx - 1].node_id
     return (foster_parent, NO_NODE)
   }
   (0, NO_NODE)
