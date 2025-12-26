@@ -1799,8 +1799,43 @@ fn TreeBuilder::process_in_select_mode(
       false
     }
     EOF => self.process_in_body_mode(token)
-    _ => {
+    StartTag(name~, ..) if name == "caption" ||
+      name == "table" ||
+      name == "tbody" ||
+      name == "tfoot" ||
+      name == "thead" ||
+      name == "tr" ||
+      name == "td" ||
+      name == "th" ||
+      name == "col" ||
+      name == "colgroup" => {
+      // Table-related elements in select (not InSelectInTable) should be ignored
       self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
+      false
+    }
+    StartTag(name~, attrs~, self_closing~) => {
+      // Browsers insert unknown elements inside select (against spec but matches reality)
+      self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
+      self.reconstruct_active_formatting()
+      let _ = self.insert_html_element(name, attrs)
+      if self_closing {
+        let _ = self.pop_element()
+      }
+      // Add to active formatting list if it's a formatting element
+      if is_formatting_element(name) {
+        self.push_active_formatting(self.current_node().node_id, name, attrs)
+      }
+      false
+    }
+    EndTag(name~) => {
+      // Handle unknown end tags in select
+      self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
+      // Run adoption agency for formatting elements
+      if is_formatting_element(name) {
+        self.run_adoption_agency(name)
+      } else {
+        self.process_any_other_end_tag(name)
+      }
       false
     }
   }

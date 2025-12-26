@@ -17,6 +17,16 @@
 // ============================================================================
 
 ///|
+/// Check if a tag name is a formatting element (adoption agency applies)
+pub fn is_formatting_element(name : String) -> Bool {
+  match name {
+    "a" | "b" | "big" | "code" | "em" | "font" | "i" | "nobr" | "s" | "small" |
+    "strike" | "strong" | "tt" | "u" => true
+    _ => false
+  }
+}
+
+///|
 /// Push a formatting marker onto the list
 pub fn TreeBuilder::push_formatting_marker(self : TreeBuilder) -> Unit {
   self.active_formatting.push(Marker)
