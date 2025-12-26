@@ -1,11 +1,11 @@
 {
   "name": "Milky2018/html",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "deps": {
     "moonbitlang/x": "0.4.38"
   },
   "readme": "README.md",
-  "repository": "",
+  "repository": "https://github.com/moonbitlang/html5-mbt.git",
   "license": "Apache-2.0",
   "keywords": ["html", "html5", "parser", "whatwg"],
   "description": "WHATWG HTML5 spec-compliant parser for MoonBit"
