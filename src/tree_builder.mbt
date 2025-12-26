@@ -824,12 +824,12 @@ fn TreeBuilder::get_foster_parent_location(self : TreeBuilder) -> (Int, Int) {
     let template_id = self.open_elements[last_template_idx].node_id
     let content_id = self.document.get_template_content(template_id)
     if content_id != NO_NODE {
-      // If table is inside this template, insert before the table
+      // If table is inside this template, insert before the table in its parent
       if last_table_idx != -1 {
         let table_node_id = self.open_elements[last_table_idx].node_id
         let table_parent = self.document.get_parent(table_node_id)
-        if table_parent == content_id {
-          return (content_id, table_node_id)
+        if table_parent != NO_NODE {
+          return (table_parent, table_node_id)
         }
       }
       return (content_id, NO_NODE)
