@@ -2242,6 +2242,10 @@ fn TreeBuilder::process_in_foreign_content(
           return false
         }
         if entry.ns == HTML {
+          // Pop all foreign content elements before processing in HTML mode
+          while self.open_elements.length() > i + 1 {
+            let _ = self.pop_element()
+          }
           // Process using rules for current mode (skip foreign content check)
           return self.process_token_in_html_mode(token)
         }
