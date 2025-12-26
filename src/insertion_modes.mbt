@@ -1782,6 +1782,22 @@ fn TreeBuilder::process_in_select_mode(
     }
     StartTag(name~, ..) | EndTag(name~) if name == "script" ||
       name == "template" => self.process_in_head_mode(token)
+    StartTag(name~, attrs~, self_closing~) if name == "math" => {
+      // Insert MathML element in select (browsers allow this despite spec)
+      let _ = self.insert_foreign_element(name, attrs, MathML)
+      if self_closing {
+        let _ = self.pop_element()
+      }
+      false
+    }
+    StartTag(name~, attrs~, self_closing~) if name == "svg" => {
+      // Insert SVG element in select (browsers allow this despite spec)
+      let _ = self.insert_foreign_element(name, attrs, SVG)
+      if self_closing {
+        let _ = self.pop_element()
+      }
+      false
+    }
     EOF => self.process_in_body_mode(token)
     _ => {
       self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)

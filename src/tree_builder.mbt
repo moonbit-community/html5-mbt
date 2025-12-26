@@ -377,9 +377,24 @@ pub fn TreeBuilder::in_scope(
     if scope_elements.contains(entry.tag_name) && entry.ns == HTML {
       return false
     }
-    // All MathML and SVG elements are scope-containing
-    if entry.ns == MathML || entry.ns == SVG {
-      return false
+    // Specific MathML elements are scope-containing
+    if entry.ns == MathML {
+      if entry.tag_name == "mi" ||
+        entry.tag_name == "mo" ||
+        entry.tag_name == "mn" ||
+        entry.tag_name == "ms" ||
+        entry.tag_name == "mtext" ||
+        entry.tag_name == "annotation-xml" {
+        return false
+      }
+    }
+    // Specific SVG elements are scope-containing
+    if entry.ns == SVG {
+      if entry.tag_name == "foreignObject" ||
+        entry.tag_name == "desc" ||
+        entry.tag_name == "title" {
+        return false
+      }
     }
   }
   false
