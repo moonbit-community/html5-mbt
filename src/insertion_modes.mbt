@@ -37,10 +37,7 @@ fn TreeBuilder::process_initial_mode(self : TreeBuilder, token : Token) -> Bool 
       self.insert_doctype(name, public_id, system_id)
       // Set document mode (quirks detection per WHATWG 13.2.6.4.1)
       self.document.quirks_mode = self.determine_quirks_mode(
-        name,
-        public_id,
-        system_id,
-        force_quirks,
+        name, public_id, system_id, force_quirks,
       )
       self.mode = BeforeHtml
       false
@@ -1064,6 +1061,7 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
       // If self-closing, pop the element immediately
       if self_closing {
         let _ = self.pop_element()
+
       }
       false
     }
@@ -1074,6 +1072,7 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
       // If self-closing, pop the element immediately
       if self_closing {
         let _ = self.pop_element()
+
       }
       false
     }
@@ -1119,6 +1118,7 @@ fn TreeBuilder::process_any_other_end_tag(
       // Pop until and including this element
       while self.open_elements.length() > i {
         let _ = self.pop_element()
+
       }
       return
     }
@@ -1129,20 +1129,24 @@ fn TreeBuilder::process_any_other_end_tag(
     }
     // SVG special elements: foreignObject, desc, title
     if entry.ns == SVG &&
-      (entry.tag_name == "foreignObject" ||
+      (
+        entry.tag_name == "foreignObject" ||
         entry.tag_name == "desc" ||
-        entry.tag_name == "title") {
+        entry.tag_name == "title"
+      ) {
       self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
       return
     }
     // MathML special elements
     if entry.ns == MathML &&
-      (entry.tag_name == "mi" ||
+      (
+        entry.tag_name == "mi" ||
         entry.tag_name == "mo" ||
         entry.tag_name == "mn" ||
         entry.tag_name == "ms" ||
         entry.tag_name == "mtext" ||
-        entry.tag_name == "annotation-xml") {
+        entry.tag_name == "annotation-xml"
+      ) {
       self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
       return
     }
@@ -1345,6 +1349,7 @@ fn TreeBuilder::process_in_table_text_mode(
         // This reconstructs active formatting elements
         for c in self.pending_table_chars {
           let _ = self.process_in_table_anything_else(Character(c))
+
         }
       }
       self.pending_table_chars.clear()
@@ -1699,6 +1704,7 @@ fn TreeBuilder::process_in_select_mode(
       false
     }
     Character(c) => {
+      self.reconstruct_active_formatting()
       self.insert_character(c)
       false
     }
@@ -1714,6 +1720,7 @@ fn TreeBuilder::process_in_select_mode(
     StartTag(name~, attrs~, ..) if name == "option" => {
       if self.current_node().tag_name == "option" {
         let _ = self.pop_element()
+
       }
       // Reconstruct formatting elements before inserting option
       self.reconstruct_active_formatting()
@@ -1802,6 +1809,7 @@ fn TreeBuilder::process_in_select_mode(
       let _ = self.insert_foreign_element(name, attrs, MathML)
       if self_closing {
         let _ = self.pop_element()
+
       }
       false
     }
@@ -1810,6 +1818,7 @@ fn TreeBuilder::process_in_select_mode(
       let _ = self.insert_foreign_element(name, attrs, SVG)
       if self_closing {
         let _ = self.pop_element()
+
       }
       false
     }
@@ -1844,6 +1853,7 @@ fn TreeBuilder::process_in_select_mode(
       // Pop void elements immediately (img, br, etc.) or self-closing tags
       if self_closing || is_void_element_name(name) {
         let _ = self.pop_element()
+
       }
       // Add to active formatting list if it's a formatting element
       if is_formatting_element(name) {
@@ -1852,8 +1862,25 @@ fn TreeBuilder::process_in_select_mode(
       false
     }
     EndTag(name~) => {
-      // Per WHATWG 13.2.6.4.16: Unknown end tags in select are parse errors
-      // We close matching elements opened inside select, but ignore others
+      if is_formatting_element(name) {
+        let mut found_in_select = false
+        for i = self.open_elements.length() - 1; i >= 0; i = i - 1 {
+          let entry = self.open_elements[i]
+          if entry.tag_name == "select" && entry.ns == HTML {
+            break
+          }
+          if entry.tag_name == name && entry.ns == HTML {
+            found_in_select = true
+            break
+          }
+        }
+        if found_in_select {
+          self.run_adoption_agency(name)
+        } else {
+          self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
+        }
+        return false
+      }
       self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
       // Find matching element in stack (only within select scope)
       for i = self.open_elements.length() - 1; i >= 0; i = i - 1 {
@@ -1866,6 +1893,7 @@ fn TreeBuilder::process_in_select_mode(
           // Found matching element, pop until it
           while self.open_elements.length() > i {
             let _ = self.pop_element()
+
           }
           break
         }
@@ -2308,11 +2336,11 @@ fn TreeBuilder::process_in_foreign_content(
           // Some end tags in HTML mode can insert elements (e.g., </p>, </br>)
           // For these, we need to pop foreign elements first
           match token {
-            EndTag(name~) if name == "p" || name == "br" => {
+            EndTag(name~) if name == "p" || name == "br" =>
               while self.open_elements.length() > i + 1 {
                 let _ = self.pop_element()
+
               }
-            }
             _ => ()
           }
           return self.process_token_in_html_mode(token)
@@ -2322,6 +2350,7 @@ fn TreeBuilder::process_in_foreign_content(
           // Pop until and including this element
           while self.open_elements.length() > i {
             let _ = self.pop_element()
+
           }
           return false
         }
@@ -2346,8 +2375,20 @@ fn is_whitespace_char(c : Char) -> Bool {
 /// Check if tag name is a void element (no closing tag needed)
 fn is_void_element_name(name : String) -> Bool {
   match name {
-    "area" | "base" | "br" | "col" | "embed" | "hr" | "img" | "input" | "link" |
-    "meta" | "param" | "source" | "track" | "wbr" => true
+    "area"
+    | "base"
+    | "br"
+    | "col"
+    | "embed"
+    | "hr"
+    | "img"
+    | "input"
+    | "link"
+    | "meta"
+    | "param"
+    | "source"
+    | "track"
+    | "wbr" => true
     _ => false
   }
 }

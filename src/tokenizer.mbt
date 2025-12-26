@@ -94,12 +94,6 @@ pub fn Tokenizer::new(input : String) -> Tokenizer {
 }
 
 ///|
-/// Check if at end of input
-fn Tokenizer::is_eof(self : Tokenizer) -> Bool {
-  self.pos >= self.input.length()
-}
-
-///|
 /// Get current source position
 pub fn Tokenizer::get_position(self : Tokenizer) -> SourcePosition {
   { line: self.line, column: self.column, offset: self.pos }

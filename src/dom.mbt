@@ -495,7 +495,7 @@ pub fn Document::dump(self : Document) -> String {
   // Remove trailing newline to match html5lib-tests format
   let s = buf.to_string()
   let len = s.length()
-  if len > 0 && s[len - 1] == 10 {  // '\n' == 10
+  if len > 0 && s[len - 1] == 10 { // '\n' == 10
     // Build string without trailing newline
     let buf2 = StringBuilder::new()
     for i = 0; i < len - 1; i = i + 1 {

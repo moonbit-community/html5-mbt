@@ -8568,7 +8568,7 @@ test "html5lib/tree/tricky01_1672" {
       #|          "Hello"
       #|          <div>
       #|            "World"
-      #|        "
+      #|        "  
       #|"
     ),
   )
@@ -8695,6 +8695,7 @@ test "html5lib/tree/tricky01_1676" {
       #|      <pre>
       #|        "A pre tag outside everything else."
       #|      "
+      #|
       #|"
     ),
   )

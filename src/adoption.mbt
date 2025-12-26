@@ -271,7 +271,11 @@ fn TreeBuilder::insert_after_appropriate_place(
     let actual_parent = match self.document.get_tag_name(parent_id) {
       Some("template") => {
         let content = self.document.get_template_content(parent_id)
-        if content != NO_NODE { content } else { parent_id }
+        if content != NO_NODE {
+          content
+        } else {
+          parent_id
+        }
       }
       _ => parent_id
     }

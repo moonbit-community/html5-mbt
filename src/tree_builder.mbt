@@ -159,7 +159,169 @@ pub fn TreeBuilder::parse(self : TreeBuilder) -> Document {
   for err in self.tokenizer.errors {
     self.errors.push(err)
   }
+  self.finalize_select_selectedcontent()
   self.document
+}
+
+///|
+fn TreeBuilder::finalize_select_selectedcontent(self : TreeBuilder) -> Unit {
+  let mut stack : Array[Int] = [0]
+  while stack.length() > 0 {
+    let id = stack.remove(stack.length() - 1)
+    match self.document.get_node(id) {
+      Some(DocumentNode(children~)) =>
+        for i = children.length() - 1; i >= 0; i = i - 1 {
+          stack.push(children[i])
+        }
+      Some(DocumentFragmentNode(children~)) =>
+        for i = children.length() - 1; i >= 0; i = i - 1 {
+          stack.push(children[i])
+        }
+      Some(ElementNode(elem)) => {
+        if elem.ns == HTML && elem.tag_name == "select" {
+          self.populate_selectedcontent_for_select(id)
+        }
+        let children = elem.children.copy()
+        for i = children.length() - 1; i >= 0; i = i - 1 {
+          stack.push(children[i])
+        }
+        if elem.tag_name == "template" && elem.template_content != NO_NODE {
+          stack.push(elem.template_content)
+        }
+      }
+      _ => ()
+    }
+  }
+}
+
+///|
+fn TreeBuilder::populate_selectedcontent_for_select(
+  self : TreeBuilder,
+  select_id : Int,
+) -> Unit {
+  let mut options : Array[Int] = []
+  let mut selected_option : Int = NO_NODE
+  let mut placeholders : Array[Int] = []
+  let mut stack : Array[(Int, Bool)] = []
+  let root_children = self.document.get_children(select_id)
+  for i = root_children.length() - 1; i >= 0; i = i - 1 {
+    stack.push((root_children[i], false))
+  }
+  while stack.length() > 0 {
+    let (id, in_button) = stack.remove(stack.length() - 1)
+    match self.document.get_node(id) {
+      Some(DocumentFragmentNode(children~)) =>
+        for i = children.length() - 1; i >= 0; i = i - 1 {
+          stack.push((children[i], in_button))
+        }
+      Some(ElementNode(elem)) => {
+        if elem.ns != HTML {
+          continue
+        }
+        if elem.tag_name == "select" {
+          continue
+        }
+        let in_button2 = in_button || elem.tag_name == "button"
+        if elem.tag_name == "option" {
+          options.push(id)
+          if selected_option == NO_NODE &&
+            self.document.has_attribute(id, "selected") {
+            selected_option = id
+          }
+        }
+        if elem.tag_name == "selectedcontent" && in_button2 {
+          placeholders.push(id)
+        }
+        let children = elem.children.copy()
+        for i = children.length() - 1; i >= 0; i = i - 1 {
+          stack.push((children[i], in_button2))
+        }
+        if elem.tag_name == "template" && elem.template_content != NO_NODE {
+          stack.push((elem.template_content, in_button2))
+        }
+      }
+      _ => ()
+    }
+  }
+  if placeholders.length() == 0 {
+    return
+  }
+  let effective_option = if selected_option != NO_NODE {
+    selected_option
+  } else if options.length() > 0 {
+    options[0]
+  } else {
+    return
+  }
+  let option_children = self.document.get_children(effective_option)
+  for placeholder_id in placeholders {
+    self.clear_children(placeholder_id)
+    for child_id in option_children {
+      self.clone_node_into(child_id, placeholder_id)
+    }
+  }
+}
+
+///|
+fn TreeBuilder::clear_children(self : TreeBuilder, parent_id : Int) -> Unit {
+  let children = self.document.get_children(parent_id)
+  for child_id in children {
+    self.document.remove_child(parent_id, child_id)
+  }
+}
+
+///|
+fn TreeBuilder::clone_node_into(
+  self : TreeBuilder,
+  src_id : Int,
+  dest_parent_id : Int,
+) -> Unit {
+  match self.document.get_node(src_id) {
+    Some(TextNode(text)) => {
+      let new_id = self.document.add_node(TextNode(text))
+      self.document.append_child(dest_parent_id, new_id)
+    }
+    Some(CommentNode(text)) => {
+      let new_id = self.document.add_node(CommentNode(text))
+      self.document.append_child(dest_parent_id, new_id)
+    }
+    Some(DocumentFragmentNode(children~)) => {
+      let children = children.copy()
+      for child_id in children {
+        self.clone_node_into(child_id, dest_parent_id)
+      }
+    }
+    Some(ElementNode(elem)) => {
+      let mut new_elem : Element = {
+        tag_name: elem.tag_name,
+        ns: elem.ns,
+        attributes: elem.attributes.copy(),
+        children: [],
+        parent: NO_NODE,
+        is_html_integration_point: elem.is_html_integration_point,
+        is_mathml_text_integration_point: elem.is_mathml_text_integration_point,
+        template_content: NO_NODE,
+      }
+      if elem.tag_name == "template" && elem.template_content != NO_NODE {
+        let frag_id = self.document.add_node(DocumentFragmentNode(children=[]))
+        new_elem.template_content = frag_id
+        let new_id = self.document.add_node(ElementNode(new_elem))
+        self.document.append_child(dest_parent_id, new_id)
+        let frag_children = self.document.get_children(elem.template_content)
+        for child_id in frag_children {
+          self.clone_node_into(child_id, frag_id)
+        }
+      } else {
+        let new_id = self.document.add_node(ElementNode(new_elem))
+        self.document.append_child(dest_parent_id, new_id)
+        let children = elem.children.copy()
+        for child_id in children {
+          self.clone_node_into(child_id, new_id)
+        }
+      }
+    }
+    _ => ()
+  }
 }
 
 ///|
@@ -192,7 +354,9 @@ fn TreeBuilder::determine_quirks_mode(
       // Prefix matches that trigger quirks
       if pub_lower.has_prefix("+//silmaril//dtd html pro v0r11 19970101//") ||
         pub_lower.has_prefix("-//as//dtd html 3.0 aswedit + extensions//") ||
-        pub_lower.has_prefix("-//advasoft ltd//dtd html 3.0 aswedit + extensions//") ||
+        pub_lower.has_prefix(
+          "-//advasoft ltd//dtd html 3.0 aswedit + extensions//",
+        ) ||
         pub_lower.has_prefix("-//ietf//dtd html 2.0 level 1//") ||
         pub_lower.has_prefix("-//ietf//dtd html 2.0 level 2//") ||
         pub_lower.has_prefix("-//ietf//dtd html 2.0 strict level 1//") ||
@@ -215,23 +379,37 @@ fn TreeBuilder::determine_quirks_mode(
         pub_lower.has_prefix("-//ietf//dtd html strict//") ||
         pub_lower.has_prefix("-//ietf//dtd html//") ||
         pub_lower.has_prefix("-//metrius//dtd metrius presentational//") ||
-        pub_lower.has_prefix("-//microsoft//dtd internet explorer 2.0 html strict//") ||
+        pub_lower.has_prefix(
+          "-//microsoft//dtd internet explorer 2.0 html strict//",
+        ) ||
         pub_lower.has_prefix("-//microsoft//dtd internet explorer 2.0 html//") ||
         pub_lower.has_prefix("-//microsoft//dtd internet explorer 2.0 tables//") ||
-        pub_lower.has_prefix("-//microsoft//dtd internet explorer 3.0 html strict//") ||
+        pub_lower.has_prefix(
+          "-//microsoft//dtd internet explorer 3.0 html strict//",
+        ) ||
         pub_lower.has_prefix("-//microsoft//dtd internet explorer 3.0 html//") ||
         pub_lower.has_prefix("-//microsoft//dtd internet explorer 3.0 tables//") ||
         pub_lower.has_prefix("-//netscape comm. corp.//dtd html//") ||
         pub_lower.has_prefix("-//netscape comm. corp.//dtd strict html//") ||
         pub_lower.has_prefix("-//o'reilly and associates//dtd html 2.0//") ||
-        pub_lower.has_prefix("-//o'reilly and associates//dtd html extended 1.0//") ||
-        pub_lower.has_prefix("-//o'reilly and associates//dtd html extended relaxed 1.0//") ||
+        pub_lower.has_prefix(
+          "-//o'reilly and associates//dtd html extended 1.0//",
+        ) ||
+        pub_lower.has_prefix(
+          "-//o'reilly and associates//dtd html extended relaxed 1.0//",
+        ) ||
         pub_lower.has_prefix("-//sq//dtd html 2.0 hotmetal + extensions//") ||
-        pub_lower.has_prefix("-//softquad software//dtd hotmetal pro 6.0::19990601::extensions to html 4.0//") ||
-        pub_lower.has_prefix("-//softquad//dtd hotmetal pro 4.0::19971010::extensions to html 4.0//") ||
+        pub_lower.has_prefix(
+          "-//softquad software//dtd hotmetal pro 6.0::19990601::extensions to html 4.0//",
+        ) ||
+        pub_lower.has_prefix(
+          "-//softquad//dtd hotmetal pro 4.0::19971010::extensions to html 4.0//",
+        ) ||
         pub_lower.has_prefix("-//spyglass//dtd html 2.0 extended//") ||
         pub_lower.has_prefix("-//sun microsystems corp.//dtd hotjava html//") ||
-        pub_lower.has_prefix("-//sun microsystems corp.//dtd hotjava strict html//") ||
+        pub_lower.has_prefix(
+          "-//sun microsystems corp.//dtd hotjava strict html//",
+        ) ||
         pub_lower.has_prefix("-//w3c//dtd html 3 1995-03-24//") ||
         pub_lower.has_prefix("-//w3c//dtd html 3.2 draft//") ||
         pub_lower.has_prefix("-//w3c//dtd html 3.2 final//") ||
@@ -273,7 +451,8 @@ fn TreeBuilder::determine_quirks_mode(
   match system_id {
     Some(sys_id) => {
       let sys_lower = sys_id.to_lower()
-      if sys_lower == "http://www.ibm.com/data/dtd/v11/ibmxhtml1-transitional.dtd" {
+      if sys_lower ==
+        "http://www.ibm.com/data/dtd/v11/ibmxhtml1-transitional.dtd" {
         return Quirks
       }
     }

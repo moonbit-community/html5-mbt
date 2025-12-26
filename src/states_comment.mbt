@@ -61,6 +61,7 @@ fn Tokenizer::run_markup_declaration_open_state(self : Tokenizer) -> Token? {
   if self.check_string("[CDATA[") {
     for _ in 0..<7 {
       let _ = self.consume()
+
     }
     // CDATA is only allowed in foreign content (SVG/MathML)
     if self.in_foreign_content {

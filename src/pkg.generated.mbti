@@ -1,0 +1,403 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Milky2018/html/src"
+
+// Values
+pub const NO_NODE : Int = -1
+
+pub fn is_formatting_element(String) -> Bool
+
+pub fn lookup_entity(String) -> Array[Int]?
+
+pub fn parse(String) -> Document
+
+pub fn parse_with_errors(String) -> (Document, Array[ParseError])
+
+pub fn parse_with_scripting(String) -> Document
+
+pub fn tokenize(String) -> (Array[Token], Array[ParseError])
+
+// Errors
+
+// Types and methods
+pub struct Attribute {
+  name : String
+  value : String
+}
+pub impl Eq for Attribute
+pub impl Show for Attribute
+
+pub struct Document {
+  nodes : Array[Node]
+  mut document_element : Int
+  mut head_element : Int
+  mut body_element : Int
+  mut quirks_mode : QuirksMode
+}
+pub fn Document::add_node(Self, Node) -> Int
+pub fn Document::append_child(Self, Int, Int) -> Unit
+pub fn Document::dump(Self) -> String
+pub fn Document::get_attribute(Self, Int, String) -> String?
+pub fn Document::get_children(Self, Int) -> Array[Int]
+pub fn Document::get_element(Self, Int) -> Element?
+pub fn Document::get_node(Self, Int) -> Node?
+pub fn Document::get_ns(Self, Int) -> Namespace?
+pub fn Document::get_parent(Self, Int) -> Int
+pub fn Document::get_tag_name(Self, Int) -> String?
+pub fn Document::get_template_content(Self, Int) -> Int
+pub fn Document::get_text_content(Self, Int) -> String
+pub fn Document::has_attribute(Self, Int, String) -> Bool
+pub fn Document::insert_before(Self, Int, Int, Int) -> Unit
+pub fn Document::is_element(Self, Int, String, Namespace) -> Bool
+pub fn Document::is_html_element(Self, Int, String) -> Bool
+pub fn Document::new() -> Self
+pub fn Document::remove_child(Self, Int, Int) -> Unit
+pub fn Document::set_attribute(Self, Int, String, String) -> Unit
+pub fn Document::to_html(Self) -> String
+pub impl Show for Document
+
+pub struct Element {
+  tag_name : String
+  ns : Namespace
+  attributes : Array[(String, String)]
+  children : Array[Int]
+  mut parent : Int
+  is_html_integration_point : Bool
+  is_mathml_text_integration_point : Bool
+  mut template_content : Int
+}
+pub fn Element::new(String, Namespace, Array[(String, String)]) -> Self
+pub impl Show for Element
+
+pub enum FormattingEntry {
+  Marker
+  Element(node_id~ : Int, tag_name~ : String, attributes~ : Array[(String, String)])
+}
+
+pub(all) enum InsertionMode {
+  Initial
+  BeforeHtml
+  BeforeHead
+  InHead
+  InHeadNoscript
+  AfterHead
+  InBody
+  Text
+  InTable
+  InTableText
+  InCaption
+  InColumnGroup
+  InTableBody
+  InRow
+  InCell
+  InSelect
+  InSelectInTable
+  InTemplate
+  AfterBody
+  InFrameset
+  AfterFrameset
+  AfterAfterBody
+  AfterAfterFrameset
+  InForeignContent
+}
+
+pub(all) enum Namespace {
+  HTML
+  SVG
+  MathML
+}
+pub impl Eq for Namespace
+pub impl Show for Namespace
+
+pub enum Node {
+  ElementNode(Element)
+  TextNode(String)
+  CommentNode(String)
+  DocumentTypeNode(name~ : String, public_id~ : String, system_id~ : String)
+  DocumentNode(children~ : Array[Int])
+  DocumentFragmentNode(children~ : Array[Int])
+}
+pub impl Show for Node
+
+pub struct ParseError {
+  code : ParseErrorCode
+  position : SourcePosition
+}
+pub impl Eq for ParseError
+pub impl Show for ParseError
+
+pub(all) enum ParseErrorCode {
+  AbruptClosingOfEmptyComment
+  EofInComment
+  IncorrectlyClosedComment
+  IncorrectlyOpenedComment
+  NestedComment
+  AbruptDoctypePublicIdentifier
+  AbruptDoctypeSystemIdentifier
+  EofInDoctype
+  InvalidCharacterSequenceAfterDoctypeName
+  MissingDoctypeName
+  MissingDoctypePublicIdentifier
+  MissingDoctypeSystemIdentifier
+  MissingQuoteBeforeDoctypePublicIdentifier
+  MissingQuoteBeforeDoctypeSystemIdentifier
+  MissingWhitespaceAfterDoctypePublicKeyword
+  MissingWhitespaceAfterDoctypeSystemKeyword
+  MissingWhitespaceBeforeDoctypeName
+  MissingWhitespaceBetweenDoctypePublicAndSystemIdentifiers
+  UnexpectedCharacterAfterDoctypeSystemIdentifier
+  DuplicateAttribute
+  EndTagWithAttributes
+  EndTagWithTrailingSolidus
+  EofBeforeTagName
+  EofInTag
+  InvalidFirstCharacterOfTagName
+  MissingAttributeValue
+  MissingEndTagName
+  MissingWhitespaceBetweenAttributes
+  NonVoidHtmlElementStartTagWithTrailingSolidus
+  UnexpectedCharacterInAttributeName
+  UnexpectedCharacterInUnquotedAttributeValue
+  UnexpectedEqualsSignBeforeAttributeName
+  UnexpectedNullCharacter
+  UnexpectedQuestionMarkInsteadOfTagName
+  UnexpectedSolidusInTag
+  AbsenceOfDigitsInNumericCharacterReference
+  CharacterReferenceOutsideUnicodeRange
+  ControlCharacterReference
+  MissingSemicolonAfterCharacterReference
+  NoncharacterCharacterReference
+  NullCharacterReference
+  SurrogateCharacterReference
+  UnknownNamedCharacterReference
+  CdataInHtmlContent
+  ControlCharacterInInputStream
+  EofInCdata
+  EofInScriptHtmlCommentLikeText
+  NoncharacterInInputStream
+  SurrogateInInputStream
+}
+pub impl Eq for ParseErrorCode
+pub impl Show for ParseErrorCode
+
+pub(all) enum QuirksMode {
+  NoQuirks
+  Quirks
+  LimitedQuirks
+}
+pub impl Eq for QuirksMode
+pub impl Show for QuirksMode
+
+pub struct SourcePosition {
+  line : Int
+  column : Int
+  offset : Int
+}
+pub impl Eq for SourcePosition
+pub impl Show for SourcePosition
+
+pub struct StackEntry {
+  node_id : Int
+  tag_name : String
+  ns : Namespace
+}
+
+pub(all) enum State {
+  Data
+  RCDATA
+  RAWTEXT
+  ScriptData
+  PLAINTEXT
+  TagOpen
+  EndTagOpen
+  TagName
+  SelfClosingStartTag
+  RCDATALessThanSign
+  RCDATAEndTagOpen
+  RCDATAEndTagName
+  RAWTEXTLessThanSign
+  RAWTEXTEndTagOpen
+  RAWTEXTEndTagName
+  ScriptDataLessThanSign
+  ScriptDataEndTagOpen
+  ScriptDataEndTagName
+  ScriptDataEscapeStart
+  ScriptDataEscapeStartDash
+  ScriptDataEscaped
+  ScriptDataEscapedDash
+  ScriptDataEscapedDashDash
+  ScriptDataEscapedLessThanSign
+  ScriptDataEscapedEndTagOpen
+  ScriptDataEscapedEndTagName
+  ScriptDataDoubleEscapeStart
+  ScriptDataDoubleEscaped
+  ScriptDataDoubleEscapedDash
+  ScriptDataDoubleEscapedDashDash
+  ScriptDataDoubleEscapedLessThanSign
+  ScriptDataDoubleEscapeEnd
+  BeforeAttributeName
+  AttributeName
+  AfterAttributeName
+  BeforeAttributeValue
+  AttributeValueDoubleQuoted
+  AttributeValueSingleQuoted
+  AttributeValueUnquoted
+  AfterAttributeValueQuoted
+  BogusComment
+  MarkupDeclarationOpen
+  CommentStart
+  CommentStartDash
+  Comment
+  CommentLessThanSign
+  CommentLessThanSignBang
+  CommentLessThanSignBangDash
+  CommentLessThanSignBangDashDash
+  CommentEndDash
+  CommentEnd
+  CommentEndBang
+  DOCTYPE
+  BeforeDOCTYPEName
+  DOCTYPEName
+  AfterDOCTYPEName
+  AfterDOCTYPEPublicKeyword
+  BeforeDOCTYPEPublicIdentifier
+  DOCTYPEPublicIdentifierDoubleQuoted
+  DOCTYPEPublicIdentifierSingleQuoted
+  AfterDOCTYPEPublicIdentifier
+  BetweenDOCTYPEPublicAndSystemIdentifiers
+  AfterDOCTYPESystemKeyword
+  BeforeDOCTYPESystemIdentifier
+  DOCTYPESystemIdentifierDoubleQuoted
+  DOCTYPESystemIdentifierSingleQuoted
+  AfterDOCTYPESystemIdentifier
+  BogusDOCTYPE
+  CDATASection
+  CDATASectionBracket
+  CDATASectionEnd
+  CharacterReference
+  NamedCharacterReference
+  AmbiguousAmpersand
+  NumericCharacterReference
+  HexadecimalCharacterReferenceStart
+  DecimalCharacterReferenceStart
+  HexadecimalCharacterReference
+  DecimalCharacterReference
+  NumericCharacterReferenceEnd
+}
+pub impl Eq for State
+pub impl Show for State
+
+pub(all) enum Token {
+  DOCTYPE(name~ : String?, public_id~ : String?, system_id~ : String?, force_quirks~ : Bool)
+  StartTag(name~ : String, attrs~ : Array[Attribute], self_closing~ : Bool)
+  EndTag(name~ : String)
+  Character(Char)
+  Comment(String)
+  EOF
+}
+pub impl Eq for Token
+pub impl Show for Token
+
+pub struct Tokenizer {
+  input : Array[Char]
+  mut pos : Int
+  mut line : Int
+  mut column : Int
+  mut saw_eof : Bool
+  mut state : State
+  mut return_state : State
+  errors : Array[ParseError]
+  current_tag_name : StringBuilder
+  mut current_tag_is_end : Bool
+  mut current_tag_self_closing : Bool
+  current_attrs : Array[Attribute]
+  current_attr_name : StringBuilder
+  current_attr_value : StringBuilder
+  current_comment : StringBuilder
+  current_doctype_name : StringBuilder
+  current_doctype_public_id : StringBuilder
+  current_doctype_system_id : StringBuilder
+  mut current_doctype_force_quirks : Bool
+  mut current_doctype_public_id_set : Bool
+  mut current_doctype_system_id_set : Bool
+  mut char_ref_code : Int
+  temp_buffer : StringBuilder
+  mut last_start_tag_name : String
+  pending_tokens : Array[Token]
+  mut in_foreign_content : Bool
+}
+pub fn Tokenizer::get_errors(Self) -> Array[ParseError]
+pub fn Tokenizer::get_position(Self) -> SourcePosition
+pub fn Tokenizer::new(String) -> Self
+pub fn Tokenizer::next_token(Self) -> Token
+pub fn Tokenizer::switch_to_plaintext(Self) -> Unit
+pub fn Tokenizer::switch_to_rawtext(Self) -> Unit
+pub fn Tokenizer::switch_to_rcdata(Self) -> Unit
+pub fn Tokenizer::switch_to_script_data(Self) -> Unit
+
+pub struct TreeBuilder {
+  tokenizer : Tokenizer
+  document : Document
+  open_elements : Array[StackEntry]
+  active_formatting : Array[FormattingEntry]
+  mut mode : InsertionMode
+  mut original_mode : InsertionMode
+  template_modes : Array[InsertionMode]
+  mut head_element : Int
+  mut form_element : Int
+  scripting : Bool
+  mut frameset_ok : Bool
+  mut foster_parenting : Bool
+  pending_table_chars : Array[Char]
+  mut skip_next_newline : Bool
+  errors : Array[ParseError]
+}
+pub fn TreeBuilder::acknowledge_self_closing(Self, Token) -> Unit
+pub fn TreeBuilder::adjusted_current_node(Self) -> StackEntry
+pub fn TreeBuilder::clear_active_formatting_to_marker(Self) -> Unit
+pub fn TreeBuilder::create_element_for_token(Self, String, Array[(String, String)], Namespace) -> Int
+pub fn TreeBuilder::current_node(Self) -> StackEntry
+pub fn TreeBuilder::emit_error(Self, ParseErrorCode) -> Unit
+pub fn TreeBuilder::find_formatting_element(Self, String) -> FormattingEntry?
+pub fn TreeBuilder::find_formatting_element_index(Self, String) -> Int
+pub fn TreeBuilder::find_furthest_block(Self, Int) -> Int
+pub fn TreeBuilder::generate_all_implied_end_tags(Self) -> Unit
+pub fn TreeBuilder::generate_implied_end_tags(Self, String) -> Unit
+pub fn TreeBuilder::generate_implied_end_tags_thoroughly(Self) -> Unit
+pub fn TreeBuilder::get_formatting_entry(Self, Int) -> FormattingEntry?
+pub fn TreeBuilder::has_element_in_stack(Self, String) -> Bool
+pub fn TreeBuilder::in_button_scope(Self, String) -> Bool
+pub fn TreeBuilder::in_default_scope(Self, String) -> Bool
+pub fn TreeBuilder::in_list_item_scope(Self, String) -> Bool
+pub fn TreeBuilder::in_scope(Self, String, Array[String]) -> Bool
+pub fn TreeBuilder::in_select_scope(Self, String) -> Bool
+pub fn TreeBuilder::in_table_scope(Self, String) -> Bool
+pub fn TreeBuilder::insert_character(Self, Char) -> Unit
+pub fn TreeBuilder::insert_character_in_node(Self, Int, Char) -> Unit
+pub fn TreeBuilder::insert_comment(Self, String) -> Unit
+pub fn TreeBuilder::insert_comment_at_document(Self, String) -> Unit
+pub fn TreeBuilder::insert_doctype(Self, String?, String?, String?) -> Unit
+pub fn TreeBuilder::insert_element_for_token(Self, String, Array[Attribute], Namespace) -> Int
+pub fn TreeBuilder::insert_foreign_element(Self, String, Array[Attribute], Namespace) -> Int
+pub fn TreeBuilder::insert_html_element(Self, String, Array[Attribute]) -> Int
+pub fn TreeBuilder::new(String) -> Self
+pub fn TreeBuilder::new_with_options(String, scripting~ : Bool) -> Self
+pub fn TreeBuilder::parse(Self) -> Document
+pub fn TreeBuilder::parse_rawtext(Self, String, Array[Attribute]) -> Unit
+pub fn TreeBuilder::parse_rcdata(Self, String, Array[Attribute]) -> Unit
+pub fn TreeBuilder::parse_script(Self, String, Array[Attribute]) -> Unit
+pub fn TreeBuilder::pop_element(Self) -> StackEntry
+pub fn TreeBuilder::pop_until(Self, String) -> Unit
+pub fn TreeBuilder::pop_until_any(Self, Array[String]) -> Unit
+pub fn TreeBuilder::push_active_formatting(Self, Int, String, Array[Attribute]) -> Unit
+pub fn TreeBuilder::push_element(Self, Int, String, Namespace) -> Unit
+pub fn TreeBuilder::push_formatting_marker(Self) -> Unit
+pub fn TreeBuilder::reconstruct_active_formatting(Self) -> Unit
+pub fn TreeBuilder::remove_from_active_formatting(Self, Int) -> Unit
+pub fn TreeBuilder::remove_from_stack(Self, Int) -> Unit
+pub fn TreeBuilder::reset_insertion_mode(Self) -> Unit
+pub fn TreeBuilder::run_adoption_agency(Self, String) -> Unit
+
+// Type aliases
+
+// Traits
+

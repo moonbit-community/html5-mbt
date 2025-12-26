@@ -20,8 +20,20 @@
 /// Check if a tag name is a formatting element (adoption agency applies)
 pub fn is_formatting_element(name : String) -> Bool {
   match name {
-    "a" | "b" | "big" | "code" | "em" | "font" | "i" | "nobr" | "s" | "small" |
-    "strike" | "strong" | "tt" | "u" => true
+    "a"
+    | "b"
+    | "big"
+    | "code"
+    | "em"
+    | "font"
+    | "i"
+    | "nobr"
+    | "s"
+    | "small"
+    | "strike"
+    | "strong"
+    | "tt"
+    | "u" => true
     _ => false
   }
 }
@@ -252,16 +264,16 @@ pub fn TreeBuilder::find_furthest_block(
       SVG =>
         // Only foreignObject, desc, title are special in SVG namespace
         entry.tag_name == "foreignObject" ||
-          entry.tag_name == "desc" ||
-          entry.tag_name == "title"
+        entry.tag_name == "desc" ||
+        entry.tag_name == "title"
       MathML =>
         // Only these are special in MathML namespace
         entry.tag_name == "mi" ||
-          entry.tag_name == "mo" ||
-          entry.tag_name == "mn" ||
-          entry.tag_name == "ms" ||
-          entry.tag_name == "mtext" ||
-          entry.tag_name == "annotation-xml"
+        entry.tag_name == "mo" ||
+        entry.tag_name == "mn" ||
+        entry.tag_name == "ms" ||
+        entry.tag_name == "mtext" ||
+        entry.tag_name == "annotation-xml"
     }
     if is_special {
       // Verify this element is actually a DOM descendant of the formatting element
