@@ -466,11 +466,12 @@ pub fn TreeBuilder::pop_element(self : TreeBuilder) -> StackEntry {
 }
 
 ///|
-/// Pop elements until we find one with the given tag name
+/// Pop elements until we find one with the given tag name (HTML namespace)
 pub fn TreeBuilder::pop_until(self : TreeBuilder, tag_name : String) -> Unit {
   while self.open_elements.length() > 0 {
     let entry = self.pop_element()
-    if entry.tag_name == tag_name {
+    // Only match HTML elements for pop_until
+    if entry.tag_name == tag_name && entry.ns == HTML {
       break
     }
   }

@@ -1695,8 +1695,9 @@ fn TreeBuilder::process_in_select_mode(
     StartTag(name~, attrs~, ..) if name == "option" => {
       if self.current_node().tag_name == "option" {
         let _ = self.pop_element()
-
       }
+      // Reconstruct formatting elements before inserting option
+      self.reconstruct_active_formatting()
       let _ = self.insert_html_element(name, attrs)
       false
     }
@@ -1767,10 +1768,9 @@ fn TreeBuilder::process_in_select_mode(
       self.reset_insertion_mode()
       false
     }
-    StartTag(name~, ..) if name == "input" ||
-      name == "keygen" ||
-      name == "textarea" => {
+    StartTag(name~, ..) if name == "input" || name == "textarea" => {
       // These elements close the select and get reprocessed
+      // Note: keygen is obsolete and treated as unknown element inside select
       self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
       self.pop_until("select")
       self.reset_insertion_mode()
@@ -1795,6 +1795,14 @@ fn TreeBuilder::process_in_select_mode(
       false
     }
     EOF => self.process_in_body_mode(token)
+    StartTag(name~, attrs~, ..) if name == "plaintext" => {
+      // Plaintext inside select: insert element AND switch tokenizer to PLAINTEXT
+      // This makes </plaintext> become literal text
+      self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
+      let _ = self.insert_html_element(name, attrs)
+      self.tokenizer.state = PLAINTEXT
+      false
+    }
     StartTag(name~, ..) if name == "caption" ||
       name == "table" ||
       name == "tbody" ||
@@ -1824,13 +1832,23 @@ fn TreeBuilder::process_in_select_mode(
       false
     }
     EndTag(name~) => {
-      // Handle unknown end tags in select
+      // Per WHATWG 13.2.6.4.16: Unknown end tags in select are parse errors
+      // We close matching elements opened inside select, but ignore others
       self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
-      // Run adoption agency for formatting elements
-      if is_formatting_element(name) {
-        self.run_adoption_agency(name)
-      } else {
-        self.process_any_other_end_tag(name)
+      // Find matching element in stack (only within select scope)
+      for i = self.open_elements.length() - 1; i >= 0; i = i - 1 {
+        let entry = self.open_elements[i]
+        if entry.tag_name == "select" {
+          // Hit the select element - don't look further
+          break
+        }
+        if entry.tag_name == name && entry.ns == HTML {
+          // Found matching element, pop until it
+          while self.open_elements.length() > i {
+            let _ = self.pop_element()
+          }
+          break
+        }
       }
       false
     }
@@ -2268,17 +2286,14 @@ fn TreeBuilder::process_in_foreign_content(
           // Pop until and including this element
           while self.open_elements.length() > i {
             let _ = self.pop_element()
-
           }
           return false
         }
         if entry.ns == HTML {
           // Some end tags in HTML mode can insert elements (e.g., </p>, </br>)
           // For these, we need to pop foreign elements first
-          // For others, we just process without popping
           match token {
             EndTag(name~) if name == "p" || name == "br" => {
-              // Pop all foreign content elements before processing in HTML mode
               while self.open_elements.length() > i + 1 {
                 let _ = self.pop_element()
               }
