@@ -373,7 +373,12 @@ pub fn TreeBuilder::in_scope(
     if entry.tag_name == tag_name && entry.ns == HTML {
       return true
     }
+    // HTML scope-containing elements
     if scope_elements.contains(entry.tag_name) && entry.ns == HTML {
+      return false
+    }
+    // All MathML and SVG elements are scope-containing
+    if entry.ns == MathML || entry.ns == SVG {
       return false
     }
   }
@@ -568,7 +573,17 @@ pub fn TreeBuilder::insert_foreign_element(
   attrs : Array[Attribute],
   ns : Namespace,
 ) -> Int {
-  self.insert_element_for_token(name, attrs, ns)
+  // Adjust tag name for SVG elements
+  let adjusted_name = match ns {
+    SVG => adjust_svg_tag_name(name)
+    _ => name
+  }
+  // Adjust attributes based on namespace
+  let adjusted_attrs = attrs.map(fn(a) {
+    let adjusted_name = adjust_foreign_attribute_name(a.name, ns)
+    { name: adjusted_name, value: a.value }
+  })
+  self.insert_element_for_token(adjusted_name, adjusted_attrs, ns)
 }
 
 ///|
@@ -991,6 +1006,176 @@ pub fn TreeBuilder::acknowledge_self_closing(
   // If the token is a start tag with self-closing flag, we acknowledge it
   // This suppresses the "non-void element with trailing solidus" error
   ()
+}
+
+// ============================================================================
+// Foreign attribute adjustment (WHATWG 13.2.6.5)
+// ============================================================================
+
+///|
+/// Check if string starts with prefix
+fn starts_with(s : String, prefix : String) -> Bool {
+  if s.length() < prefix.length() {
+    return false
+  }
+  for i = 0; i < prefix.length(); i = i + 1 {
+    if s[i] != prefix[i] {
+      return false
+    }
+  }
+  true
+}
+
+///|
+/// Get substring starting from index
+fn string_from(s : String, start : Int) -> String {
+  let buf = StringBuilder::new()
+  for i = start; i < s.length(); i = i + 1 {
+    buf.write_char(Int::unsafe_to_char(s[i].to_int()))
+  }
+  buf.to_string()
+}
+
+///|
+/// Adjust foreign attribute names based on namespace
+fn adjust_foreign_attribute_name(name : String, ns : Namespace) -> String {
+  // First check for xlink:/xml:/xmlns: prefix adjustments
+  if starts_with(name, "xlink:") {
+    // xlink:* attributes get space-separated prefix
+    return "xlink " + string_from(name, 6)
+  }
+  if starts_with(name, "xml:") {
+    return "xml " + string_from(name, 4)
+  }
+  if starts_with(name, "xmlns:") {
+    return "xmlns " + string_from(name, 6)
+  }
+  // Then apply namespace-specific case adjustments
+  match ns {
+    SVG => adjust_svg_attribute_name(name)
+    MathML => adjust_mathml_attribute_name(name)
+    HTML => name
+  }
+}
+
+///|
+/// Adjust SVG attribute names to proper case
+fn adjust_svg_attribute_name(name : String) -> String {
+  match name {
+    "attributename" => "attributeName"
+    "attributetype" => "attributeType"
+    "basefrequency" => "baseFrequency"
+    "baseprofile" => "baseProfile"
+    "calcmode" => "calcMode"
+    "clippathunits" => "clipPathUnits"
+    "diffuseconstant" => "diffuseConstant"
+    "edgemode" => "edgeMode"
+    "filterunits" => "filterUnits"
+    "glyphref" => "glyphRef"
+    "gradienttransform" => "gradientTransform"
+    "gradientunits" => "gradientUnits"
+    "kernelmatrix" => "kernelMatrix"
+    "kernelunitlength" => "kernelUnitLength"
+    "keypoints" => "keyPoints"
+    "keysplines" => "keySplines"
+    "keytimes" => "keyTimes"
+    "lengthadjust" => "lengthAdjust"
+    "limitingconeangle" => "limitingConeAngle"
+    "markerheight" => "markerHeight"
+    "markerunits" => "markerUnits"
+    "markerwidth" => "markerWidth"
+    "maskcontentunits" => "maskContentUnits"
+    "maskunits" => "maskUnits"
+    "numoctaves" => "numOctaves"
+    "pathlength" => "pathLength"
+    "patterncontentunits" => "patternContentUnits"
+    "patterntransform" => "patternTransform"
+    "patternunits" => "patternUnits"
+    "pointsatx" => "pointsAtX"
+    "pointsaty" => "pointsAtY"
+    "pointsatz" => "pointsAtZ"
+    "preservealpha" => "preserveAlpha"
+    "preserveaspectratio" => "preserveAspectRatio"
+    "primitiveunits" => "primitiveUnits"
+    "refx" => "refX"
+    "refy" => "refY"
+    "repeatcount" => "repeatCount"
+    "repeatdur" => "repeatDur"
+    "requiredextensions" => "requiredExtensions"
+    "requiredfeatures" => "requiredFeatures"
+    "specularconstant" => "specularConstant"
+    "specularexponent" => "specularExponent"
+    "spreadmethod" => "spreadMethod"
+    "startoffset" => "startOffset"
+    "stddeviation" => "stdDeviation"
+    "stitchtiles" => "stitchTiles"
+    "surfacescale" => "surfaceScale"
+    "systemlanguage" => "systemLanguage"
+    "tablevalues" => "tableValues"
+    "targetx" => "targetX"
+    "targety" => "targetY"
+    "textlength" => "textLength"
+    "viewbox" => "viewBox"
+    "viewtarget" => "viewTarget"
+    "xchannelselector" => "xChannelSelector"
+    "ychannelselector" => "yChannelSelector"
+    "zoomandpan" => "zoomAndPan"
+    _ => name
+  }
+}
+
+///|
+/// Adjust MathML attribute names to proper case
+fn adjust_mathml_attribute_name(name : String) -> String {
+  match name {
+    "definitionurl" => "definitionURL"
+    _ => name
+  }
+}
+
+///|
+/// Adjust SVG tag names to proper case
+fn adjust_svg_tag_name(name : String) -> String {
+  match name {
+    "altglyph" => "altGlyph"
+    "altglyphdef" => "altGlyphDef"
+    "altglyphitem" => "altGlyphItem"
+    "animatecolor" => "animateColor"
+    "animatemotion" => "animateMotion"
+    "animatetransform" => "animateTransform"
+    "clippath" => "clipPath"
+    "feblend" => "feBlend"
+    "fecolormatrix" => "feColorMatrix"
+    "fecomponenttransfer" => "feComponentTransfer"
+    "fecomposite" => "feComposite"
+    "feconvolvematrix" => "feConvolveMatrix"
+    "fediffuselighting" => "feDiffuseLighting"
+    "fedisplacementmap" => "feDisplacementMap"
+    "fedistantlight" => "feDistantLight"
+    "fedropshadow" => "feDropShadow"
+    "feflood" => "feFlood"
+    "fefunca" => "feFuncA"
+    "fefuncb" => "feFuncB"
+    "fefuncg" => "feFuncG"
+    "fefuncr" => "feFuncR"
+    "fegaussianblur" => "feGaussianBlur"
+    "feimage" => "feImage"
+    "femerge" => "feMerge"
+    "femergenode" => "feMergeNode"
+    "femorphology" => "feMorphology"
+    "feoffset" => "feOffset"
+    "fepointlight" => "fePointLight"
+    "fespecularlighting" => "feSpecularLighting"
+    "fespotlight" => "feSpotLight"
+    "fetile" => "feTile"
+    "feturbulence" => "feTurbulence"
+    "foreignobject" => "foreignObject"
+    "glyphref" => "glyphRef"
+    "lineargradient" => "linearGradient"
+    "radialgradient" => "radialGradient"
+    "textpath" => "textPath"
+    _ => name
+  }
 }
 
 // ============================================================================

@@ -1054,17 +1054,24 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
       let _ = self.insert_html_element(name, attrs)
       false
     }
-    StartTag(name~, attrs~, ..) if name == "math" => {
+    StartTag(name~, attrs~, self_closing~) if name == "math" => {
       self.reconstruct_active_formatting()
       // Adjust MathML attributes
       let _ = self.insert_foreign_element(name, attrs, MathML)
-      // Check self-closing
+      // If self-closing, pop the element immediately
+      if self_closing {
+        let _ = self.pop_element()
+      }
       false
     }
-    StartTag(name~, attrs~, ..) if name == "svg" => {
+    StartTag(name~, attrs~, self_closing~) if name == "svg" => {
       self.reconstruct_active_formatting()
       // Adjust SVG attributes
       let _ = self.insert_foreign_element(name, attrs, SVG)
+      // If self-closing, pop the element immediately
+      if self_closing {
+        let _ = self.pop_element()
+      }
       false
     }
     StartTag(name~, ..) if name == "caption" ||
