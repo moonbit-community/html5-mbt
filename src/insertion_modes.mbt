@@ -35,11 +35,13 @@ fn TreeBuilder::process_initial_mode(self : TreeBuilder, token : Token) -> Bool 
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
       }
       self.insert_doctype(name, public_id, system_id)
-      // Set document mode (quirks detection)
-      if force_quirks {
-        // Set quirks mode - for now we just continue
-        ()
-      }
+      // Set document mode (quirks detection per WHATWG 13.2.6.4.1)
+      self.document.quirks_mode = self.determine_quirks_mode(
+        name,
+        public_id,
+        system_id,
+        force_quirks,
+      )
       self.mode = BeforeHtml
       false
     }
@@ -915,8 +917,8 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
       false
     }
     StartTag(name~, attrs~, ..) if name == "table" => {
-      // Quirks mode check would go here
-      if self.in_button_scope("p") {
+      // In quirks mode, don't close p element (table goes inside p)
+      if self.document.quirks_mode != Quirks && self.in_button_scope("p") {
         self.close_p_element()
       }
       let _ = self.insert_html_element(name, attrs)
@@ -1319,15 +1321,11 @@ fn TreeBuilder::process_in_table_text_mode(
           self.insert_character(c)
         }
       } else {
-        // Foster parent the characters
-        self.foster_parenting = true
+        // Foster parent the characters using "anything else" rule
+        // This reconstructs active formatting elements
         for c in self.pending_table_chars {
-          if not(is_whitespace_char(c)) {
-            self.frameset_ok = false
-          }
-          self.insert_character(c)
+          let _ = self.process_in_table_anything_else(Character(c))
         }
-        self.foster_parenting = false
       }
       self.pending_table_chars.clear()
       self.mode = self.original_mode
@@ -1761,10 +1759,9 @@ fn TreeBuilder::process_in_select_mode(
       false
     }
     StartTag(name~, ..) if name == "select" => {
+      // Nested select: close the current one and reset mode
+      // Per spec: just pop until select, no scope check needed
       self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
-      if not(self.in_select_scope("select")) {
-        return false
-      }
       self.pop_until("select")
       self.reset_insertion_mode()
       false
@@ -1772,10 +1769,8 @@ fn TreeBuilder::process_in_select_mode(
     StartTag(name~, ..) if name == "input" ||
       name == "keygen" ||
       name == "textarea" => {
+      // These elements close the select and get reprocessed
       self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
-      if not(self.in_select_scope("select")) {
-        return false
-      }
       self.pop_until("select")
       self.reset_insertion_mode()
       true // Reprocess

@@ -70,6 +70,8 @@ pub struct Document {
   mut document_element : Int // The <html> element
   mut head_element : Int // The <head> element
   mut body_element : Int // The <body> element
+  // Document mode (quirks, limited-quirks, no-quirks)
+  mut quirks_mode : QuirksMode
 } derive(Show)
 
 ///|
@@ -80,6 +82,7 @@ pub fn Document::new() -> Document {
     document_element: NO_NODE,
     head_element: NO_NODE,
     body_element: NO_NODE,
+    quirks_mode: NoQuirks,
   }
   // Add the document node as node 0
   doc.nodes.push(DocumentNode(children=[]))
@@ -295,6 +298,15 @@ pub fn Document::set_attribute(
 pub fn Document::get_parent(self : Document, id : Int) -> Int {
   match self.get_node(id) {
     Some(ElementNode(elem)) => elem.parent
+    _ => NO_NODE
+  }
+}
+
+///|
+/// Get the template content of a template element
+pub fn Document::get_template_content(self : Document, id : Int) -> Int {
+  match self.get_node(id) {
+    Some(ElementNode(elem)) => elem.template_content
     _ => NO_NODE
   }
 }

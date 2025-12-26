@@ -35,6 +35,14 @@ pub(all) enum Token {
 } derive(Show, Eq)
 
 ///|
+/// Document quirks mode (WHATWG 3.1.4)
+pub(all) enum QuirksMode {
+  NoQuirks
+  Quirks
+  LimitedQuirks
+} derive(Show, Eq)
+
+///|
 /// Attribute in a start/end tag
 pub struct Attribute {
   name : String

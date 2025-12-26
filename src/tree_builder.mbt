@@ -163,6 +163,126 @@ pub fn TreeBuilder::parse(self : TreeBuilder) -> Document {
 }
 
 ///|
+/// Determine the document's quirks mode based on DOCTYPE (WHATWG 13.2.6.4.1)
+fn TreeBuilder::determine_quirks_mode(
+  self : TreeBuilder,
+  name : String?,
+  public_id : String?,
+  system_id : String?,
+  force_quirks : Bool,
+) -> QuirksMode {
+  // Force quirks mode
+  if force_quirks {
+    return Quirks
+  }
+  // Name must be "html"
+  if name != Some("html") {
+    return Quirks
+  }
+  // Check public identifiers that trigger quirks mode
+  match public_id {
+    Some(pub_id) => {
+      let pub_lower = pub_id.to_lower()
+      // Exact matches that trigger quirks
+      if pub_lower == "-//w3o//dtd w3 html strict 3.0//en//" ||
+        pub_lower == "-/w3c/dtd html 4.0 transitional/en" ||
+        pub_lower == "html" {
+        return Quirks
+      }
+      // Prefix matches that trigger quirks
+      if pub_lower.has_prefix("+//silmaril//dtd html pro v0r11 19970101//") ||
+        pub_lower.has_prefix("-//as//dtd html 3.0 aswedit + extensions//") ||
+        pub_lower.has_prefix("-//advasoft ltd//dtd html 3.0 aswedit + extensions//") ||
+        pub_lower.has_prefix("-//ietf//dtd html 2.0 level 1//") ||
+        pub_lower.has_prefix("-//ietf//dtd html 2.0 level 2//") ||
+        pub_lower.has_prefix("-//ietf//dtd html 2.0 strict level 1//") ||
+        pub_lower.has_prefix("-//ietf//dtd html 2.0 strict level 2//") ||
+        pub_lower.has_prefix("-//ietf//dtd html 2.0 strict//") ||
+        pub_lower.has_prefix("-//ietf//dtd html 2.0//") ||
+        pub_lower.has_prefix("-//ietf//dtd html 2.1e//") ||
+        pub_lower.has_prefix("-//ietf//dtd html 3.0//") ||
+        pub_lower.has_prefix("-//ietf//dtd html 3.2 final//") ||
+        pub_lower.has_prefix("-//ietf//dtd html 3.2//") ||
+        pub_lower.has_prefix("-//ietf//dtd html 3//") ||
+        pub_lower.has_prefix("-//ietf//dtd html level 0//") ||
+        pub_lower.has_prefix("-//ietf//dtd html level 1//") ||
+        pub_lower.has_prefix("-//ietf//dtd html level 2//") ||
+        pub_lower.has_prefix("-//ietf//dtd html level 3//") ||
+        pub_lower.has_prefix("-//ietf//dtd html strict level 0//") ||
+        pub_lower.has_prefix("-//ietf//dtd html strict level 1//") ||
+        pub_lower.has_prefix("-//ietf//dtd html strict level 2//") ||
+        pub_lower.has_prefix("-//ietf//dtd html strict level 3//") ||
+        pub_lower.has_prefix("-//ietf//dtd html strict//") ||
+        pub_lower.has_prefix("-//ietf//dtd html//") ||
+        pub_lower.has_prefix("-//metrius//dtd metrius presentational//") ||
+        pub_lower.has_prefix("-//microsoft//dtd internet explorer 2.0 html strict//") ||
+        pub_lower.has_prefix("-//microsoft//dtd internet explorer 2.0 html//") ||
+        pub_lower.has_prefix("-//microsoft//dtd internet explorer 2.0 tables//") ||
+        pub_lower.has_prefix("-//microsoft//dtd internet explorer 3.0 html strict//") ||
+        pub_lower.has_prefix("-//microsoft//dtd internet explorer 3.0 html//") ||
+        pub_lower.has_prefix("-//microsoft//dtd internet explorer 3.0 tables//") ||
+        pub_lower.has_prefix("-//netscape comm. corp.//dtd html//") ||
+        pub_lower.has_prefix("-//netscape comm. corp.//dtd strict html//") ||
+        pub_lower.has_prefix("-//o'reilly and associates//dtd html 2.0//") ||
+        pub_lower.has_prefix("-//o'reilly and associates//dtd html extended 1.0//") ||
+        pub_lower.has_prefix("-//o'reilly and associates//dtd html extended relaxed 1.0//") ||
+        pub_lower.has_prefix("-//sq//dtd html 2.0 hotmetal + extensions//") ||
+        pub_lower.has_prefix("-//softquad software//dtd hotmetal pro 6.0::19990601::extensions to html 4.0//") ||
+        pub_lower.has_prefix("-//softquad//dtd hotmetal pro 4.0::19971010::extensions to html 4.0//") ||
+        pub_lower.has_prefix("-//spyglass//dtd html 2.0 extended//") ||
+        pub_lower.has_prefix("-//sun microsystems corp.//dtd hotjava html//") ||
+        pub_lower.has_prefix("-//sun microsystems corp.//dtd hotjava strict html//") ||
+        pub_lower.has_prefix("-//w3c//dtd html 3 1995-03-24//") ||
+        pub_lower.has_prefix("-//w3c//dtd html 3.2 draft//") ||
+        pub_lower.has_prefix("-//w3c//dtd html 3.2 final//") ||
+        pub_lower.has_prefix("-//w3c//dtd html 3.2//") ||
+        pub_lower.has_prefix("-//w3c//dtd html 3.2s draft//") ||
+        pub_lower.has_prefix("-//w3c//dtd html 4.0 frameset//") ||
+        pub_lower.has_prefix("-//w3c//dtd html 4.0 transitional//") ||
+        pub_lower.has_prefix("-//w3c//dtd html experimental 19960712//") ||
+        pub_lower.has_prefix("-//w3c//dtd html experimental 970421//") ||
+        pub_lower.has_prefix("-//w3c//dtd w3 html//") ||
+        pub_lower.has_prefix("-//w3o//dtd w3 html 3.0//") ||
+        pub_lower.has_prefix("-//webtechs//dtd mozilla html 2.0//") ||
+        pub_lower.has_prefix("-//webtechs//dtd mozilla html//") {
+        return Quirks
+      }
+      // Quirks mode if public ID starts with these AND no system ID
+      if system_id is None {
+        if pub_lower.has_prefix("-//w3c//dtd html 4.01 frameset//") ||
+          pub_lower.has_prefix("-//w3c//dtd html 4.01 transitional//") {
+          return Quirks
+        }
+      }
+      // Limited quirks mode checks
+      if pub_lower.has_prefix("-//w3c//dtd xhtml 1.0 frameset//") ||
+        pub_lower.has_prefix("-//w3c//dtd xhtml 1.0 transitional//") {
+        return LimitedQuirks
+      }
+      // Limited quirks with system ID
+      if system_id is Some(_) {
+        if pub_lower.has_prefix("-//w3c//dtd html 4.01 frameset//") ||
+          pub_lower.has_prefix("-//w3c//dtd html 4.01 transitional//") {
+          return LimitedQuirks
+        }
+      }
+    }
+    None => ()
+  }
+  // Check system identifier
+  match system_id {
+    Some(sys_id) => {
+      let sys_lower = sys_id.to_lower()
+      if sys_lower == "http://www.ibm.com/data/dtd/v11/ibmxhtml1-transitional.dtd" {
+        return Quirks
+      }
+    }
+    None => ()
+  }
+  NoQuirks
+}
+
+///|
 /// Process a token in the current insertion mode
 /// Returns true if the token should be reprocessed
 fn TreeBuilder::process_token(self : TreeBuilder, token : Token) -> Bool {
@@ -665,6 +785,18 @@ fn TreeBuilder::insert_node_foster_parenting(
   self : TreeBuilder,
   node_id : Int,
 ) -> Unit {
+  // First check for template element on the stack
+  for i = self.open_elements.length() - 1; i >= 0; i = i - 1 {
+    if self.open_elements[i].tag_name == "template" {
+      // Insert into template content, after its last child
+      let template_id = self.open_elements[i].node_id
+      let content_id = self.document.get_template_content(template_id)
+      if content_id != NO_NODE {
+        self.document.append_child(content_id, node_id)
+        return
+      }
+    }
+  }
   // Find the last table element in the stack
   let mut table_idx = -1
   for i = self.open_elements.length() - 1; i >= 0; i = i - 1 {
@@ -697,6 +829,17 @@ fn TreeBuilder::insert_node_foster_parenting(
 /// Get the foster parenting insertion location
 /// Returns (parent_id, insert_before_id) where insert_before_id is NO_NODE for append
 fn TreeBuilder::get_foster_parent_location(self : TreeBuilder) -> (Int, Int) {
+  // First check for template element on the stack
+  for i = self.open_elements.length() - 1; i >= 0; i = i - 1 {
+    if self.open_elements[i].tag_name == "template" {
+      // Insert into template content, after its last child
+      let template_id = self.open_elements[i].node_id
+      let content_id = self.document.get_template_content(template_id)
+      if content_id != NO_NODE {
+        return (content_id, NO_NODE)
+      }
+    }
+  }
   // Find the last table element in the stack
   let mut table_idx = -1
   for i = self.open_elements.length() - 1; i >= 0; i = i - 1 {
