@@ -1037,42 +1037,23 @@ pub fn TreeBuilder::acknowledge_self_closing(
 // ============================================================================
 
 ///|
-/// Check if string starts with prefix
-fn starts_with(s : String, prefix : String) -> Bool {
-  if s.length() < prefix.length() {
-    return false
-  }
-  for i = 0; i < prefix.length(); i = i + 1 {
-    if s[i] != prefix[i] {
-      return false
-    }
-  }
-  true
-}
-
-///|
-/// Get substring starting from index
-fn string_from(s : String, start : Int) -> String {
-  let buf = StringBuilder::new()
-  for i = start; i < s.length(); i = i + 1 {
-    buf.write_char(Int::unsafe_to_char(s[i].to_int()))
-  }
-  buf.to_string()
-}
-
-///|
 /// Adjust foreign attribute names based on namespace
+/// WHATWG 13.2.6.4 - only specific attributes should be adjusted
 fn adjust_foreign_attribute_name(name : String, ns : Namespace) -> String {
-  // First check for xlink:/xml:/xmlns: prefix adjustments
-  if starts_with(name, "xlink:") {
-    // xlink:* attributes get space-separated prefix
-    return "xlink " + string_from(name, 6)
-  }
-  if starts_with(name, "xml:") {
-    return "xml " + string_from(name, 4)
-  }
-  if starts_with(name, "xmlns:") {
-    return "xmlns " + string_from(name, 6)
+  // Check for specific xlink: attributes (WHATWG spec list)
+  match name {
+    "xlink:actuate" => return "xlink actuate"
+    "xlink:arcrole" => return "xlink arcrole"
+    "xlink:href" => return "xlink href"
+    "xlink:role" => return "xlink role"
+    "xlink:show" => return "xlink show"
+    "xlink:title" => return "xlink title"
+    "xlink:type" => return "xlink type"
+    "xml:lang" => return "xml lang"
+    "xml:space" => return "xml space"
+    "xmlns" => return "xmlns"
+    "xmlns:xlink" => return "xmlns xlink"
+    _ => ()
   }
   // Then apply namespace-specific case adjustments
   match ns {
