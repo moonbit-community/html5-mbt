@@ -906,6 +906,31 @@ pub fn TreeBuilder::insert_character(self : TreeBuilder, c : Char) -> Unit {
 }
 
 ///|
+/// Insert a character into a specific node (used by AfterBody mode)
+pub fn TreeBuilder::insert_character_in_node(
+  self : TreeBuilder,
+  parent_id : Int,
+  c : Char,
+) -> Unit {
+  // Try to append to existing text node
+  let children = self.document.get_children(parent_id)
+  if children.length() > 0 {
+    let last_child = children[children.length() - 1]
+    match self.document.get_node(last_child) {
+      Some(TextNode(text)) => {
+        let new_text = text + c.to_string()
+        self.document.nodes[last_child] = TextNode(new_text)
+        return
+      }
+      _ => ()
+    }
+  }
+  // Create new text node
+  let node_id = self.document.add_node(TextNode(c.to_string()))
+  self.document.append_child(parent_id, node_id)
+}
+
+///|
 /// Insert a comment node
 pub fn TreeBuilder::insert_comment(self : TreeBuilder, text : String) -> Unit {
   let node_id = self.document.add_node(CommentNode(text))

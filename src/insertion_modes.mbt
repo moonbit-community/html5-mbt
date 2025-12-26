@@ -1119,11 +1119,30 @@ fn TreeBuilder::process_any_other_end_tag(
       // Pop until and including this element
       while self.open_elements.length() > i {
         let _ = self.pop_element()
-
       }
       return
     }
+    // Check for special elements (including SVG/MathML special elements)
     if is_special_element(entry.tag_name) {
+      self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
+      return
+    }
+    // SVG special elements: foreignObject, desc, title
+    if entry.ns == SVG &&
+      (entry.tag_name == "foreignObject" ||
+        entry.tag_name == "desc" ||
+        entry.tag_name == "title") {
+      self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
+      return
+    }
+    // MathML special elements
+    if entry.ns == MathML &&
+      (entry.tag_name == "mi" ||
+        entry.tag_name == "mo" ||
+        entry.tag_name == "mn" ||
+        entry.tag_name == "ms" ||
+        entry.tag_name == "mtext" ||
+        entry.tag_name == "annotation-xml") {
       self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
       return
     }
@@ -1822,7 +1841,8 @@ fn TreeBuilder::process_in_select_mode(
       self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
       self.reconstruct_active_formatting()
       let _ = self.insert_html_element(name, attrs)
-      if self_closing {
+      // Pop void elements immediately (img, br, etc.) or self-closing tags
+      if self_closing || is_void_element_name(name) {
         let _ = self.pop_element()
       }
       // Add to active formatting list if it's a formatting element
@@ -2280,15 +2300,10 @@ fn TreeBuilder::process_in_foreign_content(
     }
     EndTag(name~) => {
       // Search for matching element in stack
+      // Per WHATWG spec: check HTML namespace BEFORE tag name match
       for i = self.open_elements.length() - 1; i >= 0; i = i - 1 {
         let entry = self.open_elements[i]
-        if entry.tag_name.to_lower() == name.to_lower() {
-          // Pop until and including this element
-          while self.open_elements.length() > i {
-            let _ = self.pop_element()
-          }
-          return false
-        }
+        // If we hit an HTML element, switch to HTML mode processing
         if entry.ns == HTML {
           // Some end tags in HTML mode can insert elements (e.g., </p>, </br>)
           // For these, we need to pop foreign elements first
@@ -2301,6 +2316,14 @@ fn TreeBuilder::process_in_foreign_content(
             _ => ()
           }
           return self.process_token_in_html_mode(token)
+        }
+        // Check for matching foreign element
+        if entry.tag_name.to_lower() == name.to_lower() {
+          // Pop until and including this element
+          while self.open_elements.length() > i {
+            let _ = self.pop_element()
+          }
+          return false
         }
       }
       false
@@ -2317,6 +2340,16 @@ fn TreeBuilder::process_in_foreign_content(
 /// Check if character is whitespace (for tree builder)
 fn is_whitespace_char(c : Char) -> Bool {
   c == ' ' || c == '\t' || c == '\n' || c == '\u{0C}' || c == '\r'
+}
+
+///|
+/// Check if tag name is a void element (no closing tag needed)
+fn is_void_element_name(name : String) -> Bool {
+  match name {
+    "area" | "base" | "br" | "col" | "embed" | "hr" | "img" | "input" | "link" |
+    "meta" | "param" | "source" | "track" | "wbr" => true
+    _ => false
+  }
 }
 
 ///|

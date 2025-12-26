@@ -246,7 +246,24 @@ pub fn TreeBuilder::find_furthest_block(
   // Search for furthest block
   for i = stack_idx + 1; i < self.open_elements.length(); i = i + 1 {
     let entry = self.open_elements[i]
-    if is_special_element(entry.tag_name) {
+    // Check if element is "special" - namespace-aware per WHATWG spec
+    let is_special = match entry.ns {
+      HTML => is_special_element(entry.tag_name)
+      SVG =>
+        // Only foreignObject, desc, title are special in SVG namespace
+        entry.tag_name == "foreignObject" ||
+          entry.tag_name == "desc" ||
+          entry.tag_name == "title"
+      MathML =>
+        // Only these are special in MathML namespace
+        entry.tag_name == "mi" ||
+          entry.tag_name == "mo" ||
+          entry.tag_name == "mn" ||
+          entry.tag_name == "ms" ||
+          entry.tag_name == "mtext" ||
+          entry.tag_name == "annotation-xml"
+    }
+    if is_special {
       return i
     }
   }
