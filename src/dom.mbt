@@ -578,6 +578,11 @@ fn escape_dump_text(s : String) -> String {
     let code = c.to_int()
     if code == 0 {
       buf.write_string("\\u0000")
+    } else if code >= 0x80 && code <= 0x9F {
+      // C1 controls - escape as \u{XX} so they're visible
+      buf.write_string("\\u{")
+      buf.write_string(code.to_string(radix=16))
+      buf.write_string("}")
     } else {
       buf.write_char(c)
     }
