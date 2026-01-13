@@ -1,6 +1,6 @@
 # Build artifacts
-target/
-
+target
+_build/
 # Dependencies
 .mooncakes/
 
