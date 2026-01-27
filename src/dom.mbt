@@ -30,7 +30,7 @@ pub struct Element {
   is_mathml_text_integration_point : Bool
   // Template content (node ID of DocumentFragment, or NO_NODE)
   mut template_content : Int
-} derive(Show)
+} derive(Show, Eq)
 
 ///|
 /// Create a new Element
@@ -60,7 +60,7 @@ pub enum Node {
   DocumentTypeNode(name~ : String, public_id~ : String, system_id~ : String)
   DocumentNode(children~ : Array[Int])
   DocumentFragmentNode(children~ : Array[Int])
-} derive(Show)
+} derive(Show, Eq)
 
 ///|
 /// The complete document owns all nodes in a flat array
@@ -72,7 +72,7 @@ pub struct Document {
   mut body_element : Int // The <body> element
   // Document mode (quirks, limited-quirks, no-quirks)
   mut quirks_mode : QuirksMode
-} derive(Show)
+} derive(Show, Eq)
 
 ///|
 /// Create a new empty document

@@ -1,3 +1,11 @@
 {
-  "warn-list": "-2-15"
+  "warn-list": "-2-15",
+  "import": [
+    { "path": "moonbitlang/quickcheck", "alias": "qc" },
+    { "path": "moonbitlang/core/quickcheck", "alias": "qc_core" },
+    { "path": "moonbitlang/core/quickcheck/splitmix", "alias": "splitmix" }
+  ],
+  "test-import": [
+    "moonbitlang/quickcheck"
+  ]
 }
