@@ -126,7 +126,7 @@ pub fn Document::get_tag_name(self : Document, node_id : Int) -> String? {
 pub fn Document::get_attribute(
   self : Document,
   node_id : Int,
-  name : String
+  name : String,
 ) -> String? {
   ...
 }
@@ -137,7 +137,7 @@ pub fn Document::get_attribute(
 pub fn Document::has_attribute(
   self : Document,
   node_id : Int,
-  name : String
+  name : String,
 ) -> Bool {
   ...
 }
@@ -149,7 +149,7 @@ pub fn Document::set_attribute(
   self : Document,
   node_id : Int,
   name : String,
-  value : String
+  value : String,
 ) -> Unit {
   ...
 }
@@ -189,7 +189,7 @@ pub fn Document::is_element(
   self : Document,
   node_id : Int,
   tag_name : String,
-  ns : Namespace
+  ns : Namespace,
 ) -> Bool {
   ...
 }
@@ -200,7 +200,7 @@ pub fn Document::is_element(
 pub fn Document::is_html_element(
   self : Document,
   node_id : Int,
-  tag_name : String
+  tag_name : String,
 ) -> Bool {
   ...
 }
@@ -222,7 +222,7 @@ pub fn Document::add_node(self : Document, node : Node) -> Int {
 pub fn Document::append_child(
   self : Document,
   parent_id : Int,
-  child_id : Int
+  child_id : Int,
 ) -> Unit {
   ...
 }
@@ -234,7 +234,7 @@ pub fn Document::insert_before(
   self : Document,
   parent_id : Int,
   new_node_id : Int,
-  ref_node_id : Int
+  ref_node_id : Int,
 ) -> Unit {
   ...
 }
@@ -245,7 +245,7 @@ pub fn Document::insert_before(
 pub fn Document::remove_child(
   self : Document,
   parent_id : Int,
-  child_id : Int
+  child_id : Int,
 ) -> Unit {
   ...
 }
@@ -267,7 +267,7 @@ pub fn Document::get_template_content(self : Document, node_id : Int) -> Int {
 pub fn Element::new(
   tag_name : String,
   ns : Namespace,
-  attributes : Array[(String, String)]
+  attributes : Array[(String, String)],
 ) -> Element {
   ...
 }
@@ -348,7 +348,7 @@ pub fn TreeBuilder::new(input : String) -> TreeBuilder {
 #declaration_only
 pub fn TreeBuilder::new_with_options(
   input : String,
-  scripting~ : Bool
+  scripting~ : Bool,
 ) -> TreeBuilder {
   ...
 }
@@ -356,7 +356,7 @@ pub fn TreeBuilder::new_with_options(
 ///|
 /// Run the tree construction algorithm and return the document.
 #declaration_only
-pub fn TreeBuilder::parse(self : TreeBuilder) -> Document {
+pub fn TreeBuilder::parse1(self : TreeBuilder) -> Document {
   ...
 }
 

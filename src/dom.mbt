@@ -30,7 +30,7 @@ pub struct Element {
   is_mathml_text_integration_point : Bool
   // Template content (node ID of DocumentFragment, or NO_NODE)
   mut template_content : Int
-} derive(Show)
+} derive(Show, Eq)
 
 ///|
 /// Create a new Element
@@ -60,7 +60,7 @@ pub enum Node {
   DocumentTypeNode(name~ : String, public_id~ : String, system_id~ : String)
   DocumentNode(children~ : Array[Int])
   DocumentFragmentNode(children~ : Array[Int])
-} derive(Show)
+} derive(Show, Eq)
 
 ///|
 /// The complete document owns all nodes in a flat array
@@ -72,7 +72,7 @@ pub struct Document {
   mut body_element : Int // The <body> element
   // Document mode (quirks, limited-quirks, no-quirks)
   mut quirks_mode : QuirksMode
-} derive(Show)
+} derive(Show, Eq)
 
 ///|
 /// Create a new empty document
@@ -417,8 +417,27 @@ fn Document::serialize_node(
         buf.write_string(">")
       } else {
         buf.write_string(">")
-        for child_id in elem.children {
-          self.serialize_node(child_id, buf)
+        if elem.ns == HTML && elem.tag_name == "template" && elem.template_content != NO_NODE {
+          match self.get_node(elem.template_content) {
+            Some(DocumentFragmentNode(children~)) =>
+              for child_id in children {
+                self.serialize_node(child_id, buf)
+              }
+            _ => ()
+          }
+        } else if elem.ns == HTML && (elem.tag_name == "script" || elem.tag_name == "style") {
+          // In raw text elements, keep text nodes unescaped so that
+          // `parse(to_html(doc))` can roundtrip for parser-produced DOMs.
+          for child_id in elem.children {
+            match self.get_node(child_id) {
+              Some(TextNode(text)) => buf.write_string(text)
+              _ => self.serialize_node(child_id, buf)
+            }
+          }
+        } else {
+          for child_id in elem.children {
+            self.serialize_node(child_id, buf)
+          }
         }
         buf.write_string("</")
         buf.write_string(elem.tag_name)
