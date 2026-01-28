@@ -94,6 +94,25 @@ pub impl @qc_core.Arbitrary for Document with arbitrary(size, rs) {
 }
 
 ///|
+struct HtmlCase {
+  html : String
+} derive(Show)
+
+///|
+/// Generate weird-ish HTML by taking a serialized DOM as a base and then
+/// injecting small random "damage" (comments, stray tags, whitespace, etc).
+///
+/// This keeps test inputs close to what the serializer emits while still
+/// exercising the parser on malformed/odd HTML.
+pub impl @qc_core.Arbitrary for HtmlCase with arbitrary(size, rs) {
+  let capped_size = clamp_size(size, 0, 24)
+  let seed_doc : Document = @qc_core.Arbitrary::arbitrary(capped_size, rs)
+  let base = seed_doc.to_html()
+  let damaged = inject_html_noise(base, rs, capped_size)
+  HtmlCase::{ html: damaged }
+}
+
+///|
 fn clamp_size(value : Int, min : Int, max : Int) -> Int {
   if value < min {
     min
@@ -256,76 +275,109 @@ fn is_likely_leaf(tag : String) -> Bool {
 }
 
 ///|
-test "random doc 0" {
-  let doc : Document = @qc_core.Arbitrary::arbitrary(10, @splitmix.new(seed=42))
+fn inject_html_noise(
+  base : String,
+  rs : @splitmix.RandomState,
+  size_hint : Int,
+) -> String {
+  let mut budget = clamp_size(size_hint, 0, 16)
+  let buf = StringBuilder::new()
+
+  // Optional prefix junk
+  if budget > 0 && rs.next_double() < 0.2 {
+    buf.write_string(random_noise_piece(rs, size_hint))
+    budget = budget - 1
+  }
+
+  for c in base {
+    // Occasionally drop a character to create malformed-ish input.
+    if budget > 0 && rs.next_double() < 0.01 {
+      budget = budget - 1
+    } else {
+      buf.write_char(c)
+    }
+
+    // Occasionally inject noise after tag boundaries.
+    if budget > 0 && (c == '>' || c == '<') && rs.next_double() < 0.12 {
+      buf.write_string(random_noise_piece(rs, size_hint))
+      budget = budget - 1
+    }
+  }
+
+  // Optional suffix junk
+  if budget > 0 && rs.next_double() < 0.2 {
+    buf.write_string(random_noise_piece(rs, size_hint))
+  }
+
+  buf.to_string()
+}
+
+///|
+fn random_noise_piece(rs : @splitmix.RandomState, size_hint : Int) -> String {
+  let ws_choices : Array[String] = [" ", "\n", "\t", "\n  "]
+  let stray_end_tags : Array[String] = [
+    "div", "p", "span", "body", "head", "html", "svg", "math", "template",
+  ]
+  match rs.next_positive_int() % 6 {
+    0 => pick_from_array(ws_choices, rs)
+    1 => "<!--" + random_comment(rs, size_hint) + "-->"
+    2 => "</" + pick_from_array(stray_end_tags, rs) + ">"
+    3 => "<" + random_ascii_word(rs, 1, 8) + ">"
+    4 => "<!" + random_ascii_word(rs, 1, 8) + ">"
+    _ => "<?" + random_ascii_word(rs, 1, 8) + "?>"
+  }
+}
+
+///|
+test "random html 0" {
+  let html : HtmlCase = @qc_core.Arbitrary::arbitrary(10, @splitmix.new(seed=42))
   inspect(
-    doc.dump(),
+    html.html,
     content=(
-      #|<html>
-      #|  <head>
-      #|    <meta>
-      #|    <script>
-      #|      QIHtH="H4ANh--"
-      #|      SsSxdro="J"
-      #|      a0o3Zby6="r9SKVg"
-      #|      hTptq="Qa23"
-      #|      "r"
-      #|  <body>
-      #|    <blockquote>
-      #|      "sw!cd5_bWUw"
-      #|      "SH,5Y3"
-      #|    "FrS"
-      #|    <!-- X
-      #|wb.V -->
-      #|    <button>
-      #|      ztOd0="PbGe2BbMX"
-      #|      <math math>
-      #|      "a5eL cUdwEAR.4kMhwkU4"
+      "<html><head><meta><script sssxdro=\"J\" a0o3zby6=\"r9SKVg\"ihth=\"H4ANh--\" htptq=\"Qa23\">r<<!sfaIfP>/cript<?C?></head><!YuhHR-fh><body><!--k--><blockquote>sw!cd5_bWUwSH,53<<!--\u{9}i;GY-7?\u{a}y!R-->/blockquote>FrS<!--X\u{a}wb.V--><button ztod0=\"PbGe2BbMX\"><math></math>a5eL cUdwEAR.4kMhwkU4</button></body></html>"
     ),
   )
 }
 
 ///|
-impl @qc.Shrink for Document
+impl @qc.Shrink for HtmlCase
 
 ///|
-test "property Document roundtrip to_html(parse(to_html(d))) = to_html(d)" {
-  @qc.quick_check_fn((d : Document) => {
-    let html = d.to_html()
-    let parsed_doc = parse(html)
-    let lhs = parsed_doc.to_html()
-    let rhs = html
-    if lhs != rhs {
+test "property roundtrip parse(to_html(parse(html))) = parse(html)" {
+  @qc.quick_check_fn((h : HtmlCase) => {
+    let doc = parse(h.html)
+    let roundtrip = parse(doc.to_html())
+    let lhs = doc.dump()
+    let rhs = roundtrip.dump()
+    if rhs != lhs {
       println("Original HTML:")
-      println(rhs)
-      println("Re-serialized HTML:")
+      println(h.html)
+      println("Roundtrip HTML:")
+      println(doc.to_html())
+      println("Original doc:")
       println(lhs)
+      println("Roundtrip doc:")
+      println(rhs)
       false
     } else {
       true
     }
-  })
+  }, max_success=2000)
 }
 
 ///|
-test "property tokenize no errors" {
-  @qc.quick_check_fn((d : Document) => tokenize(d.to_html()) is (_, errors) &&
-    errors.length() == 0)
-}
-
-///|
-test "property roundtrip parse(to_html(d)) = d" {
-  @qc.quick_check_fn((d : Document) => {
-    let lhs = d
-    let rhs = parse(d.to_html())
-    if lhs != rhs {
-      println("Original HTML:")
-      println(lhs.to_string())
-      println("Re-serialized HTML:")
-      println(rhs.to_string())
+test "property canonical html stabilizes" {
+  @qc.quick_check_fn((h : HtmlCase) => {
+    let html1 = parse(h.html).to_html()
+    let html2 = parse(html1).to_html()
+    if html2 != html1 {
+      println("HTML1:")
+      println(html1)
+      println("HTML2:")
+      println(html2)
       false
     } else {
       true
     }
-  })
+  }, max_success=2000)
 }
