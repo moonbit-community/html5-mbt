@@ -86,7 +86,7 @@ fn attributes_match(a : Array[(String, String)], b : Array[Attribute]) -> Bool {
     let found = a
       .iter()
       .any(fn(pair) { pair.0 == attr.name && pair.1 == attr.value })
-    if not(found) {
+    if !(found) {
       return false
     }
   }

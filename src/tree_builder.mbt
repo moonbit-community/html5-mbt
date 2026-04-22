@@ -144,7 +144,7 @@ pub fn TreeBuilder::parse(self : TreeBuilder) -> Document {
     // Process token, reprocessing if needed
     while true {
       let reprocess = self.process_token(token)
-      if not(reprocess) {
+      if !(reprocess) {
         break
       }
       // Reprocess same token in new mode
@@ -1221,7 +1221,7 @@ pub fn TreeBuilder::generate_implied_end_tags(
     if current.tag_name == except {
       break
     }
-    if not(implied.contains(current.tag_name)) || current.ns != HTML {
+    if !(implied.contains(current.tag_name)) || current.ns != HTML {
       break
     }
     let _ = self.pop_element()
@@ -1252,7 +1252,7 @@ pub fn TreeBuilder::generate_implied_end_tags_thoroughly(
   let implied = thorough_implied_end_tag_elements()
   while self.open_elements.length() > 0 {
     let current = self.current_node()
-    if not(implied.contains(current.tag_name)) || current.ns != HTML {
+    if !(implied.contains(current.tag_name)) || current.ns != HTML {
       break
     }
     let _ = self.pop_element()
@@ -1273,7 +1273,7 @@ pub fn TreeBuilder::reset_insertion_mode(self : TreeBuilder) -> Unit {
     // For fragment parsing, first node might be replaced
     match entry.tag_name {
       "select" => {
-        if not(is_last) {
+        if !(is_last) {
           // Walk up to find context
           for j = i - 1; j >= 0; j = j - 1 {
             let ancestor = self.open_elements[j]
@@ -1290,7 +1290,7 @@ pub fn TreeBuilder::reset_insertion_mode(self : TreeBuilder) -> Unit {
         return
       }
       "td" | "th" =>
-        if not(is_last) {
+        if !(is_last) {
           self.mode = InCell
           return
         }
@@ -1323,7 +1323,7 @@ pub fn TreeBuilder::reset_insertion_mode(self : TreeBuilder) -> Unit {
         return
       }
       "head" =>
-        if not(is_last) {
+        if !(is_last) {
           self.mode = InHead
           return
         }
