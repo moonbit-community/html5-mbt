@@ -1,6 +1,12 @@
 // Generated using `moon info`, DON'T EDIT IT
 package "Milky2018/html/src"
 
+import {
+  "moonbitlang/core/debug",
+  "moonbitlang/core/quickcheck",
+  "moonbitlang/core/quickcheck/splitmix",
+}
+
 // Values
 pub const NO_NODE : Int = -1
 
@@ -22,8 +28,7 @@ pub fn tokenize(String) -> (Array[Token], Array[ParseError])
 pub struct Attribute {
   name : String
   value : String
-}
-pub impl Eq for Attribute
+} derive(Eq, @debug.Debug)
 pub impl Show for Attribute
 
 pub struct Document {
@@ -32,7 +37,7 @@ pub struct Document {
   mut head_element : Int
   mut body_element : Int
   mut quirks_mode : QuirksMode
-}
+} derive(Eq, @debug.Debug)
 pub fn Document::add_node(Self, Node) -> Int
 pub fn Document::append_child(Self, Int, Int) -> Unit
 pub fn Document::dump(Self) -> String
@@ -54,6 +59,7 @@ pub fn Document::remove_child(Self, Int, Int) -> Unit
 pub fn Document::set_attribute(Self, Int, String, String) -> Unit
 pub fn Document::to_html(Self) -> String
 pub impl Show for Document
+pub impl @quickcheck.Arbitrary for Document
 
 pub struct Element {
   tag_name : String
@@ -64,7 +70,7 @@ pub struct Element {
   is_html_integration_point : Bool
   is_mathml_text_integration_point : Bool
   mut template_content : Int
-}
+} derive(Eq, @debug.Debug)
 pub fn Element::new(String, Namespace, Array[(String, String)]) -> Self
 pub impl Show for Element
 
@@ -72,6 +78,9 @@ pub enum FormattingEntry {
   Marker
   Element(node_id~ : Int, tag_name~ : String, attributes~ : Array[(String, String)])
 }
+
+type HtmlCase derive(@debug.Debug)
+pub impl @quickcheck.Arbitrary for HtmlCase
 
 pub(all) enum InsertionMode {
   Initial
@@ -104,8 +113,7 @@ pub(all) enum Namespace {
   HTML
   SVG
   MathML
-}
-pub impl Eq for Namespace
+} derive(Eq, @debug.Debug)
 pub impl Show for Namespace
 
 pub enum Node {
@@ -115,14 +123,13 @@ pub enum Node {
   DocumentTypeNode(name~ : String, public_id~ : String, system_id~ : String)
   DocumentNode(children~ : Array[Int])
   DocumentFragmentNode(children~ : Array[Int])
-}
+} derive(Eq, @debug.Debug)
 pub impl Show for Node
 
 pub struct ParseError {
   code : ParseErrorCode
   position : SourcePosition
-}
-pub impl Eq for ParseError
+} derive(Eq, @debug.Debug)
 pub impl Show for ParseError
 
 pub(all) enum ParseErrorCode {
@@ -175,24 +182,21 @@ pub(all) enum ParseErrorCode {
   EofInScriptHtmlCommentLikeText
   NoncharacterInInputStream
   SurrogateInInputStream
-}
-pub impl Eq for ParseErrorCode
+} derive(Eq, @debug.Debug)
 pub impl Show for ParseErrorCode
 
 pub(all) enum QuirksMode {
   NoQuirks
   Quirks
   LimitedQuirks
-}
-pub impl Eq for QuirksMode
+} derive(Eq, @debug.Debug)
 pub impl Show for QuirksMode
 
 pub struct SourcePosition {
   line : Int
   column : Int
   offset : Int
-}
-pub impl Eq for SourcePosition
+} derive(Eq, @debug.Debug)
 pub impl Show for SourcePosition
 
 pub struct StackEntry {
@@ -282,8 +286,7 @@ pub(all) enum State {
   HexadecimalCharacterReference
   DecimalCharacterReference
   NumericCharacterReferenceEnd
-}
-pub impl Eq for State
+} derive(Eq, @debug.Debug)
 pub impl Show for State
 
 pub(all) enum Token {
@@ -293,8 +296,7 @@ pub(all) enum Token {
   Character(Char)
   Comment(String)
   EOF
-}
-pub impl Eq for Token
+} derive(Eq, @debug.Debug)
 pub impl Show for Token
 
 pub struct Tokenizer {

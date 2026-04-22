@@ -262,7 +262,7 @@ fn Tokenizer::run_numeric_character_reference_end_state(
     self.emit_error(NoncharacterCharacterReference)
     Int::unsafe_to_char(code)
   } else if code == 0x0D ||
-    (is_control_char(code) && !(is_ascii_whitespace_code(code))) {
+    (is_control_char(code) && !is_ascii_whitespace_code(code)) {
     self.emit_error(ControlCharacterReference)
     // Apply Windows-1252 remapping for 0x80-0x9F
     remap_windows_1252(code)

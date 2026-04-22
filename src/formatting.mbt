@@ -68,7 +68,6 @@ pub fn TreeBuilder::push_active_formatting(
   // Remove oldest if we already have 3
   if count >= 3 && oldest_idx >= 0 {
     let _ = self.active_formatting.remove(oldest_idx)
-
   }
   let attributes : Array[(String, String)] = attrs.map(fn(a) {
     (a.name, a.value)
@@ -86,7 +85,7 @@ fn attributes_match(a : Array[(String, String)], b : Array[Attribute]) -> Bool {
     let found = a
       .iter()
       .any(fn(pair) { pair.0 == attr.name && pair.1 == attr.value })
-    if !(found) {
+    if !found {
       return false
     }
   }

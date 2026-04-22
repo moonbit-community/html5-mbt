@@ -238,10 +238,12 @@ fn random_attributes(
 ) -> Array[(String, String)] {
   let max_attrs = clamp_size(size_hint, 0, 4)
   let count = rs.next_positive_int() % (max_attrs + 1)
-  Array::makei(count, _ => (
-    random_ascii_word(rs, 2, 8).to_lower(), // html attrs are case-insensitive
-    random_ascii_word(rs, 0, 10),
-  ))
+  Array::makei(count, _ => {
+    (
+      random_ascii_word(rs, 2, 8).to_lower(), // html attrs are case-insensitive
+      random_ascii_word(rs, 0, 10),
+    )
+  })
 }
 
 ///|
@@ -337,12 +339,13 @@ fn random_noise_piece(rs : @splitmix.RandomState, size_hint : Int) -> String {
 
 ///|
 test "random html 0" {
-  let html : HtmlCase = @qc_core.Arbitrary::arbitrary(10, @splitmix.new(seed=42))
+  let html : HtmlCase = @qc_core.Arbitrary::arbitrary(
+    10,
+    @splitmix.new(seed=42),
+  )
   inspect(
     html.html,
-    content=(
-      "<html><head><meta><script sssxdro=\"J\" a0o3zby6=\"r9SKVg\"ihth=\"H4ANh--\" htptq=\"Qa23\">r<<!sfaIfP>/cript<?C?></head><!YuhHR-fh><body><!--k--><blockquote>sw!cd5_bWUwSH,53<<!--\u{9}i;GY-7?\u{a}y!R-->/blockquote>FrS<!--X\u{a}wb.V--><button ztod0=\"PbGe2BbMX\"><math></math>a5eL cUdwEAR.4kMhwkU4</button></body></html>"
-    ),
+    content="<html><head><meta><script sssxdro=\"J\" a0o3zby6=\"r9SKVg\"ihth=\"H4ANh--\" htptq=\"Qa23\">r<<!sfaIfP>/cript<?C?></head><!YuhHR-fh><body><!--k--><blockquote>sw!cd5_bWUwSH,53<<!--\u{9}i;GY-7?\u{a}y!R-->/blockquote>FrS<!--X\u{a}wb.V--><button ztod0=\"PbGe2BbMX\"><math></math>a5eL cUdwEAR.4kMhwkU4</button></body></html>",
   )
 }
 
@@ -351,40 +354,46 @@ impl @qc.Shrink for HtmlCase
 
 ///|
 test "property roundtrip parse(to_html(parse(html))) = parse(html)" {
-  @qc.quick_check_fn((h : HtmlCase) => {
-    let doc = parse(h.html)
-    let roundtrip = parse(doc.to_html())
-    let lhs = doc.dump()
-    let rhs = roundtrip.dump()
-    if rhs != lhs {
-      println("Original HTML:")
-      println(h.html)
-      println("Roundtrip HTML:")
-      println(doc.to_html())
-      println("Original doc:")
-      println(lhs)
-      println("Roundtrip doc:")
-      println(rhs)
-      false
-    } else {
-      true
-    }
-  }, max_success=2000)
+  @qc.quick_check_fn(
+    (h : HtmlCase) => {
+      let doc = parse(h.html)
+      let roundtrip = parse(doc.to_html())
+      let lhs = doc.dump()
+      let rhs = roundtrip.dump()
+      if rhs != lhs {
+        println("Original HTML:")
+        println(h.html)
+        println("Roundtrip HTML:")
+        println(doc.to_html())
+        println("Original doc:")
+        println(lhs)
+        println("Roundtrip doc:")
+        println(rhs)
+        false
+      } else {
+        true
+      }
+    },
+    max_success=2000,
+  )
 }
 
 ///|
 test "property canonical html stabilizes" {
-  @qc.quick_check_fn((h : HtmlCase) => {
-    let html1 = parse(h.html).to_html()
-    let html2 = parse(html1).to_html()
-    if html2 != html1 {
-      println("HTML1:")
-      println(html1)
-      println("HTML2:")
-      println(html2)
-      false
-    } else {
-      true
-    }
-  }, max_success=2000)
+  @qc.quick_check_fn(
+    (h : HtmlCase) => {
+      let html1 = parse(h.html).to_html()
+      let html2 = parse(html1).to_html()
+      if html2 != html1 {
+        println("HTML1:")
+        println(html1)
+        println("HTML2:")
+        println(html2)
+        false
+      } else {
+        true
+      }
+    },
+    max_success=2000,
+  )
 }

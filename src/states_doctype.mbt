@@ -134,14 +134,12 @@ fn Tokenizer::run_after_doctype_name_state(self : Tokenizer) -> Token? {
       if self.check_ascii_insensitive("PUBLIC") {
         for _ in 0..<6 {
           let _ = self.consume()
-
         }
         self.state = AfterDOCTYPEPublicKeyword
         None
       } else if self.check_ascii_insensitive("SYSTEM") {
         for _ in 0..<6 {
           let _ = self.consume()
-
         }
         self.state = AfterDOCTYPESystemKeyword
         None

@@ -1,0 +1,3 @@
+import {
+  "Milky2018/html/src" @html5,
+} for "test"
