@@ -356,7 +356,7 @@ pub fn TreeBuilder::new_with_options(
 ///|
 /// Run the tree construction algorithm and return the document.
 #declaration_only
-pub fn TreeBuilder::parse1(self : TreeBuilder) -> Document {
+pub fn TreeBuilder::parse(self : TreeBuilder) -> Document {
   ...
 }
 
