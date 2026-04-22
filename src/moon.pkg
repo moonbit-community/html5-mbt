@@ -1,0 +1,7 @@
+import {
+  "moonbitlang/quickcheck" @qc,
+  "moonbitlang/core/quickcheck" @qc_core,
+  "moonbitlang/core/quickcheck/splitmix" @splitmix,
+}
+
+warnings = "-2-15"

@@ -189,7 +189,7 @@ fn TreeBuilder::process_in_head_mode(self : TreeBuilder, token : Token) -> Bool 
       self.parse_rawtext(name, attrs)
       false
     }
-    StartTag(name~, attrs~, ..) if name == "noscript" && !(self.scripting) => {
+    StartTag(name~, attrs~, ..) if name == "noscript" && !self.scripting => {
       let _ = self.insert_html_element(name, attrs)
       self.mode = InHeadNoscript
       false
@@ -217,7 +217,7 @@ fn TreeBuilder::process_in_head_mode(self : TreeBuilder, token : Token) -> Bool 
       false
     }
     EndTag(name~) if name == "template" => {
-      if !(self.has_element_in_stack("template")) {
+      if !self.has_element_in_stack("template") {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -405,7 +405,7 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
       if self.open_elements.length() > 0 {
         let html_id = self.open_elements[0].node_id
         for attr in attrs {
-          if !(self.document.has_attribute(html_id, attr.name)) {
+          if !self.document.has_attribute(html_id, attr.name) {
             self.document.set_attribute(html_id, attr.name, attr.value)
           }
         }
@@ -438,7 +438,7 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
       // Add attributes to body element
       let body_id = self.open_elements[1].node_id
       for attr in attrs {
-        if !(self.document.has_attribute(body_id, attr.name)) {
+        if !self.document.has_attribute(body_id, attr.name) {
           self.document.set_attribute(body_id, attr.name, attr.value)
         }
       }
@@ -450,7 +450,7 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
         self.open_elements[1].tag_name != "body" {
         return false
       }
-      if !(self.frameset_ok) {
+      if !self.frameset_ok {
         return false
       }
       // Remove body from parent
@@ -462,7 +462,6 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
       // Pop all until html
       while self.open_elements.length() > 1 {
         let _ = self.pop_element()
-
       }
       let _ = self.insert_html_element(name, attrs)
       self.mode = InFrameset
@@ -502,7 +501,7 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
       false
     }
     EndTag(name~) if name == "body" => {
-      if !(self.in_default_scope("body")) {
+      if !self.in_default_scope("body") {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -537,7 +536,7 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
       false
     }
     EndTag(name~) if name == "html" => {
-      if !(self.in_default_scope("body")) {
+      if !self.in_default_scope("body") {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -593,7 +592,6 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
         current.tag_name == "h6" {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         let _ = self.pop_element()
-
       }
       let _ = self.insert_html_element(name, attrs)
       false
@@ -608,8 +606,7 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
       false
     }
     StartTag(name~, attrs~, ..) if name == "form" => {
-      if self.form_element != NO_NODE &&
-        !(self.has_element_in_stack("template")) {
+      if self.form_element != NO_NODE && !self.has_element_in_stack("template") {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -617,7 +614,7 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
         self.close_p_element()
       }
       let id = self.insert_html_element(name, attrs)
-      if !(self.has_element_in_stack("template")) {
+      if !self.has_element_in_stack("template") {
         self.form_element = id
       }
       false
@@ -727,7 +724,7 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
       name == "section" ||
       name == "summary" ||
       name == "ul" => {
-      if !(self.in_default_scope(name)) {
+      if !self.in_default_scope(name) {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -739,10 +736,10 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
       false
     }
     EndTag(name~) if name == "form" => {
-      if !(self.has_element_in_stack("template")) {
+      if !self.has_element_in_stack("template") {
         let form_id = self.form_element
         self.form_element = NO_NODE
-        if form_id == NO_NODE || !(self.in_default_scope("form")) {
+        if form_id == NO_NODE || !self.in_default_scope("form") {
           self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
           return false
         }
@@ -752,7 +749,7 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
         }
         self.remove_from_stack(form_id)
       } else {
-        if !(self.in_default_scope("form")) {
+        if !self.in_default_scope("form") {
           self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
           return false
         }
@@ -765,16 +762,15 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
       false
     }
     EndTag(name~) if name == "p" => {
-      if !(self.in_button_scope("p")) {
+      if !self.in_button_scope("p") {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         let _ = self.insert_html_element("p", [])
-
       }
       self.close_p_element()
       false
     }
     EndTag(name~) if name == "li" => {
-      if !(self.in_list_item_scope("li")) {
+      if !self.in_list_item_scope("li") {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -786,7 +782,7 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
       false
     }
     EndTag(name~) if name == "dd" || name == "dt" => {
-      if !(self.in_default_scope(name)) {
+      if !self.in_default_scope(name) {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -803,12 +799,12 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
       name == "h4" ||
       name == "h5" ||
       name == "h6" => {
-      if !(self.in_default_scope("h1")) &&
-        !(self.in_default_scope("h2")) &&
-        !(self.in_default_scope("h3")) &&
-        !(self.in_default_scope("h4")) &&
-        !(self.in_default_scope("h5")) &&
-        !(self.in_default_scope("h6")) {
+      if !self.in_default_scope("h1") &&
+        !self.in_default_scope("h2") &&
+        !self.in_default_scope("h3") &&
+        !self.in_default_scope("h4") &&
+        !self.in_default_scope("h5") &&
+        !self.in_default_scope("h6") {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -902,7 +898,7 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
       false
     }
     EndTag(name~) if name == "applet" || name == "marquee" || name == "object" => {
-      if !(self.in_default_scope(name)) {
+      if !self.in_default_scope(name) {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -952,7 +948,7 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
       let is_hidden = attrs
         .iter()
         .any(fn(a) { a.name == "type" && a.value.to_lower() == "hidden" })
-      if !(is_hidden) {
+      if !is_hidden {
         self.frameset_ok = false
       }
       false
@@ -1027,7 +1023,6 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
     StartTag(name~, attrs~, ..) if name == "optgroup" || name == "option" => {
       if self.current_node().tag_name == "option" {
         let _ = self.pop_element()
-
       }
       self.reconstruct_active_formatting()
       let _ = self.insert_html_element(name, attrs)
@@ -1061,7 +1056,6 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
       // If self-closing, pop the element immediately
       if self_closing {
         let _ = self.pop_element()
-
       }
       false
     }
@@ -1072,7 +1066,6 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
       // If self-closing, pop the element immediately
       if self_closing {
         let _ = self.pop_element()
-
       }
       false
     }
@@ -1118,7 +1111,6 @@ fn TreeBuilder::process_any_other_end_tag(
       // Pop until and including this element
       while self.open_elements.length() > i {
         let _ = self.pop_element()
-
       }
       return
     }
@@ -1246,7 +1238,7 @@ fn TreeBuilder::process_in_table_mode(
     }
     StartTag(name~, ..) if name == "table" => {
       self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
-      if !(self.in_table_scope("table")) {
+      if !self.in_table_scope("table") {
         return false
       }
       self.pop_until("table")
@@ -1254,7 +1246,7 @@ fn TreeBuilder::process_in_table_mode(
       true // Reprocess
     }
     EndTag(name~) if name == "table" => {
-      if !(self.in_table_scope("table")) {
+      if !self.in_table_scope("table") {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -1284,7 +1276,7 @@ fn TreeBuilder::process_in_table_mode(
       let is_hidden = attrs
         .iter()
         .any(fn(a) { a.name == "type" && a.value.to_lower() == "hidden" })
-      if !(is_hidden) {
+      if !is_hidden {
         return self.process_in_table_anything_else(token)
       }
       self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
@@ -1349,7 +1341,6 @@ fn TreeBuilder::process_in_table_text_mode(
         // This reconstructs active formatting elements
         for c in self.pending_table_chars {
           let _ = self.process_in_table_anything_else(Character(c))
-
         }
       }
       self.pending_table_chars.clear()
@@ -1367,7 +1358,7 @@ fn TreeBuilder::process_in_caption_mode(
 ) -> Bool {
   match token {
     EndTag(name~) if name == "caption" => {
-      if !(self.in_table_scope("caption")) {
+      if !self.in_table_scope("caption") {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -1389,7 +1380,7 @@ fn TreeBuilder::process_in_caption_mode(
       name == "th" ||
       name == "thead" ||
       name == "tr" => {
-      if !(self.in_table_scope("caption")) {
+      if !self.in_table_scope("caption") {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -1403,7 +1394,7 @@ fn TreeBuilder::process_in_caption_mode(
       true // Reprocess
     }
     EndTag(name~) if name == "table" => {
-      if !(self.in_table_scope("caption")) {
+      if !self.in_table_scope("caption") {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -1507,7 +1498,7 @@ fn TreeBuilder::process_in_table_body_mode(
       true // Reprocess
     }
     EndTag(name~) if name == "tbody" || name == "tfoot" || name == "thead" => {
-      if !(self.in_table_scope(name)) {
+      if !self.in_table_scope(name) {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -1522,9 +1513,9 @@ fn TreeBuilder::process_in_table_body_mode(
       name == "tbody" ||
       name == "tfoot" ||
       name == "thead" => {
-      if !(self.in_table_scope("tbody")) &&
-        !(self.in_table_scope("thead")) &&
-        !(self.in_table_scope("tfoot")) {
+      if !self.in_table_scope("tbody") &&
+        !self.in_table_scope("thead") &&
+        !self.in_table_scope("tfoot") {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -1534,9 +1525,9 @@ fn TreeBuilder::process_in_table_body_mode(
       true // Reprocess
     }
     EndTag(name~) if name == "table" => {
-      if !(self.in_table_scope("tbody")) &&
-        !(self.in_table_scope("thead")) &&
-        !(self.in_table_scope("tfoot")) {
+      if !self.in_table_scope("tbody") &&
+        !self.in_table_scope("thead") &&
+        !self.in_table_scope("tfoot") {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -1572,7 +1563,7 @@ fn TreeBuilder::process_in_row_mode(self : TreeBuilder, token : Token) -> Bool {
       false
     }
     EndTag(name~) if name == "tr" => {
-      if !(self.in_table_scope("tr")) {
+      if !self.in_table_scope("tr") {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -1588,7 +1579,7 @@ fn TreeBuilder::process_in_row_mode(self : TreeBuilder, token : Token) -> Bool {
       name == "tfoot" ||
       name == "thead" ||
       name == "tr" => {
-      if !(self.in_table_scope("tr")) {
+      if !self.in_table_scope("tr") {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -1598,7 +1589,7 @@ fn TreeBuilder::process_in_row_mode(self : TreeBuilder, token : Token) -> Bool {
       true // Reprocess
     }
     EndTag(name~) if name == "table" => {
-      if !(self.in_table_scope("tr")) {
+      if !self.in_table_scope("tr") {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -1608,11 +1599,11 @@ fn TreeBuilder::process_in_row_mode(self : TreeBuilder, token : Token) -> Bool {
       true // Reprocess
     }
     EndTag(name~) if name == "tbody" || name == "tfoot" || name == "thead" => {
-      if !(self.in_table_scope(name)) {
+      if !self.in_table_scope(name) {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
-      if !(self.in_table_scope("tr")) {
+      if !self.in_table_scope("tr") {
         return false
       }
       self.clear_stack_to_table_row_context()
@@ -1639,7 +1630,7 @@ fn TreeBuilder::process_in_row_mode(self : TreeBuilder, token : Token) -> Bool {
 fn TreeBuilder::process_in_cell_mode(self : TreeBuilder, token : Token) -> Bool {
   match token {
     EndTag(name~) if name == "td" || name == "th" => {
-      if !(self.in_table_scope(name)) {
+      if !self.in_table_scope(name) {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -1661,7 +1652,7 @@ fn TreeBuilder::process_in_cell_mode(self : TreeBuilder, token : Token) -> Bool 
       name == "th" ||
       name == "thead" ||
       name == "tr" => {
-      if !(self.in_table_scope("td")) && !(self.in_table_scope("th")) {
+      if !self.in_table_scope("td") && !self.in_table_scope("th") {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -1681,7 +1672,7 @@ fn TreeBuilder::process_in_cell_mode(self : TreeBuilder, token : Token) -> Bool 
       name == "tfoot" ||
       name == "thead" ||
       name == "tr" => {
-      if !(self.in_table_scope(name)) {
+      if !self.in_table_scope(name) {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -1720,7 +1711,6 @@ fn TreeBuilder::process_in_select_mode(
     StartTag(name~, attrs~, ..) if name == "option" => {
       if self.current_node().tag_name == "option" {
         let _ = self.pop_element()
-
       }
       // Reconstruct formatting elements before inserting option
       self.reconstruct_active_formatting()
@@ -1730,11 +1720,9 @@ fn TreeBuilder::process_in_select_mode(
     StartTag(name~, attrs~, ..) if name == "optgroup" => {
       if self.current_node().tag_name == "option" {
         let _ = self.pop_element()
-
       }
       if self.current_node().tag_name == "optgroup" {
         let _ = self.pop_element()
-
       }
       let _ = self.insert_html_element(name, attrs)
       false
@@ -1742,11 +1730,9 @@ fn TreeBuilder::process_in_select_mode(
     StartTag(name~, attrs~, ..) if name == "hr" => {
       if self.current_node().tag_name == "option" {
         let _ = self.pop_element()
-
       }
       if self.current_node().tag_name == "optgroup" {
         let _ = self.pop_element()
-
       }
       let _ = self.insert_html_element(name, attrs)
       let _ = self.pop_element()
@@ -1758,11 +1744,9 @@ fn TreeBuilder::process_in_select_mode(
         self.open_elements[self.open_elements.length() - 2].tag_name ==
         "optgroup" {
         let _ = self.pop_element()
-
       }
       if self.current_node().tag_name == "optgroup" {
         let _ = self.pop_element()
-
       } else {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
       }
@@ -1771,14 +1755,13 @@ fn TreeBuilder::process_in_select_mode(
     EndTag(name~) if name == "option" => {
       if self.current_node().tag_name == "option" {
         let _ = self.pop_element()
-
       } else {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
       }
       false
     }
     EndTag(name~) if name == "select" => {
-      if !(self.in_select_scope("select")) {
+      if !self.in_select_scope("select") {
         self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
         return false
       }
@@ -1809,7 +1792,6 @@ fn TreeBuilder::process_in_select_mode(
       let _ = self.insert_foreign_element(name, attrs, MathML)
       if self_closing {
         let _ = self.pop_element()
-
       }
       false
     }
@@ -1818,7 +1800,6 @@ fn TreeBuilder::process_in_select_mode(
       let _ = self.insert_foreign_element(name, attrs, SVG)
       if self_closing {
         let _ = self.pop_element()
-
       }
       false
     }
@@ -1853,7 +1834,6 @@ fn TreeBuilder::process_in_select_mode(
       // Pop void elements immediately (img, br, etc.) or self-closing tags
       if self_closing || is_void_element_name(name) {
         let _ = self.pop_element()
-
       }
       // Add to active formatting list if it's a formatting element
       if is_formatting_element(name) {
@@ -1893,7 +1873,6 @@ fn TreeBuilder::process_in_select_mode(
           // Found matching element, pop until it
           while self.open_elements.length() > i {
             let _ = self.pop_element()
-
           }
           break
         }
@@ -1932,7 +1911,7 @@ fn TreeBuilder::process_in_select_in_table_mode(
       name == "td" ||
       name == "th" => {
       self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
-      if !(self.in_table_scope(name)) {
+      if !self.in_table_scope(name) {
         return false
       }
       self.pop_until("select")
@@ -2001,7 +1980,7 @@ fn TreeBuilder::process_in_template_mode(
       false
     }
     EOF => {
-      if !(self.has_element_in_stack("template")) {
+      if !self.has_element_in_stack("template") {
         // Stop parsing
         return false
       }
@@ -2277,7 +2256,6 @@ fn TreeBuilder::process_in_foreign_content(
           break
         }
         let _ = self.pop_element()
-
       }
       true // Reprocess
     }
@@ -2296,7 +2274,6 @@ fn TreeBuilder::process_in_foreign_content(
             break
           }
           let _ = self.pop_element()
-
         }
         return true // Reprocess
       }
@@ -2305,7 +2282,6 @@ fn TreeBuilder::process_in_foreign_content(
       let _ = self.insert_foreign_element(name, attrs, current.ns)
       if self_closing {
         let _ = self.pop_element()
-
       }
       false
     }
@@ -2315,7 +2291,6 @@ fn TreeBuilder::process_in_foreign_content(
       let _ = self.insert_foreign_element(name, attrs, current.ns)
       if self_closing {
         let _ = self.pop_element()
-
       }
       false
     }
@@ -2339,7 +2314,6 @@ fn TreeBuilder::process_in_foreign_content(
             EndTag(name~) if name == "p" || name == "br" =>
               while self.open_elements.length() > i + 1 {
                 let _ = self.pop_element()
-
               }
             _ => ()
           }
@@ -2350,7 +2324,6 @@ fn TreeBuilder::process_in_foreign_content(
           // Pop until and including this element
           while self.open_elements.length() > i {
             let _ = self.pop_element()
-
           }
           return false
         }
@@ -2524,7 +2497,6 @@ fn TreeBuilder::clear_stack_to_table_context(self : TreeBuilder) -> Unit {
       break
     }
     let _ = self.pop_element()
-
   }
 }
 
@@ -2541,7 +2513,6 @@ fn TreeBuilder::clear_stack_to_table_body_context(self : TreeBuilder) -> Unit {
       break
     }
     let _ = self.pop_element()
-
   }
 }
 
@@ -2556,6 +2527,5 @@ fn TreeBuilder::clear_stack_to_table_row_context(self : TreeBuilder) -> Unit {
       break
     }
     let _ = self.pop_element()
-
   }
 }

@@ -493,7 +493,9 @@ fn Document::serialize_node(
         buf.write_string(">")
       } else {
         buf.write_string(">")
-        if elem.ns == HTML && elem.tag_name == "template" && elem.template_content != NO_NODE {
+        if elem.ns == HTML &&
+          elem.tag_name == "template" &&
+          elem.template_content != NO_NODE {
           match self.get_node(elem.template_content) {
             Some(DocumentFragmentNode(children~)) =>
               for child_id in children {
@@ -501,7 +503,8 @@ fn Document::serialize_node(
               }
             _ => ()
           }
-        } else if elem.ns == HTML && (elem.tag_name == "script" || elem.tag_name == "style") {
+        } else if elem.ns == HTML &&
+          (elem.tag_name == "script" || elem.tag_name == "style") {
           // In raw text elements, keep text nodes unescaped so that
           // `parse(to_html(doc))` can roundtrip for parser-produced DOMs.
           for child_id in elem.children {

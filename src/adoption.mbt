@@ -42,13 +42,13 @@ pub fn TreeBuilder::run_adoption_agency(
       Marker => return
     }
     // 2. Check if formatting element is in stack
-    if !(self.is_in_open_elements(formatting_node_id)) {
+    if !self.is_in_open_elements(formatting_node_id) {
       self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
       self.remove_from_active_formatting(formatting_node_id)
       return
     }
     // 3. Check if formatting element is in scope
-    if !(self.in_default_scope(tag_name)) {
+    if !self.in_default_scope(tag_name) {
       self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
       return
     }
