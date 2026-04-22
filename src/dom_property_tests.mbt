@@ -96,7 +96,14 @@ pub impl @qc_core.Arbitrary for Document with arbitrary(size, rs) {
 ///|
 struct HtmlCase {
   html : String
-} derive(Show)
+} derive(Debug)
+
+///|
+impl Show for HtmlCase with output(self, logger) {
+  logger.write_string("HtmlCase(html=")
+  Show::output(self.html, logger)
+  logger.write_string(")")
+}
 
 ///|
 /// Generate weird-ish HTML by taking a serialized DOM as a base and then

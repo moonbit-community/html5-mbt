@@ -30,7 +30,7 @@ pub struct Element {
   is_mathml_text_integration_point : Bool
   // Template content (node ID of DocumentFragment, or NO_NODE)
   mut template_content : Int
-} derive(Show, Eq)
+} derive(Debug, Eq)
 
 ///|
 /// Create a new Element
@@ -60,7 +60,7 @@ pub enum Node {
   DocumentTypeNode(name~ : String, public_id~ : String, system_id~ : String)
   DocumentNode(children~ : Array[Int])
   DocumentFragmentNode(children~ : Array[Int])
-} derive(Show, Eq)
+} derive(Debug, Eq)
 
 ///|
 /// The complete document owns all nodes in a flat array
@@ -72,7 +72,83 @@ pub struct Document {
   mut body_element : Int // The <body> element
   // Document mode (quirks, limited-quirks, no-quirks)
   mut quirks_mode : QuirksMode
-} derive(Show, Eq)
+} derive(Debug, Eq)
+
+///|
+pub impl Show for Element with output(self, logger) {
+  logger.write_string("{tag_name: ")
+  self.tag_name.output(logger)
+  logger.write_string(", ns: ")
+  self.ns.output(logger)
+  logger.write_string(", attributes: ")
+  self.attributes.output(logger)
+  logger.write_string(", children: ")
+  self.children.output(logger)
+  logger.write_string(", parent: ")
+  self.parent.output(logger)
+  logger.write_string(", is_html_integration_point: ")
+  self.is_html_integration_point.output(logger)
+  logger.write_string(", is_mathml_text_integration_point: ")
+  self.is_mathml_text_integration_point.output(logger)
+  logger.write_string(", template_content: ")
+  self.template_content.output(logger)
+  logger.write_string("}")
+}
+
+///|
+pub impl Show for Node with output(self, logger) {
+  match self {
+    ElementNode(elem) => {
+      logger.write_string("ElementNode(")
+      elem.output(logger)
+      logger.write_string(")")
+    }
+    TextNode(text) => {
+      logger.write_string("TextNode(")
+      text.output(logger)
+      logger.write_string(")")
+    }
+    CommentNode(text) => {
+      logger.write_string("CommentNode(")
+      text.output(logger)
+      logger.write_string(")")
+    }
+    DocumentTypeNode(name~, public_id~, system_id~) => {
+      logger.write_string("DocumentTypeNode(name=")
+      name.output(logger)
+      logger.write_string(", public_id=")
+      public_id.output(logger)
+      logger.write_string(", system_id=")
+      system_id.output(logger)
+      logger.write_string(")")
+    }
+    DocumentNode(children~) => {
+      logger.write_string("DocumentNode(children=")
+      children.output(logger)
+      logger.write_string(")")
+    }
+    DocumentFragmentNode(children~) => {
+      logger.write_string("DocumentFragmentNode(children=")
+      children.output(logger)
+      logger.write_string(")")
+    }
+  }
+}
+
+///|
+pub impl Show for Document with output(self, logger) {
+  logger.write_string("{nodes: ")
+  self.nodes.output(logger)
+  logger.write_string(", document_element: ")
+  self.document_element.output(logger)
+  logger.write_string(", head_element: ")
+  self.head_element.output(logger)
+  logger.write_string(", body_element: ")
+  self.body_element.output(logger)
+  logger.write_string(", quirks_mode: ")
+  self.quirks_mode.output(logger)
+  logger.write_string("}")
+}
 
 ///|
 /// Create a new empty document
