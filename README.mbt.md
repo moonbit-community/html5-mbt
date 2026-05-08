@@ -21,7 +21,7 @@ test "basic parsing" {
   let doc = @html5.parse(
     "<html><head><title>Hello</title></head><body><p>World</p></body></html>",
   )
-  assert_eq(
+  @debug.assert_eq(
     doc.dump(),
     (
       #|<html>
@@ -44,7 +44,7 @@ The parser handles malformed HTML gracefully, just like browsers:
 ///|
 test "error recovery - unclosed tags" {
   let doc = @html5.parse("<p>First<p>Second<p>Third")
-  assert_eq(
+  @debug.assert_eq(
     doc.dump(),
     (
       #|<html>
@@ -65,7 +65,7 @@ test "error recovery - unclosed tags" {
 ///|
 test "error recovery - misnested tags" {
   let doc = @html5.parse("<b><i>Bold and Italic</b> Just Italic</i>")
-  assert_eq(
+  @debug.assert_eq(
     doc.dump(),
     (
       #|<html>
@@ -105,7 +105,7 @@ Collect parse errors for diagnostics:
 test "parse with errors" {
   let (doc, errors) = @html5.parse_with_errors("<p>Test</p attr>")
   assert_true((errors.length() > 0) is true)
-  assert_eq(
+  @debug.assert_eq(
     doc.dump(),
     (
       #|<html>
@@ -182,7 +182,7 @@ test "svg support" {
   let doc = @html5.parse(
     "<div><svg><circle cx=\"50\" cy=\"50\" r=\"40\"/></svg></div>",
   )
-  assert_eq(
+  @debug.assert_eq(
     doc.dump(),
     (
       #|<html>
