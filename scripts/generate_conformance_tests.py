@@ -233,8 +233,13 @@ def decode_html5lib_escapes(s: str) -> str:
     return re.sub(r'\\u([0-9A-Fa-f]{4})', replace_escape, s)
 
 
-def format_expected_tokens(output: List) -> str:
-    """Format expected token output for MoonBit."""
+def format_expected_token_strings(output: List) -> str:
+    """Format expected token output as MoonBit strings.
+
+    The generated tests compare Token::to_string output instead of constructing
+    expected Token values. Attribute is read-only outside the html package, so
+    black-box tests cannot build StartTag values with attribute records.
+    """
     tokens = []
     for item in output:
         if isinstance(item, str):
@@ -284,7 +289,7 @@ def format_expected_tokens(output: List) -> str:
                     tokens.append(f"Character('{escape_moonbit_char(c)}')")
 
     tokens.append("EOF")
-    return "[" + ", ".join(tokens) + "]"
+    return "[" + ", ".join(f'"{escape_moonbit_string(token)}"' for token in tokens) + "]"
 
 
 def generate_tokenizer_test(test: Dict[str, Any], index: int) -> Optional[str]:
@@ -319,12 +324,12 @@ def generate_tokenizer_test(test: Dict[str, Any], index: int) -> Optional[str]:
     test_name = f"html5lib/tokenizer/{file_prefix}_{safe_name}_{index}"
 
     escaped_input = escape_moonbit_string(input_html)
-    expected = format_expected_tokens(output)
+    expected = format_expected_token_strings(output)
 
     return f'''///|
 test "{test_name}" {{
   let (tokens, _) = @html.tokenize("{escaped_input}")
-  inspect(tokens, content="{escape_moonbit_string(expected)}")
+  @debug.assert_eq(tokens.map(fn(token) {{ token.to_string() }}), {expected})
 }}
 
 '''
@@ -522,12 +527,10 @@ def generate_tree_test(test: Dict[str, Any], index: int) -> Optional[List[str]]:
         tests.append(f'''///|
 test "{test_name}" {{
   let doc = @html.parse_with_scripting("{escaped_input}")
-  inspect(
-    doc.dump(),
-    content=(
+  let expected = (
 {multiline_content}
-    ),
   )
+  @debug.assert_eq(doc.dump(), expected)
 }}
 
 ''')
@@ -537,12 +540,10 @@ test "{test_name}" {{
         tests.append(f'''///|
 test "{test_name}" {{
   let doc = @html.parse("{escaped_input}")
-  inspect(
-    doc.dump(),
-    content=(
+  let expected = (
 {multiline_content}
-    ),
   )
+  @debug.assert_eq(doc.dump(), expected)
 }}
 
 ''')
@@ -552,12 +553,10 @@ test "{test_name}" {{
         tests.append(f'''///|
 test "{test_name}" {{
   let doc = @html.parse("{escaped_input}")
-  inspect(
-    doc.dump(),
-    content=(
+  let expected = (
 {multiline_content}
-    ),
   )
+  @debug.assert_eq(doc.dump(), expected)
 }}
 
 ''')
