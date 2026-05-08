@@ -25,1087 +25,815 @@
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u007d_6666" {
   let (tokens, _) = @html.tokenize("}")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('}')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('}'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u007e_6667" {
   let (tokens, _) = @html.tokenize("~")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('~')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('~'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00a0_6668" {
   let (tokens, _) = @html.tokenize(" ")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character(' ')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character(' '), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00a1_6669" {
   let (tokens, _) = @html.tokenize("¡")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('¡')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('¡'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00a2_6670" {
   let (tokens, _) = @html.tokenize("¢")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('¢')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('¢'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00a3_6671" {
   let (tokens, _) = @html.tokenize("£")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('£')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('£'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00a4_6672" {
   let (tokens, _) = @html.tokenize("¤")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('¤')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('¤'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00a5_6673" {
   let (tokens, _) = @html.tokenize("¥")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('¥')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('¥'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00a6_6674" {
   let (tokens, _) = @html.tokenize("¦")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('¦')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('¦'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00a7_6675" {
   let (tokens, _) = @html.tokenize("§")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('§')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('§'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00a8_6676" {
   let (tokens, _) = @html.tokenize("¨")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('¨')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('¨'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00a9_6677" {
   let (tokens, _) = @html.tokenize("©")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('©')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('©'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00aa_6678" {
   let (tokens, _) = @html.tokenize("ª")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ª')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ª'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00ab_6679" {
   let (tokens, _) = @html.tokenize("«")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('«')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('«'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00ac_6680" {
   let (tokens, _) = @html.tokenize("¬")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('¬')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('¬'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00ad_6681" {
   let (tokens, _) = @html.tokenize("­")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('\\u{ad}')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('\u{ad}'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00ae_6682" {
   let (tokens, _) = @html.tokenize("®")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('®')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('®'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00af_6683" {
   let (tokens, _) = @html.tokenize("¯")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('¯')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('¯'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00b0_6684" {
   let (tokens, _) = @html.tokenize("°")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('°')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('°'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00b1_6685" {
   let (tokens, _) = @html.tokenize("±")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('±')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('±'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00b2_6686" {
   let (tokens, _) = @html.tokenize("²")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('²')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('²'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00b3_6687" {
   let (tokens, _) = @html.tokenize("³")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('³')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('³'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00b4_6688" {
   let (tokens, _) = @html.tokenize("´")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('´')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('´'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00b5_6689" {
   let (tokens, _) = @html.tokenize("µ")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('µ')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('µ'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00b6_6690" {
   let (tokens, _) = @html.tokenize("¶")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('¶')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('¶'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00b7_6691" {
   let (tokens, _) = @html.tokenize("·")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('·')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('·'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00b8_6692" {
   let (tokens, _) = @html.tokenize("¸")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('¸')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('¸'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00b9_6693" {
   let (tokens, _) = @html.tokenize("¹")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('¹')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('¹'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00ba_6694" {
   let (tokens, _) = @html.tokenize("º")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('º')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('º'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00bb_6695" {
   let (tokens, _) = @html.tokenize("»")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('»')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('»'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00bc_6696" {
   let (tokens, _) = @html.tokenize("¼")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('¼')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('¼'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00bd_6697" {
   let (tokens, _) = @html.tokenize("½")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('½')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('½'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00be_6698" {
   let (tokens, _) = @html.tokenize("¾")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('¾')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('¾'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00bf_6699" {
   let (tokens, _) = @html.tokenize("¿")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('¿')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('¿'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00c0_6700" {
   let (tokens, _) = @html.tokenize("À")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('À')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('À'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00c1_6701" {
   let (tokens, _) = @html.tokenize("Á")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Á')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Á'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00c2_6702" {
   let (tokens, _) = @html.tokenize("Â")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Â')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Â'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00c3_6703" {
   let (tokens, _) = @html.tokenize("Ã")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Ã')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Ã'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00c4_6704" {
   let (tokens, _) = @html.tokenize("Ä")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Ä')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Ä'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00c5_6705" {
   let (tokens, _) = @html.tokenize("Å")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Å')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Å'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00c6_6706" {
   let (tokens, _) = @html.tokenize("Æ")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Æ')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Æ'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00c7_6707" {
   let (tokens, _) = @html.tokenize("Ç")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Ç')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Ç'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00c8_6708" {
   let (tokens, _) = @html.tokenize("È")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('È')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('È'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00c9_6709" {
   let (tokens, _) = @html.tokenize("É")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('É')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('É'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00ca_6710" {
   let (tokens, _) = @html.tokenize("Ê")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Ê')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Ê'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00cb_6711" {
   let (tokens, _) = @html.tokenize("Ë")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Ë')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Ë'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00cc_6712" {
   let (tokens, _) = @html.tokenize("Ì")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Ì')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Ì'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00cd_6713" {
   let (tokens, _) = @html.tokenize("Í")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Í')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Í'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00ce_6714" {
   let (tokens, _) = @html.tokenize("Î")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Î')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Î'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00cf_6715" {
   let (tokens, _) = @html.tokenize("Ï")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Ï')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Ï'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00d0_6716" {
   let (tokens, _) = @html.tokenize("Ð")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Ð')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Ð'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00d1_6717" {
   let (tokens, _) = @html.tokenize("Ñ")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Ñ')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Ñ'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00d2_6718" {
   let (tokens, _) = @html.tokenize("Ò")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Ò')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Ò'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00d3_6719" {
   let (tokens, _) = @html.tokenize("Ó")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Ó')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Ó'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00d4_6720" {
   let (tokens, _) = @html.tokenize("Ô")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Ô')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Ô'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00d5_6721" {
   let (tokens, _) = @html.tokenize("Õ")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Õ')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Õ'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00d6_6722" {
   let (tokens, _) = @html.tokenize("Ö")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Ö')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Ö'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00d7_6723" {
   let (tokens, _) = @html.tokenize("×")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('×')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('×'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00d8_6724" {
   let (tokens, _) = @html.tokenize("Ø")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Ø')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Ø'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00d9_6725" {
   let (tokens, _) = @html.tokenize("Ù")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Ù')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Ù'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00da_6726" {
   let (tokens, _) = @html.tokenize("Ú")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Ú')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Ú'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00db_6727" {
   let (tokens, _) = @html.tokenize("Û")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Û')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Û'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00dc_6728" {
   let (tokens, _) = @html.tokenize("Ü")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Ü')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Ü'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00dd_6729" {
   let (tokens, _) = @html.tokenize("Ý")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Ý')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Ý'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00de_6730" {
   let (tokens, _) = @html.tokenize("Þ")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('Þ')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('Þ'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00df_6731" {
   let (tokens, _) = @html.tokenize("ß")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ß')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ß'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00e0_6732" {
   let (tokens, _) = @html.tokenize("à")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('à')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('à'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00e1_6733" {
   let (tokens, _) = @html.tokenize("á")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('á')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('á'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00e2_6734" {
   let (tokens, _) = @html.tokenize("â")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('â')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('â'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00e3_6735" {
   let (tokens, _) = @html.tokenize("ã")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ã')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ã'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00e4_6736" {
   let (tokens, _) = @html.tokenize("ä")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ä')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ä'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00e5_6737" {
   let (tokens, _) = @html.tokenize("å")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('å')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('å'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00e6_6738" {
   let (tokens, _) = @html.tokenize("æ")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('æ')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('æ'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00e7_6739" {
   let (tokens, _) = @html.tokenize("ç")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ç')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ç'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00e8_6740" {
   let (tokens, _) = @html.tokenize("è")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('è')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('è'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00e9_6741" {
   let (tokens, _) = @html.tokenize("é")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('é')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('é'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00ea_6742" {
   let (tokens, _) = @html.tokenize("ê")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ê')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ê'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00eb_6743" {
   let (tokens, _) = @html.tokenize("ë")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ë')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ë'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00ec_6744" {
   let (tokens, _) = @html.tokenize("ì")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ì')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ì'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00ed_6745" {
   let (tokens, _) = @html.tokenize("í")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('í')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('í'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00ee_6746" {
   let (tokens, _) = @html.tokenize("î")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('î')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('î'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00ef_6747" {
   let (tokens, _) = @html.tokenize("ï")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ï')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ï'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00f0_6748" {
   let (tokens, _) = @html.tokenize("ð")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ð')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ð'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00f1_6749" {
   let (tokens, _) = @html.tokenize("ñ")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ñ')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ñ'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00f2_6750" {
   let (tokens, _) = @html.tokenize("ò")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ò')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ò'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00f3_6751" {
   let (tokens, _) = @html.tokenize("ó")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ó')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ó'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00f4_6752" {
   let (tokens, _) = @html.tokenize("ô")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ô')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ô'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00f5_6753" {
   let (tokens, _) = @html.tokenize("õ")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('õ')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('õ'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00f6_6754" {
   let (tokens, _) = @html.tokenize("ö")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ö')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ö'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00f7_6755" {
   let (tokens, _) = @html.tokenize("÷")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('÷')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('÷'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00f8_6756" {
   let (tokens, _) = @html.tokenize("ø")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ø')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ø'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00f9_6757" {
   let (tokens, _) = @html.tokenize("ù")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ù')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ù'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00fa_6758" {
   let (tokens, _) = @html.tokenize("ú")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ú')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ú'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00fb_6759" {
   let (tokens, _) = @html.tokenize("û")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('û')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('û'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00fc_6760" {
   let (tokens, _) = @html.tokenize("ü")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ü')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ü'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00fd_6761" {
   let (tokens, _) = @html.tokenize("ý")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ý')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ý'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00fe_6762" {
   let (tokens, _) = @html.tokenize("þ")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('þ')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('þ'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u00ff_6763" {
   let (tokens, _) = @html.tokenize("ÿ")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ÿ')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ÿ'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_ud7ff_6764" {
   let (tokens, _) = @html.tokenize("퟿")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('퟿')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('퟿'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_ue000_6765" {
   let (tokens, _) = @html.tokenize("")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('\\u{e000}')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('\u{e000}'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_ufdcf_6766" {
   let (tokens, _) = @html.tokenize("﷏")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('﷏')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('﷏'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_ufdf0_6767" {
   let (tokens, _) = @html.tokenize("ﷰ")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('ﷰ')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('ﷰ'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_ufffd_6768" {
   let (tokens, _) = @html.tokenize("�")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('�')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('�'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u10000_6769" {
   let (tokens, _) = @html.tokenize("𐀀")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('𐀀')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('𐀀'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u1fffd_6770" {
   let (tokens, _) = @html.tokenize("🿽")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('🿽')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('🿽'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u20000_6771" {
   let (tokens, _) = @html.tokenize("𠀀")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('𠀀')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('𠀀'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u2fffd_6772" {
   let (tokens, _) = @html.tokenize("𯿽")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('𯿽')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('𯿽'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u30000_6773" {
   let (tokens, _) = @html.tokenize("𰀀")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('𰀀')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('𰀀'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u3fffd_6774" {
   let (tokens, _) = @html.tokenize("𿿽")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('𿿽')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('𿿽'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u40000_6775" {
   let (tokens, _) = @html.tokenize("񀀀")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('񀀀')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('񀀀'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u4fffd_6776" {
   let (tokens, _) = @html.tokenize("񏿽")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('񏿽')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('񏿽'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u50000_6777" {
   let (tokens, _) = @html.tokenize("񐀀")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('񐀀')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('񐀀'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u5fffd_6778" {
   let (tokens, _) = @html.tokenize("񟿽")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('񟿽')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('񟿽'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u60000_6779" {
   let (tokens, _) = @html.tokenize("񠀀")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('񠀀')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('񠀀'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u6fffd_6780" {
   let (tokens, _) = @html.tokenize("񯿽")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('񯿽')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('񯿽'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u70000_6781" {
   let (tokens, _) = @html.tokenize("񰀀")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('񰀀')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('񰀀'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u7fffd_6782" {
   let (tokens, _) = @html.tokenize("񿿽")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('񿿽')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('񿿽'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u80000_6783" {
   let (tokens, _) = @html.tokenize("򀀀")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('򀀀')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('򀀀'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u8fffd_6784" {
   let (tokens, _) = @html.tokenize("򏿽")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('򏿽')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('򏿽'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u90000_6785" {
   let (tokens, _) = @html.tokenize("򐀀")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('򐀀')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('򐀀'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u9fffd_6786" {
   let (tokens, _) = @html.tokenize("򟿽")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('򟿽')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('򟿽'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_ua0000_6787" {
   let (tokens, _) = @html.tokenize("򠀀")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('򠀀')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('򠀀'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_uafffd_6788" {
   let (tokens, _) = @html.tokenize("򯿽")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('򯿽')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('򯿽'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_ub0000_6789" {
   let (tokens, _) = @html.tokenize("򰀀")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('򰀀')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('򰀀'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_ubfffd_6790" {
   let (tokens, _) = @html.tokenize("򿿽")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('򿿽')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('򿿽'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_uc0000_6791" {
   let (tokens, _) = @html.tokenize("󀀀")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('󀀀')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('󀀀'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_ucfffd_6792" {
   let (tokens, _) = @html.tokenize("󏿽")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('󏿽')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('󏿽'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_ud0000_6793" {
   let (tokens, _) = @html.tokenize("󐀀")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('󐀀')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('󐀀'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_udfffd_6794" {
   let (tokens, _) = @html.tokenize("󟿽")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('󟿽')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('󟿽'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_ue0000_6795" {
   let (tokens, _) = @html.tokenize("󠀀")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('󠀀')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('󠀀'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_uefffd_6796" {
   let (tokens, _) = @html.tokenize("󯿽")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('󯿽')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('󯿽'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_uf0000_6797" {
   let (tokens, _) = @html.tokenize("󰀀")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('\\u{0f0000}')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('\u{0f0000}'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_uffffd_6798" {
   let (tokens, _) = @html.tokenize("󿿽")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('\\u{0ffffd}')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('\u{0ffffd}'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u100000_6799" {
   let (tokens, _) = @html.tokenize("􀀀")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('\\u{100000}')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('\u{100000}'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u10fffd_6800" {
   let (tokens, _) = @html.tokenize("􏿽")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('\\u{10fffd}')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('\u{10fffd}'), EOF])
 }
 
 ///|
 test "html5lib/tokenizer/unicodeCharsProblematic_cr_followed_by_u0000_6805" {
   let (tokens, _) = @html.tokenize("\r\u{00}")
-  @debug.assert_eq(tokens.map(fn(token) { token.to_string() }), [
-    "Character('\\n')", "Character('\\u{00}')", "EOF",
-  ])
+  @debug.assert_eq(tokens, [Character('\n'), Character('\u{00}'), EOF])
 }
