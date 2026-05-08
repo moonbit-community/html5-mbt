@@ -21,9 +21,9 @@ test "basic parsing" {
   let doc = @html5.parse(
     "<html><head><title>Hello</title></head><body><p>World</p></body></html>",
   )
-  inspect(
+  assert_eq(
     doc.dump(),
-    content=(
+    (
       #|<html>
       #|  <head>
       #|    <title>
@@ -44,9 +44,9 @@ The parser handles malformed HTML gracefully, just like browsers:
 ///|
 test "error recovery - unclosed tags" {
   let doc = @html5.parse("<p>First<p>Second<p>Third")
-  inspect(
+  assert_eq(
     doc.dump(),
-    content=(
+    (
       #|<html>
       #|  <head>
       #|  <body>
@@ -65,9 +65,9 @@ test "error recovery - unclosed tags" {
 ///|
 test "error recovery - misnested tags" {
   let doc = @html5.parse("<b><i>Bold and Italic</b> Just Italic</i>")
-  inspect(
+  assert_eq(
     doc.dump(),
-    content=(
+    (
       #|<html>
       #|  <head>
       #|  <body>
@@ -89,9 +89,9 @@ Convert the document back to HTML:
 ///|
 test "serialize to html" {
   let doc = @html5.parse("<div class=\"container\"><span>Hello</span></div>")
-  inspect(
-    doc.to_html(),
-    content="<html><head></head><body><div class=\"container\"><span>Hello</span></div></body></html>",
+  assert_true(
+    doc.to_html()
+    is "<html><head></head><body><div class=\"container\"><span>Hello</span></div></body></html>",
   )
 }
 ```
@@ -104,10 +104,10 @@ Collect parse errors for diagnostics:
 ///|
 test "parse with errors" {
   let (doc, errors) = @html5.parse_with_errors("<p>Test</p attr>")
-  inspect(errors.length() > 0, content="true")
-  inspect(
+  assert_true((errors.length() > 0) is true)
+  assert_eq(
     doc.dump(),
-    content=(
+    (
       #|<html>
       #|  <head>
       #|  <body>
@@ -126,12 +126,11 @@ Tokenize HTML without building a tree:
 ///|
 test "tokenization" {
   let (tokens, _errors) = @html5.tokenize("<div>Hello</div>")
-  inspect(
-    tokens[0],
-    content="StartTag(name=\"div\", attrs=[], self_closing=false)",
+  assert_true(
+    tokens[0] is @html5.StartTag(name="div", attrs=[], self_closing=false),
   )
-  inspect(tokens[1], content="Character('H')")
-  inspect(tokens[2], content="Character('e')")
+  assert_true(tokens[1] is @html5.Character('H'))
+  assert_true(tokens[2] is @html5.Character('e'))
 }
 ```
 
@@ -150,13 +149,13 @@ test "dom access" {
 
   // Get the div
   let div_id = children[0]
-  inspect(doc.get_tag_name(div_id), content="Some(\"div\")")
-  inspect(doc.get_attribute(div_id, "id"), content="Some(\"main\")")
+  assert_true(doc.get_tag_name(div_id) is Some("div"))
+  assert_true(doc.get_attribute(div_id, "id") is Some("main"))
 
   // Get the p element
   let p_id = doc.get_children(div_id)[0]
-  inspect(doc.get_attribute(p_id, "class"), content="Some(\"text\")")
-  inspect(doc.get_text_content(p_id), content="Content")
+  assert_true(doc.get_attribute(p_id, "class") is Some("text"))
+  assert_true(doc.get_text_content(p_id) is "Content")
 }
 ```
 
@@ -169,10 +168,7 @@ The parser correctly handles named and numeric character references:
 test "character references" {
   let doc = @html5.parse("<p>&amp; &lt; &gt; &copy; &#169; &#x00A9;</p>")
   let p_id = doc.get_children(doc.body_element)[0]
-  inspect(
-    doc.get_text_content(p_id),
-    content="& < > \u{00A9} \u{00A9} \u{00A9}",
-  )
+  assert_true(doc.get_text_content(p_id) is "& < > \u{00A9} \u{00A9} \u{00A9}")
 }
 ```
 
@@ -186,9 +182,9 @@ test "svg support" {
   let doc = @html5.parse(
     "<div><svg><circle cx=\"50\" cy=\"50\" r=\"40\"/></svg></div>",
   )
-  inspect(
+  assert_eq(
     doc.dump(),
-    content=(
+    (
       #|<html>
       #|  <head>
       #|  <body>

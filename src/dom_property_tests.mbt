@@ -343,9 +343,9 @@ test "random html 0" {
     10,
     @splitmix.new(seed=42),
   )
-  inspect(
-    html.html,
-    content="<html><head><meta><script sssxdro=\"J\" a0o3zby6=\"r9SKVg\"ihth=\"H4ANh--\" htptq=\"Qa23\">r<<!sfaIfP>/cript<?C?></head><!YuhHR-fh><body><!--k--><blockquote>sw!cd5_bWUwSH,53<<!--\u{9}i;GY-7?\u{a}y!R-->/blockquote>FrS<!--X\u{a}wb.V--><button ztod0=\"PbGe2BbMX\"><math></math>a5eL cUdwEAR.4kMhwkU4</button></body></html>",
+  assert_true(
+    html.html
+    is "<html><head><meta><script sssxdro=\"J\" a0o3zby6=\"r9SKVg\"ihth=\"H4ANh--\" htptq=\"Qa23\">r<<!sfaIfP>/cript<?C?></head><!YuhHR-fh><body><!--k--><blockquote>sw!cd5_bWUwSH,53<<!--\u{9}i;GY-7?\u{a}y!R-->/blockquote>FrS<!--X\u{a}wb.V--><button ztod0=\"PbGe2BbMX\"><math></math>a5eL cUdwEAR.4kMhwkU4</button></body></html>",
   )
 }
 
