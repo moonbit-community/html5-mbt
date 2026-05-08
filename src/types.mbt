@@ -44,7 +44,7 @@ pub(all) enum QuirksMode {
 
 ///|
 /// Attribute in a start/end tag
-pub struct Attribute {
+pub(all) struct Attribute {
   name : String
   value : String
 } derive(Debug, Eq)
