@@ -424,17 +424,25 @@ def normalize_expected_tree(tree: str) -> str:
     """Normalize expected tree output for comparison.
 
     - Strip the '| ' prefix from html5lib-tests format
-    - Remove empty lines
-    - Ensure consistent formatting
+    - Remove only section-boundary empty lines
+    - Preserve whitespace inside expected text nodes
     """
     lines = []
-    for line in tree.strip().split('\n'):
-        # Keep the line structure but normalize
-        if line.strip():
-            # Remove the '| ' prefix from html5lib format
-            if line.startswith('| '):
-                line = line[2:]
-            lines.append(line.rstrip())
+    raw_lines = tree.split('\n')
+
+    # The .dat format uses blank lines between sections/tests. Those boundary
+    # lines are not part of the tree, but blank lines and trailing spaces inside
+    # quoted text nodes are semantically significant.
+    while raw_lines and raw_lines[0] == '':
+        raw_lines.pop(0)
+    while raw_lines and raw_lines[-1] == '':
+        raw_lines.pop()
+
+    for line in raw_lines:
+        # Remove the '| ' prefix from html5lib format
+        if line.startswith('| '):
+            line = line[2:]
+        lines.append(line)
     return '\n'.join(lines)
 
 
