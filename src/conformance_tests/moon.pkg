@@ -1,3 +1,4 @@
 import {
+  "moonbitlang/core/debug" @debug,
   "Milky2018/html/src" @html,
 } for "test"

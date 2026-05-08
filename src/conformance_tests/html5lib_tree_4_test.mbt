@@ -25,150 +25,120 @@
 ///|
 test "html5lib/tree/webkit01_1689" {
   let doc = @html.parse("<p>Test</p<p>Test2</p>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <p>
-      #|      "TestTest2"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <p>
+    #|      "TestTest2"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1690" {
   let doc = @html.parse("<rdar://problem/6869687>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <rdar:>
-      #|      6869687=""
-      #|      problem=""
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <rdar:>
+    #|      6869687=""
+    #|      problem=""
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1691" {
   let doc = @html.parse("<A>test< /A>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <a>
-      #|      "test< /A>"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <a>
+    #|      "test< /A>"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1692" {
   let doc = @html.parse("&lt;")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    "<"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    "<"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1693" {
   let doc = @html.parse("<body foo='bar'><body foo='baz' yo='mama'>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    foo="bar"
-      #|    yo="mama"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    foo="bar"
+    #|    yo="mama"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1694" {
   let doc = @html.parse("<body></br foo=\"bar\"></body>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <br>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <br>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1695" {
   let doc = @html.parse("<bdy><br foo=\"bar\"></body>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <bdy>
-      #|      <br>
-      #|        foo="bar"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <bdy>
+    #|      <br>
+    #|        foo="bar"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1696" {
   let doc = @html.parse("<body></body></br foo=\"bar\">")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <br>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <br>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1697" {
   let doc = @html.parse("<bdy></body><br foo=\"bar\">")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <bdy>
-      #|      <br>
-      #|        foo="bar"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <bdy>
+    #|      <br>
+    #|        foo="bar"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1698" {
   let doc = @html.parse("<html><body></body></html><!-- Hi there -->")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|<!--  Hi there  -->
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|<!--  Hi there  -->
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
@@ -176,34 +146,28 @@ test "html5lib/tree/webkit01_1699" {
   let doc = @html.parse(
     "<html><body></body></html><!-- Comment A --><!-- Comment B --><!-- Comment C --><!-- Comment D --><!-- Comment E -->",
   )
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|<!--  Comment A  -->
-      #|<!--  Comment B  -->
-      #|<!--  Comment C  -->
-      #|<!--  Comment D  -->
-      #|<!--  Comment E  -->
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|<!--  Comment A  -->
+    #|<!--  Comment B  -->
+    #|<!--  Comment C  -->
+    #|<!--  Comment D  -->
+    #|<!--  Comment E  -->
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1700" {
   let doc = @html.parse("<html><body></body></html>x<!-- Hi there -->")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    "x"
-      #|    <!--  Hi there  -->
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    "x"
+    #|    <!--  Hi there  -->
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
@@ -211,17 +175,14 @@ test "html5lib/tree/webkit01_1701" {
   let doc = @html.parse(
     "<html><body></body></html>x<!-- Hi there --></html><!-- Again -->",
   )
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    "x"
-      #|    <!--  Hi there  -->
-      #|<!--  Again  -->
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    "x"
+    #|    <!--  Hi there  -->
+    #|<!--  Again  -->
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
@@ -229,49 +190,40 @@ test "html5lib/tree/webkit01_1702" {
   let doc = @html.parse(
     "<html><body></body></html>x<!-- Hi there --></body></html><!-- Again -->",
   )
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    "x"
-      #|    <!--  Hi there  -->
-      #|<!--  Again  -->
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    "x"
+    #|    <!--  Hi there  -->
+    #|<!--  Again  -->
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1703" {
   let doc = @html.parse("<html><body></body>\n   <!-- Hi there --></html>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    "
-      #|   "
-      #|  <!--  Hi there  -->
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    "
+    #|   "
+    #|  <!--  Hi there  -->
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1704" {
   let doc = @html.parse("<html><body></body></html>\n   <!-- Hi there -->")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    "
-      #|   "
-      #|<!--  Hi there  -->
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    "
+    #|   "
+    #|<!--  Hi there  -->
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
@@ -279,18 +231,15 @@ test "html5lib/tree/webkit01_1705" {
   let doc = @html.parse(
     "<html><body><ruby><div><rp>xx</rp></div></ruby></body></html>",
   )
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <ruby>
-      #|      <div>
-      #|        <rp>
-      #|          "xx"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <ruby>
+    #|      <div>
+    #|        <rp>
+    #|          "xx"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
@@ -298,18 +247,15 @@ test "html5lib/tree/webkit01_1706" {
   let doc = @html.parse(
     "<html><body><ruby><div><rt>xx</rt></div></ruby></body></html>",
   )
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <ruby>
-      #|      <div>
-      #|        <rt>
-      #|          "xx"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <ruby>
+    #|      <div>
+    #|        <rt>
+    #|          "xx"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
@@ -317,26 +263,23 @@ test "html5lib/tree/webkit01_1707" {
   let doc = @html.parse(
     "<html><frameset><!--1--><noframes>A</noframes><!--2--></frameset><!--3--><noframes>B</noframes><!--4--></html><!--5--><noframes>C</noframes><!--6-->",
   )
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <frameset>
-      #|    <!-- 1 -->
-      #|    <noframes>
-      #|      "A"
-      #|    <!-- 2 -->
-      #|  <!-- 3 -->
-      #|  <noframes>
-      #|    "B"
-      #|  <!-- 4 -->
-      #|  <noframes>
-      #|    "C"
-      #|<!-- 5 -->
-      #|<!-- 6 -->
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <frameset>
+    #|    <!-- 1 -->
+    #|    <noframes>
+    #|      "A"
+    #|    <!-- 2 -->
+    #|  <!-- 3 -->
+    #|  <noframes>
+    #|    "B"
+    #|  <!-- 4 -->
+    #|  <noframes>
+    #|    "C"
+    #|<!-- 5 -->
+    #|<!-- 6 -->
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
@@ -344,265 +287,223 @@ test "html5lib/tree/webkit01_1708" {
   let doc = @html.parse(
     "<select><option>A<select><option>B<select><option>C<select><option>D<select><option>E<select><option>F<select><option>G<select>",
   )
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <select>
-      #|      <option>
-      #|        "A"
-      #|    <option>
-      #|      "B"
-      #|      <select>
-      #|        <option>
-      #|          "C"
-      #|    <option>
-      #|      "D"
-      #|      <select>
-      #|        <option>
-      #|          "E"
-      #|    <option>
-      #|      "F"
-      #|      <select>
-      #|        <option>
-      #|          "G"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <select>
+    #|      <option>
+    #|        "A"
+    #|    <option>
+    #|      "B"
+    #|      <select>
+    #|        <option>
+    #|          "C"
+    #|    <option>
+    #|      "D"
+    #|      <select>
+    #|        <option>
+    #|          "E"
+    #|    <option>
+    #|      "F"
+    #|      <select>
+    #|        <option>
+    #|          "G"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1709" {
   let doc = @html.parse("<dd><dd><dt><dt><dd><li><li>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <dd>
-      #|    <dd>
-      #|    <dt>
-      #|    <dt>
-      #|    <dd>
-      #|      <li>
-      #|      <li>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <dd>
+    #|    <dd>
+    #|    <dt>
+    #|    <dt>
+    #|    <dd>
+    #|      <li>
+    #|      <li>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1710" {
   let doc = @html.parse("<div><b></div><div><nobr>a<nobr>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <div>
-      #|      <b>
-      #|    <div>
-      #|      <b>
-      #|        <nobr>
-      #|          "a"
-      #|        <nobr>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <div>
+    #|      <b>
+    #|    <div>
+    #|      <b>
+    #|        <nobr>
+    #|          "a"
+    #|        <nobr>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1711" {
   let doc = @html.parse("<head></head>\n<body></body>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  "
-      #|"
-      #|  <body>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  "
+    #|"
+    #|  <body>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1712" {
   let doc = @html.parse("<head></head> <style></style>ddd")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|    <style>
-      #|  " "
-      #|  <body>
-      #|    "ddd"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|    <style>
+    #|  " "
+    #|  <body>
+    #|    "ddd"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1713" {
   let doc = @html.parse("<kbd><table></kbd><col><select><tr>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <kbd>
-      #|      <select>
-      #|      <table>
-      #|        <colgroup>
-      #|          <col>
-      #|        <tbody>
-      #|          <tr>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <kbd>
+    #|      <select>
+    #|      <table>
+    #|        <colgroup>
+    #|          <col>
+    #|        <tbody>
+    #|          <tr>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1714" {
   let doc = @html.parse("<kbd><table></kbd><col><select><tr></table><div>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <kbd>
-      #|      <select>
-      #|      <table>
-      #|        <colgroup>
-      #|          <col>
-      #|        <tbody>
-      #|          <tr>
-      #|      <div>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <kbd>
+    #|      <select>
+    #|      <table>
+    #|        <colgroup>
+    #|          <col>
+    #|        <tbody>
+    #|          <tr>
+    #|      <div>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1715" {
   let doc = @html.parse("<a><li><style></style><title></title></a>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <a>
-      #|    <li>
-      #|      <a>
-      #|        <style>
-      #|        <title>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <a>
+    #|    <li>
+    #|      <a>
+    #|        <style>
+    #|        <title>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1716" {
   let doc = @html.parse("<font></p><p><meta><title></title></font>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <font>
-      #|      <p>
-      #|    <p>
-      #|      <font>
-      #|        <meta>
-      #|        <title>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <font>
+    #|      <p>
+    #|    <p>
+    #|      <font>
+    #|        <meta>
+    #|        <title>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1717" {
   let doc = @html.parse("<a><center><title></title><a>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <a>
-      #|    <center>
-      #|      <a>
-      #|        <title>
-      #|      <a>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <a>
+    #|    <center>
+    #|      <a>
+    #|        <title>
+    #|      <a>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1718" {
   let doc = @html.parse("<svg><title><div>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <svg svg>
-      #|      <svg title>
-      #|        <div>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <svg svg>
+    #|      <svg title>
+    #|        <div>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1719" {
   let doc = @html.parse("<svg><title><rect><div>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <svg svg>
-      #|      <svg title>
-      #|        <rect>
-      #|          <div>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <svg svg>
+    #|      <svg title>
+    #|        <rect>
+    #|          <div>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1720" {
   let doc = @html.parse("<svg><title><svg><div>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <svg svg>
-      #|      <svg title>
-      #|        <svg svg>
-      #|        <div>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <svg svg>
+    #|      <svg title>
+    #|        <svg svg>
+    #|        <div>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1721" {
   let doc = @html.parse("<img <=\"\" FAIL>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <img>
-      #|      <=""
-      #|      fail=""
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <img>
+    #|      <=""
+    #|      fail=""
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
@@ -610,76 +511,64 @@ test "html5lib/tree/webkit01_1722" {
   let doc = @html.parse(
     "<ul><li><div id='foo'/>A</li><li>B<div>C</div></li></ul>",
   )
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <ul>
-      #|      <li>
-      #|        <div>
-      #|          id="foo"
-      #|          "A"
-      #|      <li>
-      #|        "B"
-      #|        <div>
-      #|          "C"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <ul>
+    #|      <li>
+    #|        <div>
+    #|          id="foo"
+    #|          "A"
+    #|      <li>
+    #|        "B"
+    #|        <div>
+    #|          "C"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1723" {
   let doc = @html.parse("<svg><em><desc></em>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <svg svg>
-      #|    <em>
-      #|      <desc>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <svg svg>
+    #|    <em>
+    #|      <desc>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1724" {
   let doc = @html.parse("<table><tr><td><svg><desc><td></desc><circle>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <table>
-      #|      <tbody>
-      #|        <tr>
-      #|          <td>
-      #|            <svg svg>
-      #|              <svg desc>
-      #|          <td>
-      #|            <circle>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <table>
+    #|      <tbody>
+    #|        <tr>
+    #|          <td>
+    #|            <svg svg>
+    #|              <svg desc>
+    #|          <td>
+    #|            <circle>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1725" {
   let doc = @html.parse("<svg><tfoot></mi><td>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <svg svg>
-      #|      <svg tfoot>
-      #|        <svg td>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <svg svg>
+    #|      <svg tfoot>
+    #|        <svg td>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
@@ -687,66 +576,54 @@ test "html5lib/tree/webkit01_1726" {
   let doc = @html.parse(
     "<math><mrow><mrow><mn>1</mn></mrow><mi>a</mi></mrow></math>",
   )
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <math math>
-      #|      <math mrow>
-      #|        <math mrow>
-      #|          <math mn>
-      #|            "1"
-      #|        <math mi>
-      #|          "a"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <math math>
+    #|      <math mrow>
+    #|        <math mrow>
+    #|          <math mn>
+    #|            "1"
+    #|        <math mi>
+    #|          "a"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1727" {
   let doc = @html.parse("<!doctype html><input type=\"hidden\"><frameset>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<!DOCTYPE html>
-      #|<html>
-      #|  <head>
-      #|  <frameset>
-    ),
-  )
+  let expected =
+    #|<!DOCTYPE html>
+    #|<html>
+    #|  <head>
+    #|  <frameset>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit01_1728" {
   let doc = @html.parse("<!doctype html><input type=\"button\"><frameset>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<!DOCTYPE html>
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <input>
-      #|      type="button"
-    ),
-  )
+  let expected =
+    #|<!DOCTYPE html>
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <input>
+    #|      type="button"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1729" {
   let doc = @html.parse("<foo bar=qux/>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <foo>
-      #|      bar="qux/"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <foo>
+    #|      bar="qux/"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
@@ -754,20 +631,17 @@ test "html5lib/tree/webkit02_1730_script_on" {
   let doc = @html.parse_with_scripting(
     "<p id=\"status\"><noscript><strong>A</strong></noscript><span>B</span></p>",
   )
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <p>
-      #|      id="status"
-      #|      <noscript>
-      #|        "<strong>A</strong>"
-      #|      <span>
-      #|        "B"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <p>
+    #|      id="status"
+    #|      <noscript>
+    #|        "<strong>A</strong>"
+    #|      <span>
+    #|        "B"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
@@ -775,37 +649,31 @@ test "html5lib/tree/webkit02_1731_script_off" {
   let doc = @html.parse(
     "<p id=\"status\"><noscript><strong>A</strong></noscript><span>B</span></p>",
   )
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <p>
-      #|      id="status"
-      #|      <noscript>
-      #|        <strong>
-      #|          "A"
-      #|      <span>
-      #|        "B"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <p>
+    #|      id="status"
+    #|      <noscript>
+    #|        <strong>
+    #|          "A"
+    #|      <span>
+    #|        "B"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1732" {
   let doc = @html.parse("<div><sarcasm><div></div></sarcasm></div>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <div>
-      #|      <sarcasm>
-      #|        <div>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <div>
+    #|      <sarcasm>
+    #|        <div>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
@@ -813,197 +681,164 @@ test "html5lib/tree/webkit02_1733" {
   let doc = @html.parse(
     "<html><body><img src=\"\" border=\"0\" alt=\"><div>A</div></body></html>",
   )
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1734" {
   let doc = @html.parse("<table><td></tbody>A")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    "A"
-      #|    <table>
-      #|      <tbody>
-      #|        <tr>
-      #|          <td>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    "A"
+    #|    <table>
+    #|      <tbody>
+    #|        <tr>
+    #|          <td>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1735" {
   let doc = @html.parse("<table><td></thead>A")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <table>
-      #|      <tbody>
-      #|        <tr>
-      #|          <td>
-      #|            "A"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <table>
+    #|      <tbody>
+    #|        <tr>
+    #|          <td>
+    #|            "A"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1736" {
   let doc = @html.parse("<table><td></tfoot>A")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <table>
-      #|      <tbody>
-      #|        <tr>
-      #|          <td>
-      #|            "A"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <table>
+    #|      <tbody>
+    #|        <tr>
+    #|          <td>
+    #|            "A"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1737" {
   let doc = @html.parse("<table><thead><td></tbody>A")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <table>
-      #|      <thead>
-      #|        <tr>
-      #|          <td>
-      #|            "A"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <table>
+    #|      <thead>
+    #|        <tr>
+    #|          <td>
+    #|            "A"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1738" {
   let doc = @html.parse("<legend>test</legend>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <legend>
-      #|      "test"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <legend>
+    #|      "test"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1739" {
   let doc = @html.parse("<table><input>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <input>
-      #|    <table>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <input>
+    #|    <table>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1741" {
   let doc = @html.parse("<b><em><foo><foo><aside></b>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <b>
-      #|      <em>
-      #|        <foo>
-      #|          <foo>
-      #|    <em>
-      #|      <aside>
-      #|        <b>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <b>
+    #|      <em>
+    #|        <foo>
+    #|          <foo>
+    #|    <em>
+    #|      <aside>
+    #|        <b>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1742" {
   let doc = @html.parse("<b><em><foo><foo><aside></b></em>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <b>
-      #|      <em>
-      #|        <foo>
-      #|          <foo>
-      #|    <em>
-      #|    <aside>
-      #|      <em>
-      #|        <b>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <b>
+    #|      <em>
+    #|        <foo>
+    #|          <foo>
+    #|    <em>
+    #|    <aside>
+    #|      <em>
+    #|        <b>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1743" {
   let doc = @html.parse("<b><em><foo><foo><foo><aside></b>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <b>
-      #|      <em>
-      #|        <foo>
-      #|          <foo>
-      #|            <foo>
-      #|    <aside>
-      #|      <b>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <b>
+    #|      <em>
+    #|        <foo>
+    #|          <foo>
+    #|            <foo>
+    #|    <aside>
+    #|      <b>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1744" {
   let doc = @html.parse("<b><em><foo><foo><foo><aside></b></em>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <b>
-      #|      <em>
-      #|        <foo>
-      #|          <foo>
-      #|            <foo>
-      #|    <aside>
-      #|      <b>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <b>
+    #|      <em>
+    #|        <foo>
+    #|          <foo>
+    #|            <foo>
+    #|    <aside>
+    #|      <b>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
@@ -1011,52 +846,43 @@ test "html5lib/tree/webkit02_1748" {
   let doc = @html.parse(
     "<svg><foreignObject><div>foo</div><plaintext></foreignObject></svg><div>bar</div>",
   )
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <svg svg>
-      #|      <svg foreignObject>
-      #|        <div>
-      #|          "foo"
-      #|        <plaintext>
-      #|          "</foreignObject></svg><div>bar</div>"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <svg svg>
+    #|      <svg foreignObject>
+    #|        <div>
+    #|          "foo"
+    #|        <plaintext>
+    #|          "</foreignObject></svg><div>bar</div>"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1749" {
   let doc = @html.parse("<svg><foreignObject></foreignObject><title></svg>foo")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <svg svg>
-      #|      <svg foreignObject>
-      #|      <svg title>
-      #|    "foo"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <svg svg>
+    #|      <svg foreignObject>
+    #|      <svg title>
+    #|    "foo"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1750" {
   let doc = @html.parse("</foreignObject><plaintext><div>foo</div>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <plaintext>
-      #|      "<div>foo</div>"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <plaintext>
+    #|      "<div>foo</div>"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
@@ -1064,271 +890,226 @@ test "html5lib/tree/webkit02_1751" {
   let doc = @html.parse(
     "<svg xml:base xml:lang xml:space xml:baaah definitionurl>",
   )
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <svg svg>
-      #|      definitionurl=""
-      #|      xml lang=""
-      #|      xml space=""
-      #|      xml:baaah=""
-      #|      xml:base=""
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <svg svg>
+    #|      definitionurl=""
+    #|      xml lang=""
+    #|      xml space=""
+    #|      xml:baaah=""
+    #|      xml:base=""
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1752" {
   let doc = @html.parse("<math definitionurl xlink:title xlink:show>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <math math>
-      #|      definitionURL=""
-      #|      xlink show=""
-      #|      xlink title=""
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <math math>
+    #|      definitionURL=""
+    #|      xlink show=""
+    #|      xlink title=""
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1753" {
   let doc = @html.parse("<math DEFINITIONURL>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <math math>
-      #|      definitionURL=""
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <math math>
+    #|      definitionURL=""
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1754" {
   let doc = @html.parse("<select><hr>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <select>
-      #|      <hr>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <select>
+    #|      <hr>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1755" {
   let doc = @html.parse("<select><option><hr>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <select>
-      #|      <option>
-      #|      <hr>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <select>
+    #|      <option>
+    #|      <hr>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1756" {
   let doc = @html.parse("<select><optgroup><option><hr>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <select>
-      #|      <optgroup>
-      #|        <option>
-      #|      <hr>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <select>
+    #|      <optgroup>
+    #|        <option>
+    #|      <hr>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1757" {
   let doc = @html.parse("<select><optgroup><hr>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <select>
-      #|      <optgroup>
-      #|      <hr>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <select>
+    #|      <optgroup>
+    #|      <hr>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1758" {
   let doc = @html.parse("<select><option><optgroup><hr>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <select>
-      #|      <option>
-      #|      <optgroup>
-      #|      <hr>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <select>
+    #|      <option>
+    #|      <optgroup>
+    #|      <hr>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1759" {
   let doc = @html.parse("<table><tr><td><select><hr>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <table>
-      #|      <tbody>
-      #|        <tr>
-      #|          <td>
-      #|            <select>
-      #|              <hr>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <table>
+    #|      <tbody>
+    #|        <tr>
+    #|          <td>
+    #|            <select>
+    #|              <hr>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1760" {
   let doc = @html.parse("<table><tr><td><select><option><hr>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <table>
-      #|      <tbody>
-      #|        <tr>
-      #|          <td>
-      #|            <select>
-      #|              <option>
-      #|              <hr>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <table>
+    #|      <tbody>
+    #|        <tr>
+    #|          <td>
+    #|            <select>
+    #|              <option>
+    #|              <hr>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1761" {
   let doc = @html.parse("<table><tr><td><select><optgroup><option><hr>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <table>
-      #|      <tbody>
-      #|        <tr>
-      #|          <td>
-      #|            <select>
-      #|              <optgroup>
-      #|                <option>
-      #|              <hr>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <table>
+    #|      <tbody>
+    #|        <tr>
+    #|          <td>
+    #|            <select>
+    #|              <optgroup>
+    #|                <option>
+    #|              <hr>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1762" {
   let doc = @html.parse("<table><tr><td><select><optgroup><hr>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <table>
-      #|      <tbody>
-      #|        <tr>
-      #|          <td>
-      #|            <select>
-      #|              <optgroup>
-      #|              <hr>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <table>
+    #|      <tbody>
+    #|        <tr>
+    #|          <td>
+    #|            <select>
+    #|              <optgroup>
+    #|              <hr>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1763" {
   let doc = @html.parse("<table><tr><td><select><option><optgroup><hr>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <table>
-      #|      <tbody>
-      #|        <tr>
-      #|          <td>
-      #|            <select>
-      #|              <option>
-      #|              <optgroup>
-      #|              <hr>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <table>
+    #|      <tbody>
+    #|        <tr>
+    #|          <td>
+    #|            <select>
+    #|              <option>
+    #|              <optgroup>
+    #|              <hr>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1764" {
   let doc = @html.parse("<select><div><i></div><option>option")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <select>
-      #|      <div>
-      #|        <i>
-      #|      <i>
-      #|        <option>
-      #|          "option"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <select>
+    #|      <div>
+    #|        <i>
+    #|      <i>
+    #|        <option>
+    #|          "option"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1765" {
   let doc = @html.parse("<div><i></div><option>option")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <div>
-      #|      <i>
-      #|    <i>
-      #|      <option>
-      #|        "option"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <div>
+    #|      <i>
+    #|    <i>
+    #|      <option>
+    #|        "option"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
@@ -1336,89 +1117,74 @@ test "html5lib/tree/webkit02_1766" {
   let doc = @html.parse(
     "<select><div>div 1</div><button>button</button><div>div 2</div><datalist><option>option</option></datalist><div>div 3</div></select>",
   )
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <select>
-      #|      <div>
-      #|        "div 1"
-      #|      <button>
-      #|        "button"
-      #|      <div>
-      #|        "div 2"
-      #|      <datalist>
-      #|        <option>
-      #|          "option"
-      #|      <div>
-      #|        "div 3"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <select>
+    #|      <div>
+    #|        "div 1"
+    #|      <button>
+    #|        "button"
+    #|      <div>
+    #|        "div 2"
+    #|      <datalist>
+    #|        <option>
+    #|          "option"
+    #|      <div>
+    #|        "div 3"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1767" {
   let doc = @html.parse("<select><button>button</select>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <select>
-      #|      <button>
-      #|        "button"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <select>
+    #|      <button>
+    #|        "button"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1768" {
   let doc = @html.parse("<select><datalist>datalist</select>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <select>
-      #|      <datalist>
-      #|        "datalist"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <select>
+    #|      <datalist>
+    #|        "datalist"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1769" {
   let doc = @html.parse("<select><button><select></select></button></select>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <select>
-      #|      <button>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <select>
+    #|      <button>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1770" {
   let doc = @html.parse("<select><button><div><select></select>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <select>
-      #|      <button>
-      #|        <div>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <select>
+    #|      <button>
+    #|        <div>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
@@ -1426,53 +1192,44 @@ test "html5lib/tree/webkit02_1771" {
   let doc = @html.parse(
     "<select><div><option><img>option</option></div></select>",
   )
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <select>
-      #|      <div>
-      #|        <option>
-      #|          <img>
-      #|          "option"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <select>
+    #|      <div>
+    #|        <option>
+    #|          <img>
+    #|          "option"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1772" {
   let doc = @html.parse("<select><input>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <select>
-      #|    <input>
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <select>
+    #|    <input>
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1773" {
   let doc = @html.parse("<select><button><selectedcontent></button><option>X")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <select>
-      #|      <button>
-      #|        <selectedcontent>
-      #|          "X"
-      #|      <option>
-      #|        "X"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <select>
+    #|      <button>
+    #|        <selectedcontent>
+    #|          "X"
+    #|      <option>
+    #|        "X"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
@@ -1480,32 +1237,29 @@ test "html5lib/tree/webkit02_1774" {
   let doc = @html.parse(
     "<select><button><selectedcontent></button><option>x<i>i<b>ib</i>b",
   )
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <select>
-      #|      <button>
-      #|        <selectedcontent>
-      #|          "x"
-      #|          <i>
-      #|            "i"
-      #|            <b>
-      #|              "ib"
-      #|          <b>
-      #|            "b"
-      #|      <option>
-      #|        "x"
-      #|        <i>
-      #|          "i"
-      #|          <b>
-      #|            "ib"
-      #|        <b>
-      #|          "b"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <select>
+    #|      <button>
+    #|        <selectedcontent>
+    #|          "x"
+    #|          <i>
+    #|            "i"
+    #|            <b>
+    #|              "ib"
+    #|          <b>
+    #|            "b"
+    #|      <option>
+    #|        "x"
+    #|        <i>
+    #|          "i"
+    #|          <b>
+    #|            "ib"
+    #|        <b>
+    #|          "b"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
@@ -1513,22 +1267,19 @@ test "html5lib/tree/webkit02_1775" {
   let doc = @html.parse(
     "<select><button><selectedcontent></button><option>X<option>Y",
   )
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <select>
-      #|      <button>
-      #|        <selectedcontent>
-      #|          "X"
-      #|      <option>
-      #|        "X"
-      #|      <option>
-      #|        "Y"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <select>
+    #|      <button>
+    #|        <selectedcontent>
+    #|          "X"
+    #|      <option>
+    #|        "X"
+    #|      <option>
+    #|        "Y"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
@@ -1536,38 +1287,32 @@ test "html5lib/tree/webkit02_1776" {
   let doc = @html.parse(
     "<select><button><selectedcontent></button><option>X<option selected>Y",
   )
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <select>
-      #|      <button>
-      #|        <selectedcontent>
-      #|          "Y"
-      #|      <option>
-      #|        "X"
-      #|      <option>
-      #|        selected=""
-      #|        "Y"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <select>
+    #|      <button>
+    #|        <selectedcontent>
+    #|          "Y"
+    #|      <option>
+    #|        "X"
+    #|      <option>
+    #|        selected=""
+    #|        "Y"
+  @debug.assert_eq(doc.dump(), expected)
 }
 
 ///|
 test "html5lib/tree/webkit02_1777" {
   let doc = @html.parse("<font><select><option>a</option></font></select>")
-  inspect(
-    doc.dump(),
-    content=(
-      #|<html>
-      #|  <head>
-      #|  <body>
-      #|    <font>
-      #|      <select>
-      #|        <option>
-      #|          "a"
-    ),
-  )
+  let expected =
+    #|<html>
+    #|  <head>
+    #|  <body>
+    #|    <font>
+    #|      <select>
+    #|        <option>
+    #|          "a"
+  @debug.assert_eq(doc.dump(), expected)
 }
