@@ -241,14 +241,24 @@ pub(all) enum Namespace {
 
 ///|
 pub impl Show for Token with output(self, logger) {
+  fn output_option_string(s : String?) -> Unit {
+    match s {
+      None => logger.write_string("None")
+      Some(arg) => {
+        logger.write_string("Some(")
+        logger.write_object(arg)
+        logger.write_string(")")
+      }
+    }
+  }
   match self {
     DOCTYPE(name~, public_id~, system_id~, force_quirks~) => {
       logger.write_string("DOCTYPE(name=")
-      name.output(logger)
+      output_option_string(name)
       logger.write_string(", public_id=")
-      public_id.output(logger)
+      output_option_string(public_id)
       logger.write_string(", system_id=")
-      system_id.output(logger)
+      output_option_string(system_id)
       logger.write_string(", force_quirks=")
       force_quirks.output(logger)
       logger.write_string(")")
