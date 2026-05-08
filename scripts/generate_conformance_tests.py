@@ -289,7 +289,7 @@ def format_expected_token_strings(output: List) -> str:
                     tokens.append(f"Character('{escape_moonbit_char(c)}')")
 
     tokens.append("EOF")
-    return "[" + ", ".join(f'"{escape_moonbit_string(token)}"' for token in tokens) + "]"
+    return "[" + ", ".join(f'{token}' for token in tokens) + "]"
 
 
 def generate_tokenizer_test(test: Dict[str, Any], index: int) -> Optional[str]:
@@ -329,7 +329,7 @@ def generate_tokenizer_test(test: Dict[str, Any], index: int) -> Optional[str]:
     return f'''///|
 test "{test_name}" {{
   let (tokens, _) = @html.tokenize("{escaped_input}")
-  @debug.assert_eq(tokens.map(fn(token) {{ token.to_string() }}), {expected})
+  @debug.assert_eq(tokens, {expected})
 }}
 
 '''
