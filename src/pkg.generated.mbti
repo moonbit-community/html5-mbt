@@ -25,7 +25,7 @@ pub fn tokenize(String) -> (Array[Token], Array[ParseError])
 // Errors
 
 // Types and methods
-pub struct Attribute {
+pub(all) struct Attribute {
   name : String
   value : String
 } derive(Eq, @debug.Debug)
