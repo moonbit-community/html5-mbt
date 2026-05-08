@@ -15,10 +15,19 @@
 ///|
 test "tokenize simple tag" {
   let (tokens, errors) = tokenize("<div>hello</div>")
-  inspect(errors.length(), content="0")
-  inspect(
-    tokens,
-    content="[StartTag(name=\"div\", attrs=[], self_closing=false), Character('h'), Character('e'), Character('l'), Character('l'), Character('o'), EndTag(name=\"div\"), EOF]",
+  assert_true(errors.length() is 0)
+  assert_true(
+    tokens
+    is [
+      StartTag(name="div", attrs=[], self_closing=false),
+      Character('h'),
+      Character('e'),
+      Character('l'),
+      Character('l'),
+      Character('o'),
+      EndTag(name="div"),
+      EOF,
+    ],
   )
 }
 
@@ -28,13 +37,13 @@ test "tokenize with attributes" {
   let (tokens, _) = tokenize(html)
   match tokens[0] {
     StartTag(name~, attrs~, self_closing~) => {
-      inspect(name, content="div")
-      inspect(self_closing, content="false")
-      inspect(attrs.length(), content="2")
-      inspect(attrs[0].name, content="class")
-      inspect(attrs[0].value, content="foo")
-      inspect(attrs[1].name, content="id")
-      inspect(attrs[1].value, content="bar")
+      assert_true(name is "div")
+      assert_true(self_closing is false)
+      assert_true(attrs.length() is 2)
+      assert_true(attrs[0].name is "class")
+      assert_true(attrs[0].value is "foo")
+      assert_true(attrs[1].name is "id")
+      assert_true(attrs[1].value is "bar")
     }
     _ => fail("Expected StartTag")
   }
@@ -45,8 +54,8 @@ test "tokenize self-closing tag" {
   let (tokens, _) = tokenize("<br/>")
   match tokens[0] {
     StartTag(name~, self_closing~, ..) => {
-      inspect(name, content="br")
-      inspect(self_closing, content="true")
+      assert_true(name is "br")
+      assert_true(self_closing is true)
     }
     _ => fail("Expected StartTag")
   }
@@ -56,7 +65,7 @@ test "tokenize self-closing tag" {
 test "tokenize comment" {
   let (tokens, _) = tokenize("<!-- hello world -->")
   match tokens[0] {
-    Comment(text) => inspect(text, content=" hello world ")
+    Comment(text) => assert_true(text is " hello world ")
     _ => fail("Expected Comment")
   }
 }
@@ -66,10 +75,10 @@ test "tokenize DOCTYPE" {
   let (tokens, _) = tokenize("<!DOCTYPE html>")
   match tokens[0] {
     DOCTYPE(name~, public_id~, system_id~, force_quirks~) => {
-      inspect(name, content="Some(\"html\")")
-      inspect(public_id, content="None")
-      inspect(system_id, content="None")
-      inspect(force_quirks, content="false")
+      assert_true(name is Some("html"))
+      assert_true(public_id is None)
+      assert_true(system_id is None)
+      assert_true(force_quirks is false)
     }
     _ => fail("Expected DOCTYPE")
   }
@@ -88,7 +97,7 @@ test "tokenize character reference" {
       }
     })
     .collect()
-  inspect(chars, content="['&', '<', '>']")
+  assert_true(chars is ['&', '<', '>'])
 }
 
 ///|
@@ -103,14 +112,14 @@ test "tokenize numeric character reference" {
       }
     })
     .collect()
-  inspect(chars, content="['A', 'A']")
+  assert_true(chars is ['A', 'A'])
 }
 
 ///|
 test "error recovery - unclosed tag" {
   let (tokens, errors) = tokenize("<div")
   // Should emit EOF with error
-  inspect(errors.length() > 0, content="true")
+  assert_true((errors.length() > 0) is true)
   match tokens[tokens.length() - 1] {
     EOF => ()
     _ => fail("Expected EOF")
@@ -121,7 +130,7 @@ test "error recovery - unclosed tag" {
 test "error recovery - null character" {
   let (tokens, errors) = tokenize("hello\u{0000}world")
   // Null should be emitted as-is per WHATWG spec (tree builder ignores it)
-  inspect(errors.length() > 0, content="true")
+  assert_true((errors.length() > 0) is true)
   let has_null = tokens
     .iter()
     .any(fn(t) {
@@ -130,14 +139,14 @@ test "error recovery - null character" {
         _ => false
       }
     })
-  inspect(has_null, content="true")
+  assert_true(has_null is true)
 }
 
 ///|
 test "tokenize attribute with single quotes" {
   let (tokens, _) = tokenize("<div class='foo'>")
   match tokens[0] {
-    StartTag(attrs~, ..) => inspect(attrs[0].value, content="foo")
+    StartTag(attrs~, ..) => assert_true(attrs[0].value is "foo")
     _ => fail("Expected StartTag")
   }
 }
@@ -146,7 +155,7 @@ test "tokenize attribute with single quotes" {
 test "tokenize unquoted attribute" {
   let (tokens, _) = tokenize("<div class=foo>")
   match tokens[0] {
-    StartTag(attrs~, ..) => inspect(attrs[0].value, content="foo")
+    StartTag(attrs~, ..) => assert_true(attrs[0].value is "foo")
     _ => fail("Expected StartTag")
   }
 }
@@ -157,13 +166,13 @@ test "tokenize multiple attributes" {
   let (tokens, _) = tokenize(html)
   match tokens[0] {
     StartTag(attrs~, ..) => {
-      inspect(attrs.length(), content="3")
-      inspect(attrs[0].name, content="type")
-      inspect(attrs[0].value, content="text")
-      inspect(attrs[1].name, content="name")
-      inspect(attrs[1].value, content="field")
-      inspect(attrs[2].name, content="value")
-      inspect(attrs[2].value, content="hello world")
+      assert_true(attrs.length() is 3)
+      assert_true(attrs[0].name is "type")
+      assert_true(attrs[0].value is "text")
+      assert_true(attrs[1].name is "name")
+      assert_true(attrs[1].value is "field")
+      assert_true(attrs[2].name is "value")
+      assert_true(attrs[2].value is "hello world")
     }
     _ => fail("Expected StartTag")
   }
@@ -181,5 +190,5 @@ test "tokenize nested comments error" {
         _ => false
       }
     })
-  inspect(has_nested_error, content="true")
+  assert_true(has_nested_error is true)
 }
