@@ -31,7 +31,7 @@ let entity_map : Ref[Map[String, Array[Int]]?] = { val: None }
 ///|
 /// Initialize the entity map (called lazily on first lookup)
 fn init_entities() -> Map[String, Array[Int]] {
-  let m : Map[String, Array[Int]] = Map::new()
+  let m : Map[String, Array[Int]] = Map([])
   m["AElig"] = [198]
   m["AElig;"] = [198]
   m["AMP"] = [38]
