@@ -81,9 +81,9 @@ pub impl Show for Element with output(self, logger) {
   logger.write_string(", ns: ")
   self.ns.output(logger)
   logger.write_string(", attributes: ")
-  self.attributes.output(logger)
+  logger.write_string(@debug.to_string(self.attributes))
   logger.write_string(", children: ")
-  self.children.output(logger)
+  logger.write_string(@debug.to_string(self.children))
   logger.write_string(", parent: ")
   self.parent.output(logger)
   logger.write_string(", is_html_integration_point: ")
@@ -124,12 +124,12 @@ pub impl Show for Node with output(self, logger) {
     }
     DocumentNode(children~) => {
       logger.write_string("DocumentNode(children=")
-      children.output(logger)
+      logger.write_string(@debug.to_string(children))
       logger.write_string(")")
     }
     DocumentFragmentNode(children~) => {
       logger.write_string("DocumentFragmentNode(children=")
-      children.output(logger)
+      logger.write_string(@debug.to_string(children))
       logger.write_string(")")
     }
   }
@@ -138,7 +138,7 @@ pub impl Show for Node with output(self, logger) {
 ///|
 pub impl Show for Document with output(self, logger) {
   logger.write_string("{nodes: ")
-  self.nodes.output(logger)
+  logger.write_string(@debug.to_string(self.nodes))
   logger.write_string(", document_element: ")
   self.document_element.output(logger)
   logger.write_string(", head_element: ")

@@ -267,7 +267,7 @@ pub impl Show for Token with output(self, logger) {
       logger.write_string("StartTag(name=")
       name.output(logger)
       logger.write_string(", attrs=")
-      attrs.output(logger)
+      logger.write_string(@debug.to_string(attrs))
       logger.write_string(", self_closing=")
       self_closing.output(logger)
       logger.write_string(")")
