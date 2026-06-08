@@ -1,4 +1,4 @@
-name = "Milky2018/html"
+name = "moonbit-community/html"
 
 version = "0.1.2"
 
