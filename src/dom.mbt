@@ -75,7 +75,7 @@ pub struct Document {
 } derive(Debug, Eq)
 
 ///|
-pub impl Show for Element with output(self, logger) {
+pub impl Show for Element with fn output(self, logger) {
   logger.write_string("{tag_name: ")
   self.tag_name.output(logger)
   logger.write_string(", ns: ")
@@ -96,7 +96,7 @@ pub impl Show for Element with output(self, logger) {
 }
 
 ///|
-pub impl Show for Node with output(self, logger) {
+pub impl Show for Node with fn output(self, logger) {
   match self {
     ElementNode(elem) => {
       logger.write_string("ElementNode(")
@@ -136,7 +136,7 @@ pub impl Show for Node with output(self, logger) {
 }
 
 ///|
-pub impl Show for Document with output(self, logger) {
+pub impl Show for Document with fn output(self, logger) {
   logger.write_string("{nodes: ")
   logger.write_string(@debug.to_string(self.nodes))
   logger.write_string(", document_element: ")

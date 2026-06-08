@@ -17,7 +17,7 @@
 /// skeleton and then sprinkles small random elements, text, and comments while
 /// keeping parent/child pointers consistent (including template content
 /// fragments).
-pub impl @qc_core.Arbitrary for Document with arbitrary(size, rs) {
+pub impl @qc_core.Arbitrary for Document with fn arbitrary(size, rs) {
   let capped_size = clamp_size(size, 0, 24)
   // Base of: document node + optional doctype + html/head/body
   let target_nodes = 5 + capped_size
@@ -99,19 +99,12 @@ struct HtmlCase {
 } derive(Debug)
 
 ///|
-impl Show for HtmlCase with output(self, logger) {
-  logger.write_string("HtmlCase(html=")
-  Show::output(self.html, logger)
-  logger.write_string(")")
-}
-
-///|
 /// Generate weird-ish HTML by taking a serialized DOM as a base and then
 /// injecting small random "damage" (comments, stray tags, whitespace, etc).
 ///
 /// This keeps test inputs close to what the serializer emits while still
 /// exercising the parser on malformed/odd HTML.
-pub impl @qc_core.Arbitrary for HtmlCase with arbitrary(size, rs) {
+pub impl @qc_core.Arbitrary for HtmlCase with fn arbitrary(size, rs) {
   let capped_size = clamp_size(size, 0, 24)
   let seed_doc : Document = @qc_core.Arbitrary::arbitrary(capped_size, rs)
   let base = seed_doc.to_html()
