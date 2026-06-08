@@ -240,7 +240,7 @@ pub(all) enum Namespace {
 } derive(Debug, Eq)
 
 ///|
-pub impl Show for Token with output(self, logger) {
+pub impl Show for Token with fn output(self, logger) {
   fn output_option_string(s : String?) -> Unit {
     match s {
       None => logger.write_string("None")
@@ -292,12 +292,12 @@ pub impl Show for Token with output(self, logger) {
 }
 
 ///|
-pub impl Show for QuirksMode with output(self, logger) {
+pub impl Show for QuirksMode with fn output(self, logger) {
   logger.write_string(quirks_mode_name(self))
 }
 
 ///|
-pub impl Show for Attribute with output(self, logger) {
+pub impl Show for Attribute with fn output(self, logger) {
   logger.write_string("{name: ")
   self.name.output(logger)
   logger.write_string(", value: ")
@@ -306,12 +306,12 @@ pub impl Show for Attribute with output(self, logger) {
 }
 
 ///|
-pub impl Show for State with output(self, logger) {
+pub impl Show for State with fn output(self, logger) {
   logger.write_string(state_name(self))
 }
 
 ///|
-pub impl Show for SourcePosition with output(self, logger) {
+pub impl Show for SourcePosition with fn output(self, logger) {
   logger.write_string("{line: ")
   self.line.output(logger)
   logger.write_string(", column: ")
@@ -322,12 +322,12 @@ pub impl Show for SourcePosition with output(self, logger) {
 }
 
 ///|
-pub impl Show for ParseErrorCode with output(self, logger) {
+pub impl Show for ParseErrorCode with fn output(self, logger) {
   logger.write_string(parse_error_code_name(self))
 }
 
 ///|
-pub impl Show for ParseError with output(self, logger) {
+pub impl Show for ParseError with fn output(self, logger) {
   logger.write_string("{code: ")
   self.code.output(logger)
   logger.write_string(", position: ")
@@ -336,7 +336,7 @@ pub impl Show for ParseError with output(self, logger) {
 }
 
 ///|
-pub impl Show for Namespace with output(self, logger) {
+pub impl Show for Namespace with fn output(self, logger) {
   logger.write_string(namespace_name(self))
 }
 
