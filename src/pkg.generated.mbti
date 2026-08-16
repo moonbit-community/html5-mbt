@@ -29,6 +29,11 @@ pub(all) struct Attribute {
   name : String
   value : String
 } derive(Eq, @debug.Debug)
+pub fn Attribute::equal(Self, Self) -> Bool
+pub fn Attribute::not_equal(Self, Self) -> Bool
+pub fn Attribute::output(Self, &Logger) -> Unit
+pub fn Attribute::to_repr(Self) -> @debug.Repr
+pub fn Attribute::to_string(Self) -> String
 pub impl Show for Attribute
 
 pub struct Document {
@@ -40,7 +45,9 @@ pub struct Document {
 } derive(Eq, @debug.Debug)
 pub fn Document::add_node(Self, Node) -> Int
 pub fn Document::append_child(Self, Int, Int) -> Unit
+pub fn Document::arbitrary(Int, @splitmix.RandomState) -> Self
 pub fn Document::dump(Self) -> String
+pub fn Document::equal(Self, Self) -> Bool
 pub fn Document::get_attribute(Self, Int, String) -> String?
 pub fn Document::get_children(Self, Int) -> Array[Int]
 pub fn Document::get_element(Self, Int) -> Element?
@@ -55,9 +62,13 @@ pub fn Document::insert_before(Self, Int, Int, Int) -> Unit
 pub fn Document::is_element(Self, Int, String, Namespace) -> Bool
 pub fn Document::is_html_element(Self, Int, String) -> Bool
 pub fn Document::new() -> Self
+pub fn Document::not_equal(Self, Self) -> Bool
+pub fn Document::output(Self, &Logger) -> Unit
 pub fn Document::remove_child(Self, Int, Int) -> Unit
 pub fn Document::set_attribute(Self, Int, String, String) -> Unit
 pub fn Document::to_html(Self) -> String
+pub fn Document::to_repr(Self) -> @debug.Repr
+pub fn Document::to_string(Self) -> String
 pub impl Show for Document
 pub impl @quickcheck.Arbitrary for Document
 
@@ -71,7 +82,12 @@ pub struct Element {
   is_mathml_text_integration_point : Bool
   mut template_content : Int
 } derive(Eq, @debug.Debug)
+pub fn Element::equal(Self, Self) -> Bool
 pub fn Element::new(String, Namespace, Array[(String, String)]) -> Self
+pub fn Element::not_equal(Self, Self) -> Bool
+pub fn Element::output(Self, &Logger) -> Unit
+pub fn Element::to_repr(Self) -> @debug.Repr
+pub fn Element::to_string(Self) -> String
 pub impl Show for Element
 
 pub enum FormattingEntry {
@@ -80,6 +96,8 @@ pub enum FormattingEntry {
 }
 
 type HtmlCase derive(@debug.Debug)
+pub fn HtmlCase::arbitrary(Int, @splitmix.RandomState) -> Self
+pub fn HtmlCase::to_repr(Self) -> @debug.Repr
 pub impl @quickcheck.Arbitrary for HtmlCase
 
 pub(all) enum InsertionMode {
@@ -114,6 +132,11 @@ pub(all) enum Namespace {
   SVG
   MathML
 } derive(Eq, @debug.Debug)
+pub fn Namespace::equal(Self, Self) -> Bool
+pub fn Namespace::not_equal(Self, Self) -> Bool
+pub fn Namespace::output(Self, &Logger) -> Unit
+pub fn Namespace::to_repr(Self) -> @debug.Repr
+pub fn Namespace::to_string(Self) -> String
 pub impl Show for Namespace
 
 pub enum Node {
@@ -124,12 +147,22 @@ pub enum Node {
   DocumentNode(children~ : Array[Int])
   DocumentFragmentNode(children~ : Array[Int])
 } derive(Eq, @debug.Debug)
+pub fn Node::equal(Self, Self) -> Bool
+pub fn Node::not_equal(Self, Self) -> Bool
+pub fn Node::output(Self, &Logger) -> Unit
+pub fn Node::to_repr(Self) -> @debug.Repr
+pub fn Node::to_string(Self) -> String
 pub impl Show for Node
 
 pub struct ParseError {
   code : ParseErrorCode
   position : SourcePosition
 } derive(Eq, @debug.Debug)
+pub fn ParseError::equal(Self, Self) -> Bool
+pub fn ParseError::not_equal(Self, Self) -> Bool
+pub fn ParseError::output(Self, &Logger) -> Unit
+pub fn ParseError::to_repr(Self) -> @debug.Repr
+pub fn ParseError::to_string(Self) -> String
 pub impl Show for ParseError
 
 pub(all) enum ParseErrorCode {
@@ -183,6 +216,11 @@ pub(all) enum ParseErrorCode {
   NoncharacterInInputStream
   SurrogateInInputStream
 } derive(Eq, @debug.Debug)
+pub fn ParseErrorCode::equal(Self, Self) -> Bool
+pub fn ParseErrorCode::not_equal(Self, Self) -> Bool
+pub fn ParseErrorCode::output(Self, &Logger) -> Unit
+pub fn ParseErrorCode::to_repr(Self) -> @debug.Repr
+pub fn ParseErrorCode::to_string(Self) -> String
 pub impl Show for ParseErrorCode
 
 pub(all) enum QuirksMode {
@@ -190,6 +228,11 @@ pub(all) enum QuirksMode {
   Quirks
   LimitedQuirks
 } derive(Eq, @debug.Debug)
+pub fn QuirksMode::equal(Self, Self) -> Bool
+pub fn QuirksMode::not_equal(Self, Self) -> Bool
+pub fn QuirksMode::output(Self, &Logger) -> Unit
+pub fn QuirksMode::to_repr(Self) -> @debug.Repr
+pub fn QuirksMode::to_string(Self) -> String
 pub impl Show for QuirksMode
 
 pub struct SourcePosition {
@@ -197,6 +240,11 @@ pub struct SourcePosition {
   column : Int
   offset : Int
 } derive(Eq, @debug.Debug)
+pub fn SourcePosition::equal(Self, Self) -> Bool
+pub fn SourcePosition::not_equal(Self, Self) -> Bool
+pub fn SourcePosition::output(Self, &Logger) -> Unit
+pub fn SourcePosition::to_repr(Self) -> @debug.Repr
+pub fn SourcePosition::to_string(Self) -> String
 pub impl Show for SourcePosition
 
 pub struct StackEntry {
@@ -287,6 +335,11 @@ pub(all) enum State {
   DecimalCharacterReference
   NumericCharacterReferenceEnd
 } derive(Eq, @debug.Debug)
+pub fn State::equal(Self, Self) -> Bool
+pub fn State::not_equal(Self, Self) -> Bool
+pub fn State::output(Self, &Logger) -> Unit
+pub fn State::to_repr(Self) -> @debug.Repr
+pub fn State::to_string(Self) -> String
 pub impl Show for State
 
 pub(all) enum Token {
@@ -297,6 +350,11 @@ pub(all) enum Token {
   Comment(String)
   EOF
 } derive(Eq, @debug.Debug)
+pub fn Token::equal(Self, Self) -> Bool
+pub fn Token::not_equal(Self, Self) -> Bool
+pub fn Token::output(Self, &Logger) -> Unit
+pub fn Token::to_repr(Self) -> @debug.Repr
+pub fn Token::to_string(Self) -> String
 pub impl Show for Token
 
 pub struct Tokenizer {
@@ -402,4 +460,3 @@ pub fn TreeBuilder::run_adoption_agency(Self, String) -> Unit
 // Type aliases
 
 // Traits
-

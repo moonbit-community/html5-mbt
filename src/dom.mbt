@@ -77,7 +77,7 @@ pub struct Document {
 ///|
 pub impl Show for Element with fn output(self, logger) {
   logger.write_string("{tag_name: ")
-  self.tag_name.output(logger)
+  Show::output(self.tag_name, logger)
   logger.write_string(", ns: ")
   self.ns.output(logger)
   logger.write_string(", attributes: ")
@@ -85,13 +85,13 @@ pub impl Show for Element with fn output(self, logger) {
   logger.write_string(", children: ")
   logger.write_string(@debug.to_string(self.children))
   logger.write_string(", parent: ")
-  self.parent.output(logger)
+  Show::output(self.parent, logger)
   logger.write_string(", is_html_integration_point: ")
-  self.is_html_integration_point.output(logger)
+  Show::output(self.is_html_integration_point, logger)
   logger.write_string(", is_mathml_text_integration_point: ")
-  self.is_mathml_text_integration_point.output(logger)
+  Show::output(self.is_mathml_text_integration_point, logger)
   logger.write_string(", template_content: ")
-  self.template_content.output(logger)
+  Show::output(self.template_content, logger)
   logger.write_string("}")
 }
 
@@ -105,21 +105,21 @@ pub impl Show for Node with fn output(self, logger) {
     }
     TextNode(text) => {
       logger.write_string("TextNode(")
-      text.output(logger)
+      Show::output(text, logger)
       logger.write_string(")")
     }
     CommentNode(text) => {
       logger.write_string("CommentNode(")
-      text.output(logger)
+      Show::output(text, logger)
       logger.write_string(")")
     }
     DocumentTypeNode(name~, public_id~, system_id~) => {
       logger.write_string("DocumentTypeNode(name=")
-      name.output(logger)
+      Show::output(name, logger)
       logger.write_string(", public_id=")
-      public_id.output(logger)
+      Show::output(public_id, logger)
       logger.write_string(", system_id=")
-      system_id.output(logger)
+      Show::output(system_id, logger)
       logger.write_string(")")
     }
     DocumentNode(children~) => {
@@ -140,11 +140,11 @@ pub impl Show for Document with fn output(self, logger) {
   logger.write_string("{nodes: ")
   logger.write_string(@debug.to_string(self.nodes))
   logger.write_string(", document_element: ")
-  self.document_element.output(logger)
+  Show::output(self.document_element, logger)
   logger.write_string(", head_element: ")
-  self.head_element.output(logger)
+  Show::output(self.head_element, logger)
   logger.write_string(", body_element: ")
-  self.body_element.output(logger)
+  Show::output(self.body_element, logger)
   logger.write_string(", quirks_mode: ")
   self.quirks_mode.output(logger)
   logger.write_string("}")
