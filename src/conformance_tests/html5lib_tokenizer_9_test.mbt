@@ -24,13 +24,14 @@
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_twoheadrightarrow_with_a_semicolon_4055" {
-  let (tokens, _) = @html.tokenize("&twoheadrightarrow;")
+  let (tokens, errors) = @html.tokenize("&twoheadrightarrow;")
   @debug.assert_eq(tokens, [Character('↠'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_uarr_without_a_semicolon_4056" {
-  let (tokens, _) = @html.tokenize("&uArr")
+  let (tokens, errors) = @html.tokenize("&uArr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -39,17 +40,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_uarr_without_a_semicolon
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_uarr_with_a_semicolon_4057" {
-  let (tokens, _) = @html.tokenize("&uArr;")
+  let (tokens, errors) = @html.tokenize("&uArr;")
   @debug.assert_eq(tokens, [Character('⇑'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_uhar_without_a_semicolon_4058" {
-  let (tokens, _) = @html.tokenize("&uHar")
+  let (tokens, errors) = @html.tokenize("&uHar")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -58,29 +61,36 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_uhar_without_a_semicolon
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_uhar_with_a_semicolon_4059" {
-  let (tokens, _) = @html.tokenize("&uHar;")
+  let (tokens, errors) = @html.tokenize("&uHar;")
   @debug.assert_eq(tokens, [Character('⥣'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_uacute_without_a_semicolon_4060" {
-  let (tokens, _) = @html.tokenize("&uacute")
+  let (tokens, errors) = @html.tokenize("&uacute")
   @debug.assert_eq(tokens, [Character('ú'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingSemicolonAfterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_uacute_with_a_semicolon_4061" {
-  let (tokens, _) = @html.tokenize("&uacute;")
+  let (tokens, errors) = @html.tokenize("&uacute;")
   @debug.assert_eq(tokens, [Character('ú'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_uarr_without_a_semicolon_4062" {
-  let (tokens, _) = @html.tokenize("&uarr")
+  let (tokens, errors) = @html.tokenize("&uarr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -89,17 +99,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_uarr_without_a_semicolon
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_uarr_with_a_semicolon_4063" {
-  let (tokens, _) = @html.tokenize("&uarr;")
+  let (tokens, errors) = @html.tokenize("&uarr;")
   @debug.assert_eq(tokens, [Character('↑'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_ubrcy_without_a_semicolon_4064" {
-  let (tokens, _) = @html.tokenize("&ubrcy")
+  let (tokens, errors) = @html.tokenize("&ubrcy")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -109,17 +121,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_ubrcy_without_a_semicolo
     Character('y'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_ubrcy_with_a_semicolon_4065" {
-  let (tokens, _) = @html.tokenize("&ubrcy;")
+  let (tokens, errors) = @html.tokenize("&ubrcy;")
   @debug.assert_eq(tokens, [Character('ў'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_ubreve_without_a_semicolon_4066" {
-  let (tokens, _) = @html.tokenize("&ubreve")
+  let (tokens, errors) = @html.tokenize("&ubreve")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -130,29 +144,36 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_ubreve_without_a_semicol
     Character('e'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_ubreve_with_a_semicolon_4067" {
-  let (tokens, _) = @html.tokenize("&ubreve;")
+  let (tokens, errors) = @html.tokenize("&ubreve;")
   @debug.assert_eq(tokens, [Character('ŭ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_ucirc_without_a_semicolon_4068" {
-  let (tokens, _) = @html.tokenize("&ucirc")
+  let (tokens, errors) = @html.tokenize("&ucirc")
   @debug.assert_eq(tokens, [Character('û'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingSemicolonAfterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_ucirc_with_a_semicolon_4069" {
-  let (tokens, _) = @html.tokenize("&ucirc;")
+  let (tokens, errors) = @html.tokenize("&ucirc;")
   @debug.assert_eq(tokens, [Character('û'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_ucy_without_a_semicolon_4070" {
-  let (tokens, _) = @html.tokenize("&ucy")
+  let (tokens, errors) = @html.tokenize("&ucy")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -160,17 +181,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_ucy_without_a_semicolon_
     Character('y'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_ucy_with_a_semicolon_4071" {
-  let (tokens, _) = @html.tokenize("&ucy;")
+  let (tokens, errors) = @html.tokenize("&ucy;")
   @debug.assert_eq(tokens, [Character('у'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_udarr_without_a_semicolon_4072" {
-  let (tokens, _) = @html.tokenize("&udarr")
+  let (tokens, errors) = @html.tokenize("&udarr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -180,17 +203,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_udarr_without_a_semicolo
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_udarr_with_a_semicolon_4073" {
-  let (tokens, _) = @html.tokenize("&udarr;")
+  let (tokens, errors) = @html.tokenize("&udarr;")
   @debug.assert_eq(tokens, [Character('⇅'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_udblac_without_a_semicolon_4074" {
-  let (tokens, _) = @html.tokenize("&udblac")
+  let (tokens, errors) = @html.tokenize("&udblac")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -201,17 +226,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_udblac_without_a_semicol
     Character('c'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_udblac_with_a_semicolon_4075" {
-  let (tokens, _) = @html.tokenize("&udblac;")
+  let (tokens, errors) = @html.tokenize("&udblac;")
   @debug.assert_eq(tokens, [Character('ű'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_udhar_without_a_semicolon_4076" {
-  let (tokens, _) = @html.tokenize("&udhar")
+  let (tokens, errors) = @html.tokenize("&udhar")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -221,17 +248,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_udhar_without_a_semicolo
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_udhar_with_a_semicolon_4077" {
-  let (tokens, _) = @html.tokenize("&udhar;")
+  let (tokens, errors) = @html.tokenize("&udhar;")
   @debug.assert_eq(tokens, [Character('⥮'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_ufisht_without_a_semicolon_4078" {
-  let (tokens, _) = @html.tokenize("&ufisht")
+  let (tokens, errors) = @html.tokenize("&ufisht")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -242,17 +271,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_ufisht_without_a_semicol
     Character('t'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_ufisht_with_a_semicolon_4079" {
-  let (tokens, _) = @html.tokenize("&ufisht;")
+  let (tokens, errors) = @html.tokenize("&ufisht;")
   @debug.assert_eq(tokens, [Character('⥾'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_ufr_without_a_semicolon_4080" {
-  let (tokens, _) = @html.tokenize("&ufr")
+  let (tokens, errors) = @html.tokenize("&ufr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -260,29 +291,36 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_ufr_without_a_semicolon_
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_ufr_with_a_semicolon_4081" {
-  let (tokens, _) = @html.tokenize("&ufr;")
+  let (tokens, errors) = @html.tokenize("&ufr;")
   @debug.assert_eq(tokens, [Character('𝔲'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_ugrave_without_a_semicolon_4082" {
-  let (tokens, _) = @html.tokenize("&ugrave")
+  let (tokens, errors) = @html.tokenize("&ugrave")
   @debug.assert_eq(tokens, [Character('ù'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingSemicolonAfterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_ugrave_with_a_semicolon_4083" {
-  let (tokens, _) = @html.tokenize("&ugrave;")
+  let (tokens, errors) = @html.tokenize("&ugrave;")
   @debug.assert_eq(tokens, [Character('ù'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_uharl_without_a_semicolon_4084" {
-  let (tokens, _) = @html.tokenize("&uharl")
+  let (tokens, errors) = @html.tokenize("&uharl")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -292,17 +330,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_uharl_without_a_semicolo
     Character('l'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_uharl_with_a_semicolon_4085" {
-  let (tokens, _) = @html.tokenize("&uharl;")
+  let (tokens, errors) = @html.tokenize("&uharl;")
   @debug.assert_eq(tokens, [Character('↿'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_uharr_without_a_semicolon_4086" {
-  let (tokens, _) = @html.tokenize("&uharr")
+  let (tokens, errors) = @html.tokenize("&uharr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -312,17 +352,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_uharr_without_a_semicolo
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_uharr_with_a_semicolon_4087" {
-  let (tokens, _) = @html.tokenize("&uharr;")
+  let (tokens, errors) = @html.tokenize("&uharr;")
   @debug.assert_eq(tokens, [Character('↾'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_uhblk_without_a_semicolon_4088" {
-  let (tokens, _) = @html.tokenize("&uhblk")
+  let (tokens, errors) = @html.tokenize("&uhblk")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -332,17 +374,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_uhblk_without_a_semicolo
     Character('k'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_uhblk_with_a_semicolon_4089" {
-  let (tokens, _) = @html.tokenize("&uhblk;")
+  let (tokens, errors) = @html.tokenize("&uhblk;")
   @debug.assert_eq(tokens, [Character('▀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_ulcorn_without_a_semicolon_4090" {
-  let (tokens, _) = @html.tokenize("&ulcorn")
+  let (tokens, errors) = @html.tokenize("&ulcorn")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -353,17 +397,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_ulcorn_without_a_semicol
     Character('n'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_ulcorn_with_a_semicolon_4091" {
-  let (tokens, _) = @html.tokenize("&ulcorn;")
+  let (tokens, errors) = @html.tokenize("&ulcorn;")
   @debug.assert_eq(tokens, [Character('⌜'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_ulcorner_without_a_semicolon_4092" {
-  let (tokens, _) = @html.tokenize("&ulcorner")
+  let (tokens, errors) = @html.tokenize("&ulcorner")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -376,17 +422,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_ulcorner_without_a_semic
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_ulcorner_with_a_semicolon_4093" {
-  let (tokens, _) = @html.tokenize("&ulcorner;")
+  let (tokens, errors) = @html.tokenize("&ulcorner;")
   @debug.assert_eq(tokens, [Character('⌜'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_ulcrop_without_a_semicolon_4094" {
-  let (tokens, _) = @html.tokenize("&ulcrop")
+  let (tokens, errors) = @html.tokenize("&ulcrop")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -397,17 +445,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_ulcrop_without_a_semicol
     Character('p'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_ulcrop_with_a_semicolon_4095" {
-  let (tokens, _) = @html.tokenize("&ulcrop;")
+  let (tokens, errors) = @html.tokenize("&ulcrop;")
   @debug.assert_eq(tokens, [Character('⌏'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_ultri_without_a_semicolon_4096" {
-  let (tokens, _) = @html.tokenize("&ultri")
+  let (tokens, errors) = @html.tokenize("&ultri")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -417,17 +467,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_ultri_without_a_semicolo
     Character('i'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_ultri_with_a_semicolon_4097" {
-  let (tokens, _) = @html.tokenize("&ultri;")
+  let (tokens, errors) = @html.tokenize("&ultri;")
   @debug.assert_eq(tokens, [Character('◸'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_umacr_without_a_semicolon_4098" {
-  let (tokens, _) = @html.tokenize("&umacr")
+  let (tokens, errors) = @html.tokenize("&umacr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -437,29 +489,36 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_umacr_without_a_semicolo
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_umacr_with_a_semicolon_4099" {
-  let (tokens, _) = @html.tokenize("&umacr;")
+  let (tokens, errors) = @html.tokenize("&umacr;")
   @debug.assert_eq(tokens, [Character('ū'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_uml_without_a_semicolon_4100" {
-  let (tokens, _) = @html.tokenize("&uml")
+  let (tokens, errors) = @html.tokenize("&uml")
   @debug.assert_eq(tokens, [Character('¨'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingSemicolonAfterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 5)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_uml_with_a_semicolon_4101" {
-  let (tokens, _) = @html.tokenize("&uml;")
+  let (tokens, errors) = @html.tokenize("&uml;")
   @debug.assert_eq(tokens, [Character('¨'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_uogon_without_a_semicolon_4102" {
-  let (tokens, _) = @html.tokenize("&uogon")
+  let (tokens, errors) = @html.tokenize("&uogon")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -469,17 +528,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_uogon_without_a_semicolo
     Character('n'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_uogon_with_a_semicolon_4103" {
-  let (tokens, _) = @html.tokenize("&uogon;")
+  let (tokens, errors) = @html.tokenize("&uogon;")
   @debug.assert_eq(tokens, [Character('ų'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_uopf_without_a_semicolon_4104" {
-  let (tokens, _) = @html.tokenize("&uopf")
+  let (tokens, errors) = @html.tokenize("&uopf")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -488,17 +549,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_uopf_without_a_semicolon
     Character('f'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_uopf_with_a_semicolon_4105" {
-  let (tokens, _) = @html.tokenize("&uopf;")
+  let (tokens, errors) = @html.tokenize("&uopf;")
   @debug.assert_eq(tokens, [Character('𝕦'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_uparrow_without_a_semicolon_4106" {
-  let (tokens, _) = @html.tokenize("&uparrow")
+  let (tokens, errors) = @html.tokenize("&uparrow")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -510,17 +573,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_uparrow_without_a_semico
     Character('w'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_uparrow_with_a_semicolon_4107" {
-  let (tokens, _) = @html.tokenize("&uparrow;")
+  let (tokens, errors) = @html.tokenize("&uparrow;")
   @debug.assert_eq(tokens, [Character('↑'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_updownarrow_without_a_semicolon_4108" {
-  let (tokens, _) = @html.tokenize("&updownarrow")
+  let (tokens, errors) = @html.tokenize("&updownarrow")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -536,17 +601,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_updownarrow_without_a_se
     Character('w'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_updownarrow_with_a_semicolon_4109" {
-  let (tokens, _) = @html.tokenize("&updownarrow;")
+  let (tokens, errors) = @html.tokenize("&updownarrow;")
   @debug.assert_eq(tokens, [Character('↕'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_upharpoonleft_without_a_semicolon_4110" {
-  let (tokens, _) = @html.tokenize("&upharpoonleft")
+  let (tokens, errors) = @html.tokenize("&upharpoonleft")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -564,17 +631,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_upharpoonleft_without_a_
     Character('t'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_upharpoonleft_with_a_semicolon_4111" {
-  let (tokens, _) = @html.tokenize("&upharpoonleft;")
+  let (tokens, errors) = @html.tokenize("&upharpoonleft;")
   @debug.assert_eq(tokens, [Character('↿'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_upharpoonright_without_a_semicolo_4112" {
-  let (tokens, _) = @html.tokenize("&upharpoonright")
+  let (tokens, errors) = @html.tokenize("&upharpoonright")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -593,17 +662,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_upharpoonright_without_a
     Character('t'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_upharpoonright_with_a_semicolon_4113" {
-  let (tokens, _) = @html.tokenize("&upharpoonright;")
+  let (tokens, errors) = @html.tokenize("&upharpoonright;")
   @debug.assert_eq(tokens, [Character('↾'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_uplus_without_a_semicolon_4114" {
-  let (tokens, _) = @html.tokenize("&uplus")
+  let (tokens, errors) = @html.tokenize("&uplus")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -613,17 +684,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_uplus_without_a_semicolo
     Character('s'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_uplus_with_a_semicolon_4115" {
-  let (tokens, _) = @html.tokenize("&uplus;")
+  let (tokens, errors) = @html.tokenize("&uplus;")
   @debug.assert_eq(tokens, [Character('⊎'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_upsi_without_a_semicolon_4116" {
-  let (tokens, _) = @html.tokenize("&upsi")
+  let (tokens, errors) = @html.tokenize("&upsi")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -632,17 +705,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_upsi_without_a_semicolon
     Character('i'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_upsi_with_a_semicolon_4117" {
-  let (tokens, _) = @html.tokenize("&upsi;")
+  let (tokens, errors) = @html.tokenize("&upsi;")
   @debug.assert_eq(tokens, [Character('υ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_upsih_without_a_semicolon_4118" {
-  let (tokens, _) = @html.tokenize("&upsih")
+  let (tokens, errors) = @html.tokenize("&upsih")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -652,17 +727,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_upsih_without_a_semicolo
     Character('h'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_upsih_with_a_semicolon_4119" {
-  let (tokens, _) = @html.tokenize("&upsih;")
+  let (tokens, errors) = @html.tokenize("&upsih;")
   @debug.assert_eq(tokens, [Character('ϒ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_upsilon_without_a_semicolon_4120" {
-  let (tokens, _) = @html.tokenize("&upsilon")
+  let (tokens, errors) = @html.tokenize("&upsilon")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -674,17 +751,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_upsilon_without_a_semico
     Character('n'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_upsilon_with_a_semicolon_4121" {
-  let (tokens, _) = @html.tokenize("&upsilon;")
+  let (tokens, errors) = @html.tokenize("&upsilon;")
   @debug.assert_eq(tokens, [Character('υ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_upuparrows_without_a_semicolon_4122" {
-  let (tokens, _) = @html.tokenize("&upuparrows")
+  let (tokens, errors) = @html.tokenize("&upuparrows")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -699,17 +778,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_upuparrows_without_a_sem
     Character('s'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_upuparrows_with_a_semicolon_4123" {
-  let (tokens, _) = @html.tokenize("&upuparrows;")
+  let (tokens, errors) = @html.tokenize("&upuparrows;")
   @debug.assert_eq(tokens, [Character('⇈'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_urcorn_without_a_semicolon_4124" {
-  let (tokens, _) = @html.tokenize("&urcorn")
+  let (tokens, errors) = @html.tokenize("&urcorn")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -720,17 +801,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_urcorn_without_a_semicol
     Character('n'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_urcorn_with_a_semicolon_4125" {
-  let (tokens, _) = @html.tokenize("&urcorn;")
+  let (tokens, errors) = @html.tokenize("&urcorn;")
   @debug.assert_eq(tokens, [Character('⌝'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_urcorner_without_a_semicolon_4126" {
-  let (tokens, _) = @html.tokenize("&urcorner")
+  let (tokens, errors) = @html.tokenize("&urcorner")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -743,17 +826,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_urcorner_without_a_semic
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_urcorner_with_a_semicolon_4127" {
-  let (tokens, _) = @html.tokenize("&urcorner;")
+  let (tokens, errors) = @html.tokenize("&urcorner;")
   @debug.assert_eq(tokens, [Character('⌝'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_urcrop_without_a_semicolon_4128" {
-  let (tokens, _) = @html.tokenize("&urcrop")
+  let (tokens, errors) = @html.tokenize("&urcrop")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -764,17 +849,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_urcrop_without_a_semicol
     Character('p'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_urcrop_with_a_semicolon_4129" {
-  let (tokens, _) = @html.tokenize("&urcrop;")
+  let (tokens, errors) = @html.tokenize("&urcrop;")
   @debug.assert_eq(tokens, [Character('⌎'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_uring_without_a_semicolon_4130" {
-  let (tokens, _) = @html.tokenize("&uring")
+  let (tokens, errors) = @html.tokenize("&uring")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -784,17 +871,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_uring_without_a_semicolo
     Character('g'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_uring_with_a_semicolon_4131" {
-  let (tokens, _) = @html.tokenize("&uring;")
+  let (tokens, errors) = @html.tokenize("&uring;")
   @debug.assert_eq(tokens, [Character('ů'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_urtri_without_a_semicolon_4132" {
-  let (tokens, _) = @html.tokenize("&urtri")
+  let (tokens, errors) = @html.tokenize("&urtri")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -804,17 +893,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_urtri_without_a_semicolo
     Character('i'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_urtri_with_a_semicolon_4133" {
-  let (tokens, _) = @html.tokenize("&urtri;")
+  let (tokens, errors) = @html.tokenize("&urtri;")
   @debug.assert_eq(tokens, [Character('◹'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_uscr_without_a_semicolon_4134" {
-  let (tokens, _) = @html.tokenize("&uscr")
+  let (tokens, errors) = @html.tokenize("&uscr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -823,17 +914,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_uscr_without_a_semicolon
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_uscr_with_a_semicolon_4135" {
-  let (tokens, _) = @html.tokenize("&uscr;")
+  let (tokens, errors) = @html.tokenize("&uscr;")
   @debug.assert_eq(tokens, [Character('𝓊'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_utdot_without_a_semicolon_4136" {
-  let (tokens, _) = @html.tokenize("&utdot")
+  let (tokens, errors) = @html.tokenize("&utdot")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -843,17 +936,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_utdot_without_a_semicolo
     Character('t'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_utdot_with_a_semicolon_4137" {
-  let (tokens, _) = @html.tokenize("&utdot;")
+  let (tokens, errors) = @html.tokenize("&utdot;")
   @debug.assert_eq(tokens, [Character('⋰'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_utilde_without_a_semicolon_4138" {
-  let (tokens, _) = @html.tokenize("&utilde")
+  let (tokens, errors) = @html.tokenize("&utilde")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -864,17 +959,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_utilde_without_a_semicol
     Character('e'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_utilde_with_a_semicolon_4139" {
-  let (tokens, _) = @html.tokenize("&utilde;")
+  let (tokens, errors) = @html.tokenize("&utilde;")
   @debug.assert_eq(tokens, [Character('ũ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_utri_without_a_semicolon_4140" {
-  let (tokens, _) = @html.tokenize("&utri")
+  let (tokens, errors) = @html.tokenize("&utri")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -883,17 +980,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_utri_without_a_semicolon
     Character('i'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_utri_with_a_semicolon_4141" {
-  let (tokens, _) = @html.tokenize("&utri;")
+  let (tokens, errors) = @html.tokenize("&utri;")
   @debug.assert_eq(tokens, [Character('▵'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_utrif_without_a_semicolon_4142" {
-  let (tokens, _) = @html.tokenize("&utrif")
+  let (tokens, errors) = @html.tokenize("&utrif")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -903,17 +1002,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_utrif_without_a_semicolo
     Character('f'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_utrif_with_a_semicolon_4143" {
-  let (tokens, _) = @html.tokenize("&utrif;")
+  let (tokens, errors) = @html.tokenize("&utrif;")
   @debug.assert_eq(tokens, [Character('▴'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_uuarr_without_a_semicolon_4144" {
-  let (tokens, _) = @html.tokenize("&uuarr")
+  let (tokens, errors) = @html.tokenize("&uuarr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -923,29 +1024,36 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_uuarr_without_a_semicolo
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_uuarr_with_a_semicolon_4145" {
-  let (tokens, _) = @html.tokenize("&uuarr;")
+  let (tokens, errors) = @html.tokenize("&uuarr;")
   @debug.assert_eq(tokens, [Character('⇈'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_uuml_without_a_semicolon_4146" {
-  let (tokens, _) = @html.tokenize("&uuml")
+  let (tokens, errors) = @html.tokenize("&uuml")
   @debug.assert_eq(tokens, [Character('ü'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingSemicolonAfterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_uuml_with_a_semicolon_4147" {
-  let (tokens, _) = @html.tokenize("&uuml;")
+  let (tokens, errors) = @html.tokenize("&uuml;")
   @debug.assert_eq(tokens, [Character('ü'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_uwangle_without_a_semicolon_4148" {
-  let (tokens, _) = @html.tokenize("&uwangle")
+  let (tokens, errors) = @html.tokenize("&uwangle")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('u'),
@@ -957,17 +1065,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_uwangle_without_a_semico
     Character('e'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_uwangle_with_a_semicolon_4149" {
-  let (tokens, _) = @html.tokenize("&uwangle;")
+  let (tokens, errors) = @html.tokenize("&uwangle;")
   @debug.assert_eq(tokens, [Character('⦧'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_varr_without_a_semicolon_4150" {
-  let (tokens, _) = @html.tokenize("&vArr")
+  let (tokens, errors) = @html.tokenize("&vArr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -976,17 +1086,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_varr_without_a_semicolon
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_varr_with_a_semicolon_4151" {
-  let (tokens, _) = @html.tokenize("&vArr;")
+  let (tokens, errors) = @html.tokenize("&vArr;")
   @debug.assert_eq(tokens, [Character('⇕'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vbar_without_a_semicolon_4152" {
-  let (tokens, _) = @html.tokenize("&vBar")
+  let (tokens, errors) = @html.tokenize("&vBar")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -995,17 +1107,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vbar_without_a_semicolon
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vbar_with_a_semicolon_4153" {
-  let (tokens, _) = @html.tokenize("&vBar;")
+  let (tokens, errors) = @html.tokenize("&vBar;")
   @debug.assert_eq(tokens, [Character('⫨'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vbarv_without_a_semicolon_4154" {
-  let (tokens, _) = @html.tokenize("&vBarv")
+  let (tokens, errors) = @html.tokenize("&vBarv")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1015,17 +1129,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vbarv_without_a_semicolo
     Character('v'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vbarv_with_a_semicolon_4155" {
-  let (tokens, _) = @html.tokenize("&vBarv;")
+  let (tokens, errors) = @html.tokenize("&vBarv;")
   @debug.assert_eq(tokens, [Character('⫩'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vdash_without_a_semicolon_4156" {
-  let (tokens, _) = @html.tokenize("&vDash")
+  let (tokens, errors) = @html.tokenize("&vDash")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1035,17 +1151,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vdash_without_a_semicolo
     Character('h'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vdash_with_a_semicolon_4157" {
-  let (tokens, _) = @html.tokenize("&vDash;")
+  let (tokens, errors) = @html.tokenize("&vDash;")
   @debug.assert_eq(tokens, [Character('⊨'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vangrt_without_a_semicolon_4158" {
-  let (tokens, _) = @html.tokenize("&vangrt")
+  let (tokens, errors) = @html.tokenize("&vangrt")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1056,17 +1174,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vangrt_without_a_semicol
     Character('t'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vangrt_with_a_semicolon_4159" {
-  let (tokens, _) = @html.tokenize("&vangrt;")
+  let (tokens, errors) = @html.tokenize("&vangrt;")
   @debug.assert_eq(tokens, [Character('⦜'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_varepsilon_without_a_semicolon_4160" {
-  let (tokens, _) = @html.tokenize("&varepsilon")
+  let (tokens, errors) = @html.tokenize("&varepsilon")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1081,17 +1201,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_varepsilon_without_a_sem
     Character('n'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_varepsilon_with_a_semicolon_4161" {
-  let (tokens, _) = @html.tokenize("&varepsilon;")
+  let (tokens, errors) = @html.tokenize("&varepsilon;")
   @debug.assert_eq(tokens, [Character('ϵ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_varkappa_without_a_semicolon_4162" {
-  let (tokens, _) = @html.tokenize("&varkappa")
+  let (tokens, errors) = @html.tokenize("&varkappa")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1104,17 +1226,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_varkappa_without_a_semic
     Character('a'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_varkappa_with_a_semicolon_4163" {
-  let (tokens, _) = @html.tokenize("&varkappa;")
+  let (tokens, errors) = @html.tokenize("&varkappa;")
   @debug.assert_eq(tokens, [Character('ϰ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_varnothing_without_a_semicolon_4164" {
-  let (tokens, _) = @html.tokenize("&varnothing")
+  let (tokens, errors) = @html.tokenize("&varnothing")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1129,17 +1253,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_varnothing_without_a_sem
     Character('g'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_varnothing_with_a_semicolon_4165" {
-  let (tokens, _) = @html.tokenize("&varnothing;")
+  let (tokens, errors) = @html.tokenize("&varnothing;")
   @debug.assert_eq(tokens, [Character('∅'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_varphi_without_a_semicolon_4166" {
-  let (tokens, _) = @html.tokenize("&varphi")
+  let (tokens, errors) = @html.tokenize("&varphi")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1150,17 +1276,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_varphi_without_a_semicol
     Character('i'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_varphi_with_a_semicolon_4167" {
-  let (tokens, _) = @html.tokenize("&varphi;")
+  let (tokens, errors) = @html.tokenize("&varphi;")
   @debug.assert_eq(tokens, [Character('ϕ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_varpi_without_a_semicolon_4168" {
-  let (tokens, _) = @html.tokenize("&varpi")
+  let (tokens, errors) = @html.tokenize("&varpi")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1170,17 +1298,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_varpi_without_a_semicolo
     Character('i'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_varpi_with_a_semicolon_4169" {
-  let (tokens, _) = @html.tokenize("&varpi;")
+  let (tokens, errors) = @html.tokenize("&varpi;")
   @debug.assert_eq(tokens, [Character('ϖ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_varpropto_without_a_semicolon_4170" {
-  let (tokens, _) = @html.tokenize("&varpropto")
+  let (tokens, errors) = @html.tokenize("&varpropto")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1194,17 +1324,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_varpropto_without_a_semi
     Character('o'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_varpropto_with_a_semicolon_4171" {
-  let (tokens, _) = @html.tokenize("&varpropto;")
+  let (tokens, errors) = @html.tokenize("&varpropto;")
   @debug.assert_eq(tokens, [Character('∝'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_varr_without_a_semicolon_4172" {
-  let (tokens, _) = @html.tokenize("&varr")
+  let (tokens, errors) = @html.tokenize("&varr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1213,17 +1345,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_varr_without_a_semicolon
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_varr_with_a_semicolon_4173" {
-  let (tokens, _) = @html.tokenize("&varr;")
+  let (tokens, errors) = @html.tokenize("&varr;")
   @debug.assert_eq(tokens, [Character('↕'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_varrho_without_a_semicolon_4174" {
-  let (tokens, _) = @html.tokenize("&varrho")
+  let (tokens, errors) = @html.tokenize("&varrho")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1234,17 +1368,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_varrho_without_a_semicol
     Character('o'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_varrho_with_a_semicolon_4175" {
-  let (tokens, _) = @html.tokenize("&varrho;")
+  let (tokens, errors) = @html.tokenize("&varrho;")
   @debug.assert_eq(tokens, [Character('ϱ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_varsigma_without_a_semicolon_4176" {
-  let (tokens, _) = @html.tokenize("&varsigma")
+  let (tokens, errors) = @html.tokenize("&varsigma")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1257,17 +1393,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_varsigma_without_a_semic
     Character('a'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_varsigma_with_a_semicolon_4177" {
-  let (tokens, _) = @html.tokenize("&varsigma;")
+  let (tokens, errors) = @html.tokenize("&varsigma;")
   @debug.assert_eq(tokens, [Character('ς'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_varsubsetneq_without_a_semicolon_4178" {
-  let (tokens, _) = @html.tokenize("&varsubsetneq")
+  let (tokens, errors) = @html.tokenize("&varsubsetneq")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1284,17 +1422,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_varsubsetneq_without_a_s
     Character('q'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_varsubsetneq_with_a_semicolon_4179" {
-  let (tokens, _) = @html.tokenize("&varsubsetneq;")
+  let (tokens, errors) = @html.tokenize("&varsubsetneq;")
   @debug.assert_eq(tokens, [Character('⊊'), Character('︀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_varsubsetneqq_without_a_semicolon_4180" {
-  let (tokens, _) = @html.tokenize("&varsubsetneqq")
+  let (tokens, errors) = @html.tokenize("&varsubsetneqq")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1312,17 +1452,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_varsubsetneqq_without_a_
     Character('q'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_varsubsetneqq_with_a_semicolon_4181" {
-  let (tokens, _) = @html.tokenize("&varsubsetneqq;")
+  let (tokens, errors) = @html.tokenize("&varsubsetneqq;")
   @debug.assert_eq(tokens, [Character('⫋'), Character('︀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_varsupsetneq_without_a_semicolon_4182" {
-  let (tokens, _) = @html.tokenize("&varsupsetneq")
+  let (tokens, errors) = @html.tokenize("&varsupsetneq")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1339,17 +1481,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_varsupsetneq_without_a_s
     Character('q'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_varsupsetneq_with_a_semicolon_4183" {
-  let (tokens, _) = @html.tokenize("&varsupsetneq;")
+  let (tokens, errors) = @html.tokenize("&varsupsetneq;")
   @debug.assert_eq(tokens, [Character('⊋'), Character('︀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_varsupsetneqq_without_a_semicolon_4184" {
-  let (tokens, _) = @html.tokenize("&varsupsetneqq")
+  let (tokens, errors) = @html.tokenize("&varsupsetneqq")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1367,17 +1511,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_varsupsetneqq_without_a_
     Character('q'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_varsupsetneqq_with_a_semicolon_4185" {
-  let (tokens, _) = @html.tokenize("&varsupsetneqq;")
+  let (tokens, errors) = @html.tokenize("&varsupsetneqq;")
   @debug.assert_eq(tokens, [Character('⫌'), Character('︀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vartheta_without_a_semicolon_4186" {
-  let (tokens, _) = @html.tokenize("&vartheta")
+  let (tokens, errors) = @html.tokenize("&vartheta")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1390,17 +1536,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vartheta_without_a_semic
     Character('a'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vartheta_with_a_semicolon_4187" {
-  let (tokens, _) = @html.tokenize("&vartheta;")
+  let (tokens, errors) = @html.tokenize("&vartheta;")
   @debug.assert_eq(tokens, [Character('ϑ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vartriangleleft_without_a_semicol_4188" {
-  let (tokens, _) = @html.tokenize("&vartriangleleft")
+  let (tokens, errors) = @html.tokenize("&vartriangleleft")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1420,17 +1568,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vartriangleleft_without_
     Character('t'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vartriangleleft_with_a_semicolon_4189" {
-  let (tokens, _) = @html.tokenize("&vartriangleleft;")
+  let (tokens, errors) = @html.tokenize("&vartriangleleft;")
   @debug.assert_eq(tokens, [Character('⊲'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vartriangleright_without_a_semico_4190" {
-  let (tokens, _) = @html.tokenize("&vartriangleright")
+  let (tokens, errors) = @html.tokenize("&vartriangleright")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1451,17 +1601,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vartriangleright_without
     Character('t'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vartriangleright_with_a_semicolon_4191" {
-  let (tokens, _) = @html.tokenize("&vartriangleright;")
+  let (tokens, errors) = @html.tokenize("&vartriangleright;")
   @debug.assert_eq(tokens, [Character('⊳'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vcy_without_a_semicolon_4192" {
-  let (tokens, _) = @html.tokenize("&vcy")
+  let (tokens, errors) = @html.tokenize("&vcy")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1469,17 +1621,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vcy_without_a_semicolon_
     Character('y'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vcy_with_a_semicolon_4193" {
-  let (tokens, _) = @html.tokenize("&vcy;")
+  let (tokens, errors) = @html.tokenize("&vcy;")
   @debug.assert_eq(tokens, [Character('в'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vdash_without_a_semicolon_4194" {
-  let (tokens, _) = @html.tokenize("&vdash")
+  let (tokens, errors) = @html.tokenize("&vdash")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1489,17 +1643,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vdash_without_a_semicolo
     Character('h'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vdash_with_a_semicolon_4195" {
-  let (tokens, _) = @html.tokenize("&vdash;")
+  let (tokens, errors) = @html.tokenize("&vdash;")
   @debug.assert_eq(tokens, [Character('⊢'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vee_without_a_semicolon_4196" {
-  let (tokens, _) = @html.tokenize("&vee")
+  let (tokens, errors) = @html.tokenize("&vee")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1507,17 +1663,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vee_without_a_semicolon_
     Character('e'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vee_with_a_semicolon_4197" {
-  let (tokens, _) = @html.tokenize("&vee;")
+  let (tokens, errors) = @html.tokenize("&vee;")
   @debug.assert_eq(tokens, [Character('∨'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_veebar_without_a_semicolon_4198" {
-  let (tokens, _) = @html.tokenize("&veebar")
+  let (tokens, errors) = @html.tokenize("&veebar")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1528,17 +1686,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_veebar_without_a_semicol
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_veebar_with_a_semicolon_4199" {
-  let (tokens, _) = @html.tokenize("&veebar;")
+  let (tokens, errors) = @html.tokenize("&veebar;")
   @debug.assert_eq(tokens, [Character('⊻'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_veeeq_without_a_semicolon_4200" {
-  let (tokens, _) = @html.tokenize("&veeeq")
+  let (tokens, errors) = @html.tokenize("&veeeq")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1548,17 +1708,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_veeeq_without_a_semicolo
     Character('q'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_veeeq_with_a_semicolon_4201" {
-  let (tokens, _) = @html.tokenize("&veeeq;")
+  let (tokens, errors) = @html.tokenize("&veeeq;")
   @debug.assert_eq(tokens, [Character('≚'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vellip_without_a_semicolon_4202" {
-  let (tokens, _) = @html.tokenize("&vellip")
+  let (tokens, errors) = @html.tokenize("&vellip")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1569,17 +1731,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vellip_without_a_semicol
     Character('p'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vellip_with_a_semicolon_4203" {
-  let (tokens, _) = @html.tokenize("&vellip;")
+  let (tokens, errors) = @html.tokenize("&vellip;")
   @debug.assert_eq(tokens, [Character('⋮'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_verbar_without_a_semicolon_4204" {
-  let (tokens, _) = @html.tokenize("&verbar")
+  let (tokens, errors) = @html.tokenize("&verbar")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1590,17 +1754,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_verbar_without_a_semicol
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_verbar_with_a_semicolon_4205" {
-  let (tokens, _) = @html.tokenize("&verbar;")
+  let (tokens, errors) = @html.tokenize("&verbar;")
   @debug.assert_eq(tokens, [Character('|'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vert_without_a_semicolon_4206" {
-  let (tokens, _) = @html.tokenize("&vert")
+  let (tokens, errors) = @html.tokenize("&vert")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1609,17 +1775,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vert_without_a_semicolon
     Character('t'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vert_with_a_semicolon_4207" {
-  let (tokens, _) = @html.tokenize("&vert;")
+  let (tokens, errors) = @html.tokenize("&vert;")
   @debug.assert_eq(tokens, [Character('|'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vfr_without_a_semicolon_4208" {
-  let (tokens, _) = @html.tokenize("&vfr")
+  let (tokens, errors) = @html.tokenize("&vfr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1627,17 +1795,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vfr_without_a_semicolon_
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vfr_with_a_semicolon_4209" {
-  let (tokens, _) = @html.tokenize("&vfr;")
+  let (tokens, errors) = @html.tokenize("&vfr;")
   @debug.assert_eq(tokens, [Character('𝔳'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vltri_without_a_semicolon_4210" {
-  let (tokens, _) = @html.tokenize("&vltri")
+  let (tokens, errors) = @html.tokenize("&vltri")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1647,17 +1817,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vltri_without_a_semicolo
     Character('i'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vltri_with_a_semicolon_4211" {
-  let (tokens, _) = @html.tokenize("&vltri;")
+  let (tokens, errors) = @html.tokenize("&vltri;")
   @debug.assert_eq(tokens, [Character('⊲'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vnsub_without_a_semicolon_4212" {
-  let (tokens, _) = @html.tokenize("&vnsub")
+  let (tokens, errors) = @html.tokenize("&vnsub")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1667,17 +1839,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vnsub_without_a_semicolo
     Character('b'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vnsub_with_a_semicolon_4213" {
-  let (tokens, _) = @html.tokenize("&vnsub;")
+  let (tokens, errors) = @html.tokenize("&vnsub;")
   @debug.assert_eq(tokens, [Character('⊂'), Character('⃒'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vnsup_without_a_semicolon_4214" {
-  let (tokens, _) = @html.tokenize("&vnsup")
+  let (tokens, errors) = @html.tokenize("&vnsup")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1687,17 +1861,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vnsup_without_a_semicolo
     Character('p'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vnsup_with_a_semicolon_4215" {
-  let (tokens, _) = @html.tokenize("&vnsup;")
+  let (tokens, errors) = @html.tokenize("&vnsup;")
   @debug.assert_eq(tokens, [Character('⊃'), Character('⃒'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vopf_without_a_semicolon_4216" {
-  let (tokens, _) = @html.tokenize("&vopf")
+  let (tokens, errors) = @html.tokenize("&vopf")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1706,17 +1882,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vopf_without_a_semicolon
     Character('f'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vopf_with_a_semicolon_4217" {
-  let (tokens, _) = @html.tokenize("&vopf;")
+  let (tokens, errors) = @html.tokenize("&vopf;")
   @debug.assert_eq(tokens, [Character('𝕧'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vprop_without_a_semicolon_4218" {
-  let (tokens, _) = @html.tokenize("&vprop")
+  let (tokens, errors) = @html.tokenize("&vprop")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1726,17 +1904,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vprop_without_a_semicolo
     Character('p'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vprop_with_a_semicolon_4219" {
-  let (tokens, _) = @html.tokenize("&vprop;")
+  let (tokens, errors) = @html.tokenize("&vprop;")
   @debug.assert_eq(tokens, [Character('∝'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vrtri_without_a_semicolon_4220" {
-  let (tokens, _) = @html.tokenize("&vrtri")
+  let (tokens, errors) = @html.tokenize("&vrtri")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1746,17 +1926,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vrtri_without_a_semicolo
     Character('i'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vrtri_with_a_semicolon_4221" {
-  let (tokens, _) = @html.tokenize("&vrtri;")
+  let (tokens, errors) = @html.tokenize("&vrtri;")
   @debug.assert_eq(tokens, [Character('⊳'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vscr_without_a_semicolon_4222" {
-  let (tokens, _) = @html.tokenize("&vscr")
+  let (tokens, errors) = @html.tokenize("&vscr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1765,17 +1947,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vscr_without_a_semicolon
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vscr_with_a_semicolon_4223" {
-  let (tokens, _) = @html.tokenize("&vscr;")
+  let (tokens, errors) = @html.tokenize("&vscr;")
   @debug.assert_eq(tokens, [Character('𝓋'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vsubne_without_a_semicolon_4224" {
-  let (tokens, _) = @html.tokenize("&vsubnE")
+  let (tokens, errors) = @html.tokenize("&vsubnE")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1786,17 +1970,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vsubne_without_a_semicol
     Character('E'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vsubne_with_a_semicolon_4225" {
-  let (tokens, _) = @html.tokenize("&vsubnE;")
+  let (tokens, errors) = @html.tokenize("&vsubnE;")
   @debug.assert_eq(tokens, [Character('⫋'), Character('︀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vsubne_without_a_semicolon_4226" {
-  let (tokens, _) = @html.tokenize("&vsubne")
+  let (tokens, errors) = @html.tokenize("&vsubne")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1807,17 +1993,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vsubne_without_a_semicol
     Character('e'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vsubne_with_a_semicolon_4227" {
-  let (tokens, _) = @html.tokenize("&vsubne;")
+  let (tokens, errors) = @html.tokenize("&vsubne;")
   @debug.assert_eq(tokens, [Character('⊊'), Character('︀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vsupne_without_a_semicolon_4228" {
-  let (tokens, _) = @html.tokenize("&vsupnE")
+  let (tokens, errors) = @html.tokenize("&vsupnE")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1828,17 +2016,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vsupne_without_a_semicol
     Character('E'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vsupne_with_a_semicolon_4229" {
-  let (tokens, _) = @html.tokenize("&vsupnE;")
+  let (tokens, errors) = @html.tokenize("&vsupnE;")
   @debug.assert_eq(tokens, [Character('⫌'), Character('︀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vsupne_without_a_semicolon_4230" {
-  let (tokens, _) = @html.tokenize("&vsupne")
+  let (tokens, errors) = @html.tokenize("&vsupne")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1849,17 +2039,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vsupne_without_a_semicol
     Character('e'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vsupne_with_a_semicolon_4231" {
-  let (tokens, _) = @html.tokenize("&vsupne;")
+  let (tokens, errors) = @html.tokenize("&vsupne;")
   @debug.assert_eq(tokens, [Character('⊋'), Character('︀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_vzigzag_without_a_semicolon_4232" {
-  let (tokens, _) = @html.tokenize("&vzigzag")
+  let (tokens, errors) = @html.tokenize("&vzigzag")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('v'),
@@ -1871,17 +2063,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_vzigzag_without_a_semico
     Character('g'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_vzigzag_with_a_semicolon_4233" {
-  let (tokens, _) = @html.tokenize("&vzigzag;")
+  let (tokens, errors) = @html.tokenize("&vzigzag;")
   @debug.assert_eq(tokens, [Character('⦚'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_wcirc_without_a_semicolon_4234" {
-  let (tokens, _) = @html.tokenize("&wcirc")
+  let (tokens, errors) = @html.tokenize("&wcirc")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('w'),
@@ -1891,17 +2085,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_wcirc_without_a_semicolo
     Character('c'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_wcirc_with_a_semicolon_4235" {
-  let (tokens, _) = @html.tokenize("&wcirc;")
+  let (tokens, errors) = @html.tokenize("&wcirc;")
   @debug.assert_eq(tokens, [Character('ŵ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_wedbar_without_a_semicolon_4236" {
-  let (tokens, _) = @html.tokenize("&wedbar")
+  let (tokens, errors) = @html.tokenize("&wedbar")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('w'),
@@ -1912,17 +2108,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_wedbar_without_a_semicol
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_wedbar_with_a_semicolon_4237" {
-  let (tokens, _) = @html.tokenize("&wedbar;")
+  let (tokens, errors) = @html.tokenize("&wedbar;")
   @debug.assert_eq(tokens, [Character('⩟'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_wedge_without_a_semicolon_4238" {
-  let (tokens, _) = @html.tokenize("&wedge")
+  let (tokens, errors) = @html.tokenize("&wedge")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('w'),
@@ -1932,17 +2130,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_wedge_without_a_semicolo
     Character('e'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_wedge_with_a_semicolon_4239" {
-  let (tokens, _) = @html.tokenize("&wedge;")
+  let (tokens, errors) = @html.tokenize("&wedge;")
   @debug.assert_eq(tokens, [Character('∧'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_wedgeq_without_a_semicolon_4240" {
-  let (tokens, _) = @html.tokenize("&wedgeq")
+  let (tokens, errors) = @html.tokenize("&wedgeq")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('w'),
@@ -1953,17 +2153,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_wedgeq_without_a_semicol
     Character('q'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_wedgeq_with_a_semicolon_4241" {
-  let (tokens, _) = @html.tokenize("&wedgeq;")
+  let (tokens, errors) = @html.tokenize("&wedgeq;")
   @debug.assert_eq(tokens, [Character('≙'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_weierp_without_a_semicolon_4242" {
-  let (tokens, _) = @html.tokenize("&weierp")
+  let (tokens, errors) = @html.tokenize("&weierp")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('w'),
@@ -1974,17 +2176,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_weierp_without_a_semicol
     Character('p'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_weierp_with_a_semicolon_4243" {
-  let (tokens, _) = @html.tokenize("&weierp;")
+  let (tokens, errors) = @html.tokenize("&weierp;")
   @debug.assert_eq(tokens, [Character('℘'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_wfr_without_a_semicolon_4244" {
-  let (tokens, _) = @html.tokenize("&wfr")
+  let (tokens, errors) = @html.tokenize("&wfr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('w'),
@@ -1992,17 +2196,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_wfr_without_a_semicolon_
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_wfr_with_a_semicolon_4245" {
-  let (tokens, _) = @html.tokenize("&wfr;")
+  let (tokens, errors) = @html.tokenize("&wfr;")
   @debug.assert_eq(tokens, [Character('𝔴'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_wopf_without_a_semicolon_4246" {
-  let (tokens, _) = @html.tokenize("&wopf")
+  let (tokens, errors) = @html.tokenize("&wopf")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('w'),
@@ -2011,41 +2217,47 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_wopf_without_a_semicolon
     Character('f'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_wopf_with_a_semicolon_4247" {
-  let (tokens, _) = @html.tokenize("&wopf;")
+  let (tokens, errors) = @html.tokenize("&wopf;")
   @debug.assert_eq(tokens, [Character('𝕨'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_wp_without_a_semicolon_4248" {
-  let (tokens, _) = @html.tokenize("&wp")
+  let (tokens, errors) = @html.tokenize("&wp")
   @debug.assert_eq(tokens, [Character('&'), Character('w'), Character('p'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_wp_with_a_semicolon_4249" {
-  let (tokens, _) = @html.tokenize("&wp;")
+  let (tokens, errors) = @html.tokenize("&wp;")
   @debug.assert_eq(tokens, [Character('℘'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_wr_without_a_semicolon_4250" {
-  let (tokens, _) = @html.tokenize("&wr")
+  let (tokens, errors) = @html.tokenize("&wr")
   @debug.assert_eq(tokens, [Character('&'), Character('w'), Character('r'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_wr_with_a_semicolon_4251" {
-  let (tokens, _) = @html.tokenize("&wr;")
+  let (tokens, errors) = @html.tokenize("&wr;")
   @debug.assert_eq(tokens, [Character('≀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_wreath_without_a_semicolon_4252" {
-  let (tokens, _) = @html.tokenize("&wreath")
+  let (tokens, errors) = @html.tokenize("&wreath")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('w'),
@@ -2056,17 +2268,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_wreath_without_a_semicol
     Character('h'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_wreath_with_a_semicolon_4253" {
-  let (tokens, _) = @html.tokenize("&wreath;")
+  let (tokens, errors) = @html.tokenize("&wreath;")
   @debug.assert_eq(tokens, [Character('≀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_wscr_without_a_semicolon_4254" {
-  let (tokens, _) = @html.tokenize("&wscr")
+  let (tokens, errors) = @html.tokenize("&wscr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('w'),
@@ -2075,17 +2289,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_wscr_without_a_semicolon
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_wscr_with_a_semicolon_4255" {
-  let (tokens, _) = @html.tokenize("&wscr;")
+  let (tokens, errors) = @html.tokenize("&wscr;")
   @debug.assert_eq(tokens, [Character('𝓌'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xcap_without_a_semicolon_4256" {
-  let (tokens, _) = @html.tokenize("&xcap")
+  let (tokens, errors) = @html.tokenize("&xcap")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2094,17 +2310,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xcap_without_a_semicolon
     Character('p'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xcap_with_a_semicolon_4257" {
-  let (tokens, _) = @html.tokenize("&xcap;")
+  let (tokens, errors) = @html.tokenize("&xcap;")
   @debug.assert_eq(tokens, [Character('⋂'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xcirc_without_a_semicolon_4258" {
-  let (tokens, _) = @html.tokenize("&xcirc")
+  let (tokens, errors) = @html.tokenize("&xcirc")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2114,17 +2332,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xcirc_without_a_semicolo
     Character('c'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xcirc_with_a_semicolon_4259" {
-  let (tokens, _) = @html.tokenize("&xcirc;")
+  let (tokens, errors) = @html.tokenize("&xcirc;")
   @debug.assert_eq(tokens, [Character('◯'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xcup_without_a_semicolon_4260" {
-  let (tokens, _) = @html.tokenize("&xcup")
+  let (tokens, errors) = @html.tokenize("&xcup")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2133,17 +2353,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xcup_without_a_semicolon
     Character('p'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xcup_with_a_semicolon_4261" {
-  let (tokens, _) = @html.tokenize("&xcup;")
+  let (tokens, errors) = @html.tokenize("&xcup;")
   @debug.assert_eq(tokens, [Character('⋃'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xdtri_without_a_semicolon_4262" {
-  let (tokens, _) = @html.tokenize("&xdtri")
+  let (tokens, errors) = @html.tokenize("&xdtri")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2153,17 +2375,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xdtri_without_a_semicolo
     Character('i'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xdtri_with_a_semicolon_4263" {
-  let (tokens, _) = @html.tokenize("&xdtri;")
+  let (tokens, errors) = @html.tokenize("&xdtri;")
   @debug.assert_eq(tokens, [Character('▽'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xfr_without_a_semicolon_4264" {
-  let (tokens, _) = @html.tokenize("&xfr")
+  let (tokens, errors) = @html.tokenize("&xfr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2171,17 +2395,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xfr_without_a_semicolon_
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xfr_with_a_semicolon_4265" {
-  let (tokens, _) = @html.tokenize("&xfr;")
+  let (tokens, errors) = @html.tokenize("&xfr;")
   @debug.assert_eq(tokens, [Character('𝔵'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xharr_without_a_semicolon_4266" {
-  let (tokens, _) = @html.tokenize("&xhArr")
+  let (tokens, errors) = @html.tokenize("&xhArr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2191,17 +2417,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xharr_without_a_semicolo
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xharr_with_a_semicolon_4267" {
-  let (tokens, _) = @html.tokenize("&xhArr;")
+  let (tokens, errors) = @html.tokenize("&xhArr;")
   @debug.assert_eq(tokens, [Character('⟺'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xharr_without_a_semicolon_4268" {
-  let (tokens, _) = @html.tokenize("&xharr")
+  let (tokens, errors) = @html.tokenize("&xharr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2211,29 +2439,33 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xharr_without_a_semicolo
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xharr_with_a_semicolon_4269" {
-  let (tokens, _) = @html.tokenize("&xharr;")
+  let (tokens, errors) = @html.tokenize("&xharr;")
   @debug.assert_eq(tokens, [Character('⟷'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xi_without_a_semicolon_4270" {
-  let (tokens, _) = @html.tokenize("&xi")
+  let (tokens, errors) = @html.tokenize("&xi")
   @debug.assert_eq(tokens, [Character('&'), Character('x'), Character('i'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xi_with_a_semicolon_4271" {
-  let (tokens, _) = @html.tokenize("&xi;")
+  let (tokens, errors) = @html.tokenize("&xi;")
   @debug.assert_eq(tokens, [Character('ξ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xlarr_without_a_semicolon_4272" {
-  let (tokens, _) = @html.tokenize("&xlArr")
+  let (tokens, errors) = @html.tokenize("&xlArr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2243,17 +2475,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xlarr_without_a_semicolo
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xlarr_with_a_semicolon_4273" {
-  let (tokens, _) = @html.tokenize("&xlArr;")
+  let (tokens, errors) = @html.tokenize("&xlArr;")
   @debug.assert_eq(tokens, [Character('⟸'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xlarr_without_a_semicolon_4274" {
-  let (tokens, _) = @html.tokenize("&xlarr")
+  let (tokens, errors) = @html.tokenize("&xlarr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2263,17 +2497,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xlarr_without_a_semicolo
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xlarr_with_a_semicolon_4275" {
-  let (tokens, _) = @html.tokenize("&xlarr;")
+  let (tokens, errors) = @html.tokenize("&xlarr;")
   @debug.assert_eq(tokens, [Character('⟵'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xmap_without_a_semicolon_4276" {
-  let (tokens, _) = @html.tokenize("&xmap")
+  let (tokens, errors) = @html.tokenize("&xmap")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2282,17 +2518,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xmap_without_a_semicolon
     Character('p'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xmap_with_a_semicolon_4277" {
-  let (tokens, _) = @html.tokenize("&xmap;")
+  let (tokens, errors) = @html.tokenize("&xmap;")
   @debug.assert_eq(tokens, [Character('⟼'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xnis_without_a_semicolon_4278" {
-  let (tokens, _) = @html.tokenize("&xnis")
+  let (tokens, errors) = @html.tokenize("&xnis")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2301,17 +2539,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xnis_without_a_semicolon
     Character('s'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xnis_with_a_semicolon_4279" {
-  let (tokens, _) = @html.tokenize("&xnis;")
+  let (tokens, errors) = @html.tokenize("&xnis;")
   @debug.assert_eq(tokens, [Character('⋻'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xodot_without_a_semicolon_4280" {
-  let (tokens, _) = @html.tokenize("&xodot")
+  let (tokens, errors) = @html.tokenize("&xodot")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2321,17 +2561,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xodot_without_a_semicolo
     Character('t'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xodot_with_a_semicolon_4281" {
-  let (tokens, _) = @html.tokenize("&xodot;")
+  let (tokens, errors) = @html.tokenize("&xodot;")
   @debug.assert_eq(tokens, [Character('⨀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xopf_without_a_semicolon_4282" {
-  let (tokens, _) = @html.tokenize("&xopf")
+  let (tokens, errors) = @html.tokenize("&xopf")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2340,17 +2582,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xopf_without_a_semicolon
     Character('f'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xopf_with_a_semicolon_4283" {
-  let (tokens, _) = @html.tokenize("&xopf;")
+  let (tokens, errors) = @html.tokenize("&xopf;")
   @debug.assert_eq(tokens, [Character('𝕩'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xoplus_without_a_semicolon_4284" {
-  let (tokens, _) = @html.tokenize("&xoplus")
+  let (tokens, errors) = @html.tokenize("&xoplus")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2361,17 +2605,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xoplus_without_a_semicol
     Character('s'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xoplus_with_a_semicolon_4285" {
-  let (tokens, _) = @html.tokenize("&xoplus;")
+  let (tokens, errors) = @html.tokenize("&xoplus;")
   @debug.assert_eq(tokens, [Character('⨁'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xotime_without_a_semicolon_4286" {
-  let (tokens, _) = @html.tokenize("&xotime")
+  let (tokens, errors) = @html.tokenize("&xotime")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2382,17 +2628,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xotime_without_a_semicol
     Character('e'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xotime_with_a_semicolon_4287" {
-  let (tokens, _) = @html.tokenize("&xotime;")
+  let (tokens, errors) = @html.tokenize("&xotime;")
   @debug.assert_eq(tokens, [Character('⨂'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xrarr_without_a_semicolon_4288" {
-  let (tokens, _) = @html.tokenize("&xrArr")
+  let (tokens, errors) = @html.tokenize("&xrArr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2402,17 +2650,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xrarr_without_a_semicolo
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xrarr_with_a_semicolon_4289" {
-  let (tokens, _) = @html.tokenize("&xrArr;")
+  let (tokens, errors) = @html.tokenize("&xrArr;")
   @debug.assert_eq(tokens, [Character('⟹'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xrarr_without_a_semicolon_4290" {
-  let (tokens, _) = @html.tokenize("&xrarr")
+  let (tokens, errors) = @html.tokenize("&xrarr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2422,17 +2672,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xrarr_without_a_semicolo
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xrarr_with_a_semicolon_4291" {
-  let (tokens, _) = @html.tokenize("&xrarr;")
+  let (tokens, errors) = @html.tokenize("&xrarr;")
   @debug.assert_eq(tokens, [Character('⟶'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xscr_without_a_semicolon_4292" {
-  let (tokens, _) = @html.tokenize("&xscr")
+  let (tokens, errors) = @html.tokenize("&xscr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2441,17 +2693,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xscr_without_a_semicolon
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xscr_with_a_semicolon_4293" {
-  let (tokens, _) = @html.tokenize("&xscr;")
+  let (tokens, errors) = @html.tokenize("&xscr;")
   @debug.assert_eq(tokens, [Character('𝓍'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xsqcup_without_a_semicolon_4294" {
-  let (tokens, _) = @html.tokenize("&xsqcup")
+  let (tokens, errors) = @html.tokenize("&xsqcup")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2462,17 +2716,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xsqcup_without_a_semicol
     Character('p'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xsqcup_with_a_semicolon_4295" {
-  let (tokens, _) = @html.tokenize("&xsqcup;")
+  let (tokens, errors) = @html.tokenize("&xsqcup;")
   @debug.assert_eq(tokens, [Character('⨆'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xuplus_without_a_semicolon_4296" {
-  let (tokens, _) = @html.tokenize("&xuplus")
+  let (tokens, errors) = @html.tokenize("&xuplus")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2483,17 +2739,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xuplus_without_a_semicol
     Character('s'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xuplus_with_a_semicolon_4297" {
-  let (tokens, _) = @html.tokenize("&xuplus;")
+  let (tokens, errors) = @html.tokenize("&xuplus;")
   @debug.assert_eq(tokens, [Character('⨄'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xutri_without_a_semicolon_4298" {
-  let (tokens, _) = @html.tokenize("&xutri")
+  let (tokens, errors) = @html.tokenize("&xutri")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2503,17 +2761,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xutri_without_a_semicolo
     Character('i'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xutri_with_a_semicolon_4299" {
-  let (tokens, _) = @html.tokenize("&xutri;")
+  let (tokens, errors) = @html.tokenize("&xutri;")
   @debug.assert_eq(tokens, [Character('△'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xvee_without_a_semicolon_4300" {
-  let (tokens, _) = @html.tokenize("&xvee")
+  let (tokens, errors) = @html.tokenize("&xvee")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2522,17 +2782,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xvee_without_a_semicolon
     Character('e'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xvee_with_a_semicolon_4301" {
-  let (tokens, _) = @html.tokenize("&xvee;")
+  let (tokens, errors) = @html.tokenize("&xvee;")
   @debug.assert_eq(tokens, [Character('⋁'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_xwedge_without_a_semicolon_4302" {
-  let (tokens, _) = @html.tokenize("&xwedge")
+  let (tokens, errors) = @html.tokenize("&xwedge")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('x'),
@@ -2543,29 +2805,36 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_xwedge_without_a_semicol
     Character('e'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_xwedge_with_a_semicolon_4303" {
-  let (tokens, _) = @html.tokenize("&xwedge;")
+  let (tokens, errors) = @html.tokenize("&xwedge;")
   @debug.assert_eq(tokens, [Character('⋀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_yacute_without_a_semicolon_4304" {
-  let (tokens, _) = @html.tokenize("&yacute")
+  let (tokens, errors) = @html.tokenize("&yacute")
   @debug.assert_eq(tokens, [Character('ý'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingSemicolonAfterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_yacute_with_a_semicolon_4305" {
-  let (tokens, _) = @html.tokenize("&yacute;")
+  let (tokens, errors) = @html.tokenize("&yacute;")
   @debug.assert_eq(tokens, [Character('ý'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_yacy_without_a_semicolon_4306" {
-  let (tokens, _) = @html.tokenize("&yacy")
+  let (tokens, errors) = @html.tokenize("&yacy")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('y'),
@@ -2574,17 +2843,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_yacy_without_a_semicolon
     Character('y'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_yacy_with_a_semicolon_4307" {
-  let (tokens, _) = @html.tokenize("&yacy;")
+  let (tokens, errors) = @html.tokenize("&yacy;")
   @debug.assert_eq(tokens, [Character('я'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_ycirc_without_a_semicolon_4308" {
-  let (tokens, _) = @html.tokenize("&ycirc")
+  let (tokens, errors) = @html.tokenize("&ycirc")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('y'),
@@ -2594,17 +2865,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_ycirc_without_a_semicolo
     Character('c'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_ycirc_with_a_semicolon_4309" {
-  let (tokens, _) = @html.tokenize("&ycirc;")
+  let (tokens, errors) = @html.tokenize("&ycirc;")
   @debug.assert_eq(tokens, [Character('ŷ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_ycy_without_a_semicolon_4310" {
-  let (tokens, _) = @html.tokenize("&ycy")
+  let (tokens, errors) = @html.tokenize("&ycy")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('y'),
@@ -2612,29 +2885,36 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_ycy_without_a_semicolon_
     Character('y'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_ycy_with_a_semicolon_4311" {
-  let (tokens, _) = @html.tokenize("&ycy;")
+  let (tokens, errors) = @html.tokenize("&ycy;")
   @debug.assert_eq(tokens, [Character('ы'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_yen_without_a_semicolon_4312" {
-  let (tokens, _) = @html.tokenize("&yen")
+  let (tokens, errors) = @html.tokenize("&yen")
   @debug.assert_eq(tokens, [Character('¥'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingSemicolonAfterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 5)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_yen_with_a_semicolon_4313" {
-  let (tokens, _) = @html.tokenize("&yen;")
+  let (tokens, errors) = @html.tokenize("&yen;")
   @debug.assert_eq(tokens, [Character('¥'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_yfr_without_a_semicolon_4314" {
-  let (tokens, _) = @html.tokenize("&yfr")
+  let (tokens, errors) = @html.tokenize("&yfr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('y'),
@@ -2642,17 +2922,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_yfr_without_a_semicolon_
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_yfr_with_a_semicolon_4315" {
-  let (tokens, _) = @html.tokenize("&yfr;")
+  let (tokens, errors) = @html.tokenize("&yfr;")
   @debug.assert_eq(tokens, [Character('𝔶'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_yicy_without_a_semicolon_4316" {
-  let (tokens, _) = @html.tokenize("&yicy")
+  let (tokens, errors) = @html.tokenize("&yicy")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('y'),
@@ -2661,17 +2943,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_yicy_without_a_semicolon
     Character('y'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_yicy_with_a_semicolon_4317" {
-  let (tokens, _) = @html.tokenize("&yicy;")
+  let (tokens, errors) = @html.tokenize("&yicy;")
   @debug.assert_eq(tokens, [Character('ї'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_yopf_without_a_semicolon_4318" {
-  let (tokens, _) = @html.tokenize("&yopf")
+  let (tokens, errors) = @html.tokenize("&yopf")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('y'),
@@ -2680,17 +2964,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_yopf_without_a_semicolon
     Character('f'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_yopf_with_a_semicolon_4319" {
-  let (tokens, _) = @html.tokenize("&yopf;")
+  let (tokens, errors) = @html.tokenize("&yopf;")
   @debug.assert_eq(tokens, [Character('𝕪'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_yscr_without_a_semicolon_4320" {
-  let (tokens, _) = @html.tokenize("&yscr")
+  let (tokens, errors) = @html.tokenize("&yscr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('y'),
@@ -2699,17 +2985,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_yscr_without_a_semicolon
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_yscr_with_a_semicolon_4321" {
-  let (tokens, _) = @html.tokenize("&yscr;")
+  let (tokens, errors) = @html.tokenize("&yscr;")
   @debug.assert_eq(tokens, [Character('𝓎'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_yucy_without_a_semicolon_4322" {
-  let (tokens, _) = @html.tokenize("&yucy")
+  let (tokens, errors) = @html.tokenize("&yucy")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('y'),
@@ -2718,29 +3006,36 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_yucy_without_a_semicolon
     Character('y'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_yucy_with_a_semicolon_4323" {
-  let (tokens, _) = @html.tokenize("&yucy;")
+  let (tokens, errors) = @html.tokenize("&yucy;")
   @debug.assert_eq(tokens, [Character('ю'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_yuml_without_a_semicolon_4324" {
-  let (tokens, _) = @html.tokenize("&yuml")
+  let (tokens, errors) = @html.tokenize("&yuml")
   @debug.assert_eq(tokens, [Character('ÿ'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingSemicolonAfterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_yuml_with_a_semicolon_4325" {
-  let (tokens, _) = @html.tokenize("&yuml;")
+  let (tokens, errors) = @html.tokenize("&yuml;")
   @debug.assert_eq(tokens, [Character('ÿ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_zacute_without_a_semicolon_4326" {
-  let (tokens, _) = @html.tokenize("&zacute")
+  let (tokens, errors) = @html.tokenize("&zacute")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('z'),
@@ -2751,17 +3046,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_zacute_without_a_semicol
     Character('e'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_zacute_with_a_semicolon_4327" {
-  let (tokens, _) = @html.tokenize("&zacute;")
+  let (tokens, errors) = @html.tokenize("&zacute;")
   @debug.assert_eq(tokens, [Character('ź'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_zcaron_without_a_semicolon_4328" {
-  let (tokens, _) = @html.tokenize("&zcaron")
+  let (tokens, errors) = @html.tokenize("&zcaron")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('z'),
@@ -2772,17 +3069,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_zcaron_without_a_semicol
     Character('n'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_zcaron_with_a_semicolon_4329" {
-  let (tokens, _) = @html.tokenize("&zcaron;")
+  let (tokens, errors) = @html.tokenize("&zcaron;")
   @debug.assert_eq(tokens, [Character('ž'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_zcy_without_a_semicolon_4330" {
-  let (tokens, _) = @html.tokenize("&zcy")
+  let (tokens, errors) = @html.tokenize("&zcy")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('z'),
@@ -2790,17 +3089,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_zcy_without_a_semicolon_
     Character('y'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_zcy_with_a_semicolon_4331" {
-  let (tokens, _) = @html.tokenize("&zcy;")
+  let (tokens, errors) = @html.tokenize("&zcy;")
   @debug.assert_eq(tokens, [Character('з'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_zdot_without_a_semicolon_4332" {
-  let (tokens, _) = @html.tokenize("&zdot")
+  let (tokens, errors) = @html.tokenize("&zdot")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('z'),
@@ -2809,17 +3110,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_zdot_without_a_semicolon
     Character('t'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_zdot_with_a_semicolon_4333" {
-  let (tokens, _) = @html.tokenize("&zdot;")
+  let (tokens, errors) = @html.tokenize("&zdot;")
   @debug.assert_eq(tokens, [Character('ż'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_zeetrf_without_a_semicolon_4334" {
-  let (tokens, _) = @html.tokenize("&zeetrf")
+  let (tokens, errors) = @html.tokenize("&zeetrf")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('z'),
@@ -2830,17 +3133,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_zeetrf_without_a_semicol
     Character('f'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_zeetrf_with_a_semicolon_4335" {
-  let (tokens, _) = @html.tokenize("&zeetrf;")
+  let (tokens, errors) = @html.tokenize("&zeetrf;")
   @debug.assert_eq(tokens, [Character('ℨ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_zeta_without_a_semicolon_4336" {
-  let (tokens, _) = @html.tokenize("&zeta")
+  let (tokens, errors) = @html.tokenize("&zeta")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('z'),
@@ -2849,17 +3154,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_zeta_without_a_semicolon
     Character('a'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_zeta_with_a_semicolon_4337" {
-  let (tokens, _) = @html.tokenize("&zeta;")
+  let (tokens, errors) = @html.tokenize("&zeta;")
   @debug.assert_eq(tokens, [Character('ζ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_zfr_without_a_semicolon_4338" {
-  let (tokens, _) = @html.tokenize("&zfr")
+  let (tokens, errors) = @html.tokenize("&zfr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('z'),
@@ -2867,17 +3174,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_zfr_without_a_semicolon_
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_zfr_with_a_semicolon_4339" {
-  let (tokens, _) = @html.tokenize("&zfr;")
+  let (tokens, errors) = @html.tokenize("&zfr;")
   @debug.assert_eq(tokens, [Character('𝔷'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_zhcy_without_a_semicolon_4340" {
-  let (tokens, _) = @html.tokenize("&zhcy")
+  let (tokens, errors) = @html.tokenize("&zhcy")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('z'),
@@ -2886,17 +3195,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_zhcy_without_a_semicolon
     Character('y'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_zhcy_with_a_semicolon_4341" {
-  let (tokens, _) = @html.tokenize("&zhcy;")
+  let (tokens, errors) = @html.tokenize("&zhcy;")
   @debug.assert_eq(tokens, [Character('ж'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_zigrarr_without_a_semicolon_4342" {
-  let (tokens, _) = @html.tokenize("&zigrarr")
+  let (tokens, errors) = @html.tokenize("&zigrarr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('z'),
@@ -2908,17 +3219,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_zigrarr_without_a_semico
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_zigrarr_with_a_semicolon_4343" {
-  let (tokens, _) = @html.tokenize("&zigrarr;")
+  let (tokens, errors) = @html.tokenize("&zigrarr;")
   @debug.assert_eq(tokens, [Character('⇝'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_zopf_without_a_semicolon_4344" {
-  let (tokens, _) = @html.tokenize("&zopf")
+  let (tokens, errors) = @html.tokenize("&zopf")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('z'),
@@ -2927,17 +3240,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_zopf_without_a_semicolon
     Character('f'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_zopf_with_a_semicolon_4345" {
-  let (tokens, _) = @html.tokenize("&zopf;")
+  let (tokens, errors) = @html.tokenize("&zopf;")
   @debug.assert_eq(tokens, [Character('𝕫'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_zscr_without_a_semicolon_4346" {
-  let (tokens, _) = @html.tokenize("&zscr")
+  let (tokens, errors) = @html.tokenize("&zscr")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('z'),
@@ -2946,17 +3261,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_zscr_without_a_semicolon
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_zscr_with_a_semicolon_4347" {
-  let (tokens, _) = @html.tokenize("&zscr;")
+  let (tokens, errors) = @html.tokenize("&zscr;")
   @debug.assert_eq(tokens, [Character('𝓏'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_zwj_without_a_semicolon_4348" {
-  let (tokens, _) = @html.tokenize("&zwj")
+  let (tokens, errors) = @html.tokenize("&zwj")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('z'),
@@ -2964,17 +3281,19 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_zwj_without_a_semicolon_
     Character('j'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_zwj_with_a_semicolon_4349" {
-  let (tokens, _) = @html.tokenize("&zwj;")
+  let (tokens, errors) = @html.tokenize("&zwj;")
   @debug.assert_eq(tokens, [Character('\u{200d}'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_bad_named_entity_zwnj_without_a_semicolon_4350" {
-  let (tokens, _) = @html.tokenize("&zwnj")
+  let (tokens, errors) = @html.tokenize("&zwnj")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('z'),
@@ -2983,1228 +3302,1769 @@ test "html5lib/tokenizer/namedEntities_bad_named_entity_zwnj_without_a_semicolon
     Character('j'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/namedEntities_named_entity_zwnj_with_a_semicolon_4351" {
-  let (tokens, _) = @html.tokenize("&zwnj;")
+  let (tokens, errors) = @html.tokenize("&zwnj;")
   @debug.assert_eq(tokens, [Character('\u{200c}'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_unterminated_numeric_entity_character_over_4352" {
-  let (tokens, _) = @html.tokenize("&#11111111111")
+  let (tokens, errors) = @html.tokenize("&#11111111111")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingSemicolonAfterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 14)
+  assert_true(errors[1].code is CharacterReferenceOutsideUnicodeRange)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 14)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_unterminated_numeric_entity_character_over_4353" {
-  let (tokens, _) = @html.tokenize("&#1111111111")
+  let (tokens, errors) = @html.tokenize("&#1111111111")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingSemicolonAfterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 13)
+  assert_true(errors[1].code is CharacterReferenceOutsideUnicodeRange)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 13)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_unterminated_numeric_entity_character_over_4354" {
-  let (tokens, _) = @html.tokenize("&#111111111111")
+  let (tokens, errors) = @html.tokenize("&#111111111111")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingSemicolonAfterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 15)
+  assert_true(errors[1].code is CharacterReferenceOutsideUnicodeRange)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 15)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_unterminated_numeric_entity_character_over_4355" {
-  let (tokens, _) = @html.tokenize("&#11111111111x")
+  let (tokens, errors) = @html.tokenize("&#11111111111x")
   @debug.assert_eq(tokens, [Character('�'), Character('x'), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingSemicolonAfterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 14)
+  assert_true(errors[1].code is CharacterReferenceOutsideUnicodeRange)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 14)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_unterminated_numeric_entity_character_over_4356" {
-  let (tokens, _) = @html.tokenize("&#1111111111x")
+  let (tokens, errors) = @html.tokenize("&#1111111111x")
   @debug.assert_eq(tokens, [Character('�'), Character('x'), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingSemicolonAfterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 13)
+  assert_true(errors[1].code is CharacterReferenceOutsideUnicodeRange)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 13)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_unterminated_numeric_entity_character_over_4357" {
-  let (tokens, _) = @html.tokenize("&#111111111111x")
+  let (tokens, errors) = @html.tokenize("&#111111111111x")
   @debug.assert_eq(tokens, [Character('�'), Character('x'), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingSemicolonAfterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 15)
+  assert_true(errors[1].code is CharacterReferenceOutsideUnicodeRange)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 15)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_overflow_4358" {
-  let (tokens, _) = @html.tokenize("&#11111111111;")
+  let (tokens, errors) = @html.tokenize("&#11111111111;")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is CharacterReferenceOutsideUnicodeRange)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 15)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_overflow_4359" {
-  let (tokens, _) = @html.tokenize("&#1111111111;")
+  let (tokens, errors) = @html.tokenize("&#1111111111;")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is CharacterReferenceOutsideUnicodeRange)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 14)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_overflow_4360" {
-  let (tokens, _) = @html.tokenize("&#111111111111;")
+  let (tokens, errors) = @html.tokenize("&#111111111111;")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is CharacterReferenceOutsideUnicodeRange)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 16)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u0000_4361" {
-  let (tokens, _) = @html.tokenize("&#x0000;")
+  let (tokens, errors) = @html.tokenize("&#x0000;")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NullCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u0001_4362" {
-  let (tokens, _) = @html.tokenize("&#x0001;")
+  let (tokens, errors) = @html.tokenize("&#x0001;")
   @debug.assert_eq(tokens, [Character('\u{01}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u0002_4363" {
-  let (tokens, _) = @html.tokenize("&#x0002;")
+  let (tokens, errors) = @html.tokenize("&#x0002;")
   @debug.assert_eq(tokens, [Character('\u{02}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u0003_4364" {
-  let (tokens, _) = @html.tokenize("&#x0003;")
+  let (tokens, errors) = @html.tokenize("&#x0003;")
   @debug.assert_eq(tokens, [Character('\u{03}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u0004_4365" {
-  let (tokens, _) = @html.tokenize("&#x0004;")
+  let (tokens, errors) = @html.tokenize("&#x0004;")
   @debug.assert_eq(tokens, [Character('\u{04}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u0005_4366" {
-  let (tokens, _) = @html.tokenize("&#x0005;")
+  let (tokens, errors) = @html.tokenize("&#x0005;")
   @debug.assert_eq(tokens, [Character('\u{05}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u0006_4367" {
-  let (tokens, _) = @html.tokenize("&#x0006;")
+  let (tokens, errors) = @html.tokenize("&#x0006;")
   @debug.assert_eq(tokens, [Character('\u{06}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u0007_4368" {
-  let (tokens, _) = @html.tokenize("&#x0007;")
+  let (tokens, errors) = @html.tokenize("&#x0007;")
   @debug.assert_eq(tokens, [Character('\u{07}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u0008_4369" {
-  let (tokens, _) = @html.tokenize("&#x0008;")
+  let (tokens, errors) = @html.tokenize("&#x0008;")
   @debug.assert_eq(tokens, [Character('\b'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u000b_4370" {
-  let (tokens, _) = @html.tokenize("&#x000b;")
+  let (tokens, errors) = @html.tokenize("&#x000b;")
   @debug.assert_eq(tokens, [Character('\u{0b}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u000e_4371" {
-  let (tokens, _) = @html.tokenize("&#x000e;")
+  let (tokens, errors) = @html.tokenize("&#x000e;")
   @debug.assert_eq(tokens, [Character('\u{0e}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u000f_4372" {
-  let (tokens, _) = @html.tokenize("&#x000f;")
+  let (tokens, errors) = @html.tokenize("&#x000f;")
   @debug.assert_eq(tokens, [Character('\u{0f}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u0010_4373" {
-  let (tokens, _) = @html.tokenize("&#x0010;")
+  let (tokens, errors) = @html.tokenize("&#x0010;")
   @debug.assert_eq(tokens, [Character('\u{10}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u0011_4374" {
-  let (tokens, _) = @html.tokenize("&#x0011;")
+  let (tokens, errors) = @html.tokenize("&#x0011;")
   @debug.assert_eq(tokens, [Character('\u{11}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u0012_4375" {
-  let (tokens, _) = @html.tokenize("&#x0012;")
+  let (tokens, errors) = @html.tokenize("&#x0012;")
   @debug.assert_eq(tokens, [Character('\u{12}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u0013_4376" {
-  let (tokens, _) = @html.tokenize("&#x0013;")
+  let (tokens, errors) = @html.tokenize("&#x0013;")
   @debug.assert_eq(tokens, [Character('\u{13}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u0014_4377" {
-  let (tokens, _) = @html.tokenize("&#x0014;")
+  let (tokens, errors) = @html.tokenize("&#x0014;")
   @debug.assert_eq(tokens, [Character('\u{14}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u0015_4378" {
-  let (tokens, _) = @html.tokenize("&#x0015;")
+  let (tokens, errors) = @html.tokenize("&#x0015;")
   @debug.assert_eq(tokens, [Character('\u{15}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u0016_4379" {
-  let (tokens, _) = @html.tokenize("&#x0016;")
+  let (tokens, errors) = @html.tokenize("&#x0016;")
   @debug.assert_eq(tokens, [Character('\u{16}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u0017_4380" {
-  let (tokens, _) = @html.tokenize("&#x0017;")
+  let (tokens, errors) = @html.tokenize("&#x0017;")
   @debug.assert_eq(tokens, [Character('\u{17}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u0018_4381" {
-  let (tokens, _) = @html.tokenize("&#x0018;")
+  let (tokens, errors) = @html.tokenize("&#x0018;")
   @debug.assert_eq(tokens, [Character('\u{18}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u0019_4382" {
-  let (tokens, _) = @html.tokenize("&#x0019;")
+  let (tokens, errors) = @html.tokenize("&#x0019;")
   @debug.assert_eq(tokens, [Character('\u{19}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u001a_4383" {
-  let (tokens, _) = @html.tokenize("&#x001a;")
+  let (tokens, errors) = @html.tokenize("&#x001a;")
   @debug.assert_eq(tokens, [Character('\u{1a}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u001b_4384" {
-  let (tokens, _) = @html.tokenize("&#x001b;")
+  let (tokens, errors) = @html.tokenize("&#x001b;")
   @debug.assert_eq(tokens, [Character('\u{1b}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u001c_4385" {
-  let (tokens, _) = @html.tokenize("&#x001c;")
+  let (tokens, errors) = @html.tokenize("&#x001c;")
   @debug.assert_eq(tokens, [Character('\u{1c}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u001d_4386" {
-  let (tokens, _) = @html.tokenize("&#x001d;")
+  let (tokens, errors) = @html.tokenize("&#x001d;")
   @debug.assert_eq(tokens, [Character('\u{1d}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u001e_4387" {
-  let (tokens, _) = @html.tokenize("&#x001e;")
+  let (tokens, errors) = @html.tokenize("&#x001e;")
   @debug.assert_eq(tokens, [Character('\u{1e}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u001f_4388" {
-  let (tokens, _) = @html.tokenize("&#x001f;")
+  let (tokens, errors) = @html.tokenize("&#x001f;")
   @debug.assert_eq(tokens, [Character('\u{1f}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u007f_4389" {
-  let (tokens, _) = @html.tokenize("&#x007f;")
+  let (tokens, errors) = @html.tokenize("&#x007f;")
   @debug.assert_eq(tokens, [Character('\u{7f}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ud800_4390" {
-  let (tokens, _) = @html.tokenize("&#xd800;")
+  let (tokens, errors) = @html.tokenize("&#xd800;")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is SurrogateCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_udfff_4391" {
-  let (tokens, _) = @html.tokenize("&#xdfff;")
+  let (tokens, errors) = @html.tokenize("&#xdfff;")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is SurrogateCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufdd0_4392" {
-  let (tokens, _) = @html.tokenize("&#xfdd0;")
+  let (tokens, errors) = @html.tokenize("&#xfdd0;")
   @debug.assert_eq(tokens, [Character('\u{fdd0}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufdd1_4393" {
-  let (tokens, _) = @html.tokenize("&#xfdd1;")
+  let (tokens, errors) = @html.tokenize("&#xfdd1;")
   @debug.assert_eq(tokens, [Character('\u{fdd1}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufdd2_4394" {
-  let (tokens, _) = @html.tokenize("&#xfdd2;")
+  let (tokens, errors) = @html.tokenize("&#xfdd2;")
   @debug.assert_eq(tokens, [Character('\u{fdd2}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufdd3_4395" {
-  let (tokens, _) = @html.tokenize("&#xfdd3;")
+  let (tokens, errors) = @html.tokenize("&#xfdd3;")
   @debug.assert_eq(tokens, [Character('\u{fdd3}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufdd4_4396" {
-  let (tokens, _) = @html.tokenize("&#xfdd4;")
+  let (tokens, errors) = @html.tokenize("&#xfdd4;")
   @debug.assert_eq(tokens, [Character('\u{fdd4}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufdd5_4397" {
-  let (tokens, _) = @html.tokenize("&#xfdd5;")
+  let (tokens, errors) = @html.tokenize("&#xfdd5;")
   @debug.assert_eq(tokens, [Character('\u{fdd5}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufdd6_4398" {
-  let (tokens, _) = @html.tokenize("&#xfdd6;")
+  let (tokens, errors) = @html.tokenize("&#xfdd6;")
   @debug.assert_eq(tokens, [Character('\u{fdd6}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufdd7_4399" {
-  let (tokens, _) = @html.tokenize("&#xfdd7;")
+  let (tokens, errors) = @html.tokenize("&#xfdd7;")
   @debug.assert_eq(tokens, [Character('\u{fdd7}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufdd8_4400" {
-  let (tokens, _) = @html.tokenize("&#xfdd8;")
+  let (tokens, errors) = @html.tokenize("&#xfdd8;")
   @debug.assert_eq(tokens, [Character('\u{fdd8}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufdd9_4401" {
-  let (tokens, _) = @html.tokenize("&#xfdd9;")
+  let (tokens, errors) = @html.tokenize("&#xfdd9;")
   @debug.assert_eq(tokens, [Character('\u{fdd9}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufdda_4402" {
-  let (tokens, _) = @html.tokenize("&#xfdda;")
+  let (tokens, errors) = @html.tokenize("&#xfdda;")
   @debug.assert_eq(tokens, [Character('\u{fdda}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufddb_4403" {
-  let (tokens, _) = @html.tokenize("&#xfddb;")
+  let (tokens, errors) = @html.tokenize("&#xfddb;")
   @debug.assert_eq(tokens, [Character('\u{fddb}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufddc_4404" {
-  let (tokens, _) = @html.tokenize("&#xfddc;")
+  let (tokens, errors) = @html.tokenize("&#xfddc;")
   @debug.assert_eq(tokens, [Character('\u{fddc}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufddd_4405" {
-  let (tokens, _) = @html.tokenize("&#xfddd;")
+  let (tokens, errors) = @html.tokenize("&#xfddd;")
   @debug.assert_eq(tokens, [Character('\u{fddd}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufdde_4406" {
-  let (tokens, _) = @html.tokenize("&#xfdde;")
+  let (tokens, errors) = @html.tokenize("&#xfdde;")
   @debug.assert_eq(tokens, [Character('\u{fdde}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufddf_4407" {
-  let (tokens, _) = @html.tokenize("&#xfddf;")
+  let (tokens, errors) = @html.tokenize("&#xfddf;")
   @debug.assert_eq(tokens, [Character('\u{fddf}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufde0_4408" {
-  let (tokens, _) = @html.tokenize("&#xfde0;")
+  let (tokens, errors) = @html.tokenize("&#xfde0;")
   @debug.assert_eq(tokens, [Character('\u{fde0}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufde1_4409" {
-  let (tokens, _) = @html.tokenize("&#xfde1;")
+  let (tokens, errors) = @html.tokenize("&#xfde1;")
   @debug.assert_eq(tokens, [Character('\u{fde1}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufde2_4410" {
-  let (tokens, _) = @html.tokenize("&#xfde2;")
+  let (tokens, errors) = @html.tokenize("&#xfde2;")
   @debug.assert_eq(tokens, [Character('\u{fde2}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufde3_4411" {
-  let (tokens, _) = @html.tokenize("&#xfde3;")
+  let (tokens, errors) = @html.tokenize("&#xfde3;")
   @debug.assert_eq(tokens, [Character('\u{fde3}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufde4_4412" {
-  let (tokens, _) = @html.tokenize("&#xfde4;")
+  let (tokens, errors) = @html.tokenize("&#xfde4;")
   @debug.assert_eq(tokens, [Character('\u{fde4}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufde5_4413" {
-  let (tokens, _) = @html.tokenize("&#xfde5;")
+  let (tokens, errors) = @html.tokenize("&#xfde5;")
   @debug.assert_eq(tokens, [Character('\u{fde5}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufde6_4414" {
-  let (tokens, _) = @html.tokenize("&#xfde6;")
+  let (tokens, errors) = @html.tokenize("&#xfde6;")
   @debug.assert_eq(tokens, [Character('\u{fde6}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufde7_4415" {
-  let (tokens, _) = @html.tokenize("&#xfde7;")
+  let (tokens, errors) = @html.tokenize("&#xfde7;")
   @debug.assert_eq(tokens, [Character('\u{fde7}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufde8_4416" {
-  let (tokens, _) = @html.tokenize("&#xfde8;")
+  let (tokens, errors) = @html.tokenize("&#xfde8;")
   @debug.assert_eq(tokens, [Character('\u{fde8}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufde9_4417" {
-  let (tokens, _) = @html.tokenize("&#xfde9;")
+  let (tokens, errors) = @html.tokenize("&#xfde9;")
   @debug.assert_eq(tokens, [Character('\u{fde9}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufdea_4418" {
-  let (tokens, _) = @html.tokenize("&#xfdea;")
+  let (tokens, errors) = @html.tokenize("&#xfdea;")
   @debug.assert_eq(tokens, [Character('\u{fdea}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufdeb_4419" {
-  let (tokens, _) = @html.tokenize("&#xfdeb;")
+  let (tokens, errors) = @html.tokenize("&#xfdeb;")
   @debug.assert_eq(tokens, [Character('\u{fdeb}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufdec_4420" {
-  let (tokens, _) = @html.tokenize("&#xfdec;")
+  let (tokens, errors) = @html.tokenize("&#xfdec;")
   @debug.assert_eq(tokens, [Character('\u{fdec}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufded_4421" {
-  let (tokens, _) = @html.tokenize("&#xfded;")
+  let (tokens, errors) = @html.tokenize("&#xfded;")
   @debug.assert_eq(tokens, [Character('\u{fded}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufdee_4422" {
-  let (tokens, _) = @html.tokenize("&#xfdee;")
+  let (tokens, errors) = @html.tokenize("&#xfdee;")
   @debug.assert_eq(tokens, [Character('\u{fdee}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufdef_4423" {
-  let (tokens, _) = @html.tokenize("&#xfdef;")
+  let (tokens, errors) = @html.tokenize("&#xfdef;")
   @debug.assert_eq(tokens, [Character('\u{fdef}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufffe_4424" {
-  let (tokens, _) = @html.tokenize("&#xfffe;")
+  let (tokens, errors) = @html.tokenize("&#xfffe;")
   @debug.assert_eq(tokens, [Character('\u{fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_uffff_4425" {
-  let (tokens, _) = @html.tokenize("&#xffff;")
+  let (tokens, errors) = @html.tokenize("&#xffff;")
   @debug.assert_eq(tokens, [Character('\u{ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u1fffe_4426" {
-  let (tokens, _) = @html.tokenize("&#x1fffe;")
+  let (tokens, errors) = @html.tokenize("&#x1fffe;")
   @debug.assert_eq(tokens, [Character('\u{01fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u1ffff_4427" {
-  let (tokens, _) = @html.tokenize("&#x1ffff;")
+  let (tokens, errors) = @html.tokenize("&#x1ffff;")
   @debug.assert_eq(tokens, [Character('\u{01ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u2fffe_4428" {
-  let (tokens, _) = @html.tokenize("&#x2fffe;")
+  let (tokens, errors) = @html.tokenize("&#x2fffe;")
   @debug.assert_eq(tokens, [Character('\u{02fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u2ffff_4429" {
-  let (tokens, _) = @html.tokenize("&#x2ffff;")
+  let (tokens, errors) = @html.tokenize("&#x2ffff;")
   @debug.assert_eq(tokens, [Character('\u{02ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u3fffe_4430" {
-  let (tokens, _) = @html.tokenize("&#x3fffe;")
+  let (tokens, errors) = @html.tokenize("&#x3fffe;")
   @debug.assert_eq(tokens, [Character('\u{03fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u3ffff_4431" {
-  let (tokens, _) = @html.tokenize("&#x3ffff;")
+  let (tokens, errors) = @html.tokenize("&#x3ffff;")
   @debug.assert_eq(tokens, [Character('\u{03ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u4fffe_4432" {
-  let (tokens, _) = @html.tokenize("&#x4fffe;")
+  let (tokens, errors) = @html.tokenize("&#x4fffe;")
   @debug.assert_eq(tokens, [Character('\u{04fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u4ffff_4433" {
-  let (tokens, _) = @html.tokenize("&#x4ffff;")
+  let (tokens, errors) = @html.tokenize("&#x4ffff;")
   @debug.assert_eq(tokens, [Character('\u{04ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u5fffe_4434" {
-  let (tokens, _) = @html.tokenize("&#x5fffe;")
+  let (tokens, errors) = @html.tokenize("&#x5fffe;")
   @debug.assert_eq(tokens, [Character('\u{05fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u5ffff_4435" {
-  let (tokens, _) = @html.tokenize("&#x5ffff;")
+  let (tokens, errors) = @html.tokenize("&#x5ffff;")
   @debug.assert_eq(tokens, [Character('\u{05ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u6fffe_4436" {
-  let (tokens, _) = @html.tokenize("&#x6fffe;")
+  let (tokens, errors) = @html.tokenize("&#x6fffe;")
   @debug.assert_eq(tokens, [Character('\u{06fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u6ffff_4437" {
-  let (tokens, _) = @html.tokenize("&#x6ffff;")
+  let (tokens, errors) = @html.tokenize("&#x6ffff;")
   @debug.assert_eq(tokens, [Character('\u{06ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u7fffe_4438" {
-  let (tokens, _) = @html.tokenize("&#x7fffe;")
+  let (tokens, errors) = @html.tokenize("&#x7fffe;")
   @debug.assert_eq(tokens, [Character('\u{07fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u7ffff_4439" {
-  let (tokens, _) = @html.tokenize("&#x7ffff;")
+  let (tokens, errors) = @html.tokenize("&#x7ffff;")
   @debug.assert_eq(tokens, [Character('\u{07ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u8fffe_4440" {
-  let (tokens, _) = @html.tokenize("&#x8fffe;")
+  let (tokens, errors) = @html.tokenize("&#x8fffe;")
   @debug.assert_eq(tokens, [Character('\u{08fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u8ffff_4441" {
-  let (tokens, _) = @html.tokenize("&#x8ffff;")
+  let (tokens, errors) = @html.tokenize("&#x8ffff;")
   @debug.assert_eq(tokens, [Character('\u{08ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u9fffe_4442" {
-  let (tokens, _) = @html.tokenize("&#x9fffe;")
+  let (tokens, errors) = @html.tokenize("&#x9fffe;")
   @debug.assert_eq(tokens, [Character('\u{09fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u9ffff_4443" {
-  let (tokens, _) = @html.tokenize("&#x9ffff;")
+  let (tokens, errors) = @html.tokenize("&#x9ffff;")
   @debug.assert_eq(tokens, [Character('\u{09ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_uafffe_4444" {
-  let (tokens, _) = @html.tokenize("&#xafffe;")
+  let (tokens, errors) = @html.tokenize("&#xafffe;")
   @debug.assert_eq(tokens, [Character('\u{0afffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_uaffff_4445" {
-  let (tokens, _) = @html.tokenize("&#xaffff;")
+  let (tokens, errors) = @html.tokenize("&#xaffff;")
   @debug.assert_eq(tokens, [Character('\u{0affff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ubfffe_4446" {
-  let (tokens, _) = @html.tokenize("&#xbfffe;")
+  let (tokens, errors) = @html.tokenize("&#xbfffe;")
   @debug.assert_eq(tokens, [Character('\u{0bfffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ubffff_4447" {
-  let (tokens, _) = @html.tokenize("&#xbffff;")
+  let (tokens, errors) = @html.tokenize("&#xbffff;")
   @debug.assert_eq(tokens, [Character('\u{0bffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ucfffe_4448" {
-  let (tokens, _) = @html.tokenize("&#xcfffe;")
+  let (tokens, errors) = @html.tokenize("&#xcfffe;")
   @debug.assert_eq(tokens, [Character('\u{0cfffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ucffff_4449" {
-  let (tokens, _) = @html.tokenize("&#xcffff;")
+  let (tokens, errors) = @html.tokenize("&#xcffff;")
   @debug.assert_eq(tokens, [Character('\u{0cffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_udfffe_4450" {
-  let (tokens, _) = @html.tokenize("&#xdfffe;")
+  let (tokens, errors) = @html.tokenize("&#xdfffe;")
   @debug.assert_eq(tokens, [Character('\u{0dfffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_udffff_4451" {
-  let (tokens, _) = @html.tokenize("&#xdffff;")
+  let (tokens, errors) = @html.tokenize("&#xdffff;")
   @debug.assert_eq(tokens, [Character('\u{0dffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_uefffe_4452" {
-  let (tokens, _) = @html.tokenize("&#xefffe;")
+  let (tokens, errors) = @html.tokenize("&#xefffe;")
   @debug.assert_eq(tokens, [Character('\u{0efffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ueffff_4453" {
-  let (tokens, _) = @html.tokenize("&#xeffff;")
+  let (tokens, errors) = @html.tokenize("&#xeffff;")
   @debug.assert_eq(tokens, [Character('\u{0effff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_uffffe_4454" {
-  let (tokens, _) = @html.tokenize("&#xffffe;")
+  let (tokens, errors) = @html.tokenize("&#xffffe;")
   @debug.assert_eq(tokens, [Character('\u{0ffffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_ufffff_4455" {
-  let (tokens, _) = @html.tokenize("&#xfffff;")
+  let (tokens, errors) = @html.tokenize("&#xfffff;")
   @debug.assert_eq(tokens, [Character('\u{0fffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u10fffe_4456" {
-  let (tokens, _) = @html.tokenize("&#x10fffe;")
+  let (tokens, errors) = @html.tokenize("&#x10fffe;")
   @debug.assert_eq(tokens, [Character('\u{10fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_invalid_numeric_entity_character_u10ffff_4457" {
-  let (tokens, _) = @html.tokenize("&#x10ffff;")
+  let (tokens, errors) = @html.tokenize("&#x10ffff;")
   @debug.assert_eq(tokens, [Character('\u{10ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0009_4458" {
-  let (tokens, _) = @html.tokenize("&#x0009;")
+  let (tokens, errors) = @html.tokenize("&#x0009;")
   @debug.assert_eq(tokens, [Character('\t'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u000a_4459" {
-  let (tokens, _) = @html.tokenize("&#x000a;")
+  let (tokens, errors) = @html.tokenize("&#x000a;")
   @debug.assert_eq(tokens, [Character('\n'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0020_4460" {
-  let (tokens, _) = @html.tokenize("&#x0020;")
+  let (tokens, errors) = @html.tokenize("&#x0020;")
   @debug.assert_eq(tokens, [Character(' '), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0021_4461" {
-  let (tokens, _) = @html.tokenize("&#x0021;")
+  let (tokens, errors) = @html.tokenize("&#x0021;")
   @debug.assert_eq(tokens, [Character('!'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0022_4462" {
-  let (tokens, _) = @html.tokenize("&#x0022;")
+  let (tokens, errors) = @html.tokenize("&#x0022;")
   @debug.assert_eq(tokens, [Character('"'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0023_4463" {
-  let (tokens, _) = @html.tokenize("&#x0023;")
+  let (tokens, errors) = @html.tokenize("&#x0023;")
   @debug.assert_eq(tokens, [Character('#'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0024_4464" {
-  let (tokens, _) = @html.tokenize("&#x0024;")
+  let (tokens, errors) = @html.tokenize("&#x0024;")
   @debug.assert_eq(tokens, [Character('$'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0025_4465" {
-  let (tokens, _) = @html.tokenize("&#x0025;")
+  let (tokens, errors) = @html.tokenize("&#x0025;")
   @debug.assert_eq(tokens, [Character('%'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0026_4466" {
-  let (tokens, _) = @html.tokenize("&#x0026;")
+  let (tokens, errors) = @html.tokenize("&#x0026;")
   @debug.assert_eq(tokens, [Character('&'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0027_4467" {
-  let (tokens, _) = @html.tokenize("&#x0027;")
+  let (tokens, errors) = @html.tokenize("&#x0027;")
   @debug.assert_eq(tokens, [Character('\''), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0028_4468" {
-  let (tokens, _) = @html.tokenize("&#x0028;")
+  let (tokens, errors) = @html.tokenize("&#x0028;")
   @debug.assert_eq(tokens, [Character('('), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0029_4469" {
-  let (tokens, _) = @html.tokenize("&#x0029;")
+  let (tokens, errors) = @html.tokenize("&#x0029;")
   @debug.assert_eq(tokens, [Character(')'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u002a_4470" {
-  let (tokens, _) = @html.tokenize("&#x002a;")
+  let (tokens, errors) = @html.tokenize("&#x002a;")
   @debug.assert_eq(tokens, [Character('*'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u002b_4471" {
-  let (tokens, _) = @html.tokenize("&#x002b;")
+  let (tokens, errors) = @html.tokenize("&#x002b;")
   @debug.assert_eq(tokens, [Character('+'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u002c_4472" {
-  let (tokens, _) = @html.tokenize("&#x002c;")
+  let (tokens, errors) = @html.tokenize("&#x002c;")
   @debug.assert_eq(tokens, [Character(','), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u002d_4473" {
-  let (tokens, _) = @html.tokenize("&#x002d;")
+  let (tokens, errors) = @html.tokenize("&#x002d;")
   @debug.assert_eq(tokens, [Character('-'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u002e_4474" {
-  let (tokens, _) = @html.tokenize("&#x002e;")
+  let (tokens, errors) = @html.tokenize("&#x002e;")
   @debug.assert_eq(tokens, [Character('.'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u002f_4475" {
-  let (tokens, _) = @html.tokenize("&#x002f;")
+  let (tokens, errors) = @html.tokenize("&#x002f;")
   @debug.assert_eq(tokens, [Character('/'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0030_4476" {
-  let (tokens, _) = @html.tokenize("&#x0030;")
+  let (tokens, errors) = @html.tokenize("&#x0030;")
   @debug.assert_eq(tokens, [Character('0'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0031_4477" {
-  let (tokens, _) = @html.tokenize("&#x0031;")
+  let (tokens, errors) = @html.tokenize("&#x0031;")
   @debug.assert_eq(tokens, [Character('1'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0032_4478" {
-  let (tokens, _) = @html.tokenize("&#x0032;")
+  let (tokens, errors) = @html.tokenize("&#x0032;")
   @debug.assert_eq(tokens, [Character('2'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0033_4479" {
-  let (tokens, _) = @html.tokenize("&#x0033;")
+  let (tokens, errors) = @html.tokenize("&#x0033;")
   @debug.assert_eq(tokens, [Character('3'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0034_4480" {
-  let (tokens, _) = @html.tokenize("&#x0034;")
+  let (tokens, errors) = @html.tokenize("&#x0034;")
   @debug.assert_eq(tokens, [Character('4'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0035_4481" {
-  let (tokens, _) = @html.tokenize("&#x0035;")
+  let (tokens, errors) = @html.tokenize("&#x0035;")
   @debug.assert_eq(tokens, [Character('5'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0036_4482" {
-  let (tokens, _) = @html.tokenize("&#x0036;")
+  let (tokens, errors) = @html.tokenize("&#x0036;")
   @debug.assert_eq(tokens, [Character('6'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0037_4483" {
-  let (tokens, _) = @html.tokenize("&#x0037;")
+  let (tokens, errors) = @html.tokenize("&#x0037;")
   @debug.assert_eq(tokens, [Character('7'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0038_4484" {
-  let (tokens, _) = @html.tokenize("&#x0038;")
+  let (tokens, errors) = @html.tokenize("&#x0038;")
   @debug.assert_eq(tokens, [Character('8'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0039_4485" {
-  let (tokens, _) = @html.tokenize("&#x0039;")
+  let (tokens, errors) = @html.tokenize("&#x0039;")
   @debug.assert_eq(tokens, [Character('9'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u003a_4486" {
-  let (tokens, _) = @html.tokenize("&#x003a;")
+  let (tokens, errors) = @html.tokenize("&#x003a;")
   @debug.assert_eq(tokens, [Character(':'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u003b_4487" {
-  let (tokens, _) = @html.tokenize("&#x003b;")
+  let (tokens, errors) = @html.tokenize("&#x003b;")
   @debug.assert_eq(tokens, [Character(';'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u003c_4488" {
-  let (tokens, _) = @html.tokenize("&#x003c;")
+  let (tokens, errors) = @html.tokenize("&#x003c;")
   @debug.assert_eq(tokens, [Character('<'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u003d_4489" {
-  let (tokens, _) = @html.tokenize("&#x003d;")
+  let (tokens, errors) = @html.tokenize("&#x003d;")
   @debug.assert_eq(tokens, [Character('='), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u003e_4490" {
-  let (tokens, _) = @html.tokenize("&#x003e;")
+  let (tokens, errors) = @html.tokenize("&#x003e;")
   @debug.assert_eq(tokens, [Character('>'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u003f_4491" {
-  let (tokens, _) = @html.tokenize("&#x003f;")
+  let (tokens, errors) = @html.tokenize("&#x003f;")
   @debug.assert_eq(tokens, [Character('?'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0040_4492" {
-  let (tokens, _) = @html.tokenize("&#x0040;")
+  let (tokens, errors) = @html.tokenize("&#x0040;")
   @debug.assert_eq(tokens, [Character('@'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0041_4493" {
-  let (tokens, _) = @html.tokenize("&#x0041;")
+  let (tokens, errors) = @html.tokenize("&#x0041;")
   @debug.assert_eq(tokens, [Character('A'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0042_4494" {
-  let (tokens, _) = @html.tokenize("&#x0042;")
+  let (tokens, errors) = @html.tokenize("&#x0042;")
   @debug.assert_eq(tokens, [Character('B'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0043_4495" {
-  let (tokens, _) = @html.tokenize("&#x0043;")
+  let (tokens, errors) = @html.tokenize("&#x0043;")
   @debug.assert_eq(tokens, [Character('C'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0044_4496" {
-  let (tokens, _) = @html.tokenize("&#x0044;")
+  let (tokens, errors) = @html.tokenize("&#x0044;")
   @debug.assert_eq(tokens, [Character('D'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0045_4497" {
-  let (tokens, _) = @html.tokenize("&#x0045;")
+  let (tokens, errors) = @html.tokenize("&#x0045;")
   @debug.assert_eq(tokens, [Character('E'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0046_4498" {
-  let (tokens, _) = @html.tokenize("&#x0046;")
+  let (tokens, errors) = @html.tokenize("&#x0046;")
   @debug.assert_eq(tokens, [Character('F'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0047_4499" {
-  let (tokens, _) = @html.tokenize("&#x0047;")
+  let (tokens, errors) = @html.tokenize("&#x0047;")
   @debug.assert_eq(tokens, [Character('G'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0048_4500" {
-  let (tokens, _) = @html.tokenize("&#x0048;")
+  let (tokens, errors) = @html.tokenize("&#x0048;")
   @debug.assert_eq(tokens, [Character('H'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0049_4501" {
-  let (tokens, _) = @html.tokenize("&#x0049;")
+  let (tokens, errors) = @html.tokenize("&#x0049;")
   @debug.assert_eq(tokens, [Character('I'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u004a_4502" {
-  let (tokens, _) = @html.tokenize("&#x004a;")
+  let (tokens, errors) = @html.tokenize("&#x004a;")
   @debug.assert_eq(tokens, [Character('J'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u004b_4503" {
-  let (tokens, _) = @html.tokenize("&#x004b;")
+  let (tokens, errors) = @html.tokenize("&#x004b;")
   @debug.assert_eq(tokens, [Character('K'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u004c_4504" {
-  let (tokens, _) = @html.tokenize("&#x004c;")
+  let (tokens, errors) = @html.tokenize("&#x004c;")
   @debug.assert_eq(tokens, [Character('L'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u004d_4505" {
-  let (tokens, _) = @html.tokenize("&#x004d;")
+  let (tokens, errors) = @html.tokenize("&#x004d;")
   @debug.assert_eq(tokens, [Character('M'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u004e_4506" {
-  let (tokens, _) = @html.tokenize("&#x004e;")
+  let (tokens, errors) = @html.tokenize("&#x004e;")
   @debug.assert_eq(tokens, [Character('N'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u004f_4507" {
-  let (tokens, _) = @html.tokenize("&#x004f;")
+  let (tokens, errors) = @html.tokenize("&#x004f;")
   @debug.assert_eq(tokens, [Character('O'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0050_4508" {
-  let (tokens, _) = @html.tokenize("&#x0050;")
+  let (tokens, errors) = @html.tokenize("&#x0050;")
   @debug.assert_eq(tokens, [Character('P'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0051_4509" {
-  let (tokens, _) = @html.tokenize("&#x0051;")
+  let (tokens, errors) = @html.tokenize("&#x0051;")
   @debug.assert_eq(tokens, [Character('Q'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0052_4510" {
-  let (tokens, _) = @html.tokenize("&#x0052;")
+  let (tokens, errors) = @html.tokenize("&#x0052;")
   @debug.assert_eq(tokens, [Character('R'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0053_4511" {
-  let (tokens, _) = @html.tokenize("&#x0053;")
+  let (tokens, errors) = @html.tokenize("&#x0053;")
   @debug.assert_eq(tokens, [Character('S'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0054_4512" {
-  let (tokens, _) = @html.tokenize("&#x0054;")
+  let (tokens, errors) = @html.tokenize("&#x0054;")
   @debug.assert_eq(tokens, [Character('T'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0055_4513" {
-  let (tokens, _) = @html.tokenize("&#x0055;")
+  let (tokens, errors) = @html.tokenize("&#x0055;")
   @debug.assert_eq(tokens, [Character('U'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0056_4514" {
-  let (tokens, _) = @html.tokenize("&#x0056;")
+  let (tokens, errors) = @html.tokenize("&#x0056;")
   @debug.assert_eq(tokens, [Character('V'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0057_4515" {
-  let (tokens, _) = @html.tokenize("&#x0057;")
+  let (tokens, errors) = @html.tokenize("&#x0057;")
   @debug.assert_eq(tokens, [Character('W'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0058_4516" {
-  let (tokens, _) = @html.tokenize("&#x0058;")
+  let (tokens, errors) = @html.tokenize("&#x0058;")
   @debug.assert_eq(tokens, [Character('X'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0059_4517" {
-  let (tokens, _) = @html.tokenize("&#x0059;")
+  let (tokens, errors) = @html.tokenize("&#x0059;")
   @debug.assert_eq(tokens, [Character('Y'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u005a_4518" {
-  let (tokens, _) = @html.tokenize("&#x005a;")
+  let (tokens, errors) = @html.tokenize("&#x005a;")
   @debug.assert_eq(tokens, [Character('Z'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u005b_4519" {
-  let (tokens, _) = @html.tokenize("&#x005b;")
+  let (tokens, errors) = @html.tokenize("&#x005b;")
   @debug.assert_eq(tokens, [Character('['), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u005c_4520" {
-  let (tokens, _) = @html.tokenize("&#x005c;")
+  let (tokens, errors) = @html.tokenize("&#x005c;")
   @debug.assert_eq(tokens, [Character('\\'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u005d_4521" {
-  let (tokens, _) = @html.tokenize("&#x005d;")
+  let (tokens, errors) = @html.tokenize("&#x005d;")
   @debug.assert_eq(tokens, [Character(']'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u005e_4522" {
-  let (tokens, _) = @html.tokenize("&#x005e;")
+  let (tokens, errors) = @html.tokenize("&#x005e;")
   @debug.assert_eq(tokens, [Character('^'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u005f_4523" {
-  let (tokens, _) = @html.tokenize("&#x005f;")
+  let (tokens, errors) = @html.tokenize("&#x005f;")
   @debug.assert_eq(tokens, [Character('_'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0060_4524" {
-  let (tokens, _) = @html.tokenize("&#x0060;")
+  let (tokens, errors) = @html.tokenize("&#x0060;")
   @debug.assert_eq(tokens, [Character('`'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0061_4525" {
-  let (tokens, _) = @html.tokenize("&#x0061;")
+  let (tokens, errors) = @html.tokenize("&#x0061;")
   @debug.assert_eq(tokens, [Character('a'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0062_4526" {
-  let (tokens, _) = @html.tokenize("&#x0062;")
+  let (tokens, errors) = @html.tokenize("&#x0062;")
   @debug.assert_eq(tokens, [Character('b'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0063_4527" {
-  let (tokens, _) = @html.tokenize("&#x0063;")
+  let (tokens, errors) = @html.tokenize("&#x0063;")
   @debug.assert_eq(tokens, [Character('c'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0064_4528" {
-  let (tokens, _) = @html.tokenize("&#x0064;")
+  let (tokens, errors) = @html.tokenize("&#x0064;")
   @debug.assert_eq(tokens, [Character('d'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0065_4529" {
-  let (tokens, _) = @html.tokenize("&#x0065;")
+  let (tokens, errors) = @html.tokenize("&#x0065;")
   @debug.assert_eq(tokens, [Character('e'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0066_4530" {
-  let (tokens, _) = @html.tokenize("&#x0066;")
+  let (tokens, errors) = @html.tokenize("&#x0066;")
   @debug.assert_eq(tokens, [Character('f'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0067_4531" {
-  let (tokens, _) = @html.tokenize("&#x0067;")
+  let (tokens, errors) = @html.tokenize("&#x0067;")
   @debug.assert_eq(tokens, [Character('g'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0068_4532" {
-  let (tokens, _) = @html.tokenize("&#x0068;")
+  let (tokens, errors) = @html.tokenize("&#x0068;")
   @debug.assert_eq(tokens, [Character('h'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0069_4533" {
-  let (tokens, _) = @html.tokenize("&#x0069;")
+  let (tokens, errors) = @html.tokenize("&#x0069;")
   @debug.assert_eq(tokens, [Character('i'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u006a_4534" {
-  let (tokens, _) = @html.tokenize("&#x006a;")
+  let (tokens, errors) = @html.tokenize("&#x006a;")
   @debug.assert_eq(tokens, [Character('j'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u006b_4535" {
-  let (tokens, _) = @html.tokenize("&#x006b;")
+  let (tokens, errors) = @html.tokenize("&#x006b;")
   @debug.assert_eq(tokens, [Character('k'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u006c_4536" {
-  let (tokens, _) = @html.tokenize("&#x006c;")
+  let (tokens, errors) = @html.tokenize("&#x006c;")
   @debug.assert_eq(tokens, [Character('l'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u006d_4537" {
-  let (tokens, _) = @html.tokenize("&#x006d;")
+  let (tokens, errors) = @html.tokenize("&#x006d;")
   @debug.assert_eq(tokens, [Character('m'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u006e_4538" {
-  let (tokens, _) = @html.tokenize("&#x006e;")
+  let (tokens, errors) = @html.tokenize("&#x006e;")
   @debug.assert_eq(tokens, [Character('n'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u006f_4539" {
-  let (tokens, _) = @html.tokenize("&#x006f;")
+  let (tokens, errors) = @html.tokenize("&#x006f;")
   @debug.assert_eq(tokens, [Character('o'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0070_4540" {
-  let (tokens, _) = @html.tokenize("&#x0070;")
+  let (tokens, errors) = @html.tokenize("&#x0070;")
   @debug.assert_eq(tokens, [Character('p'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0071_4541" {
-  let (tokens, _) = @html.tokenize("&#x0071;")
+  let (tokens, errors) = @html.tokenize("&#x0071;")
   @debug.assert_eq(tokens, [Character('q'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0072_4542" {
-  let (tokens, _) = @html.tokenize("&#x0072;")
+  let (tokens, errors) = @html.tokenize("&#x0072;")
   @debug.assert_eq(tokens, [Character('r'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0073_4543" {
-  let (tokens, _) = @html.tokenize("&#x0073;")
+  let (tokens, errors) = @html.tokenize("&#x0073;")
   @debug.assert_eq(tokens, [Character('s'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0074_4544" {
-  let (tokens, _) = @html.tokenize("&#x0074;")
+  let (tokens, errors) = @html.tokenize("&#x0074;")
   @debug.assert_eq(tokens, [Character('t'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0075_4545" {
-  let (tokens, _) = @html.tokenize("&#x0075;")
+  let (tokens, errors) = @html.tokenize("&#x0075;")
   @debug.assert_eq(tokens, [Character('u'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0076_4546" {
-  let (tokens, _) = @html.tokenize("&#x0076;")
+  let (tokens, errors) = @html.tokenize("&#x0076;")
   @debug.assert_eq(tokens, [Character('v'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0077_4547" {
-  let (tokens, _) = @html.tokenize("&#x0077;")
+  let (tokens, errors) = @html.tokenize("&#x0077;")
   @debug.assert_eq(tokens, [Character('w'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0078_4548" {
-  let (tokens, _) = @html.tokenize("&#x0078;")
+  let (tokens, errors) = @html.tokenize("&#x0078;")
   @debug.assert_eq(tokens, [Character('x'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u0079_4549" {
-  let (tokens, _) = @html.tokenize("&#x0079;")
+  let (tokens, errors) = @html.tokenize("&#x0079;")
   @debug.assert_eq(tokens, [Character('y'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u007a_4550" {
-  let (tokens, _) = @html.tokenize("&#x007a;")
+  let (tokens, errors) = @html.tokenize("&#x007a;")
   @debug.assert_eq(tokens, [Character('z'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u007b_4551" {
-  let (tokens, _) = @html.tokenize("&#x007b;")
+  let (tokens, errors) = @html.tokenize("&#x007b;")
   @debug.assert_eq(tokens, [Character('{'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u007c_4552" {
-  let (tokens, _) = @html.tokenize("&#x007c;")
+  let (tokens, errors) = @html.tokenize("&#x007c;")
   @debug.assert_eq(tokens, [Character('|'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u007d_4553" {
-  let (tokens, _) = @html.tokenize("&#x007d;")
+  let (tokens, errors) = @html.tokenize("&#x007d;")
   @debug.assert_eq(tokens, [Character('}'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u007e_4554" {
-  let (tokens, _) = @html.tokenize("&#x007e;")
+  let (tokens, errors) = @html.tokenize("&#x007e;")
   @debug.assert_eq(tokens, [Character('~'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }

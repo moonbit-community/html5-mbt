@@ -68,7 +68,9 @@ fn Tokenizer::run_named_character_reference_state(self : Tokenizer) -> Token? {
       }
       // Emit error if entity doesn't end with semicolon
       if last_char != ';' {
-        self.emit_error(MissingSemicolonAfterCharacterReference)
+        self.emit_error_at_next_position(
+          MissingSemicolonAfterCharacterReference,
+        )
       }
       // Clear temp buffer and emit codepoints
       self.temp_buffer.reset()
@@ -142,7 +144,9 @@ fn Tokenizer::run_hexadecimal_character_reference_start_state(
       None
     }
     _ => {
-      self.emit_error(AbsenceOfDigitsInNumericCharacterReference)
+      self.emit_error_at_next_position(
+        AbsenceOfDigitsInNumericCharacterReference,
+      )
       self.flush_temp_buffer()
       self.state = self.return_state
       None
@@ -161,7 +165,9 @@ fn Tokenizer::run_decimal_character_reference_start_state(
       None
     }
     _ => {
-      self.emit_error(AbsenceOfDigitsInNumericCharacterReference)
+      self.emit_error_at_next_position(
+        AbsenceOfDigitsInNumericCharacterReference,
+      )
       self.flush_temp_buffer()
       self.state = self.return_state
       None
@@ -250,20 +256,20 @@ fn Tokenizer::run_numeric_character_reference_end_state(
   let code = self.char_ref_code
   // Check for errors and apply replacements
   let final_char = if code == 0 {
-    self.emit_error(NullCharacterReference)
+    self.emit_error_at_next_position(NullCharacterReference)
     '\u{FFFD}'
   } else if code > 0x10FFFF {
-    self.emit_error(CharacterReferenceOutsideUnicodeRange)
+    self.emit_error_at_next_position(CharacterReferenceOutsideUnicodeRange)
     '\u{FFFD}'
   } else if code >= 0xD800 && code <= 0xDFFF {
-    self.emit_error(SurrogateCharacterReference)
+    self.emit_error_at_next_position(SurrogateCharacterReference)
     '\u{FFFD}'
   } else if is_noncharacter(code) {
-    self.emit_error(NoncharacterCharacterReference)
+    self.emit_error_at_next_position(NoncharacterCharacterReference)
     Int::unsafe_to_char(code)
   } else if code == 0x0D ||
     (is_control_char(code) && !is_ascii_whitespace_code(code)) {
-    self.emit_error(ControlCharacterReference)
+    self.emit_error_at_next_position(ControlCharacterReference)
     // Apply Windows-1252 remapping for 0x80-0x9F
     remap_windows_1252(code)
   } else {

@@ -24,6 +24,7 @@ pub struct Tokenizer {
   mut last_line : Int
   mut last_column : Int
   mut saw_eof : Bool // Track if last consume returned EOF
+  input_error_reported : Array[Bool]
 
   // State machine
   mut state : State
@@ -39,6 +40,7 @@ pub struct Tokenizer {
   current_attrs : Array[Attribute]
   current_attr_name : StringBuilder
   current_attr_value : StringBuilder
+  mut current_attr_duplicate : Bool
 
   // Current comment/doctype being built
   current_comment : StringBuilder
@@ -77,6 +79,7 @@ pub fn Tokenizer::new(input : String) -> Tokenizer {
     last_line: 1,
     last_column: 1,
     saw_eof: false,
+    input_error_reported: Array::make(input.to_array().length(), false),
     state: Data,
     return_state: Data,
     errors: [],
@@ -86,6 +89,7 @@ pub fn Tokenizer::new(input : String) -> Tokenizer {
     current_attrs: [],
     current_attr_name: StringBuilder(),
     current_attr_value: StringBuilder(),
+    current_attr_duplicate: false,
     current_comment: StringBuilder(),
     current_pi_target: StringBuilder(),
     current_pi_data: StringBuilder(),
@@ -114,6 +118,7 @@ pub fn Tokenizer::get_position(self : Tokenizer) -> SourcePosition {
 /// Returns LF for CR (normalization)
 fn Tokenizer::peek(self : Tokenizer) -> Char? {
   if self.pos < self.input.length() {
+    self.report_input_error_at(self.pos)
     let c = self.input[self.pos]
     // Normalize CR to LF when peeking
     if c == '\r' {
@@ -131,6 +136,9 @@ fn Tokenizer::peek(self : Tokenizer) -> Char? {
 fn Tokenizer::peek_at(self : Tokenizer, offset : Int) -> Char? {
   let idx = self.pos + offset
   if idx >= 0 && idx < self.input.length() {
+    if offset == 0 {
+      self.report_input_error_at(idx)
+    }
     Some(self.input[idx])
   } else {
     None
@@ -147,7 +155,9 @@ fn Tokenizer::consume(self : Tokenizer) -> Char? {
     self.last_line = self.line
     self.last_column = self.column
     let mut c = self.input[self.pos]
+    let raw_pos = self.pos
     self.pos += 1
+    self.report_input_error_at(raw_pos)
     // Normalize CR to LF (WHATWG preprocessing)
     if c == '\r' {
       c = '\n'
@@ -166,6 +176,49 @@ fn Tokenizer::consume(self : Tokenizer) -> Char? {
   } else {
     self.saw_eof = true
     None
+  }
+}
+
+///|
+/// Report preprocessing errors when a raw input character is first observed.
+fn Tokenizer::report_input_error_at(self : Tokenizer, raw_pos : Int) -> Unit {
+  if self.input_error_reported[raw_pos] {
+    return
+  }
+  self.input_error_reported[raw_pos] = true
+  let code = self.input[raw_pos].to_int()
+  let error = if code != 0 &&
+    is_control_char(code) &&
+    !is_ascii_whitespace_code(code) {
+    Some(ControlCharacterInInputStream)
+  } else if is_noncharacter(code) {
+    Some(NoncharacterInInputStream)
+  } else {
+    None
+  }
+  match error {
+    Some(code) => {
+      let mut line = 1
+      let mut column = 1
+      let mut i = 0
+      while i < raw_pos {
+        if self.input[i] == '\r' {
+          if i + 1 < raw_pos && self.input[i + 1] == '\n' {
+            i += 1
+          }
+          line += 1
+          column = 1
+        } else if self.input[i] == '\n' {
+          line += 1
+          column = 1
+        } else {
+          column += 1
+        }
+        i += 1
+      }
+      self.errors.push({ code, position: { line, column, offset: raw_pos, }, })
+    }
+    None => ()
   }
 }
 
@@ -191,6 +244,20 @@ fn Tokenizer::current_position(self : Tokenizer) -> SourcePosition {
 ///|
 /// Emit a parse error
 fn Tokenizer::emit_error(self : Tokenizer, code : ParseErrorCode) -> Unit {
+  let position = if self.saw_eof {
+    self.current_position()
+  } else {
+    { line: self.last_line, column: self.last_column, offset: self.last_pos, }
+  }
+  self.errors.push({ code, position, })
+}
+
+///|
+/// Emit an error at the next input position after the current character.
+fn Tokenizer::emit_error_at_next_position(
+  self : Tokenizer,
+  code : ParseErrorCode,
+) -> Unit {
   self.errors.push({ code, position: self.current_position(), })
 }
 
@@ -209,6 +276,7 @@ fn Tokenizer::reset_tag(self : Tokenizer, is_end : Bool) -> Unit {
   self.current_attrs.clear()
   self.current_attr_name.reset()
   self.current_attr_value.reset()
+  self.current_attr_duplicate = false
 }
 
 ///|
@@ -216,6 +284,18 @@ fn Tokenizer::reset_tag(self : Tokenizer, is_end : Bool) -> Unit {
 fn Tokenizer::start_new_attribute(self : Tokenizer) -> Unit {
   self.current_attr_name.reset()
   self.current_attr_value.reset()
+  self.current_attr_duplicate = false
+}
+
+///|
+/// Record whether the current attribute name duplicates an earlier one.
+fn Tokenizer::finish_attribute_name(self : Tokenizer) -> Unit {
+  let name = self.current_attr_name.to_string()
+  if !name.is_empty() &&
+    self.current_attrs.iter().any(fn(attr) { attr.name == name }) {
+    self.current_attr_duplicate = true
+    self.emit_error(DuplicateAttribute)
+  }
 }
 
 ///|
@@ -227,13 +307,12 @@ fn Tokenizer::finish_attribute(self : Tokenizer) -> Unit {
     return
   }
   let value = self.current_attr_value.to_string()
-  // Check for duplicate attribute
-  let duplicate = self.current_attrs.iter().any(fn(attr) { attr.name == name })
-  if duplicate {
-    self.emit_error(DuplicateAttribute)
-  } else {
+  if !self.current_attr_duplicate {
     self.current_attrs.push({ name, value, })
   }
+  self.current_attr_name.reset()
+  self.current_attr_value.reset()
+  self.current_attr_duplicate = false
 }
 
 ///|

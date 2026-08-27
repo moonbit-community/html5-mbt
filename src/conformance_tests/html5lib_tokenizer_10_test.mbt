@@ -24,811 +24,948 @@
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00a0_4555" {
-  let (tokens, _) = @html.tokenize("&#x00a0;")
+  let (tokens, errors) = @html.tokenize("&#x00a0;")
   @debug.assert_eq(tokens, [Character(' '), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00a1_4556" {
-  let (tokens, _) = @html.tokenize("&#x00a1;")
+  let (tokens, errors) = @html.tokenize("&#x00a1;")
   @debug.assert_eq(tokens, [Character('¡'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00a2_4557" {
-  let (tokens, _) = @html.tokenize("&#x00a2;")
+  let (tokens, errors) = @html.tokenize("&#x00a2;")
   @debug.assert_eq(tokens, [Character('¢'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00a3_4558" {
-  let (tokens, _) = @html.tokenize("&#x00a3;")
+  let (tokens, errors) = @html.tokenize("&#x00a3;")
   @debug.assert_eq(tokens, [Character('£'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00a4_4559" {
-  let (tokens, _) = @html.tokenize("&#x00a4;")
+  let (tokens, errors) = @html.tokenize("&#x00a4;")
   @debug.assert_eq(tokens, [Character('¤'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00a5_4560" {
-  let (tokens, _) = @html.tokenize("&#x00a5;")
+  let (tokens, errors) = @html.tokenize("&#x00a5;")
   @debug.assert_eq(tokens, [Character('¥'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00a6_4561" {
-  let (tokens, _) = @html.tokenize("&#x00a6;")
+  let (tokens, errors) = @html.tokenize("&#x00a6;")
   @debug.assert_eq(tokens, [Character('¦'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00a7_4562" {
-  let (tokens, _) = @html.tokenize("&#x00a7;")
+  let (tokens, errors) = @html.tokenize("&#x00a7;")
   @debug.assert_eq(tokens, [Character('§'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00a8_4563" {
-  let (tokens, _) = @html.tokenize("&#x00a8;")
+  let (tokens, errors) = @html.tokenize("&#x00a8;")
   @debug.assert_eq(tokens, [Character('¨'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00a9_4564" {
-  let (tokens, _) = @html.tokenize("&#x00a9;")
+  let (tokens, errors) = @html.tokenize("&#x00a9;")
   @debug.assert_eq(tokens, [Character('©'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00aa_4565" {
-  let (tokens, _) = @html.tokenize("&#x00aa;")
+  let (tokens, errors) = @html.tokenize("&#x00aa;")
   @debug.assert_eq(tokens, [Character('ª'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00ab_4566" {
-  let (tokens, _) = @html.tokenize("&#x00ab;")
+  let (tokens, errors) = @html.tokenize("&#x00ab;")
   @debug.assert_eq(tokens, [Character('«'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00ac_4567" {
-  let (tokens, _) = @html.tokenize("&#x00ac;")
+  let (tokens, errors) = @html.tokenize("&#x00ac;")
   @debug.assert_eq(tokens, [Character('¬'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00ad_4568" {
-  let (tokens, _) = @html.tokenize("&#x00ad;")
+  let (tokens, errors) = @html.tokenize("&#x00ad;")
   @debug.assert_eq(tokens, [Character('\u{ad}'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00ae_4569" {
-  let (tokens, _) = @html.tokenize("&#x00ae;")
+  let (tokens, errors) = @html.tokenize("&#x00ae;")
   @debug.assert_eq(tokens, [Character('®'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00af_4570" {
-  let (tokens, _) = @html.tokenize("&#x00af;")
+  let (tokens, errors) = @html.tokenize("&#x00af;")
   @debug.assert_eq(tokens, [Character('¯'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00b0_4571" {
-  let (tokens, _) = @html.tokenize("&#x00b0;")
+  let (tokens, errors) = @html.tokenize("&#x00b0;")
   @debug.assert_eq(tokens, [Character('°'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00b1_4572" {
-  let (tokens, _) = @html.tokenize("&#x00b1;")
+  let (tokens, errors) = @html.tokenize("&#x00b1;")
   @debug.assert_eq(tokens, [Character('±'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00b2_4573" {
-  let (tokens, _) = @html.tokenize("&#x00b2;")
+  let (tokens, errors) = @html.tokenize("&#x00b2;")
   @debug.assert_eq(tokens, [Character('²'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00b3_4574" {
-  let (tokens, _) = @html.tokenize("&#x00b3;")
+  let (tokens, errors) = @html.tokenize("&#x00b3;")
   @debug.assert_eq(tokens, [Character('³'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00b4_4575" {
-  let (tokens, _) = @html.tokenize("&#x00b4;")
+  let (tokens, errors) = @html.tokenize("&#x00b4;")
   @debug.assert_eq(tokens, [Character('´'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00b5_4576" {
-  let (tokens, _) = @html.tokenize("&#x00b5;")
+  let (tokens, errors) = @html.tokenize("&#x00b5;")
   @debug.assert_eq(tokens, [Character('µ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00b6_4577" {
-  let (tokens, _) = @html.tokenize("&#x00b6;")
+  let (tokens, errors) = @html.tokenize("&#x00b6;")
   @debug.assert_eq(tokens, [Character('¶'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00b7_4578" {
-  let (tokens, _) = @html.tokenize("&#x00b7;")
+  let (tokens, errors) = @html.tokenize("&#x00b7;")
   @debug.assert_eq(tokens, [Character('·'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00b8_4579" {
-  let (tokens, _) = @html.tokenize("&#x00b8;")
+  let (tokens, errors) = @html.tokenize("&#x00b8;")
   @debug.assert_eq(tokens, [Character('¸'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00b9_4580" {
-  let (tokens, _) = @html.tokenize("&#x00b9;")
+  let (tokens, errors) = @html.tokenize("&#x00b9;")
   @debug.assert_eq(tokens, [Character('¹'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00ba_4581" {
-  let (tokens, _) = @html.tokenize("&#x00ba;")
+  let (tokens, errors) = @html.tokenize("&#x00ba;")
   @debug.assert_eq(tokens, [Character('º'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00bb_4582" {
-  let (tokens, _) = @html.tokenize("&#x00bb;")
+  let (tokens, errors) = @html.tokenize("&#x00bb;")
   @debug.assert_eq(tokens, [Character('»'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00bc_4583" {
-  let (tokens, _) = @html.tokenize("&#x00bc;")
+  let (tokens, errors) = @html.tokenize("&#x00bc;")
   @debug.assert_eq(tokens, [Character('¼'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00bd_4584" {
-  let (tokens, _) = @html.tokenize("&#x00bd;")
+  let (tokens, errors) = @html.tokenize("&#x00bd;")
   @debug.assert_eq(tokens, [Character('½'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00be_4585" {
-  let (tokens, _) = @html.tokenize("&#x00be;")
+  let (tokens, errors) = @html.tokenize("&#x00be;")
   @debug.assert_eq(tokens, [Character('¾'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00bf_4586" {
-  let (tokens, _) = @html.tokenize("&#x00bf;")
+  let (tokens, errors) = @html.tokenize("&#x00bf;")
   @debug.assert_eq(tokens, [Character('¿'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00c0_4587" {
-  let (tokens, _) = @html.tokenize("&#x00c0;")
+  let (tokens, errors) = @html.tokenize("&#x00c0;")
   @debug.assert_eq(tokens, [Character('À'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00c1_4588" {
-  let (tokens, _) = @html.tokenize("&#x00c1;")
+  let (tokens, errors) = @html.tokenize("&#x00c1;")
   @debug.assert_eq(tokens, [Character('Á'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00c2_4589" {
-  let (tokens, _) = @html.tokenize("&#x00c2;")
+  let (tokens, errors) = @html.tokenize("&#x00c2;")
   @debug.assert_eq(tokens, [Character('Â'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00c3_4590" {
-  let (tokens, _) = @html.tokenize("&#x00c3;")
+  let (tokens, errors) = @html.tokenize("&#x00c3;")
   @debug.assert_eq(tokens, [Character('Ã'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00c4_4591" {
-  let (tokens, _) = @html.tokenize("&#x00c4;")
+  let (tokens, errors) = @html.tokenize("&#x00c4;")
   @debug.assert_eq(tokens, [Character('Ä'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00c5_4592" {
-  let (tokens, _) = @html.tokenize("&#x00c5;")
+  let (tokens, errors) = @html.tokenize("&#x00c5;")
   @debug.assert_eq(tokens, [Character('Å'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00c6_4593" {
-  let (tokens, _) = @html.tokenize("&#x00c6;")
+  let (tokens, errors) = @html.tokenize("&#x00c6;")
   @debug.assert_eq(tokens, [Character('Æ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00c7_4594" {
-  let (tokens, _) = @html.tokenize("&#x00c7;")
+  let (tokens, errors) = @html.tokenize("&#x00c7;")
   @debug.assert_eq(tokens, [Character('Ç'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00c8_4595" {
-  let (tokens, _) = @html.tokenize("&#x00c8;")
+  let (tokens, errors) = @html.tokenize("&#x00c8;")
   @debug.assert_eq(tokens, [Character('È'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00c9_4596" {
-  let (tokens, _) = @html.tokenize("&#x00c9;")
+  let (tokens, errors) = @html.tokenize("&#x00c9;")
   @debug.assert_eq(tokens, [Character('É'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00ca_4597" {
-  let (tokens, _) = @html.tokenize("&#x00ca;")
+  let (tokens, errors) = @html.tokenize("&#x00ca;")
   @debug.assert_eq(tokens, [Character('Ê'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00cb_4598" {
-  let (tokens, _) = @html.tokenize("&#x00cb;")
+  let (tokens, errors) = @html.tokenize("&#x00cb;")
   @debug.assert_eq(tokens, [Character('Ë'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00cc_4599" {
-  let (tokens, _) = @html.tokenize("&#x00cc;")
+  let (tokens, errors) = @html.tokenize("&#x00cc;")
   @debug.assert_eq(tokens, [Character('Ì'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00cd_4600" {
-  let (tokens, _) = @html.tokenize("&#x00cd;")
+  let (tokens, errors) = @html.tokenize("&#x00cd;")
   @debug.assert_eq(tokens, [Character('Í'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00ce_4601" {
-  let (tokens, _) = @html.tokenize("&#x00ce;")
+  let (tokens, errors) = @html.tokenize("&#x00ce;")
   @debug.assert_eq(tokens, [Character('Î'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00cf_4602" {
-  let (tokens, _) = @html.tokenize("&#x00cf;")
+  let (tokens, errors) = @html.tokenize("&#x00cf;")
   @debug.assert_eq(tokens, [Character('Ï'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00d0_4603" {
-  let (tokens, _) = @html.tokenize("&#x00d0;")
+  let (tokens, errors) = @html.tokenize("&#x00d0;")
   @debug.assert_eq(tokens, [Character('Ð'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00d1_4604" {
-  let (tokens, _) = @html.tokenize("&#x00d1;")
+  let (tokens, errors) = @html.tokenize("&#x00d1;")
   @debug.assert_eq(tokens, [Character('Ñ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00d2_4605" {
-  let (tokens, _) = @html.tokenize("&#x00d2;")
+  let (tokens, errors) = @html.tokenize("&#x00d2;")
   @debug.assert_eq(tokens, [Character('Ò'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00d3_4606" {
-  let (tokens, _) = @html.tokenize("&#x00d3;")
+  let (tokens, errors) = @html.tokenize("&#x00d3;")
   @debug.assert_eq(tokens, [Character('Ó'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00d4_4607" {
-  let (tokens, _) = @html.tokenize("&#x00d4;")
+  let (tokens, errors) = @html.tokenize("&#x00d4;")
   @debug.assert_eq(tokens, [Character('Ô'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00d5_4608" {
-  let (tokens, _) = @html.tokenize("&#x00d5;")
+  let (tokens, errors) = @html.tokenize("&#x00d5;")
   @debug.assert_eq(tokens, [Character('Õ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00d6_4609" {
-  let (tokens, _) = @html.tokenize("&#x00d6;")
+  let (tokens, errors) = @html.tokenize("&#x00d6;")
   @debug.assert_eq(tokens, [Character('Ö'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00d7_4610" {
-  let (tokens, _) = @html.tokenize("&#x00d7;")
+  let (tokens, errors) = @html.tokenize("&#x00d7;")
   @debug.assert_eq(tokens, [Character('×'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00d8_4611" {
-  let (tokens, _) = @html.tokenize("&#x00d8;")
+  let (tokens, errors) = @html.tokenize("&#x00d8;")
   @debug.assert_eq(tokens, [Character('Ø'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00d9_4612" {
-  let (tokens, _) = @html.tokenize("&#x00d9;")
+  let (tokens, errors) = @html.tokenize("&#x00d9;")
   @debug.assert_eq(tokens, [Character('Ù'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00da_4613" {
-  let (tokens, _) = @html.tokenize("&#x00da;")
+  let (tokens, errors) = @html.tokenize("&#x00da;")
   @debug.assert_eq(tokens, [Character('Ú'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00db_4614" {
-  let (tokens, _) = @html.tokenize("&#x00db;")
+  let (tokens, errors) = @html.tokenize("&#x00db;")
   @debug.assert_eq(tokens, [Character('Û'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00dc_4615" {
-  let (tokens, _) = @html.tokenize("&#x00dc;")
+  let (tokens, errors) = @html.tokenize("&#x00dc;")
   @debug.assert_eq(tokens, [Character('Ü'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00dd_4616" {
-  let (tokens, _) = @html.tokenize("&#x00dd;")
+  let (tokens, errors) = @html.tokenize("&#x00dd;")
   @debug.assert_eq(tokens, [Character('Ý'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00de_4617" {
-  let (tokens, _) = @html.tokenize("&#x00de;")
+  let (tokens, errors) = @html.tokenize("&#x00de;")
   @debug.assert_eq(tokens, [Character('Þ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00df_4618" {
-  let (tokens, _) = @html.tokenize("&#x00df;")
+  let (tokens, errors) = @html.tokenize("&#x00df;")
   @debug.assert_eq(tokens, [Character('ß'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00e0_4619" {
-  let (tokens, _) = @html.tokenize("&#x00e0;")
+  let (tokens, errors) = @html.tokenize("&#x00e0;")
   @debug.assert_eq(tokens, [Character('à'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00e1_4620" {
-  let (tokens, _) = @html.tokenize("&#x00e1;")
+  let (tokens, errors) = @html.tokenize("&#x00e1;")
   @debug.assert_eq(tokens, [Character('á'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00e2_4621" {
-  let (tokens, _) = @html.tokenize("&#x00e2;")
+  let (tokens, errors) = @html.tokenize("&#x00e2;")
   @debug.assert_eq(tokens, [Character('â'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00e3_4622" {
-  let (tokens, _) = @html.tokenize("&#x00e3;")
+  let (tokens, errors) = @html.tokenize("&#x00e3;")
   @debug.assert_eq(tokens, [Character('ã'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00e4_4623" {
-  let (tokens, _) = @html.tokenize("&#x00e4;")
+  let (tokens, errors) = @html.tokenize("&#x00e4;")
   @debug.assert_eq(tokens, [Character('ä'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00e5_4624" {
-  let (tokens, _) = @html.tokenize("&#x00e5;")
+  let (tokens, errors) = @html.tokenize("&#x00e5;")
   @debug.assert_eq(tokens, [Character('å'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00e6_4625" {
-  let (tokens, _) = @html.tokenize("&#x00e6;")
+  let (tokens, errors) = @html.tokenize("&#x00e6;")
   @debug.assert_eq(tokens, [Character('æ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00e7_4626" {
-  let (tokens, _) = @html.tokenize("&#x00e7;")
+  let (tokens, errors) = @html.tokenize("&#x00e7;")
   @debug.assert_eq(tokens, [Character('ç'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00e8_4627" {
-  let (tokens, _) = @html.tokenize("&#x00e8;")
+  let (tokens, errors) = @html.tokenize("&#x00e8;")
   @debug.assert_eq(tokens, [Character('è'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00e9_4628" {
-  let (tokens, _) = @html.tokenize("&#x00e9;")
+  let (tokens, errors) = @html.tokenize("&#x00e9;")
   @debug.assert_eq(tokens, [Character('é'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00ea_4629" {
-  let (tokens, _) = @html.tokenize("&#x00ea;")
+  let (tokens, errors) = @html.tokenize("&#x00ea;")
   @debug.assert_eq(tokens, [Character('ê'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00eb_4630" {
-  let (tokens, _) = @html.tokenize("&#x00eb;")
+  let (tokens, errors) = @html.tokenize("&#x00eb;")
   @debug.assert_eq(tokens, [Character('ë'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00ec_4631" {
-  let (tokens, _) = @html.tokenize("&#x00ec;")
+  let (tokens, errors) = @html.tokenize("&#x00ec;")
   @debug.assert_eq(tokens, [Character('ì'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00ed_4632" {
-  let (tokens, _) = @html.tokenize("&#x00ed;")
+  let (tokens, errors) = @html.tokenize("&#x00ed;")
   @debug.assert_eq(tokens, [Character('í'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00ee_4633" {
-  let (tokens, _) = @html.tokenize("&#x00ee;")
+  let (tokens, errors) = @html.tokenize("&#x00ee;")
   @debug.assert_eq(tokens, [Character('î'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00ef_4634" {
-  let (tokens, _) = @html.tokenize("&#x00ef;")
+  let (tokens, errors) = @html.tokenize("&#x00ef;")
   @debug.assert_eq(tokens, [Character('ï'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00f0_4635" {
-  let (tokens, _) = @html.tokenize("&#x00f0;")
+  let (tokens, errors) = @html.tokenize("&#x00f0;")
   @debug.assert_eq(tokens, [Character('ð'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00f1_4636" {
-  let (tokens, _) = @html.tokenize("&#x00f1;")
+  let (tokens, errors) = @html.tokenize("&#x00f1;")
   @debug.assert_eq(tokens, [Character('ñ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00f2_4637" {
-  let (tokens, _) = @html.tokenize("&#x00f2;")
+  let (tokens, errors) = @html.tokenize("&#x00f2;")
   @debug.assert_eq(tokens, [Character('ò'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00f3_4638" {
-  let (tokens, _) = @html.tokenize("&#x00f3;")
+  let (tokens, errors) = @html.tokenize("&#x00f3;")
   @debug.assert_eq(tokens, [Character('ó'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00f4_4639" {
-  let (tokens, _) = @html.tokenize("&#x00f4;")
+  let (tokens, errors) = @html.tokenize("&#x00f4;")
   @debug.assert_eq(tokens, [Character('ô'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00f5_4640" {
-  let (tokens, _) = @html.tokenize("&#x00f5;")
+  let (tokens, errors) = @html.tokenize("&#x00f5;")
   @debug.assert_eq(tokens, [Character('õ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00f6_4641" {
-  let (tokens, _) = @html.tokenize("&#x00f6;")
+  let (tokens, errors) = @html.tokenize("&#x00f6;")
   @debug.assert_eq(tokens, [Character('ö'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00f7_4642" {
-  let (tokens, _) = @html.tokenize("&#x00f7;")
+  let (tokens, errors) = @html.tokenize("&#x00f7;")
   @debug.assert_eq(tokens, [Character('÷'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00f8_4643" {
-  let (tokens, _) = @html.tokenize("&#x00f8;")
+  let (tokens, errors) = @html.tokenize("&#x00f8;")
   @debug.assert_eq(tokens, [Character('ø'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00f9_4644" {
-  let (tokens, _) = @html.tokenize("&#x00f9;")
+  let (tokens, errors) = @html.tokenize("&#x00f9;")
   @debug.assert_eq(tokens, [Character('ù'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00fa_4645" {
-  let (tokens, _) = @html.tokenize("&#x00fa;")
+  let (tokens, errors) = @html.tokenize("&#x00fa;")
   @debug.assert_eq(tokens, [Character('ú'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00fb_4646" {
-  let (tokens, _) = @html.tokenize("&#x00fb;")
+  let (tokens, errors) = @html.tokenize("&#x00fb;")
   @debug.assert_eq(tokens, [Character('û'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00fc_4647" {
-  let (tokens, _) = @html.tokenize("&#x00fc;")
+  let (tokens, errors) = @html.tokenize("&#x00fc;")
   @debug.assert_eq(tokens, [Character('ü'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00fd_4648" {
-  let (tokens, _) = @html.tokenize("&#x00fd;")
+  let (tokens, errors) = @html.tokenize("&#x00fd;")
   @debug.assert_eq(tokens, [Character('ý'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00fe_4649" {
-  let (tokens, _) = @html.tokenize("&#x00fe;")
+  let (tokens, errors) = @html.tokenize("&#x00fe;")
   @debug.assert_eq(tokens, [Character('þ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u00ff_4650" {
-  let (tokens, _) = @html.tokenize("&#x00ff;")
+  let (tokens, errors) = @html.tokenize("&#x00ff;")
   @debug.assert_eq(tokens, [Character('ÿ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_ud7ff_4651" {
-  let (tokens, _) = @html.tokenize("&#xd7ff;")
+  let (tokens, errors) = @html.tokenize("&#xd7ff;")
   @debug.assert_eq(tokens, [Character('퟿'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_ue000_4652" {
-  let (tokens, _) = @html.tokenize("&#xe000;")
+  let (tokens, errors) = @html.tokenize("&#xe000;")
   @debug.assert_eq(tokens, [Character('\u{e000}'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_ufdcf_4653" {
-  let (tokens, _) = @html.tokenize("&#xfdcf;")
+  let (tokens, errors) = @html.tokenize("&#xfdcf;")
   @debug.assert_eq(tokens, [Character('﷏'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_ufdf0_4654" {
-  let (tokens, _) = @html.tokenize("&#xfdf0;")
+  let (tokens, errors) = @html.tokenize("&#xfdf0;")
   @debug.assert_eq(tokens, [Character('ﷰ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_ufffd_4655" {
-  let (tokens, _) = @html.tokenize("&#xfffd;")
+  let (tokens, errors) = @html.tokenize("&#xfffd;")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u10000_4656" {
-  let (tokens, _) = @html.tokenize("&#x10000;")
+  let (tokens, errors) = @html.tokenize("&#x10000;")
   @debug.assert_eq(tokens, [Character('𐀀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u1fffd_4657" {
-  let (tokens, _) = @html.tokenize("&#x1fffd;")
+  let (tokens, errors) = @html.tokenize("&#x1fffd;")
   @debug.assert_eq(tokens, [Character('🿽'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u20000_4658" {
-  let (tokens, _) = @html.tokenize("&#x20000;")
+  let (tokens, errors) = @html.tokenize("&#x20000;")
   @debug.assert_eq(tokens, [Character('𠀀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u2fffd_4659" {
-  let (tokens, _) = @html.tokenize("&#x2fffd;")
+  let (tokens, errors) = @html.tokenize("&#x2fffd;")
   @debug.assert_eq(tokens, [Character('𯿽'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u30000_4660" {
-  let (tokens, _) = @html.tokenize("&#x30000;")
+  let (tokens, errors) = @html.tokenize("&#x30000;")
   @debug.assert_eq(tokens, [Character('𰀀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u3fffd_4661" {
-  let (tokens, _) = @html.tokenize("&#x3fffd;")
+  let (tokens, errors) = @html.tokenize("&#x3fffd;")
   @debug.assert_eq(tokens, [Character('𿿽'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u40000_4662" {
-  let (tokens, _) = @html.tokenize("&#x40000;")
+  let (tokens, errors) = @html.tokenize("&#x40000;")
   @debug.assert_eq(tokens, [Character('񀀀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u4fffd_4663" {
-  let (tokens, _) = @html.tokenize("&#x4fffd;")
+  let (tokens, errors) = @html.tokenize("&#x4fffd;")
   @debug.assert_eq(tokens, [Character('񏿽'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u50000_4664" {
-  let (tokens, _) = @html.tokenize("&#x50000;")
+  let (tokens, errors) = @html.tokenize("&#x50000;")
   @debug.assert_eq(tokens, [Character('񐀀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u5fffd_4665" {
-  let (tokens, _) = @html.tokenize("&#x5fffd;")
+  let (tokens, errors) = @html.tokenize("&#x5fffd;")
   @debug.assert_eq(tokens, [Character('񟿽'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u60000_4666" {
-  let (tokens, _) = @html.tokenize("&#x60000;")
+  let (tokens, errors) = @html.tokenize("&#x60000;")
   @debug.assert_eq(tokens, [Character('񠀀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u6fffd_4667" {
-  let (tokens, _) = @html.tokenize("&#x6fffd;")
+  let (tokens, errors) = @html.tokenize("&#x6fffd;")
   @debug.assert_eq(tokens, [Character('񯿽'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u70000_4668" {
-  let (tokens, _) = @html.tokenize("&#x70000;")
+  let (tokens, errors) = @html.tokenize("&#x70000;")
   @debug.assert_eq(tokens, [Character('񰀀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u7fffd_4669" {
-  let (tokens, _) = @html.tokenize("&#x7fffd;")
+  let (tokens, errors) = @html.tokenize("&#x7fffd;")
   @debug.assert_eq(tokens, [Character('񿿽'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u80000_4670" {
-  let (tokens, _) = @html.tokenize("&#x80000;")
+  let (tokens, errors) = @html.tokenize("&#x80000;")
   @debug.assert_eq(tokens, [Character('򀀀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u8fffd_4671" {
-  let (tokens, _) = @html.tokenize("&#x8fffd;")
+  let (tokens, errors) = @html.tokenize("&#x8fffd;")
   @debug.assert_eq(tokens, [Character('򏿽'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u90000_4672" {
-  let (tokens, _) = @html.tokenize("&#x90000;")
+  let (tokens, errors) = @html.tokenize("&#x90000;")
   @debug.assert_eq(tokens, [Character('򐀀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u9fffd_4673" {
-  let (tokens, _) = @html.tokenize("&#x9fffd;")
+  let (tokens, errors) = @html.tokenize("&#x9fffd;")
   @debug.assert_eq(tokens, [Character('򟿽'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_ua0000_4674" {
-  let (tokens, _) = @html.tokenize("&#xa0000;")
+  let (tokens, errors) = @html.tokenize("&#xa0000;")
   @debug.assert_eq(tokens, [Character('򠀀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_uafffd_4675" {
-  let (tokens, _) = @html.tokenize("&#xafffd;")
+  let (tokens, errors) = @html.tokenize("&#xafffd;")
   @debug.assert_eq(tokens, [Character('򯿽'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_ub0000_4676" {
-  let (tokens, _) = @html.tokenize("&#xb0000;")
+  let (tokens, errors) = @html.tokenize("&#xb0000;")
   @debug.assert_eq(tokens, [Character('򰀀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_ubfffd_4677" {
-  let (tokens, _) = @html.tokenize("&#xbfffd;")
+  let (tokens, errors) = @html.tokenize("&#xbfffd;")
   @debug.assert_eq(tokens, [Character('򿿽'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_uc0000_4678" {
-  let (tokens, _) = @html.tokenize("&#xc0000;")
+  let (tokens, errors) = @html.tokenize("&#xc0000;")
   @debug.assert_eq(tokens, [Character('󀀀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_ucfffd_4679" {
-  let (tokens, _) = @html.tokenize("&#xcfffd;")
+  let (tokens, errors) = @html.tokenize("&#xcfffd;")
   @debug.assert_eq(tokens, [Character('󏿽'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_ud0000_4680" {
-  let (tokens, _) = @html.tokenize("&#xd0000;")
+  let (tokens, errors) = @html.tokenize("&#xd0000;")
   @debug.assert_eq(tokens, [Character('󐀀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_udfffd_4681" {
-  let (tokens, _) = @html.tokenize("&#xdfffd;")
+  let (tokens, errors) = @html.tokenize("&#xdfffd;")
   @debug.assert_eq(tokens, [Character('󟿽'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_ue0000_4682" {
-  let (tokens, _) = @html.tokenize("&#xe0000;")
+  let (tokens, errors) = @html.tokenize("&#xe0000;")
   @debug.assert_eq(tokens, [Character('󠀀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_uefffd_4683" {
-  let (tokens, _) = @html.tokenize("&#xefffd;")
+  let (tokens, errors) = @html.tokenize("&#xefffd;")
   @debug.assert_eq(tokens, [Character('󯿽'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_uf0000_4684" {
-  let (tokens, _) = @html.tokenize("&#xf0000;")
+  let (tokens, errors) = @html.tokenize("&#xf0000;")
   @debug.assert_eq(tokens, [Character('\u{0f0000}'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_uffffd_4685" {
-  let (tokens, _) = @html.tokenize("&#xffffd;")
+  let (tokens, errors) = @html.tokenize("&#xffffd;")
   @debug.assert_eq(tokens, [Character('\u{0ffffd}'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u100000_4686" {
-  let (tokens, _) = @html.tokenize("&#x100000;")
+  let (tokens, errors) = @html.tokenize("&#x100000;")
   @debug.assert_eq(tokens, [Character('\u{100000}'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/numericEntities_valid_numeric_entity_character_u10fffd_4687" {
-  let (tokens, _) = @html.tokenize("&#x10fffd;")
+  let (tokens, errors) = @html.tokenize("&#x10fffd;")
   @debug.assert_eq(tokens, [Character('\u{10fffd}'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/pendingSpecChanges___4688" {
-  let (tokens, _) = @html.tokenize("<!---- >")
+  let (tokens, errors) = @html.tokenize("<!---- >")
   @debug.assert_eq(tokens, [Comment("-- >"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/test1_correct_doctype_lowercase_4689" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE html>")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE html>")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -838,11 +975,12 @@ test "html5lib/tokenizer/test1_correct_doctype_lowercase_4689" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_correct_doctype_uppercase_4690" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE HTML>")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE HTML>")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -852,11 +990,12 @@ test "html5lib/tokenizer/test1_correct_doctype_uppercase_4690" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_correct_doctype_mixed_case_4691" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE HtMl>")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE HtMl>")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -866,11 +1005,12 @@ test "html5lib/tokenizer/test1_correct_doctype_mixed_case_4691" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_correct_doctype_case_with_eof_4692" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE HtMl")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE HtMl")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -880,17 +1020,25 @@ test "html5lib/tokenizer/test1_correct_doctype_case_with_eof_4692" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 15)
 }
 
 ///|
 test "html5lib/tokenizer/test1_truncated_doctype_start_4693" {
-  let (tokens, _) = @html.tokenize("<!DOC>")
+  let (tokens, errors) = @html.tokenize("<!DOC>")
   @debug.assert_eq(tokens, [Comment("DOC"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test1_doctype_in_error_4694" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE foo>")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE foo>")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("foo"),
@@ -900,60 +1048,73 @@ test "html5lib/tokenizer/test1_doctype_in_error_4694" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_single_start_tag_4695" {
-  let (tokens, _) = @html.tokenize("<h>")
+  let (tokens, errors) = @html.tokenize("<h>")
   @debug.assert_eq(tokens, [
     StartTag(name="h", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_empty_end_tag_4696" {
-  let (tokens, _) = @html.tokenize("</>")
+  let (tokens, errors) = @html.tokenize("</>")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingEndTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test1_empty_start_tag_4697" {
-  let (tokens, _) = @html.tokenize("<>")
+  let (tokens, errors) = @html.tokenize("<>")
   @debug.assert_eq(tokens, [Character('<'), Character('>'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test1_start_tag_wattribute_4698" {
-  let (tokens, _) = @html.tokenize("<h a='b'>")
+  let (tokens, errors) = @html.tokenize("<h a='b'>")
   @debug.assert_eq(tokens, [
     StartTag(name="h", attrs=[{ name: "a", value: "b", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_start_tag_wattribute_no_quotes_4699" {
-  let (tokens, _) = @html.tokenize("<h a=b>")
+  let (tokens, errors) = @html.tokenize("<h a=b>")
   @debug.assert_eq(tokens, [
     StartTag(name="h", attrs=[{ name: "a", value: "b", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_startend_tag_4700" {
-  let (tokens, _) = @html.tokenize("<h></h>")
+  let (tokens, errors) = @html.tokenize("<h></h>")
   @debug.assert_eq(tokens, [
     StartTag(name="h", attrs=[], self_closing=false),
     EndTag(name="h"),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_two_unclosed_start_tags_4701" {
-  let (tokens, _) = @html.tokenize("<p>One<p>Two")
+  let (tokens, errors) = @html.tokenize("<p>One<p>Two")
   @debug.assert_eq(tokens, [
     StartTag(name="p", attrs=[], self_closing=false),
     Character('O'),
@@ -965,21 +1126,26 @@ test "html5lib/tokenizer/test1_two_unclosed_start_tags_4701" {
     Character('o'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_end_tag_wattribute_4702" {
-  let (tokens, _) = @html.tokenize("<h></h a='b'>")
+  let (tokens, errors) = @html.tokenize("<h></h a='b'>")
   @debug.assert_eq(tokens, [
     StartTag(name="h", attrs=[], self_closing=false),
     EndTag(name="h"),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EndTagWithAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 13)
 }
 
 ///|
 test "html5lib/tokenizer/test1_multiple_atts_4703" {
-  let (tokens, _) = @html.tokenize("<h a='b' c='d'>")
+  let (tokens, errors) = @html.tokenize("<h a='b' c='d'>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
@@ -988,11 +1154,12 @@ test "html5lib/tokenizer/test1_multiple_atts_4703" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_multiple_atts_no_space_4704" {
-  let (tokens, _) = @html.tokenize("<h a='b'c='d'>")
+  let (tokens, errors) = @html.tokenize("<h a='b'c='d'>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
@@ -1001,152 +1168,209 @@ test "html5lib/tokenizer/test1_multiple_atts_no_space_4704" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/test1_repeated_attr_4705" {
-  let (tokens, _) = @html.tokenize("<h a='b' a='d'>")
+  let (tokens, errors) = @html.tokenize("<h a='b' a='d'>")
   @debug.assert_eq(tokens, [
     StartTag(name="h", attrs=[{ name: "a", value: "b", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is DuplicateAttribute)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/test1_simple_comment_4706" {
-  let (tokens, _) = @html.tokenize("<!--comment-->")
+  let (tokens, errors) = @html.tokenize("<!--comment-->")
   @debug.assert_eq(tokens, [Comment("comment"), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_comment_central_dash_no_space_4707" {
-  let (tokens, _) = @html.tokenize("<!----->")
+  let (tokens, errors) = @html.tokenize("<!----->")
   @debug.assert_eq(tokens, [Comment("-"), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_comment_two_central_dashes_4708" {
-  let (tokens, _) = @html.tokenize("<!-- --comment -->")
+  let (tokens, errors) = @html.tokenize("<!-- --comment -->")
   @debug.assert_eq(tokens, [Comment(" --comment "), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_comment_central_lessthan_bang_4709" {
-  let (tokens, _) = @html.tokenize("<!--<!-->")
+  let (tokens, errors) = @html.tokenize("<!--<!-->")
   @debug.assert_eq(tokens, [Comment("<!"), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_unfinished_comment_4710" {
-  let (tokens, _) = @html.tokenize("<!--comment")
+  let (tokens, errors) = @html.tokenize("<!--comment")
   @debug.assert_eq(tokens, [Comment("comment"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test1_unfinished_comment_after_start_of_nested_comment_4711" {
-  let (tokens, _) = @html.tokenize("<!-- <!--")
+  let (tokens, errors) = @html.tokenize("<!-- <!--")
   @debug.assert_eq(tokens, [Comment(" <!"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/test1_start_of_a_comment_4712" {
-  let (tokens, _) = @html.tokenize("<!-")
+  let (tokens, errors) = @html.tokenize("<!-")
   @debug.assert_eq(tokens, [Comment("-"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test1_short_comment_4713" {
-  let (tokens, _) = @html.tokenize("<!-->")
+  let (tokens, errors) = @html.tokenize("<!-->")
   @debug.assert_eq(tokens, [Comment(""), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is AbruptClosingOfEmptyComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 5)
 }
 
 ///|
 test "html5lib/tokenizer/test1_short_comment_two_4714" {
-  let (tokens, _) = @html.tokenize("<!--->")
+  let (tokens, errors) = @html.tokenize("<!--->")
   @debug.assert_eq(tokens, [Comment(""), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is AbruptClosingOfEmptyComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test1_short_comment_three_4715" {
-  let (tokens, _) = @html.tokenize("<!---->")
+  let (tokens, errors) = @html.tokenize("<!---->")
   @debug.assert_eq(tokens, [Comment(""), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1__in_comment_4716" {
-  let (tokens, _) = @html.tokenize("<!-- <test-->")
+  let (tokens, errors) = @html.tokenize("<!-- <test-->")
   @debug.assert_eq(tokens, [Comment(" <test"), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1__in_comment_4717" {
-  let (tokens, _) = @html.tokenize("<!--<<-->")
+  let (tokens, errors) = @html.tokenize("<!--<<-->")
   @debug.assert_eq(tokens, [Comment("<<"), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1__in_comment_4718" {
-  let (tokens, _) = @html.tokenize("<!-- <!test-->")
+  let (tokens, errors) = @html.tokenize("<!-- <!test-->")
   @debug.assert_eq(tokens, [Comment(" <!test"), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1__in_comment_4719" {
-  let (tokens, _) = @html.tokenize("<!-- <!-test-->")
+  let (tokens, errors) = @html.tokenize("<!-- <!-test-->")
   @debug.assert_eq(tokens, [Comment(" <!-test"), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_nested_comment_4720" {
-  let (tokens, _) = @html.tokenize("<!-- <!--test-->")
+  let (tokens, errors) = @html.tokenize("<!-- <!--test-->")
   @debug.assert_eq(tokens, [Comment(" <!--test"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NestedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/test1_nested_comment_with_extra__4721" {
-  let (tokens, _) = @html.tokenize("<!-- <<!--test-->")
+  let (tokens, errors) = @html.tokenize("<!-- <<!--test-->")
   @debug.assert_eq(tokens, [Comment(" <<!--test"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NestedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/test1_ampersand_eof_4735" {
-  let (tokens, _) = @html.tokenize("&")
+  let (tokens, errors) = @html.tokenize("&")
   @debug.assert_eq(tokens, [Character('&'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_ampersand_ampersand_eof_4736" {
-  let (tokens, _) = @html.tokenize("&&")
+  let (tokens, errors) = @html.tokenize("&&")
   @debug.assert_eq(tokens, [Character('&'), Character('&'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_ampersand_space_eof_4737" {
-  let (tokens, _) = @html.tokenize("& ")
+  let (tokens, errors) = @html.tokenize("& ")
   @debug.assert_eq(tokens, [Character('&'), Character(' '), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_unfinished_entity_4738" {
-  let (tokens, _) = @html.tokenize("&f")
+  let (tokens, errors) = @html.tokenize("&f")
   @debug.assert_eq(tokens, [Character('&'), Character('f'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_ampersand_number_sign_4739" {
-  let (tokens, _) = @html.tokenize("&#")
+  let (tokens, errors) = @html.tokenize("&#")
   @debug.assert_eq(tokens, [Character('&'), Character('#'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is AbsenceOfDigitsInNumericCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test1_unfinished_numeric_entity_4740" {
-  let (tokens, _) = @html.tokenize("&#x")
+  let (tokens, errors) = @html.tokenize("&#x")
   @debug.assert_eq(tokens, [Character('&'), Character('#'), Character('x'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is AbsenceOfDigitsInNumericCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test1_entity_with_trailing_semicolon_1_4741" {
-  let (tokens, _) = @html.tokenize("I'm &not;it")
+  let (tokens, errors) = @html.tokenize("I'm &not;it")
   @debug.assert_eq(tokens, [
     Character('I'),
     Character('\''),
@@ -1157,11 +1381,12 @@ test "html5lib/tokenizer/test1_entity_with_trailing_semicolon_1_4741" {
     Character('t'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_entity_with_trailing_semicolon_2_4742" {
-  let (tokens, _) = @html.tokenize("I'm &notin;")
+  let (tokens, errors) = @html.tokenize("I'm &notin;")
   @debug.assert_eq(tokens, [
     Character('I'),
     Character('\''),
@@ -1170,11 +1395,12 @@ test "html5lib/tokenizer/test1_entity_with_trailing_semicolon_2_4742" {
     Character('∉'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_entity_without_trailing_semicolon_1_4743" {
-  let (tokens, _) = @html.tokenize("I'm &notit")
+  let (tokens, errors) = @html.tokenize("I'm &notit")
   @debug.assert_eq(tokens, [
     Character('I'),
     Character('\''),
@@ -1185,11 +1411,15 @@ test "html5lib/tokenizer/test1_entity_without_trailing_semicolon_1_4743" {
     Character('t'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingSemicolonAfterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/test1_entity_without_trailing_semicolon_2_4744" {
-  let (tokens, _) = @html.tokenize("I'm &notin")
+  let (tokens, errors) = @html.tokenize("I'm &notin")
   @debug.assert_eq(tokens, [
     Character('I'),
     Character('\''),
@@ -1200,11 +1430,15 @@ test "html5lib/tokenizer/test1_entity_without_trailing_semicolon_2_4744" {
     Character('n'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingSemicolonAfterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/test1_partial_entity_match_at_end_of_file_4745" {
-  let (tokens, _) = @html.tokenize("I'm &no")
+  let (tokens, errors) = @html.tokenize("I'm &no")
   @debug.assert_eq(tokens, [
     Character('I'),
     Character('\''),
@@ -1215,44 +1449,49 @@ test "html5lib/tokenizer/test1_partial_entity_match_at_end_of_file_4745" {
     Character('o'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_nonascii_character_reference_name_4746" {
-  let (tokens, _) = @html.tokenize("&¬;")
+  let (tokens, errors) = @html.tokenize("&¬;")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('¬'),
     Character(';'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_ascii_decimal_entity_4747" {
-  let (tokens, _) = @html.tokenize("&#0036;")
+  let (tokens, errors) = @html.tokenize("&#0036;")
   @debug.assert_eq(tokens, [Character('$'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_ascii_hexadecimal_entity_4748" {
-  let (tokens, _) = @html.tokenize("&#x3f;")
+  let (tokens, errors) = @html.tokenize("&#x3f;")
   @debug.assert_eq(tokens, [Character('?'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_hexadecimal_entity_in_attribute_4749" {
-  let (tokens, _) = @html.tokenize("<h a='&#x3f;'></h>")
+  let (tokens, errors) = @html.tokenize("<h a='&#x3f;'></h>")
   @debug.assert_eq(tokens, [
     StartTag(name="h", attrs=[{ name: "a", value: "?", }], self_closing=false),
     EndTag(name="h"),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_entity_in_attribute_without_semicolon_ending_in_x_4750" {
-  let (tokens, _) = @html.tokenize("<h a='&notx'>")
+  let (tokens, errors) = @html.tokenize("<h a='&notx'>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
@@ -1261,11 +1500,12 @@ test "html5lib/tokenizer/test1_entity_in_attribute_without_semicolon_ending_in_x
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_entity_in_attribute_without_semicolon_ending_in_1_4751" {
-  let (tokens, _) = @html.tokenize("<h a='&not1'>")
+  let (tokens, errors) = @html.tokenize("<h a='&not1'>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
@@ -1274,11 +1514,12 @@ test "html5lib/tokenizer/test1_entity_in_attribute_without_semicolon_ending_in_1
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_entity_in_attribute_without_semicolon_ending_in_i_4752" {
-  let (tokens, _) = @html.tokenize("<h a='&noti'>")
+  let (tokens, errors) = @html.tokenize("<h a='&noti'>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
@@ -1287,20 +1528,25 @@ test "html5lib/tokenizer/test1_entity_in_attribute_without_semicolon_ending_in_i
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_entity_in_attribute_without_semicolon_4753" {
-  let (tokens, _) = @html.tokenize("<h a='&COPY'>")
+  let (tokens, errors) = @html.tokenize("<h a='&COPY'>")
   @debug.assert_eq(tokens, [
     StartTag(name="h", attrs=[{ name: "a", value: "©", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingSemicolonAfterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test1_unquoted_attribute_ending_in_ampersand_4754" {
-  let (tokens, _) = @html.tokenize("<s o=& t>")
+  let (tokens, errors) = @html.tokenize("<s o=& t>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="s",
@@ -1309,11 +1555,12 @@ test "html5lib/tokenizer/test1_unquoted_attribute_ending_in_ampersand_4754" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_unquoted_attribute_at_end_of_tag_with_final_charac_4755" {
-  let (tokens, _) = @html.tokenize("<a a=a&>foo")
+  let (tokens, errors) = @html.tokenize("<a a=a&>foo")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a&", }], self_closing=false),
     Character('f'),
@@ -1321,11 +1568,12 @@ test "html5lib/tokenizer/test1_unquoted_attribute_at_end_of_tag_with_final_chara
     Character('o'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_plaintext_element_4756" {
-  let (tokens, _) = @html.tokenize("<plaintext>foobar")
+  let (tokens, errors) = @html.tokenize("<plaintext>foobar")
   @debug.assert_eq(tokens, [
     StartTag(name="plaintext", attrs=[], self_closing=false),
     Character('f'),
@@ -1336,29 +1584,38 @@ test "html5lib/tokenizer/test1_plaintext_element_4756" {
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test1_open_angled_bracket_in_unquoted_attribute_value_st_4757" {
-  let (tokens, _) = @html.tokenize("<a a=f<>")
+  let (tokens, errors) = @html.tokenize("<a a=f<>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "f<", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInUnquotedAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test2_doctype_without_name_4758" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE>")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE>")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=None, public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/test2_doctype_without_space_before_name_4759" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEhtml>")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEhtml>")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -1368,11 +1625,15 @@ test "html5lib/tokenizer/test2_doctype_without_space_before_name_4759" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/test2_incorrect_doctype_without_a_space_before_name_4760" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEfoo>")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEfoo>")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("foo"),
@@ -1382,11 +1643,15 @@ test "html5lib/tokenizer/test2_incorrect_doctype_without_a_space_before_name_476
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/test2_doctype_with_publicid_4761" {
-  let (tokens, _) = @html.tokenize(
+  let (tokens, errors) = @html.tokenize(
     "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML Transitional 4.01//EN\">",
   )
   @debug.assert_eq(tokens, [
@@ -1398,11 +1663,12 @@ test "html5lib/tokenizer/test2_doctype_with_publicid_4761" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test2_doctype_with_eof_after_public_4762" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE html PUBLIC")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE html PUBLIC")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -1412,11 +1678,15 @@ test "html5lib/tokenizer/test2_doctype_with_eof_after_public_4762" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 22)
 }
 
 ///|
 test "html5lib/tokenizer/test2_doctype_with_eof_after_public__4763" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE html PUBLIC '")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE html PUBLIC '")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -1426,11 +1696,15 @@ test "html5lib/tokenizer/test2_doctype_with_eof_after_public__4763" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 24)
 }
 
 ///|
 test "html5lib/tokenizer/test2_doctype_with_eof_after_public_x_4764" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE html PUBLIC 'x")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE html PUBLIC 'x")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -1440,11 +1714,15 @@ test "html5lib/tokenizer/test2_doctype_with_eof_after_public_x_4764" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 25)
 }
 
 ///|
 test "html5lib/tokenizer/test2_doctype_with_systemid_4765" {
-  let (tokens, _) = @html.tokenize(
+  let (tokens, errors) = @html.tokenize(
     "<!DOCTYPE html SYSTEM \"-//W3C//DTD HTML Transitional 4.01//EN\">",
   )
   @debug.assert_eq(tokens, [
@@ -1456,11 +1734,12 @@ test "html5lib/tokenizer/test2_doctype_with_systemid_4765" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test2_doctype_with_singlequoted_systemid_4766" {
-  let (tokens, _) = @html.tokenize(
+  let (tokens, errors) = @html.tokenize(
     "<!DOCTYPE html SYSTEM '-//W3C//DTD HTML Transitional 4.01//EN'>",
   )
   @debug.assert_eq(tokens, [
@@ -1472,11 +1751,12 @@ test "html5lib/tokenizer/test2_doctype_with_singlequoted_systemid_4766" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test2_doctype_with_publicid_and_systemid_4767" {
-  let (tokens, _) = @html.tokenize(
+  let (tokens, errors) = @html.tokenize(
     "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML Transitional 4.01//EN\" \"-//W3C//DTD HTML Transitional 4.01//EN\">",
   )
   @debug.assert_eq(tokens, [
@@ -1488,11 +1768,12 @@ test "html5lib/tokenizer/test2_doctype_with_publicid_and_systemid_4767" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test2_doctype_with_in_doublequoted_publicid_4768" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE html PUBLIC \">x")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE html PUBLIC \">x")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -1503,11 +1784,15 @@ test "html5lib/tokenizer/test2_doctype_with_in_doublequoted_publicid_4768" {
     Character('x'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is AbruptDoctypePublicIdentifier)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 24)
 }
 
 ///|
 test "html5lib/tokenizer/test2_doctype_with_in_singlequoted_publicid_4769" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE html PUBLIC '>x")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE html PUBLIC '>x")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -1518,11 +1803,15 @@ test "html5lib/tokenizer/test2_doctype_with_in_singlequoted_publicid_4769" {
     Character('x'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is AbruptDoctypePublicIdentifier)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 24)
 }
 
 ///|
 test "html5lib/tokenizer/test2_doctype_with_in_doublequoted_systemid_4770" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE html PUBLIC \"foo\" \">x")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE html PUBLIC \"foo\" \">x")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -1533,11 +1822,15 @@ test "html5lib/tokenizer/test2_doctype_with_in_doublequoted_systemid_4770" {
     Character('x'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is AbruptDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 30)
 }
 
 ///|
 test "html5lib/tokenizer/test2_doctype_with_in_singlequoted_systemid_4771" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE html PUBLIC 'foo' '>x")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE html PUBLIC 'foo' '>x")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -1548,11 +1841,15 @@ test "html5lib/tokenizer/test2_doctype_with_in_singlequoted_systemid_4771" {
     Character('x'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is AbruptDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 30)
 }
 
 ///|
 test "html5lib/tokenizer/test2_incomplete_doctype_4772" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE html ")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE html ")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -1562,89 +1859,122 @@ test "html5lib/tokenizer/test2_incomplete_doctype_4772" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 16)
 }
 
 ///|
 test "html5lib/tokenizer/test2_numeric_entity_representing_the_nul_character_4773" {
-  let (tokens, _) = @html.tokenize("&#0000;")
+  let (tokens, errors) = @html.tokenize("&#0000;")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NullCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test2_hexadecimal_entity_representing_the_nul_character_4774" {
-  let (tokens, _) = @html.tokenize("&#x0000;")
+  let (tokens, errors) = @html.tokenize("&#x0000;")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NullCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/test2_numeric_entity_representing_a_codepoint_after_1114_4775" {
-  let (tokens, _) = @html.tokenize("&#2225222;")
+  let (tokens, errors) = @html.tokenize("&#2225222;")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is CharacterReferenceOutsideUnicodeRange)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/test2_hexadecimal_entity_representing_a_codepoint_after__4776" {
-  let (tokens, _) = @html.tokenize("&#x1010FFFF;")
+  let (tokens, errors) = @html.tokenize("&#x1010FFFF;")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is CharacterReferenceOutsideUnicodeRange)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 13)
 }
 
 ///|
 test "html5lib/tokenizer/test2_hexadecimal_entity_pair_representing_a_surrogate_p_4777" {
-  let (tokens, _) = @html.tokenize("&#xD869;&#xDED6;")
+  let (tokens, errors) = @html.tokenize("&#xD869;&#xDED6;")
   @debug.assert_eq(tokens, [Character('�'), Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is SurrogateCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
+  assert_true(errors[1].code is SurrogateCharacterReference)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 17)
 }
 
 ///|
 test "html5lib/tokenizer/test2_hexadecimal_entity_with_mixed_uppercase_and_lowerc_4778" {
-  let (tokens, _) = @html.tokenize("&#xaBcD;")
+  let (tokens, errors) = @html.tokenize("&#xaBcD;")
   @debug.assert_eq(tokens, [Character('ꯍ'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test2_entity_without_a_name_4779" {
-  let (tokens, _) = @html.tokenize("&;")
+  let (tokens, errors) = @html.tokenize("&;")
   @debug.assert_eq(tokens, [Character('&'), Character(';'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test2_unescaped_ampersand_in_attribute_value_4780" {
-  let (tokens, _) = @html.tokenize("<h a='&'>")
+  let (tokens, errors) = @html.tokenize("<h a='&'>")
   @debug.assert_eq(tokens, [
     StartTag(name="h", attrs=[{ name: "a", value: "&", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test2_starttag_containing__4781" {
-  let (tokens, _) = @html.tokenize("<a<b>")
+  let (tokens, errors) = @html.tokenize("<a<b>")
   @debug.assert_eq(tokens, [
     StartTag(name="a<b", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test2_nonvoid_element_containing_trailing__4782" {
-  let (tokens, _) = @html.tokenize("<h/>")
+  let (tokens, errors) = @html.tokenize("<h/>")
   @debug.assert_eq(tokens, [
     StartTag(name="h", attrs=[], self_closing=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test2_void_element_with_permitted_slash_4783" {
-  let (tokens, _) = @html.tokenize("<br/>")
+  let (tokens, errors) = @html.tokenize("<br/>")
   @debug.assert_eq(tokens, [
     StartTag(name="br", attrs=[], self_closing=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test2_void_element_with_permitted_slash_with_attribute_4784" {
-  let (tokens, _) = @html.tokenize("<br foo='bar'/>")
+  let (tokens, errors) = @html.tokenize("<br foo='bar'/>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="br",
@@ -1653,56 +1983,72 @@ test "html5lib/tokenizer/test2_void_element_with_permitted_slash_with_attribute_
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test2_starttag_containing__4785" {
-  let (tokens, _) = @html.tokenize("<h/a='b'>")
+  let (tokens, errors) = @html.tokenize("<h/a='b'>")
   @debug.assert_eq(tokens, [
     StartTag(name="h", attrs=[{ name: "a", value: "b", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test2_doublequoted_attribute_value_4786" {
-  let (tokens, _) = @html.tokenize("<h a=\"b\">")
+  let (tokens, errors) = @html.tokenize("<h a=\"b\">")
   @debug.assert_eq(tokens, [
     StartTag(name="h", attrs=[{ name: "a", value: "b", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test2_unescaped__4787" {
-  let (tokens, _) = @html.tokenize("</")
+  let (tokens, errors) = @html.tokenize("</")
   @debug.assert_eq(tokens, [Character('<'), Character('/'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofBeforeTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test2_illegal_end_tag_name_4788" {
-  let (tokens, _) = @html.tokenize("</1>")
+  let (tokens, errors) = @html.tokenize("</1>")
   @debug.assert_eq(tokens, [Comment("1"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test2_simili_processing_instruction_4789" {
-  let (tokens, _) = @html.tokenize("<?namespace>")
+  let (tokens, errors) = @html.tokenize("<?namespace>")
   @debug.assert_eq(tokens, [
     ProcessingInstruction(target="namespace", data=""),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test2_a_bogus_comment_stops_at_even_if_preceded_by_two_d_4790" {
-  let (tokens, _) = @html.tokenize("<?foo-->")
+  let (tokens, errors) = @html.tokenize("<?foo-->")
   @debug.assert_eq(tokens, [ProcessingInstruction(target="foo--", data=""), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test2_unescaped__4791" {
-  let (tokens, _) = @html.tokenize("foo < bar")
+  let (tokens, errors) = @html.tokenize("foo < bar")
   @debug.assert_eq(tokens, [
     Character('f'),
     Character('o'),
@@ -1715,23 +2061,35 @@ test "html5lib/tokenizer/test2_unescaped__4791" {
     Character('r'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test2_null_byte_replacement_4792" {
-  let (tokens, _) = @html.tokenize("\u{00}")
+  let (tokens, errors) = @html.tokenize("\u{00}")
   @debug.assert_eq(tokens, [Character('\u{00}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test2_comment_with_dash_4793" {
-  let (tokens, _) = @html.tokenize("<!---x")
+  let (tokens, errors) = @html.tokenize("<!---x")
   @debug.assert_eq(tokens, [Comment("-x"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test2_entity_newline_4794" {
-  let (tokens, _) = @html.tokenize("\nx\n&gt;\n")
+  let (tokens, errors) = @html.tokenize("\nx\n&gt;\n")
   @debug.assert_eq(tokens, [
     Character('\n'),
     Character('x'),
@@ -1740,20 +2098,22 @@ test "html5lib/tokenizer/test2_entity_newline_4794" {
     Character('\n'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test2_start_tag_with_no_attributes_but_space_before_the__4795" {
-  let (tokens, _) = @html.tokenize("<h >")
+  let (tokens, errors) = @html.tokenize("<h >")
   @debug.assert_eq(tokens, [
     StartTag(name="h", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test2_empty_attribute_followed_by_uppercase_attribute_4796" {
-  let (tokens, _) = @html.tokenize("<h a B=''>")
+  let (tokens, errors) = @html.tokenize("<h a B=''>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
@@ -1762,11 +2122,12 @@ test "html5lib/tokenizer/test2_empty_attribute_followed_by_uppercase_attribute_4
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test2_doublequote_after_attribute_name_4797" {
-  let (tokens, _) = @html.tokenize("<h a \">")
+  let (tokens, errors) = @html.tokenize("<h a \">")
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
@@ -1775,11 +2136,15 @@ test "html5lib/tokenizer/test2_doublequote_after_attribute_name_4797" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test2_singlequote_after_attribute_name_4798" {
-  let (tokens, _) = @html.tokenize("<h a '>")
+  let (tokens, errors) = @html.tokenize("<h a '>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
@@ -1788,1362 +2153,2289 @@ test "html5lib/tokenizer/test2_singlequote_after_attribute_name_4798" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test2_empty_end_tag_with_following_characters_4799" {
-  let (tokens, _) = @html.tokenize("a</>bc")
+  let (tokens, errors) = @html.tokenize("a</>bc")
   @debug.assert_eq(tokens, [Character('a'), Character('b'), Character('c'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingEndTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test2_empty_end_tag_with_following_tag_4800" {
-  let (tokens, _) = @html.tokenize("a</><b>c")
+  let (tokens, errors) = @html.tokenize("a</><b>c")
   @debug.assert_eq(tokens, [
     Character('a'),
     StartTag(name="b", attrs=[], self_closing=false),
     Character('c'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingEndTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test2_empty_end_tag_with_following_comment_4801" {
-  let (tokens, _) = @html.tokenize("a</><!--b-->c")
+  let (tokens, errors) = @html.tokenize("a</><!--b-->c")
   @debug.assert_eq(tokens, [Character('a'), Comment("b"), Character('c'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingEndTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test2_empty_end_tag_with_following_end_tag_4802" {
-  let (tokens, _) = @html.tokenize("a</></b>c")
+  let (tokens, errors) = @html.tokenize("a</></b>c")
   @debug.assert_eq(tokens, [
     Character('a'),
     EndTag(name="b"),
     Character('c'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingEndTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4871" {
-  let (tokens, _) = @html.tokenize("<")
+  let (tokens, errors) = @html.tokenize("<")
   @debug.assert_eq(tokens, [Character('<'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofBeforeTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u0000_4872" {
-  let (tokens, _) = @html.tokenize("<\u{00}")
+  let (tokens, errors) = @html.tokenize("<\u{00}")
   @debug.assert_eq(tokens, [Character('<'), Character('\u{00}'), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
+  assert_true(errors[1].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u0009_4873" {
-  let (tokens, _) = @html.tokenize("<\t")
+  let (tokens, errors) = @html.tokenize("<\t")
   @debug.assert_eq(tokens, [Character('<'), Character('\t'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000a_4874" {
-  let (tokens, _) = @html.tokenize("<\n")
+  let (tokens, errors) = @html.tokenize("<\n")
   @debug.assert_eq(tokens, [Character('<'), Character('\n'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000b_4875" {
-  let (tokens, _) = @html.tokenize("<\u{0b}")
+  let (tokens, errors) = @html.tokenize("<\u{0b}")
   @debug.assert_eq(tokens, [Character('<'), Character('\u{0b}'), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
+  assert_true(errors[1].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000c_4876" {
-  let (tokens, _) = @html.tokenize("<\u{0c}")
+  let (tokens, errors) = @html.tokenize("<\u{0c}")
   @debug.assert_eq(tokens, [Character('<'), Character('\u{0c}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4877" {
-  let (tokens, _) = @html.tokenize("< ")
+  let (tokens, errors) = @html.tokenize("< ")
   @debug.assert_eq(tokens, [Character('<'), Character(' '), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4878" {
-  let (tokens, _) = @html.tokenize("<!")
+  let (tokens, errors) = @html.tokenize("<!")
   @debug.assert_eq(tokens, [Comment(""), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u0000_4879" {
-  let (tokens, _) = @html.tokenize("<!\u{00}")
+  let (tokens, errors) = @html.tokenize("<!\u{00}")
   @debug.assert_eq(tokens, [Comment("�"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
+  assert_true(errors[1].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u0009_4880" {
-  let (tokens, _) = @html.tokenize("<!\t")
+  let (tokens, errors) = @html.tokenize("<!\t")
   @debug.assert_eq(tokens, [Comment("\t"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000a_4881" {
-  let (tokens, _) = @html.tokenize("<!\n")
+  let (tokens, errors) = @html.tokenize("<!\n")
   @debug.assert_eq(tokens, [Comment("\n"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000b_4882" {
-  let (tokens, _) = @html.tokenize("<!\u{0b}")
+  let (tokens, errors) = @html.tokenize("<!\u{0b}")
   @debug.assert_eq(tokens, [Comment("\u{0b}"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
+  assert_true(errors[1].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000c_4883" {
-  let (tokens, _) = @html.tokenize("<!\u{0c}")
+  let (tokens, errors) = @html.tokenize("<!\u{0c}")
   @debug.assert_eq(tokens, [Comment("\u{0c}"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4884" {
-  let (tokens, _) = @html.tokenize("<! ")
+  let (tokens, errors) = @html.tokenize("<! ")
   @debug.assert_eq(tokens, [Comment(" "), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__u0000_4885" {
-  let (tokens, _) = @html.tokenize("<! \u{00}")
+  let (tokens, errors) = @html.tokenize("<! \u{00}")
   @debug.assert_eq(tokens, [Comment(" �"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
+  assert_true(errors[1].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4886" {
-  let (tokens, _) = @html.tokenize("<!!")
+  let (tokens, errors) = @html.tokenize("<!!")
   @debug.assert_eq(tokens, [Comment("!"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4887" {
-  let (tokens, _) = @html.tokenize("<!\"")
+  let (tokens, errors) = @html.tokenize("<!\"")
   @debug.assert_eq(tokens, [Comment("\""), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4888" {
-  let (tokens, _) = @html.tokenize("<!&")
+  let (tokens, errors) = @html.tokenize("<!&")
   @debug.assert_eq(tokens, [Comment("&"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4889" {
-  let (tokens, _) = @html.tokenize("<!'")
+  let (tokens, errors) = @html.tokenize("<!'")
   @debug.assert_eq(tokens, [Comment("'"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4890" {
-  let (tokens, _) = @html.tokenize("<!-")
+  let (tokens, errors) = @html.tokenize("<!-")
   @debug.assert_eq(tokens, [Comment("-"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4891" {
-  let (tokens, _) = @html.tokenize("<!--")
+  let (tokens, errors) = @html.tokenize("<!--")
   @debug.assert_eq(tokens, [Comment(""), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 5)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u0000_4892" {
-  let (tokens, _) = @html.tokenize("<!--\u{00}")
+  let (tokens, errors) = @html.tokenize("<!--\u{00}")
   @debug.assert_eq(tokens, [Comment("�"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 5)
+  assert_true(errors[1].code is EofInComment)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u0009_4893" {
-  let (tokens, _) = @html.tokenize("<!--\t")
+  let (tokens, errors) = @html.tokenize("<!--\t")
   @debug.assert_eq(tokens, [Comment("\t"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000a_4894" {
-  let (tokens, _) = @html.tokenize("<!--\n")
+  let (tokens, errors) = @html.tokenize("<!--\n")
   @debug.assert_eq(tokens, [Comment("\n"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 2)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000b_4895" {
-  let (tokens, _) = @html.tokenize("<!--\u{0b}")
+  let (tokens, errors) = @html.tokenize("<!--\u{0b}")
   @debug.assert_eq(tokens, [Comment("\u{0b}"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 5)
+  assert_true(errors[1].code is EofInComment)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000c_4896" {
-  let (tokens, _) = @html.tokenize("<!--\u{0c}")
+  let (tokens, errors) = @html.tokenize("<!--\u{0c}")
   @debug.assert_eq(tokens, [Comment("\u{0c}"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4897" {
-  let (tokens, _) = @html.tokenize("<!-- ")
+  let (tokens, errors) = @html.tokenize("<!-- ")
   @debug.assert_eq(tokens, [Comment(" "), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3__u0000_4898" {
-  let (tokens, _) = @html.tokenize("<!-- \u{00}")
+  let (tokens, errors) = @html.tokenize("<!-- \u{00}")
   @debug.assert_eq(tokens, [Comment(" �"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
+  assert_true(errors[1].code is EofInComment)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__u0009_4899" {
-  let (tokens, _) = @html.tokenize("<!-- \t")
+  let (tokens, errors) = @html.tokenize("<!-- \t")
   @debug.assert_eq(tokens, [Comment(" \t"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__u000a_4900" {
-  let (tokens, _) = @html.tokenize("<!-- \n")
+  let (tokens, errors) = @html.tokenize("<!-- \n")
   @debug.assert_eq(tokens, [Comment(" \n"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 2)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test3__u000b_4901" {
-  let (tokens, _) = @html.tokenize("<!-- \u{0b}")
+  let (tokens, errors) = @html.tokenize("<!-- \u{0b}")
   @debug.assert_eq(tokens, [Comment(" \u{0b}"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
+  assert_true(errors[1].code is EofInComment)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__u000c_4902" {
-  let (tokens, _) = @html.tokenize("<!-- \u{0c}")
+  let (tokens, errors) = @html.tokenize("<!-- \u{0c}")
   @debug.assert_eq(tokens, [Comment(" \u{0c}"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4903" {
-  let (tokens, _) = @html.tokenize("<!--  ")
+  let (tokens, errors) = @html.tokenize("<!--  ")
   @debug.assert_eq(tokens, [Comment("  "), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4904" {
-  let (tokens, _) = @html.tokenize("<!-- !")
+  let (tokens, errors) = @html.tokenize("<!-- !")
   @debug.assert_eq(tokens, [Comment(" !"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4905" {
-  let (tokens, _) = @html.tokenize("<!-- \"")
+  let (tokens, errors) = @html.tokenize("<!-- \"")
   @debug.assert_eq(tokens, [Comment(" \""), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4906" {
-  let (tokens, _) = @html.tokenize("<!-- &")
+  let (tokens, errors) = @html.tokenize("<!-- &")
   @debug.assert_eq(tokens, [Comment(" &"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4907" {
-  let (tokens, _) = @html.tokenize("<!-- '")
+  let (tokens, errors) = @html.tokenize("<!-- '")
   @debug.assert_eq(tokens, [Comment(" '"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4908" {
-  let (tokens, _) = @html.tokenize("<!-- ,")
+  let (tokens, errors) = @html.tokenize("<!-- ,")
   @debug.assert_eq(tokens, [Comment(" ,"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4909" {
-  let (tokens, _) = @html.tokenize("<!-- -")
+  let (tokens, errors) = @html.tokenize("<!-- -")
   @debug.assert_eq(tokens, [Comment(" "), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__u0000_4910" {
-  let (tokens, _) = @html.tokenize("<!-- -\u{00}")
+  let (tokens, errors) = @html.tokenize("<!-- -\u{00}")
   @debug.assert_eq(tokens, [Comment(" -�"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
+  assert_true(errors[1].code is EofInComment)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__u0009_4911" {
-  let (tokens, _) = @html.tokenize("<!-- -\t")
+  let (tokens, errors) = @html.tokenize("<!-- -\t")
   @debug.assert_eq(tokens, [Comment(" -\t"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__u000a_4912" {
-  let (tokens, _) = @html.tokenize("<!-- -\n")
+  let (tokens, errors) = @html.tokenize("<!-- -\n")
   @debug.assert_eq(tokens, [Comment(" -\n"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 2)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test3__u000b_4913" {
-  let (tokens, _) = @html.tokenize("<!-- -\u{0b}")
+  let (tokens, errors) = @html.tokenize("<!-- -\u{0b}")
   @debug.assert_eq(tokens, [Comment(" -\u{0b}"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
+  assert_true(errors[1].code is EofInComment)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__u000c_4914" {
-  let (tokens, _) = @html.tokenize("<!-- -\u{0c}")
+  let (tokens, errors) = @html.tokenize("<!-- -\u{0c}")
   @debug.assert_eq(tokens, [Comment(" -\u{0c}"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4915" {
-  let (tokens, _) = @html.tokenize("<!-- - ")
+  let (tokens, errors) = @html.tokenize("<!-- - ")
   @debug.assert_eq(tokens, [Comment(" - "), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4916" {
-  let (tokens, _) = @html.tokenize("<!-- -!")
+  let (tokens, errors) = @html.tokenize("<!-- -!")
   @debug.assert_eq(tokens, [Comment(" -!"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4917" {
-  let (tokens, _) = @html.tokenize("<!-- -\"")
+  let (tokens, errors) = @html.tokenize("<!-- -\"")
   @debug.assert_eq(tokens, [Comment(" -\""), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4918" {
-  let (tokens, _) = @html.tokenize("<!-- -&")
+  let (tokens, errors) = @html.tokenize("<!-- -&")
   @debug.assert_eq(tokens, [Comment(" -&"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4919" {
-  let (tokens, _) = @html.tokenize("<!-- -'")
+  let (tokens, errors) = @html.tokenize("<!-- -'")
   @debug.assert_eq(tokens, [Comment(" -'"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4920" {
-  let (tokens, _) = @html.tokenize("<!-- -,")
+  let (tokens, errors) = @html.tokenize("<!-- -,")
   @debug.assert_eq(tokens, [Comment(" -,"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4921" {
-  let (tokens, _) = @html.tokenize("<!-- --")
+  let (tokens, errors) = @html.tokenize("<!-- --")
   @debug.assert_eq(tokens, [Comment(" "), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4922" {
-  let (tokens, _) = @html.tokenize("<!-- -.")
+  let (tokens, errors) = @html.tokenize("<!-- -.")
   @debug.assert_eq(tokens, [Comment(" -."), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4923" {
-  let (tokens, _) = @html.tokenize("<!-- -/")
+  let (tokens, errors) = @html.tokenize("<!-- -/")
   @debug.assert_eq(tokens, [Comment(" -/"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__0_4924" {
-  let (tokens, _) = @html.tokenize("<!-- -0")
+  let (tokens, errors) = @html.tokenize("<!-- -0")
   @debug.assert_eq(tokens, [Comment(" -0"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__1_4925" {
-  let (tokens, _) = @html.tokenize("<!-- -1")
+  let (tokens, errors) = @html.tokenize("<!-- -1")
   @debug.assert_eq(tokens, [Comment(" -1"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__9_4926" {
-  let (tokens, _) = @html.tokenize("<!-- -9")
+  let (tokens, errors) = @html.tokenize("<!-- -9")
   @debug.assert_eq(tokens, [Comment(" -9"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4927" {
-  let (tokens, _) = @html.tokenize("<!-- -<")
+  let (tokens, errors) = @html.tokenize("<!-- -<")
   @debug.assert_eq(tokens, [Comment(" -<"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4928" {
-  let (tokens, _) = @html.tokenize("<!-- -=")
+  let (tokens, errors) = @html.tokenize("<!-- -=")
   @debug.assert_eq(tokens, [Comment(" -="), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4929" {
-  let (tokens, _) = @html.tokenize("<!-- ->")
+  let (tokens, errors) = @html.tokenize("<!-- ->")
   @debug.assert_eq(tokens, [Comment(" ->"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4930" {
-  let (tokens, _) = @html.tokenize("<!-- -?")
+  let (tokens, errors) = @html.tokenize("<!-- -?")
   @debug.assert_eq(tokens, [Comment(" -?"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4931" {
-  let (tokens, _) = @html.tokenize("<!-- -@")
+  let (tokens, errors) = @html.tokenize("<!-- -@")
   @debug.assert_eq(tokens, [Comment(" -@"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__a_4932" {
-  let (tokens, _) = @html.tokenize("<!-- -A")
+  let (tokens, errors) = @html.tokenize("<!-- -A")
   @debug.assert_eq(tokens, [Comment(" -A"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__b_4933" {
-  let (tokens, _) = @html.tokenize("<!-- -B")
+  let (tokens, errors) = @html.tokenize("<!-- -B")
   @debug.assert_eq(tokens, [Comment(" -B"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__y_4934" {
-  let (tokens, _) = @html.tokenize("<!-- -Y")
+  let (tokens, errors) = @html.tokenize("<!-- -Y")
   @debug.assert_eq(tokens, [Comment(" -Y"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__z_4935" {
-  let (tokens, _) = @html.tokenize("<!-- -Z")
+  let (tokens, errors) = @html.tokenize("<!-- -Z")
   @debug.assert_eq(tokens, [Comment(" -Z"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4936" {
-  let (tokens, _) = @html.tokenize("<!-- -`")
+  let (tokens, errors) = @html.tokenize("<!-- -`")
   @debug.assert_eq(tokens, [Comment(" -`"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__a_4937" {
-  let (tokens, _) = @html.tokenize("<!-- -a")
+  let (tokens, errors) = @html.tokenize("<!-- -a")
   @debug.assert_eq(tokens, [Comment(" -a"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__b_4938" {
-  let (tokens, _) = @html.tokenize("<!-- -b")
+  let (tokens, errors) = @html.tokenize("<!-- -b")
   @debug.assert_eq(tokens, [Comment(" -b"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__y_4939" {
-  let (tokens, _) = @html.tokenize("<!-- -y")
+  let (tokens, errors) = @html.tokenize("<!-- -y")
   @debug.assert_eq(tokens, [Comment(" -y"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__z_4940" {
-  let (tokens, _) = @html.tokenize("<!-- -z")
+  let (tokens, errors) = @html.tokenize("<!-- -z")
   @debug.assert_eq(tokens, [Comment(" -z"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4941" {
-  let (tokens, _) = @html.tokenize("<!-- -{")
+  let (tokens, errors) = @html.tokenize("<!-- -{")
   @debug.assert_eq(tokens, [Comment(" -{"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__udbc0udc00_4942" {
-  let (tokens, _) = @html.tokenize("<!-- -􀀀")
+  let (tokens, errors) = @html.tokenize("<!-- -􀀀")
   @debug.assert_eq(tokens, [Comment(" -􀀀"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4943" {
-  let (tokens, _) = @html.tokenize("<!-- .")
+  let (tokens, errors) = @html.tokenize("<!-- .")
   @debug.assert_eq(tokens, [Comment(" ."), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4944" {
-  let (tokens, _) = @html.tokenize("<!-- /")
+  let (tokens, errors) = @html.tokenize("<!-- /")
   @debug.assert_eq(tokens, [Comment(" /"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__0_4945" {
-  let (tokens, _) = @html.tokenize("<!-- 0")
+  let (tokens, errors) = @html.tokenize("<!-- 0")
   @debug.assert_eq(tokens, [Comment(" 0"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__1_4946" {
-  let (tokens, _) = @html.tokenize("<!-- 1")
+  let (tokens, errors) = @html.tokenize("<!-- 1")
   @debug.assert_eq(tokens, [Comment(" 1"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__9_4947" {
-  let (tokens, _) = @html.tokenize("<!-- 9")
+  let (tokens, errors) = @html.tokenize("<!-- 9")
   @debug.assert_eq(tokens, [Comment(" 9"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4948" {
-  let (tokens, _) = @html.tokenize("<!-- <")
+  let (tokens, errors) = @html.tokenize("<!-- <")
   @debug.assert_eq(tokens, [Comment(" <"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4949" {
-  let (tokens, _) = @html.tokenize("<!-- =")
+  let (tokens, errors) = @html.tokenize("<!-- =")
   @debug.assert_eq(tokens, [Comment(" ="), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4950" {
-  let (tokens, _) = @html.tokenize("<!-- >")
+  let (tokens, errors) = @html.tokenize("<!-- >")
   @debug.assert_eq(tokens, [Comment(" >"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4951" {
-  let (tokens, _) = @html.tokenize("<!-- ?")
+  let (tokens, errors) = @html.tokenize("<!-- ?")
   @debug.assert_eq(tokens, [Comment(" ?"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4952" {
-  let (tokens, _) = @html.tokenize("<!-- @")
+  let (tokens, errors) = @html.tokenize("<!-- @")
   @debug.assert_eq(tokens, [Comment(" @"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__a_4953" {
-  let (tokens, _) = @html.tokenize("<!-- A")
+  let (tokens, errors) = @html.tokenize("<!-- A")
   @debug.assert_eq(tokens, [Comment(" A"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__b_4954" {
-  let (tokens, _) = @html.tokenize("<!-- B")
+  let (tokens, errors) = @html.tokenize("<!-- B")
   @debug.assert_eq(tokens, [Comment(" B"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__y_4955" {
-  let (tokens, _) = @html.tokenize("<!-- Y")
+  let (tokens, errors) = @html.tokenize("<!-- Y")
   @debug.assert_eq(tokens, [Comment(" Y"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__z_4956" {
-  let (tokens, _) = @html.tokenize("<!-- Z")
+  let (tokens, errors) = @html.tokenize("<!-- Z")
   @debug.assert_eq(tokens, [Comment(" Z"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4957" {
-  let (tokens, _) = @html.tokenize("<!-- `")
+  let (tokens, errors) = @html.tokenize("<!-- `")
   @debug.assert_eq(tokens, [Comment(" `"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__a_4958" {
-  let (tokens, _) = @html.tokenize("<!-- a")
+  let (tokens, errors) = @html.tokenize("<!-- a")
   @debug.assert_eq(tokens, [Comment(" a"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__b_4959" {
-  let (tokens, _) = @html.tokenize("<!-- b")
+  let (tokens, errors) = @html.tokenize("<!-- b")
   @debug.assert_eq(tokens, [Comment(" b"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__y_4960" {
-  let (tokens, _) = @html.tokenize("<!-- y")
+  let (tokens, errors) = @html.tokenize("<!-- y")
   @debug.assert_eq(tokens, [Comment(" y"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__z_4961" {
-  let (tokens, _) = @html.tokenize("<!-- z")
+  let (tokens, errors) = @html.tokenize("<!-- z")
   @debug.assert_eq(tokens, [Comment(" z"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4962" {
-  let (tokens, _) = @html.tokenize("<!-- {")
+  let (tokens, errors) = @html.tokenize("<!-- {")
   @debug.assert_eq(tokens, [Comment(" {"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__udbc0udc00_4963" {
-  let (tokens, _) = @html.tokenize("<!-- 􀀀")
+  let (tokens, errors) = @html.tokenize("<!-- 􀀀")
   @debug.assert_eq(tokens, [Comment(" 􀀀"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4964" {
-  let (tokens, _) = @html.tokenize("<!--!")
+  let (tokens, errors) = @html.tokenize("<!--!")
   @debug.assert_eq(tokens, [Comment("!"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4965" {
-  let (tokens, _) = @html.tokenize("<!--\"")
+  let (tokens, errors) = @html.tokenize("<!--\"")
   @debug.assert_eq(tokens, [Comment("\""), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4966" {
-  let (tokens, _) = @html.tokenize("<!--&")
+  let (tokens, errors) = @html.tokenize("<!--&")
   @debug.assert_eq(tokens, [Comment("&"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4967" {
-  let (tokens, _) = @html.tokenize("<!--'")
+  let (tokens, errors) = @html.tokenize("<!--'")
   @debug.assert_eq(tokens, [Comment("'"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4968" {
-  let (tokens, _) = @html.tokenize("<!--,")
+  let (tokens, errors) = @html.tokenize("<!--,")
   @debug.assert_eq(tokens, [Comment(","), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4969" {
-  let (tokens, _) = @html.tokenize("<!---")
+  let (tokens, errors) = @html.tokenize("<!---")
   @debug.assert_eq(tokens, [Comment(""), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u0000_4970" {
-  let (tokens, _) = @html.tokenize("<!---\u{00}")
+  let (tokens, errors) = @html.tokenize("<!---\u{00}")
   @debug.assert_eq(tokens, [Comment("-�"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
+  assert_true(errors[1].code is EofInComment)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u0009_4971" {
-  let (tokens, _) = @html.tokenize("<!---\t")
+  let (tokens, errors) = @html.tokenize("<!---\t")
   @debug.assert_eq(tokens, [Comment("-\t"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000a_4972" {
-  let (tokens, _) = @html.tokenize("<!---\n")
+  let (tokens, errors) = @html.tokenize("<!---\n")
   @debug.assert_eq(tokens, [Comment("-\n"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 2)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000b_4973" {
-  let (tokens, _) = @html.tokenize("<!---\u{0b}")
+  let (tokens, errors) = @html.tokenize("<!---\u{0b}")
   @debug.assert_eq(tokens, [Comment("-\u{0b}"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
+  assert_true(errors[1].code is EofInComment)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000c_4974" {
-  let (tokens, _) = @html.tokenize("<!---\u{0c}")
+  let (tokens, errors) = @html.tokenize("<!---\u{0c}")
   @debug.assert_eq(tokens, [Comment("-\u{0c}"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4975" {
-  let (tokens, _) = @html.tokenize("<!--- ")
+  let (tokens, errors) = @html.tokenize("<!--- ")
   @debug.assert_eq(tokens, [Comment("- "), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4976" {
-  let (tokens, _) = @html.tokenize("<!---!")
+  let (tokens, errors) = @html.tokenize("<!---!")
   @debug.assert_eq(tokens, [Comment("-!"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4977" {
-  let (tokens, _) = @html.tokenize("<!---\"")
+  let (tokens, errors) = @html.tokenize("<!---\"")
   @debug.assert_eq(tokens, [Comment("-\""), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4978" {
-  let (tokens, _) = @html.tokenize("<!---&")
+  let (tokens, errors) = @html.tokenize("<!---&")
   @debug.assert_eq(tokens, [Comment("-&"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4979" {
-  let (tokens, _) = @html.tokenize("<!---'")
+  let (tokens, errors) = @html.tokenize("<!---'")
   @debug.assert_eq(tokens, [Comment("-'"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4980" {
-  let (tokens, _) = @html.tokenize("<!---,")
+  let (tokens, errors) = @html.tokenize("<!---,")
   @debug.assert_eq(tokens, [Comment("-,"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4981" {
-  let (tokens, _) = @html.tokenize("<!----")
+  let (tokens, errors) = @html.tokenize("<!----")
   @debug.assert_eq(tokens, [Comment(""), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u0000_4982" {
-  let (tokens, _) = @html.tokenize("<!----\u{00}")
+  let (tokens, errors) = @html.tokenize("<!----\u{00}")
   @debug.assert_eq(tokens, [Comment("--�"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
+  assert_true(errors[1].code is EofInComment)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u0009_4983" {
-  let (tokens, _) = @html.tokenize("<!----\t")
+  let (tokens, errors) = @html.tokenize("<!----\t")
   @debug.assert_eq(tokens, [Comment("--\t"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000a_4984" {
-  let (tokens, _) = @html.tokenize("<!----\n")
+  let (tokens, errors) = @html.tokenize("<!----\n")
   @debug.assert_eq(tokens, [Comment("--\n"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 2)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000b_4985" {
-  let (tokens, _) = @html.tokenize("<!----\u{0b}")
+  let (tokens, errors) = @html.tokenize("<!----\u{0b}")
   @debug.assert_eq(tokens, [Comment("--\u{0b}"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
+  assert_true(errors[1].code is EofInComment)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000c_4986" {
-  let (tokens, _) = @html.tokenize("<!----\u{0c}")
+  let (tokens, errors) = @html.tokenize("<!----\u{0c}")
   @debug.assert_eq(tokens, [Comment("--\u{0c}"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4987" {
-  let (tokens, _) = @html.tokenize("<!---- ")
+  let (tokens, errors) = @html.tokenize("<!---- ")
   @debug.assert_eq(tokens, [Comment("-- "), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4988" {
-  let (tokens, _) = @html.tokenize("<!---- -")
+  let (tokens, errors) = @html.tokenize("<!---- -")
   @debug.assert_eq(tokens, [Comment("-- "), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4989" {
-  let (tokens, _) = @html.tokenize("<!---- --")
+  let (tokens, errors) = @html.tokenize("<!---- --")
   @debug.assert_eq(tokens, [Comment("-- "), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4990" {
-  let (tokens, _) = @html.tokenize("<!---- -->")
+  let (tokens, errors) = @html.tokenize("<!---- -->")
   @debug.assert_eq(tokens, [Comment("-- "), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4991" {
-  let (tokens, _) = @html.tokenize("<!----  -->")
+  let (tokens, errors) = @html.tokenize("<!----  -->")
   @debug.assert_eq(tokens, [Comment("--  "), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3__a_4992" {
-  let (tokens, _) = @html.tokenize("<!---- a-->")
+  let (tokens, errors) = @html.tokenize("<!---- a-->")
   @debug.assert_eq(tokens, [Comment("-- a"), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4993" {
-  let (tokens, _) = @html.tokenize("<!----!")
+  let (tokens, errors) = @html.tokenize("<!----!")
   @debug.assert_eq(tokens, [Comment(""), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__4994" {
-  let (tokens, _) = @html.tokenize("<!----!>")
+  let (tokens, errors) = @html.tokenize("<!----!>")
   @debug.assert_eq(tokens, [Comment(""), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyClosedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3___4995" {
-  let (tokens, _) = @html.tokenize("<!----! >")
+  let (tokens, errors) = @html.tokenize("<!----! >")
   @debug.assert_eq(tokens, [Comment("--! >"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/test3_lf_4996" {
-  let (tokens, _) = @html.tokenize("<!----!\n>")
+  let (tokens, errors) = @html.tokenize("<!----!\n>")
   @debug.assert_eq(tokens, [Comment("--!\n>"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 2)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3_cr_4997" {
-  let (tokens, _) = @html.tokenize("<!----!\r>")
+  let (tokens, errors) = @html.tokenize("<!----!\r>")
   @debug.assert_eq(tokens, [Comment("--!\n>"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 2)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3_crlf_4998" {
-  let (tokens, _) = @html.tokenize("<!----!\r\n>")
+  let (tokens, errors) = @html.tokenize("<!----!\r\n>")
   @debug.assert_eq(tokens, [Comment("--!\n>"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 2)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_4999" {
-  let (tokens, _) = @html.tokenize("<!----!a")
+  let (tokens, errors) = @html.tokenize("<!----!a")
   @debug.assert_eq(tokens, [Comment("--!a"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_5000" {
-  let (tokens, _) = @html.tokenize("<!----!a-")
+  let (tokens, errors) = @html.tokenize("<!----!a-")
   @debug.assert_eq(tokens, [Comment("--!a"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_5001" {
-  let (tokens, _) = @html.tokenize("<!----!a--")
+  let (tokens, errors) = @html.tokenize("<!----!a--")
   @debug.assert_eq(tokens, [Comment("--!a"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_5002" {
-  let (tokens, _) = @html.tokenize("<!----!a-->")
+  let (tokens, errors) = @html.tokenize("<!----!a-->")
   @debug.assert_eq(tokens, [Comment("--!a"), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5003" {
-  let (tokens, _) = @html.tokenize("<!----!-")
+  let (tokens, errors) = @html.tokenize("<!----!-")
   @debug.assert_eq(tokens, [Comment("--!"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5004" {
-  let (tokens, _) = @html.tokenize("<!----!--")
+  let (tokens, errors) = @html.tokenize("<!----!--")
   @debug.assert_eq(tokens, [Comment("--!"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5005" {
-  let (tokens, _) = @html.tokenize("<!----!-->")
+  let (tokens, errors) = @html.tokenize("<!----!-->")
   @debug.assert_eq(tokens, [Comment("--!"), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5006" {
-  let (tokens, _) = @html.tokenize("<!----\"")
+  let (tokens, errors) = @html.tokenize("<!----\"")
   @debug.assert_eq(tokens, [Comment("--\""), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5007" {
-  let (tokens, _) = @html.tokenize("<!----&")
+  let (tokens, errors) = @html.tokenize("<!----&")
   @debug.assert_eq(tokens, [Comment("--&"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5008" {
-  let (tokens, _) = @html.tokenize("<!----'")
+  let (tokens, errors) = @html.tokenize("<!----'")
   @debug.assert_eq(tokens, [Comment("--'"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5009" {
-  let (tokens, _) = @html.tokenize("<!----,")
+  let (tokens, errors) = @html.tokenize("<!----,")
   @debug.assert_eq(tokens, [Comment("--,"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5010" {
-  let (tokens, _) = @html.tokenize("<!-----")
+  let (tokens, errors) = @html.tokenize("<!-----")
   @debug.assert_eq(tokens, [Comment("-"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5011" {
-  let (tokens, _) = @html.tokenize("<!----.")
+  let (tokens, errors) = @html.tokenize("<!----.")
   @debug.assert_eq(tokens, [Comment("--."), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5012" {
-  let (tokens, _) = @html.tokenize("<!----/")
+  let (tokens, errors) = @html.tokenize("<!----/")
   @debug.assert_eq(tokens, [Comment("--/"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_0_5013" {
-  let (tokens, _) = @html.tokenize("<!----0")
+  let (tokens, errors) = @html.tokenize("<!----0")
   @debug.assert_eq(tokens, [Comment("--0"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_1_5014" {
-  let (tokens, _) = @html.tokenize("<!----1")
+  let (tokens, errors) = @html.tokenize("<!----1")
   @debug.assert_eq(tokens, [Comment("--1"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_9_5015" {
-  let (tokens, _) = @html.tokenize("<!----9")
+  let (tokens, errors) = @html.tokenize("<!----9")
   @debug.assert_eq(tokens, [Comment("--9"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5016" {
-  let (tokens, _) = @html.tokenize("<!----<")
+  let (tokens, errors) = @html.tokenize("<!----<")
   @debug.assert_eq(tokens, [Comment("--<"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5017" {
-  let (tokens, _) = @html.tokenize("<!----=")
+  let (tokens, errors) = @html.tokenize("<!----=")
   @debug.assert_eq(tokens, [Comment("--="), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5018" {
-  let (tokens, _) = @html.tokenize("<!---->")
+  let (tokens, errors) = @html.tokenize("<!---->")
   @debug.assert_eq(tokens, [Comment(""), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5019" {
-  let (tokens, _) = @html.tokenize("<!----?")
+  let (tokens, errors) = @html.tokenize("<!----?")
   @debug.assert_eq(tokens, [Comment("--?"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5020" {
-  let (tokens, _) = @html.tokenize("<!----@")
+  let (tokens, errors) = @html.tokenize("<!----@")
   @debug.assert_eq(tokens, [Comment("--@"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_5021" {
-  let (tokens, _) = @html.tokenize("<!----A")
+  let (tokens, errors) = @html.tokenize("<!----A")
   @debug.assert_eq(tokens, [Comment("--A"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_b_5022" {
-  let (tokens, _) = @html.tokenize("<!----B")
+  let (tokens, errors) = @html.tokenize("<!----B")
   @debug.assert_eq(tokens, [Comment("--B"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_y_5023" {
-  let (tokens, _) = @html.tokenize("<!----Y")
+  let (tokens, errors) = @html.tokenize("<!----Y")
   @debug.assert_eq(tokens, [Comment("--Y"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_z_5024" {
-  let (tokens, _) = @html.tokenize("<!----Z")
+  let (tokens, errors) = @html.tokenize("<!----Z")
   @debug.assert_eq(tokens, [Comment("--Z"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5025" {
-  let (tokens, _) = @html.tokenize("<!----`")
+  let (tokens, errors) = @html.tokenize("<!----`")
   @debug.assert_eq(tokens, [Comment("--`"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_5026" {
-  let (tokens, _) = @html.tokenize("<!----a")
+  let (tokens, errors) = @html.tokenize("<!----a")
   @debug.assert_eq(tokens, [Comment("--a"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_b_5027" {
-  let (tokens, _) = @html.tokenize("<!----b")
+  let (tokens, errors) = @html.tokenize("<!----b")
   @debug.assert_eq(tokens, [Comment("--b"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_y_5028" {
-  let (tokens, _) = @html.tokenize("<!----y")
+  let (tokens, errors) = @html.tokenize("<!----y")
   @debug.assert_eq(tokens, [Comment("--y"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_z_5029" {
-  let (tokens, _) = @html.tokenize("<!----z")
+  let (tokens, errors) = @html.tokenize("<!----z")
   @debug.assert_eq(tokens, [Comment("--z"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5030" {
-  let (tokens, _) = @html.tokenize("<!----{")
+  let (tokens, errors) = @html.tokenize("<!----{")
   @debug.assert_eq(tokens, [Comment("--{"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_udbc0udc00_5031" {
-  let (tokens, _) = @html.tokenize("<!----􀀀")
+  let (tokens, errors) = @html.tokenize("<!----􀀀")
   @debug.assert_eq(tokens, [Comment("--􀀀"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5032" {
-  let (tokens, _) = @html.tokenize("<!---.")
+  let (tokens, errors) = @html.tokenize("<!---.")
   @debug.assert_eq(tokens, [Comment("-."), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5033" {
-  let (tokens, _) = @html.tokenize("<!---/")
+  let (tokens, errors) = @html.tokenize("<!---/")
   @debug.assert_eq(tokens, [Comment("-/"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_0_5034" {
-  let (tokens, _) = @html.tokenize("<!---0")
+  let (tokens, errors) = @html.tokenize("<!---0")
   @debug.assert_eq(tokens, [Comment("-0"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_1_5035" {
-  let (tokens, _) = @html.tokenize("<!---1")
+  let (tokens, errors) = @html.tokenize("<!---1")
   @debug.assert_eq(tokens, [Comment("-1"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_9_5036" {
-  let (tokens, _) = @html.tokenize("<!---9")
+  let (tokens, errors) = @html.tokenize("<!---9")
   @debug.assert_eq(tokens, [Comment("-9"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5037" {
-  let (tokens, _) = @html.tokenize("<!---<")
+  let (tokens, errors) = @html.tokenize("<!---<")
   @debug.assert_eq(tokens, [Comment("-<"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5038" {
-  let (tokens, _) = @html.tokenize("<!---=")
+  let (tokens, errors) = @html.tokenize("<!---=")
   @debug.assert_eq(tokens, [Comment("-="), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5039" {
-  let (tokens, _) = @html.tokenize("<!---?")
+  let (tokens, errors) = @html.tokenize("<!---?")
   @debug.assert_eq(tokens, [Comment("-?"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5040" {
-  let (tokens, _) = @html.tokenize("<!---@")
+  let (tokens, errors) = @html.tokenize("<!---@")
   @debug.assert_eq(tokens, [Comment("-@"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_5041" {
-  let (tokens, _) = @html.tokenize("<!---A")
+  let (tokens, errors) = @html.tokenize("<!---A")
   @debug.assert_eq(tokens, [Comment("-A"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_b_5042" {
-  let (tokens, _) = @html.tokenize("<!---B")
+  let (tokens, errors) = @html.tokenize("<!---B")
   @debug.assert_eq(tokens, [Comment("-B"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_y_5043" {
-  let (tokens, _) = @html.tokenize("<!---Y")
+  let (tokens, errors) = @html.tokenize("<!---Y")
   @debug.assert_eq(tokens, [Comment("-Y"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_z_5044" {
-  let (tokens, _) = @html.tokenize("<!---Z")
+  let (tokens, errors) = @html.tokenize("<!---Z")
   @debug.assert_eq(tokens, [Comment("-Z"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5045" {
-  let (tokens, _) = @html.tokenize("<!---`")
+  let (tokens, errors) = @html.tokenize("<!---`")
   @debug.assert_eq(tokens, [Comment("-`"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_5046" {
-  let (tokens, _) = @html.tokenize("<!---a")
+  let (tokens, errors) = @html.tokenize("<!---a")
   @debug.assert_eq(tokens, [Comment("-a"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_b_5047" {
-  let (tokens, _) = @html.tokenize("<!---b")
+  let (tokens, errors) = @html.tokenize("<!---b")
   @debug.assert_eq(tokens, [Comment("-b"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_y_5048" {
-  let (tokens, _) = @html.tokenize("<!---y")
+  let (tokens, errors) = @html.tokenize("<!---y")
   @debug.assert_eq(tokens, [Comment("-y"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_z_5049" {
-  let (tokens, _) = @html.tokenize("<!---z")
+  let (tokens, errors) = @html.tokenize("<!---z")
   @debug.assert_eq(tokens, [Comment("-z"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5050" {
-  let (tokens, _) = @html.tokenize("<!---{")
+  let (tokens, errors) = @html.tokenize("<!---{")
   @debug.assert_eq(tokens, [Comment("-{"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_udbc0udc00_5051" {
-  let (tokens, _) = @html.tokenize("<!---􀀀")
+  let (tokens, errors) = @html.tokenize("<!---􀀀")
   @debug.assert_eq(tokens, [Comment("-􀀀"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5052" {
-  let (tokens, _) = @html.tokenize("<!--.")
+  let (tokens, errors) = @html.tokenize("<!--.")
   @debug.assert_eq(tokens, [Comment("."), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5053" {
-  let (tokens, _) = @html.tokenize("<!--/")
+  let (tokens, errors) = @html.tokenize("<!--/")
   @debug.assert_eq(tokens, [Comment("/"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_0_5054" {
-  let (tokens, _) = @html.tokenize("<!--0")
+  let (tokens, errors) = @html.tokenize("<!--0")
   @debug.assert_eq(tokens, [Comment("0"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_1_5055" {
-  let (tokens, _) = @html.tokenize("<!--1")
+  let (tokens, errors) = @html.tokenize("<!--1")
   @debug.assert_eq(tokens, [Comment("1"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_9_5056" {
-  let (tokens, _) = @html.tokenize("<!--9")
+  let (tokens, errors) = @html.tokenize("<!--9")
   @debug.assert_eq(tokens, [Comment("9"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5057" {
-  let (tokens, _) = @html.tokenize("<!--<")
+  let (tokens, errors) = @html.tokenize("<!--<")
   @debug.assert_eq(tokens, [Comment("<"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5058" {
-  let (tokens, _) = @html.tokenize("<!--=")
+  let (tokens, errors) = @html.tokenize("<!--=")
   @debug.assert_eq(tokens, [Comment("="), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5059" {
-  let (tokens, _) = @html.tokenize("<!--?")
+  let (tokens, errors) = @html.tokenize("<!--?")
   @debug.assert_eq(tokens, [Comment("?"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5060" {
-  let (tokens, _) = @html.tokenize("<!--@")
+  let (tokens, errors) = @html.tokenize("<!--@")
   @debug.assert_eq(tokens, [Comment("@"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_5061" {
-  let (tokens, _) = @html.tokenize("<!--A")
+  let (tokens, errors) = @html.tokenize("<!--A")
   @debug.assert_eq(tokens, [Comment("A"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_b_5062" {
-  let (tokens, _) = @html.tokenize("<!--B")
+  let (tokens, errors) = @html.tokenize("<!--B")
   @debug.assert_eq(tokens, [Comment("B"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_y_5063" {
-  let (tokens, _) = @html.tokenize("<!--Y")
+  let (tokens, errors) = @html.tokenize("<!--Y")
   @debug.assert_eq(tokens, [Comment("Y"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_z_5064" {
-  let (tokens, _) = @html.tokenize("<!--Z")
+  let (tokens, errors) = @html.tokenize("<!--Z")
   @debug.assert_eq(tokens, [Comment("Z"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5065" {
-  let (tokens, _) = @html.tokenize("<!--`")
+  let (tokens, errors) = @html.tokenize("<!--`")
   @debug.assert_eq(tokens, [Comment("`"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_5066" {
-  let (tokens, _) = @html.tokenize("<!--a")
+  let (tokens, errors) = @html.tokenize("<!--a")
   @debug.assert_eq(tokens, [Comment("a"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_b_5067" {
-  let (tokens, _) = @html.tokenize("<!--b")
+  let (tokens, errors) = @html.tokenize("<!--b")
   @debug.assert_eq(tokens, [Comment("b"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_y_5068" {
-  let (tokens, _) = @html.tokenize("<!--y")
+  let (tokens, errors) = @html.tokenize("<!--y")
   @debug.assert_eq(tokens, [Comment("y"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_z_5069" {
-  let (tokens, _) = @html.tokenize("<!--z")
+  let (tokens, errors) = @html.tokenize("<!--z")
   @debug.assert_eq(tokens, [Comment("z"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5070" {
-  let (tokens, _) = @html.tokenize("<!--{")
+  let (tokens, errors) = @html.tokenize("<!--{")
   @debug.assert_eq(tokens, [Comment("{"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_udbc0udc00_5071" {
-  let (tokens, _) = @html.tokenize("<!--􀀀")
+  let (tokens, errors) = @html.tokenize("<!--􀀀")
   @debug.assert_eq(tokens, [Comment("􀀀"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5072" {
-  let (tokens, _) = @html.tokenize("<!/")
+  let (tokens, errors) = @html.tokenize("<!/")
   @debug.assert_eq(tokens, [Comment("/"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_0_5073" {
-  let (tokens, _) = @html.tokenize("<!0")
+  let (tokens, errors) = @html.tokenize("<!0")
   @debug.assert_eq(tokens, [Comment("0"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_1_5074" {
-  let (tokens, _) = @html.tokenize("<!1")
+  let (tokens, errors) = @html.tokenize("<!1")
   @debug.assert_eq(tokens, [Comment("1"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_9_5075" {
-  let (tokens, _) = @html.tokenize("<!9")
+  let (tokens, errors) = @html.tokenize("<!9")
   @debug.assert_eq(tokens, [Comment("9"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5076" {
-  let (tokens, _) = @html.tokenize("<!<")
+  let (tokens, errors) = @html.tokenize("<!<")
   @debug.assert_eq(tokens, [Comment("<"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5077" {
-  let (tokens, _) = @html.tokenize("<!=")
+  let (tokens, errors) = @html.tokenize("<!=")
   @debug.assert_eq(tokens, [Comment("="), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5078" {
-  let (tokens, _) = @html.tokenize("<!>")
+  let (tokens, errors) = @html.tokenize("<!>")
   @debug.assert_eq(tokens, [Comment(""), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5079" {
-  let (tokens, _) = @html.tokenize("<!?")
+  let (tokens, errors) = @html.tokenize("<!?")
   @debug.assert_eq(tokens, [Comment("?"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5080" {
-  let (tokens, _) = @html.tokenize("<!@")
+  let (tokens, errors) = @html.tokenize("<!@")
   @debug.assert_eq(tokens, [Comment("@"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_5081" {
-  let (tokens, _) = @html.tokenize("<!A")
+  let (tokens, errors) = @html.tokenize("<!A")
   @debug.assert_eq(tokens, [Comment("A"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_b_5082" {
-  let (tokens, _) = @html.tokenize("<!B")
+  let (tokens, errors) = @html.tokenize("<!B")
   @debug.assert_eq(tokens, [Comment("B"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_5083" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=None, public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypeu0000_5084" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE\u{00}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE\u{00}")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("�"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 10)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypeu0008_5085" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE\b")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE\b")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("\b"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 10)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypeu0009_5086" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE\t")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE\t")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=None, public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypeu000a_5087" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE\n")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE\n")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=None, public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 2)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypeu000b_5088" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE\u{0b}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE\u{0b}")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("\u{0b}"),
@@ -3153,29 +4445,47 @@ test "html5lib/tokenizer/test3_doctypeu000b_5088" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 10)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypeu000c_5089" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE\u{0c}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE\u{0c}")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=None, public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypeu000d_5090" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE\r")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE\r")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=None, public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 2)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypeu001f_5091" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE\u{1f}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE\u{1f}")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("\u{1f}"),
@@ -3185,56 +4495,92 @@ test "html5lib/tokenizer/test3_doctypeu001f_5091" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 10)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype__5092" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE ")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE ")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=None, public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_u0000_5093" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE \u{00}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE \u{00}")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("�"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 11)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_u0008_5094" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE \b")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE \b")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("\b"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 11)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_u0009_5095" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE \t")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE \t")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=None, public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_u000a_5096" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE \n")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE \n")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=None, public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 2)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_u000b_5097" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE \u{0b}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE \u{0b}")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("\u{0b}"),
@@ -3244,29 +4590,44 @@ test "html5lib/tokenizer/test3_doctype_u000b_5097" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 11)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_u000c_5098" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE \u{0c}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE \u{0c}")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=None, public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_u000d_5099" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE \r")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE \r")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=None, public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 2)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_u001f_5100" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE \u{1f}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE \u{1f}")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("\u{1f}"),
@@ -3276,209 +4637,304 @@ test "html5lib/tokenizer/test3_doctype_u001f_5100" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 11)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype__5101" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE  ")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE  ")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=None, public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype__5102" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE !")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE !")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("!"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype__5103" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE \"")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE \"")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("\""), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype__5104" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE &")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE &")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("&"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype__5105" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE '")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE '")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("'"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype__5106" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE -")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE -")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("-"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype__5107" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE /")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE /")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("/"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_0_5108" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE 0")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE 0")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("0"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_1_5109" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE 1")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE 1")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("1"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_9_5110" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE 9")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE 9")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("9"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype__5111" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE <")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE <")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("<"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype__5112" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE =")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE =")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("="), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype__5113" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE >")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE >")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=None, public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype__5114" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE ?")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE ?")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("?"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype__5115" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE @")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE @")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("@"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_a_5116" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE A")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE A")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_b_5117" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE B")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE B")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("b"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_y_5118" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE Y")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE Y")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("y"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_z_5119" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE Z")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE Z")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("z"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype__5120" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE [")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE [")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("["), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype__5121" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE `")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE `")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("`"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_a_5122" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE a")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE a")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_au0000_5123" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE a\u{00}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE a\u{00}")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a�"),
@@ -3488,38 +4944,60 @@ test "html5lib/tokenizer/test3_doctype_au0000_5123" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 13)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_au0008_5124" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE a\b")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE a\b")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a\b"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 13)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_au0009_5125" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE a\t")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE a\t")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 13)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_au000a_5126" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE a\n")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE a\n")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 2)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_au000b_5127" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE a\u{0b}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE a\u{0b}")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a\u{0b}"),
@@ -3529,29 +5007,44 @@ test "html5lib/tokenizer/test3_doctype_au000b_5127" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 13)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_au000c_5128" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE a\u{0c}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE a\u{0c}")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 13)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_au000d_5129" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE a\r")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE a\r")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 2)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_au001f_5130" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE a\u{1f}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE a\u{1f}")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a\u{1f}"),
@@ -3561,49 +5054,82 @@ test "html5lib/tokenizer/test3_doctype_au001f_5130" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 12)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 13)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_a__5131" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE a ")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE a ")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 13)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_a_u0000_5132" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE a \u{00}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE a \u{00}")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 13)
+  assert_true(errors[1].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 13)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_a_u0008_5133" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE a \b")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE a \b")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 13)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 13)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_a_u0009_5134" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE a \t")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE a \t")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 14)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_a_u000a_5135" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE a \n")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE a \n")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 2)
+  @debug.assert_eq(errors[0].position.column, 1)
 }

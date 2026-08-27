@@ -144,7 +144,6 @@ fn Tokenizer::run_after_doctype_name_state(self : Tokenizer) -> Token? {
         self.state = AfterDOCTYPESystemKeyword
         None
       } else {
-        let _ = self.consume()
         self.emit_error(InvalidCharacterSequenceAfterDoctypeName)
         self.current_doctype_force_quirks = true
         self.state = BogusDOCTYPE

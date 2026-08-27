@@ -24,7 +24,7 @@
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5636" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''-")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC''-")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -34,11 +34,21 @@ test "html5lib/tokenizer/test3_doctypea_public_5636" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5637" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''/")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC''/")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -48,11 +58,21 @@ test "html5lib/tokenizer/test3_doctypea_public_5637" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public0_5638" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''0")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC''0")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -62,11 +82,21 @@ test "html5lib/tokenizer/test3_doctypea_public0_5638" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public1_5639" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''1")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC''1")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -76,11 +106,21 @@ test "html5lib/tokenizer/test3_doctypea_public1_5639" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public9_5640" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''9")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC''9")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -90,11 +130,21 @@ test "html5lib/tokenizer/test3_doctypea_public9_5640" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5641" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''<")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC''<")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -104,11 +154,21 @@ test "html5lib/tokenizer/test3_doctypea_public_5641" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5642" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''=")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC''=")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -118,11 +178,21 @@ test "html5lib/tokenizer/test3_doctypea_public_5642" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5643" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''>")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC''>")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -132,11 +202,18 @@ test "html5lib/tokenizer/test3_doctypea_public_5643" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5644" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''?")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC''?")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -146,11 +223,21 @@ test "html5lib/tokenizer/test3_doctypea_public_5644" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5645" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''@")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC''@")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -160,11 +247,21 @@ test "html5lib/tokenizer/test3_doctypea_public_5645" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publica_5646" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''A")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC''A")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -174,11 +271,21 @@ test "html5lib/tokenizer/test3_doctypea_publica_5646" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publicb_5647" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''B")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC''B")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -188,11 +295,21 @@ test "html5lib/tokenizer/test3_doctypea_publicb_5647" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publicy_5648" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''Y")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC''Y")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -202,11 +319,21 @@ test "html5lib/tokenizer/test3_doctypea_publicy_5648" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publicz_5649" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''Z")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC''Z")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -216,11 +343,21 @@ test "html5lib/tokenizer/test3_doctypea_publicz_5649" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5650" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''`")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC''`")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -230,11 +367,21 @@ test "html5lib/tokenizer/test3_doctypea_public_5650" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publica_5651" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''a")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC''a")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -244,11 +391,21 @@ test "html5lib/tokenizer/test3_doctypea_publica_5651" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publicb_5652" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''b")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC''b")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -258,11 +415,21 @@ test "html5lib/tokenizer/test3_doctypea_publicb_5652" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publicy_5653" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''y")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC''y")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -272,11 +439,21 @@ test "html5lib/tokenizer/test3_doctypea_publicy_5653" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publicz_5654" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''z")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC''z")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -286,11 +463,21 @@ test "html5lib/tokenizer/test3_doctypea_publicz_5654" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5655" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''{")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC''{")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -300,11 +487,21 @@ test "html5lib/tokenizer/test3_doctypea_public_5655" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publicudbc0udc00_5656" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC''􀀀")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC''􀀀")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -314,11 +511,21 @@ test "html5lib/tokenizer/test3_doctypea_publicudbc0udc00_5656" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5657" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'(")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'(")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -328,11 +535,21 @@ test "html5lib/tokenizer/test3_doctypea_public_5657" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5658" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'-")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'-")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -342,11 +559,21 @@ test "html5lib/tokenizer/test3_doctypea_public_5658" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5659" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'/")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'/")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -356,11 +583,21 @@ test "html5lib/tokenizer/test3_doctypea_public_5659" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public0_5660" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'0")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'0")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -370,11 +607,21 @@ test "html5lib/tokenizer/test3_doctypea_public0_5660" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public1_5661" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'1")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'1")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -384,11 +631,21 @@ test "html5lib/tokenizer/test3_doctypea_public1_5661" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public9_5662" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'9")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'9")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -398,11 +655,21 @@ test "html5lib/tokenizer/test3_doctypea_public9_5662" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5663" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'<")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'<")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -412,11 +679,21 @@ test "html5lib/tokenizer/test3_doctypea_public_5663" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5664" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'=")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'=")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -426,11 +703,21 @@ test "html5lib/tokenizer/test3_doctypea_public_5664" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5665" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'>")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'>")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -440,11 +727,21 @@ test "html5lib/tokenizer/test3_doctypea_public_5665" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is AbruptDoctypePublicIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 19)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5666" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'?")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'?")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -454,11 +751,21 @@ test "html5lib/tokenizer/test3_doctypea_public_5666" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5667" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'@")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'@")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -468,11 +775,21 @@ test "html5lib/tokenizer/test3_doctypea_public_5667" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publica_5668" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'A")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'A")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -482,11 +799,21 @@ test "html5lib/tokenizer/test3_doctypea_publica_5668" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publicb_5669" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'B")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'B")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -496,11 +823,21 @@ test "html5lib/tokenizer/test3_doctypea_publicb_5669" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publicy_5670" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'Y")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'Y")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -510,11 +847,21 @@ test "html5lib/tokenizer/test3_doctypea_publicy_5670" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publicz_5671" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'Z")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'Z")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -524,11 +871,21 @@ test "html5lib/tokenizer/test3_doctypea_publicz_5671" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5672" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'`")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'`")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -538,11 +895,21 @@ test "html5lib/tokenizer/test3_doctypea_public_5672" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publica_5673" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'a")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'a")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -552,11 +919,21 @@ test "html5lib/tokenizer/test3_doctypea_publica_5673" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publicb_5674" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'b")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'b")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -566,11 +943,21 @@ test "html5lib/tokenizer/test3_doctypea_publicb_5674" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publicy_5675" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'y")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'y")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -580,11 +967,21 @@ test "html5lib/tokenizer/test3_doctypea_publicy_5675" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publicz_5676" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'z")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'z")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -594,11 +991,21 @@ test "html5lib/tokenizer/test3_doctypea_publicz_5676" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5677" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'{")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'{")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -608,11 +1015,21 @@ test "html5lib/tokenizer/test3_doctypea_public_5677" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publicudbc0udc00_5678" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC'􀀀")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC'􀀀")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -622,308 +1039,561 @@ test "html5lib/tokenizer/test3_doctypea_publicudbc0udc00_5678" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypePublicKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5679" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC(")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC(")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5680" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC-")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC-")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5681" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC/")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC/")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public0_5682" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC0")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC0")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public1_5683" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC1")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC1")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public9_5684" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC9")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC9")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5685" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC<")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC<")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5686" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC=")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC=")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5687" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC>")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC>")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5688" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC?")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC?")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5689" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC@")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC@")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publica_5690" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLICA")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLICA")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publicb_5691" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLICB")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLICB")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publicy_5692" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLICY")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLICY")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publicz_5693" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLICZ")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLICZ")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5694" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC`")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC`")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publica_5695" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLICa")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLICa")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publicb_5696" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLICb")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLICb")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publicy_5697" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLICy")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLICy")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publicz_5698" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLICz")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLICz")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_public_5699" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC{")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC{")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_publicudbc0udc00_5700" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa PUBLIC􀀀")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa PUBLIC􀀀")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypePublicIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5701" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu0000_5702" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\u{00}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\u{00}")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu0008_5703" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\b")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\b")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu0009_5704" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\t")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\t")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 19)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000a_5705" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\n")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\n")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 2)
+  @debug.assert_eq(errors[1].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000b_5706" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\u{0b}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\u{0b}")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000c_5707" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\u{0c}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\u{0c}")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 19)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000d_5708" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\r")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\r")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 2)
+  @debug.assert_eq(errors[1].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu001f_5709" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\u{1f}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\u{1f}")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system__5710" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM ")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM ")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 19)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5711" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM!")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM!")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5712" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -933,11 +1603,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5712" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 19)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu0000_5713" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"\u{00}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"\u{00}")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -947,11 +1627,24 @@ test "html5lib/tokenizer/test3_doctypea_systemu0000_5713" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 4)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 19)
+  assert_true(errors[3].code is EofInDoctype)
+  @debug.assert_eq(errors[3].position.line, 1)
+  @debug.assert_eq(errors[3].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu0009_5714" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"\t")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"\t")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -961,11 +1654,21 @@ test "html5lib/tokenizer/test3_doctypea_systemu0009_5714" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000a_5715" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"\n")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"\n")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -975,11 +1678,21 @@ test "html5lib/tokenizer/test3_doctypea_systemu000a_5715" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 2)
+  @debug.assert_eq(errors[2].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000b_5716" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"\u{0b}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"\u{0b}")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -989,11 +1702,24 @@ test "html5lib/tokenizer/test3_doctypea_systemu000b_5716" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 4)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 19)
+  assert_true(errors[3].code is EofInDoctype)
+  @debug.assert_eq(errors[3].position.line, 1)
+  @debug.assert_eq(errors[3].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000c_5717" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"\u{0c}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"\u{0c}")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1003,11 +1729,21 @@ test "html5lib/tokenizer/test3_doctypea_systemu000c_5717" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system__5718" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\" ")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\" ")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1017,11 +1753,21 @@ test "html5lib/tokenizer/test3_doctypea_system__5718" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5719" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"!")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"!")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1031,11 +1777,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5719" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5720" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"\"")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"\"")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1045,11 +1801,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5720" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5721" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"#")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"#")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1059,11 +1825,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5721" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5722" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"&")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"&")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1073,11 +1849,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5722" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5723" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"'")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"'")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1087,11 +1873,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5723" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5724" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"-")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"-")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1101,11 +1897,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5724" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5725" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"/")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"/")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1115,11 +1921,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5725" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system0_5726" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"0")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"0")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1129,11 +1945,21 @@ test "html5lib/tokenizer/test3_doctypea_system0_5726" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system1_5727" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"1")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"1")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1143,11 +1969,21 @@ test "html5lib/tokenizer/test3_doctypea_system1_5727" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system9_5728" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"9")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"9")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1157,11 +1993,21 @@ test "html5lib/tokenizer/test3_doctypea_system9_5728" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5729" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"<")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"<")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1171,11 +2017,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5729" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5730" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"=")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"=")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1185,11 +2041,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5730" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5731" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\">")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\">")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1199,11 +2065,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5731" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is AbruptDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 19)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5732" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"?")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"?")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1213,11 +2089,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5732" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5733" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"@")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"@")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1227,11 +2113,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5733" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systema_5734" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"A")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"A")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1241,11 +2137,21 @@ test "html5lib/tokenizer/test3_doctypea_systema_5734" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemb_5735" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"B")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"B")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1255,11 +2161,21 @@ test "html5lib/tokenizer/test3_doctypea_systemb_5735" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemy_5736" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"Y")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"Y")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1269,11 +2185,21 @@ test "html5lib/tokenizer/test3_doctypea_systemy_5736" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemz_5737" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"Z")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"Z")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1283,11 +2209,21 @@ test "html5lib/tokenizer/test3_doctypea_systemz_5737" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5738" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"`")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"`")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1297,11 +2233,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5738" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systema_5739" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"a")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"a")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1311,11 +2257,21 @@ test "html5lib/tokenizer/test3_doctypea_systema_5739" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemb_5740" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"b")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"b")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1325,11 +2281,21 @@ test "html5lib/tokenizer/test3_doctypea_systemb_5740" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemy_5741" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"y")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"y")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1339,11 +2305,21 @@ test "html5lib/tokenizer/test3_doctypea_systemy_5741" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemz_5742" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"z")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"z")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1353,11 +2329,21 @@ test "html5lib/tokenizer/test3_doctypea_systemz_5742" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5743" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"{")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"{")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1367,11 +2353,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5743" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemudbc0udc00_5744" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM\"􀀀")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM\"􀀀")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1381,29 +2377,53 @@ test "html5lib/tokenizer/test3_doctypea_systemudbc0udc00_5744" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5745" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM#")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM#")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5746" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM&")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM&")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5747" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1413,11 +2433,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5747" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 19)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu0000_5748" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'\u{00}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'\u{00}")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1427,11 +2457,24 @@ test "html5lib/tokenizer/test3_doctypea_systemu0000_5748" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 4)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 19)
+  assert_true(errors[3].code is EofInDoctype)
+  @debug.assert_eq(errors[3].position.line, 1)
+  @debug.assert_eq(errors[3].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu0009_5749" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'\t")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'\t")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1441,11 +2484,21 @@ test "html5lib/tokenizer/test3_doctypea_systemu0009_5749" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000a_5750" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'\n")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'\n")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1455,11 +2508,21 @@ test "html5lib/tokenizer/test3_doctypea_systemu000a_5750" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 2)
+  @debug.assert_eq(errors[2].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000b_5751" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'\u{0b}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'\u{0b}")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1469,11 +2532,24 @@ test "html5lib/tokenizer/test3_doctypea_systemu000b_5751" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 4)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 19)
+  assert_true(errors[3].code is EofInDoctype)
+  @debug.assert_eq(errors[3].position.line, 1)
+  @debug.assert_eq(errors[3].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000c_5752" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'\u{0c}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'\u{0c}")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1483,11 +2559,21 @@ test "html5lib/tokenizer/test3_doctypea_systemu000c_5752" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system__5753" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM' ")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM' ")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1497,11 +2583,21 @@ test "html5lib/tokenizer/test3_doctypea_system__5753" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5754" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'!")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'!")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1511,11 +2607,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5754" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5755" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'\"")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'\"")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1525,11 +2631,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5755" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5756" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'&")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'&")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1539,11 +2655,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5756" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5757" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1553,11 +2679,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5757" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu0000_5758" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\u{00}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''\u{00}")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1567,11 +2703,24 @@ test "html5lib/tokenizer/test3_doctypea_systemu0000_5758" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 4)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
+  assert_true(errors[3].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[3].position.line, 1)
+  @debug.assert_eq(errors[3].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu0008_5759" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\b")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''\b")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1581,11 +2730,24 @@ test "html5lib/tokenizer/test3_doctypea_systemu0008_5759" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 4)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
+  assert_true(errors[3].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[3].position.line, 1)
+  @debug.assert_eq(errors[3].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu0009_5760" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\t")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''\t")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1595,11 +2757,21 @@ test "html5lib/tokenizer/test3_doctypea_systemu0009_5760" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 21)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000a_5761" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\n")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''\n")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1609,11 +2781,21 @@ test "html5lib/tokenizer/test3_doctypea_systemu000a_5761" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 2)
+  @debug.assert_eq(errors[2].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000b_5762" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\u{0b}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''\u{0b}")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1623,11 +2805,24 @@ test "html5lib/tokenizer/test3_doctypea_systemu000b_5762" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 4)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
+  assert_true(errors[3].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[3].position.line, 1)
+  @debug.assert_eq(errors[3].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000c_5763" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\u{0c}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''\u{0c}")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1637,11 +2832,21 @@ test "html5lib/tokenizer/test3_doctypea_systemu000c_5763" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 21)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu000d_5764" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\r")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''\r")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1651,11 +2856,21 @@ test "html5lib/tokenizer/test3_doctypea_systemu000d_5764" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 2)
+  @debug.assert_eq(errors[2].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemu001f_5765" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\u{1f}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''\u{1f}")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1665,11 +2880,24 @@ test "html5lib/tokenizer/test3_doctypea_systemu001f_5765" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 4)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
+  assert_true(errors[3].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[3].position.line, 1)
+  @debug.assert_eq(errors[3].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system__5766" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'' ")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'' ")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1679,11 +2907,21 @@ test "html5lib/tokenizer/test3_doctypea_system__5766" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 21)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5767" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''!")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''!")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1693,11 +2931,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5767" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5768" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''\"")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''\"")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1707,11 +2955,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5768" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5769" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''&")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''&")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1721,11 +2979,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5769" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5770" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'''")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'''")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1735,11 +3003,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5770" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5771" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''-")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''-")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1749,11 +3027,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5771" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5772" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''/")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''/")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1763,11 +3051,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5772" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system0_5773" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''0")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''0")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1777,11 +3075,21 @@ test "html5lib/tokenizer/test3_doctypea_system0_5773" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system1_5774" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''1")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''1")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1791,11 +3099,21 @@ test "html5lib/tokenizer/test3_doctypea_system1_5774" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system9_5775" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''9")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''9")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1805,11 +3123,21 @@ test "html5lib/tokenizer/test3_doctypea_system9_5775" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5776" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''<")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''<")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1819,11 +3147,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5776" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5777" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''=")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''=")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1833,11 +3171,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5777" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5778" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''>")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''>")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1847,11 +3195,18 @@ test "html5lib/tokenizer/test3_doctypea_system_5778" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5779" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''?")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''?")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1861,11 +3216,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5779" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5780" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''@")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''@")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1875,11 +3240,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5780" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systema_5781" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''A")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''A")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1889,11 +3264,21 @@ test "html5lib/tokenizer/test3_doctypea_systema_5781" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemb_5782" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''B")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''B")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1903,11 +3288,21 @@ test "html5lib/tokenizer/test3_doctypea_systemb_5782" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemy_5783" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''Y")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''Y")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1917,11 +3312,21 @@ test "html5lib/tokenizer/test3_doctypea_systemy_5783" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemz_5784" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''Z")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''Z")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1931,11 +3336,21 @@ test "html5lib/tokenizer/test3_doctypea_systemz_5784" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5785" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''`")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''`")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1945,11 +3360,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5785" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systema_5786" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''a")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''a")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1959,11 +3384,21 @@ test "html5lib/tokenizer/test3_doctypea_systema_5786" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemb_5787" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''b")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''b")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1973,11 +3408,21 @@ test "html5lib/tokenizer/test3_doctypea_systemb_5787" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemy_5788" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''y")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''y")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -1987,11 +3432,21 @@ test "html5lib/tokenizer/test3_doctypea_systemy_5788" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemz_5789" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''z")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''z")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2001,11 +3456,21 @@ test "html5lib/tokenizer/test3_doctypea_systemz_5789" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5790" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''{")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''{")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2015,11 +3480,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5790" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemudbc0udc00_5791" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM''􀀀")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM''􀀀")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2029,11 +3504,21 @@ test "html5lib/tokenizer/test3_doctypea_systemudbc0udc00_5791" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is UnexpectedCharacterAfterDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5792" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'(")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'(")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2043,11 +3528,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5792" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5793" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'-")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'-")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2057,11 +3552,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5793" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5794" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'/")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'/")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2071,11 +3576,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5794" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system0_5795" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'0")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'0")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2085,11 +3600,21 @@ test "html5lib/tokenizer/test3_doctypea_system0_5795" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system1_5796" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'1")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'1")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2099,11 +3624,21 @@ test "html5lib/tokenizer/test3_doctypea_system1_5796" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system9_5797" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'9")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'9")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2113,11 +3648,21 @@ test "html5lib/tokenizer/test3_doctypea_system9_5797" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5798" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'<")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'<")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2127,11 +3672,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5798" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5799" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'=")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'=")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2141,11 +3696,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5799" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5800" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'>")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'>")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2155,11 +3720,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5800" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is AbruptDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 19)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5801" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'?")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'?")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2169,11 +3744,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5801" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5802" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'@")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'@")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2183,11 +3768,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5802" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systema_5803" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'A")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'A")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2197,11 +3792,21 @@ test "html5lib/tokenizer/test3_doctypea_systema_5803" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemb_5804" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'B")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'B")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2211,11 +3816,21 @@ test "html5lib/tokenizer/test3_doctypea_systemb_5804" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemy_5805" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'Y")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'Y")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2225,11 +3840,21 @@ test "html5lib/tokenizer/test3_doctypea_systemy_5805" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemz_5806" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'Z")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'Z")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2239,11 +3864,21 @@ test "html5lib/tokenizer/test3_doctypea_systemz_5806" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5807" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'`")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'`")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2253,11 +3888,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5807" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systema_5808" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'a")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'a")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2267,11 +3912,21 @@ test "html5lib/tokenizer/test3_doctypea_systema_5808" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemb_5809" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'b")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'b")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2281,11 +3936,21 @@ test "html5lib/tokenizer/test3_doctypea_systemb_5809" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemy_5810" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'y")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'y")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2295,11 +3960,21 @@ test "html5lib/tokenizer/test3_doctypea_systemy_5810" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemz_5811" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'z")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'z")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2309,11 +3984,21 @@ test "html5lib/tokenizer/test3_doctypea_systemz_5811" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5812" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'{")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'{")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2323,11 +4008,21 @@ test "html5lib/tokenizer/test3_doctypea_system_5812" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemudbc0udc00_5813" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM'􀀀")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM'􀀀")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a"),
@@ -2337,794 +4032,1416 @@ test "html5lib/tokenizer/test3_doctypea_systemudbc0udc00_5813" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingWhitespaceAfterDoctypeSystemKeyword)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
+  assert_true(errors[2].code is EofInDoctype)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 20)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5814" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM(")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM(")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5815" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM-")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM-")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5816" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM/")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM/")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system0_5817" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM0")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM0")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system1_5818" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM1")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM1")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system9_5819" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM9")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM9")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5820" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM<")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM<")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5821" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM=")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM=")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5822" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM>")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM>")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5823" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM?")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM?")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5824" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM@")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM@")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systema_5825" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEMA")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEMA")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemb_5826" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEMB")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEMB")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemy_5827" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEMY")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEMY")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemz_5828" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEMZ")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEMZ")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5829" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM`")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM`")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systema_5830" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEMa")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEMa")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemb_5831" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEMb")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEMb")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemy_5832" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEMy")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEMy")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemz_5833" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEMz")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEMz")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_system_5834" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM{")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM{")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_systemudbc0udc00_5835" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa SYSTEM􀀀")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa SYSTEM􀀀")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is MissingQuoteBeforeDoctypeSystemIdentifier)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 18)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_y_5836" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa Y")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa Y")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_z_5837" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa Z")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa Z")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea__5838" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa `")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa `")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_a_5839" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_au0000_5840" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a\u{00}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a\u{00}")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
+  assert_true(errors[2].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 13)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_au0009_5841" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a\t")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a\t")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_au000a_5842" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a\n")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a\n")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_au000b_5843" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a\u{0b}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a\u{0b}")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
+  assert_true(errors[2].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 13)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_au000c_5844" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a\u{0c}")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a\u{0c}")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_a__5845" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a ")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a ")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_a_5846" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a!")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a!")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_a_5847" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a\"")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a\"")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_a_5848" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a&")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a&")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_a_5849" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a'")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a'")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_a_5850" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a-")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a-")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_a_5851" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a/")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a/")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_a0_5852" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a0")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a0")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_a1_5853" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a1")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a1")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_a9_5854" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a9")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a9")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_a_5855" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a<")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a<")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_a_5856" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a=")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a=")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_a_5857" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a>")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a>")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_a_5858" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a?")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a?")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_a_5859" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a@")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a@")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_aa_5860" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa aA")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa aA")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_ab_5861" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa aB")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa aB")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_ay_5862" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa aY")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa aY")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_az_5863" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa aZ")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa aZ")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_a_5864" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a`")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a`")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_aa_5865" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa aa")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa aa")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_ab_5866" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa ab")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa ab")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_ay_5867" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa ay")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa ay")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_az_5868" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa az")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa az")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_a_5869" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a{")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a{")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_audbc0udc00_5870" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa a􀀀")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa a􀀀")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_b_5871" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa b")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa b")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_y_5872" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa y")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa y")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_z_5873" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa z")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa z")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea__5874" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa {")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa {")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_udbc0udc00_5875" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa 􀀀")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa 􀀀")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_5876" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa!")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa!")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a!"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_5877" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa\"")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa\"")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a\""), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_5878" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa&")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa&")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a&"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_5879" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa'")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa'")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a'"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_5880" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa-")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa-")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a-"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_5881" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa/")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa/")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a/"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea0_5882" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa0")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa0")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a0"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea1_5883" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa1")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa1")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a1"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea9_5884" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa9")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa9")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a9"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_5885" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa<")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa<")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a<"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_5886" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa=")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa=")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a="), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_5887" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa>")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa>")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a"), public_id=None, system_id=None, force_quirks=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_5888" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa?")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa?")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a?"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_5889" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa@")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa@")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a@"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypeaa_5890" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEaA")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEaA")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("aa"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypeab_5891" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEaB")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEaB")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("ab"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypeay_5892" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEaY")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEaY")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("ay"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypeaz_5893" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEaZ")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEaZ")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("az"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_5894" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa[")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa[")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a["), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_5895" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa`")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa`")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a`"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypeaa_5896" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEaa")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEaa")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("aa"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypeab_5897" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEab")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEab")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("ab"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypeay_5898" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEay")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEay")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("ay"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypeaz_5899" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEaz")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEaz")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("az"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypea_5900" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa{")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa{")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("a{"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypeaudbc0udc00_5901" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEa􀀀")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEa􀀀")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("a􀀀"),
@@ -3134,47 +5451,82 @@ test "html5lib/tokenizer/test3_doctypeaudbc0udc00_5901" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 12)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypeb_5902" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEb")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEb")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("b"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypey_5903" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEy")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEy")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("y"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypez_5904" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPEz")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPEz")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("z"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctype_5905" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE{")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE{")
   @debug.assert_eq(tokens, [
     DOCTYPE(name=Some("{"), public_id=None, system_id=None, force_quirks=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/test3_doctypeudbc0udc00_5906" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE􀀀")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE􀀀")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("􀀀"),
@@ -3184,713 +5536,1161 @@ test "html5lib/tokenizer/test3_doctypeudbc0udc00_5906" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBeforeDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
+  assert_true(errors[1].code is EofInDoctype)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/test3_y_5907" {
-  let (tokens, _) = @html.tokenize("<!Y")
+  let (tokens, errors) = @html.tokenize("<!Y")
   @debug.assert_eq(tokens, [Comment("Y"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_z_5908" {
-  let (tokens, _) = @html.tokenize("<!Z")
+  let (tokens, errors) = @html.tokenize("<!Z")
   @debug.assert_eq(tokens, [Comment("Z"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5909" {
-  let (tokens, _) = @html.tokenize("<!`")
+  let (tokens, errors) = @html.tokenize("<!`")
   @debug.assert_eq(tokens, [Comment("`"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_5910" {
-  let (tokens, _) = @html.tokenize("<!a")
+  let (tokens, errors) = @html.tokenize("<!a")
   @debug.assert_eq(tokens, [Comment("a"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_b_5911" {
-  let (tokens, _) = @html.tokenize("<!b")
+  let (tokens, errors) = @html.tokenize("<!b")
   @debug.assert_eq(tokens, [Comment("b"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_y_5912" {
-  let (tokens, _) = @html.tokenize("<!y")
+  let (tokens, errors) = @html.tokenize("<!y")
   @debug.assert_eq(tokens, [Comment("y"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_z_5913" {
-  let (tokens, _) = @html.tokenize("<!z")
+  let (tokens, errors) = @html.tokenize("<!z")
   @debug.assert_eq(tokens, [Comment("z"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5914" {
-  let (tokens, _) = @html.tokenize("<!{")
+  let (tokens, errors) = @html.tokenize("<!{")
   @debug.assert_eq(tokens, [Comment("{"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_udbc0udc00_5915" {
-  let (tokens, _) = @html.tokenize("<!􀀀")
+  let (tokens, errors) = @html.tokenize("<!􀀀")
   @debug.assert_eq(tokens, [Comment("􀀀"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5916" {
-  let (tokens, _) = @html.tokenize("<\"")
+  let (tokens, errors) = @html.tokenize("<\"")
   @debug.assert_eq(tokens, [Character('<'), Character('"'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5917" {
-  let (tokens, _) = @html.tokenize("<&")
+  let (tokens, errors) = @html.tokenize("<&")
   @debug.assert_eq(tokens, [Character('<'), Character('&'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5918" {
-  let (tokens, _) = @html.tokenize("<'")
+  let (tokens, errors) = @html.tokenize("<'")
   @debug.assert_eq(tokens, [Character('<'), Character('\''), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5919" {
-  let (tokens, _) = @html.tokenize("<-")
+  let (tokens, errors) = @html.tokenize("<-")
   @debug.assert_eq(tokens, [Character('<'), Character('-'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5920" {
-  let (tokens, _) = @html.tokenize("<.")
+  let (tokens, errors) = @html.tokenize("<.")
   @debug.assert_eq(tokens, [Character('<'), Character('.'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5921" {
-  let (tokens, _) = @html.tokenize("</")
+  let (tokens, errors) = @html.tokenize("</")
   @debug.assert_eq(tokens, [Character('<'), Character('/'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofBeforeTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u0000_5922" {
-  let (tokens, _) = @html.tokenize("</\u{00}")
+  let (tokens, errors) = @html.tokenize("</\u{00}")
   @debug.assert_eq(tokens, [Comment("�"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
+  assert_true(errors[1].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u0009_5923" {
-  let (tokens, _) = @html.tokenize("</\t")
+  let (tokens, errors) = @html.tokenize("</\t")
   @debug.assert_eq(tokens, [Comment("\t"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000a_5924" {
-  let (tokens, _) = @html.tokenize("</\n")
+  let (tokens, errors) = @html.tokenize("</\n")
   @debug.assert_eq(tokens, [Comment("\n"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000b_5925" {
-  let (tokens, _) = @html.tokenize("</\u{0b}")
+  let (tokens, errors) = @html.tokenize("</\u{0b}")
   @debug.assert_eq(tokens, [Comment("\u{0b}"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
+  assert_true(errors[1].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000c_5926" {
-  let (tokens, _) = @html.tokenize("</\u{0c}")
+  let (tokens, errors) = @html.tokenize("</\u{0c}")
   @debug.assert_eq(tokens, [Comment("\u{0c}"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3___5927" {
-  let (tokens, _) = @html.tokenize("</ ")
+  let (tokens, errors) = @html.tokenize("</ ")
   @debug.assert_eq(tokens, [Comment(" "), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__u0000_5928" {
-  let (tokens, _) = @html.tokenize("</ \u{00}")
+  let (tokens, errors) = @html.tokenize("</ \u{00}")
   @debug.assert_eq(tokens, [Comment(" �"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
+  assert_true(errors[1].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5929" {
-  let (tokens, _) = @html.tokenize("</!")
+  let (tokens, errors) = @html.tokenize("</!")
   @debug.assert_eq(tokens, [Comment("!"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5930" {
-  let (tokens, _) = @html.tokenize("</\"")
+  let (tokens, errors) = @html.tokenize("</\"")
   @debug.assert_eq(tokens, [Comment("\""), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5931" {
-  let (tokens, _) = @html.tokenize("</&")
+  let (tokens, errors) = @html.tokenize("</&")
   @debug.assert_eq(tokens, [Comment("&"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5932" {
-  let (tokens, _) = @html.tokenize("</'")
+  let (tokens, errors) = @html.tokenize("</'")
   @debug.assert_eq(tokens, [Comment("'"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5933" {
-  let (tokens, _) = @html.tokenize("</-")
+  let (tokens, errors) = @html.tokenize("</-")
   @debug.assert_eq(tokens, [Comment("-"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5934" {
-  let (tokens, _) = @html.tokenize("<//")
+  let (tokens, errors) = @html.tokenize("<//")
   @debug.assert_eq(tokens, [Comment("/"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_0_5935" {
-  let (tokens, _) = @html.tokenize("</0")
+  let (tokens, errors) = @html.tokenize("</0")
   @debug.assert_eq(tokens, [Comment("0"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_1_5936" {
-  let (tokens, _) = @html.tokenize("</1")
+  let (tokens, errors) = @html.tokenize("</1")
   @debug.assert_eq(tokens, [Comment("1"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_9_5937" {
-  let (tokens, _) = @html.tokenize("</9")
+  let (tokens, errors) = @html.tokenize("</9")
   @debug.assert_eq(tokens, [Comment("9"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5938" {
-  let (tokens, _) = @html.tokenize("</<")
+  let (tokens, errors) = @html.tokenize("</<")
   @debug.assert_eq(tokens, [Comment("<"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5939" {
-  let (tokens, _) = @html.tokenize("</=")
+  let (tokens, errors) = @html.tokenize("</=")
   @debug.assert_eq(tokens, [Comment("="), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5940" {
-  let (tokens, _) = @html.tokenize("</>")
+  let (tokens, errors) = @html.tokenize("</>")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingEndTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5941" {
-  let (tokens, _) = @html.tokenize("</?")
+  let (tokens, errors) = @html.tokenize("</?")
   @debug.assert_eq(tokens, [Comment("?"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5942" {
-  let (tokens, _) = @html.tokenize("</@")
+  let (tokens, errors) = @html.tokenize("</@")
   @debug.assert_eq(tokens, [Comment("@"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_5943" {
-  let (tokens, _) = @html.tokenize("</A>")
+  let (tokens, errors) = @html.tokenize("</A>")
   @debug.assert_eq(tokens, [EndTag(name="a"), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_b_5944" {
-  let (tokens, _) = @html.tokenize("</B>")
+  let (tokens, errors) = @html.tokenize("</B>")
   @debug.assert_eq(tokens, [EndTag(name="b"), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_y_5945" {
-  let (tokens, _) = @html.tokenize("</Y>")
+  let (tokens, errors) = @html.tokenize("</Y>")
   @debug.assert_eq(tokens, [EndTag(name="y"), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_z_5946" {
-  let (tokens, _) = @html.tokenize("</Z>")
+  let (tokens, errors) = @html.tokenize("</Z>")
   @debug.assert_eq(tokens, [EndTag(name="z"), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5947" {
-  let (tokens, _) = @html.tokenize("</[")
+  let (tokens, errors) = @html.tokenize("</[")
   @debug.assert_eq(tokens, [Comment("["), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5948" {
-  let (tokens, _) = @html.tokenize("</`")
+  let (tokens, errors) = @html.tokenize("</`")
   @debug.assert_eq(tokens, [Comment("`"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_5949" {
-  let (tokens, _) = @html.tokenize("</a>")
+  let (tokens, errors) = @html.tokenize("</a>")
   @debug.assert_eq(tokens, [EndTag(name="a"), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_b_5950" {
-  let (tokens, _) = @html.tokenize("</b>")
+  let (tokens, errors) = @html.tokenize("</b>")
   @debug.assert_eq(tokens, [EndTag(name="b"), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_y_5951" {
-  let (tokens, _) = @html.tokenize("</y>")
+  let (tokens, errors) = @html.tokenize("</y>")
   @debug.assert_eq(tokens, [EndTag(name="y"), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_z_5952" {
-  let (tokens, _) = @html.tokenize("</z>")
+  let (tokens, errors) = @html.tokenize("</z>")
   @debug.assert_eq(tokens, [EndTag(name="z"), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5953" {
-  let (tokens, _) = @html.tokenize("</{")
+  let (tokens, errors) = @html.tokenize("</{")
   @debug.assert_eq(tokens, [Comment("{"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_udbc0udc00_5954" {
-  let (tokens, _) = @html.tokenize("</􀀀")
+  let (tokens, errors) = @html.tokenize("</􀀀")
   @debug.assert_eq(tokens, [Comment("􀀀"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_0_5955" {
-  let (tokens, _) = @html.tokenize("<0")
+  let (tokens, errors) = @html.tokenize("<0")
   @debug.assert_eq(tokens, [Character('<'), Character('0'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3_1_5956" {
-  let (tokens, _) = @html.tokenize("<1")
+  let (tokens, errors) = @html.tokenize("<1")
   @debug.assert_eq(tokens, [Character('<'), Character('1'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3_9_5957" {
-  let (tokens, _) = @html.tokenize("<9")
+  let (tokens, errors) = @html.tokenize("<9")
   @debug.assert_eq(tokens, [Character('<'), Character('9'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5958" {
-  let (tokens, _) = @html.tokenize("<<")
+  let (tokens, errors) = @html.tokenize("<<")
   @debug.assert_eq(tokens, [Character('<'), Character('<'), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
+  assert_true(errors[1].code is EofBeforeTagName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5959" {
-  let (tokens, _) = @html.tokenize("<=")
+  let (tokens, errors) = @html.tokenize("<=")
   @debug.assert_eq(tokens, [Character('<'), Character('='), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5960" {
-  let (tokens, _) = @html.tokenize("<>")
+  let (tokens, errors) = @html.tokenize("<>")
   @debug.assert_eq(tokens, [Character('<'), Character('>'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5961" {
-  let (tokens, _) = @html.tokenize("<?")
+  let (tokens, errors) = @html.tokenize("<?")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInProcessingInstruction)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u0000_5962" {
-  let (tokens, _) = @html.tokenize("<?\u{00}")
+  let (tokens, errors) = @html.tokenize("<?\u{00}")
   @debug.assert_eq(tokens, [Comment("?�"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
+  assert_true(errors[1].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u0009_5963" {
-  let (tokens, _) = @html.tokenize("<?\t")
+  let (tokens, errors) = @html.tokenize("<?\t")
   @debug.assert_eq(tokens, [Comment("?\t"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000a_5964" {
-  let (tokens, _) = @html.tokenize("<?\n")
+  let (tokens, errors) = @html.tokenize("<?\n")
   @debug.assert_eq(tokens, [Comment("?\n"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000b_5965" {
-  let (tokens, _) = @html.tokenize("<?\u{0b}")
+  let (tokens, errors) = @html.tokenize("<?\u{0b}")
   @debug.assert_eq(tokens, [Comment("?\u{0b}"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
+  assert_true(
+    errors[1].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_u000c_5966" {
-  let (tokens, _) = @html.tokenize("<?\u{0c}")
+  let (tokens, errors) = @html.tokenize("<?\u{0c}")
   @debug.assert_eq(tokens, [Comment("?\u{0c}"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3___5967" {
-  let (tokens, _) = @html.tokenize("<? ")
+  let (tokens, errors) = @html.tokenize("<? ")
   @debug.assert_eq(tokens, [Comment("? "), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__u0000_5968" {
-  let (tokens, _) = @html.tokenize("<? \u{00}")
+  let (tokens, errors) = @html.tokenize("<? \u{00}")
   @debug.assert_eq(tokens, [Comment("? �"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
+  assert_true(errors[1].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5969" {
-  let (tokens, _) = @html.tokenize("<?!")
+  let (tokens, errors) = @html.tokenize("<?!")
   @debug.assert_eq(tokens, [Comment("?!"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5970" {
-  let (tokens, _) = @html.tokenize("<?\"")
+  let (tokens, errors) = @html.tokenize("<?\"")
   @debug.assert_eq(tokens, [Comment("?\""), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5971" {
-  let (tokens, _) = @html.tokenize("<?&")
+  let (tokens, errors) = @html.tokenize("<?&")
   @debug.assert_eq(tokens, [Comment("?&"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5972" {
-  let (tokens, _) = @html.tokenize("<?'")
+  let (tokens, errors) = @html.tokenize("<?'")
   @debug.assert_eq(tokens, [Comment("?'"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5973" {
-  let (tokens, _) = @html.tokenize("<?-")
+  let (tokens, errors) = @html.tokenize("<?-")
   @debug.assert_eq(tokens, [Comment("?-"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5974" {
-  let (tokens, _) = @html.tokenize("<?/")
+  let (tokens, errors) = @html.tokenize("<?/")
   @debug.assert_eq(tokens, [Comment("?/"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_0_5975" {
-  let (tokens, _) = @html.tokenize("<?0")
+  let (tokens, errors) = @html.tokenize("<?0")
   @debug.assert_eq(tokens, [Comment("?0"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_1_5976" {
-  let (tokens, _) = @html.tokenize("<?1")
+  let (tokens, errors) = @html.tokenize("<?1")
   @debug.assert_eq(tokens, [Comment("?1"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_9_5977" {
-  let (tokens, _) = @html.tokenize("<?9")
+  let (tokens, errors) = @html.tokenize("<?9")
   @debug.assert_eq(tokens, [Comment("?9"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5978" {
-  let (tokens, _) = @html.tokenize("<?<")
+  let (tokens, errors) = @html.tokenize("<?<")
   @debug.assert_eq(tokens, [Comment("?<"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5979" {
-  let (tokens, _) = @html.tokenize("<?=")
+  let (tokens, errors) = @html.tokenize("<?=")
   @debug.assert_eq(tokens, [Comment("?="), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5980" {
-  let (tokens, _) = @html.tokenize("<?>")
+  let (tokens, errors) = @html.tokenize("<?>")
   @debug.assert_eq(tokens, [Comment("?"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5981" {
-  let (tokens, _) = @html.tokenize("<??")
+  let (tokens, errors) = @html.tokenize("<??")
   @debug.assert_eq(tokens, [Comment("??"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5982" {
-  let (tokens, _) = @html.tokenize("<?@")
+  let (tokens, errors) = @html.tokenize("<?@")
   @debug.assert_eq(tokens, [Comment("?@"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_5983" {
-  let (tokens, _) = @html.tokenize("<?A")
+  let (tokens, errors) = @html.tokenize("<?A")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInProcessingInstruction)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_b_5984" {
-  let (tokens, _) = @html.tokenize("<?B")
+  let (tokens, errors) = @html.tokenize("<?B")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInProcessingInstruction)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_y_5985" {
-  let (tokens, _) = @html.tokenize("<?Y")
+  let (tokens, errors) = @html.tokenize("<?Y")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInProcessingInstruction)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_z_5986" {
-  let (tokens, _) = @html.tokenize("<?Z")
+  let (tokens, errors) = @html.tokenize("<?Z")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInProcessingInstruction)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5987" {
-  let (tokens, _) = @html.tokenize("<?`")
+  let (tokens, errors) = @html.tokenize("<?`")
   @debug.assert_eq(tokens, [Comment("?`"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_5988" {
-  let (tokens, _) = @html.tokenize("<?a")
+  let (tokens, errors) = @html.tokenize("<?a")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInProcessingInstruction)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_b_5989" {
-  let (tokens, _) = @html.tokenize("<?b")
+  let (tokens, errors) = @html.tokenize("<?b")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInProcessingInstruction)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_y_5990" {
-  let (tokens, _) = @html.tokenize("<?y")
+  let (tokens, errors) = @html.tokenize("<?y")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInProcessingInstruction)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_z_5991" {
-  let (tokens, _) = @html.tokenize("<?z")
+  let (tokens, errors) = @html.tokenize("<?z")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInProcessingInstruction)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5992" {
-  let (tokens, _) = @html.tokenize("<?{")
+  let (tokens, errors) = @html.tokenize("<?{")
   @debug.assert_eq(tokens, [Comment("?{"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_udbc0udc00_5993" {
-  let (tokens, _) = @html.tokenize("<?􀀀")
+  let (tokens, errors) = @html.tokenize("<?􀀀")
   @debug.assert_eq(tokens, [Comment("?􀀀"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(
+    errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5994" {
-  let (tokens, _) = @html.tokenize("<@")
+  let (tokens, errors) = @html.tokenize("<@")
   @debug.assert_eq(tokens, [Character('<'), Character('@'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_5995" {
-  let (tokens, _) = @html.tokenize("<A>")
+  let (tokens, errors) = @html.tokenize("<A>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_b_5996" {
-  let (tokens, _) = @html.tokenize("<B>")
+  let (tokens, errors) = @html.tokenize("<B>")
   @debug.assert_eq(tokens, [
     StartTag(name="b", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_y_5997" {
-  let (tokens, _) = @html.tokenize("<Y>")
+  let (tokens, errors) = @html.tokenize("<Y>")
   @debug.assert_eq(tokens, [
     StartTag(name="y", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_z_5998" {
-  let (tokens, _) = @html.tokenize("<Z>")
+  let (tokens, errors) = @html.tokenize("<Z>")
   @debug.assert_eq(tokens, [
     StartTag(name="z", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3__5999" {
-  let (tokens, _) = @html.tokenize("<[")
+  let (tokens, errors) = @html.tokenize("<[")
   @debug.assert_eq(tokens, [Character('<'), Character('['), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3__6000" {
-  let (tokens, _) = @html.tokenize("<`")
+  let (tokens, errors) = @html.tokenize("<`")
   @debug.assert_eq(tokens, [Character('<'), Character('`'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6001" {
-  let (tokens, _) = @html.tokenize("<a>")
+  let (tokens, errors) = @html.tokenize("<a>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_au0000_6002" {
-  let (tokens, _) = @html.tokenize("<a\u{00}>")
+  let (tokens, errors) = @html.tokenize("<a\u{00}>")
   @debug.assert_eq(tokens, [
     StartTag(name="a�", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_au0008_6003" {
-  let (tokens, _) = @html.tokenize("<a\b>")
+  let (tokens, errors) = @html.tokenize("<a\b>")
   @debug.assert_eq(tokens, [
     StartTag(name="a\b", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_au0009_6004" {
-  let (tokens, _) = @html.tokenize("<a\t>")
+  let (tokens, errors) = @html.tokenize("<a\t>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_au000a_6005" {
-  let (tokens, _) = @html.tokenize("<a\n>")
+  let (tokens, errors) = @html.tokenize("<a\n>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_au000b_6006" {
-  let (tokens, _) = @html.tokenize("<a\u{0b}>")
+  let (tokens, errors) = @html.tokenize("<a\u{0b}>")
   @debug.assert_eq(tokens, [
     StartTag(name="a\u{0b}", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_au000c_6007" {
-  let (tokens, _) = @html.tokenize("<a\u{0c}>")
+  let (tokens, errors) = @html.tokenize("<a\u{0c}>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_au000d_6008" {
-  let (tokens, _) = @html.tokenize("<a\r>")
+  let (tokens, errors) = @html.tokenize("<a\r>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_au001f_6009" {
-  let (tokens, _) = @html.tokenize("<a\u{1f}>")
+  let (tokens, errors) = @html.tokenize("<a\u{1f}>")
   @debug.assert_eq(tokens, [
     StartTag(name="a\u{1f}", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a__6010" {
-  let (tokens, _) = @html.tokenize("<a >")
+  let (tokens, errors) = @html.tokenize("<a >")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_u0000_6011" {
-  let (tokens, _) = @html.tokenize("<a \u{00}>")
+  let (tokens, errors) = @html.tokenize("<a \u{00}>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "�", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_u0008_6012" {
-  let (tokens, _) = @html.tokenize("<a \b>")
+  let (tokens, errors) = @html.tokenize("<a \b>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "\b", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_u0009_6013" {
-  let (tokens, _) = @html.tokenize("<a \t>")
+  let (tokens, errors) = @html.tokenize("<a \t>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_u000a_6014" {
-  let (tokens, _) = @html.tokenize("<a \n>")
+  let (tokens, errors) = @html.tokenize("<a \n>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_u000b_6015" {
-  let (tokens, _) = @html.tokenize("<a \u{0b}>")
+  let (tokens, errors) = @html.tokenize("<a \u{0b}>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -3899,29 +6699,35 @@ test "html5lib/tokenizer/test3_a_u000b_6015" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_u000c_6016" {
-  let (tokens, _) = @html.tokenize("<a \u{0c}>")
+  let (tokens, errors) = @html.tokenize("<a \u{0c}>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_u000d_6017" {
-  let (tokens, _) = @html.tokenize("<a \r>")
+  let (tokens, errors) = @html.tokenize("<a \r>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_u001f_6018" {
-  let (tokens, _) = @html.tokenize("<a \u{1f}>")
+  let (tokens, errors) = @html.tokenize("<a \u{1f}>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -3930,272 +6736,323 @@ test "html5lib/tokenizer/test3_a_u001f_6018" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a__6019" {
-  let (tokens, _) = @html.tokenize("<a  >")
+  let (tokens, errors) = @html.tokenize("<a  >")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a__6020" {
-  let (tokens, _) = @html.tokenize("<a !>")
+  let (tokens, errors) = @html.tokenize("<a !>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "!", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a__6021" {
-  let (tokens, _) = @html.tokenize("<a \">")
+  let (tokens, errors) = @html.tokenize("<a \">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "\"", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a__6022" {
-  let (tokens, _) = @html.tokenize("<a #>")
+  let (tokens, errors) = @html.tokenize("<a #>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "#", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a__6023" {
-  let (tokens, _) = @html.tokenize("<a &>")
+  let (tokens, errors) = @html.tokenize("<a &>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "&", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a__6024" {
-  let (tokens, _) = @html.tokenize("<a '>")
+  let (tokens, errors) = @html.tokenize("<a '>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "'", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a__6025" {
-  let (tokens, _) = @html.tokenize("<a (>")
+  let (tokens, errors) = @html.tokenize("<a (>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "(", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a__6026" {
-  let (tokens, _) = @html.tokenize("<a ->")
+  let (tokens, errors) = @html.tokenize("<a ->")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "-", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a__6027" {
-  let (tokens, _) = @html.tokenize("<a .>")
+  let (tokens, errors) = @html.tokenize("<a .>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: ".", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a__6028" {
-  let (tokens, _) = @html.tokenize("<a />")
+  let (tokens, errors) = @html.tokenize("<a />")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_0_6029" {
-  let (tokens, _) = @html.tokenize("<a 0>")
+  let (tokens, errors) = @html.tokenize("<a 0>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "0", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_1_6030" {
-  let (tokens, _) = @html.tokenize("<a 1>")
+  let (tokens, errors) = @html.tokenize("<a 1>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "1", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_9_6031" {
-  let (tokens, _) = @html.tokenize("<a 9>")
+  let (tokens, errors) = @html.tokenize("<a 9>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "9", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a__6032" {
-  let (tokens, _) = @html.tokenize("<a <>")
+  let (tokens, errors) = @html.tokenize("<a <>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "<", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a__6033" {
-  let (tokens, _) = @html.tokenize("<a =>")
+  let (tokens, errors) = @html.tokenize("<a =>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "=", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedEqualsSignBeforeAttributeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a__6034" {
-  let (tokens, _) = @html.tokenize("<a >")
+  let (tokens, errors) = @html.tokenize("<a >")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a__6035" {
-  let (tokens, _) = @html.tokenize("<a ?>")
+  let (tokens, errors) = @html.tokenize("<a ?>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "?", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a__6036" {
-  let (tokens, _) = @html.tokenize("<a @>")
+  let (tokens, errors) = @html.tokenize("<a @>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "@", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6037" {
-  let (tokens, _) = @html.tokenize("<a A>")
+  let (tokens, errors) = @html.tokenize("<a A>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_b_6038" {
-  let (tokens, _) = @html.tokenize("<a B>")
+  let (tokens, errors) = @html.tokenize("<a B>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "b", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_y_6039" {
-  let (tokens, _) = @html.tokenize("<a Y>")
+  let (tokens, errors) = @html.tokenize("<a Y>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "y", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_z_6040" {
-  let (tokens, _) = @html.tokenize("<a Z>")
+  let (tokens, errors) = @html.tokenize("<a Z>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "z", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a__6041" {
-  let (tokens, _) = @html.tokenize("<a [>")
+  let (tokens, errors) = @html.tokenize("<a [>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "[", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a__6042" {
-  let (tokens, _) = @html.tokenize("<a `>")
+  let (tokens, errors) = @html.tokenize("<a `>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "`", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6043" {
-  let (tokens, _) = @html.tokenize("<a a>")
+  let (tokens, errors) = @html.tokenize("<a a>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au0000_6044" {
-  let (tokens, _) = @html.tokenize("<a a\u{00}>")
+  let (tokens, errors) = @html.tokenize("<a a\u{00}>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a�", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 5)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au0008_6045" {
-  let (tokens, _) = @html.tokenize("<a a\b>")
+  let (tokens, errors) = @html.tokenize("<a a\b>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a\b", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 5)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au0009_6046" {
-  let (tokens, _) = @html.tokenize("<a a\t>")
+  let (tokens, errors) = @html.tokenize("<a a\t>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000a_6047" {
-  let (tokens, _) = @html.tokenize("<a a\n>")
+  let (tokens, errors) = @html.tokenize("<a a\n>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000b_6048" {
-  let (tokens, _) = @html.tokenize("<a a\u{0b}>")
+  let (tokens, errors) = @html.tokenize("<a a\u{0b}>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4204,29 +7061,35 @@ test "html5lib/tokenizer/test3_a_au000b_6048" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 5)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000c_6049" {
-  let (tokens, _) = @html.tokenize("<a a\u{0c}>")
+  let (tokens, errors) = @html.tokenize("<a a\u{0c}>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000d_6050" {
-  let (tokens, _) = @html.tokenize("<a a\r>")
+  let (tokens, errors) = @html.tokenize("<a a\r>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au001f_6051" {
-  let (tokens, _) = @html.tokenize("<a a\u{1f}>")
+  let (tokens, errors) = @html.tokenize("<a a\u{1f}>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4235,20 +7098,25 @@ test "html5lib/tokenizer/test3_a_au001f_6051" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 5)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6052" {
-  let (tokens, _) = @html.tokenize("<a a >")
+  let (tokens, errors) = @html.tokenize("<a a >")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_u0000_6053" {
-  let (tokens, _) = @html.tokenize("<a a \u{00}>")
+  let (tokens, errors) = @html.tokenize("<a a \u{00}>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4257,11 +7125,15 @@ test "html5lib/tokenizer/test3_a_a_u0000_6053" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_u0008_6054" {
-  let (tokens, _) = @html.tokenize("<a a \b>")
+  let (tokens, errors) = @html.tokenize("<a a \b>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4270,29 +7142,35 @@ test "html5lib/tokenizer/test3_a_a_u0008_6054" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_u0009_6055" {
-  let (tokens, _) = @html.tokenize("<a a \t>")
+  let (tokens, errors) = @html.tokenize("<a a \t>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_u000a_6056" {
-  let (tokens, _) = @html.tokenize("<a a \n>")
+  let (tokens, errors) = @html.tokenize("<a a \n>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_u000b_6057" {
-  let (tokens, _) = @html.tokenize("<a a \u{0b}>")
+  let (tokens, errors) = @html.tokenize("<a a \u{0b}>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4301,29 +7179,35 @@ test "html5lib/tokenizer/test3_a_a_u000b_6057" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_u000c_6058" {
-  let (tokens, _) = @html.tokenize("<a a \u{0c}>")
+  let (tokens, errors) = @html.tokenize("<a a \u{0c}>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_u000d_6059" {
-  let (tokens, _) = @html.tokenize("<a a \r>")
+  let (tokens, errors) = @html.tokenize("<a a \r>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_u001f_6060" {
-  let (tokens, _) = @html.tokenize("<a a \u{1f}>")
+  let (tokens, errors) = @html.tokenize("<a a \u{1f}>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4332,20 +7216,25 @@ test "html5lib/tokenizer/test3_a_a_u001f_6060" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6061" {
-  let (tokens, _) = @html.tokenize("<a a  >")
+  let (tokens, errors) = @html.tokenize("<a a  >")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6062" {
-  let (tokens, _) = @html.tokenize("<a a !>")
+  let (tokens, errors) = @html.tokenize("<a a !>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4354,11 +7243,12 @@ test "html5lib/tokenizer/test3_a_a__6062" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6063" {
-  let (tokens, _) = @html.tokenize("<a a \">")
+  let (tokens, errors) = @html.tokenize("<a a \">")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4367,11 +7257,15 @@ test "html5lib/tokenizer/test3_a_a__6063" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6064" {
-  let (tokens, _) = @html.tokenize("<a a #>")
+  let (tokens, errors) = @html.tokenize("<a a #>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4380,11 +7274,12 @@ test "html5lib/tokenizer/test3_a_a__6064" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6065" {
-  let (tokens, _) = @html.tokenize("<a a &>")
+  let (tokens, errors) = @html.tokenize("<a a &>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4393,11 +7288,12 @@ test "html5lib/tokenizer/test3_a_a__6065" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6066" {
-  let (tokens, _) = @html.tokenize("<a a '>")
+  let (tokens, errors) = @html.tokenize("<a a '>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4406,11 +7302,15 @@ test "html5lib/tokenizer/test3_a_a__6066" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6067" {
-  let (tokens, _) = @html.tokenize("<a a (>")
+  let (tokens, errors) = @html.tokenize("<a a (>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4419,11 +7319,12 @@ test "html5lib/tokenizer/test3_a_a__6067" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6068" {
-  let (tokens, _) = @html.tokenize("<a a ->")
+  let (tokens, errors) = @html.tokenize("<a a ->")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4432,11 +7333,12 @@ test "html5lib/tokenizer/test3_a_a__6068" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6069" {
-  let (tokens, _) = @html.tokenize("<a a .>")
+  let (tokens, errors) = @html.tokenize("<a a .>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4445,20 +7347,22 @@ test "html5lib/tokenizer/test3_a_a__6069" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6070" {
-  let (tokens, _) = @html.tokenize("<a a />")
+  let (tokens, errors) = @html.tokenize("<a a />")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_0_6071" {
-  let (tokens, _) = @html.tokenize("<a a 0>")
+  let (tokens, errors) = @html.tokenize("<a a 0>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4467,11 +7371,12 @@ test "html5lib/tokenizer/test3_a_a_0_6071" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_1_6072" {
-  let (tokens, _) = @html.tokenize("<a a 1>")
+  let (tokens, errors) = @html.tokenize("<a a 1>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4480,11 +7385,12 @@ test "html5lib/tokenizer/test3_a_a_1_6072" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_9_6073" {
-  let (tokens, _) = @html.tokenize("<a a 9>")
+  let (tokens, errors) = @html.tokenize("<a a 9>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4493,11 +7399,12 @@ test "html5lib/tokenizer/test3_a_a_9_6073" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6074" {
-  let (tokens, _) = @html.tokenize("<a a <>")
+  let (tokens, errors) = @html.tokenize("<a a <>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4506,29 +7413,38 @@ test "html5lib/tokenizer/test3_a_a__6074" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6075" {
-  let (tokens, _) = @html.tokenize("<a a =>")
+  let (tokens, errors) = @html.tokenize("<a a =>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6076" {
-  let (tokens, _) = @html.tokenize("<a a >")
+  let (tokens, errors) = @html.tokenize("<a a >")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6077" {
-  let (tokens, _) = @html.tokenize("<a a ?>")
+  let (tokens, errors) = @html.tokenize("<a a ?>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4537,11 +7453,12 @@ test "html5lib/tokenizer/test3_a_a__6077" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6078" {
-  let (tokens, _) = @html.tokenize("<a a @>")
+  let (tokens, errors) = @html.tokenize("<a a @>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4550,20 +7467,25 @@ test "html5lib/tokenizer/test3_a_a__6078" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_a_6079" {
-  let (tokens, _) = @html.tokenize("<a a A>")
+  let (tokens, errors) = @html.tokenize("<a a A>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is DuplicateAttribute)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_b_6080" {
-  let (tokens, _) = @html.tokenize("<a a B>")
+  let (tokens, errors) = @html.tokenize("<a a B>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4572,11 +7494,12 @@ test "html5lib/tokenizer/test3_a_a_b_6080" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_y_6081" {
-  let (tokens, _) = @html.tokenize("<a a Y>")
+  let (tokens, errors) = @html.tokenize("<a a Y>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4585,11 +7508,12 @@ test "html5lib/tokenizer/test3_a_a_y_6081" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_z_6082" {
-  let (tokens, _) = @html.tokenize("<a a Z>")
+  let (tokens, errors) = @html.tokenize("<a a Z>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4598,11 +7522,12 @@ test "html5lib/tokenizer/test3_a_a_z_6082" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6083" {
-  let (tokens, _) = @html.tokenize("<a a [>")
+  let (tokens, errors) = @html.tokenize("<a a [>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4611,11 +7536,12 @@ test "html5lib/tokenizer/test3_a_a__6083" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6084" {
-  let (tokens, _) = @html.tokenize("<a a `>")
+  let (tokens, errors) = @html.tokenize("<a a `>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4624,20 +7550,25 @@ test "html5lib/tokenizer/test3_a_a__6084" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_a_6085" {
-  let (tokens, _) = @html.tokenize("<a a a>")
+  let (tokens, errors) = @html.tokenize("<a a a>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is DuplicateAttribute)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_b_6086" {
-  let (tokens, _) = @html.tokenize("<a a b>")
+  let (tokens, errors) = @html.tokenize("<a a b>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4646,11 +7577,12 @@ test "html5lib/tokenizer/test3_a_a_b_6086" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_y_6087" {
-  let (tokens, _) = @html.tokenize("<a a y>")
+  let (tokens, errors) = @html.tokenize("<a a y>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4659,11 +7591,12 @@ test "html5lib/tokenizer/test3_a_a_y_6087" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_z_6088" {
-  let (tokens, _) = @html.tokenize("<a a z>")
+  let (tokens, errors) = @html.tokenize("<a a z>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4672,11 +7605,12 @@ test "html5lib/tokenizer/test3_a_a_z_6088" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6089" {
-  let (tokens, _) = @html.tokenize("<a a {>")
+  let (tokens, errors) = @html.tokenize("<a a {>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4685,11 +7619,12 @@ test "html5lib/tokenizer/test3_a_a__6089" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_udbc0udc00_6090" {
-  let (tokens, _) = @html.tokenize("<a a 􀀀>")
+  let (tokens, errors) = @html.tokenize("<a a 􀀀>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4698,173 +7633,216 @@ test "html5lib/tokenizer/test3_a_a_udbc0udc00_6090" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6091" {
-  let (tokens, _) = @html.tokenize("<a a!>")
+  let (tokens, errors) = @html.tokenize("<a a!>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a!", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6092" {
-  let (tokens, _) = @html.tokenize("<a a\">")
+  let (tokens, errors) = @html.tokenize("<a a\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a\"", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 5)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6093" {
-  let (tokens, _) = @html.tokenize("<a a#>")
+  let (tokens, errors) = @html.tokenize("<a a#>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a#", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6094" {
-  let (tokens, _) = @html.tokenize("<a a&>")
+  let (tokens, errors) = @html.tokenize("<a a&>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a&", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6095" {
-  let (tokens, _) = @html.tokenize("<a a'>")
+  let (tokens, errors) = @html.tokenize("<a a'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a'", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 5)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6096" {
-  let (tokens, _) = @html.tokenize("<a a(>")
+  let (tokens, errors) = @html.tokenize("<a a(>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a(", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6097" {
-  let (tokens, _) = @html.tokenize("<a a->")
+  let (tokens, errors) = @html.tokenize("<a a->")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a-", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6098" {
-  let (tokens, _) = @html.tokenize("<a a.>")
+  let (tokens, errors) = @html.tokenize("<a a.>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a.", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6099" {
-  let (tokens, _) = @html.tokenize("<a a/>")
+  let (tokens, errors) = @html.tokenize("<a a/>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a0_6100" {
-  let (tokens, _) = @html.tokenize("<a a0>")
+  let (tokens, errors) = @html.tokenize("<a a0>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a0", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a1_6101" {
-  let (tokens, _) = @html.tokenize("<a a1>")
+  let (tokens, errors) = @html.tokenize("<a a1>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a1", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a9_6102" {
-  let (tokens, _) = @html.tokenize("<a a9>")
+  let (tokens, errors) = @html.tokenize("<a a9>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a9", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6103" {
-  let (tokens, _) = @html.tokenize("<a a<>")
+  let (tokens, errors) = @html.tokenize("<a a<>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a<", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 5)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6104" {
-  let (tokens, _) = @html.tokenize("<a a=>")
+  let (tokens, errors) = @html.tokenize("<a a=>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au0000_6105" {
-  let (tokens, _) = @html.tokenize("<a a=\u{00}>")
+  let (tokens, errors) = @html.tokenize("<a a=\u{00}>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "�", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au0008_6106" {
-  let (tokens, _) = @html.tokenize("<a a=\b>")
+  let (tokens, errors) = @html.tokenize("<a a=\b>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "\b", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au0009_6107" {
-  let (tokens, _) = @html.tokenize("<a a=\t>")
+  let (tokens, errors) = @html.tokenize("<a a=\t>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000a_6108" {
-  let (tokens, _) = @html.tokenize("<a a=\n>")
+  let (tokens, errors) = @html.tokenize("<a a=\n>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 2)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000b_6109" {
-  let (tokens, _) = @html.tokenize("<a a=\u{0b}>")
+  let (tokens, errors) = @html.tokenize("<a a=\u{0b}>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4873,29 +7851,41 @@ test "html5lib/tokenizer/test3_a_au000b_6109" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000c_6110" {
-  let (tokens, _) = @html.tokenize("<a a=\u{0c}>")
+  let (tokens, errors) = @html.tokenize("<a a=\u{0c}>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000d_6111" {
-  let (tokens, _) = @html.tokenize("<a a=\r>")
+  let (tokens, errors) = @html.tokenize("<a a=\r>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 2)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au001f_6112" {
-  let (tokens, _) = @html.tokenize("<a a=\u{1f}>")
+  let (tokens, errors) = @html.tokenize("<a a=\u{1f}>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4904,65 +7894,81 @@ test "html5lib/tokenizer/test3_a_au001f_6112" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6113" {
-  let (tokens, _) = @html.tokenize("<a a= >")
+  let (tokens, errors) = @html.tokenize("<a a= >")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6114" {
-  let (tokens, _) = @html.tokenize("<a a=!>")
+  let (tokens, errors) = @html.tokenize("<a a=!>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "!", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6115" {
-  let (tokens, _) = @html.tokenize("<a a=\"\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au0000_6116" {
-  let (tokens, _) = @html.tokenize("<a a=\"\u{00}\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"\u{00}\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "�", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au0009_6117" {
-  let (tokens, _) = @html.tokenize("<a a=\"\t\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"\t\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "\t", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000a_6118" {
-  let (tokens, _) = @html.tokenize("<a a=\"\n\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"\n\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "\n", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000b_6119" {
-  let (tokens, _) = @html.tokenize("<a a=\"\u{0b}\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"\u{0b}\">")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4971,11 +7977,15 @@ test "html5lib/tokenizer/test3_a_au000b_6119" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000c_6120" {
-  let (tokens, _) = @html.tokenize("<a a=\"\u{0c}\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"\u{0c}\">")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -4984,139 +7994,155 @@ test "html5lib/tokenizer/test3_a_au000c_6120" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6121" {
-  let (tokens, _) = @html.tokenize("<a a=\" \">")
+  let (tokens, errors) = @html.tokenize("<a a=\" \">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: " ", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6122" {
-  let (tokens, _) = @html.tokenize("<a a=\"!\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"!\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "!", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6123" {
-  let (tokens, _) = @html.tokenize("<a a=\"\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6124" {
-  let (tokens, _) = @html.tokenize("<a a=\"#\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"#\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "#", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6125" {
-  let (tokens, _) = @html.tokenize("<a a=\"%\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"%\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "%", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6126" {
-  let (tokens, _) = @html.tokenize("<a a=\"&\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"&\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "&", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6127" {
-  let (tokens, _) = @html.tokenize("<a a=\"'\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"'\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "'", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6128" {
-  let (tokens, _) = @html.tokenize("<a a=\"-\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"-\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "-", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6129" {
-  let (tokens, _) = @html.tokenize("<a a=\"/\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"/\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "/", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a0_6130" {
-  let (tokens, _) = @html.tokenize("<a a=\"0\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"0\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "0", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a1_6131" {
-  let (tokens, _) = @html.tokenize("<a a=\"1\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"1\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "1", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a9_6132" {
-  let (tokens, _) = @html.tokenize("<a a=\"9\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"9\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "9", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6133" {
-  let (tokens, _) = @html.tokenize("<a a=\"<\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"<\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "<", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6134" {
-  let (tokens, _) = @html.tokenize("<a a=\"=\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"=\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "=", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6135" {
-  let (tokens, _) = @html.tokenize("<a a=\">\">")
+  let (tokens, errors) = @html.tokenize("<a a=\">\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: ">", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }

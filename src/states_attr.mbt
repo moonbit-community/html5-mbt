@@ -48,11 +48,13 @@ fn Tokenizer::run_before_attribute_name_state(self : Tokenizer) -> Token? {
 fn Tokenizer::run_attribute_name_state(self : Tokenizer) -> Token? {
   match self.consume() {
     Some(c) if is_whitespace(c) || c == '/' || c == '>' => {
+      self.finish_attribute_name()
       self.reconsume()
       self.state = AfterAttributeName
       None
     }
     Some('=') => {
+      self.finish_attribute_name()
       self.state = BeforeAttributeValue
       None
     }
@@ -75,6 +77,7 @@ fn Tokenizer::run_attribute_name_state(self : Tokenizer) -> Token? {
       None
     }
     None => {
+      self.finish_attribute_name()
       self.reconsume()
       self.state = AfterAttributeName
       None

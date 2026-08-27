@@ -75,7 +75,7 @@ fn Tokenizer::run_markup_declaration_open_state(self : Tokenizer) -> Token? {
     return None
   }
   // Anything else is incorrectly opened comment
-  self.emit_error(IncorrectlyOpenedComment)
+  self.emit_error_at_next_position(IncorrectlyOpenedComment)
   self.reset_comment()
   self.state = BogusComment
   None
@@ -280,7 +280,7 @@ fn Tokenizer::run_comment_less_than_sign_bang_dash_dash_state(
       None
     }
     Some(_) => {
-      self.emit_error(NestedComment)
+      self.emit_error_at_next_position(NestedComment)
       self.state = CommentEnd
       None
     }

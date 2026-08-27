@@ -24,115 +24,127 @@
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6136" {
-  let (tokens, _) = @html.tokenize("<a a=\"?\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"?\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "?", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6137" {
-  let (tokens, _) = @html.tokenize("<a a=\"@\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"@\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "@", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6138" {
-  let (tokens, _) = @html.tokenize("<a a=\"A\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"A\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "A", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_ab_6139" {
-  let (tokens, _) = @html.tokenize("<a a=\"B\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"B\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "B", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_ay_6140" {
-  let (tokens, _) = @html.tokenize("<a a=\"Y\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"Y\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "Y", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_az_6141" {
-  let (tokens, _) = @html.tokenize("<a a=\"Z\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"Z\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "Z", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6142" {
-  let (tokens, _) = @html.tokenize("<a a=\"`\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"`\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "`", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6143" {
-  let (tokens, _) = @html.tokenize("<a a=\"a\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"a\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_ab_6144" {
-  let (tokens, _) = @html.tokenize("<a a=\"b\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"b\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "b", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_ay_6145" {
-  let (tokens, _) = @html.tokenize("<a a=\"y\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"y\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "y", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_az_6146" {
-  let (tokens, _) = @html.tokenize("<a a=\"z\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"z\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "z", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6147" {
-  let (tokens, _) = @html.tokenize("<a a=\"{\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"{\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "{", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_audbc0udc00_6148" {
-  let (tokens, _) = @html.tokenize("<a a=\"􀀀\">")
+  let (tokens, errors) = @html.tokenize("<a a=\"􀀀\">")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -141,74 +153,85 @@ test "html5lib/tokenizer/test3_a_audbc0udc00_6148" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6149" {
-  let (tokens, _) = @html.tokenize("<a a=#>")
+  let (tokens, errors) = @html.tokenize("<a a=#>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "#", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6150" {
-  let (tokens, _) = @html.tokenize("<a a=%>")
+  let (tokens, errors) = @html.tokenize("<a a=%>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "%", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6151" {
-  let (tokens, _) = @html.tokenize("<a a=&>")
+  let (tokens, errors) = @html.tokenize("<a a=&>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "&", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6152" {
-  let (tokens, _) = @html.tokenize("<a a=''>")
+  let (tokens, errors) = @html.tokenize("<a a=''>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au0000_6153" {
-  let (tokens, _) = @html.tokenize("<a a='\u{00}'>")
+  let (tokens, errors) = @html.tokenize("<a a='\u{00}'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "�", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au0009_6154" {
-  let (tokens, _) = @html.tokenize("<a a='\t'>")
+  let (tokens, errors) = @html.tokenize("<a a='\t'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "\t", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000a_6155" {
-  let (tokens, _) = @html.tokenize("<a a='\n'>")
+  let (tokens, errors) = @html.tokenize("<a a='\n'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "\n", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000b_6156" {
-  let (tokens, _) = @html.tokenize("<a a='\u{0b}'>")
+  let (tokens, errors) = @html.tokenize("<a a='\u{0b}'>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -217,11 +240,15 @@ test "html5lib/tokenizer/test3_a_au000b_6156" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000c_6157" {
-  let (tokens, _) = @html.tokenize("<a a='\u{0c}'>")
+  let (tokens, errors) = @html.tokenize("<a a='\u{0c}'>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -230,65 +257,72 @@ test "html5lib/tokenizer/test3_a_au000c_6157" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6158" {
-  let (tokens, _) = @html.tokenize("<a a=' '>")
+  let (tokens, errors) = @html.tokenize("<a a=' '>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: " ", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6159" {
-  let (tokens, _) = @html.tokenize("<a a='!'>")
+  let (tokens, errors) = @html.tokenize("<a a='!'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "!", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6160" {
-  let (tokens, _) = @html.tokenize("<a a='\"'>")
+  let (tokens, errors) = @html.tokenize("<a a='\"'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "\"", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6161" {
-  let (tokens, _) = @html.tokenize("<a a='%'>")
+  let (tokens, errors) = @html.tokenize("<a a='%'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "%", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6162" {
-  let (tokens, _) = @html.tokenize("<a a='&'>")
+  let (tokens, errors) = @html.tokenize("<a a='&'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "&", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6163" {
-  let (tokens, _) = @html.tokenize("<a a=''>")
+  let (tokens, errors) = @html.tokenize("<a a=''>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au0000_6164" {
-  let (tokens, _) = @html.tokenize("<a a=''\u{00}>")
+  let (tokens, errors) = @html.tokenize("<a a=''\u{00}>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -297,11 +331,18 @@ test "html5lib/tokenizer/test3_a_au0000_6164" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
+  assert_true(errors[1].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au0008_6165" {
-  let (tokens, _) = @html.tokenize("<a a=''\b>")
+  let (tokens, errors) = @html.tokenize("<a a=''\b>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -310,29 +351,38 @@ test "html5lib/tokenizer/test3_a_au0008_6165" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
+  assert_true(errors[1].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au0009_6166" {
-  let (tokens, _) = @html.tokenize("<a a=''\t>")
+  let (tokens, errors) = @html.tokenize("<a a=''\t>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000a_6167" {
-  let (tokens, _) = @html.tokenize("<a a=''\n>")
+  let (tokens, errors) = @html.tokenize("<a a=''\n>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000b_6168" {
-  let (tokens, _) = @html.tokenize("<a a=''\u{0b}>")
+  let (tokens, errors) = @html.tokenize("<a a=''\u{0b}>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -341,29 +391,38 @@ test "html5lib/tokenizer/test3_a_au000b_6168" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
+  assert_true(errors[1].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000c_6169" {
-  let (tokens, _) = @html.tokenize("<a a=''\u{0c}>")
+  let (tokens, errors) = @html.tokenize("<a a=''\u{0c}>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au000d_6170" {
-  let (tokens, _) = @html.tokenize("<a a=''\r>")
+  let (tokens, errors) = @html.tokenize("<a a=''\r>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_au001f_6171" {
-  let (tokens, _) = @html.tokenize("<a a=''\u{1f}>")
+  let (tokens, errors) = @html.tokenize("<a a=''\u{1f}>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -372,20 +431,28 @@ test "html5lib/tokenizer/test3_a_au001f_6171" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
+  assert_true(errors[1].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a__6172" {
-  let (tokens, _) = @html.tokenize("<a a='' >")
+  let (tokens, errors) = @html.tokenize("<a a='' >")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6173" {
-  let (tokens, _) = @html.tokenize("<a a=''!>")
+  let (tokens, errors) = @html.tokenize("<a a=''!>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -394,11 +461,15 @@ test "html5lib/tokenizer/test3_a_a_6173" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6174" {
-  let (tokens, _) = @html.tokenize("<a a=''\">")
+  let (tokens, errors) = @html.tokenize("<a a=''\">")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -407,11 +478,18 @@ test "html5lib/tokenizer/test3_a_a_6174" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
+  assert_true(errors[1].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6175" {
-  let (tokens, _) = @html.tokenize("<a a=''&>")
+  let (tokens, errors) = @html.tokenize("<a a=''&>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -420,11 +498,15 @@ test "html5lib/tokenizer/test3_a_a_6175" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6176" {
-  let (tokens, _) = @html.tokenize("<a a='''>")
+  let (tokens, errors) = @html.tokenize("<a a='''>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -433,11 +515,18 @@ test "html5lib/tokenizer/test3_a_a_6176" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
+  assert_true(errors[1].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6177" {
-  let (tokens, _) = @html.tokenize("<a a=''->")
+  let (tokens, errors) = @html.tokenize("<a a=''->")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -446,11 +535,15 @@ test "html5lib/tokenizer/test3_a_a_6177" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6178" {
-  let (tokens, _) = @html.tokenize("<a a=''.>")
+  let (tokens, errors) = @html.tokenize("<a a=''.>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -459,20 +552,25 @@ test "html5lib/tokenizer/test3_a_a_6178" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6179" {
-  let (tokens, _) = @html.tokenize("<a a=''/>")
+  let (tokens, errors) = @html.tokenize("<a a=''/>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a0_6180" {
-  let (tokens, _) = @html.tokenize("<a a=''0>")
+  let (tokens, errors) = @html.tokenize("<a a=''0>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -481,11 +579,15 @@ test "html5lib/tokenizer/test3_a_a0_6180" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a1_6181" {
-  let (tokens, _) = @html.tokenize("<a a=''1>")
+  let (tokens, errors) = @html.tokenize("<a a=''1>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -494,11 +596,15 @@ test "html5lib/tokenizer/test3_a_a1_6181" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a9_6182" {
-  let (tokens, _) = @html.tokenize("<a a=''9>")
+  let (tokens, errors) = @html.tokenize("<a a=''9>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -507,11 +613,15 @@ test "html5lib/tokenizer/test3_a_a9_6182" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6183" {
-  let (tokens, _) = @html.tokenize("<a a=''<>")
+  let (tokens, errors) = @html.tokenize("<a a=''<>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -520,11 +630,18 @@ test "html5lib/tokenizer/test3_a_a_6183" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
+  assert_true(errors[1].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6184" {
-  let (tokens, _) = @html.tokenize("<a a=''=>")
+  let (tokens, errors) = @html.tokenize("<a a=''=>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -533,20 +650,28 @@ test "html5lib/tokenizer/test3_a_a_6184" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
+  assert_true(errors[1].code is UnexpectedEqualsSignBeforeAttributeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6185" {
-  let (tokens, _) = @html.tokenize("<a a=''>")
+  let (tokens, errors) = @html.tokenize("<a a=''>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6186" {
-  let (tokens, _) = @html.tokenize("<a a=''?>")
+  let (tokens, errors) = @html.tokenize("<a a=''?>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -555,11 +680,15 @@ test "html5lib/tokenizer/test3_a_a_6186" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6187" {
-  let (tokens, _) = @html.tokenize("<a a=''@>")
+  let (tokens, errors) = @html.tokenize("<a a=''@>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -568,20 +697,31 @@ test "html5lib/tokenizer/test3_a_a_6187" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6188" {
-  let (tokens, _) = @html.tokenize("<a a=''A>")
+  let (tokens, errors) = @html.tokenize("<a a=''A>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
+  assert_true(errors[1].code is DuplicateAttribute)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_ab_6189" {
-  let (tokens, _) = @html.tokenize("<a a=''B>")
+  let (tokens, errors) = @html.tokenize("<a a=''B>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -590,11 +730,15 @@ test "html5lib/tokenizer/test3_a_ab_6189" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_ay_6190" {
-  let (tokens, _) = @html.tokenize("<a a=''Y>")
+  let (tokens, errors) = @html.tokenize("<a a=''Y>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -603,11 +747,15 @@ test "html5lib/tokenizer/test3_a_ay_6190" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_az_6191" {
-  let (tokens, _) = @html.tokenize("<a a=''Z>")
+  let (tokens, errors) = @html.tokenize("<a a=''Z>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -616,11 +764,15 @@ test "html5lib/tokenizer/test3_a_az_6191" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6192" {
-  let (tokens, _) = @html.tokenize("<a a=''`>")
+  let (tokens, errors) = @html.tokenize("<a a=''`>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -629,20 +781,31 @@ test "html5lib/tokenizer/test3_a_a_6192" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6193" {
-  let (tokens, _) = @html.tokenize("<a a=''a>")
+  let (tokens, errors) = @html.tokenize("<a a=''a>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
+  assert_true(errors[1].code is DuplicateAttribute)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_ab_6194" {
-  let (tokens, _) = @html.tokenize("<a a=''b>")
+  let (tokens, errors) = @html.tokenize("<a a=''b>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -651,11 +814,15 @@ test "html5lib/tokenizer/test3_a_ab_6194" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_ay_6195" {
-  let (tokens, _) = @html.tokenize("<a a=''y>")
+  let (tokens, errors) = @html.tokenize("<a a=''y>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -664,11 +831,15 @@ test "html5lib/tokenizer/test3_a_ay_6195" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_az_6196" {
-  let (tokens, _) = @html.tokenize("<a a=''z>")
+  let (tokens, errors) = @html.tokenize("<a a=''z>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -677,11 +848,15 @@ test "html5lib/tokenizer/test3_a_az_6196" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6197" {
-  let (tokens, _) = @html.tokenize("<a a=''{>")
+  let (tokens, errors) = @html.tokenize("<a a=''{>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -690,11 +865,15 @@ test "html5lib/tokenizer/test3_a_a_6197" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_audbc0udc00_6198" {
-  let (tokens, _) = @html.tokenize("<a a=''􀀀>")
+  let (tokens, errors) = @html.tokenize("<a a=''􀀀>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -703,200 +882,225 @@ test "html5lib/tokenizer/test3_a_audbc0udc00_6198" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6199" {
-  let (tokens, _) = @html.tokenize("<a a='('>")
+  let (tokens, errors) = @html.tokenize("<a a='('>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "(", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6200" {
-  let (tokens, _) = @html.tokenize("<a a='-'>")
+  let (tokens, errors) = @html.tokenize("<a a='-'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "-", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6201" {
-  let (tokens, _) = @html.tokenize("<a a='/'>")
+  let (tokens, errors) = @html.tokenize("<a a='/'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "/", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a0_6202" {
-  let (tokens, _) = @html.tokenize("<a a='0'>")
+  let (tokens, errors) = @html.tokenize("<a a='0'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "0", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a1_6203" {
-  let (tokens, _) = @html.tokenize("<a a='1'>")
+  let (tokens, errors) = @html.tokenize("<a a='1'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "1", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a9_6204" {
-  let (tokens, _) = @html.tokenize("<a a='9'>")
+  let (tokens, errors) = @html.tokenize("<a a='9'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "9", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6205" {
-  let (tokens, _) = @html.tokenize("<a a='<'>")
+  let (tokens, errors) = @html.tokenize("<a a='<'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "<", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6206" {
-  let (tokens, _) = @html.tokenize("<a a='='>")
+  let (tokens, errors) = @html.tokenize("<a a='='>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "=", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6207" {
-  let (tokens, _) = @html.tokenize("<a a='>'>")
+  let (tokens, errors) = @html.tokenize("<a a='>'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: ">", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6208" {
-  let (tokens, _) = @html.tokenize("<a a='?'>")
+  let (tokens, errors) = @html.tokenize("<a a='?'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "?", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6209" {
-  let (tokens, _) = @html.tokenize("<a a='@'>")
+  let (tokens, errors) = @html.tokenize("<a a='@'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "@", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6210" {
-  let (tokens, _) = @html.tokenize("<a a='A'>")
+  let (tokens, errors) = @html.tokenize("<a a='A'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "A", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_ab_6211" {
-  let (tokens, _) = @html.tokenize("<a a='B'>")
+  let (tokens, errors) = @html.tokenize("<a a='B'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "B", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_ay_6212" {
-  let (tokens, _) = @html.tokenize("<a a='Y'>")
+  let (tokens, errors) = @html.tokenize("<a a='Y'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "Y", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_az_6213" {
-  let (tokens, _) = @html.tokenize("<a a='Z'>")
+  let (tokens, errors) = @html.tokenize("<a a='Z'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "Z", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6214" {
-  let (tokens, _) = @html.tokenize("<a a='`'>")
+  let (tokens, errors) = @html.tokenize("<a a='`'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "`", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6215" {
-  let (tokens, _) = @html.tokenize("<a a='a'>")
+  let (tokens, errors) = @html.tokenize("<a a='a'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_ab_6216" {
-  let (tokens, _) = @html.tokenize("<a a='b'>")
+  let (tokens, errors) = @html.tokenize("<a a='b'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "b", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_ay_6217" {
-  let (tokens, _) = @html.tokenize("<a a='y'>")
+  let (tokens, errors) = @html.tokenize("<a a='y'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "y", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_az_6218" {
-  let (tokens, _) = @html.tokenize("<a a='z'>")
+  let (tokens, errors) = @html.tokenize("<a a='z'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "z", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6219" {
-  let (tokens, _) = @html.tokenize("<a a='{'>")
+  let (tokens, errors) = @html.tokenize("<a a='{'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "{", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_audbc0udc00_6220" {
-  let (tokens, _) = @html.tokenize("<a a='􀀀'>")
+  let (tokens, errors) = @html.tokenize("<a a='􀀀'>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -905,164 +1109,194 @@ test "html5lib/tokenizer/test3_a_audbc0udc00_6220" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6221" {
-  let (tokens, _) = @html.tokenize("<a a=(>")
+  let (tokens, errors) = @html.tokenize("<a a=(>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "(", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6222" {
-  let (tokens, _) = @html.tokenize("<a a=->")
+  let (tokens, errors) = @html.tokenize("<a a=->")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "-", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6223" {
-  let (tokens, _) = @html.tokenize("<a a=/>")
+  let (tokens, errors) = @html.tokenize("<a a=/>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "/", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a0_6224" {
-  let (tokens, _) = @html.tokenize("<a a=0>")
+  let (tokens, errors) = @html.tokenize("<a a=0>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "0", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a1_6225" {
-  let (tokens, _) = @html.tokenize("<a a=1>")
+  let (tokens, errors) = @html.tokenize("<a a=1>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "1", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a9_6226" {
-  let (tokens, _) = @html.tokenize("<a a=9>")
+  let (tokens, errors) = @html.tokenize("<a a=9>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "9", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6227" {
-  let (tokens, _) = @html.tokenize("<a a=<>")
+  let (tokens, errors) = @html.tokenize("<a a=<>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "<", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInUnquotedAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6228" {
-  let (tokens, _) = @html.tokenize("<a a==>")
+  let (tokens, errors) = @html.tokenize("<a a==>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "=", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInUnquotedAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6229" {
-  let (tokens, _) = @html.tokenize("<a a=>")
+  let (tokens, errors) = @html.tokenize("<a a=>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6230" {
-  let (tokens, _) = @html.tokenize("<a a=?>")
+  let (tokens, errors) = @html.tokenize("<a a=?>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "?", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6231" {
-  let (tokens, _) = @html.tokenize("<a a=@>")
+  let (tokens, errors) = @html.tokenize("<a a=@>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "@", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6232" {
-  let (tokens, _) = @html.tokenize("<a a=A>")
+  let (tokens, errors) = @html.tokenize("<a a=A>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "A", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_ab_6233" {
-  let (tokens, _) = @html.tokenize("<a a=B>")
+  let (tokens, errors) = @html.tokenize("<a a=B>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "B", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_ay_6234" {
-  let (tokens, _) = @html.tokenize("<a a=Y>")
+  let (tokens, errors) = @html.tokenize("<a a=Y>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "Y", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_az_6235" {
-  let (tokens, _) = @html.tokenize("<a a=Z>")
+  let (tokens, errors) = @html.tokenize("<a a=Z>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "Z", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6236" {
-  let (tokens, _) = @html.tokenize("<a a=`>")
+  let (tokens, errors) = @html.tokenize("<a a=`>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "`", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInUnquotedAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6237" {
-  let (tokens, _) = @html.tokenize("<a a=a>")
+  let (tokens, errors) = @html.tokenize("<a a=a>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aau0000_6238" {
-  let (tokens, _) = @html.tokenize("<a a=a\u{00}>")
+  let (tokens, errors) = @html.tokenize("<a a=a\u{00}>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -1071,38 +1305,48 @@ test "html5lib/tokenizer/test3_a_aau0000_6238" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aau0008_6239" {
-  let (tokens, _) = @html.tokenize("<a a=a\b>")
+  let (tokens, errors) = @html.tokenize("<a a=a\b>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a\b", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aau0009_6240" {
-  let (tokens, _) = @html.tokenize("<a a=a\t>")
+  let (tokens, errors) = @html.tokenize("<a a=a\t>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aau000a_6241" {
-  let (tokens, _) = @html.tokenize("<a a=a\n>")
+  let (tokens, errors) = @html.tokenize("<a a=a\n>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aau000b_6242" {
-  let (tokens, _) = @html.tokenize("<a a=a\u{0b}>")
+  let (tokens, errors) = @html.tokenize("<a a=a\u{0b}>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -1111,29 +1355,35 @@ test "html5lib/tokenizer/test3_a_aau000b_6242" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aau000c_6243" {
-  let (tokens, _) = @html.tokenize("<a a=a\u{0c}>")
+  let (tokens, errors) = @html.tokenize("<a a=a\u{0c}>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aau000d_6244" {
-  let (tokens, _) = @html.tokenize("<a a=a\r>")
+  let (tokens, errors) = @html.tokenize("<a a=a\r>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aau001f_6245" {
-  let (tokens, _) = @html.tokenize("<a a=a\u{1f}>")
+  let (tokens, errors) = @html.tokenize("<a a=a\u{1f}>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -1142,263 +1392,310 @@ test "html5lib/tokenizer/test3_a_aau001f_6245" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa__6246" {
-  let (tokens, _) = @html.tokenize("<a a=a >")
+  let (tokens, errors) = @html.tokenize("<a a=a >")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6247" {
-  let (tokens, _) = @html.tokenize("<a a=a!>")
+  let (tokens, errors) = @html.tokenize("<a a=a!>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a!", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6248" {
-  let (tokens, _) = @html.tokenize("<a a=a\">")
+  let (tokens, errors) = @html.tokenize("<a a=a\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a\"", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInUnquotedAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6249" {
-  let (tokens, _) = @html.tokenize("<a a=a#>")
+  let (tokens, errors) = @html.tokenize("<a a=a#>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a#", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6250" {
-  let (tokens, _) = @html.tokenize("<a a=a%>")
+  let (tokens, errors) = @html.tokenize("<a a=a%>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a%", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6251" {
-  let (tokens, _) = @html.tokenize("<a a=a&>")
+  let (tokens, errors) = @html.tokenize("<a a=a&>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a&", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6252" {
-  let (tokens, _) = @html.tokenize("<a a=a'>")
+  let (tokens, errors) = @html.tokenize("<a a=a'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a'", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInUnquotedAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6253" {
-  let (tokens, _) = @html.tokenize("<a a=a(>")
+  let (tokens, errors) = @html.tokenize("<a a=a(>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a(", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6254" {
-  let (tokens, _) = @html.tokenize("<a a=a->")
+  let (tokens, errors) = @html.tokenize("<a a=a->")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a-", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6255" {
-  let (tokens, _) = @html.tokenize("<a a=a/>")
+  let (tokens, errors) = @html.tokenize("<a a=a/>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a/", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa0_6256" {
-  let (tokens, _) = @html.tokenize("<a a=a0>")
+  let (tokens, errors) = @html.tokenize("<a a=a0>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a0", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa1_6257" {
-  let (tokens, _) = @html.tokenize("<a a=a1>")
+  let (tokens, errors) = @html.tokenize("<a a=a1>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a1", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa9_6258" {
-  let (tokens, _) = @html.tokenize("<a a=a9>")
+  let (tokens, errors) = @html.tokenize("<a a=a9>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a9", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6259" {
-  let (tokens, _) = @html.tokenize("<a a=a<>")
+  let (tokens, errors) = @html.tokenize("<a a=a<>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a<", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInUnquotedAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6260" {
-  let (tokens, _) = @html.tokenize("<a a=a=>")
+  let (tokens, errors) = @html.tokenize("<a a=a=>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a=", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInUnquotedAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6261" {
-  let (tokens, _) = @html.tokenize("<a a=a>")
+  let (tokens, errors) = @html.tokenize("<a a=a>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6262" {
-  let (tokens, _) = @html.tokenize("<a a=a?>")
+  let (tokens, errors) = @html.tokenize("<a a=a?>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a?", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6263" {
-  let (tokens, _) = @html.tokenize("<a a=a@>")
+  let (tokens, errors) = @html.tokenize("<a a=a@>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a@", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aaa_6264" {
-  let (tokens, _) = @html.tokenize("<a a=aA>")
+  let (tokens, errors) = @html.tokenize("<a a=aA>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "aA", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aab_6265" {
-  let (tokens, _) = @html.tokenize("<a a=aB>")
+  let (tokens, errors) = @html.tokenize("<a a=aB>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "aB", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aay_6266" {
-  let (tokens, _) = @html.tokenize("<a a=aY>")
+  let (tokens, errors) = @html.tokenize("<a a=aY>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "aY", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aaz_6267" {
-  let (tokens, _) = @html.tokenize("<a a=aZ>")
+  let (tokens, errors) = @html.tokenize("<a a=aZ>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "aZ", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6268" {
-  let (tokens, _) = @html.tokenize("<a a=a`>")
+  let (tokens, errors) = @html.tokenize("<a a=a`>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a`", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInUnquotedAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aaa_6269" {
-  let (tokens, _) = @html.tokenize("<a a=aa>")
+  let (tokens, errors) = @html.tokenize("<a a=aa>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "aa", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aab_6270" {
-  let (tokens, _) = @html.tokenize("<a a=ab>")
+  let (tokens, errors) = @html.tokenize("<a a=ab>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "ab", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aay_6271" {
-  let (tokens, _) = @html.tokenize("<a a=ay>")
+  let (tokens, errors) = @html.tokenize("<a a=ay>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "ay", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aaz_6272" {
-  let (tokens, _) = @html.tokenize("<a a=az>")
+  let (tokens, errors) = @html.tokenize("<a a=az>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "az", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6273" {
-  let (tokens, _) = @html.tokenize("<a a=a{>")
+  let (tokens, errors) = @html.tokenize("<a a=a{>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "a{", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aaudbc0udc00_6274" {
-  let (tokens, _) = @html.tokenize("<a a=a􀀀>")
+  let (tokens, errors) = @html.tokenize("<a a=a􀀀>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -1407,47 +1704,52 @@ test "html5lib/tokenizer/test3_a_aaudbc0udc00_6274" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_ab_6275" {
-  let (tokens, _) = @html.tokenize("<a a=b>")
+  let (tokens, errors) = @html.tokenize("<a a=b>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "b", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_ay_6276" {
-  let (tokens, _) = @html.tokenize("<a a=y>")
+  let (tokens, errors) = @html.tokenize("<a a=y>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "y", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_az_6277" {
-  let (tokens, _) = @html.tokenize("<a a=z>")
+  let (tokens, errors) = @html.tokenize("<a a=z>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "z", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6278" {
-  let (tokens, _) = @html.tokenize("<a a={>")
+  let (tokens, errors) = @html.tokenize("<a a={>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "{", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_audbc0udc00_6279" {
-  let (tokens, _) = @html.tokenize("<a a=􀀀>")
+  let (tokens, errors) = @html.tokenize("<a a=􀀀>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -1456,137 +1758,152 @@ test "html5lib/tokenizer/test3_a_audbc0udc00_6279" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6280" {
-  let (tokens, _) = @html.tokenize("<a a>")
+  let (tokens, errors) = @html.tokenize("<a a>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6281" {
-  let (tokens, _) = @html.tokenize("<a a?>")
+  let (tokens, errors) = @html.tokenize("<a a?>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a?", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6282" {
-  let (tokens, _) = @html.tokenize("<a a@>")
+  let (tokens, errors) = @html.tokenize("<a a@>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a@", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6283" {
-  let (tokens, _) = @html.tokenize("<a aA>")
+  let (tokens, errors) = @html.tokenize("<a aA>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "aa", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_ab_6284" {
-  let (tokens, _) = @html.tokenize("<a aB>")
+  let (tokens, errors) = @html.tokenize("<a aB>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "ab", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_ay_6285" {
-  let (tokens, _) = @html.tokenize("<a aY>")
+  let (tokens, errors) = @html.tokenize("<a aY>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "ay", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_az_6286" {
-  let (tokens, _) = @html.tokenize("<a aZ>")
+  let (tokens, errors) = @html.tokenize("<a aZ>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "az", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6287" {
-  let (tokens, _) = @html.tokenize("<a a[>")
+  let (tokens, errors) = @html.tokenize("<a a[>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a[", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6288" {
-  let (tokens, _) = @html.tokenize("<a a`>")
+  let (tokens, errors) = @html.tokenize("<a a`>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a`", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_aa_6289" {
-  let (tokens, _) = @html.tokenize("<a aa>")
+  let (tokens, errors) = @html.tokenize("<a aa>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "aa", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_ab_6290" {
-  let (tokens, _) = @html.tokenize("<a ab>")
+  let (tokens, errors) = @html.tokenize("<a ab>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "ab", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_ay_6291" {
-  let (tokens, _) = @html.tokenize("<a ay>")
+  let (tokens, errors) = @html.tokenize("<a ay>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "ay", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_az_6292" {
-  let (tokens, _) = @html.tokenize("<a az>")
+  let (tokens, errors) = @html.tokenize("<a az>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "az", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_a_6293" {
-  let (tokens, _) = @html.tokenize("<a a{>")
+  let (tokens, errors) = @html.tokenize("<a a{>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a{", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_audbc0udc00_6294" {
-  let (tokens, _) = @html.tokenize("<a a􀀀>")
+  let (tokens, errors) = @html.tokenize("<a a􀀀>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -1595,146 +1912,174 @@ test "html5lib/tokenizer/test3_a_audbc0udc00_6294" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_b_6295" {
-  let (tokens, _) = @html.tokenize("<a b>")
+  let (tokens, errors) = @html.tokenize("<a b>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "b", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_y_6296" {
-  let (tokens, _) = @html.tokenize("<a y>")
+  let (tokens, errors) = @html.tokenize("<a y>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "y", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_z_6297" {
-  let (tokens, _) = @html.tokenize("<a z>")
+  let (tokens, errors) = @html.tokenize("<a z>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "z", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a__6298" {
-  let (tokens, _) = @html.tokenize("<a {>")
+  let (tokens, errors) = @html.tokenize("<a {>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "{", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_udbc0udc00_6299" {
-  let (tokens, _) = @html.tokenize("<a 􀀀>")
+  let (tokens, errors) = @html.tokenize("<a 􀀀>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "􀀀", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6300" {
-  let (tokens, _) = @html.tokenize("<a!>")
+  let (tokens, errors) = @html.tokenize("<a!>")
   @debug.assert_eq(tokens, [
     StartTag(name="a!", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6301" {
-  let (tokens, _) = @html.tokenize("<a\">")
+  let (tokens, errors) = @html.tokenize("<a\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a\"", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6302" {
-  let (tokens, _) = @html.tokenize("<a&>")
+  let (tokens, errors) = @html.tokenize("<a&>")
   @debug.assert_eq(tokens, [
     StartTag(name="a&", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6303" {
-  let (tokens, _) = @html.tokenize("<a'>")
+  let (tokens, errors) = @html.tokenize("<a'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a'", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6304" {
-  let (tokens, _) = @html.tokenize("<a->")
+  let (tokens, errors) = @html.tokenize("<a->")
   @debug.assert_eq(tokens, [
     StartTag(name="a-", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6305" {
-  let (tokens, _) = @html.tokenize("<a.>")
+  let (tokens, errors) = @html.tokenize("<a.>")
   @debug.assert_eq(tokens, [
     StartTag(name="a.", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6306" {
-  let (tokens, _) = @html.tokenize("<a/>")
+  let (tokens, errors) = @html.tokenize("<a/>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_au0000_6307" {
-  let (tokens, _) = @html.tokenize("<a/\u{00}>")
+  let (tokens, errors) = @html.tokenize("<a/\u{00}>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "�", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
+  assert_true(errors[1].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_au0009_6308" {
-  let (tokens, _) = @html.tokenize("<a/\t>")
+  let (tokens, errors) = @html.tokenize("<a/\t>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_au000a_6309" {
-  let (tokens, _) = @html.tokenize("<a/\n>")
+  let (tokens, errors) = @html.tokenize("<a/\n>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_au000b_6310" {
-  let (tokens, _) = @html.tokenize("<a/\u{0b}>")
+  let (tokens, errors) = @html.tokenize("<a/\u{0b}>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
@@ -1743,473 +2088,628 @@ test "html5lib/tokenizer/test3_au000b_6310" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
+  assert_true(errors[1].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_au000c_6311" {
-  let (tokens, _) = @html.tokenize("<a/\u{0c}>")
+  let (tokens, errors) = @html.tokenize("<a/\u{0c}>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a__6312" {
-  let (tokens, _) = @html.tokenize("<a/ >")
+  let (tokens, errors) = @html.tokenize("<a/ >")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6313" {
-  let (tokens, _) = @html.tokenize("<a/!>")
+  let (tokens, errors) = @html.tokenize("<a/!>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "!", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6314" {
-  let (tokens, _) = @html.tokenize("<a/\">")
+  let (tokens, errors) = @html.tokenize("<a/\">")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "\"", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
+  assert_true(errors[1].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6315" {
-  let (tokens, _) = @html.tokenize("<a/&>")
+  let (tokens, errors) = @html.tokenize("<a/&>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "&", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6316" {
-  let (tokens, _) = @html.tokenize("<a/'>")
+  let (tokens, errors) = @html.tokenize("<a/'>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "'", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
+  assert_true(errors[1].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6317" {
-  let (tokens, _) = @html.tokenize("<a/->")
+  let (tokens, errors) = @html.tokenize("<a/->")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "-", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6318" {
-  let (tokens, _) = @html.tokenize("<a//>")
+  let (tokens, errors) = @html.tokenize("<a//>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a0_6319" {
-  let (tokens, _) = @html.tokenize("<a/0>")
+  let (tokens, errors) = @html.tokenize("<a/0>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "0", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a1_6320" {
-  let (tokens, _) = @html.tokenize("<a/1>")
+  let (tokens, errors) = @html.tokenize("<a/1>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "1", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a9_6321" {
-  let (tokens, _) = @html.tokenize("<a/9>")
+  let (tokens, errors) = @html.tokenize("<a/9>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "9", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6322" {
-  let (tokens, _) = @html.tokenize("<a/<>")
+  let (tokens, errors) = @html.tokenize("<a/<>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "<", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
+  assert_true(errors[1].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6323" {
-  let (tokens, _) = @html.tokenize("<a/=>")
+  let (tokens, errors) = @html.tokenize("<a/=>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "=", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
+  assert_true(errors[1].code is UnexpectedEqualsSignBeforeAttributeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6324" {
-  let (tokens, _) = @html.tokenize("<a/>")
+  let (tokens, errors) = @html.tokenize("<a/>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6325" {
-  let (tokens, _) = @html.tokenize("<a/?>")
+  let (tokens, errors) = @html.tokenize("<a/?>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "?", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6326" {
-  let (tokens, _) = @html.tokenize("<a/@>")
+  let (tokens, errors) = @html.tokenize("<a/@>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "@", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_aa_6327" {
-  let (tokens, _) = @html.tokenize("<a/A>")
+  let (tokens, errors) = @html.tokenize("<a/A>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_ab_6328" {
-  let (tokens, _) = @html.tokenize("<a/B>")
+  let (tokens, errors) = @html.tokenize("<a/B>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "b", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_ay_6329" {
-  let (tokens, _) = @html.tokenize("<a/Y>")
+  let (tokens, errors) = @html.tokenize("<a/Y>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "y", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_az_6330" {
-  let (tokens, _) = @html.tokenize("<a/Z>")
+  let (tokens, errors) = @html.tokenize("<a/Z>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "z", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6331" {
-  let (tokens, _) = @html.tokenize("<a/`>")
+  let (tokens, errors) = @html.tokenize("<a/`>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "`", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_aa_6332" {
-  let (tokens, _) = @html.tokenize("<a/a>")
+  let (tokens, errors) = @html.tokenize("<a/a>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_ab_6333" {
-  let (tokens, _) = @html.tokenize("<a/b>")
+  let (tokens, errors) = @html.tokenize("<a/b>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "b", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_ay_6334" {
-  let (tokens, _) = @html.tokenize("<a/y>")
+  let (tokens, errors) = @html.tokenize("<a/y>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "y", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_az_6335" {
-  let (tokens, _) = @html.tokenize("<a/z>")
+  let (tokens, errors) = @html.tokenize("<a/z>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "z", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6336" {
-  let (tokens, _) = @html.tokenize("<a/{>")
+  let (tokens, errors) = @html.tokenize("<a/{>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "{", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_audbc0udc00_6337" {
-  let (tokens, _) = @html.tokenize("<a/􀀀>")
+  let (tokens, errors) = @html.tokenize("<a/􀀀>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "􀀀", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a0_6338" {
-  let (tokens, _) = @html.tokenize("<a0>")
+  let (tokens, errors) = @html.tokenize("<a0>")
   @debug.assert_eq(tokens, [
     StartTag(name="a0", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a1_6339" {
-  let (tokens, _) = @html.tokenize("<a1>")
+  let (tokens, errors) = @html.tokenize("<a1>")
   @debug.assert_eq(tokens, [
     StartTag(name="a1", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a9_6340" {
-  let (tokens, _) = @html.tokenize("<a9>")
+  let (tokens, errors) = @html.tokenize("<a9>")
   @debug.assert_eq(tokens, [
     StartTag(name="a9", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6341" {
-  let (tokens, _) = @html.tokenize("<a<>")
+  let (tokens, errors) = @html.tokenize("<a<>")
   @debug.assert_eq(tokens, [
     StartTag(name="a<", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6342" {
-  let (tokens, _) = @html.tokenize("<a=>")
+  let (tokens, errors) = @html.tokenize("<a=>")
   @debug.assert_eq(tokens, [
     StartTag(name="a=", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6343" {
-  let (tokens, _) = @html.tokenize("<a>")
+  let (tokens, errors) = @html.tokenize("<a>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6344" {
-  let (tokens, _) = @html.tokenize("<a?>")
+  let (tokens, errors) = @html.tokenize("<a?>")
   @debug.assert_eq(tokens, [
     StartTag(name="a?", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6345" {
-  let (tokens, _) = @html.tokenize("<a@>")
+  let (tokens, errors) = @html.tokenize("<a@>")
   @debug.assert_eq(tokens, [
     StartTag(name="a@", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_aa_6346" {
-  let (tokens, _) = @html.tokenize("<aA>")
+  let (tokens, errors) = @html.tokenize("<aA>")
   @debug.assert_eq(tokens, [
     StartTag(name="aa", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_ab_6347" {
-  let (tokens, _) = @html.tokenize("<aB>")
+  let (tokens, errors) = @html.tokenize("<aB>")
   @debug.assert_eq(tokens, [
     StartTag(name="ab", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_ay_6348" {
-  let (tokens, _) = @html.tokenize("<aY>")
+  let (tokens, errors) = @html.tokenize("<aY>")
   @debug.assert_eq(tokens, [
     StartTag(name="ay", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_az_6349" {
-  let (tokens, _) = @html.tokenize("<aZ>")
+  let (tokens, errors) = @html.tokenize("<aZ>")
   @debug.assert_eq(tokens, [
     StartTag(name="az", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6350" {
-  let (tokens, _) = @html.tokenize("<a[>")
+  let (tokens, errors) = @html.tokenize("<a[>")
   @debug.assert_eq(tokens, [
     StartTag(name="a[", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6351" {
-  let (tokens, _) = @html.tokenize("<a`>")
+  let (tokens, errors) = @html.tokenize("<a`>")
   @debug.assert_eq(tokens, [
     StartTag(name="a`", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_aa_6352" {
-  let (tokens, _) = @html.tokenize("<aa>")
+  let (tokens, errors) = @html.tokenize("<aa>")
   @debug.assert_eq(tokens, [
     StartTag(name="aa", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_ab_6353" {
-  let (tokens, _) = @html.tokenize("<ab>")
+  let (tokens, errors) = @html.tokenize("<ab>")
   @debug.assert_eq(tokens, [
     StartTag(name="ab", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_ay_6354" {
-  let (tokens, _) = @html.tokenize("<ay>")
+  let (tokens, errors) = @html.tokenize("<ay>")
   @debug.assert_eq(tokens, [
     StartTag(name="ay", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_az_6355" {
-  let (tokens, _) = @html.tokenize("<az>")
+  let (tokens, errors) = @html.tokenize("<az>")
   @debug.assert_eq(tokens, [
     StartTag(name="az", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_a_6356" {
-  let (tokens, _) = @html.tokenize("<a{>")
+  let (tokens, errors) = @html.tokenize("<a{>")
   @debug.assert_eq(tokens, [
     StartTag(name="a{", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_audbc0udc00_6357" {
-  let (tokens, _) = @html.tokenize("<a􀀀>")
+  let (tokens, errors) = @html.tokenize("<a􀀀>")
   @debug.assert_eq(tokens, [
     StartTag(name="a􀀀", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_b_6358" {
-  let (tokens, _) = @html.tokenize("<b>")
+  let (tokens, errors) = @html.tokenize("<b>")
   @debug.assert_eq(tokens, [
     StartTag(name="b", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_y_6359" {
-  let (tokens, _) = @html.tokenize("<y>")
+  let (tokens, errors) = @html.tokenize("<y>")
   @debug.assert_eq(tokens, [
     StartTag(name="y", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3_z_6360" {
-  let (tokens, _) = @html.tokenize("<z>")
+  let (tokens, errors) = @html.tokenize("<z>")
   @debug.assert_eq(tokens, [
     StartTag(name="z", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test3__6361" {
-  let (tokens, _) = @html.tokenize("<{")
+  let (tokens, errors) = @html.tokenize("<{")
   @debug.assert_eq(tokens, [Character('<'), Character('{'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test3_udbc0udc00_6362" {
-  let (tokens, _) = @html.tokenize("<􀀀")
+  let (tokens, errors) = @html.tokenize("<􀀀")
   @debug.assert_eq(tokens, [Character('<'), Character('\u{100000}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidFirstCharacterOfTagName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 2)
 }
 
 ///|
 test "html5lib/tokenizer/test4__in_attribute_name_6393" {
-  let (tokens, _) = @html.tokenize("<z/0  <>")
+  let (tokens, errors) = @html.tokenize("<z/0  <>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="z",
@@ -2218,101 +2718,148 @@ test "html5lib/tokenizer/test4__in_attribute_name_6393" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is UnexpectedSolidusInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
+  assert_true(errors[1].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test4__in_unquoted_attribute_value_6394" {
-  let (tokens, _) = @html.tokenize("<z x=<>")
+  let (tokens, errors) = @html.tokenize("<z x=<>")
   @debug.assert_eq(tokens, [
     StartTag(name="z", attrs=[{ name: "x", value: "<", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInUnquotedAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test4__in_unquoted_attribute_value_6395" {
-  let (tokens, _) = @html.tokenize("<z z=z=z>")
+  let (tokens, errors) = @html.tokenize("<z z=z=z>")
   @debug.assert_eq(tokens, [
     StartTag(name="z", attrs=[{ name: "z", value: "z=z", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInUnquotedAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test4__attribute_6396" {
-  let (tokens, _) = @html.tokenize("<z =>")
+  let (tokens, errors) = @html.tokenize("<z =>")
   @debug.assert_eq(tokens, [
     StartTag(name="z", attrs=[{ name: "=", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedEqualsSignBeforeAttributeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test4__attribute_6397" {
-  let (tokens, _) = @html.tokenize("<z ==>")
+  let (tokens, errors) = @html.tokenize("<z ==>")
   @debug.assert_eq(tokens, [
     StartTag(name="z", attrs=[{ name: "=", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is UnexpectedEqualsSignBeforeAttributeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
+  assert_true(errors[1].code is MissingAttributeValue)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test4__attribute_6398" {
-  let (tokens, _) = @html.tokenize("<z ===>")
+  let (tokens, errors) = @html.tokenize("<z ===>")
   @debug.assert_eq(tokens, [
     StartTag(name="z", attrs=[{ name: "=", value: "=", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is UnexpectedEqualsSignBeforeAttributeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
+  assert_true(errors[1].code is UnexpectedCharacterInUnquotedAttributeValue)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test4__attribute_6399" {
-  let (tokens, _) = @html.tokenize("<z ====>")
+  let (tokens, errors) = @html.tokenize("<z ====>")
   @debug.assert_eq(tokens, [
     StartTag(name="z", attrs=[{ name: "=", value: "==", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 3)
+  assert_true(errors[0].code is UnexpectedEqualsSignBeforeAttributeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
+  assert_true(errors[1].code is UnexpectedCharacterInUnquotedAttributeValue)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 6)
+  assert_true(errors[2].code is UnexpectedCharacterInUnquotedAttributeValue)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test4__after_ampersand_in_doublequoted_attribute_value_6400" {
-  let (tokens, _) = @html.tokenize("<z z=\"&\">")
+  let (tokens, errors) = @html.tokenize("<z z=\"&\">")
   @debug.assert_eq(tokens, [
     StartTag(name="z", attrs=[{ name: "z", value: "&", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4__after_ampersand_in_doublequoted_attribute_value_6401" {
-  let (tokens, _) = @html.tokenize("<z z=\"&'\">")
+  let (tokens, errors) = @html.tokenize("<z z=\"&'\">")
   @debug.assert_eq(tokens, [
     StartTag(name="z", attrs=[{ name: "z", value: "&'", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4__after_ampersand_in_singlequoted_attribute_value_6402" {
-  let (tokens, _) = @html.tokenize("<z z='&'>")
+  let (tokens, errors) = @html.tokenize("<z z='&'>")
   @debug.assert_eq(tokens, [
     StartTag(name="z", attrs=[{ name: "z", value: "&", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4__after_ampersand_in_singlequoted_attribute_value_6403" {
-  let (tokens, _) = @html.tokenize("<z z='&\"'>")
+  let (tokens, errors) = @html.tokenize("<z z='&\"'>")
   @debug.assert_eq(tokens, [
     StartTag(name="z", attrs=[{ name: "z", value: "&\"", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_text_after_bogus_character_reference_6404" {
-  let (tokens, _) = @html.tokenize("<z z='&xlink_xmlns;'>bar<z>")
+  let (tokens, errors) = @html.tokenize("<z z='&xlink_xmlns;'>bar<z>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="z",
@@ -2325,11 +2872,12 @@ test "html5lib/tokenizer/test4_text_after_bogus_character_reference_6404" {
     StartTag(name="z", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_text_after_hex_character_reference_6405" {
-  let (tokens, _) = @html.tokenize("<z z='&#x0020; foo'>bar<z>")
+  let (tokens, errors) = @html.tokenize("<z z='&#x0020; foo'>bar<z>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="z",
@@ -2342,11 +2890,12 @@ test "html5lib/tokenizer/test4_text_after_hex_character_reference_6405" {
     StartTag(name="z", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_attribute_name_starting_with__6406" {
-  let (tokens, _) = @html.tokenize("<foo \"='bar'>")
+  let (tokens, errors) = @html.tokenize("<foo \"='bar'>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="foo",
@@ -2355,11 +2904,15 @@ test "html5lib/tokenizer/test4_attribute_name_starting_with__6406" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test4_attribute_name_starting_with__6407" {
-  let (tokens, _) = @html.tokenize("<foo '='bar'>")
+  let (tokens, errors) = @html.tokenize("<foo '='bar'>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="foo",
@@ -2368,11 +2921,15 @@ test "html5lib/tokenizer/test4_attribute_name_starting_with__6407" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test4_attribute_name_containing__6408" {
-  let (tokens, _) = @html.tokenize("<foo a\"b='bar'>")
+  let (tokens, errors) = @html.tokenize("<foo a\"b='bar'>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="foo",
@@ -2381,11 +2938,15 @@ test "html5lib/tokenizer/test4_attribute_name_containing__6408" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test4_attribute_name_containing__6409" {
-  let (tokens, _) = @html.tokenize("<foo a'b='bar'>")
+  let (tokens, errors) = @html.tokenize("<foo a'b='bar'>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="foo",
@@ -2394,11 +2955,15 @@ test "html5lib/tokenizer/test4_attribute_name_containing__6409" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInAttributeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test4_unquoted_attribute_value_containing__6410" {
-  let (tokens, _) = @html.tokenize("<foo a=b'c>")
+  let (tokens, errors) = @html.tokenize("<foo a=b'c>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="foo",
@@ -2407,11 +2972,15 @@ test "html5lib/tokenizer/test4_unquoted_attribute_value_containing__6410" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInUnquotedAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/test4_unquoted_attribute_value_containing__6411" {
-  let (tokens, _) = @html.tokenize("<foo a=b\"c>")
+  let (tokens, errors) = @html.tokenize("<foo a=b\"c>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="foo",
@@ -2420,11 +2989,15 @@ test "html5lib/tokenizer/test4_unquoted_attribute_value_containing__6411" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInUnquotedAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/test4_doublequoted_attribute_value_not_followed_by_white_6412" {
-  let (tokens, _) = @html.tokenize("<foo a=\"b\"c>")
+  let (tokens, errors) = @html.tokenize("<foo a=\"b\"c>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="foo",
@@ -2433,11 +3006,15 @@ test "html5lib/tokenizer/test4_doublequoted_attribute_value_not_followed_by_whit
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/test4_singlequoted_attribute_value_not_followed_by_white_6413" {
-  let (tokens, _) = @html.tokenize("<foo a='b'c>")
+  let (tokens, errors) = @html.tokenize("<foo a='b'c>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="foo",
@@ -2446,29 +3023,35 @@ test "html5lib/tokenizer/test4_singlequoted_attribute_value_not_followed_by_whit
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is MissingWhitespaceBetweenAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/test4_quoted_attribute_followed_by_permitted__6414" {
-  let (tokens, _) = @html.tokenize("<br a='b'/>")
+  let (tokens, errors) = @html.tokenize("<br a='b'/>")
   @debug.assert_eq(tokens, [
     StartTag(name="br", attrs=[{ name: "a", value: "b", }], self_closing=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_quoted_attribute_followed_by_nonpermitted__6415" {
-  let (tokens, _) = @html.tokenize("<bar a='b'/>")
+  let (tokens, errors) = @html.tokenize("<bar a='b'/>")
   @debug.assert_eq(tokens, [
     StartTag(name="bar", attrs=[{ name: "a", value: "b", }], self_closing=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_cr_eof_after_doctype_name_6416" {
-  let (tokens, _) = @html.tokenize("<!doctype html \r")
+  let (tokens, errors) = @html.tokenize("<!doctype html \r")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -2478,51 +3061,79 @@ test "html5lib/tokenizer/test4_cr_eof_after_doctype_name_6416" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInDoctype)
+  @debug.assert_eq(errors[0].position.line, 2)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test4_cr_eof_in_tag_name_6417" {
-  let (tokens, _) = @html.tokenize("<z\r")
+  let (tokens, errors) = @html.tokenize("<z\r")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInTag)
+  @debug.assert_eq(errors[0].position.line, 2)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/test4_slash_eof_in_tag_name_6418" {
-  let (tokens, _) = @html.tokenize("<z/")
+  let (tokens, errors) = @html.tokenize("<z/")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test4_zero_hex_numeric_entity_6419" {
-  let (tokens, _) = @html.tokenize("&#x0")
+  let (tokens, errors) = @html.tokenize("&#x0")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingSemicolonAfterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 5)
+  assert_true(errors[1].code is NullCharacterReference)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 5)
 }
 
 ///|
 test "html5lib/tokenizer/test4_zero_decimal_numeric_entity_6420" {
-  let (tokens, _) = @html.tokenize("&#0")
+  let (tokens, errors) = @html.tokenize("&#0")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is MissingSemicolonAfterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
+  assert_true(errors[1].code is NullCharacterReference)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test4_zeroprefixed_hex_numeric_entity_6421" {
-  let (tokens, _) = @html.tokenize(
+  let (tokens, errors) = @html.tokenize(
     "&#x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000041;",
   )
   @debug.assert_eq(tokens, [Character('A'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_zeroprefixed_decimal_numeric_entity_6422" {
-  let (tokens, _) = @html.tokenize(
+  let (tokens, errors) = @html.tokenize(
     "&#000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000065;",
   )
   @debug.assert_eq(tokens, [Character('A'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_empty_hex_numeric_entities_6423" {
-  let (tokens, _) = @html.tokenize("&#x &#X ")
+  let (tokens, errors) = @html.tokenize("&#x &#X ")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('#'),
@@ -2534,11 +3145,18 @@ test "html5lib/tokenizer/test4_empty_hex_numeric_entities_6423" {
     Character(' '),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is AbsenceOfDigitsInNumericCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
+  assert_true(errors[1].code is AbsenceOfDigitsInNumericCharacterReference)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test4_invalid_digit_in_hex_numeric_entity_6424" {
-  let (tokens, _) = @html.tokenize("&#xZ")
+  let (tokens, errors) = @html.tokenize("&#xZ")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('#'),
@@ -2546,11 +3164,15 @@ test "html5lib/tokenizer/test4_invalid_digit_in_hex_numeric_entity_6424" {
     Character('Z'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is AbsenceOfDigitsInNumericCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test4_empty_decimal_numeric_entities_6425" {
-  let (tokens, _) = @html.tokenize("&# &#; ")
+  let (tokens, errors) = @html.tokenize("&# &#; ")
   @debug.assert_eq(tokens, [
     Character('&'),
     Character('#'),
@@ -2561,65 +3183,105 @@ test "html5lib/tokenizer/test4_empty_decimal_numeric_entities_6425" {
     Character(' '),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is AbsenceOfDigitsInNumericCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
+  assert_true(errors[1].code is AbsenceOfDigitsInNumericCharacterReference)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test4_invalid_digit_in_decimal_numeric_entity_6426" {
-  let (tokens, _) = @html.tokenize("&#A")
+  let (tokens, errors) = @html.tokenize("&#A")
   @debug.assert_eq(tokens, [Character('&'), Character('#'), Character('A'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is AbsenceOfDigitsInNumericCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test4_nonbmp_numeric_entity_6427" {
-  let (tokens, _) = @html.tokenize("&#x10000;")
+  let (tokens, errors) = @html.tokenize("&#x10000;")
   @debug.assert_eq(tokens, [Character('𐀀'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_maximum_nonbmp_numeric_entity_6428" {
-  let (tokens, _) = @html.tokenize("&#X10FFFF;")
+  let (tokens, errors) = @html.tokenize("&#X10FFFF;")
   @debug.assert_eq(tokens, [Character('\u{10ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/test4_above_maximum_numeric_entity_6429" {
-  let (tokens, _) = @html.tokenize("&#x110000;")
+  let (tokens, errors) = @html.tokenize("&#x110000;")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is CharacterReferenceOutsideUnicodeRange)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 11)
 }
 
 ///|
 test "html5lib/tokenizer/test4_32bit_hex_numeric_entity_6430" {
-  let (tokens, _) = @html.tokenize("&#x80000041;")
+  let (tokens, errors) = @html.tokenize("&#x80000041;")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is CharacterReferenceOutsideUnicodeRange)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 13)
 }
 
 ///|
 test "html5lib/tokenizer/test4_33bit_hex_numeric_entity_6431" {
-  let (tokens, _) = @html.tokenize("&#x100000041;")
+  let (tokens, errors) = @html.tokenize("&#x100000041;")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is CharacterReferenceOutsideUnicodeRange)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 14)
 }
 
 ///|
 test "html5lib/tokenizer/test4_33bit_decimal_numeric_entity_6432" {
-  let (tokens, _) = @html.tokenize("&#4294967361;")
+  let (tokens, errors) = @html.tokenize("&#4294967361;")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is CharacterReferenceOutsideUnicodeRange)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 14)
 }
 
 ///|
 test "html5lib/tokenizer/test4_65bit_hex_numeric_entity_6433" {
-  let (tokens, _) = @html.tokenize("&#x10000000000000041;")
+  let (tokens, errors) = @html.tokenize("&#x10000000000000041;")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is CharacterReferenceOutsideUnicodeRange)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 22)
 }
 
 ///|
 test "html5lib/tokenizer/test4_65bit_decimal_numeric_entity_6434" {
-  let (tokens, _) = @html.tokenize("&#18446744073709551681;")
+  let (tokens, errors) = @html.tokenize("&#18446744073709551681;")
   @debug.assert_eq(tokens, [Character('�'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is CharacterReferenceOutsideUnicodeRange)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 24)
 }
 
 ///|
 test "html5lib/tokenizer/test4_surrogate_code_point_edge_cases_6435" {
-  let (tokens, _) = @html.tokenize(
+  let (tokens, errors) = @html.tokenize(
     "&#xD7FF;&#xD800;&#xD801;&#xDFFE;&#xDFFF;&#xE000;",
   )
   @debug.assert_eq(tokens, [
@@ -2631,35 +3293,51 @@ test "html5lib/tokenizer/test4_surrogate_code_point_edge_cases_6435" {
     Character('\u{e000}'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 4)
+  assert_true(errors[0].code is SurrogateCharacterReference)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 17)
+  assert_true(errors[1].code is SurrogateCharacterReference)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 25)
+  assert_true(errors[2].code is SurrogateCharacterReference)
+  @debug.assert_eq(errors[2].position.line, 1)
+  @debug.assert_eq(errors[2].position.column, 33)
+  assert_true(errors[3].code is SurrogateCharacterReference)
+  @debug.assert_eq(errors[3].position.line, 1)
+  @debug.assert_eq(errors[3].position.column, 41)
 }
 
 ///|
 test "html5lib/tokenizer/test4_uppercase_start_tag_name_6436" {
-  let (tokens, _) = @html.tokenize("<X>")
+  let (tokens, errors) = @html.tokenize("<X>")
   @debug.assert_eq(tokens, [
     StartTag(name="x", attrs=[], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_uppercase_end_tag_name_6437" {
-  let (tokens, _) = @html.tokenize("</X>")
+  let (tokens, errors) = @html.tokenize("</X>")
   @debug.assert_eq(tokens, [EndTag(name="x"), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_uppercase_attribute_name_6438" {
-  let (tokens, _) = @html.tokenize("<x X>")
+  let (tokens, errors) = @html.tokenize("<x X>")
   @debug.assert_eq(tokens, [
     StartTag(name="x", attrs=[{ name: "x", value: "", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_tagattribute_name_case_edge_values_6439" {
-  let (tokens, _) = @html.tokenize("<x@AZ[`az{ @AZ[`az{>")
+  let (tokens, errors) = @html.tokenize("<x@AZ[`az{ @AZ[`az{>")
   @debug.assert_eq(tokens, [
     StartTag(
       name="x@az[`az{",
@@ -2668,56 +3346,83 @@ test "html5lib/tokenizer/test4_tagattribute_name_case_edge_values_6439" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_duplicate_differentcase_attributes_6440" {
-  let (tokens, _) = @html.tokenize("<x x=1 x=2 X=3>")
+  let (tokens, errors) = @html.tokenize("<x x=1 x=2 X=3>")
   @debug.assert_eq(tokens, [
     StartTag(name="x", attrs=[{ name: "x", value: "1", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is DuplicateAttribute)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
+  assert_true(errors[1].code is DuplicateAttribute)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 13)
 }
 
 ///|
 test "html5lib/tokenizer/test4_uppercase_close_tag_attributes_6441" {
-  let (tokens, _) = @html.tokenize("</x X>")
+  let (tokens, errors) = @html.tokenize("</x X>")
   @debug.assert_eq(tokens, [EndTag(name="x"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EndTagWithAttributes)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test4_duplicate_close_tag_attributes_6442" {
-  let (tokens, _) = @html.tokenize("</x x x>")
+  let (tokens, errors) = @html.tokenize("</x x x>")
   @debug.assert_eq(tokens, [EndTag(name="x"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is DuplicateAttribute)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
+  assert_true(errors[1].code is EndTagWithAttributes)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test4_permitted_slash_6443" {
-  let (tokens, _) = @html.tokenize("<br/>")
+  let (tokens, errors) = @html.tokenize("<br/>")
   @debug.assert_eq(tokens, [
     StartTag(name="br", attrs=[], self_closing=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_nonpermitted_slash_6444" {
-  let (tokens, _) = @html.tokenize("<xr/>")
+  let (tokens, errors) = @html.tokenize("<xr/>")
   @debug.assert_eq(tokens, [
     StartTag(name="xr", attrs=[], self_closing=true),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_permitted_slash_but_in_close_tag_6445" {
-  let (tokens, _) = @html.tokenize("</br/>")
+  let (tokens, errors) = @html.tokenize("</br/>")
   @debug.assert_eq(tokens, [EndTag(name="br"), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EndTagWithTrailingSolidus)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test4_doctype_public_casesensitivity_1_6446" {
-  let (tokens, _) = @html.tokenize("<!DoCtYpE HtMl PuBlIc \"AbC\" \"XyZ\">")
+  let (tokens, errors) = @html.tokenize(
+    "<!DoCtYpE HtMl PuBlIc \"AbC\" \"XyZ\">",
+  )
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -2727,11 +3432,14 @@ test "html5lib/tokenizer/test4_doctype_public_casesensitivity_1_6446" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_doctype_public_casesensitivity_2_6447" {
-  let (tokens, _) = @html.tokenize("<!dOcTyPe hTmL pUbLiC \"aBc\" \"xYz\">")
+  let (tokens, errors) = @html.tokenize(
+    "<!dOcTyPe hTmL pUbLiC \"aBc\" \"xYz\">",
+  )
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -2741,11 +3449,12 @@ test "html5lib/tokenizer/test4_doctype_public_casesensitivity_2_6447" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_doctype_system_casesensitivity_1_6448" {
-  let (tokens, _) = @html.tokenize("<!DoCtYpE HtMl SyStEm \"XyZ\">")
+  let (tokens, errors) = @html.tokenize("<!DoCtYpE HtMl SyStEm \"XyZ\">")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -2755,11 +3464,12 @@ test "html5lib/tokenizer/test4_doctype_system_casesensitivity_1_6448" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_doctype_system_casesensitivity_2_6449" {
-  let (tokens, _) = @html.tokenize("<!dOcTyPe hTmL sYsTeM \"xYz\">")
+  let (tokens, errors) = @html.tokenize("<!dOcTyPe hTmL sYsTeM \"xYz\">")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -2769,83 +3479,126 @@ test "html5lib/tokenizer/test4_doctype_system_casesensitivity_2_6449" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_u0000_in_lookahead_region_after_nonmatching_charac_6450" {
-  let (tokens, _) = @html.tokenize("<!doc>\u{00}")
+  let (tokens, errors) = @html.tokenize("<!doc>\u{00}")
   @debug.assert_eq(tokens, [Comment("doc"), Character('\u{00}'), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
+  assert_true(errors[1].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test4_u0000_in_lookahead_region_6451" {
-  let (tokens, _) = @html.tokenize("<!doc\u{00}")
+  let (tokens, errors) = @html.tokenize("<!doc\u{00}")
   @debug.assert_eq(tokens, [Comment("doc�"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
+  assert_true(errors[1].code is UnexpectedNullCharacter)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test4_u0080_in_lookahead_region_6452" {
-  let (tokens, _) = @html.tokenize("<!doc")
+  let (tokens, errors) = @html.tokenize("<!doc")
   @debug.assert_eq(tokens, [Comment("doc"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
+  assert_true(errors[1].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test4_ufdd1_in_lookahead_region_6453" {
-  let (tokens, _) = @html.tokenize("<!doc﷑")
+  let (tokens, errors) = @html.tokenize("<!doc﷑")
   @debug.assert_eq(tokens, [Comment("doc﷑"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
+  assert_true(errors[1].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test4_u1ffff_in_lookahead_region_6454" {
-  let (tokens, _) = @html.tokenize("<!doc🿿")
+  let (tokens, errors) = @html.tokenize("<!doc🿿")
   @debug.assert_eq(tokens, [Comment("doc🿿"), EOF])
+  @debug.assert_eq(errors.length(), 2)
+  assert_true(errors[0].code is IncorrectlyOpenedComment)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
+  assert_true(errors[1].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[1].position.line, 1)
+  @debug.assert_eq(errors[1].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test4_cr_followed_by_nonlf_6455" {
-  let (tokens, _) = @html.tokenize("\r?")
+  let (tokens, errors) = @html.tokenize("\r?")
   @debug.assert_eq(tokens, [Character('\n'), Character('?'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_cr_at_eof_6456" {
-  let (tokens, _) = @html.tokenize("\r")
+  let (tokens, errors) = @html.tokenize("\r")
   @debug.assert_eq(tokens, [Character('\n'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_lf_at_eof_6457" {
-  let (tokens, _) = @html.tokenize("\n")
+  let (tokens, errors) = @html.tokenize("\n")
   @debug.assert_eq(tokens, [Character('\n'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_cr_lf_6458" {
-  let (tokens, _) = @html.tokenize("\r\n")
+  let (tokens, errors) = @html.tokenize("\r\n")
   @debug.assert_eq(tokens, [Character('\n'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_cr_cr_6459" {
-  let (tokens, _) = @html.tokenize("\r\r")
+  let (tokens, errors) = @html.tokenize("\r\r")
   @debug.assert_eq(tokens, [Character('\n'), Character('\n'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_lf_lf_6460" {
-  let (tokens, _) = @html.tokenize("\n\n")
+  let (tokens, errors) = @html.tokenize("\n\n")
   @debug.assert_eq(tokens, [Character('\n'), Character('\n'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_lf_cr_6461" {
-  let (tokens, _) = @html.tokenize("\n\r")
+  let (tokens, errors) = @html.tokenize("\n\r")
   @debug.assert_eq(tokens, [Character('\n'), Character('\n'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_text_cr_cr_cr_text_6462" {
-  let (tokens, _) = @html.tokenize("text\r\r\rtext")
+  let (tokens, errors) = @html.tokenize("text\r\r\rtext")
   @debug.assert_eq(tokens, [
     Character('t'),
     Character('e'),
@@ -2860,11 +3613,14 @@ test "html5lib/tokenizer/test4_text_cr_cr_cr_text_6462" {
     Character('t'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/test4_doctype_publik_6463" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE html PUBLIK \"AbC\" \"XyZ\">")
+  let (tokens, errors) = @html.tokenize(
+    "<!DOCTYPE html PUBLIK \"AbC\" \"XyZ\">",
+  )
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -2874,11 +3630,15 @@ test "html5lib/tokenizer/test4_doctype_publik_6463" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 16)
 }
 
 ///|
 test "html5lib/tokenizer/test4_doctype_publi_6464" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE html PUBLI")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE html PUBLI")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -2888,11 +3648,15 @@ test "html5lib/tokenizer/test4_doctype_publi_6464" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 16)
 }
 
 ///|
 test "html5lib/tokenizer/test4_doctype_sistem_6465" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE html SISTEM \"AbC\">")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE html SISTEM \"AbC\">")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -2902,11 +3666,15 @@ test "html5lib/tokenizer/test4_doctype_sistem_6465" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 16)
 }
 
 ///|
 test "html5lib/tokenizer/test4_doctype_sys_6466" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE html SYS")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE html SYS")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -2916,11 +3684,15 @@ test "html5lib/tokenizer/test4_doctype_sys_6466" {
     ),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 16)
 }
 
 ///|
 test "html5lib/tokenizer/test4_doctype_html_xtext_6467" {
-  let (tokens, _) = @html.tokenize("<!DOCTYPE html x>text")
+  let (tokens, errors) = @html.tokenize("<!DOCTYPE html x>text")
   @debug.assert_eq(tokens, [
     DOCTYPE(
       name=Some("html"),
@@ -2934,1195 +3706,1709 @@ test "html5lib/tokenizer/test4_doctype_html_xtext_6467" {
     Character('t'),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is InvalidCharacterSequenceAfterDoctypeName)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 16)
 }
 
 ///|
 test "html5lib/tokenizer/test4_grave_accent_in_unquoted_attribute_6468" {
-  let (tokens, _) = @html.tokenize("<a a=aa`>")
+  let (tokens, errors) = @html.tokenize("<a a=aa`>")
   @debug.assert_eq(tokens, [
     StartTag(name="a", attrs=[{ name: "a", value: "aa`", }], self_closing=false),
     EOF,
   ])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is UnexpectedCharacterInUnquotedAttributeValue)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test4_eof_in_tag_name_state__6469" {
-  let (tokens, _) = @html.tokenize("<a")
+  let (tokens, errors) = @html.tokenize("<a")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 3)
 }
 
 ///|
 test "html5lib/tokenizer/test4_eof_in_before_attribute_name_state_6470" {
-  let (tokens, _) = @html.tokenize("<a ")
+  let (tokens, errors) = @html.tokenize("<a ")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 4)
 }
 
 ///|
 test "html5lib/tokenizer/test4_eof_in_attribute_name_state_6471" {
-  let (tokens, _) = @html.tokenize("<a a")
+  let (tokens, errors) = @html.tokenize("<a a")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 5)
 }
 
 ///|
 test "html5lib/tokenizer/test4_eof_in_after_attribute_name_state_6472" {
-  let (tokens, _) = @html.tokenize("<a a ")
+  let (tokens, errors) = @html.tokenize("<a a ")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 6)
 }
 
 ///|
 test "html5lib/tokenizer/test4_eof_in_before_attribute_value_state_6473" {
-  let (tokens, _) = @html.tokenize("<a a =")
+  let (tokens, errors) = @html.tokenize("<a a =")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 7)
 }
 
 ///|
 test "html5lib/tokenizer/test4_eof_in_attribute_value_double_quoted_state_6474" {
-  let (tokens, _) = @html.tokenize("<a a =\"a")
+  let (tokens, errors) = @html.tokenize("<a a =\"a")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/test4_eof_in_attribute_value_single_quoted_state_6475" {
-  let (tokens, _) = @html.tokenize("<a a ='a")
+  let (tokens, errors) = @html.tokenize("<a a ='a")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 9)
 }
 
 ///|
 test "html5lib/tokenizer/test4_eof_in_attribute_value_unquoted_state_6476" {
-  let (tokens, _) = @html.tokenize("<a a =a")
+  let (tokens, errors) = @html.tokenize("<a a =a")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 8)
 }
 
 ///|
 test "html5lib/tokenizer/test4_eof_in_after_attribute_value_state_6477" {
-  let (tokens, _) = @html.tokenize("<a a ='a'")
+  let (tokens, errors) = @html.tokenize("<a a ='a'")
   @debug.assert_eq(tokens, [EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is EofInTag)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 10)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0001_6478" {
-  let (tokens, _) = @html.tokenize("\u{01}")
+  let (tokens, errors) = @html.tokenize("\u{01}")
   @debug.assert_eq(tokens, [Character('\u{01}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0002_6479" {
-  let (tokens, _) = @html.tokenize("\u{02}")
+  let (tokens, errors) = @html.tokenize("\u{02}")
   @debug.assert_eq(tokens, [Character('\u{02}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0003_6480" {
-  let (tokens, _) = @html.tokenize("\u{03}")
+  let (tokens, errors) = @html.tokenize("\u{03}")
   @debug.assert_eq(tokens, [Character('\u{03}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0004_6481" {
-  let (tokens, _) = @html.tokenize("\u{04}")
+  let (tokens, errors) = @html.tokenize("\u{04}")
   @debug.assert_eq(tokens, [Character('\u{04}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0005_6482" {
-  let (tokens, _) = @html.tokenize("\u{05}")
+  let (tokens, errors) = @html.tokenize("\u{05}")
   @debug.assert_eq(tokens, [Character('\u{05}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0006_6483" {
-  let (tokens, _) = @html.tokenize("\u{06}")
+  let (tokens, errors) = @html.tokenize("\u{06}")
   @debug.assert_eq(tokens, [Character('\u{06}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0007_6484" {
-  let (tokens, _) = @html.tokenize("\u{07}")
+  let (tokens, errors) = @html.tokenize("\u{07}")
   @debug.assert_eq(tokens, [Character('\u{07}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0008_6485" {
-  let (tokens, _) = @html.tokenize("\b")
+  let (tokens, errors) = @html.tokenize("\b")
   @debug.assert_eq(tokens, [Character('\b'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u000b_6486" {
-  let (tokens, _) = @html.tokenize("\u{0b}")
+  let (tokens, errors) = @html.tokenize("\u{0b}")
   @debug.assert_eq(tokens, [Character('\u{0b}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u000e_6487" {
-  let (tokens, _) = @html.tokenize("\u{0e}")
+  let (tokens, errors) = @html.tokenize("\u{0e}")
   @debug.assert_eq(tokens, [Character('\u{0e}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u000f_6488" {
-  let (tokens, _) = @html.tokenize("\u{0f}")
+  let (tokens, errors) = @html.tokenize("\u{0f}")
   @debug.assert_eq(tokens, [Character('\u{0f}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0010_6489" {
-  let (tokens, _) = @html.tokenize("\u{10}")
+  let (tokens, errors) = @html.tokenize("\u{10}")
   @debug.assert_eq(tokens, [Character('\u{10}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0011_6490" {
-  let (tokens, _) = @html.tokenize("\u{11}")
+  let (tokens, errors) = @html.tokenize("\u{11}")
   @debug.assert_eq(tokens, [Character('\u{11}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0012_6491" {
-  let (tokens, _) = @html.tokenize("\u{12}")
+  let (tokens, errors) = @html.tokenize("\u{12}")
   @debug.assert_eq(tokens, [Character('\u{12}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0013_6492" {
-  let (tokens, _) = @html.tokenize("\u{13}")
+  let (tokens, errors) = @html.tokenize("\u{13}")
   @debug.assert_eq(tokens, [Character('\u{13}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0014_6493" {
-  let (tokens, _) = @html.tokenize("\u{14}")
+  let (tokens, errors) = @html.tokenize("\u{14}")
   @debug.assert_eq(tokens, [Character('\u{14}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0015_6494" {
-  let (tokens, _) = @html.tokenize("\u{15}")
+  let (tokens, errors) = @html.tokenize("\u{15}")
   @debug.assert_eq(tokens, [Character('\u{15}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0016_6495" {
-  let (tokens, _) = @html.tokenize("\u{16}")
+  let (tokens, errors) = @html.tokenize("\u{16}")
   @debug.assert_eq(tokens, [Character('\u{16}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0017_6496" {
-  let (tokens, _) = @html.tokenize("\u{17}")
+  let (tokens, errors) = @html.tokenize("\u{17}")
   @debug.assert_eq(tokens, [Character('\u{17}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0018_6497" {
-  let (tokens, _) = @html.tokenize("\u{18}")
+  let (tokens, errors) = @html.tokenize("\u{18}")
   @debug.assert_eq(tokens, [Character('\u{18}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u0019_6498" {
-  let (tokens, _) = @html.tokenize("\u{19}")
+  let (tokens, errors) = @html.tokenize("\u{19}")
   @debug.assert_eq(tokens, [Character('\u{19}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u001a_6499" {
-  let (tokens, _) = @html.tokenize("\u{1a}")
+  let (tokens, errors) = @html.tokenize("\u{1a}")
   @debug.assert_eq(tokens, [Character('\u{1a}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u001b_6500" {
-  let (tokens, _) = @html.tokenize("\u{1b}")
+  let (tokens, errors) = @html.tokenize("\u{1b}")
   @debug.assert_eq(tokens, [Character('\u{1b}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u001c_6501" {
-  let (tokens, _) = @html.tokenize("\u{1c}")
+  let (tokens, errors) = @html.tokenize("\u{1c}")
   @debug.assert_eq(tokens, [Character('\u{1c}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u001d_6502" {
-  let (tokens, _) = @html.tokenize("\u{1d}")
+  let (tokens, errors) = @html.tokenize("\u{1d}")
   @debug.assert_eq(tokens, [Character('\u{1d}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u001e_6503" {
-  let (tokens, _) = @html.tokenize("\u{1e}")
+  let (tokens, errors) = @html.tokenize("\u{1e}")
   @debug.assert_eq(tokens, [Character('\u{1e}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u001f_6504" {
-  let (tokens, _) = @html.tokenize("\u{1f}")
+  let (tokens, errors) = @html.tokenize("\u{1f}")
   @debug.assert_eq(tokens, [Character('\u{1f}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u007f_6505" {
-  let (tokens, _) = @html.tokenize("\u{7f}")
+  let (tokens, errors) = @html.tokenize("\u{7f}")
   @debug.assert_eq(tokens, [Character('\u{7f}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is ControlCharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdd0_6506" {
-  let (tokens, _) = @html.tokenize("﷐")
+  let (tokens, errors) = @html.tokenize("﷐")
   @debug.assert_eq(tokens, [Character('\u{fdd0}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdd1_6507" {
-  let (tokens, _) = @html.tokenize("﷑")
+  let (tokens, errors) = @html.tokenize("﷑")
   @debug.assert_eq(tokens, [Character('\u{fdd1}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdd2_6508" {
-  let (tokens, _) = @html.tokenize("﷒")
+  let (tokens, errors) = @html.tokenize("﷒")
   @debug.assert_eq(tokens, [Character('\u{fdd2}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdd3_6509" {
-  let (tokens, _) = @html.tokenize("﷓")
+  let (tokens, errors) = @html.tokenize("﷓")
   @debug.assert_eq(tokens, [Character('\u{fdd3}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdd4_6510" {
-  let (tokens, _) = @html.tokenize("﷔")
+  let (tokens, errors) = @html.tokenize("﷔")
   @debug.assert_eq(tokens, [Character('\u{fdd4}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdd5_6511" {
-  let (tokens, _) = @html.tokenize("﷕")
+  let (tokens, errors) = @html.tokenize("﷕")
   @debug.assert_eq(tokens, [Character('\u{fdd5}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdd6_6512" {
-  let (tokens, _) = @html.tokenize("﷖")
+  let (tokens, errors) = @html.tokenize("﷖")
   @debug.assert_eq(tokens, [Character('\u{fdd6}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdd7_6513" {
-  let (tokens, _) = @html.tokenize("﷗")
+  let (tokens, errors) = @html.tokenize("﷗")
   @debug.assert_eq(tokens, [Character('\u{fdd7}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdd8_6514" {
-  let (tokens, _) = @html.tokenize("﷘")
+  let (tokens, errors) = @html.tokenize("﷘")
   @debug.assert_eq(tokens, [Character('\u{fdd8}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdd9_6515" {
-  let (tokens, _) = @html.tokenize("﷙")
+  let (tokens, errors) = @html.tokenize("﷙")
   @debug.assert_eq(tokens, [Character('\u{fdd9}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdda_6516" {
-  let (tokens, _) = @html.tokenize("﷚")
+  let (tokens, errors) = @html.tokenize("﷚")
   @debug.assert_eq(tokens, [Character('\u{fdda}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufddb_6517" {
-  let (tokens, _) = @html.tokenize("﷛")
+  let (tokens, errors) = @html.tokenize("﷛")
   @debug.assert_eq(tokens, [Character('\u{fddb}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufddc_6518" {
-  let (tokens, _) = @html.tokenize("﷜")
+  let (tokens, errors) = @html.tokenize("﷜")
   @debug.assert_eq(tokens, [Character('\u{fddc}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufddd_6519" {
-  let (tokens, _) = @html.tokenize("﷝")
+  let (tokens, errors) = @html.tokenize("﷝")
   @debug.assert_eq(tokens, [Character('\u{fddd}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdde_6520" {
-  let (tokens, _) = @html.tokenize("﷞")
+  let (tokens, errors) = @html.tokenize("﷞")
   @debug.assert_eq(tokens, [Character('\u{fdde}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufddf_6521" {
-  let (tokens, _) = @html.tokenize("﷟")
+  let (tokens, errors) = @html.tokenize("﷟")
   @debug.assert_eq(tokens, [Character('\u{fddf}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufde0_6522" {
-  let (tokens, _) = @html.tokenize("﷠")
+  let (tokens, errors) = @html.tokenize("﷠")
   @debug.assert_eq(tokens, [Character('\u{fde0}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufde1_6523" {
-  let (tokens, _) = @html.tokenize("﷡")
+  let (tokens, errors) = @html.tokenize("﷡")
   @debug.assert_eq(tokens, [Character('\u{fde1}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufde2_6524" {
-  let (tokens, _) = @html.tokenize("﷢")
+  let (tokens, errors) = @html.tokenize("﷢")
   @debug.assert_eq(tokens, [Character('\u{fde2}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufde3_6525" {
-  let (tokens, _) = @html.tokenize("﷣")
+  let (tokens, errors) = @html.tokenize("﷣")
   @debug.assert_eq(tokens, [Character('\u{fde3}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufde4_6526" {
-  let (tokens, _) = @html.tokenize("﷤")
+  let (tokens, errors) = @html.tokenize("﷤")
   @debug.assert_eq(tokens, [Character('\u{fde4}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufde5_6527" {
-  let (tokens, _) = @html.tokenize("﷥")
+  let (tokens, errors) = @html.tokenize("﷥")
   @debug.assert_eq(tokens, [Character('\u{fde5}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufde6_6528" {
-  let (tokens, _) = @html.tokenize("﷦")
+  let (tokens, errors) = @html.tokenize("﷦")
   @debug.assert_eq(tokens, [Character('\u{fde6}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufde7_6529" {
-  let (tokens, _) = @html.tokenize("﷧")
+  let (tokens, errors) = @html.tokenize("﷧")
   @debug.assert_eq(tokens, [Character('\u{fde7}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufde8_6530" {
-  let (tokens, _) = @html.tokenize("﷨")
+  let (tokens, errors) = @html.tokenize("﷨")
   @debug.assert_eq(tokens, [Character('\u{fde8}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufde9_6531" {
-  let (tokens, _) = @html.tokenize("﷩")
+  let (tokens, errors) = @html.tokenize("﷩")
   @debug.assert_eq(tokens, [Character('\u{fde9}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdea_6532" {
-  let (tokens, _) = @html.tokenize("﷪")
+  let (tokens, errors) = @html.tokenize("﷪")
   @debug.assert_eq(tokens, [Character('\u{fdea}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdeb_6533" {
-  let (tokens, _) = @html.tokenize("﷫")
+  let (tokens, errors) = @html.tokenize("﷫")
   @debug.assert_eq(tokens, [Character('\u{fdeb}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdec_6534" {
-  let (tokens, _) = @html.tokenize("﷬")
+  let (tokens, errors) = @html.tokenize("﷬")
   @debug.assert_eq(tokens, [Character('\u{fdec}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufded_6535" {
-  let (tokens, _) = @html.tokenize("﷭")
+  let (tokens, errors) = @html.tokenize("﷭")
   @debug.assert_eq(tokens, [Character('\u{fded}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdee_6536" {
-  let (tokens, _) = @html.tokenize("﷮")
+  let (tokens, errors) = @html.tokenize("﷮")
   @debug.assert_eq(tokens, [Character('\u{fdee}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufdef_6537" {
-  let (tokens, _) = @html.tokenize("﷯")
+  let (tokens, errors) = @html.tokenize("﷯")
   @debug.assert_eq(tokens, [Character('\u{fdef}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufffe_6538" {
-  let (tokens, _) = @html.tokenize("￾")
+  let (tokens, errors) = @html.tokenize("￾")
   @debug.assert_eq(tokens, [Character('\u{fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_uffff_6539" {
-  let (tokens, _) = @html.tokenize("￿")
+  let (tokens, errors) = @html.tokenize("￿")
   @debug.assert_eq(tokens, [Character('\u{ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u1fffe_6540" {
-  let (tokens, _) = @html.tokenize("🿾")
+  let (tokens, errors) = @html.tokenize("🿾")
   @debug.assert_eq(tokens, [Character('\u{01fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u1ffff_6541" {
-  let (tokens, _) = @html.tokenize("🿿")
+  let (tokens, errors) = @html.tokenize("🿿")
   @debug.assert_eq(tokens, [Character('\u{01ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u2fffe_6542" {
-  let (tokens, _) = @html.tokenize("𯿾")
+  let (tokens, errors) = @html.tokenize("𯿾")
   @debug.assert_eq(tokens, [Character('\u{02fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u2ffff_6543" {
-  let (tokens, _) = @html.tokenize("𯿿")
+  let (tokens, errors) = @html.tokenize("𯿿")
   @debug.assert_eq(tokens, [Character('\u{02ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u3fffe_6544" {
-  let (tokens, _) = @html.tokenize("𿿾")
+  let (tokens, errors) = @html.tokenize("𿿾")
   @debug.assert_eq(tokens, [Character('\u{03fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u3ffff_6545" {
-  let (tokens, _) = @html.tokenize("𿿿")
+  let (tokens, errors) = @html.tokenize("𿿿")
   @debug.assert_eq(tokens, [Character('\u{03ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u4fffe_6546" {
-  let (tokens, _) = @html.tokenize("񏿾")
+  let (tokens, errors) = @html.tokenize("񏿾")
   @debug.assert_eq(tokens, [Character('\u{04fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u4ffff_6547" {
-  let (tokens, _) = @html.tokenize("񏿿")
+  let (tokens, errors) = @html.tokenize("񏿿")
   @debug.assert_eq(tokens, [Character('\u{04ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u5fffe_6548" {
-  let (tokens, _) = @html.tokenize("񟿾")
+  let (tokens, errors) = @html.tokenize("񟿾")
   @debug.assert_eq(tokens, [Character('\u{05fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u5ffff_6549" {
-  let (tokens, _) = @html.tokenize("񟿿")
+  let (tokens, errors) = @html.tokenize("񟿿")
   @debug.assert_eq(tokens, [Character('\u{05ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u6fffe_6550" {
-  let (tokens, _) = @html.tokenize("񯿾")
+  let (tokens, errors) = @html.tokenize("񯿾")
   @debug.assert_eq(tokens, [Character('\u{06fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u6ffff_6551" {
-  let (tokens, _) = @html.tokenize("񯿿")
+  let (tokens, errors) = @html.tokenize("񯿿")
   @debug.assert_eq(tokens, [Character('\u{06ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u7fffe_6552" {
-  let (tokens, _) = @html.tokenize("񿿾")
+  let (tokens, errors) = @html.tokenize("񿿾")
   @debug.assert_eq(tokens, [Character('\u{07fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u7ffff_6553" {
-  let (tokens, _) = @html.tokenize("񿿿")
+  let (tokens, errors) = @html.tokenize("񿿿")
   @debug.assert_eq(tokens, [Character('\u{07ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u8fffe_6554" {
-  let (tokens, _) = @html.tokenize("򏿾")
+  let (tokens, errors) = @html.tokenize("򏿾")
   @debug.assert_eq(tokens, [Character('\u{08fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u8ffff_6555" {
-  let (tokens, _) = @html.tokenize("򏿿")
+  let (tokens, errors) = @html.tokenize("򏿿")
   @debug.assert_eq(tokens, [Character('\u{08ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u9fffe_6556" {
-  let (tokens, _) = @html.tokenize("򟿾")
+  let (tokens, errors) = @html.tokenize("򟿾")
   @debug.assert_eq(tokens, [Character('\u{09fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u9ffff_6557" {
-  let (tokens, _) = @html.tokenize("򟿿")
+  let (tokens, errors) = @html.tokenize("򟿿")
   @debug.assert_eq(tokens, [Character('\u{09ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_uafffe_6558" {
-  let (tokens, _) = @html.tokenize("򯿾")
+  let (tokens, errors) = @html.tokenize("򯿾")
   @debug.assert_eq(tokens, [Character('\u{0afffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_uaffff_6559" {
-  let (tokens, _) = @html.tokenize("򯿿")
+  let (tokens, errors) = @html.tokenize("򯿿")
   @debug.assert_eq(tokens, [Character('\u{0affff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ubfffe_6560" {
-  let (tokens, _) = @html.tokenize("򿿾")
+  let (tokens, errors) = @html.tokenize("򿿾")
   @debug.assert_eq(tokens, [Character('\u{0bfffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ubffff_6561" {
-  let (tokens, _) = @html.tokenize("򿿿")
+  let (tokens, errors) = @html.tokenize("򿿿")
   @debug.assert_eq(tokens, [Character('\u{0bffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ucfffe_6562" {
-  let (tokens, _) = @html.tokenize("󏿾")
+  let (tokens, errors) = @html.tokenize("󏿾")
   @debug.assert_eq(tokens, [Character('\u{0cfffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ucffff_6563" {
-  let (tokens, _) = @html.tokenize("󏿿")
+  let (tokens, errors) = @html.tokenize("󏿿")
   @debug.assert_eq(tokens, [Character('\u{0cffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_udfffe_6564" {
-  let (tokens, _) = @html.tokenize("󟿾")
+  let (tokens, errors) = @html.tokenize("󟿾")
   @debug.assert_eq(tokens, [Character('\u{0dfffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_udffff_6565" {
-  let (tokens, _) = @html.tokenize("󟿿")
+  let (tokens, errors) = @html.tokenize("󟿿")
   @debug.assert_eq(tokens, [Character('\u{0dffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_uefffe_6566" {
-  let (tokens, _) = @html.tokenize("󯿾")
+  let (tokens, errors) = @html.tokenize("󯿾")
   @debug.assert_eq(tokens, [Character('\u{0efffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ueffff_6567" {
-  let (tokens, _) = @html.tokenize("󯿿")
+  let (tokens, errors) = @html.tokenize("󯿿")
   @debug.assert_eq(tokens, [Character('\u{0effff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_uffffe_6568" {
-  let (tokens, _) = @html.tokenize("󿿾")
+  let (tokens, errors) = @html.tokenize("󿿾")
   @debug.assert_eq(tokens, [Character('\u{0ffffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_ufffff_6569" {
-  let (tokens, _) = @html.tokenize("󿿿")
+  let (tokens, errors) = @html.tokenize("󿿿")
   @debug.assert_eq(tokens, [Character('\u{0fffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u10fffe_6570" {
-  let (tokens, _) = @html.tokenize("􏿾")
+  let (tokens, errors) = @html.tokenize("􏿾")
   @debug.assert_eq(tokens, [Character('\u{10fffe}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_invalid_unicode_character_u10ffff_6571" {
-  let (tokens, _) = @html.tokenize("􏿿")
+  let (tokens, errors) = @html.tokenize("􏿿")
   @debug.assert_eq(tokens, [Character('\u{10ffff}'), EOF])
+  @debug.assert_eq(errors.length(), 1)
+  assert_true(errors[0].code is NoncharacterInInputStream)
+  @debug.assert_eq(errors[0].position.line, 1)
+  @debug.assert_eq(errors[0].position.column, 1)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0009_6572" {
-  let (tokens, _) = @html.tokenize("\t")
+  let (tokens, errors) = @html.tokenize("\t")
   @debug.assert_eq(tokens, [Character('\t'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u000a_6573" {
-  let (tokens, _) = @html.tokenize("\n")
+  let (tokens, errors) = @html.tokenize("\n")
   @debug.assert_eq(tokens, [Character('\n'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0020_6574" {
-  let (tokens, _) = @html.tokenize(" ")
+  let (tokens, errors) = @html.tokenize(" ")
   @debug.assert_eq(tokens, [Character(' '), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0021_6575" {
-  let (tokens, _) = @html.tokenize("!")
+  let (tokens, errors) = @html.tokenize("!")
   @debug.assert_eq(tokens, [Character('!'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0022_6576" {
-  let (tokens, _) = @html.tokenize("\"")
+  let (tokens, errors) = @html.tokenize("\"")
   @debug.assert_eq(tokens, [Character('"'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0023_6577" {
-  let (tokens, _) = @html.tokenize("#")
+  let (tokens, errors) = @html.tokenize("#")
   @debug.assert_eq(tokens, [Character('#'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0024_6578" {
-  let (tokens, _) = @html.tokenize("$")
+  let (tokens, errors) = @html.tokenize("$")
   @debug.assert_eq(tokens, [Character('$'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0025_6579" {
-  let (tokens, _) = @html.tokenize("%")
+  let (tokens, errors) = @html.tokenize("%")
   @debug.assert_eq(tokens, [Character('%'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0026_6580" {
-  let (tokens, _) = @html.tokenize("&")
+  let (tokens, errors) = @html.tokenize("&")
   @debug.assert_eq(tokens, [Character('&'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0027_6581" {
-  let (tokens, _) = @html.tokenize("'")
+  let (tokens, errors) = @html.tokenize("'")
   @debug.assert_eq(tokens, [Character('\''), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0028_6582" {
-  let (tokens, _) = @html.tokenize("(")
+  let (tokens, errors) = @html.tokenize("(")
   @debug.assert_eq(tokens, [Character('('), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0029_6583" {
-  let (tokens, _) = @html.tokenize(")")
+  let (tokens, errors) = @html.tokenize(")")
   @debug.assert_eq(tokens, [Character(')'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u002a_6584" {
-  let (tokens, _) = @html.tokenize("*")
+  let (tokens, errors) = @html.tokenize("*")
   @debug.assert_eq(tokens, [Character('*'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u002b_6585" {
-  let (tokens, _) = @html.tokenize("+")
+  let (tokens, errors) = @html.tokenize("+")
   @debug.assert_eq(tokens, [Character('+'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u002c_6586" {
-  let (tokens, _) = @html.tokenize(",")
+  let (tokens, errors) = @html.tokenize(",")
   @debug.assert_eq(tokens, [Character(','), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u002d_6587" {
-  let (tokens, _) = @html.tokenize("-")
+  let (tokens, errors) = @html.tokenize("-")
   @debug.assert_eq(tokens, [Character('-'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u002e_6588" {
-  let (tokens, _) = @html.tokenize(".")
+  let (tokens, errors) = @html.tokenize(".")
   @debug.assert_eq(tokens, [Character('.'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u002f_6589" {
-  let (tokens, _) = @html.tokenize("/")
+  let (tokens, errors) = @html.tokenize("/")
   @debug.assert_eq(tokens, [Character('/'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0030_6590" {
-  let (tokens, _) = @html.tokenize("0")
+  let (tokens, errors) = @html.tokenize("0")
   @debug.assert_eq(tokens, [Character('0'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0031_6591" {
-  let (tokens, _) = @html.tokenize("1")
+  let (tokens, errors) = @html.tokenize("1")
   @debug.assert_eq(tokens, [Character('1'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0032_6592" {
-  let (tokens, _) = @html.tokenize("2")
+  let (tokens, errors) = @html.tokenize("2")
   @debug.assert_eq(tokens, [Character('2'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0033_6593" {
-  let (tokens, _) = @html.tokenize("3")
+  let (tokens, errors) = @html.tokenize("3")
   @debug.assert_eq(tokens, [Character('3'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0034_6594" {
-  let (tokens, _) = @html.tokenize("4")
+  let (tokens, errors) = @html.tokenize("4")
   @debug.assert_eq(tokens, [Character('4'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0035_6595" {
-  let (tokens, _) = @html.tokenize("5")
+  let (tokens, errors) = @html.tokenize("5")
   @debug.assert_eq(tokens, [Character('5'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0036_6596" {
-  let (tokens, _) = @html.tokenize("6")
+  let (tokens, errors) = @html.tokenize("6")
   @debug.assert_eq(tokens, [Character('6'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0037_6597" {
-  let (tokens, _) = @html.tokenize("7")
+  let (tokens, errors) = @html.tokenize("7")
   @debug.assert_eq(tokens, [Character('7'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0038_6598" {
-  let (tokens, _) = @html.tokenize("8")
+  let (tokens, errors) = @html.tokenize("8")
   @debug.assert_eq(tokens, [Character('8'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0039_6599" {
-  let (tokens, _) = @html.tokenize("9")
+  let (tokens, errors) = @html.tokenize("9")
   @debug.assert_eq(tokens, [Character('9'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u003a_6600" {
-  let (tokens, _) = @html.tokenize(":")
+  let (tokens, errors) = @html.tokenize(":")
   @debug.assert_eq(tokens, [Character(':'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u003b_6601" {
-  let (tokens, _) = @html.tokenize(";")
+  let (tokens, errors) = @html.tokenize(";")
   @debug.assert_eq(tokens, [Character(';'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u003d_6602" {
-  let (tokens, _) = @html.tokenize("=")
+  let (tokens, errors) = @html.tokenize("=")
   @debug.assert_eq(tokens, [Character('='), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u003e_6603" {
-  let (tokens, _) = @html.tokenize(">")
+  let (tokens, errors) = @html.tokenize(">")
   @debug.assert_eq(tokens, [Character('>'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u003f_6604" {
-  let (tokens, _) = @html.tokenize("?")
+  let (tokens, errors) = @html.tokenize("?")
   @debug.assert_eq(tokens, [Character('?'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0040_6605" {
-  let (tokens, _) = @html.tokenize("@")
+  let (tokens, errors) = @html.tokenize("@")
   @debug.assert_eq(tokens, [Character('@'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0041_6606" {
-  let (tokens, _) = @html.tokenize("A")
+  let (tokens, errors) = @html.tokenize("A")
   @debug.assert_eq(tokens, [Character('A'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0042_6607" {
-  let (tokens, _) = @html.tokenize("B")
+  let (tokens, errors) = @html.tokenize("B")
   @debug.assert_eq(tokens, [Character('B'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0043_6608" {
-  let (tokens, _) = @html.tokenize("C")
+  let (tokens, errors) = @html.tokenize("C")
   @debug.assert_eq(tokens, [Character('C'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0044_6609" {
-  let (tokens, _) = @html.tokenize("D")
+  let (tokens, errors) = @html.tokenize("D")
   @debug.assert_eq(tokens, [Character('D'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0045_6610" {
-  let (tokens, _) = @html.tokenize("E")
+  let (tokens, errors) = @html.tokenize("E")
   @debug.assert_eq(tokens, [Character('E'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0046_6611" {
-  let (tokens, _) = @html.tokenize("F")
+  let (tokens, errors) = @html.tokenize("F")
   @debug.assert_eq(tokens, [Character('F'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0047_6612" {
-  let (tokens, _) = @html.tokenize("G")
+  let (tokens, errors) = @html.tokenize("G")
   @debug.assert_eq(tokens, [Character('G'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0048_6613" {
-  let (tokens, _) = @html.tokenize("H")
+  let (tokens, errors) = @html.tokenize("H")
   @debug.assert_eq(tokens, [Character('H'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0049_6614" {
-  let (tokens, _) = @html.tokenize("I")
+  let (tokens, errors) = @html.tokenize("I")
   @debug.assert_eq(tokens, [Character('I'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u004a_6615" {
-  let (tokens, _) = @html.tokenize("J")
+  let (tokens, errors) = @html.tokenize("J")
   @debug.assert_eq(tokens, [Character('J'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u004b_6616" {
-  let (tokens, _) = @html.tokenize("K")
+  let (tokens, errors) = @html.tokenize("K")
   @debug.assert_eq(tokens, [Character('K'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u004c_6617" {
-  let (tokens, _) = @html.tokenize("L")
+  let (tokens, errors) = @html.tokenize("L")
   @debug.assert_eq(tokens, [Character('L'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u004d_6618" {
-  let (tokens, _) = @html.tokenize("M")
+  let (tokens, errors) = @html.tokenize("M")
   @debug.assert_eq(tokens, [Character('M'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u004e_6619" {
-  let (tokens, _) = @html.tokenize("N")
+  let (tokens, errors) = @html.tokenize("N")
   @debug.assert_eq(tokens, [Character('N'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u004f_6620" {
-  let (tokens, _) = @html.tokenize("O")
+  let (tokens, errors) = @html.tokenize("O")
   @debug.assert_eq(tokens, [Character('O'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0050_6621" {
-  let (tokens, _) = @html.tokenize("P")
+  let (tokens, errors) = @html.tokenize("P")
   @debug.assert_eq(tokens, [Character('P'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0051_6622" {
-  let (tokens, _) = @html.tokenize("Q")
+  let (tokens, errors) = @html.tokenize("Q")
   @debug.assert_eq(tokens, [Character('Q'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0052_6623" {
-  let (tokens, _) = @html.tokenize("R")
+  let (tokens, errors) = @html.tokenize("R")
   @debug.assert_eq(tokens, [Character('R'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0053_6624" {
-  let (tokens, _) = @html.tokenize("S")
+  let (tokens, errors) = @html.tokenize("S")
   @debug.assert_eq(tokens, [Character('S'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0054_6625" {
-  let (tokens, _) = @html.tokenize("T")
+  let (tokens, errors) = @html.tokenize("T")
   @debug.assert_eq(tokens, [Character('T'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0055_6626" {
-  let (tokens, _) = @html.tokenize("U")
+  let (tokens, errors) = @html.tokenize("U")
   @debug.assert_eq(tokens, [Character('U'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0056_6627" {
-  let (tokens, _) = @html.tokenize("V")
+  let (tokens, errors) = @html.tokenize("V")
   @debug.assert_eq(tokens, [Character('V'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0057_6628" {
-  let (tokens, _) = @html.tokenize("W")
+  let (tokens, errors) = @html.tokenize("W")
   @debug.assert_eq(tokens, [Character('W'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0058_6629" {
-  let (tokens, _) = @html.tokenize("X")
+  let (tokens, errors) = @html.tokenize("X")
   @debug.assert_eq(tokens, [Character('X'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0059_6630" {
-  let (tokens, _) = @html.tokenize("Y")
+  let (tokens, errors) = @html.tokenize("Y")
   @debug.assert_eq(tokens, [Character('Y'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u005a_6631" {
-  let (tokens, _) = @html.tokenize("Z")
+  let (tokens, errors) = @html.tokenize("Z")
   @debug.assert_eq(tokens, [Character('Z'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u005b_6632" {
-  let (tokens, _) = @html.tokenize("[")
+  let (tokens, errors) = @html.tokenize("[")
   @debug.assert_eq(tokens, [Character('['), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u005c_6633" {
-  let (tokens, _) = @html.tokenize("\\")
+  let (tokens, errors) = @html.tokenize("\\")
   @debug.assert_eq(tokens, [Character('\\'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u005d_6634" {
-  let (tokens, _) = @html.tokenize("]")
+  let (tokens, errors) = @html.tokenize("]")
   @debug.assert_eq(tokens, [Character(']'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u005e_6635" {
-  let (tokens, _) = @html.tokenize("^")
+  let (tokens, errors) = @html.tokenize("^")
   @debug.assert_eq(tokens, [Character('^'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u005f_6636" {
-  let (tokens, _) = @html.tokenize("_")
+  let (tokens, errors) = @html.tokenize("_")
   @debug.assert_eq(tokens, [Character('_'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0060_6637" {
-  let (tokens, _) = @html.tokenize("`")
+  let (tokens, errors) = @html.tokenize("`")
   @debug.assert_eq(tokens, [Character('`'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0061_6638" {
-  let (tokens, _) = @html.tokenize("a")
+  let (tokens, errors) = @html.tokenize("a")
   @debug.assert_eq(tokens, [Character('a'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0062_6639" {
-  let (tokens, _) = @html.tokenize("b")
+  let (tokens, errors) = @html.tokenize("b")
   @debug.assert_eq(tokens, [Character('b'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0063_6640" {
-  let (tokens, _) = @html.tokenize("c")
+  let (tokens, errors) = @html.tokenize("c")
   @debug.assert_eq(tokens, [Character('c'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0064_6641" {
-  let (tokens, _) = @html.tokenize("d")
+  let (tokens, errors) = @html.tokenize("d")
   @debug.assert_eq(tokens, [Character('d'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0065_6642" {
-  let (tokens, _) = @html.tokenize("e")
+  let (tokens, errors) = @html.tokenize("e")
   @debug.assert_eq(tokens, [Character('e'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0066_6643" {
-  let (tokens, _) = @html.tokenize("f")
+  let (tokens, errors) = @html.tokenize("f")
   @debug.assert_eq(tokens, [Character('f'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0067_6644" {
-  let (tokens, _) = @html.tokenize("g")
+  let (tokens, errors) = @html.tokenize("g")
   @debug.assert_eq(tokens, [Character('g'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0068_6645" {
-  let (tokens, _) = @html.tokenize("h")
+  let (tokens, errors) = @html.tokenize("h")
   @debug.assert_eq(tokens, [Character('h'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0069_6646" {
-  let (tokens, _) = @html.tokenize("i")
+  let (tokens, errors) = @html.tokenize("i")
   @debug.assert_eq(tokens, [Character('i'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u006a_6647" {
-  let (tokens, _) = @html.tokenize("j")
+  let (tokens, errors) = @html.tokenize("j")
   @debug.assert_eq(tokens, [Character('j'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u006b_6648" {
-  let (tokens, _) = @html.tokenize("k")
+  let (tokens, errors) = @html.tokenize("k")
   @debug.assert_eq(tokens, [Character('k'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u006c_6649" {
-  let (tokens, _) = @html.tokenize("l")
+  let (tokens, errors) = @html.tokenize("l")
   @debug.assert_eq(tokens, [Character('l'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u006d_6650" {
-  let (tokens, _) = @html.tokenize("m")
+  let (tokens, errors) = @html.tokenize("m")
   @debug.assert_eq(tokens, [Character('m'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u006e_6651" {
-  let (tokens, _) = @html.tokenize("n")
+  let (tokens, errors) = @html.tokenize("n")
   @debug.assert_eq(tokens, [Character('n'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u006f_6652" {
-  let (tokens, _) = @html.tokenize("o")
+  let (tokens, errors) = @html.tokenize("o")
   @debug.assert_eq(tokens, [Character('o'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0070_6653" {
-  let (tokens, _) = @html.tokenize("p")
+  let (tokens, errors) = @html.tokenize("p")
   @debug.assert_eq(tokens, [Character('p'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0071_6654" {
-  let (tokens, _) = @html.tokenize("q")
+  let (tokens, errors) = @html.tokenize("q")
   @debug.assert_eq(tokens, [Character('q'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0072_6655" {
-  let (tokens, _) = @html.tokenize("r")
+  let (tokens, errors) = @html.tokenize("r")
   @debug.assert_eq(tokens, [Character('r'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0073_6656" {
-  let (tokens, _) = @html.tokenize("s")
+  let (tokens, errors) = @html.tokenize("s")
   @debug.assert_eq(tokens, [Character('s'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0074_6657" {
-  let (tokens, _) = @html.tokenize("t")
+  let (tokens, errors) = @html.tokenize("t")
   @debug.assert_eq(tokens, [Character('t'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0075_6658" {
-  let (tokens, _) = @html.tokenize("u")
+  let (tokens, errors) = @html.tokenize("u")
   @debug.assert_eq(tokens, [Character('u'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0076_6659" {
-  let (tokens, _) = @html.tokenize("v")
+  let (tokens, errors) = @html.tokenize("v")
   @debug.assert_eq(tokens, [Character('v'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0077_6660" {
-  let (tokens, _) = @html.tokenize("w")
+  let (tokens, errors) = @html.tokenize("w")
   @debug.assert_eq(tokens, [Character('w'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0078_6661" {
-  let (tokens, _) = @html.tokenize("x")
+  let (tokens, errors) = @html.tokenize("x")
   @debug.assert_eq(tokens, [Character('x'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u0079_6662" {
-  let (tokens, _) = @html.tokenize("y")
+  let (tokens, errors) = @html.tokenize("y")
   @debug.assert_eq(tokens, [Character('y'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u007a_6663" {
-  let (tokens, _) = @html.tokenize("z")
+  let (tokens, errors) = @html.tokenize("z")
   @debug.assert_eq(tokens, [Character('z'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u007b_6664" {
-  let (tokens, _) = @html.tokenize("{")
+  let (tokens, errors) = @html.tokenize("{")
   @debug.assert_eq(tokens, [Character('{'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }
 
 ///|
 test "html5lib/tokenizer/unicodeChars_valid_unicode_character_u007c_6665" {
-  let (tokens, _) = @html.tokenize("|")
+  let (tokens, errors) = @html.tokenize("|")
   @debug.assert_eq(tokens, [Character('|'), EOF])
+  @debug.assert_eq(errors.length(), 0)
 }

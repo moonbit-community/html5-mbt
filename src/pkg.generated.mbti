@@ -253,6 +253,7 @@ pub struct Tokenizer {
   mut last_line : Int
   mut last_column : Int
   mut saw_eof : Bool
+  input_error_reported : Array[Bool]
   mut state : State
   mut return_state : State
   errors : Array[ParseError]
@@ -262,6 +263,7 @@ pub struct Tokenizer {
   current_attrs : Array[Attribute]
   current_attr_name : StringBuilder
   current_attr_value : StringBuilder
+  mut current_attr_duplicate : Bool
   current_comment : StringBuilder
   current_pi_target : StringBuilder
   current_pi_data : StringBuilder
