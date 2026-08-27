@@ -9,7 +9,7 @@ import {
 
 readme = "README.md"
 
-repository = "https://github.com/moonbitlang/html5-mbt.git"
+repository = "https://github.com/moonbit-community/html5-mbt.git"
 
 license = "Apache-2.0"
 
