@@ -1,15 +1,34 @@
 # MoonBit HTML Parser
 
-A fully WHATWG-compliant HTML5 parser implemented in MoonBit.
+A WHATWG-oriented HTML5 tokenizer, tree builder, and serializer implemented in
+MoonBit.
 
 ## Features
 
-- Full WHATWG HTML5 specification compliance
+- Browser-style recovery for malformed HTML
 - 80 tokenizer states
-- 25 tree construction insertion modes
+- 23 tree construction insertion modes
 - 49 parse error types with graceful recovery
 - 2,231 named character references
-- **100% conformance with html5lib tree construction tests (8251/8251 tests passing)**
+- **8,221/8,221 imported html5lib tests passing** (6,636 tokenizer and
+  1,585 tree-construction cases)
+
+## Installation
+
+Add the module:
+
+```bash
+moon add moonbit-community/html
+```
+
+Import its root package in `moon.pkg`:
+
+```moonbit nocheck
+///|
+import {
+  "moonbit-community/html" @html5,
+}
+```
 
 ## Basic Usage
 
@@ -126,11 +145,9 @@ Tokenize HTML without building a tree:
 ///|
 test "tokenization" {
   let (tokens, _errors) = @html5.tokenize("<div>Hello</div>")
-  assert_true(
-    tokens[0] is @html5.StartTag(name="div", attrs=[], self_closing=false),
-  )
-  assert_true(tokens[1] is @html5.Character('H'))
-  assert_true(tokens[2] is @html5.Character('e'))
+  assert_true(tokens[0] is StartTag(name="div", attrs=[], self_closing=false))
+  assert_true(tokens[1] is Character('H'))
+  assert_true(tokens[2] is Character('e'))
 }
 ```
 
@@ -217,3 +234,13 @@ test "svg support" {
 - `get_tag_name(Int) -> String?` - Get element tag name
 - `get_attribute(Int, String) -> String?` - Get attribute value
 - `get_text_content(Int) -> String` - Get text content of a node
+
+## Conformance Scope
+
+The checked-in generated suite covers tokenizer tests whose initial state is
+`Data` and full-document tree-construction tests, including scripting-on and
+scripting-off cases. The generator currently excludes tokenizer cases that
+require another initial state, selected inputs that MoonBit strings cannot
+represent directly, and fragment-parsing cases. Passing the suite therefore
+means that every imported case passes; it is not a claim of complete WHATWG or
+complete html5lib-tests coverage.

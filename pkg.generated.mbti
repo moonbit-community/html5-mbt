@@ -1,13 +1,52 @@
 // Generated using `moon info`, DON'T EDIT IT
 package "moonbit-community/html"
 
+import {
+  "moonbit-community/html/src",
+}
+
 // Values
+pub const NO_NODE : Int = -1
+
+pub fn is_formatting_element(String) -> Bool
+
+pub fn lookup_entity(String) -> Array[Int]?
+
+pub fn parse(String) -> @src.Document
+
+pub fn parse_with_errors(String) -> (@src.Document, Array[@src.ParseError])
+
+pub fn parse_with_scripting(String) -> @src.Document
+
+pub fn tokenize(String) -> (Array[@src.Token], Array[@src.ParseError])
 
 // Errors
 
 // Types and methods
 
 // Type aliases
+pub using @src {type Attribute}
+
+pub using @src {type Document}
+
+pub using @src {type Element}
+
+pub using @src {type Namespace}
+
+pub using @src {type Node}
+
+pub using @src {type ParseError}
+
+pub using @src {type ParseErrorCode}
+
+pub using @src {type QuirksMode}
+
+pub using @src {type SourcePosition}
+
+pub using @src {type Token}
+
+pub using @src {type Tokenizer}
+
+pub using @src {type TreeBuilder}
 
 // Traits
-

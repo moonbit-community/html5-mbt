@@ -339,7 +339,7 @@ fn remap_windows_1252(code : Int) -> Char {
 /// Returns (entity_name, codepoints) if found
 fn Tokenizer::try_match_named_entity(self : Tokenizer) -> (String, Array[Int])? {
   // Build up the entity name character by character
-  let name_buf = StringBuilder::new()
+  let name_buf = StringBuilder()
   let mut best_match : (String, Array[Int])? = None
   let mut consumed = 0
   while true {

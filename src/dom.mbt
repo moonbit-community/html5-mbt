@@ -77,21 +77,21 @@ pub struct Document {
 ///|
 pub impl Show for Element with fn output(self, logger) {
   logger.write_string("{tag_name: ")
-  self.tag_name.output(logger)
+  Show::output(self.tag_name, logger)
   logger.write_string(", ns: ")
-  self.ns.output(logger)
+  Show::output(self.ns, logger)
   logger.write_string(", attributes: ")
   logger.write_string(@debug.to_string(self.attributes))
   logger.write_string(", children: ")
   logger.write_string(@debug.to_string(self.children))
   logger.write_string(", parent: ")
-  self.parent.output(logger)
+  Show::output(self.parent, logger)
   logger.write_string(", is_html_integration_point: ")
-  self.is_html_integration_point.output(logger)
+  Show::output(self.is_html_integration_point, logger)
   logger.write_string(", is_mathml_text_integration_point: ")
-  self.is_mathml_text_integration_point.output(logger)
+  Show::output(self.is_mathml_text_integration_point, logger)
   logger.write_string(", template_content: ")
-  self.template_content.output(logger)
+  Show::output(self.template_content, logger)
   logger.write_string("}")
 }
 
@@ -100,26 +100,26 @@ pub impl Show for Node with fn output(self, logger) {
   match self {
     ElementNode(elem) => {
       logger.write_string("ElementNode(")
-      elem.output(logger)
+      Show::output(elem, logger)
       logger.write_string(")")
     }
     TextNode(text) => {
       logger.write_string("TextNode(")
-      text.output(logger)
+      Show::output(text, logger)
       logger.write_string(")")
     }
     CommentNode(text) => {
       logger.write_string("CommentNode(")
-      text.output(logger)
+      Show::output(text, logger)
       logger.write_string(")")
     }
     DocumentTypeNode(name~, public_id~, system_id~) => {
       logger.write_string("DocumentTypeNode(name=")
-      name.output(logger)
+      Show::output(name, logger)
       logger.write_string(", public_id=")
-      public_id.output(logger)
+      Show::output(public_id, logger)
       logger.write_string(", system_id=")
-      system_id.output(logger)
+      Show::output(system_id, logger)
       logger.write_string(")")
     }
     DocumentNode(children~) => {
@@ -140,13 +140,13 @@ pub impl Show for Document with fn output(self, logger) {
   logger.write_string("{nodes: ")
   logger.write_string(@debug.to_string(self.nodes))
   logger.write_string(", document_element: ")
-  self.document_element.output(logger)
+  Show::output(self.document_element, logger)
   logger.write_string(", head_element: ")
-  self.head_element.output(logger)
+  Show::output(self.head_element, logger)
   logger.write_string(", body_element: ")
-  self.body_element.output(logger)
+  Show::output(self.body_element, logger)
   logger.write_string(", quirks_mode: ")
-  self.quirks_mode.output(logger)
+  Show::output(self.quirks_mode, logger)
   logger.write_string("}")
 }
 
@@ -421,7 +421,7 @@ pub fn Document::has_attribute(
 ///|
 /// Get text content of a node (concatenation of all text descendants)
 pub fn Document::get_text_content(self : Document, id : Int) -> String {
-  let buf = StringBuilder::new()
+  let buf = StringBuilder()
   self.collect_text_content(id, buf)
   buf.to_string()
 }
@@ -449,7 +449,7 @@ fn Document::collect_text_content(
 ///|
 /// Serialize document to HTML string
 pub fn Document::to_html(self : Document) -> String {
-  let buf = StringBuilder::new()
+  let buf = StringBuilder()
   // Start from document children
   match self.nodes[0] {
     DocumentNode(children~) =>
@@ -552,7 +552,7 @@ fn is_void_element(tag : String) -> Bool {
 ///|
 /// Escape HTML text content
 fn escape_html_text(s : String) -> String {
-  let buf = StringBuilder::new()
+  let buf = StringBuilder()
   for c in s {
     match c {
       '&' => buf.write_string("&amp;")
@@ -567,7 +567,7 @@ fn escape_html_text(s : String) -> String {
 ///|
 /// Escape HTML attribute value
 fn escape_html_attr(s : String) -> String {
-  let buf = StringBuilder::new()
+  let buf = StringBuilder()
   for c in s {
     match c {
       '&' => buf.write_string("&amp;")
@@ -581,7 +581,7 @@ fn escape_html_attr(s : String) -> String {
 ///|
 /// Dump document in html5lib-tests format for conformance testing
 pub fn Document::dump(self : Document) -> String {
-  let buf = StringBuilder::new()
+  let buf = StringBuilder()
   // Start from document children (node 0 is the document)
   match self.nodes[0] {
     DocumentNode(children~) =>
@@ -595,7 +595,7 @@ pub fn Document::dump(self : Document) -> String {
   let len = s.length()
   if len > 0 && s[len - 1] == 10 { // '\n' == 10
     // Build string without trailing newline
-    let buf2 = StringBuilder::new()
+    let buf2 = StringBuilder()
     for i = 0; i < len - 1; i = i + 1 {
       buf2.write_char(Int::unsafe_to_char(s[i].to_int()))
     }
@@ -693,7 +693,7 @@ fn Document::dump_node(
 ///|
 /// Escape text for dump output (show control chars)
 fn escape_dump_text(s : String) -> String {
-  let buf = StringBuilder::new()
+  let buf = StringBuilder()
   for c in s {
     let code = c.to_int()
     if code == 0 {

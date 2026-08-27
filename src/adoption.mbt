@@ -18,7 +18,7 @@
 
 ///|
 /// Run the adoption agency algorithm for a formatting element
-pub fn TreeBuilder::run_adoption_agency(
+fn TreeBuilder::run_adoption_agency(
   self : TreeBuilder,
   tag_name : String,
 ) -> Unit {

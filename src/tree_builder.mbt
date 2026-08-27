@@ -13,8 +13,8 @@
 // limitations under the License.
 
 ///|
-/// 25 tree construction insertion modes (WHATWG 13.2.6)
-pub(all) enum InsertionMode {
+/// 23 tree construction insertion modes (WHATWG 13.2.6)
+enum InsertionMode {
   Initial
   BeforeHtml
   BeforeHead
@@ -38,13 +38,11 @@ pub(all) enum InsertionMode {
   AfterFrameset
   AfterAfterBody
   AfterAfterFrameset
-  // Special modes for foreign content
-  InForeignContent
 }
 
 ///|
 /// Entry in the stack of open elements
-pub struct StackEntry {
+struct StackEntry {
   node_id : Int
   tag_name : String
   ns : Namespace
@@ -52,7 +50,7 @@ pub struct StackEntry {
 
 ///|
 /// Marker or Element entry in the active formatting elements list
-pub enum FormattingEntry {
+enum FormattingEntry {
   Marker
   Element(
     node_id~ : Int,
@@ -504,7 +502,6 @@ fn TreeBuilder::process_token_in_html_mode(
     AfterFrameset => self.process_after_frameset_mode(token)
     AfterAfterBody => self.process_after_after_body_mode(token)
     AfterAfterFrameset => self.process_after_after_frameset_mode(token)
-    InForeignContent => self.process_in_foreign_content(token)
   }
 }
 
@@ -614,22 +611,13 @@ fn TreeBuilder::is_html_integration_point(
 
 ///|
 /// Get the current node (last element in stack)
-pub fn TreeBuilder::current_node(self : TreeBuilder) -> StackEntry {
+fn TreeBuilder::current_node(self : TreeBuilder) -> StackEntry {
   self.open_elements[self.open_elements.length() - 1]
 }
 
 ///|
-/// Get the adjusted current node (for fragment parsing)
-pub fn TreeBuilder::adjusted_current_node(self : TreeBuilder) -> StackEntry {
-  // For fragment parsing, if there's only one element and it's the context element,
-  // the adjusted current node is the context element
-  // For now, just return current node
-  self.current_node()
-}
-
-///|
 /// Push an element onto the stack
-pub fn TreeBuilder::push_element(
+fn TreeBuilder::push_element(
   self : TreeBuilder,
   node_id : Int,
   tag_name : String,
@@ -640,13 +628,13 @@ pub fn TreeBuilder::push_element(
 
 ///|
 /// Pop the current element from the stack
-pub fn TreeBuilder::pop_element(self : TreeBuilder) -> StackEntry {
+fn TreeBuilder::pop_element(self : TreeBuilder) -> StackEntry {
   self.open_elements.pop().unwrap()
 }
 
 ///|
 /// Pop elements until we find one with the given tag name (HTML namespace)
-pub fn TreeBuilder::pop_until(self : TreeBuilder, tag_name : String) -> Unit {
+fn TreeBuilder::pop_until(self : TreeBuilder, tag_name : String) -> Unit {
   while self.open_elements.length() > 0 {
     let entry = self.pop_element()
     // Only match HTML elements for pop_until
@@ -657,22 +645,8 @@ pub fn TreeBuilder::pop_until(self : TreeBuilder, tag_name : String) -> Unit {
 }
 
 ///|
-/// Pop elements until we find one matching any of the given tags
-pub fn TreeBuilder::pop_until_any(
-  self : TreeBuilder,
-  tags : Array[String],
-) -> Unit {
-  while self.open_elements.length() > 0 {
-    let entry = self.pop_element()
-    if tags.contains(entry.tag_name) {
-      break
-    }
-  }
-}
-
-///|
 /// Check if an element with the given tag is in scope
-pub fn TreeBuilder::in_scope(
+fn TreeBuilder::in_scope(
   self : TreeBuilder,
   tag_name : String,
   scope_elements : Array[String],
@@ -719,10 +693,7 @@ fn default_scope_elements() -> Array[String] {
 
 ///|
 /// Check if tag is in default scope
-pub fn TreeBuilder::in_default_scope(
-  self : TreeBuilder,
-  tag_name : String,
-) -> Bool {
+fn TreeBuilder::in_default_scope(self : TreeBuilder, tag_name : String) -> Bool {
   self.in_scope(tag_name, default_scope_elements())
 }
 
@@ -736,10 +707,7 @@ fn button_scope_elements() -> Array[String] {
 
 ///|
 /// Check if tag is in button scope
-pub fn TreeBuilder::in_button_scope(
-  self : TreeBuilder,
-  tag_name : String,
-) -> Bool {
+fn TreeBuilder::in_button_scope(self : TreeBuilder, tag_name : String) -> Bool {
   self.in_scope(tag_name, button_scope_elements())
 }
 
@@ -754,7 +722,7 @@ fn list_item_scope_elements() -> Array[String] {
 
 ///|
 /// Check if tag is in list item scope
-pub fn TreeBuilder::in_list_item_scope(
+fn TreeBuilder::in_list_item_scope(
   self : TreeBuilder,
   tag_name : String,
 ) -> Bool {
@@ -764,10 +732,7 @@ pub fn TreeBuilder::in_list_item_scope(
 ///|
 /// Check if tag is in table scope
 /// Table scope ONLY checks for html, table, template - NOT SVG/MathML elements
-pub fn TreeBuilder::in_table_scope(
-  self : TreeBuilder,
-  tag_name : String,
-) -> Bool {
+fn TreeBuilder::in_table_scope(self : TreeBuilder, tag_name : String) -> Bool {
   for i = self.open_elements.length() - 1; i >= 0; i = i - 1 {
     let entry = self.open_elements[i]
     if entry.tag_name == tag_name && entry.ns == HTML {
@@ -787,10 +752,7 @@ pub fn TreeBuilder::in_table_scope(
 
 ///|
 /// Select scope - everything except optgroup and option
-pub fn TreeBuilder::in_select_scope(
-  self : TreeBuilder,
-  tag_name : String,
-) -> Bool {
+fn TreeBuilder::in_select_scope(self : TreeBuilder, tag_name : String) -> Bool {
   for i = self.open_elements.length() - 1; i >= 0; i = i - 1 {
     let entry = self.open_elements[i]
     if entry.tag_name == tag_name && entry.ns == HTML {
@@ -805,7 +767,7 @@ pub fn TreeBuilder::in_select_scope(
 
 ///|
 /// Check if the stack has an element with the given tag name
-pub fn TreeBuilder::has_element_in_stack(
+fn TreeBuilder::has_element_in_stack(
   self : TreeBuilder,
   tag_name : String,
 ) -> Bool {
@@ -819,10 +781,7 @@ pub fn TreeBuilder::has_element_in_stack(
 
 ///|
 /// Remove an element from the stack by node id
-pub fn TreeBuilder::remove_from_stack(
-  self : TreeBuilder,
-  node_id : Int,
-) -> Unit {
+fn TreeBuilder::remove_from_stack(self : TreeBuilder, node_id : Int) -> Unit {
   for i, entry in self.open_elements {
     if entry.node_id == node_id {
       let _ = self.open_elements.remove(i)
@@ -837,7 +796,7 @@ pub fn TreeBuilder::remove_from_stack(
 
 ///|
 /// Create an element for a token and insert it
-pub fn TreeBuilder::insert_element_for_token(
+fn TreeBuilder::insert_element_for_token(
   self : TreeBuilder,
   name : String,
   attrs : Array[Attribute],
@@ -878,7 +837,7 @@ pub fn TreeBuilder::insert_element_for_token(
 
 ///|
 /// Create an element without inserting it (for adoption agency)
-pub fn TreeBuilder::create_element_for_token(
+fn TreeBuilder::create_element_for_token(
   self : TreeBuilder,
   name : String,
   attrs : Array[(String, String)],
@@ -890,7 +849,7 @@ pub fn TreeBuilder::create_element_for_token(
 
 ///|
 /// Insert an HTML element
-pub fn TreeBuilder::insert_html_element(
+fn TreeBuilder::insert_html_element(
   self : TreeBuilder,
   name : String,
   attrs : Array[Attribute],
@@ -900,7 +859,7 @@ pub fn TreeBuilder::insert_html_element(
 
 ///|
 /// Insert a foreign element
-pub fn TreeBuilder::insert_foreign_element(
+fn TreeBuilder::insert_foreign_element(
   self : TreeBuilder,
   name : String,
   attrs : Array[Attribute],
@@ -1037,7 +996,7 @@ fn TreeBuilder::get_foster_parent_location(self : TreeBuilder) -> (Int, Int) {
 
 ///|
 /// Insert a character node
-pub fn TreeBuilder::insert_character(self : TreeBuilder, c : Char) -> Unit {
+fn TreeBuilder::insert_character(self : TreeBuilder, c : Char) -> Unit {
   // Determine actual insertion location (considering foster parenting)
   let (parent_id, insert_before) = if self.foster_parenting &&
     self.is_foster_parenting_required() {
@@ -1085,40 +1044,15 @@ pub fn TreeBuilder::insert_character(self : TreeBuilder, c : Char) -> Unit {
 }
 
 ///|
-/// Insert a character into a specific node (used by AfterBody mode)
-pub fn TreeBuilder::insert_character_in_node(
-  self : TreeBuilder,
-  parent_id : Int,
-  c : Char,
-) -> Unit {
-  // Try to append to existing text node
-  let children = self.document.get_children(parent_id)
-  if children.length() > 0 {
-    let last_child = children[children.length() - 1]
-    match self.document.get_node(last_child) {
-      Some(TextNode(text)) => {
-        let new_text = text + c.to_string()
-        self.document.nodes[last_child] = TextNode(new_text)
-        return
-      }
-      _ => ()
-    }
-  }
-  // Create new text node
-  let node_id = self.document.add_node(TextNode(c.to_string()))
-  self.document.append_child(parent_id, node_id)
-}
-
-///|
 /// Insert a comment node
-pub fn TreeBuilder::insert_comment(self : TreeBuilder, text : String) -> Unit {
+fn TreeBuilder::insert_comment(self : TreeBuilder, text : String) -> Unit {
   let node_id = self.document.add_node(CommentNode(text))
   self.insert_node(node_id)
 }
 
 ///|
 /// Insert a comment at document level
-pub fn TreeBuilder::insert_comment_at_document(
+fn TreeBuilder::insert_comment_at_document(
   self : TreeBuilder,
   text : String,
 ) -> Unit {
@@ -1128,7 +1062,7 @@ pub fn TreeBuilder::insert_comment_at_document(
 
 ///|
 /// Insert a DOCTYPE node
-pub fn TreeBuilder::insert_doctype(
+fn TreeBuilder::insert_doctype(
   self : TreeBuilder,
   name : String?,
   public_id : String?,
@@ -1149,10 +1083,7 @@ pub fn TreeBuilder::insert_doctype(
 
 ///|
 /// Emit a parse error
-pub fn TreeBuilder::emit_error(
-  self : TreeBuilder,
-  code : ParseErrorCode,
-) -> Unit {
+fn TreeBuilder::emit_error(self : TreeBuilder, code : ParseErrorCode) -> Unit {
   self.errors.push({ code, position: self.tokenizer.get_position() })
 }
 
@@ -1162,7 +1093,7 @@ pub fn TreeBuilder::emit_error(
 
 ///|
 /// Switch tokenizer to RCDATA and set up text mode parsing
-pub fn TreeBuilder::parse_rcdata(
+fn TreeBuilder::parse_rcdata(
   self : TreeBuilder,
   name : String,
   attrs : Array[Attribute],
@@ -1175,7 +1106,7 @@ pub fn TreeBuilder::parse_rcdata(
 
 ///|
 /// Switch tokenizer to RAWTEXT and set up text mode parsing
-pub fn TreeBuilder::parse_rawtext(
+fn TreeBuilder::parse_rawtext(
   self : TreeBuilder,
   name : String,
   attrs : Array[Attribute],
@@ -1188,7 +1119,7 @@ pub fn TreeBuilder::parse_rawtext(
 
 ///|
 /// Switch tokenizer to script data state
-pub fn TreeBuilder::parse_script(
+fn TreeBuilder::parse_script(
   self : TreeBuilder,
   name : String,
   attrs : Array[Attribute],
@@ -1211,7 +1142,7 @@ fn implied_end_tag_elements() -> Array[String] {
 
 ///|
 /// Generate implied end tags (except for given tag)
-pub fn TreeBuilder::generate_implied_end_tags(
+fn TreeBuilder::generate_implied_end_tags(
   self : TreeBuilder,
   except : String,
 ) -> Unit {
@@ -1229,12 +1160,6 @@ pub fn TreeBuilder::generate_implied_end_tags(
 }
 
 ///|
-/// Generate all implied end tags
-pub fn TreeBuilder::generate_all_implied_end_tags(self : TreeBuilder) -> Unit {
-  self.generate_implied_end_tags("")
-}
-
-///|
 /// Elements with implied end tags (thoroughly)
 fn thorough_implied_end_tag_elements() -> Array[String] {
   [
@@ -1245,7 +1170,7 @@ fn thorough_implied_end_tag_elements() -> Array[String] {
 
 ///|
 /// Generate implied end tags thoroughly
-pub fn TreeBuilder::generate_implied_end_tags_thoroughly(
+fn TreeBuilder::generate_implied_end_tags_thoroughly(
   self : TreeBuilder,
 ) -> Unit {
   let implied = thorough_implied_end_tag_elements()
@@ -1264,7 +1189,7 @@ pub fn TreeBuilder::generate_implied_end_tags_thoroughly(
 
 ///|
 /// Reset the insertion mode appropriately
-pub fn TreeBuilder::reset_insertion_mode(self : TreeBuilder) -> Unit {
+fn TreeBuilder::reset_insertion_mode(self : TreeBuilder) -> Unit {
   for i = self.open_elements.length() - 1; i >= 0; i = i - 1 {
     let entry = self.open_elements[i]
     let is_last = i == 0
@@ -1348,21 +1273,6 @@ pub fn TreeBuilder::reset_insertion_mode(self : TreeBuilder) -> Unit {
       return
     }
   }
-}
-
-// ============================================================================
-// Acknowledge self-closing flag
-// ============================================================================
-
-///|
-/// Acknowledge self-closing flag (suppresses error)
-pub fn TreeBuilder::acknowledge_self_closing(
-  self : TreeBuilder,
-  _token : Token,
-) -> Unit {
-  // If the token is a start tag with self-closing flag, we acknowledge it
-  // This suppresses the "non-void element with trailing solidus" error
-  ()
 }
 
 // ============================================================================

@@ -1,4 +1,7 @@
 import {
   "moonbit-community/html/src" @html5,
+}
+
+import {
   "moonbitlang/core/debug",
 } for "test"

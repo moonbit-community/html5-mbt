@@ -3,8 +3,6 @@ package "moonbit-community/html/src"
 
 import {
   "moonbitlang/core/debug",
-  "moonbitlang/core/quickcheck",
-  "moonbitlang/core/quickcheck/splitmix",
 }
 
 // Values
@@ -59,7 +57,6 @@ pub fn Document::remove_child(Self, Int, Int) -> Unit
 pub fn Document::set_attribute(Self, Int, String, String) -> Unit
 pub fn Document::to_html(Self) -> String
 pub impl Show for Document
-pub impl @quickcheck.Arbitrary for Document
 
 pub struct Element {
   tag_name : String
@@ -74,40 +71,9 @@ pub struct Element {
 pub fn Element::new(String, Namespace, Array[(String, String)]) -> Self
 pub impl Show for Element
 
-pub enum FormattingEntry {
-  Marker
-  Element(node_id~ : Int, tag_name~ : String, attributes~ : Array[(String, String)])
-}
+type FormattingEntry
 
-type HtmlCase derive(@debug.Debug)
-pub impl @quickcheck.Arbitrary for HtmlCase
-
-pub(all) enum InsertionMode {
-  Initial
-  BeforeHtml
-  BeforeHead
-  InHead
-  InHeadNoscript
-  AfterHead
-  InBody
-  Text
-  InTable
-  InTableText
-  InCaption
-  InColumnGroup
-  InTableBody
-  InRow
-  InCell
-  InSelect
-  InSelectInTable
-  InTemplate
-  AfterBody
-  InFrameset
-  AfterFrameset
-  AfterAfterBody
-  AfterAfterFrameset
-  InForeignContent
-}
+type InsertionMode
 
 pub(all) enum Namespace {
   HTML
@@ -199,94 +165,9 @@ pub struct SourcePosition {
 } derive(Eq, @debug.Debug)
 pub impl Show for SourcePosition
 
-pub struct StackEntry {
-  node_id : Int
-  tag_name : String
-  ns : Namespace
-}
+type StackEntry
 
-pub(all) enum State {
-  Data
-  RCDATA
-  RAWTEXT
-  ScriptData
-  PLAINTEXT
-  TagOpen
-  EndTagOpen
-  TagName
-  SelfClosingStartTag
-  RCDATALessThanSign
-  RCDATAEndTagOpen
-  RCDATAEndTagName
-  RAWTEXTLessThanSign
-  RAWTEXTEndTagOpen
-  RAWTEXTEndTagName
-  ScriptDataLessThanSign
-  ScriptDataEndTagOpen
-  ScriptDataEndTagName
-  ScriptDataEscapeStart
-  ScriptDataEscapeStartDash
-  ScriptDataEscaped
-  ScriptDataEscapedDash
-  ScriptDataEscapedDashDash
-  ScriptDataEscapedLessThanSign
-  ScriptDataEscapedEndTagOpen
-  ScriptDataEscapedEndTagName
-  ScriptDataDoubleEscapeStart
-  ScriptDataDoubleEscaped
-  ScriptDataDoubleEscapedDash
-  ScriptDataDoubleEscapedDashDash
-  ScriptDataDoubleEscapedLessThanSign
-  ScriptDataDoubleEscapeEnd
-  BeforeAttributeName
-  AttributeName
-  AfterAttributeName
-  BeforeAttributeValue
-  AttributeValueDoubleQuoted
-  AttributeValueSingleQuoted
-  AttributeValueUnquoted
-  AfterAttributeValueQuoted
-  BogusComment
-  MarkupDeclarationOpen
-  CommentStart
-  CommentStartDash
-  Comment
-  CommentLessThanSign
-  CommentLessThanSignBang
-  CommentLessThanSignBangDash
-  CommentLessThanSignBangDashDash
-  CommentEndDash
-  CommentEnd
-  CommentEndBang
-  DOCTYPE
-  BeforeDOCTYPEName
-  DOCTYPEName
-  AfterDOCTYPEName
-  AfterDOCTYPEPublicKeyword
-  BeforeDOCTYPEPublicIdentifier
-  DOCTYPEPublicIdentifierDoubleQuoted
-  DOCTYPEPublicIdentifierSingleQuoted
-  AfterDOCTYPEPublicIdentifier
-  BetweenDOCTYPEPublicAndSystemIdentifiers
-  AfterDOCTYPESystemKeyword
-  BeforeDOCTYPESystemIdentifier
-  DOCTYPESystemIdentifierDoubleQuoted
-  DOCTYPESystemIdentifierSingleQuoted
-  AfterDOCTYPESystemIdentifier
-  BogusDOCTYPE
-  CDATASection
-  CDATASectionBracket
-  CDATASectionEnd
-  CharacterReference
-  NamedCharacterReference
-  AmbiguousAmpersand
-  NumericCharacterReference
-  HexadecimalCharacterReferenceStart
-  DecimalCharacterReferenceStart
-  HexadecimalCharacterReference
-  DecimalCharacterReference
-  NumericCharacterReferenceEnd
-} derive(Eq, @debug.Debug)
+type State derive(Eq, @debug.Debug)
 pub impl Show for State
 
 pub(all) enum Token {
@@ -353,53 +234,10 @@ pub struct TreeBuilder {
   mut skip_next_newline : Bool
   errors : Array[ParseError]
 }
-pub fn TreeBuilder::acknowledge_self_closing(Self, Token) -> Unit
-pub fn TreeBuilder::adjusted_current_node(Self) -> StackEntry
-pub fn TreeBuilder::clear_active_formatting_to_marker(Self) -> Unit
-pub fn TreeBuilder::create_element_for_token(Self, String, Array[(String, String)], Namespace) -> Int
-pub fn TreeBuilder::current_node(Self) -> StackEntry
-pub fn TreeBuilder::emit_error(Self, ParseErrorCode) -> Unit
-pub fn TreeBuilder::find_formatting_element(Self, String) -> FormattingEntry?
-pub fn TreeBuilder::find_formatting_element_index(Self, String) -> Int
-pub fn TreeBuilder::find_furthest_block(Self, Int) -> Int
-pub fn TreeBuilder::generate_all_implied_end_tags(Self) -> Unit
-pub fn TreeBuilder::generate_implied_end_tags(Self, String) -> Unit
-pub fn TreeBuilder::generate_implied_end_tags_thoroughly(Self) -> Unit
-pub fn TreeBuilder::get_formatting_entry(Self, Int) -> FormattingEntry?
-pub fn TreeBuilder::has_element_in_stack(Self, String) -> Bool
-pub fn TreeBuilder::in_button_scope(Self, String) -> Bool
-pub fn TreeBuilder::in_default_scope(Self, String) -> Bool
-pub fn TreeBuilder::in_list_item_scope(Self, String) -> Bool
-pub fn TreeBuilder::in_scope(Self, String, Array[String]) -> Bool
-pub fn TreeBuilder::in_select_scope(Self, String) -> Bool
-pub fn TreeBuilder::in_table_scope(Self, String) -> Bool
-pub fn TreeBuilder::insert_character(Self, Char) -> Unit
-pub fn TreeBuilder::insert_character_in_node(Self, Int, Char) -> Unit
-pub fn TreeBuilder::insert_comment(Self, String) -> Unit
-pub fn TreeBuilder::insert_comment_at_document(Self, String) -> Unit
-pub fn TreeBuilder::insert_doctype(Self, String?, String?, String?) -> Unit
-pub fn TreeBuilder::insert_element_for_token(Self, String, Array[Attribute], Namespace) -> Int
-pub fn TreeBuilder::insert_foreign_element(Self, String, Array[Attribute], Namespace) -> Int
-pub fn TreeBuilder::insert_html_element(Self, String, Array[Attribute]) -> Int
 pub fn TreeBuilder::new(String) -> Self
 pub fn TreeBuilder::new_with_options(String, scripting~ : Bool) -> Self
 pub fn TreeBuilder::parse(Self) -> Document
-pub fn TreeBuilder::parse_rawtext(Self, String, Array[Attribute]) -> Unit
-pub fn TreeBuilder::parse_rcdata(Self, String, Array[Attribute]) -> Unit
-pub fn TreeBuilder::parse_script(Self, String, Array[Attribute]) -> Unit
-pub fn TreeBuilder::pop_element(Self) -> StackEntry
-pub fn TreeBuilder::pop_until(Self, String) -> Unit
-pub fn TreeBuilder::pop_until_any(Self, Array[String]) -> Unit
-pub fn TreeBuilder::push_active_formatting(Self, Int, String, Array[Attribute]) -> Unit
-pub fn TreeBuilder::push_element(Self, Int, String, Namespace) -> Unit
-pub fn TreeBuilder::push_formatting_marker(Self) -> Unit
-pub fn TreeBuilder::reconstruct_active_formatting(Self) -> Unit
-pub fn TreeBuilder::remove_from_active_formatting(Self, Int) -> Unit
-pub fn TreeBuilder::remove_from_stack(Self, Int) -> Unit
-pub fn TreeBuilder::reset_insertion_mode(Self) -> Unit
-pub fn TreeBuilder::run_adoption_agency(Self, String) -> Unit
 
 // Type aliases
 
 // Traits
-

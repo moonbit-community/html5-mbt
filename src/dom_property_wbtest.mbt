@@ -156,7 +156,7 @@ fn random_ascii_word(
     '.',
   ]
   let len = random_length(rs, min_len, max_len)
-  let buf = StringBuilder::new()
+  let buf = StringBuilder()
   for _ in 0..<len {
     buf.write_char(pick_from_array(alphabet, rs))
   }
@@ -174,7 +174,7 @@ fn random_text(rs : @splitmix.RandomState, size_hint : Int) -> String {
   ]
   let max_len = clamp_size(size_hint + 4, 4, 32)
   let len = 1 + rs.next_positive_int() % max_len
-  let buf = StringBuilder::new()
+  let buf = StringBuilder()
   for _ in 0..<len {
     buf.write_char(pick_from_array(text_chars, rs))
   }
@@ -283,7 +283,7 @@ fn inject_html_noise(
   size_hint : Int,
 ) -> String {
   let mut budget = clamp_size(size_hint, 0, 16)
-  let buf = StringBuilder::new()
+  let buf = StringBuilder()
 
   // Optional prefix junk
   if budget > 0 && rs.next_double() < 0.2 {

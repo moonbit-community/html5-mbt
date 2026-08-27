@@ -40,13 +40,13 @@ pub fn is_formatting_element(name : String) -> Bool {
 
 ///|
 /// Push a formatting marker onto the list
-pub fn TreeBuilder::push_formatting_marker(self : TreeBuilder) -> Unit {
+fn TreeBuilder::push_formatting_marker(self : TreeBuilder) -> Unit {
   self.active_formatting.push(Marker)
 }
 
 ///|
 /// Push an element onto the active formatting list
-pub fn TreeBuilder::push_active_formatting(
+fn TreeBuilder::push_active_formatting(
   self : TreeBuilder,
   node_id : Int,
   tag_name : String,
@@ -94,7 +94,7 @@ fn attributes_match(a : Array[(String, String)], b : Array[Attribute]) -> Bool {
 
 ///|
 /// Reconstruct the active formatting elements (WHATWG 13.2.4.3)
-pub fn TreeBuilder::reconstruct_active_formatting(self : TreeBuilder) -> Unit {
+fn TreeBuilder::reconstruct_active_formatting(self : TreeBuilder) -> Unit {
   if self.active_formatting.is_empty() {
     return
   }
@@ -145,9 +145,7 @@ pub fn TreeBuilder::reconstruct_active_formatting(self : TreeBuilder) -> Unit {
 
 ///|
 /// Clear active formatting elements to the last marker
-pub fn TreeBuilder::clear_active_formatting_to_marker(
-  self : TreeBuilder,
-) -> Unit {
+fn TreeBuilder::clear_active_formatting_to_marker(self : TreeBuilder) -> Unit {
   while self.active_formatting.length() > 0 {
     let entry = self.active_formatting.pop()
     match entry {
@@ -159,7 +157,7 @@ pub fn TreeBuilder::clear_active_formatting_to_marker(
 
 ///|
 /// Find a formatting element by tag name
-pub fn TreeBuilder::find_formatting_element(
+fn TreeBuilder::find_formatting_element(
   self : TreeBuilder,
   tag_name : String,
 ) -> FormattingEntry? {
@@ -177,7 +175,7 @@ pub fn TreeBuilder::find_formatting_element(
 
 ///|
 /// Remove an element from the active formatting list by node id
-pub fn TreeBuilder::remove_from_active_formatting(
+fn TreeBuilder::remove_from_active_formatting(
   self : TreeBuilder,
   target_id : Int,
 ) -> Unit {
@@ -205,7 +203,7 @@ fn TreeBuilder::is_in_open_elements(self : TreeBuilder, node_id : Int) -> Bool {
 
 ///|
 /// Get the formatting element entry at an index
-pub fn TreeBuilder::get_formatting_entry(
+fn TreeBuilder::get_formatting_entry(
   self : TreeBuilder,
   idx : Int,
 ) -> FormattingEntry? {
@@ -218,7 +216,7 @@ pub fn TreeBuilder::get_formatting_entry(
 
 ///|
 /// Find formatting element index in list
-pub fn TreeBuilder::find_formatting_element_index(
+fn TreeBuilder::find_formatting_element_index(
   self : TreeBuilder,
   tag_name : String,
 ) -> Int {
@@ -233,7 +231,7 @@ pub fn TreeBuilder::find_formatting_element_index(
 
 ///|
 /// Find the furthest block from the formatting element
-pub fn TreeBuilder::find_furthest_block(
+fn TreeBuilder::find_furthest_block(
   self : TreeBuilder,
   formatting_idx : Int,
 ) -> Int {

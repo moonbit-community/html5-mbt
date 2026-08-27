@@ -51,7 +51,7 @@ pub(all) struct Attribute {
 
 ///|
 /// All 80 WHATWG tokenizer states
-pub(all) enum State {
+enum State {
   // ===== Data states (5) =====
   Data
   RCDATA
@@ -75,7 +75,7 @@ pub(all) enum State {
   RAWTEXTEndTagOpen
   RAWTEXTEndTagName
 
-  // ===== Script data states (13) =====
+  // ===== Script data states (17) =====
   ScriptDataLessThanSign
   ScriptDataEndTagOpen
   ScriptDataEndTagName
@@ -104,7 +104,7 @@ pub(all) enum State {
   AttributeValueUnquoted
   AfterAttributeValueQuoted
 
-  // ===== Comment states (11) =====
+  // ===== Comment/markup states (12) =====
   BogusComment
   MarkupDeclarationOpen
   CommentStart
@@ -260,31 +260,31 @@ pub impl Show for Token with fn output(self, logger) {
       logger.write_string(", system_id=")
       output_option_string(system_id)
       logger.write_string(", force_quirks=")
-      force_quirks.output(logger)
+      Show::output(force_quirks, logger)
       logger.write_string(")")
     }
     StartTag(name~, attrs~, self_closing~) => {
       logger.write_string("StartTag(name=")
-      name.output(logger)
+      Show::output(name, logger)
       logger.write_string(", attrs=")
       logger.write_string(@debug.to_string(attrs))
       logger.write_string(", self_closing=")
-      self_closing.output(logger)
+      Show::output(self_closing, logger)
       logger.write_string(")")
     }
     EndTag(name~) => {
       logger.write_string("EndTag(name=")
-      name.output(logger)
+      Show::output(name, logger)
       logger.write_string(")")
     }
     Character(c) => {
       logger.write_string("Character(")
-      c.output(logger)
+      Show::output(c, logger)
       logger.write_string(")")
     }
     Comment(text) => {
       logger.write_string("Comment(")
-      text.output(logger)
+      Show::output(text, logger)
       logger.write_string(")")
     }
     EOF => logger.write_string("EOF")
@@ -299,9 +299,9 @@ pub impl Show for QuirksMode with fn output(self, logger) {
 ///|
 pub impl Show for Attribute with fn output(self, logger) {
   logger.write_string("{name: ")
-  self.name.output(logger)
+  Show::output(self.name, logger)
   logger.write_string(", value: ")
-  self.value.output(logger)
+  Show::output(self.value, logger)
   logger.write_string("}")
 }
 
@@ -313,11 +313,11 @@ pub impl Show for State with fn output(self, logger) {
 ///|
 pub impl Show for SourcePosition with fn output(self, logger) {
   logger.write_string("{line: ")
-  self.line.output(logger)
+  Show::output(self.line, logger)
   logger.write_string(", column: ")
-  self.column.output(logger)
+  Show::output(self.column, logger)
   logger.write_string(", offset: ")
-  self.offset.output(logger)
+  Show::output(self.offset, logger)
   logger.write_string("}")
 }
 
@@ -329,9 +329,9 @@ pub impl Show for ParseErrorCode with fn output(self, logger) {
 ///|
 pub impl Show for ParseError with fn output(self, logger) {
   logger.write_string("{code: ")
-  self.code.output(logger)
+  Show::output(self.code, logger)
   logger.write_string(", position: ")
-  self.position.output(logger)
+  Show::output(self.position, logger)
   logger.write_string("}")
 }
 
