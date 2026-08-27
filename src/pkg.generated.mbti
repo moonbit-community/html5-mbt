@@ -36,6 +36,7 @@ pub impl Show for Attribute
 
 pub struct Document {
   nodes : Array[Node]
+  parents : Array[Int]
   mut document_element : Int
   mut head_element : Int
   mut body_element : Int

@@ -33,3 +33,30 @@ test "serializer preserves literal text element contents" {
   let nonscripted = @html.parse("<body><noscript>&lt;b></noscript>")
   assert_true(nonscripted.to_html().contains("<noscript>&lt;b&gt;</noscript>"))
 }
+
+///|
+test "DOM mutation preserves parent-child consistency" {
+  let doc = @html.parse(
+    "<div><span>text</span></div><section></section><template><i></i></template>",
+  )
+  let body_children = doc.get_children(doc.body_element)
+  let div = body_children[0]
+  let section = body_children[1]
+  let template = body_children[2]
+  let span = doc.get_children(div)[0]
+  let text = doc.get_children(span)[0]
+  assert_eq(doc.get_parent(text), span)
+  doc.append_child(section, span)
+  assert_true(doc.get_children(div).is_empty())
+  assert_eq(doc.get_children(section), [span])
+  assert_eq(doc.get_parent(span), section)
+  doc.remove_child(div, span)
+  assert_eq(doc.get_children(section), [span])
+  assert_eq(doc.get_parent(span), section)
+  let fragment = doc.get_template_content(template)
+  let fragment_child = doc.get_children(fragment)[0]
+  assert_eq(doc.get_parent(fragment_child), fragment)
+  doc.remove_child(fragment, fragment_child)
+  assert_true(doc.get_children(fragment).is_empty())
+  assert_eq(doc.get_parent(fragment_child), @html.NO_NODE)
+}

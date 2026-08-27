@@ -66,6 +66,7 @@ pub enum Node {
 /// The complete document owns all nodes in a flat array
 pub struct Document {
   nodes : Array[Node]
+  parents : Array[Int]
   // Quick access indices
   mut document_element : Int // The <html> element
   mut head_element : Int // The <head> element
@@ -141,6 +142,8 @@ pub impl Show for Node with fn output(self, logger) {
 pub impl Show for Document with fn output(self, logger) {
   logger.write_string("{nodes: ")
   logger.write_string(@debug.to_string(self.nodes))
+  logger.write_string(", parents: ")
+  logger.write_string(@debug.to_string(self.parents))
   logger.write_string(", document_element: ")
   Show::output(self.document_element, logger)
   logger.write_string(", head_element: ")
@@ -159,6 +162,7 @@ pub impl Show for Document with fn output(self, logger) {
 pub fn Document::new() -> Document {
   let doc = {
     nodes: [],
+    parents: [],
     document_element: NO_NODE,
     head_element: NO_NODE,
     body_element: NO_NODE,
@@ -167,6 +171,7 @@ pub fn Document::new() -> Document {
   }
   // Add the document node as node 0
   doc.nodes.push(DocumentNode(children=[]))
+  doc.parents.push(NO_NODE)
   doc
 }
 
@@ -194,7 +199,52 @@ pub fn Document::get_element(self : Document, id : Int) -> Element? {
 pub fn Document::add_node(self : Document, node : Node) -> Int {
   let id = self.nodes.length()
   self.nodes.push(node)
+  self.parents.push(NO_NODE)
   id
+}
+
+///|
+fn Document::can_have_children(self : Document, id : Int) -> Bool {
+  match self.get_node(id) {
+    Some(ElementNode(_))
+    | Some(DocumentNode(_))
+    | Some(DocumentFragmentNode(_)) => true
+    _ => false
+  }
+}
+
+///|
+fn Document::set_parent(
+  self : Document,
+  child_id : Int,
+  parent_id : Int,
+) -> Unit {
+  self.parents[child_id] = parent_id
+  match self.nodes[child_id] {
+    ElementNode(elem) => elem.parent = parent_id
+    _ => ()
+  }
+}
+
+///|
+fn Document::remove_child_reference(
+  self : Document,
+  parent_id : Int,
+  child_id : Int,
+) -> Bool {
+  let children = match self.get_node(parent_id) {
+    Some(ElementNode(elem)) => elem.children
+    Some(DocumentNode(children~)) | Some(DocumentFragmentNode(children~)) =>
+      children
+    _ => return false
+  }
+  for i, id in children {
+    if id == child_id {
+      let _ = children.remove(i)
+      return true
+    }
+  }
+  false
 }
 
 ///|
@@ -237,13 +287,13 @@ pub fn Document::append_child(
   parent_id : Int,
   child_id : Int,
 ) -> Unit {
-  if self.would_create_cycle(parent_id, child_id) {
+  if self.would_create_cycle(parent_id, child_id) ||
+    !self.can_have_children(parent_id) {
     return
   }
-  // Set child's parent
-  match self.nodes[child_id] {
-    ElementNode(elem) => elem.parent = parent_id
-    _ => ()
+  let old_parent = self.get_parent(child_id)
+  if old_parent != NO_NODE {
+    let _ = self.remove_child_reference(old_parent, child_id)
   }
   // Add to parent's children
   match self.nodes[parent_id] {
@@ -252,6 +302,7 @@ pub fn Document::append_child(
     DocumentFragmentNode(children~) => children.push(child_id)
     _ => ()
   }
+  self.set_parent(child_id, parent_id)
 }
 
 ///|
@@ -262,13 +313,14 @@ pub fn Document::insert_before(
   child_id : Int,
   reference_id : Int,
 ) -> Unit {
-  if self.would_create_cycle(parent_id, child_id) {
+  if child_id == reference_id ||
+    self.would_create_cycle(parent_id, child_id) ||
+    !self.can_have_children(parent_id) {
     return
   }
-  // Set child's parent
-  match self.nodes[child_id] {
-    ElementNode(elem) => elem.parent = parent_id
-    _ => ()
+  let old_parent = self.get_parent(child_id)
+  if old_parent != NO_NODE {
+    let _ = self.remove_child_reference(old_parent, child_id)
   }
   // Find reference position and insert
   match self.nodes[parent_id] {
@@ -304,6 +356,7 @@ pub fn Document::insert_before(
     }
     _ => ()
   }
+  self.set_parent(child_id, parent_id)
 }
 
 ///|
@@ -313,27 +366,15 @@ pub fn Document::remove_child(
   parent_id : Int,
   child_id : Int,
 ) -> Unit {
-  match self.nodes[parent_id] {
-    ElementNode(elem) =>
-      for i, id in elem.children {
-        if id == child_id {
-          let _ = elem.children.remove(i)
-          break
-        }
-      }
-    DocumentNode(children~) =>
-      for i, id in children {
-        if id == child_id {
-          let _ = children.remove(i)
-          break
-        }
-      }
-    _ => ()
+  if parent_id < 0 ||
+    parent_id >= self.nodes.length() ||
+    child_id < 0 ||
+    child_id >= self.nodes.length() {
+    return
   }
-  // Clear parent reference
-  match self.nodes[child_id] {
-    ElementNode(elem) => elem.parent = NO_NODE
-    _ => ()
+  if self.remove_child_reference(parent_id, child_id) &&
+    self.get_parent(child_id) == parent_id {
+    self.set_parent(child_id, NO_NODE)
   }
 }
 
@@ -426,9 +467,10 @@ pub fn Document::set_attribute(
 ///|
 /// Get the parent of a node
 pub fn Document::get_parent(self : Document, id : Int) -> Int {
-  match self.get_node(id) {
-    Some(ElementNode(elem)) => elem.parent
-    _ => NO_NODE
+  if id >= 0 && id < self.parents.length() {
+    self.parents[id]
+  } else {
+    NO_NODE
   }
 }
 
