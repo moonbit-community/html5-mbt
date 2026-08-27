@@ -72,8 +72,7 @@ impl @qc_core.Arbitrary for Document with fn arbitrary(size, rs) {
       }
 
       // Lightweight inline text for metadata-like tags
-      if doc.nodes.length() < target_nodes &&
-        (tag == "title" || tag == "script" || tag == "style") {
+      if doc.nodes.length() < target_nodes && is_serializer_text_element(tag) {
         let text_id = doc.add_node(TextNode(random_text(rs, capped_size + 6)))
         doc.append_child(elem_id, text_id)
       }
@@ -173,7 +172,7 @@ fn random_text(rs : @splitmix.RandomState, size_hint : Int) -> String {
     'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F',
     'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
     'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '\t',
-    '\n', '.', ',', ';', ':', '-', '_', '/', '?', '!',
+    '\n', '.', ',', ';', ':', '-', '_', '/', '?', '!', '&', '<', '>',
   ]
   let max_len = clamp_size(size_hint + 4, 4, 32)
   let len = 1 + rs.next_positive_int() % max_len
@@ -211,7 +210,8 @@ fn random_tag_name(
   let head_tags : Array[String] = ["meta", "title", "style", "script", "link"]
   let html_tags : Array[String] = [
     "div", "p", "span", "section", "article", "ul", "li", "a", "button", "template",
-    "header", "footer", "main", "nav", "pre", "code", "blockquote", "figure",
+    "header", "footer", "main", "nav", "pre", "code", "blockquote", "figure", "textarea",
+    "xmp", "iframe", "noembed", "noframes", "noscript",
   ]
   let svg_tags : Array[String] = ["svg", "g", "path", "rect", "circle", "text"]
   let math_tags : Array[String] = ["math", "mi", "mo", "mrow", "msup"]
@@ -274,7 +274,29 @@ fn is_likely_leaf(tag : String) -> Bool {
     | "source"
     | "track"
     | "wbr"
-    | "path" => true
+    | "path"
+    | "textarea"
+    | "xmp"
+    | "iframe"
+    | "noembed"
+    | "noframes"
+    | "noscript" => true
+    _ => false
+  }
+}
+
+///|
+fn is_serializer_text_element(tag : String) -> Bool {
+  match tag {
+    "title"
+    | "textarea"
+    | "style"
+    | "script"
+    | "xmp"
+    | "iframe"
+    | "noembed"
+    | "noframes"
+    | "noscript" => true
     _ => false
   }
 }
@@ -341,7 +363,7 @@ test "random html 0" {
   )
   assert_true(
     html.html
-    is "<html><head><meta><script sssxdro=\"J\" a0o3zby6=\"r9SKVg\"ihth=\"H4ANh--\" htptq=\"Qa23\">r<<!sfaIfP>/cript<?C?></head><!YuhHR-fh><body><!--k--><blockquote>sw!cd5_bWUwSH,53<<!--\u{9}i;GY-7?\u{a}y!R-->/blockquote>FrS<!--X\u{a}wb.V--><button ztod0=\"PbGe2BbMX\"><math></math>a5eL cUdwEAR.4kMhwkU4</button></body></html>",
+    is "<html><head><meta><!-Cv&e?zeDv_hUtOR6;--><style eeor=\"E.q4P\" krcxtpfs=\"Idt8G86\" gux=\"LBocvz\" lnv=\"1Z_15wfM\">qIhKf_;Vd5-KbDKLoT2</style>O/wb\u{9}7f&amp;SHft73Ktj g</head><body><</p>noframes>0&EAX</noframes><p kjqa0o3z=\"y6qr9SKVg\" qihth=\"H4ANh--\"><ifram wm=\"g0\" 4ztod0zp=Ge\" bb=\"XLGqntIg\">3rZ\u{a}r4x4f\u{9}Rb</iframe></p><!--Nbn>l-->< /body></html>",
   )
 }
 

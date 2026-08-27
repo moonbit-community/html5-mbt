@@ -22,16 +22,30 @@ test "DOM insertion rejects self and ancestor cycles" {
 }
 
 ///|
-test "serializer preserves literal text element contents" {
-  for tag in ["xmp", "iframe", "noembed", "noframes", "plaintext"] {
-    let input = "<\{tag}>&amp;"
+test "serializer applies text escaping by HTML context" {
+  for tag in ["div", "title", "textarea"] {
+    let input = "<\{tag}>&amp;&lt;&gt;</\{tag}>"
     let doc = @html.parse(input)
-    assert_true(doc.to_html().contains("<\{tag}>&amp;</\{tag}>"))
+    assert_true(doc.to_html().contains("<\{tag}>&amp;&lt;&gt;</\{tag}>"))
+  }
+  for
+    tag in [
+      "style", "script", "xmp", "iframe", "noembed", "noframes", "plaintext",
+    ] {
+    let input = "<\{tag}>&amp;&lt;&gt;</\{tag}>"
+    let doc = @html.parse(input)
+    assert_true(doc.to_html().contains(input))
   }
   let scripted = @html.parse_with_scripting("<body><noscript>&lt;b></noscript>")
   assert_true(scripted.to_html().contains("<noscript>&lt;b></noscript>"))
   let nonscripted = @html.parse("<body><noscript>&lt;b></noscript>")
   assert_true(nonscripted.to_html().contains("<noscript>&lt;b&gt;</noscript>"))
+  for
+    input in [
+      "<svg><script>&amp;&lt;&gt;</script></svg>", "<math><style>&amp;&lt;&gt;</style></math>",
+    ] {
+    assert_true(@html.parse(input).to_html().contains(input))
+  }
 }
 
 ///|
