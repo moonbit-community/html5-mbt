@@ -17,7 +17,7 @@
 /// skeleton and then sprinkles small random elements, text, and comments while
 /// keeping parent/child pointers consistent (including template content
 /// fragments).
-pub impl @qc_core.Arbitrary for Document with fn arbitrary(size, rs) {
+impl @qc_core.Arbitrary for Document with fn arbitrary(size, rs) {
   let capped_size = clamp_size(size, 0, 24)
   // Base of: document node + optional doctype + html/head/body
   let target_nodes = 5 + capped_size
@@ -94,9 +94,6 @@ pub impl @qc_core.Arbitrary for Document with fn arbitrary(size, rs) {
 }
 
 ///|
-pub extend Document with @qc_core.Arbitrary::{arbitrary}
-
-///|
 struct HtmlCase {
   html : String
 } derive(Debug)
@@ -107,7 +104,7 @@ struct HtmlCase {
 ///
 /// This keeps test inputs close to what the serializer emits while still
 /// exercising the parser on malformed/odd HTML.
-pub impl @qc_core.Arbitrary for HtmlCase with fn arbitrary(size, rs) {
+impl @qc_core.Arbitrary for HtmlCase with fn arbitrary(size, rs) {
   let capped_size = clamp_size(size, 0, 24)
   let seed_doc : Document = @qc_core.Arbitrary::arbitrary(capped_size, rs)
   let base = seed_doc.to_html()
@@ -117,9 +114,6 @@ pub impl @qc_core.Arbitrary for HtmlCase with fn arbitrary(size, rs) {
 
 ///|
 pub extend HtmlCase with @debug.Debug::{to_repr}
-
-///|
-pub extend HtmlCase with @qc_core.Arbitrary::{arbitrary}
 
 ///|
 fn clamp_size(value : Int, min : Int, max : Int) -> Int {
