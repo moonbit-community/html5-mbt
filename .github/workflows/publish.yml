@@ -41,6 +41,7 @@ jobs:
           moon check --target all --deny-warn
           moon info --target all
           git diff --exit-code
+          python3 scripts/generate_conformance_tests.py --check
           moon test --target all
 
           version="$(sed -n 's/^version = "\(.*\)"/\1/p' moon.mod)"

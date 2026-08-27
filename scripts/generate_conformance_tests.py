@@ -8,11 +8,14 @@ Uses html5lib (Python) as reference parser.
 Test suite: https://github.com/html5lib/html5lib-tests
 """
 
+import argparse
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Tuple
 
@@ -33,6 +36,15 @@ INITIAL_STATE_VARIANTS = {
     "Script data state": "ScriptData",
     "PLAINTEXT state": "PLAINTEXT",
     "CDATA section state": "CDATASection",
+}
+
+EXPECTED_GENERATION_COUNTS = {
+    "tokenizer_records": 6806,
+    "tokenizer_data_tests": 6636,
+    "tokenizer_state_records": 166,
+    "tokenizer_state_tests": 392,
+    "tree_records": 1778,
+    "tree_tests": 1585,
 }
 
 TOKENIZER_ERROR_CODES = {
@@ -999,68 +1011,148 @@ def generate_tree_tests_files(tests: List[Dict[str, Any]], max_per_file: int = 5
     return files
 
 
-def main():
-    print("Generating HTML5 conformance tests from html5lib-tests...")
+def count_generated_tests(files: List[Tuple[str, str]]) -> int:
+    return sum(content.count('\ntest "') for _, content in files)
 
-    # Clone test suite if needed
+
+def validate_generation_counts(actual: Dict[str, int]) -> None:
+    mismatches = []
+    for name, expected in EXPECTED_GENERATION_COUNTS.items():
+        observed = actual[name]
+        if observed != expected:
+            mismatches.append(f"{name}: expected {expected}, got {observed}")
+    if mismatches:
+        raise RuntimeError(
+            "Pinned html5lib generation counts changed:\n  " + "\n  ".join(mismatches)
+        )
+
+
+def write_and_format_generated_files(
+    files: Dict[Path, str],
+    root: Path,
+) -> Dict[Path, Path]:
+    written = {}
+    for relative_path, content in sorted(files.items()):
+        output_path = root / relative_path
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(content, encoding='utf-8')
+        subprocess.run(
+            ['moon', 'fmt', str(output_path)],
+            cwd=root,
+            check=True,
+            capture_output=True,
+        )
+        written[relative_path] = output_path
+        print(f"  Formatted: {relative_path}")
+    return written
+
+
+def check_generated_files(files: Dict[Path, str]) -> bool:
+    temp_root = PROJECT_DIR / "target"
+    temp_root.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(
+        prefix="conformance-check-",
+        dir=temp_root,
+    ) as temp_dir:
+        temp_project = Path(temp_dir)
+        for relative_path in [
+            Path("moon.mod"),
+            Path("src/moon.pkg"),
+            Path("src/conformance_tests/moon.pkg"),
+        ]:
+            destination = temp_project / relative_path
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(PROJECT_DIR / relative_path, destination)
+        generated = write_and_format_generated_files(files, temp_project)
+        expected_paths = set(files)
+        committed_paths = {
+            path.relative_to(PROJECT_DIR)
+            for path in OUTPUT_DIR.glob("html5lib_*.mbt")
+        }
+        if INITIAL_STATE_OUTPUT.exists():
+            committed_paths.add(INITIAL_STATE_OUTPUT.relative_to(PROJECT_DIR))
+
+        failures = []
+        for missing in sorted(expected_paths - committed_paths):
+            failures.append(f"missing generated file: {missing}")
+        for extra in sorted(committed_paths - expected_paths):
+            failures.append(f"unexpected generated file: {extra}")
+        for relative_path in sorted(expected_paths & committed_paths):
+            committed = PROJECT_DIR / relative_path
+            if committed.read_bytes() != generated[relative_path].read_bytes():
+                failures.append(f"stale generated file: {relative_path}")
+
+        if failures:
+            print("\nGenerated conformance tests are out of date:")
+            for failure in failures:
+                print(f"  {failure}")
+            print("Run: python3 scripts/generate_conformance_tests.py")
+            return False
+    print("\nGenerated conformance tests are up to date.")
+    return True
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        '--check',
+        action='store_true',
+        help='verify committed generated tests without modifying the workspace',
+    )
+    args = parser.parse_args()
+
+    print("Generating HTML5 conformance tests from html5lib-tests...")
     clone_html5lib_tests()
 
-    # Remove old test files
-    print("\nRemoving old test files...")
-    for old_file in OUTPUT_DIR.glob("html5lib_*.mbt"):
-        old_file.unlink()
-        print(f"  Removed: {old_file.name}")
-
-    # Generate tokenizer tests
     print("\nPhase 1: Loading tokenizer tests...")
     tokenizer_tests = load_tokenizer_tests()
     print(f"  Found {len(tokenizer_tests)} tokenizer tests")
 
     print("\nPhase 2: Generating tokenizer test files...")
     tokenizer_files = generate_tokenizer_tests_files(tokenizer_tests, max_per_file=500)
-    all_files = []
-    for filename, content in tokenizer_files:
-        filepath = OUTPUT_DIR / filename
-        filepath.write_text(content, encoding='utf-8')
-        all_files.append(filepath)
-        print(f"  Written: {filename}")
 
     print("\nPhase 3: Generating tokenizer initial-state tests...")
     state_content, state_generated, state_records = generate_initial_state_tests_file(
         tokenizer_tests
     )
-    INITIAL_STATE_OUTPUT.write_text(state_content, encoding='utf-8')
-    all_files.append(INITIAL_STATE_OUTPUT)
     print(
         f"  Generated: {state_generated} state executions "
         f"from {state_records} records"
     )
-    print(f"  Written: {INITIAL_STATE_OUTPUT.name}")
 
-    # Generate tree construction tests
     print("\nPhase 4: Loading tree construction tests...")
     tree_tests = load_tree_construction_tests()
     print(f"  Found {len(tree_tests)} tree construction tests")
 
     print("\nPhase 5: Generating tree construction test files...")
     tree_files = generate_tree_tests_files(tree_tests, max_per_file=500)
-    for filename, content in tree_files:
-        filepath = OUTPUT_DIR / filename
-        filepath.write_text(content, encoding='utf-8')
-        all_files.append(filepath)
-        print(f"  Written: {filename}")
 
-    # Format generated files
-    print("\nPhase 6: Formatting generated files...")
-    for f in all_files:
-        try:
-            subprocess.run(['moon', 'fmt', str(f)], check=True, capture_output=True)
-            print(f"  Formatted: {f.name}")
-        except subprocess.CalledProcessError as e:
-            print(f"  Warning: moon fmt failed for {f.name}")
-        except FileNotFoundError:
-            print("  Warning: moon not found, skipping format")
-            break
+    counts = {
+        "tokenizer_records": len(tokenizer_tests),
+        "tokenizer_data_tests": count_generated_tests(tokenizer_files),
+        "tokenizer_state_records": state_records,
+        "tokenizer_state_tests": state_generated,
+        "tree_records": len(tree_tests),
+        "tree_tests": count_generated_tests(tree_files),
+    }
+    validate_generation_counts(counts)
+    print("\nPinned generation counts match.")
+
+    files = {
+        Path("src/conformance_tests") / filename: content
+        for filename, content in tokenizer_files + tree_files
+    }
+    files[INITIAL_STATE_OUTPUT.relative_to(PROJECT_DIR)] = state_content
+
+    if args.check:
+        print("\nPhase 6: Checking generated files...")
+        if not check_generated_files(files):
+            raise SystemExit(1)
+    else:
+        print("\nPhase 6: Replacing generated files...")
+        for old_file in OUTPUT_DIR.glob("html5lib_*.mbt"):
+            old_file.unlink()
+        write_and_format_generated_files(files, PROJECT_DIR)
 
     print("\nDone!")
 
