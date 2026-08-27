@@ -193,12 +193,48 @@ pub fn Document::add_node(self : Document, node : Node) -> Int {
 }
 
 ///|
+/// Return whether inserting child_id below parent_id would create a cycle.
+fn Document::would_create_cycle(
+  self : Document,
+  parent_id : Int,
+  child_id : Int,
+) -> Bool {
+  if parent_id < 0 ||
+    parent_id >= self.nodes.length() ||
+    child_id < 0 ||
+    child_id >= self.nodes.length() {
+    return true
+  }
+  let visited = Array::make(self.nodes.length(), false)
+  let stack = [child_id]
+  while stack.length() > 0 {
+    let current = stack.pop().unwrap()
+    if current == parent_id {
+      return true
+    }
+    if !visited[current] {
+      visited[current] = true
+      for descendant in self.get_children(current) {
+        if descendant < 0 || descendant >= self.nodes.length() {
+          return true
+        }
+        stack.push(descendant)
+      }
+    }
+  }
+  false
+}
+
+///|
 /// Append a child node to a parent
 pub fn Document::append_child(
   self : Document,
   parent_id : Int,
   child_id : Int,
 ) -> Unit {
+  if self.would_create_cycle(parent_id, child_id) {
+    return
+  }
   // Set child's parent
   match self.nodes[child_id] {
     ElementNode(elem) => elem.parent = parent_id
@@ -221,6 +257,9 @@ pub fn Document::insert_before(
   child_id : Int,
   reference_id : Int,
 ) -> Unit {
+  if self.would_create_cycle(parent_id, child_id) {
+    return
+  }
   // Set child's parent
   match self.nodes[child_id] {
     ElementNode(elem) => elem.parent = parent_id
