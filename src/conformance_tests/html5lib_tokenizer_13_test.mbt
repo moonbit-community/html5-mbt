@@ -26,7 +26,7 @@
 test "html5lib/tokenizer/test3_a_a_6136" {
   let (tokens, _) = @html.tokenize("<a a=\"?\">")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "?" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "?", }], self_closing=false),
     EOF,
   ])
 }
@@ -35,7 +35,7 @@ test "html5lib/tokenizer/test3_a_a_6136" {
 test "html5lib/tokenizer/test3_a_a_6137" {
   let (tokens, _) = @html.tokenize("<a a=\"@\">")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "@" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "@", }], self_closing=false),
     EOF,
   ])
 }
@@ -44,7 +44,7 @@ test "html5lib/tokenizer/test3_a_a_6137" {
 test "html5lib/tokenizer/test3_a_aa_6138" {
   let (tokens, _) = @html.tokenize("<a a=\"A\">")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "A" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "A", }], self_closing=false),
     EOF,
   ])
 }
@@ -53,7 +53,7 @@ test "html5lib/tokenizer/test3_a_aa_6138" {
 test "html5lib/tokenizer/test3_a_ab_6139" {
   let (tokens, _) = @html.tokenize("<a a=\"B\">")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "B" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "B", }], self_closing=false),
     EOF,
   ])
 }
@@ -62,7 +62,7 @@ test "html5lib/tokenizer/test3_a_ab_6139" {
 test "html5lib/tokenizer/test3_a_ay_6140" {
   let (tokens, _) = @html.tokenize("<a a=\"Y\">")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "Y" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "Y", }], self_closing=false),
     EOF,
   ])
 }
@@ -71,7 +71,7 @@ test "html5lib/tokenizer/test3_a_ay_6140" {
 test "html5lib/tokenizer/test3_a_az_6141" {
   let (tokens, _) = @html.tokenize("<a a=\"Z\">")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "Z" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "Z", }], self_closing=false),
     EOF,
   ])
 }
@@ -80,7 +80,7 @@ test "html5lib/tokenizer/test3_a_az_6141" {
 test "html5lib/tokenizer/test3_a_a_6142" {
   let (tokens, _) = @html.tokenize("<a a=\"`\">")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "`" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "`", }], self_closing=false),
     EOF,
   ])
 }
@@ -89,7 +89,7 @@ test "html5lib/tokenizer/test3_a_a_6142" {
 test "html5lib/tokenizer/test3_a_aa_6143" {
   let (tokens, _) = @html.tokenize("<a a=\"a\">")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a", }], self_closing=false),
     EOF,
   ])
 }
@@ -98,7 +98,7 @@ test "html5lib/tokenizer/test3_a_aa_6143" {
 test "html5lib/tokenizer/test3_a_ab_6144" {
   let (tokens, _) = @html.tokenize("<a a=\"b\">")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "b" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "b", }], self_closing=false),
     EOF,
   ])
 }
@@ -107,7 +107,7 @@ test "html5lib/tokenizer/test3_a_ab_6144" {
 test "html5lib/tokenizer/test3_a_ay_6145" {
   let (tokens, _) = @html.tokenize("<a a=\"y\">")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "y" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "y", }], self_closing=false),
     EOF,
   ])
 }
@@ -116,7 +116,7 @@ test "html5lib/tokenizer/test3_a_ay_6145" {
 test "html5lib/tokenizer/test3_a_az_6146" {
   let (tokens, _) = @html.tokenize("<a a=\"z\">")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "z" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "z", }], self_closing=false),
     EOF,
   ])
 }
@@ -125,7 +125,7 @@ test "html5lib/tokenizer/test3_a_az_6146" {
 test "html5lib/tokenizer/test3_a_a_6147" {
   let (tokens, _) = @html.tokenize("<a a=\"{\">")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "{" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "{", }], self_closing=false),
     EOF,
   ])
 }
@@ -134,7 +134,11 @@ test "html5lib/tokenizer/test3_a_a_6147" {
 test "html5lib/tokenizer/test3_a_audbc0udc00_6148" {
   let (tokens, _) = @html.tokenize("<a a=\"􀀀\">")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "􀀀" }], self_closing=false),
+    StartTag(
+      name="a",
+      attrs=[{ name: "a", value: "􀀀", }],
+      self_closing=false,
+    ),
     EOF,
   ])
 }
@@ -143,7 +147,7 @@ test "html5lib/tokenizer/test3_a_audbc0udc00_6148" {
 test "html5lib/tokenizer/test3_a_a_6149" {
   let (tokens, _) = @html.tokenize("<a a=#>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "#" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "#", }], self_closing=false),
     EOF,
   ])
 }
@@ -152,7 +156,7 @@ test "html5lib/tokenizer/test3_a_a_6149" {
 test "html5lib/tokenizer/test3_a_a_6150" {
   let (tokens, _) = @html.tokenize("<a a=%>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "%" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "%", }], self_closing=false),
     EOF,
   ])
 }
@@ -161,7 +165,7 @@ test "html5lib/tokenizer/test3_a_a_6150" {
 test "html5lib/tokenizer/test3_a_a_6151" {
   let (tokens, _) = @html.tokenize("<a a=&>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "&" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "&", }], self_closing=false),
     EOF,
   ])
 }
@@ -170,7 +174,7 @@ test "html5lib/tokenizer/test3_a_a_6151" {
 test "html5lib/tokenizer/test3_a_a_6152" {
   let (tokens, _) = @html.tokenize("<a a=''>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -179,7 +183,7 @@ test "html5lib/tokenizer/test3_a_a_6152" {
 test "html5lib/tokenizer/test3_a_au0000_6153" {
   let (tokens, _) = @html.tokenize("<a a='\u{00}'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "�" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "�", }], self_closing=false),
     EOF,
   ])
 }
@@ -188,7 +192,7 @@ test "html5lib/tokenizer/test3_a_au0000_6153" {
 test "html5lib/tokenizer/test3_a_au0009_6154" {
   let (tokens, _) = @html.tokenize("<a a='\t'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "\t" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "\t", }], self_closing=false),
     EOF,
   ])
 }
@@ -197,7 +201,7 @@ test "html5lib/tokenizer/test3_a_au0009_6154" {
 test "html5lib/tokenizer/test3_a_au000a_6155" {
   let (tokens, _) = @html.tokenize("<a a='\n'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "\n" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "\n", }], self_closing=false),
     EOF,
   ])
 }
@@ -208,7 +212,7 @@ test "html5lib/tokenizer/test3_a_au000b_6156" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "\u{0b}" }],
+      attrs=[{ name: "a", value: "\u{0b}", }],
       self_closing=false,
     ),
     EOF,
@@ -221,7 +225,7 @@ test "html5lib/tokenizer/test3_a_au000c_6157" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "\u{0c}" }],
+      attrs=[{ name: "a", value: "\u{0c}", }],
       self_closing=false,
     ),
     EOF,
@@ -232,7 +236,7 @@ test "html5lib/tokenizer/test3_a_au000c_6157" {
 test "html5lib/tokenizer/test3_a_a__6158" {
   let (tokens, _) = @html.tokenize("<a a=' '>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: " " }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: " ", }], self_closing=false),
     EOF,
   ])
 }
@@ -241,7 +245,7 @@ test "html5lib/tokenizer/test3_a_a__6158" {
 test "html5lib/tokenizer/test3_a_a_6159" {
   let (tokens, _) = @html.tokenize("<a a='!'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "!" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "!", }], self_closing=false),
     EOF,
   ])
 }
@@ -250,7 +254,7 @@ test "html5lib/tokenizer/test3_a_a_6159" {
 test "html5lib/tokenizer/test3_a_a_6160" {
   let (tokens, _) = @html.tokenize("<a a='\"'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "\"" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "\"", }], self_closing=false),
     EOF,
   ])
 }
@@ -259,7 +263,7 @@ test "html5lib/tokenizer/test3_a_a_6160" {
 test "html5lib/tokenizer/test3_a_a_6161" {
   let (tokens, _) = @html.tokenize("<a a='%'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "%" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "%", }], self_closing=false),
     EOF,
   ])
 }
@@ -268,7 +272,7 @@ test "html5lib/tokenizer/test3_a_a_6161" {
 test "html5lib/tokenizer/test3_a_a_6162" {
   let (tokens, _) = @html.tokenize("<a a='&'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "&" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "&", }], self_closing=false),
     EOF,
   ])
 }
@@ -277,7 +281,7 @@ test "html5lib/tokenizer/test3_a_a_6162" {
 test "html5lib/tokenizer/test3_a_a_6163" {
   let (tokens, _) = @html.tokenize("<a a=''>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -288,7 +292,7 @@ test "html5lib/tokenizer/test3_a_au0000_6164" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "�", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "�", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -301,7 +305,7 @@ test "html5lib/tokenizer/test3_a_au0008_6165" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "\b", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "\b", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -312,7 +316,7 @@ test "html5lib/tokenizer/test3_a_au0008_6165" {
 test "html5lib/tokenizer/test3_a_au0009_6166" {
   let (tokens, _) = @html.tokenize("<a a=''\t>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -321,7 +325,7 @@ test "html5lib/tokenizer/test3_a_au0009_6166" {
 test "html5lib/tokenizer/test3_a_au000a_6167" {
   let (tokens, _) = @html.tokenize("<a a=''\n>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -332,7 +336,7 @@ test "html5lib/tokenizer/test3_a_au000b_6168" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "\u{0b}", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "\u{0b}", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -343,7 +347,7 @@ test "html5lib/tokenizer/test3_a_au000b_6168" {
 test "html5lib/tokenizer/test3_a_au000c_6169" {
   let (tokens, _) = @html.tokenize("<a a=''\u{0c}>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -352,7 +356,7 @@ test "html5lib/tokenizer/test3_a_au000c_6169" {
 test "html5lib/tokenizer/test3_a_au000d_6170" {
   let (tokens, _) = @html.tokenize("<a a=''\r>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -363,7 +367,7 @@ test "html5lib/tokenizer/test3_a_au001f_6171" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "\u{1f}", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "\u{1f}", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -374,7 +378,7 @@ test "html5lib/tokenizer/test3_a_au001f_6171" {
 test "html5lib/tokenizer/test3_a_a__6172" {
   let (tokens, _) = @html.tokenize("<a a='' >")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -385,7 +389,7 @@ test "html5lib/tokenizer/test3_a_a_6173" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "!", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "!", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -398,7 +402,7 @@ test "html5lib/tokenizer/test3_a_a_6174" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "\"", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "\"", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -411,7 +415,7 @@ test "html5lib/tokenizer/test3_a_a_6175" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "&", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "&", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -424,7 +428,7 @@ test "html5lib/tokenizer/test3_a_a_6176" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "'", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "'", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -437,7 +441,7 @@ test "html5lib/tokenizer/test3_a_a_6177" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "-", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "-", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -450,7 +454,7 @@ test "html5lib/tokenizer/test3_a_a_6178" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: ".", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: ".", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -461,7 +465,7 @@ test "html5lib/tokenizer/test3_a_a_6178" {
 test "html5lib/tokenizer/test3_a_a_6179" {
   let (tokens, _) = @html.tokenize("<a a=''/>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "" }], self_closing=true),
+    StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=true),
     EOF,
   ])
 }
@@ -472,7 +476,7 @@ test "html5lib/tokenizer/test3_a_a0_6180" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "0", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "0", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -485,7 +489,7 @@ test "html5lib/tokenizer/test3_a_a1_6181" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "1", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "1", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -498,7 +502,7 @@ test "html5lib/tokenizer/test3_a_a9_6182" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "9", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "9", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -511,7 +515,7 @@ test "html5lib/tokenizer/test3_a_a_6183" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "<", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "<", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -524,7 +528,7 @@ test "html5lib/tokenizer/test3_a_a_6184" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "=", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "=", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -535,7 +539,7 @@ test "html5lib/tokenizer/test3_a_a_6184" {
 test "html5lib/tokenizer/test3_a_a_6185" {
   let (tokens, _) = @html.tokenize("<a a=''>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -546,7 +550,7 @@ test "html5lib/tokenizer/test3_a_a_6186" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "?", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "?", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -559,7 +563,7 @@ test "html5lib/tokenizer/test3_a_a_6187" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "@", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "@", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -570,7 +574,7 @@ test "html5lib/tokenizer/test3_a_a_6187" {
 test "html5lib/tokenizer/test3_a_aa_6188" {
   let (tokens, _) = @html.tokenize("<a a=''A>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -581,7 +585,7 @@ test "html5lib/tokenizer/test3_a_ab_6189" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "b", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "b", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -594,7 +598,7 @@ test "html5lib/tokenizer/test3_a_ay_6190" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "y", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "y", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -607,7 +611,7 @@ test "html5lib/tokenizer/test3_a_az_6191" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "z", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "z", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -620,7 +624,7 @@ test "html5lib/tokenizer/test3_a_a_6192" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "`", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "`", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -631,7 +635,7 @@ test "html5lib/tokenizer/test3_a_a_6192" {
 test "html5lib/tokenizer/test3_a_aa_6193" {
   let (tokens, _) = @html.tokenize("<a a=''a>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -642,7 +646,7 @@ test "html5lib/tokenizer/test3_a_ab_6194" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "b", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "b", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -655,7 +659,7 @@ test "html5lib/tokenizer/test3_a_ay_6195" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "y", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "y", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -668,7 +672,7 @@ test "html5lib/tokenizer/test3_a_az_6196" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "z", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "z", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -681,7 +685,7 @@ test "html5lib/tokenizer/test3_a_a_6197" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "{", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "{", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -694,7 +698,7 @@ test "html5lib/tokenizer/test3_a_audbc0udc00_6198" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "" }, { name: "􀀀", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "􀀀", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -705,7 +709,7 @@ test "html5lib/tokenizer/test3_a_audbc0udc00_6198" {
 test "html5lib/tokenizer/test3_a_a_6199" {
   let (tokens, _) = @html.tokenize("<a a='('>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "(" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "(", }], self_closing=false),
     EOF,
   ])
 }
@@ -714,7 +718,7 @@ test "html5lib/tokenizer/test3_a_a_6199" {
 test "html5lib/tokenizer/test3_a_a_6200" {
   let (tokens, _) = @html.tokenize("<a a='-'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "-" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "-", }], self_closing=false),
     EOF,
   ])
 }
@@ -723,7 +727,7 @@ test "html5lib/tokenizer/test3_a_a_6200" {
 test "html5lib/tokenizer/test3_a_a_6201" {
   let (tokens, _) = @html.tokenize("<a a='/'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "/" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "/", }], self_closing=false),
     EOF,
   ])
 }
@@ -732,7 +736,7 @@ test "html5lib/tokenizer/test3_a_a_6201" {
 test "html5lib/tokenizer/test3_a_a0_6202" {
   let (tokens, _) = @html.tokenize("<a a='0'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "0" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "0", }], self_closing=false),
     EOF,
   ])
 }
@@ -741,7 +745,7 @@ test "html5lib/tokenizer/test3_a_a0_6202" {
 test "html5lib/tokenizer/test3_a_a1_6203" {
   let (tokens, _) = @html.tokenize("<a a='1'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "1" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "1", }], self_closing=false),
     EOF,
   ])
 }
@@ -750,7 +754,7 @@ test "html5lib/tokenizer/test3_a_a1_6203" {
 test "html5lib/tokenizer/test3_a_a9_6204" {
   let (tokens, _) = @html.tokenize("<a a='9'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "9" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "9", }], self_closing=false),
     EOF,
   ])
 }
@@ -759,7 +763,7 @@ test "html5lib/tokenizer/test3_a_a9_6204" {
 test "html5lib/tokenizer/test3_a_a_6205" {
   let (tokens, _) = @html.tokenize("<a a='<'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "<" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "<", }], self_closing=false),
     EOF,
   ])
 }
@@ -768,7 +772,7 @@ test "html5lib/tokenizer/test3_a_a_6205" {
 test "html5lib/tokenizer/test3_a_a_6206" {
   let (tokens, _) = @html.tokenize("<a a='='>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "=" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "=", }], self_closing=false),
     EOF,
   ])
 }
@@ -777,7 +781,7 @@ test "html5lib/tokenizer/test3_a_a_6206" {
 test "html5lib/tokenizer/test3_a_a_6207" {
   let (tokens, _) = @html.tokenize("<a a='>'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: ">" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: ">", }], self_closing=false),
     EOF,
   ])
 }
@@ -786,7 +790,7 @@ test "html5lib/tokenizer/test3_a_a_6207" {
 test "html5lib/tokenizer/test3_a_a_6208" {
   let (tokens, _) = @html.tokenize("<a a='?'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "?" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "?", }], self_closing=false),
     EOF,
   ])
 }
@@ -795,7 +799,7 @@ test "html5lib/tokenizer/test3_a_a_6208" {
 test "html5lib/tokenizer/test3_a_a_6209" {
   let (tokens, _) = @html.tokenize("<a a='@'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "@" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "@", }], self_closing=false),
     EOF,
   ])
 }
@@ -804,7 +808,7 @@ test "html5lib/tokenizer/test3_a_a_6209" {
 test "html5lib/tokenizer/test3_a_aa_6210" {
   let (tokens, _) = @html.tokenize("<a a='A'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "A" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "A", }], self_closing=false),
     EOF,
   ])
 }
@@ -813,7 +817,7 @@ test "html5lib/tokenizer/test3_a_aa_6210" {
 test "html5lib/tokenizer/test3_a_ab_6211" {
   let (tokens, _) = @html.tokenize("<a a='B'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "B" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "B", }], self_closing=false),
     EOF,
   ])
 }
@@ -822,7 +826,7 @@ test "html5lib/tokenizer/test3_a_ab_6211" {
 test "html5lib/tokenizer/test3_a_ay_6212" {
   let (tokens, _) = @html.tokenize("<a a='Y'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "Y" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "Y", }], self_closing=false),
     EOF,
   ])
 }
@@ -831,7 +835,7 @@ test "html5lib/tokenizer/test3_a_ay_6212" {
 test "html5lib/tokenizer/test3_a_az_6213" {
   let (tokens, _) = @html.tokenize("<a a='Z'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "Z" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "Z", }], self_closing=false),
     EOF,
   ])
 }
@@ -840,7 +844,7 @@ test "html5lib/tokenizer/test3_a_az_6213" {
 test "html5lib/tokenizer/test3_a_a_6214" {
   let (tokens, _) = @html.tokenize("<a a='`'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "`" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "`", }], self_closing=false),
     EOF,
   ])
 }
@@ -849,7 +853,7 @@ test "html5lib/tokenizer/test3_a_a_6214" {
 test "html5lib/tokenizer/test3_a_aa_6215" {
   let (tokens, _) = @html.tokenize("<a a='a'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a", }], self_closing=false),
     EOF,
   ])
 }
@@ -858,7 +862,7 @@ test "html5lib/tokenizer/test3_a_aa_6215" {
 test "html5lib/tokenizer/test3_a_ab_6216" {
   let (tokens, _) = @html.tokenize("<a a='b'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "b" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "b", }], self_closing=false),
     EOF,
   ])
 }
@@ -867,7 +871,7 @@ test "html5lib/tokenizer/test3_a_ab_6216" {
 test "html5lib/tokenizer/test3_a_ay_6217" {
   let (tokens, _) = @html.tokenize("<a a='y'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "y" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "y", }], self_closing=false),
     EOF,
   ])
 }
@@ -876,7 +880,7 @@ test "html5lib/tokenizer/test3_a_ay_6217" {
 test "html5lib/tokenizer/test3_a_az_6218" {
   let (tokens, _) = @html.tokenize("<a a='z'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "z" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "z", }], self_closing=false),
     EOF,
   ])
 }
@@ -885,7 +889,7 @@ test "html5lib/tokenizer/test3_a_az_6218" {
 test "html5lib/tokenizer/test3_a_a_6219" {
   let (tokens, _) = @html.tokenize("<a a='{'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "{" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "{", }], self_closing=false),
     EOF,
   ])
 }
@@ -894,7 +898,11 @@ test "html5lib/tokenizer/test3_a_a_6219" {
 test "html5lib/tokenizer/test3_a_audbc0udc00_6220" {
   let (tokens, _) = @html.tokenize("<a a='􀀀'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "􀀀" }], self_closing=false),
+    StartTag(
+      name="a",
+      attrs=[{ name: "a", value: "􀀀", }],
+      self_closing=false,
+    ),
     EOF,
   ])
 }
@@ -903,7 +911,7 @@ test "html5lib/tokenizer/test3_a_audbc0udc00_6220" {
 test "html5lib/tokenizer/test3_a_a_6221" {
   let (tokens, _) = @html.tokenize("<a a=(>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "(" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "(", }], self_closing=false),
     EOF,
   ])
 }
@@ -912,7 +920,7 @@ test "html5lib/tokenizer/test3_a_a_6221" {
 test "html5lib/tokenizer/test3_a_a_6222" {
   let (tokens, _) = @html.tokenize("<a a=->")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "-" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "-", }], self_closing=false),
     EOF,
   ])
 }
@@ -921,7 +929,7 @@ test "html5lib/tokenizer/test3_a_a_6222" {
 test "html5lib/tokenizer/test3_a_a_6223" {
   let (tokens, _) = @html.tokenize("<a a=/>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "/" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "/", }], self_closing=false),
     EOF,
   ])
 }
@@ -930,7 +938,7 @@ test "html5lib/tokenizer/test3_a_a_6223" {
 test "html5lib/tokenizer/test3_a_a0_6224" {
   let (tokens, _) = @html.tokenize("<a a=0>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "0" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "0", }], self_closing=false),
     EOF,
   ])
 }
@@ -939,7 +947,7 @@ test "html5lib/tokenizer/test3_a_a0_6224" {
 test "html5lib/tokenizer/test3_a_a1_6225" {
   let (tokens, _) = @html.tokenize("<a a=1>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "1" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "1", }], self_closing=false),
     EOF,
   ])
 }
@@ -948,7 +956,7 @@ test "html5lib/tokenizer/test3_a_a1_6225" {
 test "html5lib/tokenizer/test3_a_a9_6226" {
   let (tokens, _) = @html.tokenize("<a a=9>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "9" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "9", }], self_closing=false),
     EOF,
   ])
 }
@@ -957,7 +965,7 @@ test "html5lib/tokenizer/test3_a_a9_6226" {
 test "html5lib/tokenizer/test3_a_a_6227" {
   let (tokens, _) = @html.tokenize("<a a=<>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "<" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "<", }], self_closing=false),
     EOF,
   ])
 }
@@ -966,7 +974,7 @@ test "html5lib/tokenizer/test3_a_a_6227" {
 test "html5lib/tokenizer/test3_a_a_6228" {
   let (tokens, _) = @html.tokenize("<a a==>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "=" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "=", }], self_closing=false),
     EOF,
   ])
 }
@@ -975,7 +983,7 @@ test "html5lib/tokenizer/test3_a_a_6228" {
 test "html5lib/tokenizer/test3_a_a_6229" {
   let (tokens, _) = @html.tokenize("<a a=>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -984,7 +992,7 @@ test "html5lib/tokenizer/test3_a_a_6229" {
 test "html5lib/tokenizer/test3_a_a_6230" {
   let (tokens, _) = @html.tokenize("<a a=?>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "?" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "?", }], self_closing=false),
     EOF,
   ])
 }
@@ -993,7 +1001,7 @@ test "html5lib/tokenizer/test3_a_a_6230" {
 test "html5lib/tokenizer/test3_a_a_6231" {
   let (tokens, _) = @html.tokenize("<a a=@>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "@" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "@", }], self_closing=false),
     EOF,
   ])
 }
@@ -1002,7 +1010,7 @@ test "html5lib/tokenizer/test3_a_a_6231" {
 test "html5lib/tokenizer/test3_a_aa_6232" {
   let (tokens, _) = @html.tokenize("<a a=A>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "A" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "A", }], self_closing=false),
     EOF,
   ])
 }
@@ -1011,7 +1019,7 @@ test "html5lib/tokenizer/test3_a_aa_6232" {
 test "html5lib/tokenizer/test3_a_ab_6233" {
   let (tokens, _) = @html.tokenize("<a a=B>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "B" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "B", }], self_closing=false),
     EOF,
   ])
 }
@@ -1020,7 +1028,7 @@ test "html5lib/tokenizer/test3_a_ab_6233" {
 test "html5lib/tokenizer/test3_a_ay_6234" {
   let (tokens, _) = @html.tokenize("<a a=Y>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "Y" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "Y", }], self_closing=false),
     EOF,
   ])
 }
@@ -1029,7 +1037,7 @@ test "html5lib/tokenizer/test3_a_ay_6234" {
 test "html5lib/tokenizer/test3_a_az_6235" {
   let (tokens, _) = @html.tokenize("<a a=Z>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "Z" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "Z", }], self_closing=false),
     EOF,
   ])
 }
@@ -1038,7 +1046,7 @@ test "html5lib/tokenizer/test3_a_az_6235" {
 test "html5lib/tokenizer/test3_a_a_6236" {
   let (tokens, _) = @html.tokenize("<a a=`>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "`" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "`", }], self_closing=false),
     EOF,
   ])
 }
@@ -1047,7 +1055,7 @@ test "html5lib/tokenizer/test3_a_a_6236" {
 test "html5lib/tokenizer/test3_a_aa_6237" {
   let (tokens, _) = @html.tokenize("<a a=a>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a", }], self_closing=false),
     EOF,
   ])
 }
@@ -1056,7 +1064,11 @@ test "html5lib/tokenizer/test3_a_aa_6237" {
 test "html5lib/tokenizer/test3_a_aau0000_6238" {
   let (tokens, _) = @html.tokenize("<a a=a\u{00}>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a�" }], self_closing=false),
+    StartTag(
+      name="a",
+      attrs=[{ name: "a", value: "a�", }],
+      self_closing=false,
+    ),
     EOF,
   ])
 }
@@ -1065,7 +1077,7 @@ test "html5lib/tokenizer/test3_a_aau0000_6238" {
 test "html5lib/tokenizer/test3_a_aau0008_6239" {
   let (tokens, _) = @html.tokenize("<a a=a\b>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a\b" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a\b", }], self_closing=false),
     EOF,
   ])
 }
@@ -1074,7 +1086,7 @@ test "html5lib/tokenizer/test3_a_aau0008_6239" {
 test "html5lib/tokenizer/test3_a_aau0009_6240" {
   let (tokens, _) = @html.tokenize("<a a=a\t>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a", }], self_closing=false),
     EOF,
   ])
 }
@@ -1083,7 +1095,7 @@ test "html5lib/tokenizer/test3_a_aau0009_6240" {
 test "html5lib/tokenizer/test3_a_aau000a_6241" {
   let (tokens, _) = @html.tokenize("<a a=a\n>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a", }], self_closing=false),
     EOF,
   ])
 }
@@ -1094,7 +1106,7 @@ test "html5lib/tokenizer/test3_a_aau000b_6242" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "a\u{0b}" }],
+      attrs=[{ name: "a", value: "a\u{0b}", }],
       self_closing=false,
     ),
     EOF,
@@ -1105,7 +1117,7 @@ test "html5lib/tokenizer/test3_a_aau000b_6242" {
 test "html5lib/tokenizer/test3_a_aau000c_6243" {
   let (tokens, _) = @html.tokenize("<a a=a\u{0c}>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a", }], self_closing=false),
     EOF,
   ])
 }
@@ -1114,7 +1126,7 @@ test "html5lib/tokenizer/test3_a_aau000c_6243" {
 test "html5lib/tokenizer/test3_a_aau000d_6244" {
   let (tokens, _) = @html.tokenize("<a a=a\r>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a", }], self_closing=false),
     EOF,
   ])
 }
@@ -1125,7 +1137,7 @@ test "html5lib/tokenizer/test3_a_aau001f_6245" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "a\u{1f}" }],
+      attrs=[{ name: "a", value: "a\u{1f}", }],
       self_closing=false,
     ),
     EOF,
@@ -1136,7 +1148,7 @@ test "html5lib/tokenizer/test3_a_aau001f_6245" {
 test "html5lib/tokenizer/test3_a_aa__6246" {
   let (tokens, _) = @html.tokenize("<a a=a >")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a", }], self_closing=false),
     EOF,
   ])
 }
@@ -1145,7 +1157,7 @@ test "html5lib/tokenizer/test3_a_aa__6246" {
 test "html5lib/tokenizer/test3_a_aa_6247" {
   let (tokens, _) = @html.tokenize("<a a=a!>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a!" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a!", }], self_closing=false),
     EOF,
   ])
 }
@@ -1154,7 +1166,7 @@ test "html5lib/tokenizer/test3_a_aa_6247" {
 test "html5lib/tokenizer/test3_a_aa_6248" {
   let (tokens, _) = @html.tokenize("<a a=a\">")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a\"" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a\"", }], self_closing=false),
     EOF,
   ])
 }
@@ -1163,7 +1175,7 @@ test "html5lib/tokenizer/test3_a_aa_6248" {
 test "html5lib/tokenizer/test3_a_aa_6249" {
   let (tokens, _) = @html.tokenize("<a a=a#>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a#" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a#", }], self_closing=false),
     EOF,
   ])
 }
@@ -1172,7 +1184,7 @@ test "html5lib/tokenizer/test3_a_aa_6249" {
 test "html5lib/tokenizer/test3_a_aa_6250" {
   let (tokens, _) = @html.tokenize("<a a=a%>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a%" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a%", }], self_closing=false),
     EOF,
   ])
 }
@@ -1181,7 +1193,7 @@ test "html5lib/tokenizer/test3_a_aa_6250" {
 test "html5lib/tokenizer/test3_a_aa_6251" {
   let (tokens, _) = @html.tokenize("<a a=a&>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a&" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a&", }], self_closing=false),
     EOF,
   ])
 }
@@ -1190,7 +1202,7 @@ test "html5lib/tokenizer/test3_a_aa_6251" {
 test "html5lib/tokenizer/test3_a_aa_6252" {
   let (tokens, _) = @html.tokenize("<a a=a'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a'" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a'", }], self_closing=false),
     EOF,
   ])
 }
@@ -1199,7 +1211,7 @@ test "html5lib/tokenizer/test3_a_aa_6252" {
 test "html5lib/tokenizer/test3_a_aa_6253" {
   let (tokens, _) = @html.tokenize("<a a=a(>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a(" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a(", }], self_closing=false),
     EOF,
   ])
 }
@@ -1208,7 +1220,7 @@ test "html5lib/tokenizer/test3_a_aa_6253" {
 test "html5lib/tokenizer/test3_a_aa_6254" {
   let (tokens, _) = @html.tokenize("<a a=a->")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a-" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a-", }], self_closing=false),
     EOF,
   ])
 }
@@ -1217,7 +1229,7 @@ test "html5lib/tokenizer/test3_a_aa_6254" {
 test "html5lib/tokenizer/test3_a_aa_6255" {
   let (tokens, _) = @html.tokenize("<a a=a/>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a/" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a/", }], self_closing=false),
     EOF,
   ])
 }
@@ -1226,7 +1238,7 @@ test "html5lib/tokenizer/test3_a_aa_6255" {
 test "html5lib/tokenizer/test3_a_aa0_6256" {
   let (tokens, _) = @html.tokenize("<a a=a0>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a0" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a0", }], self_closing=false),
     EOF,
   ])
 }
@@ -1235,7 +1247,7 @@ test "html5lib/tokenizer/test3_a_aa0_6256" {
 test "html5lib/tokenizer/test3_a_aa1_6257" {
   let (tokens, _) = @html.tokenize("<a a=a1>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a1" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a1", }], self_closing=false),
     EOF,
   ])
 }
@@ -1244,7 +1256,7 @@ test "html5lib/tokenizer/test3_a_aa1_6257" {
 test "html5lib/tokenizer/test3_a_aa9_6258" {
   let (tokens, _) = @html.tokenize("<a a=a9>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a9" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a9", }], self_closing=false),
     EOF,
   ])
 }
@@ -1253,7 +1265,7 @@ test "html5lib/tokenizer/test3_a_aa9_6258" {
 test "html5lib/tokenizer/test3_a_aa_6259" {
   let (tokens, _) = @html.tokenize("<a a=a<>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a<" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a<", }], self_closing=false),
     EOF,
   ])
 }
@@ -1262,7 +1274,7 @@ test "html5lib/tokenizer/test3_a_aa_6259" {
 test "html5lib/tokenizer/test3_a_aa_6260" {
   let (tokens, _) = @html.tokenize("<a a=a=>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a=" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a=", }], self_closing=false),
     EOF,
   ])
 }
@@ -1271,7 +1283,7 @@ test "html5lib/tokenizer/test3_a_aa_6260" {
 test "html5lib/tokenizer/test3_a_aa_6261" {
   let (tokens, _) = @html.tokenize("<a a=a>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a", }], self_closing=false),
     EOF,
   ])
 }
@@ -1280,7 +1292,7 @@ test "html5lib/tokenizer/test3_a_aa_6261" {
 test "html5lib/tokenizer/test3_a_aa_6262" {
   let (tokens, _) = @html.tokenize("<a a=a?>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a?" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a?", }], self_closing=false),
     EOF,
   ])
 }
@@ -1289,7 +1301,7 @@ test "html5lib/tokenizer/test3_a_aa_6262" {
 test "html5lib/tokenizer/test3_a_aa_6263" {
   let (tokens, _) = @html.tokenize("<a a=a@>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a@" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a@", }], self_closing=false),
     EOF,
   ])
 }
@@ -1298,7 +1310,7 @@ test "html5lib/tokenizer/test3_a_aa_6263" {
 test "html5lib/tokenizer/test3_a_aaa_6264" {
   let (tokens, _) = @html.tokenize("<a a=aA>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "aA" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "aA", }], self_closing=false),
     EOF,
   ])
 }
@@ -1307,7 +1319,7 @@ test "html5lib/tokenizer/test3_a_aaa_6264" {
 test "html5lib/tokenizer/test3_a_aab_6265" {
   let (tokens, _) = @html.tokenize("<a a=aB>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "aB" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "aB", }], self_closing=false),
     EOF,
   ])
 }
@@ -1316,7 +1328,7 @@ test "html5lib/tokenizer/test3_a_aab_6265" {
 test "html5lib/tokenizer/test3_a_aay_6266" {
   let (tokens, _) = @html.tokenize("<a a=aY>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "aY" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "aY", }], self_closing=false),
     EOF,
   ])
 }
@@ -1325,7 +1337,7 @@ test "html5lib/tokenizer/test3_a_aay_6266" {
 test "html5lib/tokenizer/test3_a_aaz_6267" {
   let (tokens, _) = @html.tokenize("<a a=aZ>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "aZ" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "aZ", }], self_closing=false),
     EOF,
   ])
 }
@@ -1334,7 +1346,7 @@ test "html5lib/tokenizer/test3_a_aaz_6267" {
 test "html5lib/tokenizer/test3_a_aa_6268" {
   let (tokens, _) = @html.tokenize("<a a=a`>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a`" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a`", }], self_closing=false),
     EOF,
   ])
 }
@@ -1343,7 +1355,7 @@ test "html5lib/tokenizer/test3_a_aa_6268" {
 test "html5lib/tokenizer/test3_a_aaa_6269" {
   let (tokens, _) = @html.tokenize("<a a=aa>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "aa" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "aa", }], self_closing=false),
     EOF,
   ])
 }
@@ -1352,7 +1364,7 @@ test "html5lib/tokenizer/test3_a_aaa_6269" {
 test "html5lib/tokenizer/test3_a_aab_6270" {
   let (tokens, _) = @html.tokenize("<a a=ab>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "ab" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "ab", }], self_closing=false),
     EOF,
   ])
 }
@@ -1361,7 +1373,7 @@ test "html5lib/tokenizer/test3_a_aab_6270" {
 test "html5lib/tokenizer/test3_a_aay_6271" {
   let (tokens, _) = @html.tokenize("<a a=ay>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "ay" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "ay", }], self_closing=false),
     EOF,
   ])
 }
@@ -1370,7 +1382,7 @@ test "html5lib/tokenizer/test3_a_aay_6271" {
 test "html5lib/tokenizer/test3_a_aaz_6272" {
   let (tokens, _) = @html.tokenize("<a a=az>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "az" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "az", }], self_closing=false),
     EOF,
   ])
 }
@@ -1379,7 +1391,7 @@ test "html5lib/tokenizer/test3_a_aaz_6272" {
 test "html5lib/tokenizer/test3_a_aa_6273" {
   let (tokens, _) = @html.tokenize("<a a=a{>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a{" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a{", }], self_closing=false),
     EOF,
   ])
 }
@@ -1390,7 +1402,7 @@ test "html5lib/tokenizer/test3_a_aaudbc0udc00_6274" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "a", value: "a􀀀" }],
+      attrs=[{ name: "a", value: "a􀀀", }],
       self_closing=false,
     ),
     EOF,
@@ -1401,7 +1413,7 @@ test "html5lib/tokenizer/test3_a_aaudbc0udc00_6274" {
 test "html5lib/tokenizer/test3_a_ab_6275" {
   let (tokens, _) = @html.tokenize("<a a=b>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "b" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "b", }], self_closing=false),
     EOF,
   ])
 }
@@ -1410,7 +1422,7 @@ test "html5lib/tokenizer/test3_a_ab_6275" {
 test "html5lib/tokenizer/test3_a_ay_6276" {
   let (tokens, _) = @html.tokenize("<a a=y>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "y" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "y", }], self_closing=false),
     EOF,
   ])
 }
@@ -1419,7 +1431,7 @@ test "html5lib/tokenizer/test3_a_ay_6276" {
 test "html5lib/tokenizer/test3_a_az_6277" {
   let (tokens, _) = @html.tokenize("<a a=z>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "z" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "z", }], self_closing=false),
     EOF,
   ])
 }
@@ -1428,7 +1440,7 @@ test "html5lib/tokenizer/test3_a_az_6277" {
 test "html5lib/tokenizer/test3_a_a_6278" {
   let (tokens, _) = @html.tokenize("<a a={>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "{" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "{", }], self_closing=false),
     EOF,
   ])
 }
@@ -1437,7 +1449,11 @@ test "html5lib/tokenizer/test3_a_a_6278" {
 test "html5lib/tokenizer/test3_a_audbc0udc00_6279" {
   let (tokens, _) = @html.tokenize("<a a=􀀀>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "􀀀" }], self_closing=false),
+    StartTag(
+      name="a",
+      attrs=[{ name: "a", value: "􀀀", }],
+      self_closing=false,
+    ),
     EOF,
   ])
 }
@@ -1446,7 +1462,7 @@ test "html5lib/tokenizer/test3_a_audbc0udc00_6279" {
 test "html5lib/tokenizer/test3_a_a_6280" {
   let (tokens, _) = @html.tokenize("<a a>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1455,7 +1471,7 @@ test "html5lib/tokenizer/test3_a_a_6280" {
 test "html5lib/tokenizer/test3_a_a_6281" {
   let (tokens, _) = @html.tokenize("<a a?>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a?", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a?", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1464,7 +1480,7 @@ test "html5lib/tokenizer/test3_a_a_6281" {
 test "html5lib/tokenizer/test3_a_a_6282" {
   let (tokens, _) = @html.tokenize("<a a@>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a@", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a@", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1473,7 +1489,7 @@ test "html5lib/tokenizer/test3_a_a_6282" {
 test "html5lib/tokenizer/test3_a_aa_6283" {
   let (tokens, _) = @html.tokenize("<a aA>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "aa", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "aa", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1482,7 +1498,7 @@ test "html5lib/tokenizer/test3_a_aa_6283" {
 test "html5lib/tokenizer/test3_a_ab_6284" {
   let (tokens, _) = @html.tokenize("<a aB>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "ab", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "ab", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1491,7 +1507,7 @@ test "html5lib/tokenizer/test3_a_ab_6284" {
 test "html5lib/tokenizer/test3_a_ay_6285" {
   let (tokens, _) = @html.tokenize("<a aY>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "ay", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "ay", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1500,7 +1516,7 @@ test "html5lib/tokenizer/test3_a_ay_6285" {
 test "html5lib/tokenizer/test3_a_az_6286" {
   let (tokens, _) = @html.tokenize("<a aZ>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "az", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "az", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1509,7 +1525,7 @@ test "html5lib/tokenizer/test3_a_az_6286" {
 test "html5lib/tokenizer/test3_a_a_6287" {
   let (tokens, _) = @html.tokenize("<a a[>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a[", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a[", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1518,7 +1534,7 @@ test "html5lib/tokenizer/test3_a_a_6287" {
 test "html5lib/tokenizer/test3_a_a_6288" {
   let (tokens, _) = @html.tokenize("<a a`>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a`", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a`", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1527,7 +1543,7 @@ test "html5lib/tokenizer/test3_a_a_6288" {
 test "html5lib/tokenizer/test3_a_aa_6289" {
   let (tokens, _) = @html.tokenize("<a aa>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "aa", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "aa", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1536,7 +1552,7 @@ test "html5lib/tokenizer/test3_a_aa_6289" {
 test "html5lib/tokenizer/test3_a_ab_6290" {
   let (tokens, _) = @html.tokenize("<a ab>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "ab", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "ab", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1545,7 +1561,7 @@ test "html5lib/tokenizer/test3_a_ab_6290" {
 test "html5lib/tokenizer/test3_a_ay_6291" {
   let (tokens, _) = @html.tokenize("<a ay>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "ay", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "ay", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1554,7 +1570,7 @@ test "html5lib/tokenizer/test3_a_ay_6291" {
 test "html5lib/tokenizer/test3_a_az_6292" {
   let (tokens, _) = @html.tokenize("<a az>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "az", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "az", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1563,7 +1579,7 @@ test "html5lib/tokenizer/test3_a_az_6292" {
 test "html5lib/tokenizer/test3_a_a_6293" {
   let (tokens, _) = @html.tokenize("<a a{>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a{", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a{", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1572,7 +1588,11 @@ test "html5lib/tokenizer/test3_a_a_6293" {
 test "html5lib/tokenizer/test3_a_audbc0udc00_6294" {
   let (tokens, _) = @html.tokenize("<a a􀀀>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a􀀀", value: "" }], self_closing=false),
+    StartTag(
+      name="a",
+      attrs=[{ name: "a􀀀", value: "", }],
+      self_closing=false,
+    ),
     EOF,
   ])
 }
@@ -1581,7 +1601,7 @@ test "html5lib/tokenizer/test3_a_audbc0udc00_6294" {
 test "html5lib/tokenizer/test3_a_b_6295" {
   let (tokens, _) = @html.tokenize("<a b>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "b", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "b", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1590,7 +1610,7 @@ test "html5lib/tokenizer/test3_a_b_6295" {
 test "html5lib/tokenizer/test3_a_y_6296" {
   let (tokens, _) = @html.tokenize("<a y>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "y", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "y", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1599,7 +1619,7 @@ test "html5lib/tokenizer/test3_a_y_6296" {
 test "html5lib/tokenizer/test3_a_z_6297" {
   let (tokens, _) = @html.tokenize("<a z>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "z", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "z", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1608,7 +1628,7 @@ test "html5lib/tokenizer/test3_a_z_6297" {
 test "html5lib/tokenizer/test3_a__6298" {
   let (tokens, _) = @html.tokenize("<a {>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "{", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "{", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1617,7 +1637,7 @@ test "html5lib/tokenizer/test3_a__6298" {
 test "html5lib/tokenizer/test3_a_udbc0udc00_6299" {
   let (tokens, _) = @html.tokenize("<a 􀀀>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "􀀀", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "􀀀", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1689,7 +1709,7 @@ test "html5lib/tokenizer/test3_a_6306" {
 test "html5lib/tokenizer/test3_au0000_6307" {
   let (tokens, _) = @html.tokenize("<a/\u{00}>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "�", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "�", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1718,7 +1738,7 @@ test "html5lib/tokenizer/test3_au000b_6310" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="a",
-      attrs=[{ name: "\u{0b}", value: "" }],
+      attrs=[{ name: "\u{0b}", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -1747,7 +1767,7 @@ test "html5lib/tokenizer/test3_a__6312" {
 test "html5lib/tokenizer/test3_a_6313" {
   let (tokens, _) = @html.tokenize("<a/!>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "!", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "!", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1756,7 +1776,7 @@ test "html5lib/tokenizer/test3_a_6313" {
 test "html5lib/tokenizer/test3_a_6314" {
   let (tokens, _) = @html.tokenize("<a/\">")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "\"", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "\"", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1765,7 +1785,7 @@ test "html5lib/tokenizer/test3_a_6314" {
 test "html5lib/tokenizer/test3_a_6315" {
   let (tokens, _) = @html.tokenize("<a/&>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "&", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "&", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1774,7 +1794,7 @@ test "html5lib/tokenizer/test3_a_6315" {
 test "html5lib/tokenizer/test3_a_6316" {
   let (tokens, _) = @html.tokenize("<a/'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "'", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "'", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1783,7 +1803,7 @@ test "html5lib/tokenizer/test3_a_6316" {
 test "html5lib/tokenizer/test3_a_6317" {
   let (tokens, _) = @html.tokenize("<a/->")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "-", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "-", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1801,7 +1821,7 @@ test "html5lib/tokenizer/test3_a_6318" {
 test "html5lib/tokenizer/test3_a0_6319" {
   let (tokens, _) = @html.tokenize("<a/0>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "0", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "0", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1810,7 +1830,7 @@ test "html5lib/tokenizer/test3_a0_6319" {
 test "html5lib/tokenizer/test3_a1_6320" {
   let (tokens, _) = @html.tokenize("<a/1>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "1", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "1", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1819,7 +1839,7 @@ test "html5lib/tokenizer/test3_a1_6320" {
 test "html5lib/tokenizer/test3_a9_6321" {
   let (tokens, _) = @html.tokenize("<a/9>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "9", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "9", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1828,7 +1848,7 @@ test "html5lib/tokenizer/test3_a9_6321" {
 test "html5lib/tokenizer/test3_a_6322" {
   let (tokens, _) = @html.tokenize("<a/<>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "<", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "<", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1837,7 +1857,7 @@ test "html5lib/tokenizer/test3_a_6322" {
 test "html5lib/tokenizer/test3_a_6323" {
   let (tokens, _) = @html.tokenize("<a/=>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "=", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "=", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1855,7 +1875,7 @@ test "html5lib/tokenizer/test3_a_6324" {
 test "html5lib/tokenizer/test3_a_6325" {
   let (tokens, _) = @html.tokenize("<a/?>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "?", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "?", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1864,7 +1884,7 @@ test "html5lib/tokenizer/test3_a_6325" {
 test "html5lib/tokenizer/test3_a_6326" {
   let (tokens, _) = @html.tokenize("<a/@>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "@", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "@", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1873,7 +1893,7 @@ test "html5lib/tokenizer/test3_a_6326" {
 test "html5lib/tokenizer/test3_aa_6327" {
   let (tokens, _) = @html.tokenize("<a/A>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1882,7 +1902,7 @@ test "html5lib/tokenizer/test3_aa_6327" {
 test "html5lib/tokenizer/test3_ab_6328" {
   let (tokens, _) = @html.tokenize("<a/B>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "b", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "b", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1891,7 +1911,7 @@ test "html5lib/tokenizer/test3_ab_6328" {
 test "html5lib/tokenizer/test3_ay_6329" {
   let (tokens, _) = @html.tokenize("<a/Y>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "y", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "y", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1900,7 +1920,7 @@ test "html5lib/tokenizer/test3_ay_6329" {
 test "html5lib/tokenizer/test3_az_6330" {
   let (tokens, _) = @html.tokenize("<a/Z>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "z", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "z", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1909,7 +1929,7 @@ test "html5lib/tokenizer/test3_az_6330" {
 test "html5lib/tokenizer/test3_a_6331" {
   let (tokens, _) = @html.tokenize("<a/`>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "`", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "`", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1918,7 +1938,7 @@ test "html5lib/tokenizer/test3_a_6331" {
 test "html5lib/tokenizer/test3_aa_6332" {
   let (tokens, _) = @html.tokenize("<a/a>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1927,7 +1947,7 @@ test "html5lib/tokenizer/test3_aa_6332" {
 test "html5lib/tokenizer/test3_ab_6333" {
   let (tokens, _) = @html.tokenize("<a/b>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "b", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "b", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1936,7 +1956,7 @@ test "html5lib/tokenizer/test3_ab_6333" {
 test "html5lib/tokenizer/test3_ay_6334" {
   let (tokens, _) = @html.tokenize("<a/y>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "y", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "y", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1945,7 +1965,7 @@ test "html5lib/tokenizer/test3_ay_6334" {
 test "html5lib/tokenizer/test3_az_6335" {
   let (tokens, _) = @html.tokenize("<a/z>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "z", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "z", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1954,7 +1974,7 @@ test "html5lib/tokenizer/test3_az_6335" {
 test "html5lib/tokenizer/test3_a_6336" {
   let (tokens, _) = @html.tokenize("<a/{>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "{", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "{", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -1963,7 +1983,7 @@ test "html5lib/tokenizer/test3_a_6336" {
 test "html5lib/tokenizer/test3_audbc0udc00_6337" {
   let (tokens, _) = @html.tokenize("<a/􀀀>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "􀀀", value: "" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "􀀀", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -2193,7 +2213,7 @@ test "html5lib/tokenizer/test4__in_attribute_name_6393" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="z",
-      attrs=[{ name: "0", value: "" }, { name: "<", value: "" }],
+      attrs=[{ name: "0", value: "", }, { name: "<", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -2204,7 +2224,7 @@ test "html5lib/tokenizer/test4__in_attribute_name_6393" {
 test "html5lib/tokenizer/test4__in_unquoted_attribute_value_6394" {
   let (tokens, _) = @html.tokenize("<z x=<>")
   @debug.assert_eq(tokens, [
-    StartTag(name="z", attrs=[{ name: "x", value: "<" }], self_closing=false),
+    StartTag(name="z", attrs=[{ name: "x", value: "<", }], self_closing=false),
     EOF,
   ])
 }
@@ -2213,7 +2233,7 @@ test "html5lib/tokenizer/test4__in_unquoted_attribute_value_6394" {
 test "html5lib/tokenizer/test4__in_unquoted_attribute_value_6395" {
   let (tokens, _) = @html.tokenize("<z z=z=z>")
   @debug.assert_eq(tokens, [
-    StartTag(name="z", attrs=[{ name: "z", value: "z=z" }], self_closing=false),
+    StartTag(name="z", attrs=[{ name: "z", value: "z=z", }], self_closing=false),
     EOF,
   ])
 }
@@ -2222,7 +2242,7 @@ test "html5lib/tokenizer/test4__in_unquoted_attribute_value_6395" {
 test "html5lib/tokenizer/test4__attribute_6396" {
   let (tokens, _) = @html.tokenize("<z =>")
   @debug.assert_eq(tokens, [
-    StartTag(name="z", attrs=[{ name: "=", value: "" }], self_closing=false),
+    StartTag(name="z", attrs=[{ name: "=", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -2231,7 +2251,7 @@ test "html5lib/tokenizer/test4__attribute_6396" {
 test "html5lib/tokenizer/test4__attribute_6397" {
   let (tokens, _) = @html.tokenize("<z ==>")
   @debug.assert_eq(tokens, [
-    StartTag(name="z", attrs=[{ name: "=", value: "" }], self_closing=false),
+    StartTag(name="z", attrs=[{ name: "=", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -2240,7 +2260,7 @@ test "html5lib/tokenizer/test4__attribute_6397" {
 test "html5lib/tokenizer/test4__attribute_6398" {
   let (tokens, _) = @html.tokenize("<z ===>")
   @debug.assert_eq(tokens, [
-    StartTag(name="z", attrs=[{ name: "=", value: "=" }], self_closing=false),
+    StartTag(name="z", attrs=[{ name: "=", value: "=", }], self_closing=false),
     EOF,
   ])
 }
@@ -2249,7 +2269,7 @@ test "html5lib/tokenizer/test4__attribute_6398" {
 test "html5lib/tokenizer/test4__attribute_6399" {
   let (tokens, _) = @html.tokenize("<z ====>")
   @debug.assert_eq(tokens, [
-    StartTag(name="z", attrs=[{ name: "=", value: "==" }], self_closing=false),
+    StartTag(name="z", attrs=[{ name: "=", value: "==", }], self_closing=false),
     EOF,
   ])
 }
@@ -2258,7 +2278,7 @@ test "html5lib/tokenizer/test4__attribute_6399" {
 test "html5lib/tokenizer/test4__after_ampersand_in_doublequoted_attribute_value_6400" {
   let (tokens, _) = @html.tokenize("<z z=\"&\">")
   @debug.assert_eq(tokens, [
-    StartTag(name="z", attrs=[{ name: "z", value: "&" }], self_closing=false),
+    StartTag(name="z", attrs=[{ name: "z", value: "&", }], self_closing=false),
     EOF,
   ])
 }
@@ -2267,7 +2287,7 @@ test "html5lib/tokenizer/test4__after_ampersand_in_doublequoted_attribute_value_
 test "html5lib/tokenizer/test4__after_ampersand_in_doublequoted_attribute_value_6401" {
   let (tokens, _) = @html.tokenize("<z z=\"&'\">")
   @debug.assert_eq(tokens, [
-    StartTag(name="z", attrs=[{ name: "z", value: "&'" }], self_closing=false),
+    StartTag(name="z", attrs=[{ name: "z", value: "&'", }], self_closing=false),
     EOF,
   ])
 }
@@ -2276,7 +2296,7 @@ test "html5lib/tokenizer/test4__after_ampersand_in_doublequoted_attribute_value_
 test "html5lib/tokenizer/test4__after_ampersand_in_singlequoted_attribute_value_6402" {
   let (tokens, _) = @html.tokenize("<z z='&'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="z", attrs=[{ name: "z", value: "&" }], self_closing=false),
+    StartTag(name="z", attrs=[{ name: "z", value: "&", }], self_closing=false),
     EOF,
   ])
 }
@@ -2285,7 +2305,7 @@ test "html5lib/tokenizer/test4__after_ampersand_in_singlequoted_attribute_value_
 test "html5lib/tokenizer/test4__after_ampersand_in_singlequoted_attribute_value_6403" {
   let (tokens, _) = @html.tokenize("<z z='&\"'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="z", attrs=[{ name: "z", value: "&\"" }], self_closing=false),
+    StartTag(name="z", attrs=[{ name: "z", value: "&\"", }], self_closing=false),
     EOF,
   ])
 }
@@ -2296,7 +2316,7 @@ test "html5lib/tokenizer/test4_text_after_bogus_character_reference_6404" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="z",
-      attrs=[{ name: "z", value: "&xlink_xmlns;" }],
+      attrs=[{ name: "z", value: "&xlink_xmlns;", }],
       self_closing=false,
     ),
     Character('b'),
@@ -2313,7 +2333,7 @@ test "html5lib/tokenizer/test4_text_after_hex_character_reference_6405" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="z",
-      attrs=[{ name: "z", value: "  foo" }],
+      attrs=[{ name: "z", value: "  foo", }],
       self_closing=false,
     ),
     Character('b'),
@@ -2330,7 +2350,7 @@ test "html5lib/tokenizer/test4_attribute_name_starting_with__6406" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="foo",
-      attrs=[{ name: "\"", value: "bar" }],
+      attrs=[{ name: "\"", value: "bar", }],
       self_closing=false,
     ),
     EOF,
@@ -2343,7 +2363,7 @@ test "html5lib/tokenizer/test4_attribute_name_starting_with__6407" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="foo",
-      attrs=[{ name: "'", value: "bar" }],
+      attrs=[{ name: "'", value: "bar", }],
       self_closing=false,
     ),
     EOF,
@@ -2356,7 +2376,7 @@ test "html5lib/tokenizer/test4_attribute_name_containing__6408" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="foo",
-      attrs=[{ name: "a\"b", value: "bar" }],
+      attrs=[{ name: "a\"b", value: "bar", }],
       self_closing=false,
     ),
     EOF,
@@ -2369,7 +2389,7 @@ test "html5lib/tokenizer/test4_attribute_name_containing__6409" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="foo",
-      attrs=[{ name: "a'b", value: "bar" }],
+      attrs=[{ name: "a'b", value: "bar", }],
       self_closing=false,
     ),
     EOF,
@@ -2382,7 +2402,7 @@ test "html5lib/tokenizer/test4_unquoted_attribute_value_containing__6410" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="foo",
-      attrs=[{ name: "a", value: "b'c" }],
+      attrs=[{ name: "a", value: "b'c", }],
       self_closing=false,
     ),
     EOF,
@@ -2395,7 +2415,7 @@ test "html5lib/tokenizer/test4_unquoted_attribute_value_containing__6411" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="foo",
-      attrs=[{ name: "a", value: "b\"c" }],
+      attrs=[{ name: "a", value: "b\"c", }],
       self_closing=false,
     ),
     EOF,
@@ -2408,7 +2428,7 @@ test "html5lib/tokenizer/test4_doublequoted_attribute_value_not_followed_by_whit
   @debug.assert_eq(tokens, [
     StartTag(
       name="foo",
-      attrs=[{ name: "a", value: "b" }, { name: "c", value: "" }],
+      attrs=[{ name: "a", value: "b", }, { name: "c", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -2421,7 +2441,7 @@ test "html5lib/tokenizer/test4_singlequoted_attribute_value_not_followed_by_whit
   @debug.assert_eq(tokens, [
     StartTag(
       name="foo",
-      attrs=[{ name: "a", value: "b" }, { name: "c", value: "" }],
+      attrs=[{ name: "a", value: "b", }, { name: "c", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -2432,7 +2452,7 @@ test "html5lib/tokenizer/test4_singlequoted_attribute_value_not_followed_by_whit
 test "html5lib/tokenizer/test4_quoted_attribute_followed_by_permitted__6414" {
   let (tokens, _) = @html.tokenize("<br a='b'/>")
   @debug.assert_eq(tokens, [
-    StartTag(name="br", attrs=[{ name: "a", value: "b" }], self_closing=true),
+    StartTag(name="br", attrs=[{ name: "a", value: "b", }], self_closing=true),
     EOF,
   ])
 }
@@ -2441,7 +2461,7 @@ test "html5lib/tokenizer/test4_quoted_attribute_followed_by_permitted__6414" {
 test "html5lib/tokenizer/test4_quoted_attribute_followed_by_nonpermitted__6415" {
   let (tokens, _) = @html.tokenize("<bar a='b'/>")
   @debug.assert_eq(tokens, [
-    StartTag(name="bar", attrs=[{ name: "a", value: "b" }], self_closing=true),
+    StartTag(name="bar", attrs=[{ name: "a", value: "b", }], self_closing=true),
     EOF,
   ])
 }
@@ -2632,7 +2652,7 @@ test "html5lib/tokenizer/test4_uppercase_end_tag_name_6437" {
 test "html5lib/tokenizer/test4_uppercase_attribute_name_6438" {
   let (tokens, _) = @html.tokenize("<x X>")
   @debug.assert_eq(tokens, [
-    StartTag(name="x", attrs=[{ name: "x", value: "" }], self_closing=false),
+    StartTag(name="x", attrs=[{ name: "x", value: "", }], self_closing=false),
     EOF,
   ])
 }
@@ -2643,7 +2663,7 @@ test "html5lib/tokenizer/test4_tagattribute_name_case_edge_values_6439" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="x@az[`az{",
-      attrs=[{ name: "@az[`az{", value: "" }],
+      attrs=[{ name: "@az[`az{", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -2654,7 +2674,7 @@ test "html5lib/tokenizer/test4_tagattribute_name_case_edge_values_6439" {
 test "html5lib/tokenizer/test4_duplicate_differentcase_attributes_6440" {
   let (tokens, _) = @html.tokenize("<x x=1 x=2 X=3>")
   @debug.assert_eq(tokens, [
-    StartTag(name="x", attrs=[{ name: "x", value: "1" }], self_closing=false),
+    StartTag(name="x", attrs=[{ name: "x", value: "1", }], self_closing=false),
     EOF,
   ])
 }
@@ -2920,7 +2940,7 @@ test "html5lib/tokenizer/test4_doctype_html_xtext_6467" {
 test "html5lib/tokenizer/test4_grave_accent_in_unquoted_attribute_6468" {
   let (tokens, _) = @html.tokenize("<a a=aa`>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "aa`" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "aa`", }], self_closing=false),
     EOF,
   ])
 }

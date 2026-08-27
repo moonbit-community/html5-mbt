@@ -623,7 +623,7 @@ fn TreeBuilder::push_element(
   tag_name : String,
   ns : Namespace,
 ) -> Unit {
-  self.open_elements.push({ node_id, tag_name, ns })
+  self.open_elements.push({ node_id, tag_name, ns, })
 }
 
 ///|
@@ -873,7 +873,7 @@ fn TreeBuilder::insert_foreign_element(
   // Adjust attributes based on namespace
   let adjusted_attrs = attrs.map(fn(a) {
     let adjusted_name = adjust_foreign_attribute_name(a.name, ns)
-    { name: adjusted_name, value: a.value }
+    { name: adjusted_name, value: a.value, }
   })
   self.insert_element_for_token(adjusted_name, adjusted_attrs, ns)
 }
@@ -1084,7 +1084,7 @@ fn TreeBuilder::insert_doctype(
 ///|
 /// Emit a parse error
 fn TreeBuilder::emit_error(self : TreeBuilder, code : ParseErrorCode) -> Unit {
-  self.errors.push({ code, position: self.tokenizer.get_position() })
+  self.errors.push({ code, position: self.tokenizer.get_position(), })
 }
 
 // ============================================================================

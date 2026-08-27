@@ -96,7 +96,7 @@ pub fn Tokenizer::new(input : String) -> Tokenizer {
 ///|
 /// Get current source position
 pub fn Tokenizer::get_position(self : Tokenizer) -> SourcePosition {
-  { line: self.line, column: self.column, offset: self.pos }
+  { line: self.line, column: self.column, offset: self.pos, }
 }
 
 ///|
@@ -180,13 +180,13 @@ fn Tokenizer::reconsume(self : Tokenizer) -> Unit {
 ///|
 /// Get current source position
 fn Tokenizer::current_position(self : Tokenizer) -> SourcePosition {
-  { line: self.line, column: self.column, offset: self.pos }
+  { line: self.line, column: self.column, offset: self.pos, }
 }
 
 ///|
 /// Emit a parse error
 fn Tokenizer::emit_error(self : Tokenizer, code : ParseErrorCode) -> Unit {
-  self.errors.push({ code, position: self.current_position() })
+  self.errors.push({ code, position: self.current_position(), })
 }
 
 ///|
@@ -227,7 +227,7 @@ fn Tokenizer::finish_attribute(self : Tokenizer) -> Unit {
   if duplicate {
     self.emit_error(DuplicateAttribute)
   } else {
-    self.current_attrs.push({ name, value })
+    self.current_attrs.push({ name, value, })
   }
 }
 

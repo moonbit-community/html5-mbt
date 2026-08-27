@@ -252,7 +252,7 @@ fn TreeBuilder::insert_in_stack_after(
       break
     }
   }
-  self.open_elements.insert(insert_idx, { node_id, tag_name, ns: HTML })
+  self.open_elements.insert(insert_idx, { node_id, tag_name, ns: HTML, })
 }
 
 ///|

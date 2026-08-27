@@ -46,7 +46,7 @@ test "html5lib/tokenizer/domjs_non_bmpcharref_in_attribute_46" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="p",
-      attrs=[{ name: "id", value: "≂̸" }],
+      attrs=[{ name: "id", value: "≂̸", }],
       self_closing=false,
     ),
     EOF,
@@ -85,7 +85,7 @@ test "html5lib/tokenizer/entities_undefined_named_entity_in_a_doublequoted_attri
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
-      attrs=[{ name: "a", value: "&noti;" }],
+      attrs=[{ name: "a", value: "&noti;", }],
       self_closing=false,
     ),
     EOF,
@@ -98,7 +98,7 @@ test "html5lib/tokenizer/entities_entity_name_requiring_semicolon_instead_follow
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
-      attrs=[{ name: "a", value: "&lang=" }],
+      attrs=[{ name: "a", value: "&lang=", }],
       self_closing=false,
     ),
     EOF,
@@ -111,7 +111,7 @@ test "html5lib/tokenizer/entities_valid_entity_name_followed_by_the_equals_sign_
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
-      attrs=[{ name: "a", value: "&not=" }],
+      attrs=[{ name: "a", value: "&not=", }],
       self_closing=false,
     ),
     EOF,
@@ -124,7 +124,7 @@ test "html5lib/tokenizer/entities_undefined_named_entity_in_a_singlequoted_attri
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
-      attrs=[{ name: "a", value: "&noti;" }],
+      attrs=[{ name: "a", value: "&noti;", }],
       self_closing=false,
     ),
     EOF,
@@ -137,7 +137,7 @@ test "html5lib/tokenizer/entities_entity_name_requiring_semicolon_instead_follow
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
-      attrs=[{ name: "a", value: "&lang=" }],
+      attrs=[{ name: "a", value: "&lang=", }],
       self_closing=false,
     ),
     EOF,
@@ -150,7 +150,7 @@ test "html5lib/tokenizer/entities_valid_entity_name_followed_by_the_equals_sign_
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
-      attrs=[{ name: "a", value: "&not=" }],
+      attrs=[{ name: "a", value: "&not=", }],
       self_closing=false,
     ),
     EOF,
@@ -163,7 +163,7 @@ test "html5lib/tokenizer/entities_undefined_named_entity_in_an_unquoted_attribut
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
-      attrs=[{ name: "a", value: "&noti;" }],
+      attrs=[{ name: "a", value: "&noti;", }],
       self_closing=false,
     ),
     EOF,
@@ -176,7 +176,7 @@ test "html5lib/tokenizer/entities_entity_name_requiring_semicolon_instead_follow
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
-      attrs=[{ name: "a", value: "&lang=" }],
+      attrs=[{ name: "a", value: "&lang=", }],
       self_closing=false,
     ),
     EOF,
@@ -189,7 +189,7 @@ test "html5lib/tokenizer/entities_valid_entity_name_followed_by_the_equals_sign_
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
-      attrs=[{ name: "a", value: "&not=" }],
+      attrs=[{ name: "a", value: "&not=", }],
       self_closing=false,
     ),
     EOF,

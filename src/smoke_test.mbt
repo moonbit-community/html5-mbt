@@ -72,7 +72,7 @@ test "smoke/tokenizer/attribute" {
     is [
       StartTag(
         name="div",
-        attrs=[{ name: "class", value: "foo" }],
+        attrs=[{ name: "class", value: "foo", }],
         self_closing=false
       ),
       EOF,

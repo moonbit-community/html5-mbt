@@ -128,7 +128,7 @@ fn TreeBuilder::reconstruct_active_formatting(self : TreeBuilder) -> Unit {
       Element(tag_name~, attributes~, ..) => {
         // Create new element
         let attrs : Array[Attribute] = attributes.map(fn(pair) {
-          { name: pair.0, value: pair.1 }
+          { name: pair.0, value: pair.1, }
         })
         let new_id = self.insert_html_element(tag_name, attrs)
         // Replace entry in list

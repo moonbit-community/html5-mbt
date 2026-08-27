@@ -26,7 +26,7 @@
 
 ///|
 /// Lazy-initialized entity map
-let entity_map : Ref[Map[String, Array[Int]]?] = { val: None }
+let entity_map : Ref[Map[String, Array[Int]]?] = { val: None, }
 
 ///|
 /// Initialize the entity map (called lazily on first lookup)

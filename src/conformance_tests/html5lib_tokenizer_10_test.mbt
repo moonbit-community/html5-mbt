@@ -927,7 +927,7 @@ test "html5lib/tokenizer/test1_empty_start_tag_4697" {
 test "html5lib/tokenizer/test1_start_tag_wattribute_4698" {
   let (tokens, _) = @html.tokenize("<h a='b'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="h", attrs=[{ name: "a", value: "b" }], self_closing=false),
+    StartTag(name="h", attrs=[{ name: "a", value: "b", }], self_closing=false),
     EOF,
   ])
 }
@@ -936,7 +936,7 @@ test "html5lib/tokenizer/test1_start_tag_wattribute_4698" {
 test "html5lib/tokenizer/test1_start_tag_wattribute_no_quotes_4699" {
   let (tokens, _) = @html.tokenize("<h a=b>")
   @debug.assert_eq(tokens, [
-    StartTag(name="h", attrs=[{ name: "a", value: "b" }], self_closing=false),
+    StartTag(name="h", attrs=[{ name: "a", value: "b", }], self_closing=false),
     EOF,
   ])
 }
@@ -983,7 +983,7 @@ test "html5lib/tokenizer/test1_multiple_atts_4703" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
-      attrs=[{ name: "a", value: "b" }, { name: "c", value: "d" }],
+      attrs=[{ name: "a", value: "b", }, { name: "c", value: "d", }],
       self_closing=false,
     ),
     EOF,
@@ -996,7 +996,7 @@ test "html5lib/tokenizer/test1_multiple_atts_no_space_4704" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
-      attrs=[{ name: "a", value: "b" }, { name: "c", value: "d" }],
+      attrs=[{ name: "a", value: "b", }, { name: "c", value: "d", }],
       self_closing=false,
     ),
     EOF,
@@ -1007,7 +1007,7 @@ test "html5lib/tokenizer/test1_multiple_atts_no_space_4704" {
 test "html5lib/tokenizer/test1_repeated_attr_4705" {
   let (tokens, _) = @html.tokenize("<h a='b' a='d'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="h", attrs=[{ name: "a", value: "b" }], self_closing=false),
+    StartTag(name="h", attrs=[{ name: "a", value: "b", }], self_closing=false),
     EOF,
   ])
 }
@@ -1244,7 +1244,7 @@ test "html5lib/tokenizer/test1_ascii_hexadecimal_entity_4748" {
 test "html5lib/tokenizer/test1_hexadecimal_entity_in_attribute_4749" {
   let (tokens, _) = @html.tokenize("<h a='&#x3f;'></h>")
   @debug.assert_eq(tokens, [
-    StartTag(name="h", attrs=[{ name: "a", value: "?" }], self_closing=false),
+    StartTag(name="h", attrs=[{ name: "a", value: "?", }], self_closing=false),
     EndTag(name="h"),
     EOF,
   ])
@@ -1256,7 +1256,7 @@ test "html5lib/tokenizer/test1_entity_in_attribute_without_semicolon_ending_in_x
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
-      attrs=[{ name: "a", value: "&notx" }],
+      attrs=[{ name: "a", value: "&notx", }],
       self_closing=false,
     ),
     EOF,
@@ -1269,7 +1269,7 @@ test "html5lib/tokenizer/test1_entity_in_attribute_without_semicolon_ending_in_1
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
-      attrs=[{ name: "a", value: "&not1" }],
+      attrs=[{ name: "a", value: "&not1", }],
       self_closing=false,
     ),
     EOF,
@@ -1282,7 +1282,7 @@ test "html5lib/tokenizer/test1_entity_in_attribute_without_semicolon_ending_in_i
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
-      attrs=[{ name: "a", value: "&noti" }],
+      attrs=[{ name: "a", value: "&noti", }],
       self_closing=false,
     ),
     EOF,
@@ -1293,7 +1293,7 @@ test "html5lib/tokenizer/test1_entity_in_attribute_without_semicolon_ending_in_i
 test "html5lib/tokenizer/test1_entity_in_attribute_without_semicolon_4753" {
   let (tokens, _) = @html.tokenize("<h a='&COPY'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="h", attrs=[{ name: "a", value: "©" }], self_closing=false),
+    StartTag(name="h", attrs=[{ name: "a", value: "©", }], self_closing=false),
     EOF,
   ])
 }
@@ -1304,7 +1304,7 @@ test "html5lib/tokenizer/test1_unquoted_attribute_ending_in_ampersand_4754" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="s",
-      attrs=[{ name: "o", value: "&" }, { name: "t", value: "" }],
+      attrs=[{ name: "o", value: "&", }, { name: "t", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -1315,7 +1315,7 @@ test "html5lib/tokenizer/test1_unquoted_attribute_ending_in_ampersand_4754" {
 test "html5lib/tokenizer/test1_unquoted_attribute_at_end_of_tag_with_final_charac_4755" {
   let (tokens, _) = @html.tokenize("<a a=a&>foo")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "a&" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "a&", }], self_closing=false),
     Character('f'),
     Character('o'),
     Character('o'),
@@ -1342,7 +1342,7 @@ test "html5lib/tokenizer/test1_plaintext_element_4756" {
 test "html5lib/tokenizer/test1_open_angled_bracket_in_unquoted_attribute_value_st_4757" {
   let (tokens, _) = @html.tokenize("<a a=f<>")
   @debug.assert_eq(tokens, [
-    StartTag(name="a", attrs=[{ name: "a", value: "f<" }], self_closing=false),
+    StartTag(name="a", attrs=[{ name: "a", value: "f<", }], self_closing=false),
     EOF,
   ])
 }
@@ -1610,7 +1610,7 @@ test "html5lib/tokenizer/test2_entity_without_a_name_4779" {
 test "html5lib/tokenizer/test2_unescaped_ampersand_in_attribute_value_4780" {
   let (tokens, _) = @html.tokenize("<h a='&'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="h", attrs=[{ name: "a", value: "&" }], self_closing=false),
+    StartTag(name="h", attrs=[{ name: "a", value: "&", }], self_closing=false),
     EOF,
   ])
 }
@@ -1648,7 +1648,7 @@ test "html5lib/tokenizer/test2_void_element_with_permitted_slash_with_attribute_
   @debug.assert_eq(tokens, [
     StartTag(
       name="br",
-      attrs=[{ name: "foo", value: "bar" }],
+      attrs=[{ name: "foo", value: "bar", }],
       self_closing=true,
     ),
     EOF,
@@ -1659,7 +1659,7 @@ test "html5lib/tokenizer/test2_void_element_with_permitted_slash_with_attribute_
 test "html5lib/tokenizer/test2_starttag_containing__4785" {
   let (tokens, _) = @html.tokenize("<h/a='b'>")
   @debug.assert_eq(tokens, [
-    StartTag(name="h", attrs=[{ name: "a", value: "b" }], self_closing=false),
+    StartTag(name="h", attrs=[{ name: "a", value: "b", }], self_closing=false),
     EOF,
   ])
 }
@@ -1668,7 +1668,7 @@ test "html5lib/tokenizer/test2_starttag_containing__4785" {
 test "html5lib/tokenizer/test2_doublequoted_attribute_value_4786" {
   let (tokens, _) = @html.tokenize("<h a=\"b\">")
   @debug.assert_eq(tokens, [
-    StartTag(name="h", attrs=[{ name: "a", value: "b" }], self_closing=false),
+    StartTag(name="h", attrs=[{ name: "a", value: "b", }], self_closing=false),
     EOF,
   ])
 }
@@ -1754,7 +1754,7 @@ test "html5lib/tokenizer/test2_empty_attribute_followed_by_uppercase_attribute_4
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
-      attrs=[{ name: "a", value: "" }, { name: "b", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "b", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -1767,7 +1767,7 @@ test "html5lib/tokenizer/test2_doublequote_after_attribute_name_4797" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
-      attrs=[{ name: "a", value: "" }, { name: "\"", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "\"", value: "", }],
       self_closing=false,
     ),
     EOF,
@@ -1780,7 +1780,7 @@ test "html5lib/tokenizer/test2_singlequote_after_attribute_name_4798" {
   @debug.assert_eq(tokens, [
     StartTag(
       name="h",
-      attrs=[{ name: "a", value: "" }, { name: "'", value: "" }],
+      attrs=[{ name: "a", value: "", }, { name: "'", value: "", }],
       self_closing=false,
     ),
     EOF,
