@@ -23,7 +23,17 @@ HTML5LIB_TESTS_DIR = PROJECT_DIR / "html5lib-tests"
 TOKENIZER_TESTS_DIR = HTML5LIB_TESTS_DIR / "tokenizer"
 TREE_TESTS_DIR = HTML5LIB_TESTS_DIR / "tree-construction"
 OUTPUT_DIR = PROJECT_DIR / "src" / "conformance_tests"
+INITIAL_STATE_OUTPUT = PROJECT_DIR / "src" / "html5lib_tokenizer_states_wbtest.mbt"
 HTML5LIB_TESTS_REVISION = "85c968aca811edcb5eb6020b5b9184b2c42a86ab"
+
+INITIAL_STATE_VARIANTS = {
+    "Data state": "Data",
+    "RCDATA state": "RCDATA",
+    "RAWTEXT state": "RAWTEXT",
+    "Script data state": "ScriptData",
+    "PLAINTEXT state": "PLAINTEXT",
+    "CDATA section state": "CDATASection",
+}
 
 TOKENIZER_ERROR_CODES = {
     "abrupt-closing-of-empty-comment",
@@ -649,6 +659,95 @@ def generate_tokenizer_tests_files(tests: List[Dict[str, Any]], max_per_file: in
     return files
 
 
+def generate_initial_state_test(test: Dict[str, Any], index: int) -> List[str]:
+    """Generate white-box tests for every non-default initial-state record."""
+    initial_states = test.get('initialStates', ['Data state'])
+    if initial_states == ['Data state']:
+        return []
+
+    input_html = test.get('input', '')
+    if test.get('doubleEscaped', False):
+        try:
+            input_html = input_html.encode().decode('unicode_escape')
+        except UnicodeDecodeError:
+            return []
+    if '\x00' in input_html and len(input_html) > 100:
+        return []
+    if any(0xD800 <= ord(c) <= 0xDFFF for c in input_html):
+        return []
+
+    description = test.get('description', f'test_{index}')
+    safe_name = sanitize_test_name(description)
+    file_prefix = test.get('_file', 'unknown')
+    escaped_input = escape_moonbit_string(input_html)
+    last_start_tag = escape_moonbit_string(test.get('lastStartTag', ''))
+    tests = []
+    for initial_state in initial_states:
+        if initial_state not in INITIAL_STATE_VARIANTS:
+            raise ValueError(f"Unsupported tokenizer initial state: {initial_state}")
+        state = INITIAL_STATE_VARIANTS[initial_state]
+        state_name = sanitize_test_name(initial_state)
+        output = test.get('output', [])
+        errors = test.get('errors', [])
+        if initial_state == 'Data state':
+            output = normalize_processing_instruction_output(input_html, output)
+            errors = normalize_processing_instruction_errors(input_html, errors)
+        expected = format_expected_token_strings(output)
+        expected_errors = format_expected_error_assertions(errors, input_html)
+        test_name = (
+            f"html5lib/tokenizer-state/{file_prefix}_{safe_name}_{index}_{state_name}"
+        )
+        tests.append(f'''///|
+test "{test_name}" {{
+  let (tokens, errors) = tokenize_from_initial_state(
+    "{escaped_input}",
+    {state},
+    "{last_start_tag}",
+  )
+  @debug.assert_eq(tokens, {expected})
+{expected_errors}
+}}
+
+''')
+    return tests
+
+
+def generate_initial_state_tests_file(tests: List[Dict[str, Any]]) -> Tuple[str, int, int]:
+    """Generate tokenizer tests that need direct access to private states."""
+    output = [LICENSE_HEADER]
+    output.append('''///|
+/// Run the tokenizer from an html5lib-specified initial state.
+fn tokenize_from_initial_state(
+  input : String,
+  state : State,
+  last_start_tag : String,
+) -> (Array[Token], Array[ParseError]) {
+  let tokenizer = Tokenizer::new(input)
+  tokenizer.state = state
+  tokenizer.last_start_tag_name = last_start_tag
+  let tokens : Array[Token] = []
+  while true {
+    let token = tokenizer.next_token()
+    tokens.push(token)
+    if token is EOF {
+      break
+    }
+  }
+  (tokens, tokenizer.errors)
+}
+
+''')
+    generated = 0
+    records = 0
+    for i, test in enumerate(tests):
+        test_codes = generate_initial_state_test(test, i)
+        if test_codes:
+            records += 1
+            generated += len(test_codes)
+            output.extend(test_codes)
+    return ''.join(output), generated, records
+
+
 def load_tree_construction_tests() -> List[Dict[str, Any]]:
     """Load tree construction tests from .dat files."""
     tests = []
@@ -926,12 +1025,24 @@ def main():
         all_files.append(filepath)
         print(f"  Written: {filename}")
 
+    print("\nPhase 3: Generating tokenizer initial-state tests...")
+    state_content, state_generated, state_records = generate_initial_state_tests_file(
+        tokenizer_tests
+    )
+    INITIAL_STATE_OUTPUT.write_text(state_content, encoding='utf-8')
+    all_files.append(INITIAL_STATE_OUTPUT)
+    print(
+        f"  Generated: {state_generated} state executions "
+        f"from {state_records} records"
+    )
+    print(f"  Written: {INITIAL_STATE_OUTPUT.name}")
+
     # Generate tree construction tests
-    print("\nPhase 3: Loading tree construction tests...")
+    print("\nPhase 4: Loading tree construction tests...")
     tree_tests = load_tree_construction_tests()
     print(f"  Found {len(tree_tests)} tree construction tests")
 
-    print("\nPhase 4: Generating tree construction test files...")
+    print("\nPhase 5: Generating tree construction test files...")
     tree_files = generate_tree_tests_files(tree_tests, max_per_file=500)
     for filename, content in tree_files:
         filepath = OUTPUT_DIR / filename
@@ -940,7 +1051,7 @@ def main():
         print(f"  Written: {filename}")
 
     # Format generated files
-    print("\nPhase 5: Formatting generated files...")
+    print("\nPhase 6: Formatting generated files...")
     for f in all_files:
         try:
             subprocess.run(['moon', 'fmt', str(f)], check=True, capture_output=True)
