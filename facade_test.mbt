@@ -20,3 +20,16 @@ test "DOM insertion rejects self and ancestor cycles" {
   assert_eq(doc.get_children(div), [span])
   assert_true(doc.get_children(span).is_empty())
 }
+
+///|
+test "serializer preserves literal text element contents" {
+  for tag in ["xmp", "iframe", "noembed", "noframes", "plaintext"] {
+    let input = "<\{tag}>&amp;"
+    let doc = @html.parse(input)
+    assert_true(doc.to_html().contains("<\{tag}>&amp;</\{tag}>"))
+  }
+  let scripted = @html.parse_with_scripting("<body><noscript>&lt;b></noscript>")
+  assert_true(scripted.to_html().contains("<noscript>&lt;b></noscript>"))
+  let nonscripted = @html.parse("<body><noscript>&lt;b></noscript>")
+  assert_true(nonscripted.to_html().contains("<noscript>&lt;b&gt;</noscript>"))
+}

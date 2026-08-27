@@ -104,9 +104,11 @@ pub fn TreeBuilder::new_with_options(
   html : String,
   scripting~ : Bool,
 ) -> TreeBuilder {
+  let document = Document::new()
+  document.scripting_enabled = scripting
   {
     tokenizer: Tokenizer::new(html),
-    document: Document::new(),
+    document,
     open_elements: [],
     active_formatting: [],
     mode: Initial,

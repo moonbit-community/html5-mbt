@@ -72,6 +72,8 @@ pub struct Document {
   mut body_element : Int // The <body> element
   // Document mode (quirks, limited-quirks, no-quirks)
   mut quirks_mode : QuirksMode
+  // Scripting mode used while parsing, needed for noscript serialization.
+  mut scripting_enabled : Bool
 } derive(Debug, Eq)
 
 ///|
@@ -147,6 +149,8 @@ pub impl Show for Document with fn output(self, logger) {
   Show::output(self.body_element, logger)
   logger.write_string(", quirks_mode: ")
   Show::output(self.quirks_mode, logger)
+  logger.write_string(", scripting_enabled: ")
+  Show::output(self.scripting_enabled, logger)
   logger.write_string("}")
 }
 
@@ -159,6 +163,7 @@ pub fn Document::new() -> Document {
     head_element: NO_NODE,
     body_element: NO_NODE,
     quirks_mode: NoQuirks,
+    scripting_enabled: false,
   }
   // Add the document node as node 0
   doc.nodes.push(DocumentNode(children=[]))
@@ -543,7 +548,16 @@ fn Document::serialize_node(
             _ => ()
           }
         } else if elem.ns == HTML &&
-          (elem.tag_name == "script" || elem.tag_name == "style") {
+          (
+            elem.tag_name == "style" ||
+            elem.tag_name == "script" ||
+            elem.tag_name == "xmp" ||
+            elem.tag_name == "iframe" ||
+            elem.tag_name == "noembed" ||
+            elem.tag_name == "noframes" ||
+            elem.tag_name == "plaintext" ||
+            (elem.tag_name == "noscript" && self.scripting_enabled)
+          ) {
           // In raw text elements, keep text nodes unescaped so that
           // `parse(to_html(doc))` can roundtrip for parser-produced DOMs.
           for child_id in elem.children {
