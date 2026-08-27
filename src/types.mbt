@@ -220,6 +220,9 @@ pub(all) enum ParseErrorCode {
   InvalidFirstCharacterOfProcessingInstructionTarget
   InvalidProcessingInstructionTarget
 
+  // ===== Tree construction errors =====
+  TreeConstruction
+
   // ===== Character reference errors (8) =====
   AbsenceOfDigitsInNumericCharacterReference
   CharacterReferenceOutsideUnicodeRange
@@ -518,6 +521,7 @@ fn parse_error_code_name(code : ParseErrorCode) -> String {
     InvalidFirstCharacterOfProcessingInstructionTarget =>
       "InvalidFirstCharacterOfProcessingInstructionTarget"
     InvalidProcessingInstructionTarget => "InvalidProcessingInstructionTarget"
+    TreeConstruction => "TreeConstruction"
     AbsenceOfDigitsInNumericCharacterReference =>
       "AbsenceOfDigitsInNumericCharacterReference"
     CharacterReferenceOutsideUnicodeRange =>

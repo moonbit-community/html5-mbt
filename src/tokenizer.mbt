@@ -20,6 +20,9 @@ pub struct Tokenizer {
   mut pos : Int
   mut line : Int
   mut column : Int
+  mut last_pos : Int
+  mut last_line : Int
+  mut last_column : Int
   mut saw_eof : Bool // Track if last consume returned EOF
 
   // State machine
@@ -70,6 +73,9 @@ pub fn Tokenizer::new(input : String) -> Tokenizer {
     pos: 0,
     line: 1,
     column: 1,
+    last_pos: 0,
+    last_line: 1,
+    last_column: 1,
     saw_eof: false,
     state: Data,
     return_state: Data,
@@ -137,6 +143,9 @@ fn Tokenizer::peek_at(self : Tokenizer, offset : Int) -> Char? {
 fn Tokenizer::consume(self : Tokenizer) -> Char? {
   if self.pos < self.input.length() {
     self.saw_eof = false
+    self.last_pos = self.pos
+    self.last_line = self.line
+    self.last_column = self.column
     let mut c = self.input[self.pos]
     self.pos += 1
     // Normalize CR to LF (WHATWG preprocessing)
@@ -161,24 +170,16 @@ fn Tokenizer::consume(self : Tokenizer) -> Char? {
 }
 
 ///|
-/// Reconsume current character (go back one position)
+/// Reconsume the current preprocessed character.
 /// If we're at EOF, stay at EOF (don't go back to last char)
 fn Tokenizer::reconsume(self : Tokenizer) -> Unit {
   // If we just saw EOF, don't go back - we want to stay at EOF
   if self.saw_eof {
     return
   }
-  if self.pos > 0 {
-    self.pos -= 1
-    // Adjust line/column tracking
-    if self.input[self.pos] == '\n' {
-      self.line -= 1
-      // Column is approximate here, but rarely matters for error messages
-      self.column = 1
-    } else {
-      self.column -= 1
-    }
-  }
+  self.pos = self.last_pos
+  self.line = self.last_line
+  self.column = self.last_column
 }
 
 ///|

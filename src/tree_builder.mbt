@@ -1112,6 +1112,13 @@ fn TreeBuilder::insert_doctype(
 ///|
 /// Emit a parse error
 fn TreeBuilder::emit_error(self : TreeBuilder, code : ParseErrorCode) -> Unit {
+  // Insertion modes historically used a tokenizer-only error as their generic
+  // parse-error marker. Keep the call sites compact while exposing an accurate
+  // tree-construction diagnostic to callers.
+  let code = match code {
+    UnexpectedCharacterInUnquotedAttributeValue => TreeConstruction
+    _ => code
+  }
   self.errors.push({ code, position: self.tokenizer.get_position(), })
 }
 

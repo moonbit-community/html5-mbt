@@ -81,3 +81,25 @@ test "processing instructions follow current WHATWG syntax" {
     invalid_errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
   )
 }
+
+///|
+test "parse diagnostics preserve positions and error domains" {
+  let (_, cr_errors) = @html.tokenize("&foo\r<")
+  let cr_error = cr_errors[cr_errors.length() - 1]
+  assert_true(cr_error.code is EofBeforeTagName)
+  assert_eq(cr_error.position.line, 2)
+  assert_eq(cr_error.position.column, 2)
+  assert_eq(cr_error.position.offset, 6)
+  let (_, crlf_errors) = @html.tokenize("&foo\r\n<")
+  let crlf_error = crlf_errors[crlf_errors.length() - 1]
+  assert_true(crlf_error.code is EofBeforeTagName)
+  assert_eq(crlf_error.position.line, 2)
+  assert_eq(crlf_error.position.column, 2)
+  assert_eq(crlf_error.position.offset, 7)
+  let (_, tree_errors) = @html.parse_with_errors("<p>ok</p>")
+  assert_true(tree_errors[0].code is TreeConstruction)
+  let (_, tokenizer_errors) = @html.tokenize("<p x=<>")
+  assert_true(
+    tokenizer_errors[0].code is UnexpectedCharacterInUnquotedAttributeValue,
+  )
+}

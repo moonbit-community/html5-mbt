@@ -171,6 +171,7 @@ pub(all) enum ParseErrorCode {
   EofInProcessingInstruction
   InvalidFirstCharacterOfProcessingInstructionTarget
   InvalidProcessingInstructionTarget
+  TreeConstruction
   AbsenceOfDigitsInNumericCharacterReference
   CharacterReferenceOutsideUnicodeRange
   ControlCharacterReference
@@ -248,6 +249,9 @@ pub struct Tokenizer {
   mut pos : Int
   mut line : Int
   mut column : Int
+  mut last_pos : Int
+  mut last_line : Int
+  mut last_column : Int
   mut saw_eof : Bool
   mut state : State
   mut return_state : State
