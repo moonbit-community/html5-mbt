@@ -23,6 +23,7 @@ HTML5LIB_TESTS_DIR = PROJECT_DIR / "html5lib-tests"
 TOKENIZER_TESTS_DIR = HTML5LIB_TESTS_DIR / "tokenizer"
 TREE_TESTS_DIR = HTML5LIB_TESTS_DIR / "tree-construction"
 OUTPUT_DIR = PROJECT_DIR / "src" / "conformance_tests"
+HTML5LIB_TESTS_REVISION = "85c968aca811edcb5eb6020b5b9184b2c42a86ab"
 
 LICENSE_HEADER = """// ============================================================================
 // AUTO-GENERATED FILE - DO NOT MODIFY MANUALLY
@@ -191,17 +192,26 @@ def sanitize_test_name(name: str) -> str:
 
 
 def clone_html5lib_tests():
-    """Clone the html5lib-tests repository if not present."""
+    """Clone html5lib-tests and select the revision used by this repository."""
     if not HTML5LIB_TESTS_DIR.exists():
         print("Cloning html5lib-tests repository...")
         subprocess.run([
-            'git', 'clone', '--depth', '1',
+            'git', 'clone', '--no-checkout',
             'https://github.com/html5lib/html5lib-tests.git',
             str(HTML5LIB_TESTS_DIR)
         ], check=True)
         print("Done.")
     else:
         print(f"Using existing html5lib-tests at {HTML5LIB_TESTS_DIR}")
+
+    subprocess.run([
+        'git', '-C', str(HTML5LIB_TESTS_DIR), 'fetch', '--depth', '1',
+        'origin', HTML5LIB_TESTS_REVISION
+    ], check=True)
+    subprocess.run([
+        'git', '-C', str(HTML5LIB_TESTS_DIR), 'checkout', '--detach',
+        HTML5LIB_TESTS_REVISION
+    ], check=True)
 
 
 def load_tokenizer_tests() -> List[Dict[str, Any]]:
@@ -231,6 +241,66 @@ def decode_html5lib_escapes(s: str) -> str:
         code = int(m.group(1), 16)
         return chr(code)
     return re.sub(r'\\u([0-9A-Fa-f]{4})', replace_escape, s)
+
+
+def normalize_processing_instruction_output(input_html: str, output: List) -> List:
+    """Update legacy html5lib expectations to the current WHATWG PI rules.
+
+    The pinned html5lib snapshot predates HTML processing instruction tokens.
+    Only its data-state tests beginning with ``<?`` need reinterpretation.
+    """
+    if not input_html.startswith("<?"):
+        return output
+
+    source = input_html.replace('\r\n', '\n').replace('\r', '\n')
+    i = 2
+    if i == len(source):
+        return []
+
+    first = source[i]
+    if not (first.isascii() and (first.isalpha() or first == '_')):
+        data = "?"
+        while i < len(source) and source[i] != '>':
+            data += '\uFFFD' if source[i] == '\0' else source[i]
+            i += 1
+        return [["Comment", data]]
+
+    target = ""
+    while i < len(source):
+        c = source[i]
+        if c.isascii() and (c.isalnum() or c in '-_'):
+            target += c
+            i += 1
+        else:
+            break
+    if i == len(source):
+        return []
+
+    if source[i] not in '\t\n\f ?>':
+        data = "?" + target
+        while i < len(source) and source[i] != '>':
+            data += '\uFFFD' if source[i] == '\0' else source[i]
+            i += 1
+        return [["Comment", data]]
+
+    if target.lower() in ("xml", "xml-stylesheet"):
+        data = "?" + target
+        while i < len(source) and source[i] != '>':
+            data += '\uFFFD' if source[i] == '\0' else source[i]
+            i += 1
+        return [["Comment", data]]
+
+    while i < len(source) and source[i] in '\t\n\f ':
+        i += 1
+    data = ""
+    while i < len(source):
+        if source[i] == '>':
+            return [["ProcessingInstruction", target, data]]
+        if source[i] == '?' and i + 1 < len(source) and source[i + 1] == '>':
+            return [["ProcessingInstruction", target, data]]
+        data += source[i]
+        i += 1
+    return []
 
 
 def format_expected_token_strings(output: List) -> str:
@@ -282,6 +352,14 @@ def format_expected_token_strings(output: List) -> str:
                 data = decode_html5lib_escapes(data)
                 tokens.append(f'Comment("{escape_moonbit_string(data)}")')
 
+            elif token_type == "ProcessingInstruction":
+                target = item[1] if len(item) > 1 else ""
+                data = item[2] if len(item) > 2 else ""
+                tokens.append(
+                    f'ProcessingInstruction(target="{escape_moonbit_string(target)}", '
+                    f'data="{escape_moonbit_string(data)}")'
+                )
+
             elif token_type == "Character":
                 data = item[1] if len(item) > 1 else ""
                 data = decode_html5lib_escapes(data)
@@ -324,6 +402,7 @@ def generate_tokenizer_test(test: Dict[str, Any], index: int) -> Optional[str]:
     test_name = f"html5lib/tokenizer/{file_prefix}_{safe_name}_{index}"
 
     escaped_input = escape_moonbit_string(input_html)
+    output = normalize_processing_instruction_output(input_html, output)
     expected = format_expected_token_strings(output)
 
     return f'''///|
@@ -451,6 +530,26 @@ def normalize_expected_tree(tree: str) -> str:
     return '\n'.join(lines)
 
 
+def normalize_processing_instruction_tree(input_html: str, tree: str) -> str:
+    """Update legacy tree fixtures affected by HTML PI tokenization."""
+    output = normalize_processing_instruction_output(input_html, [])
+    if output and output[0][0] != "ProcessingInstruction":
+        return tree
+
+    lines = tree.split('\n')
+    for i, line in enumerate(lines):
+        marker = line.find("<!-- ?")
+        if marker < 0:
+            continue
+        if not output:
+            del lines[i]
+        else:
+            _, target, data = output[0]
+            lines[i] = line[:marker] + f"<?{target} {data}?>"
+        return '\n'.join(lines)
+    return tree
+
+
 def format_multiline_string(s: str) -> str:
     """Format a string as MoonBit multi-line string with #| prefix.
 
@@ -518,6 +617,7 @@ def generate_tree_test(test: Dict[str, Any], index: int) -> Optional[List[str]]:
         return None
 
     tests = []
+    expected_tree = normalize_processing_instruction_tree(input_html, expected_tree)
     normalized_tree = normalize_expected_tree(expected_tree)
     multiline_content = format_multiline_string(normalized_tree)
 

@@ -3513,7 +3513,7 @@ test "html5lib/tokenizer/test3__5960" {
 ///|
 test "html5lib/tokenizer/test3__5961" {
   let (tokens, _) = @html.tokenize("<?")
-  @debug.assert_eq(tokens, [Comment("?"), EOF])
+  @debug.assert_eq(tokens, [EOF])
 }
 
 ///|
@@ -3645,25 +3645,25 @@ test "html5lib/tokenizer/test3__5982" {
 ///|
 test "html5lib/tokenizer/test3_a_5983" {
   let (tokens, _) = @html.tokenize("<?A")
-  @debug.assert_eq(tokens, [Comment("?A"), EOF])
+  @debug.assert_eq(tokens, [EOF])
 }
 
 ///|
 test "html5lib/tokenizer/test3_b_5984" {
   let (tokens, _) = @html.tokenize("<?B")
-  @debug.assert_eq(tokens, [Comment("?B"), EOF])
+  @debug.assert_eq(tokens, [EOF])
 }
 
 ///|
 test "html5lib/tokenizer/test3_y_5985" {
   let (tokens, _) = @html.tokenize("<?Y")
-  @debug.assert_eq(tokens, [Comment("?Y"), EOF])
+  @debug.assert_eq(tokens, [EOF])
 }
 
 ///|
 test "html5lib/tokenizer/test3_z_5986" {
   let (tokens, _) = @html.tokenize("<?Z")
-  @debug.assert_eq(tokens, [Comment("?Z"), EOF])
+  @debug.assert_eq(tokens, [EOF])
 }
 
 ///|
@@ -3675,25 +3675,25 @@ test "html5lib/tokenizer/test3__5987" {
 ///|
 test "html5lib/tokenizer/test3_a_5988" {
   let (tokens, _) = @html.tokenize("<?a")
-  @debug.assert_eq(tokens, [Comment("?a"), EOF])
+  @debug.assert_eq(tokens, [EOF])
 }
 
 ///|
 test "html5lib/tokenizer/test3_b_5989" {
   let (tokens, _) = @html.tokenize("<?b")
-  @debug.assert_eq(tokens, [Comment("?b"), EOF])
+  @debug.assert_eq(tokens, [EOF])
 }
 
 ///|
 test "html5lib/tokenizer/test3_y_5990" {
   let (tokens, _) = @html.tokenize("<?y")
-  @debug.assert_eq(tokens, [Comment("?y"), EOF])
+  @debug.assert_eq(tokens, [EOF])
 }
 
 ///|
 test "html5lib/tokenizer/test3_z_5991" {
   let (tokens, _) = @html.tokenize("<?z")
-  @debug.assert_eq(tokens, [Comment("?z"), EOF])
+  @debug.assert_eq(tokens, [EOF])
 }
 
 ///|

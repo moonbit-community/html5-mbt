@@ -465,6 +465,13 @@ fn TreeBuilder::determine_quirks_mode(
 /// Process a token in the current insertion mode
 /// Returns true if the token should be reprocessed
 fn TreeBuilder::process_token(self : TreeBuilder, token : Token) -> Bool {
+  match token {
+    ProcessingInstruction(target~, data~) => {
+      self.insert_processing_instruction(target, data)
+      return false
+    }
+    _ => ()
+  }
   // Check for foreign content processing
   if self.should_process_in_foreign_content(token) {
     return self.process_in_foreign_content(token)
@@ -1060,6 +1067,25 @@ fn TreeBuilder::insert_comment_at_document(
 ) -> Unit {
   let node_id = self.document.add_node(CommentNode(text))
   self.document.append_child(0, node_id)
+}
+
+///|
+/// Insert a processing instruction at the mode-appropriate location.
+fn TreeBuilder::insert_processing_instruction(
+  self : TreeBuilder,
+  target : String,
+  data : String,
+) -> Unit {
+  let node_id = self.document.add_node(
+    ProcessingInstructionNode(target~, data~),
+  )
+  match self.mode {
+    AfterBody | AfterFrameset if !self.open_elements.is_empty() =>
+      self.document.append_child(self.open_elements[0].node_id, node_id)
+    AfterAfterBody | AfterAfterFrameset =>
+      self.document.append_child(0, node_id)
+    _ => self.insert_node(node_id)
+  }
 }
 
 ///|

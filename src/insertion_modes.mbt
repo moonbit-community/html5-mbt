@@ -111,6 +111,10 @@ fn TreeBuilder::process_before_head_mode(
       self.insert_comment(text)
       false
     }
+    ProcessingInstruction(target~, data~) => {
+      self.insert_processing_instruction(target, data)
+      false
+    }
     DOCTYPE(_) => {
       self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
       false
@@ -155,6 +159,10 @@ fn TreeBuilder::process_in_head_mode(self : TreeBuilder, token : Token) -> Bool 
     }
     Comment(text) => {
       self.insert_comment(text)
+      false
+    }
+    ProcessingInstruction(target~, data~) => {
+      self.insert_processing_instruction(target, data)
       false
     }
     DOCTYPE(_) => {
@@ -390,6 +398,10 @@ fn TreeBuilder::process_in_body_mode(self : TreeBuilder, token : Token) -> Bool 
     }
     Comment(text) => {
       self.insert_comment(text)
+      false
+    }
+    ProcessingInstruction(target~, data~) => {
+      self.insert_processing_instruction(target, data)
       false
     }
     DOCTYPE(_) => {
@@ -1703,6 +1715,10 @@ fn TreeBuilder::process_in_select_mode(
       self.insert_comment(text)
       false
     }
+    ProcessingInstruction(target~, data~) => {
+      self.insert_processing_instruction(target, data)
+      false
+    }
     DOCTYPE(_) => {
       self.emit_error(UnexpectedCharacterInUnquotedAttributeValue)
       false
@@ -1929,7 +1945,8 @@ fn TreeBuilder::process_in_template_mode(
   token : Token,
 ) -> Bool {
   match token {
-    Character(_) | Comment(_) | DOCTYPE(_) => self.process_in_body_mode(token)
+    Character(_) | Comment(_) | ProcessingInstruction(_) | DOCTYPE(_) =>
+      self.process_in_body_mode(token)
     StartTag(name~, ..) if name == "base" ||
       name == "basefont" ||
       name == "bgsound" ||

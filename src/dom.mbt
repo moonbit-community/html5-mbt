@@ -57,6 +57,7 @@ pub enum Node {
   ElementNode(Element)
   TextNode(String)
   CommentNode(String)
+  ProcessingInstructionNode(target~ : String, data~ : String)
   DocumentTypeNode(name~ : String, public_id~ : String, system_id~ : String)
   DocumentNode(children~ : Array[Int])
   DocumentFragmentNode(children~ : Array[Int])
@@ -114,6 +115,13 @@ pub impl Show for Node with fn output(self, logger) {
     CommentNode(text) => {
       logger.write_string("CommentNode(")
       Show::output(text, logger)
+      logger.write_string(")")
+    }
+    ProcessingInstructionNode(target~, data~) => {
+      logger.write_string("ProcessingInstructionNode(target=")
+      Show::output(target, logger)
+      logger.write_string(", data=")
+      Show::output(data, logger)
       logger.write_string(")")
     }
     DocumentTypeNode(name~, public_id~, system_id~) => {
@@ -565,6 +573,13 @@ fn Document::serialize_node(
       buf.write_string(text)
       buf.write_string("-->")
     }
+    Some(ProcessingInstructionNode(target~, data~)) => {
+      buf.write_string("<?")
+      buf.write_string(target)
+      buf.write_string(" ")
+      buf.write_string(data)
+      buf.write_string("?>")
+    }
     Some(ElementNode(elem)) => {
       buf.write_string("<")
       buf.write_string(elem.tag_name)
@@ -731,6 +746,14 @@ fn Document::dump_node(
       buf.write_string("<!-- ")
       buf.write_string(text)
       buf.write_string(" -->\n")
+    }
+    Some(ProcessingInstructionNode(target~, data~)) => {
+      buf.write_string(indent)
+      buf.write_string("<?")
+      buf.write_string(target)
+      buf.write_string(" ")
+      buf.write_string(data)
+      buf.write_string("?>\n")
     }
     Some(TextNode(text)) => {
       buf.write_string(indent)

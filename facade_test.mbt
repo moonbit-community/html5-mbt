@@ -60,3 +60,24 @@ test "DOM mutation preserves parent-child consistency" {
   assert_true(doc.get_children(fragment).is_empty())
   assert_eq(doc.get_parent(fragment_child), @html.NO_NODE)
 }
+
+///|
+test "processing instructions follow current WHATWG syntax" {
+  let (tokens, errors) = @html.tokenize("<?foo bar?>")
+  assert_true(errors.is_empty())
+  assert_true(tokens is [ProcessingInstruction(target="foo", data="bar"), EOF])
+  let doc = @html.parse("<!doctype html><?foo bar?>")
+  assert_true(doc.dump().contains("<?foo bar?>"))
+  assert_true(doc.to_html().contains("<?foo bar?>"))
+  let (xml_tokens, xml_errors) = @html.tokenize("<?xml version='1.0'?>")
+  assert_true(xml_tokens[0] is Comment("?xml version='1.0'?"))
+  assert_true(xml_errors[0].code is DisallowedProcessingInstructionTarget)
+  let (unfinished_tokens, unfinished_errors) = @html.tokenize("<?marker")
+  assert_true(unfinished_tokens is [EOF])
+  assert_true(unfinished_errors[0].code is EofInProcessingInstruction)
+  let (invalid_tokens, invalid_errors) = @html.tokenize("<?#data>")
+  assert_true(invalid_tokens is [Comment("?#data"), EOF])
+  assert_true(
+    invalid_errors[0].code is InvalidFirstCharacterOfProcessingInstructionTarget,
+  )
+}

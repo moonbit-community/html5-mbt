@@ -108,6 +108,7 @@ pub enum Node {
   ElementNode(Element)
   TextNode(String)
   CommentNode(String)
+  ProcessingInstructionNode(target~ : String, data~ : String)
   DocumentTypeNode(name~ : String, public_id~ : String, system_id~ : String)
   DocumentNode(children~ : Array[Int])
   DocumentFragmentNode(children~ : Array[Int])
@@ -166,6 +167,10 @@ pub(all) enum ParseErrorCode {
   UnexpectedNullCharacter
   UnexpectedQuestionMarkInsteadOfTagName
   UnexpectedSolidusInTag
+  DisallowedProcessingInstructionTarget
+  EofInProcessingInstruction
+  InvalidFirstCharacterOfProcessingInstructionTarget
+  InvalidProcessingInstructionTarget
   AbsenceOfDigitsInNumericCharacterReference
   CharacterReferenceOutsideUnicodeRange
   ControlCharacterReference
@@ -228,6 +233,7 @@ pub(all) enum Token {
   EndTag(name~ : String)
   Character(Char)
   Comment(String)
+  ProcessingInstruction(target~ : String, data~ : String)
   EOF
 } derive(Eq, @debug.Debug)
 pub fn Token::equal(Self, Self) -> Bool
@@ -253,6 +259,8 @@ pub struct Tokenizer {
   current_attr_name : StringBuilder
   current_attr_value : StringBuilder
   current_comment : StringBuilder
+  current_pi_target : StringBuilder
+  current_pi_data : StringBuilder
   current_doctype_name : StringBuilder
   current_doctype_public_id : StringBuilder
   current_doctype_system_id : StringBuilder

@@ -1558,7 +1558,6 @@ test "html5lib/tree/tests1_687" {
 test "html5lib/tree/tests1_688" {
   let doc = @html.parse("<?")
   let expected =
-    #|<!-- ? -->
     #|<html>
     #|  <head>
     #|  <body>
@@ -1602,7 +1601,7 @@ test "html5lib/tree/tests1_691" {
 test "html5lib/tree/tests1_692" {
   let doc = @html.parse("<?COMMENT?>")
   let expected =
-    #|<!-- ?COMMENT? -->
+    #|<?COMMENT ?>
     #|<html>
     #|  <head>
     #|  <body>
@@ -1635,7 +1634,7 @@ test "html5lib/tree/tests1_694" {
 test "html5lib/tree/tests1_695" {
   let doc = @html.parse("<?COM--MENT?>")
   let expected =
-    #|<!-- ?COM--MENT? -->
+    #|<?COM--MENT ?>
     #|<html>
     #|  <head>
     #|  <body>

@@ -122,10 +122,8 @@ fn Tokenizer::run_tag_open_state(self : Tokenizer) -> Token? {
       None
     }
     Some('?') => {
-      self.emit_error(UnexpectedQuestionMarkInsteadOfTagName)
-      self.reset_comment()
-      self.reconsume()
-      self.state = BogusComment
+      self.temp_buffer.reset()
+      self.state = ProcessingInstructionOpen
       None
     }
     Some(_) => {

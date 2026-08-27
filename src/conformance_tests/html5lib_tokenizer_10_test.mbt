@@ -1688,13 +1688,16 @@ test "html5lib/tokenizer/test2_illegal_end_tag_name_4788" {
 ///|
 test "html5lib/tokenizer/test2_simili_processing_instruction_4789" {
   let (tokens, _) = @html.tokenize("<?namespace>")
-  @debug.assert_eq(tokens, [Comment("?namespace"), EOF])
+  @debug.assert_eq(tokens, [
+    ProcessingInstruction(target="namespace", data=""),
+    EOF,
+  ])
 }
 
 ///|
 test "html5lib/tokenizer/test2_a_bogus_comment_stops_at_even_if_preceded_by_two_d_4790" {
   let (tokens, _) = @html.tokenize("<?foo-->")
-  @debug.assert_eq(tokens, [Comment("?foo--"), EOF])
+  @debug.assert_eq(tokens, [ProcessingInstruction(target="foo--", data=""), EOF])
 }
 
 ///|

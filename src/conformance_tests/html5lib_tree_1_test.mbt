@@ -3682,7 +3682,7 @@ test "html5lib/tree/html5test-com_347" {
 test "html5lib/tree/html5test-com_348" {
   let doc = @html.parse("<?import namespace=\"foo\" implementation=\"#bar\">")
   let expected =
-    #|<!-- ?import namespace="foo" implementation="#bar" -->
+    #|<?import namespace="foo" implementation="#bar"?>
     #|<html>
     #|  <head>
     #|  <body>

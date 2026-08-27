@@ -6,9 +6,9 @@ MoonBit.
 ## Features
 
 - Browser-style recovery for malformed HTML
-- 80 tokenizer states
+- WHATWG tokenizer states, including processing instructions
 - 23 tree construction insertion modes
-- 49 parse error types with graceful recovery
+- Tokenizer and tree-construction diagnostics with graceful recovery
 - 2,231 named character references
 - **8,221/8,221 imported html5lib tests passing** (6,636 tokenizer and
   1,585 tree-construction cases)

@@ -30,6 +30,8 @@ pub(all) enum Token {
   Character(Char)
   /// Comment: <!-- text -->
   Comment(String)
+  /// Processing instruction: <?target data?>
+  ProcessingInstruction(target~ : String, data~ : String)
   /// End of file marker
   EOF
 } derive(Debug, Eq)
@@ -50,7 +52,7 @@ pub(all) struct Attribute {
 } derive(Debug, Eq)
 
 ///|
-/// All 80 WHATWG tokenizer states
+/// WHATWG tokenizer states
 enum State {
   // ===== Data states (5) =====
   Data
@@ -141,6 +143,13 @@ enum State {
   CDATASectionBracket
   CDATASectionEnd
 
+  // ===== Processing instruction states (5) =====
+  ProcessingInstructionOpen
+  ProcessingInstructionTarget
+  AfterProcessingInstructionTarget
+  ProcessingInstructionData
+  ProcessingInstructionQuestionable
+
   // ===== Character reference states (9) =====
   CharacterReference
   NamedCharacterReference
@@ -204,6 +213,12 @@ pub(all) enum ParseErrorCode {
   UnexpectedNullCharacter
   UnexpectedQuestionMarkInsteadOfTagName
   UnexpectedSolidusInTag
+
+  // ===== Processing instruction errors (4) =====
+  DisallowedProcessingInstructionTarget
+  EofInProcessingInstruction
+  InvalidFirstCharacterOfProcessingInstructionTarget
+  InvalidProcessingInstructionTarget
 
   // ===== Character reference errors (8) =====
   AbsenceOfDigitsInNumericCharacterReference
@@ -285,6 +300,13 @@ pub impl Show for Token with fn output(self, logger) {
     Comment(text) => {
       logger.write_string("Comment(")
       Show::output(text, logger)
+      logger.write_string(")")
+    }
+    ProcessingInstruction(target~, data~) => {
+      logger.write_string("ProcessingInstruction(target=")
+      Show::output(target, logger)
+      logger.write_string(", data=")
+      Show::output(data, logger)
       logger.write_string(")")
     }
     EOF => logger.write_string("EOF")
@@ -424,6 +446,11 @@ fn state_name(state : State) -> String {
     CDATASection => "CDATASection"
     CDATASectionBracket => "CDATASectionBracket"
     CDATASectionEnd => "CDATASectionEnd"
+    ProcessingInstructionOpen => "ProcessingInstructionOpen"
+    ProcessingInstructionTarget => "ProcessingInstructionTarget"
+    AfterProcessingInstructionTarget => "AfterProcessingInstructionTarget"
+    ProcessingInstructionData => "ProcessingInstructionData"
+    ProcessingInstructionQuestionable => "ProcessingInstructionQuestionable"
     CharacterReference => "CharacterReference"
     NamedCharacterReference => "NamedCharacterReference"
     AmbiguousAmpersand => "AmbiguousAmpersand"
@@ -485,6 +512,12 @@ fn parse_error_code_name(code : ParseErrorCode) -> String {
     UnexpectedQuestionMarkInsteadOfTagName =>
       "UnexpectedQuestionMarkInsteadOfTagName"
     UnexpectedSolidusInTag => "UnexpectedSolidusInTag"
+    DisallowedProcessingInstructionTarget =>
+      "DisallowedProcessingInstructionTarget"
+    EofInProcessingInstruction => "EofInProcessingInstruction"
+    InvalidFirstCharacterOfProcessingInstructionTarget =>
+      "InvalidFirstCharacterOfProcessingInstructionTarget"
+    InvalidProcessingInstructionTarget => "InvalidProcessingInstructionTarget"
     AbsenceOfDigitsInNumericCharacterReference =>
       "AbsenceOfDigitsInNumericCharacterReference"
     CharacterReferenceOutsideUnicodeRange =>

@@ -39,6 +39,8 @@ pub struct Tokenizer {
 
   // Current comment/doctype being built
   current_comment : StringBuilder
+  current_pi_target : StringBuilder
+  current_pi_data : StringBuilder
   current_doctype_name : StringBuilder
   current_doctype_public_id : StringBuilder
   current_doctype_system_id : StringBuilder
@@ -79,6 +81,8 @@ pub fn Tokenizer::new(input : String) -> Tokenizer {
     current_attr_name: StringBuilder(),
     current_attr_value: StringBuilder(),
     current_comment: StringBuilder(),
+    current_pi_target: StringBuilder(),
+    current_pi_data: StringBuilder(),
     current_doctype_name: StringBuilder(),
     current_doctype_public_id: StringBuilder(),
     current_doctype_system_id: StringBuilder(),
@@ -520,6 +524,16 @@ pub fn Tokenizer::next_token(self : Tokenizer) -> Token {
       CDATASection => self.run_cdata_section_state()
       CDATASectionBracket => self.run_cdata_section_bracket_state()
       CDATASectionEnd => self.run_cdata_section_end_state()
+
+      // Processing instruction states
+      ProcessingInstructionOpen => self.run_processing_instruction_open_state()
+      ProcessingInstructionTarget =>
+        self.run_processing_instruction_target_state()
+      AfterProcessingInstructionTarget =>
+        self.run_after_processing_instruction_target_state()
+      ProcessingInstructionData => self.run_processing_instruction_data_state()
+      ProcessingInstructionQuestionable =>
+        self.run_processing_instruction_questionable_state()
 
       // Character reference states
       CharacterReference => self.run_character_reference_state()
