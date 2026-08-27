@@ -94,6 +94,9 @@ pub impl @qc_core.Arbitrary for Document with fn arbitrary(size, rs) {
 }
 
 ///|
+pub extend Document with @qc_core.Arbitrary::{arbitrary}
+
+///|
 struct HtmlCase {
   html : String
 } derive(Debug)
@@ -109,8 +112,14 @@ pub impl @qc_core.Arbitrary for HtmlCase with fn arbitrary(size, rs) {
   let seed_doc : Document = @qc_core.Arbitrary::arbitrary(capped_size, rs)
   let base = seed_doc.to_html()
   let damaged = inject_html_noise(base, rs, capped_size)
-  HtmlCase::{ html: damaged }
+  HtmlCase::{ html: damaged, }
 }
+
+///|
+pub extend HtmlCase with @debug.Debug::{to_repr}
+
+///|
+pub extend HtmlCase with @qc_core.Arbitrary::{arbitrary}
 
 ///|
 fn clamp_size(value : Int, min : Int, max : Int) -> Int {
