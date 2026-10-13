@@ -14,7 +14,7 @@
 
 ///|
 test "tokenize simple tag" {
-  let (tokens, errors) = tokenize("<div>hello</div>")
+  let (tokens, errors) = @src.tokenize("<div>hello</div>")
   assert_true(errors.length() is 0)
   assert_true(
     tokens
@@ -34,7 +34,7 @@ test "tokenize simple tag" {
 ///|
 test "tokenize with attributes" {
   let html = "<div class=\"foo\" id=\"bar\">text</div>"
-  let (tokens, _) = tokenize(html)
+  let (tokens, _) = @src.tokenize(html)
   match tokens[0] {
     StartTag(name~, attrs~, self_closing~) => {
       assert_true(name is "div")
@@ -51,7 +51,7 @@ test "tokenize with attributes" {
 
 ///|
 test "tokenize self-closing tag" {
-  let (tokens, _) = tokenize("<br/>")
+  let (tokens, _) = @src.tokenize("<br/>")
   match tokens[0] {
     StartTag(name~, self_closing~, ..) => {
       assert_true(name is "br")
@@ -63,7 +63,7 @@ test "tokenize self-closing tag" {
 
 ///|
 test "tokenize comment" {
-  let (tokens, _) = tokenize("<!-- hello world -->")
+  let (tokens, _) = @src.tokenize("<!-- hello world -->")
   match tokens[0] {
     Comment(text) => assert_true(text is " hello world ")
     _ => fail("Expected Comment")
@@ -72,7 +72,7 @@ test "tokenize comment" {
 
 ///|
 test "tokenize DOCTYPE" {
-  let (tokens, _) = tokenize("<!DOCTYPE html>")
+  let (tokens, _) = @src.tokenize("<!DOCTYPE html>")
   match tokens[0] {
     DOCTYPE(name~, public_id~, system_id~, force_quirks~) => {
       assert_true(name is Some("html"))
@@ -86,7 +86,7 @@ test "tokenize DOCTYPE" {
 
 ///|
 test "tokenize character reference" {
-  let (tokens, _) = tokenize("&amp;&lt;&gt;")
+  let (tokens, _) = @src.tokenize("&amp;&lt;&gt;")
   // Character references emit individual characters
   let chars = tokens
     .iter()
@@ -102,7 +102,7 @@ test "tokenize character reference" {
 
 ///|
 test "tokenize numeric character reference" {
-  let (tokens, _) = tokenize("&#65;&#x41;")
+  let (tokens, _) = @src.tokenize("&#65;&#x41;")
   let chars = tokens
     .iter()
     .filter_map(fn(t) {
@@ -117,7 +117,7 @@ test "tokenize numeric character reference" {
 
 ///|
 test "error recovery - unclosed tag" {
-  let (tokens, errors) = tokenize("<div")
+  let (tokens, errors) = @src.tokenize("<div")
   // Should emit EOF with error
   assert_true((errors.length() > 0) is true)
   match tokens[tokens.length() - 1] {
@@ -128,7 +128,7 @@ test "error recovery - unclosed tag" {
 
 ///|
 test "error recovery - null character" {
-  let (tokens, errors) = tokenize("hello\u{0000}world")
+  let (tokens, errors) = @src.tokenize("hello\u{0000}world")
   // Null should be emitted as-is per WHATWG spec (tree builder ignores it)
   assert_true((errors.length() > 0) is true)
   let has_null = tokens
@@ -144,7 +144,7 @@ test "error recovery - null character" {
 
 ///|
 test "tokenize attribute with single quotes" {
-  let (tokens, _) = tokenize("<div class='foo'>")
+  let (tokens, _) = @src.tokenize("<div class='foo'>")
   match tokens[0] {
     StartTag(attrs~, ..) => assert_true(attrs[0].value is "foo")
     _ => fail("Expected StartTag")
@@ -153,7 +153,7 @@ test "tokenize attribute with single quotes" {
 
 ///|
 test "tokenize unquoted attribute" {
-  let (tokens, _) = tokenize("<div class=foo>")
+  let (tokens, _) = @src.tokenize("<div class=foo>")
   match tokens[0] {
     StartTag(attrs~, ..) => assert_true(attrs[0].value is "foo")
     _ => fail("Expected StartTag")
@@ -163,7 +163,7 @@ test "tokenize unquoted attribute" {
 ///|
 test "tokenize multiple attributes" {
   let html = "<input type=text name=field value=\"hello world\">"
-  let (tokens, _) = tokenize(html)
+  let (tokens, _) = @src.tokenize(html)
   match tokens[0] {
     StartTag(attrs~, ..) => {
       assert_true(attrs.length() is 3)
@@ -180,7 +180,7 @@ test "tokenize multiple attributes" {
 
 ///|
 test "tokenize nested comments error" {
-  let (_, errors) = tokenize("<!-- <!-- nested --> -->")
+  let (_, errors) = @src.tokenize("<!-- <!-- nested --> -->")
   // Should emit nested comment error
   let has_nested_error = errors
     .iter()

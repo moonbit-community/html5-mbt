@@ -48,7 +48,7 @@ fn TreeBuilder::push_formatting_marker(self : TreeBuilder) -> Unit {
 /// Push an element onto the active formatting list
 fn TreeBuilder::push_active_formatting(
   self : TreeBuilder,
-  node_id : Int,
+  node_id : Int32,
   tag_name : String,
   attrs : Array[Attribute],
 ) -> Unit {
@@ -177,7 +177,7 @@ fn TreeBuilder::find_formatting_element(
 /// Remove an element from the active formatting list by node id
 fn TreeBuilder::remove_from_active_formatting(
   self : TreeBuilder,
-  target_id : Int,
+  target_id : Int32,
 ) -> Unit {
   for i = self.active_formatting.length() - 1; i >= 0; i = i - 1 {
     match self.active_formatting[i] {
@@ -192,7 +192,10 @@ fn TreeBuilder::remove_from_active_formatting(
 
 ///|
 /// Check if a node is in the stack of open elements
-fn TreeBuilder::is_in_open_elements(self : TreeBuilder, node_id : Int) -> Bool {
+fn TreeBuilder::is_in_open_elements(
+  self : TreeBuilder,
+  node_id : Int32,
+) -> Bool {
   for entry in self.open_elements {
     if entry.node_id == node_id {
       return true
@@ -205,7 +208,7 @@ fn TreeBuilder::is_in_open_elements(self : TreeBuilder, node_id : Int) -> Bool {
 /// Get the formatting element entry at an index
 fn TreeBuilder::get_formatting_entry(
   self : TreeBuilder,
-  idx : Int,
+  idx : Int32,
 ) -> FormattingEntry? {
   if idx >= 0 && idx < self.active_formatting.length() {
     Some(self.active_formatting[idx])
@@ -219,7 +222,7 @@ fn TreeBuilder::get_formatting_entry(
 fn TreeBuilder::find_formatting_element_index(
   self : TreeBuilder,
   tag_name : String,
-) -> Int {
+) -> Int32 {
   for i = self.active_formatting.length() - 1; i >= 0; i = i - 1 {
     match self.active_formatting[i] {
       Marker => return -1
@@ -233,8 +236,8 @@ fn TreeBuilder::find_formatting_element_index(
 /// Find the furthest block from the formatting element
 fn TreeBuilder::find_furthest_block(
   self : TreeBuilder,
-  formatting_idx : Int,
-) -> Int {
+  formatting_idx : Int32,
+) -> Int32 {
   // Find the formatting element's position in the stack
   let formatting_entry = self.active_formatting[formatting_idx]
   let formatting_node_id = match formatting_entry {
@@ -287,8 +290,8 @@ fn TreeBuilder::find_furthest_block(
 /// Check if node_id is a DOM descendant of ancestor_id
 fn TreeBuilder::is_dom_descendant(
   self : TreeBuilder,
-  node_id : Int,
-  ancestor_id : Int,
+  node_id : Int32,
+  ancestor_id : Int32,
 ) -> Bool {
   let mut current = node_id
   while true {

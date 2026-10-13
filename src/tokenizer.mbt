@@ -17,12 +17,12 @@
 pub struct Tokenizer {
   // Input
   input : Array[Char]
-  mut pos : Int
-  mut line : Int
-  mut column : Int
-  mut last_pos : Int
-  mut last_line : Int
-  mut last_column : Int
+  mut pos : Int32
+  mut line : Int32
+  mut column : Int32
+  mut last_pos : Int32
+  mut last_line : Int32
+  mut last_column : Int32
   mut saw_eof : Bool // Track if last consume returned EOF
   input_error_reported : Array[Bool]
 
@@ -54,7 +54,7 @@ pub struct Tokenizer {
   mut current_doctype_system_id_set : Bool
 
   // Character reference
-  mut char_ref_code : Int
+  mut char_ref_code : Int32
   temp_buffer : StringBuilder
 
   // For appropriate end tag check
@@ -133,7 +133,7 @@ fn Tokenizer::peek(self : Tokenizer) -> Char? {
 
 ///|
 /// Peek at character at offset from current position
-fn Tokenizer::peek_at(self : Tokenizer, offset : Int) -> Char? {
+fn Tokenizer::peek_at(self : Tokenizer, offset : Int32) -> Char? {
   let idx = self.pos + offset
   if idx >= 0 && idx < self.input.length() {
     if offset == 0 {
@@ -181,7 +181,7 @@ fn Tokenizer::consume(self : Tokenizer) -> Char? {
 
 ///|
 /// Report preprocessing errors when a raw input character is first observed.
-fn Tokenizer::report_input_error_at(self : Tokenizer, raw_pos : Int) -> Unit {
+fn Tokenizer::report_input_error_at(self : Tokenizer, raw_pos : Int32) -> Unit {
   if self.input_error_reported[raw_pos] {
     return
   }
@@ -397,7 +397,7 @@ fn Tokenizer::is_appropriate_end_tag(self : Tokenizer) -> Bool {
 /// ASCII lowercase a character
 fn to_ascii_lower(c : Char) -> Char {
   if c >= 'A' && c <= 'Z' {
-    Int::unsafe_to_char(c.to_int() + 32)
+    Int32::unsafe_to_char(c.to_int() + 32)
   } else {
     c
   }

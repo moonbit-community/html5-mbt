@@ -43,7 +43,7 @@ enum InsertionMode {
 ///|
 /// Entry in the stack of open elements
 struct StackEntry {
-  node_id : Int
+  node_id : Int32
   tag_name : String
   ns : Namespace
 }
@@ -53,7 +53,7 @@ struct StackEntry {
 enum FormattingEntry {
   Marker
   Element(
-    node_id~ : Int,
+    node_id~ : Int32,
     tag_name~ : String,
     attributes~ : Array[(String, String)]
   )
@@ -75,9 +75,9 @@ pub struct TreeBuilder {
   // Template insertion modes stack
   template_modes : Array[InsertionMode]
   // Head element pointer
-  mut head_element : Int
+  mut head_element : Int32
   // Form element pointer
-  mut form_element : Int
+  mut form_element : Int32
   // Scripting flag (for noscript handling)
   scripting : Bool
   // Frameset-ok flag
@@ -165,7 +165,7 @@ pub fn TreeBuilder::parse(self : TreeBuilder) -> Document {
 
 ///|
 fn TreeBuilder::finalize_select_selectedcontent(self : TreeBuilder) -> Unit {
-  let mut stack : Array[Int] = [0]
+  let mut stack : Array[Int32] = [0]
   while stack.length() > 0 {
     let id = stack.remove(stack.length() - 1)
     match self.document.get_node(id) {
@@ -197,12 +197,12 @@ fn TreeBuilder::finalize_select_selectedcontent(self : TreeBuilder) -> Unit {
 ///|
 fn TreeBuilder::populate_selectedcontent_for_select(
   self : TreeBuilder,
-  select_id : Int,
+  select_id : Int32,
 ) -> Unit {
-  let mut options : Array[Int] = []
-  let mut selected_option : Int = NO_NODE
-  let mut placeholders : Array[Int] = []
-  let mut stack : Array[(Int, Bool)] = []
+  let mut options : Array[Int32] = []
+  let mut selected_option : Int32 = NO_NODE
+  let mut placeholders : Array[Int32] = []
+  let mut stack : Array[(Int32, Bool)] = []
   let root_children = self.document.get_children(select_id)
   for i = root_children.length() - 1; i >= 0; i = i - 1 {
     stack.push((root_children[i], false))
@@ -263,7 +263,7 @@ fn TreeBuilder::populate_selectedcontent_for_select(
 }
 
 ///|
-fn TreeBuilder::clear_children(self : TreeBuilder, parent_id : Int) -> Unit {
+fn TreeBuilder::clear_children(self : TreeBuilder, parent_id : Int32) -> Unit {
   let children = self.document.get_children(parent_id)
   for child_id in children {
     self.document.remove_child(parent_id, child_id)
@@ -273,8 +273,8 @@ fn TreeBuilder::clear_children(self : TreeBuilder, parent_id : Int) -> Unit {
 ///|
 fn TreeBuilder::clone_node_into(
   self : TreeBuilder,
-  src_id : Int,
-  dest_parent_id : Int,
+  src_id : Int32,
+  dest_parent_id : Int32,
 ) -> Unit {
   match self.document.get_node(src_id) {
     Some(TextNode(text)) => {
@@ -628,7 +628,7 @@ fn TreeBuilder::current_node(self : TreeBuilder) -> StackEntry {
 /// Push an element onto the stack
 fn TreeBuilder::push_element(
   self : TreeBuilder,
-  node_id : Int,
+  node_id : Int32,
   tag_name : String,
   ns : Namespace,
 ) -> Unit {
@@ -790,7 +790,7 @@ fn TreeBuilder::has_element_in_stack(
 
 ///|
 /// Remove an element from the stack by node id
-fn TreeBuilder::remove_from_stack(self : TreeBuilder, node_id : Int) -> Unit {
+fn TreeBuilder::remove_from_stack(self : TreeBuilder, node_id : Int32) -> Unit {
   for i, entry in self.open_elements {
     if entry.node_id == node_id {
       let _ = self.open_elements.remove(i)
@@ -810,7 +810,7 @@ fn TreeBuilder::insert_element_for_token(
   name : String,
   attrs : Array[Attribute],
   ns : Namespace,
-) -> Int {
+) -> Int32 {
   let attributes : Array[(String, String)] = attrs.map(fn(a) {
     (a.name, a.value)
   })
@@ -851,7 +851,7 @@ fn TreeBuilder::create_element_for_token(
   name : String,
   attrs : Array[(String, String)],
   ns : Namespace,
-) -> Int {
+) -> Int32 {
   let element = Element::new(name, ns, attrs)
   self.document.add_node(ElementNode(element))
 }
@@ -862,7 +862,7 @@ fn TreeBuilder::insert_html_element(
   self : TreeBuilder,
   name : String,
   attrs : Array[Attribute],
-) -> Int {
+) -> Int32 {
   self.insert_element_for_token(name, attrs, HTML)
 }
 
@@ -873,7 +873,7 @@ fn TreeBuilder::insert_foreign_element(
   name : String,
   attrs : Array[Attribute],
   ns : Namespace,
-) -> Int {
+) -> Int32 {
   // Adjust tag name for SVG elements
   let adjusted_name = match ns {
     SVG => adjust_svg_tag_name(name)
@@ -889,7 +889,7 @@ fn TreeBuilder::insert_foreign_element(
 
 ///|
 /// Insert a node at the appropriate insertion location
-fn TreeBuilder::insert_node(self : TreeBuilder, node_id : Int) -> Unit {
+fn TreeBuilder::insert_node(self : TreeBuilder, node_id : Int32) -> Unit {
   if self.foster_parenting && self.is_foster_parenting_required() {
     self.insert_node_foster_parenting(node_id)
   } else {
@@ -900,7 +900,7 @@ fn TreeBuilder::insert_node(self : TreeBuilder, node_id : Int) -> Unit {
 
 ///|
 /// Get the appropriate insertion point
-fn TreeBuilder::appropriate_insertion_point(self : TreeBuilder) -> Int {
+fn TreeBuilder::appropriate_insertion_point(self : TreeBuilder) -> Int32 {
   if self.open_elements.is_empty() {
     // Insert into document
     0
@@ -940,7 +940,7 @@ fn TreeBuilder::is_foster_parenting_required(self : TreeBuilder) -> Bool {
 /// Insert a node using foster parenting (WHATWG 13.2.6.1)
 fn TreeBuilder::insert_node_foster_parenting(
   self : TreeBuilder,
-  node_id : Int,
+  node_id : Int32,
 ) -> Unit {
   let (parent_id, insert_before) = self.get_foster_parent_location()
   if insert_before != NO_NODE {
@@ -953,7 +953,9 @@ fn TreeBuilder::insert_node_foster_parenting(
 ///|
 /// Get the foster parenting insertion location (WHATWG 13.2.6.1)
 /// Returns (parent_id, insert_before_id) where insert_before_id is NO_NODE for append
-fn TreeBuilder::get_foster_parent_location(self : TreeBuilder) -> (Int, Int) {
+fn TreeBuilder::get_foster_parent_location(
+  self : TreeBuilder,
+) -> (Int32, Int32) {
   // Find last template and last table in the stack
   let mut last_template_idx = -1
   let mut last_table_idx = -1
