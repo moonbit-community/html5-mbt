@@ -75,7 +75,7 @@ fn Tokenizer::run_named_character_reference_state(self : Tokenizer) -> Token? {
       // Clear temp buffer and emit codepoints
       self.temp_buffer.reset()
       for cp in codepoints {
-        self.emit_char_to_current_context(Int::unsafe_to_char(cp))
+        self.emit_char_to_current_context(Int32::unsafe_to_char(cp))
       }
       self.state = self.return_state
       None
@@ -266,14 +266,14 @@ fn Tokenizer::run_numeric_character_reference_end_state(
     '\u{FFFD}'
   } else if is_noncharacter(code) {
     self.emit_error_at_next_position(NoncharacterCharacterReference)
-    Int::unsafe_to_char(code)
+    Int32::unsafe_to_char(code)
   } else if code == 0x0D ||
     (is_control_char(code) && !is_ascii_whitespace_code(code)) {
     self.emit_error_at_next_position(ControlCharacterReference)
     // Apply Windows-1252 remapping for 0x80-0x9F
     remap_windows_1252(code)
   } else {
-    Int::unsafe_to_char(code)
+    Int32::unsafe_to_char(code)
   }
   self.temp_buffer.reset()
   self.emit_char_to_current_context(final_char)
@@ -306,7 +306,7 @@ fn Tokenizer::emit_char_to_current_context(self : Tokenizer, c : Char) -> Unit {
 
 ///|
 /// Check if code point is a noncharacter
-fn is_noncharacter(code : Int) -> Bool {
+fn is_noncharacter(code : Int32) -> Bool {
   (code >= 0xFDD0 && code <= 0xFDEF) ||
   (code & 0xFFFF) == 0xFFFE ||
   (code & 0xFFFF) == 0xFFFF
@@ -314,39 +314,41 @@ fn is_noncharacter(code : Int) -> Bool {
 
 ///|
 /// Check if code point is a control character
-fn is_control_char(code : Int) -> Bool {
+fn is_control_char(code : Int32) -> Bool {
   (code >= 0x00 && code <= 0x1F) || (code >= 0x7F && code <= 0x9F)
 }
 
 ///|
 /// Check if code point is ASCII whitespace
-fn is_ascii_whitespace_code(code : Int) -> Bool {
+fn is_ascii_whitespace_code(code : Int32) -> Bool {
   code == 0x09 || code == 0x0A || code == 0x0C || code == 0x0D || code == 0x20
 }
 
 ///|
 /// Windows-1252 remapping for control characters 0x80-0x9F
-fn remap_windows_1252(code : Int) -> Char {
+fn remap_windows_1252(code : Int32) -> Char {
   if code >= 0x80 && code <= 0x9F {
-    let table : FixedArray[Int] = [
+    let table : FixedArray[Int32] = [
       0x20AC, 0x0081, 0x201A, 0x0192, 0x201E, 0x2026, 0x2020, 0x2021, 0x02C6, 0x2030,
       0x0160, 0x2039, 0x0152, 0x008D, 0x017D, 0x008F, 0x0090, 0x2018, 0x2019, 0x201C,
       0x201D, 0x2022, 0x2013, 0x2014, 0x02DC, 0x2122, 0x0161, 0x203A, 0x0153, 0x009D,
       0x017E, 0x0178,
     ]
-    Int::unsafe_to_char(table[code - 0x80])
+    Int32::unsafe_to_char(table[code - 0x80])
   } else {
-    Int::unsafe_to_char(code)
+    Int32::unsafe_to_char(code)
   }
 }
 
 ///|
 /// Try to match a named character reference
 /// Returns (entity_name, codepoints) if found
-fn Tokenizer::try_match_named_entity(self : Tokenizer) -> (String, Array[Int])? {
+fn Tokenizer::try_match_named_entity(
+  self : Tokenizer,
+) -> (String, Array[Int32])? {
   // Build up the entity name character by character
   let name_buf = StringBuilder()
-  let mut best_match : (String, Array[Int])? = None
+  let mut best_match : (String, Array[Int32])? = None
   let mut consumed = 0
   while true {
     match self.peek_at(consumed) {

@@ -165,9 +165,9 @@ enum State {
 ///|
 /// Source position for error reporting
 pub struct SourcePosition {
-  line : Int
-  column : Int
-  offset : Int
+  line : Int32
+  column : Int32
+  offset : Int32
 } derive(Debug, Eq)
 
 ///|

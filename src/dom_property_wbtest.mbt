@@ -17,7 +17,7 @@
 /// skeleton and then sprinkles small random elements, text, and comments while
 /// keeping parent/child pointers consistent (including template content
 /// fragments).
-impl @qc_core.Arbitrary for Document with fn arbitrary(size, rs) {
+impl @qc.Arbitrary for Document with fn arbitrary(size, rs) {
   let capped_size = clamp_size(size, 0, 24)
   // Base of: document node + optional doctype + html/head/body
   let target_nodes = 5 + capped_size
@@ -48,7 +48,7 @@ impl @qc_core.Arbitrary for Document with fn arbitrary(size, rs) {
   doc.append_child(html_id, body_id)
 
   // Grow the tree breadth-first from head/body and any template fragments
-  let mut parents : Array[Int] = [body_id, head_id]
+  let mut parents : Array[Int32] = [body_id, head_id]
   while doc.nodes.length() < target_nodes && parents.length() > 0 {
     let parent_idx = rs.next_positive_int() % parents.length()
     let parent_id = parents[parent_idx]
@@ -103,9 +103,9 @@ struct HtmlCase {
 ///
 /// This keeps test inputs close to what the serializer emits while still
 /// exercising the parser on malformed/odd HTML.
-impl @qc_core.Arbitrary for HtmlCase with fn arbitrary(size, rs) {
+impl @qc.Arbitrary for HtmlCase with fn arbitrary(size, rs) {
   let capped_size = clamp_size(size, 0, 24)
-  let seed_doc : Document = @qc_core.Arbitrary::arbitrary(capped_size, rs)
+  let seed_doc : Document = @qc.Arbitrary::arbitrary(capped_size, rs)
   let base = seed_doc.to_html()
   let damaged = inject_html_noise(base, rs, capped_size)
   HtmlCase::{ html: damaged, }
@@ -115,7 +115,7 @@ impl @qc_core.Arbitrary for HtmlCase with fn arbitrary(size, rs) {
 pub extend HtmlCase with @debug.Debug::{to_repr}
 
 ///|
-fn clamp_size(value : Int, min : Int, max : Int) -> Int {
+fn clamp_size(value : Int32, min : Int32, max : Int32) -> Int32 {
   if value < min {
     min
   } else if value > max {
@@ -128,9 +128,9 @@ fn clamp_size(value : Int, min : Int, max : Int) -> Int {
 ///|
 fn random_length(
   rs : @splitmix.RandomState,
-  min_len : Int,
-  max_len : Int,
-) -> Int {
+  min_len : Int32,
+  max_len : Int32,
+) -> Int32 {
   if max_len <= min_len {
     min_len
   } else {
@@ -147,8 +147,8 @@ fn[T] pick_from_array(choices : Array[T], rs : @splitmix.RandomState) -> T {
 ///|
 fn random_ascii_word(
   rs : @splitmix.RandomState,
-  min_len : Int,
-  max_len : Int,
+  min_len : Int32,
+  max_len : Int32,
 ) -> String {
   let alphabet : Array[Char] = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
@@ -166,7 +166,7 @@ fn random_ascii_word(
 }
 
 ///|
-fn random_text(rs : @splitmix.RandomState, size_hint : Int) -> String {
+fn random_text(rs : @splitmix.RandomState, size_hint : Int32) -> String {
   let text_chars : Array[Char] = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
     'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F',
@@ -184,7 +184,7 @@ fn random_text(rs : @splitmix.RandomState, size_hint : Int) -> String {
 }
 
 ///|
-fn random_comment(rs : @splitmix.RandomState, size_hint : Int) -> String {
+fn random_comment(rs : @splitmix.RandomState, size_hint : Int32) -> String {
   random_text(rs, size_hint)
 }
 
@@ -230,7 +230,7 @@ fn random_tag_name(
 ///|
 fn random_attributes(
   rs : @splitmix.RandomState,
-  size_hint : Int,
+  size_hint : Int32,
 ) -> Array[(String, String)] {
   let max_attrs = clamp_size(size_hint, 0, 4)
   let count = rs.next_positive_int() % (max_attrs + 1)
@@ -243,7 +243,7 @@ fn random_attributes(
 }
 
 ///|
-fn maybe_doctype_id(rs : @splitmix.RandomState, size_hint : Int) -> String {
+fn maybe_doctype_id(rs : @splitmix.RandomState, size_hint : Int32) -> String {
   if rs.next_double() < 0.3 {
     random_ascii_word(rs, 3, clamp_size(size_hint + 4, 4, 12))
   } else {
@@ -305,7 +305,7 @@ fn is_serializer_text_element(tag : String) -> Bool {
 fn inject_html_noise(
   base : String,
   rs : @splitmix.RandomState,
-  size_hint : Int,
+  size_hint : Int32,
 ) -> String {
   let mut budget = clamp_size(size_hint, 0, 16)
   let buf = StringBuilder()
@@ -340,7 +340,7 @@ fn inject_html_noise(
 }
 
 ///|
-fn random_noise_piece(rs : @splitmix.RandomState, size_hint : Int) -> String {
+fn random_noise_piece(rs : @splitmix.RandomState, size_hint : Int32) -> String {
   let ws_choices : Array[String] = [" ", "\n", "\t", "\n  "]
   let stray_end_tags : Array[String] = [
     "div", "p", "span", "body", "head", "html", "svg", "math", "template",
@@ -357,9 +357,9 @@ fn random_noise_piece(rs : @splitmix.RandomState, size_hint : Int) -> String {
 
 ///|
 test "random html 0" {
-  let html : HtmlCase = @qc_core.Arbitrary::arbitrary(
+  let html : HtmlCase = @qc.Arbitrary::arbitrary(
     10,
-    @splitmix.new(seed=42),
+    @splitmix.RandomState(seed=42),
   )
   assert_true(
     html.html
@@ -372,7 +372,7 @@ impl @qc.Shrink for HtmlCase
 
 ///|
 test "property roundtrip parse(to_html(parse(html))) = parse(html)" {
-  @qc.quick_check_fn(
+  @qc.check(
     (h : HtmlCase) => {
       let doc = parse(h.html)
       let roundtrip = parse(doc.to_html())
@@ -392,13 +392,13 @@ test "property roundtrip parse(to_html(parse(html))) = parse(html)" {
         true
       }
     },
-    max_success=2000,
+    count=2000,
   )
 }
 
 ///|
 test "property canonical html stabilizes" {
-  @qc.quick_check_fn(
+  @qc.check(
     (h : HtmlCase) => {
       let html1 = parse(h.html).to_html()
       let html2 = parse(html1).to_html()
@@ -412,6 +412,6 @@ test "property canonical html stabilizes" {
         true
       }
     },
-    max_success=2000,
+    count=2000,
   )
 }

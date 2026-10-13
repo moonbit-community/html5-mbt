@@ -14,13 +14,13 @@
 
 ///|
 struct DomModel {
-  parents : Array[Int]
-  children : Array[Array[Int]]
+  parents : Array[Int32]
+  children : Array[Array[Int32]]
   containers : Array[Bool]
 }
 
 ///|
-fn remove_model_child(children : Array[Int], child_id : Int) -> Unit {
+fn remove_model_child(children : Array[Int32], child_id : Int32) -> Unit {
   for i, id in children {
     if id == child_id {
       let _ = children.remove(i)
@@ -32,8 +32,8 @@ fn remove_model_child(children : Array[Int], child_id : Int) -> Unit {
 ///|
 fn DomModel::would_create_cycle(
   self : DomModel,
-  parent_id : Int,
-  child_id : Int,
+  parent_id : Int32,
+  child_id : Int32,
 ) -> Bool {
   if parent_id < 0 ||
     parent_id >= self.parents.length() ||
@@ -53,7 +53,7 @@ fn DomModel::would_create_cycle(
 }
 
 ///|
-fn DomModel::detach(self : DomModel, child_id : Int) -> Unit {
+fn DomModel::detach(self : DomModel, child_id : Int32) -> Unit {
   let old_parent = self.parents[child_id]
   if old_parent != NO_NODE {
     remove_model_child(self.children[old_parent], child_id)
@@ -63,8 +63,8 @@ fn DomModel::detach(self : DomModel, child_id : Int) -> Unit {
 ///|
 fn DomModel::append_child(
   self : DomModel,
-  parent_id : Int,
-  child_id : Int,
+  parent_id : Int32,
+  child_id : Int32,
 ) -> Unit {
   if self.would_create_cycle(parent_id, child_id) {
     return
@@ -77,9 +77,9 @@ fn DomModel::append_child(
 ///|
 fn DomModel::insert_before(
   self : DomModel,
-  parent_id : Int,
-  child_id : Int,
-  reference_id : Int,
+  parent_id : Int32,
+  child_id : Int32,
+  reference_id : Int32,
 ) -> Unit {
   if child_id == reference_id || self.would_create_cycle(parent_id, child_id) {
     return
@@ -99,8 +99,8 @@ fn DomModel::insert_before(
 ///|
 fn DomModel::remove_child(
   self : DomModel,
-  parent_id : Int,
-  child_id : Int,
+  parent_id : Int32,
+  child_id : Int32,
 ) -> Unit {
   if parent_id < 0 ||
     parent_id >= self.parents.length() ||
@@ -161,7 +161,7 @@ test "DOM mutations preserve parent-child invariants" {
       id == 0 || (id >= 1 && id <= 4) || id == 7
     }),
   }
-  let random = @splitmix.new(seed=20260827)
+  let random = @splitmix.RandomState(seed=20260827)
   for _ in 0..<2000 {
     let operation = random.next_positive_int() % 4
     let parent_id = random.next_positive_int() % node_count

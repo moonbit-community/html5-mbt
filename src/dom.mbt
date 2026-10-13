@@ -15,7 +15,7 @@
 ///|
 /// Node index for O(1) parent/sibling access (using Int directly)
 /// Sentinel value NO_NODE = -1 indicates "no node"
-pub const NO_NODE : Int = -1
+pub const NO_NODE : Int32 = -1
 
 ///|
 /// DOM Element node
@@ -23,13 +23,13 @@ pub struct Element {
   tag_name : String
   ns : Namespace
   attributes : Array[(String, String)]
-  children : Array[Int]
-  mut parent : Int
+  children : Array[Int32]
+  mut parent : Int32
   // HTML-specific flags for integration points
   is_html_integration_point : Bool
   is_mathml_text_integration_point : Bool
   // Template content (node ID of DocumentFragment, or NO_NODE)
-  mut template_content : Int
+  mut template_content : Int32
 } derive(Debug, Eq)
 
 ///|
@@ -59,19 +59,19 @@ pub enum Node {
   CommentNode(String)
   ProcessingInstructionNode(target~ : String, data~ : String)
   DocumentTypeNode(name~ : String, public_id~ : String, system_id~ : String)
-  DocumentNode(children~ : Array[Int])
-  DocumentFragmentNode(children~ : Array[Int])
+  DocumentNode(children~ : Array[Int32])
+  DocumentFragmentNode(children~ : Array[Int32])
 } derive(Debug, Eq)
 
 ///|
 /// The complete document owns all nodes in a flat array
 pub struct Document {
   nodes : Array[Node]
-  parents : Array[Int]
+  parents : Array[Int32]
   // Quick access indices
-  mut document_element : Int // The <html> element
-  mut head_element : Int // The <head> element
-  mut body_element : Int // The <body> element
+  mut document_element : Int32 // The <html> element
+  mut head_element : Int32 // The <head> element
+  mut body_element : Int32 // The <body> element
   // Document mode (quirks, limited-quirks, no-quirks)
   mut quirks_mode : QuirksMode
   // Scripting mode used while parsing, needed for noscript serialization.
@@ -185,7 +185,7 @@ pub fn Document::new() -> Document {
 
 ///|
 /// Get a node by ID
-pub fn Document::get_node(self : Document, id : Int) -> Node? {
+pub fn Document::get_node(self : Document, id : Int32) -> Node? {
   if id >= 0 && id < self.nodes.length() {
     Some(self.nodes[id])
   } else {
@@ -195,7 +195,7 @@ pub fn Document::get_node(self : Document, id : Int) -> Node? {
 
 ///|
 /// Get an element by ID (returns None if not an element)
-pub fn Document::get_element(self : Document, id : Int) -> Element? {
+pub fn Document::get_element(self : Document, id : Int32) -> Element? {
   match self.get_node(id) {
     Some(ElementNode(elem)) => Some(elem)
     _ => None
@@ -204,7 +204,7 @@ pub fn Document::get_element(self : Document, id : Int) -> Element? {
 
 ///|
 /// Add a new node and return its ID
-pub fn Document::add_node(self : Document, node : Node) -> Int {
+pub fn Document::add_node(self : Document, node : Node) -> Int32 {
   let id = self.nodes.length()
   self.nodes.push(node)
   self.parents.push(NO_NODE)
@@ -212,7 +212,7 @@ pub fn Document::add_node(self : Document, node : Node) -> Int {
 }
 
 ///|
-fn Document::can_have_children(self : Document, id : Int) -> Bool {
+fn Document::can_have_children(self : Document, id : Int32) -> Bool {
   match self.get_node(id) {
     Some(ElementNode(_))
     | Some(DocumentNode(_))
@@ -224,8 +224,8 @@ fn Document::can_have_children(self : Document, id : Int) -> Bool {
 ///|
 fn Document::set_parent(
   self : Document,
-  child_id : Int,
-  parent_id : Int,
+  child_id : Int32,
+  parent_id : Int32,
 ) -> Unit {
   self.parents[child_id] = parent_id
   match self.nodes[child_id] {
@@ -237,8 +237,8 @@ fn Document::set_parent(
 ///|
 fn Document::remove_child_reference(
   self : Document,
-  parent_id : Int,
-  child_id : Int,
+  parent_id : Int32,
+  child_id : Int32,
 ) -> Bool {
   let children = match self.get_node(parent_id) {
     Some(ElementNode(elem)) => elem.children
@@ -259,8 +259,8 @@ fn Document::remove_child_reference(
 /// Return whether inserting child_id below parent_id would create a cycle.
 fn Document::would_create_cycle(
   self : Document,
-  parent_id : Int,
-  child_id : Int,
+  parent_id : Int32,
+  child_id : Int32,
 ) -> Bool {
   if parent_id < 0 ||
     parent_id >= self.nodes.length() ||
@@ -292,8 +292,8 @@ fn Document::would_create_cycle(
 /// Append a child node to a parent
 pub fn Document::append_child(
   self : Document,
-  parent_id : Int,
-  child_id : Int,
+  parent_id : Int32,
+  child_id : Int32,
 ) -> Unit {
   if self.would_create_cycle(parent_id, child_id) ||
     !self.can_have_children(parent_id) {
@@ -317,9 +317,9 @@ pub fn Document::append_child(
 /// Insert a child node before another child
 pub fn Document::insert_before(
   self : Document,
-  parent_id : Int,
-  child_id : Int,
-  reference_id : Int,
+  parent_id : Int32,
+  child_id : Int32,
+  reference_id : Int32,
 ) -> Unit {
   if child_id == reference_id ||
     self.would_create_cycle(parent_id, child_id) ||
@@ -371,8 +371,8 @@ pub fn Document::insert_before(
 /// Remove a child from its parent
 pub fn Document::remove_child(
   self : Document,
-  parent_id : Int,
-  child_id : Int,
+  parent_id : Int32,
+  child_id : Int32,
 ) -> Unit {
   if parent_id < 0 ||
     parent_id >= self.nodes.length() ||
@@ -388,7 +388,7 @@ pub fn Document::remove_child(
 
 ///|
 /// Get the tag name of an element node
-pub fn Document::get_tag_name(self : Document, id : Int) -> String? {
+pub fn Document::get_tag_name(self : Document, id : Int32) -> String? {
   match self.get_node(id) {
     Some(ElementNode(elem)) => Some(elem.tag_name)
     _ => None
@@ -397,7 +397,7 @@ pub fn Document::get_tag_name(self : Document, id : Int) -> String? {
 
 ///|
 /// Get the namespace of an element node
-pub fn Document::get_ns(self : Document, id : Int) -> Namespace? {
+pub fn Document::get_ns(self : Document, id : Int32) -> Namespace? {
   match self.get_node(id) {
     Some(ElementNode(elem)) => Some(elem.ns)
     _ => None
@@ -408,7 +408,7 @@ pub fn Document::get_ns(self : Document, id : Int) -> Namespace? {
 /// Check if a node is an element with the given tag name and namespace
 pub fn Document::is_element(
   self : Document,
-  id : Int,
+  id : Int32,
   tag_name : String,
   ns : Namespace,
 ) -> Bool {
@@ -422,7 +422,7 @@ pub fn Document::is_element(
 /// Check if a node is an HTML element with the given tag name
 pub fn Document::is_html_element(
   self : Document,
-  id : Int,
+  id : Int32,
   tag_name : String,
 ) -> Bool {
   self.is_element(id, tag_name, HTML)
@@ -432,7 +432,7 @@ pub fn Document::is_html_element(
 /// Get an attribute value from an element
 pub fn Document::get_attribute(
   self : Document,
-  id : Int,
+  id : Int32,
   attr_name : String,
 ) -> String? {
   match self.get_node(id) {
@@ -452,7 +452,7 @@ pub fn Document::get_attribute(
 /// Set an attribute on an element
 pub fn Document::set_attribute(
   self : Document,
-  id : Int,
+  id : Int32,
   attr_name : String,
   attr_value : String,
 ) -> Unit {
@@ -474,7 +474,7 @@ pub fn Document::set_attribute(
 
 ///|
 /// Get the parent of a node
-pub fn Document::get_parent(self : Document, id : Int) -> Int {
+pub fn Document::get_parent(self : Document, id : Int32) -> Int32 {
   if id >= 0 && id < self.parents.length() {
     self.parents[id]
   } else {
@@ -484,7 +484,7 @@ pub fn Document::get_parent(self : Document, id : Int) -> Int {
 
 ///|
 /// Get the template content of a template element
-pub fn Document::get_template_content(self : Document, id : Int) -> Int {
+pub fn Document::get_template_content(self : Document, id : Int32) -> Int32 {
   match self.get_node(id) {
     Some(ElementNode(elem)) => elem.template_content
     _ => NO_NODE
@@ -493,7 +493,7 @@ pub fn Document::get_template_content(self : Document, id : Int) -> Int {
 
 ///|
 /// Get children of a node
-pub fn Document::get_children(self : Document, id : Int) -> Array[Int] {
+pub fn Document::get_children(self : Document, id : Int32) -> Array[Int32] {
   match self.get_node(id) {
     Some(ElementNode(elem)) => elem.children.copy()
     Some(DocumentNode(children~)) => children.copy()
@@ -506,7 +506,7 @@ pub fn Document::get_children(self : Document, id : Int) -> Array[Int] {
 /// Check if an element has a specific attribute
 pub fn Document::has_attribute(
   self : Document,
-  id : Int,
+  id : Int32,
   attr_name : String,
 ) -> Bool {
   self.get_attribute(id, attr_name) is Some(_)
@@ -514,7 +514,7 @@ pub fn Document::has_attribute(
 
 ///|
 /// Get text content of a node (concatenation of all text descendants)
-pub fn Document::get_text_content(self : Document, id : Int) -> String {
+pub fn Document::get_text_content(self : Document, id : Int32) -> String {
   let buf = StringBuilder()
   self.collect_text_content(id, buf)
   buf.to_string()
@@ -523,7 +523,7 @@ pub fn Document::get_text_content(self : Document, id : Int) -> String {
 ///|
 fn Document::collect_text_content(
   self : Document,
-  id : Int,
+  id : Int32,
   buf : StringBuilder,
 ) -> Unit {
   match self.get_node(id) {
@@ -558,7 +558,7 @@ pub fn Document::to_html(self : Document) -> String {
 ///|
 fn Document::serialize_node(
   self : Document,
-  id : Int,
+  id : Int32,
   buf : StringBuilder,
 ) -> Unit {
   match self.get_node(id) {
@@ -594,6 +594,26 @@ fn Document::serialize_node(
         buf.write_string(">")
       } else {
         buf.write_string(">")
+        // WHATWG "serializing HTML fragments": if the element is a `pre`,
+        // `textarea`, or `listing` and its first child is a Text node whose
+        // data starts with U+000A LF, append one extra LF. The parser drops a
+        // single leading newline after these start tags, so without the
+        // protective LF, `parse(to_html(parse(html)))` would not roundtrip.
+        if elem.ns == HTML &&
+          (
+            elem.tag_name == "pre" ||
+            elem.tag_name == "textarea" ||
+            elem.tag_name == "listing"
+          ) &&
+          elem.children.length() > 0 {
+          match self.get_node(elem.children[0]) {
+            Some(TextNode(text)) =>
+              if text.has_prefix("\n") {
+                buf.write_string("\n")
+              }
+            _ => ()
+          }
+        }
         if elem.ns == HTML &&
           elem.tag_name == "template" &&
           elem.template_content != NO_NODE {
@@ -707,7 +727,7 @@ pub fn Document::dump(self : Document) -> String {
     // Build string without trailing newline
     let buf2 = StringBuilder()
     for i = 0; i < len - 1; i = i + 1 {
-      buf2.write_char(Int::unsafe_to_char(s[i].to_int()))
+      buf2.write_char(Int32::unsafe_to_char(s[i].to_int()))
     }
     buf2.to_string()
   } else {
@@ -718,8 +738,8 @@ pub fn Document::dump(self : Document) -> String {
 ///|
 fn Document::dump_node(
   self : Document,
-  id : Int,
-  depth : Int,
+  id : Int32,
+  depth : Int32,
   buf : StringBuilder,
 ) -> Unit {
   // Prevent infinite recursion from malformed trees
@@ -830,7 +850,7 @@ fn escape_dump_text(s : String) -> String {
 
 ///|
 /// Lexicographic string comparison (MoonBit's String.compare uses length-first)
-fn lex_compare(a : String, b : String) -> Int {
+fn lex_compare(a : String, b : String) -> Int32 {
   let a_len = a.length()
   let b_len = b.length()
   let min_len = if a_len < b_len { a_len } else { b_len }

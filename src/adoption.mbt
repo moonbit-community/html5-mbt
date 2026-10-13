@@ -163,7 +163,10 @@ fn TreeBuilder::run_adoption_agency(
 
 ///|
 /// Find position of a node in the stack
-fn TreeBuilder::find_stack_position(self : TreeBuilder, node_id : Int) -> Int {
+fn TreeBuilder::find_stack_position(
+  self : TreeBuilder,
+  node_id : Int32,
+) -> Int32 {
   for i, entry in self.open_elements {
     if entry.node_id == node_id {
       return i
@@ -176,8 +179,8 @@ fn TreeBuilder::find_stack_position(self : TreeBuilder, node_id : Int) -> Int {
 /// Find formatting node index by node id
 fn TreeBuilder::find_formatting_node_index(
   self : TreeBuilder,
-  node_id : Int,
-) -> Int {
+  node_id : Int32,
+) -> Int32 {
   for i = self.active_formatting.length() - 1; i >= 0; i = i - 1 {
     match self.active_formatting[i] {
       Marker => ()
@@ -191,8 +194,8 @@ fn TreeBuilder::find_formatting_node_index(
 /// Create element for a formatting entry (without inserting it)
 fn TreeBuilder::create_element_for_formatting(
   self : TreeBuilder,
-  formatting_idx : Int,
-) -> Int {
+  formatting_idx : Int32,
+) -> Int32 {
   let entry = self.active_formatting[formatting_idx]
   match entry {
     Element(tag_name~, attributes~, ..) =>
@@ -205,8 +208,8 @@ fn TreeBuilder::create_element_for_formatting(
 /// Replace node in formatting list
 fn TreeBuilder::replace_formatting_node(
   self : TreeBuilder,
-  idx : Int,
-  new_node_id : Int,
+  idx : Int32,
+  new_node_id : Int32,
 ) -> Unit {
   match self.active_formatting[idx] {
     Element(tag_name~, attributes~, ..) =>
@@ -223,8 +226,8 @@ fn TreeBuilder::replace_formatting_node(
 /// Insert into active formatting at specific position
 fn TreeBuilder::insert_formatting_at(
   self : TreeBuilder,
-  idx : Int,
-  node_id : Int,
+  idx : Int32,
+  node_id : Int32,
   tag_name : String,
 ) -> Unit {
   let attrs = self.document
@@ -241,8 +244,8 @@ fn TreeBuilder::insert_formatting_at(
 /// Insert in stack after a specific node
 fn TreeBuilder::insert_in_stack_after(
   self : TreeBuilder,
-  after_node : Int,
-  node_id : Int,
+  after_node : Int32,
+  node_id : Int32,
   tag_name : String,
 ) -> Unit {
   let mut insert_idx = self.open_elements.length()
@@ -260,8 +263,8 @@ fn TreeBuilder::insert_in_stack_after(
 /// The parent_id is the override target - we check if IT is table-related
 fn TreeBuilder::insert_after_appropriate_place(
   self : TreeBuilder,
-  parent_id : Int,
-  node_id : Int,
+  parent_id : Int32,
+  node_id : Int32,
 ) -> Unit {
   // Check if the target (parent_id) is a table-related element
   if self.foster_parenting && self.is_table_element(parent_id) {
@@ -285,7 +288,7 @@ fn TreeBuilder::insert_after_appropriate_place(
 
 ///|
 /// Check if a node is a table-related element that requires foster parenting
-fn TreeBuilder::is_table_element(self : TreeBuilder, node_id : Int) -> Bool {
+fn TreeBuilder::is_table_element(self : TreeBuilder, node_id : Int32) -> Bool {
   match self.document.get_tag_name(node_id) {
     Some(tag) =>
       tag == "table" ||
