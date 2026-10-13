@@ -17,7 +17,7 @@
 /// skeleton and then sprinkles small random elements, text, and comments while
 /// keeping parent/child pointers consistent (including template content
 /// fragments).
-impl @qc_core.Arbitrary for Document with fn arbitrary(size, rs) {
+impl @qc.Arbitrary for Document with fn arbitrary(size, rs) {
   let capped_size = clamp_size(size, 0, 24)
   // Base of: document node + optional doctype + html/head/body
   let target_nodes = 5 + capped_size
@@ -103,9 +103,9 @@ struct HtmlCase {
 ///
 /// This keeps test inputs close to what the serializer emits while still
 /// exercising the parser on malformed/odd HTML.
-impl @qc_core.Arbitrary for HtmlCase with fn arbitrary(size, rs) {
+impl @qc.Arbitrary for HtmlCase with fn arbitrary(size, rs) {
   let capped_size = clamp_size(size, 0, 24)
-  let seed_doc : Document = @qc_core.Arbitrary::arbitrary(capped_size, rs)
+  let seed_doc : Document = @qc.Arbitrary::arbitrary(capped_size, rs)
   let base = seed_doc.to_html()
   let damaged = inject_html_noise(base, rs, capped_size)
   { html: damaged, }
@@ -357,7 +357,7 @@ fn random_noise_piece(rs : @splitmix.RandomState, size_hint : Int32) -> String {
 
 ///|
 test "random html 0" {
-  let html : HtmlCase = @qc_core.Arbitrary::arbitrary(10, RandomState(seed=42))
+  let html : HtmlCase = @qc.Arbitrary::arbitrary(10, RandomState(seed=42))
   assert_true(
     html.html
     is "<html><head><meta><!-Cv&e?zeDv_hUtOR6;--><style eeor=\"E.q4P\" krcxtpfs=\"Idt8G86\" gux=\"LBocvz\" lnv=\"1Z_15wfM\">qIhKf_;Vd5-KbDKLoT2</style>O/wb\u{9}7f&amp;SHft73Ktj g</head><body><</p>noframes>0&EAX</noframes><p kjqa0o3z=\"y6qr9SKVg\" qihth=\"H4ANh--\"><ifram wm=\"g0\" 4ztod0zp=Ge\" bb=\"XLGqntIg\">3rZ\u{a}r4x4f\u{9}Rb</iframe></p><!--Nbn>l-->< /body></html>",
@@ -365,21 +365,89 @@ test "random html 0" {
 }
 
 ///|
-impl @shrink.Shrink for HtmlCase
+impl @qc.Shrink for HtmlCase
 
 ///|
-test "property roundtrip parse(to_html(parse(html))) = parse(html)" {
-  @qc.quick_check_fn(
+// WHATWG serialization does not compensate for the parser dropping one leading
+// LF in HTML pre, listing, and textarea elements. Model only that documented loss.
+fn expect_serialized_newline_loss(doc : Document) -> Unit {
+  for id in 0..<doc.nodes.length() {
+    match doc.nodes[id] {
+      ElementNode(elem) if elem.ns == HTML &&
+        (
+          elem.tag_name == "pre" ||
+          elem.tag_name == "listing" ||
+          elem.tag_name == "textarea"
+        ) &&
+        elem.children.length() > 0 => {
+        let child = elem.children[0]
+        match doc.nodes[child] {
+          TextNode(text) if text.has_prefix("\n") => {
+            let remaining = text[1:].to_owned()
+            if remaining.is_empty() {
+              doc.remove_child(id, child)
+            } else {
+              doc.nodes[child] = TextNode(remaining)
+            }
+          }
+          _ => ()
+        }
+      }
+      _ => ()
+    }
+  }
+}
+
+///|
+test "serialization drops exactly one leading LF on reparse" {
+  for tag in ["pre", "listing", "textarea"] {
+    for text in ["", "text", "\n", "\ntext", "\n\ntext"] {
+      let doc = parse("<" + tag + ">\n" + text + "</" + tag + ">")
+      let html = "<html><head></head><body><" +
+        tag +
+        ">" +
+        text +
+        "</" +
+        tag +
+        "></body></html>"
+      assert_eq(doc.to_html(), html)
+      let reparsed = parse(html)
+      expect_serialized_newline_loss(doc)
+      assert_eq(reparsed.dump(), doc.dump())
+    }
+  }
+}
+
+///|
+test "newline loss does not apply after comments or in foreign elements" {
+  for
+    html in [
+      "<pre><!--before-->\ntext</pre>", "<listing><!--before-->\ntext</listing>",
+      "<svg><pre>\ntext</pre></svg>", "<math><listing>\ntext</listing></math>",
+    ] {
+    let doc = parse(html)
+    let original = doc.dump()
+    expect_serialized_newline_loss(doc)
+    assert_eq(doc.dump(), original)
+    assert_eq(parse(doc.to_html()).dump(), original)
+  }
+}
+
+///|
+test "property roundtrip preserves DOM except specified leading LF loss" {
+  @qc.check(
     (h : HtmlCase) => {
       let doc = parse(h.html)
-      let roundtrip = parse(doc.to_html())
+      let html = doc.to_html()
+      let roundtrip = parse(html)
+      expect_serialized_newline_loss(doc)
       let lhs = doc.dump()
       let rhs = roundtrip.dump()
       if rhs != lhs {
         println("Original HTML:")
         println(h.html)
         println("Roundtrip HTML:")
-        println(doc.to_html())
+        println(html)
         println("Original doc:")
         println(lhs)
         println("Roundtrip doc:")
@@ -389,26 +457,31 @@ test "property roundtrip parse(to_html(parse(html))) = parse(html)" {
         true
       }
     },
-    max_success=2000,
+    count=2000U,
   )
 }
 
 ///|
-test "property canonical html stabilizes" {
-  @qc.quick_check_fn(
+test "property canonical html stabilizes except specified leading LF loss" {
+  @qc.check(
     (h : HtmlCase) => {
-      let html1 = parse(h.html).to_html()
+      let doc = parse(h.html)
+      let html1 = doc.to_html()
       let html2 = parse(html1).to_html()
-      if html2 != html1 {
+      expect_serialized_newline_loss(doc)
+      let expected = doc.to_html()
+      if html2 != expected {
         println("HTML1:")
         println(html1)
         println("HTML2:")
         println(html2)
+        println("Expected HTML after specified leading LF loss:")
+        println(expected)
         false
       } else {
         true
       }
     },
-    max_success=2000,
+    count=2000U,
   )
 }
