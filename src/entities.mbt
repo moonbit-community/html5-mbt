@@ -26,12 +26,12 @@
 
 ///|
 /// Lazy-initialized entity map
-let entity_map : Ref[Map[String, Array[Int]]?] = { val: None, }
+let entity_map : Ref[Map[String, Array[Int32]]?] = { val: None, }
 
 ///|
 /// Initialize the entity map (called lazily on first lookup)
-fn init_entities() -> Map[String, Array[Int]] {
-  let m : Map[String, Array[Int]] = Map([])
+fn init_entities() -> Map[String, Array[Int32]] {
+  let m : Map[String, Array[Int32]] = Map([])
   m["AElig"] = [198]
   m["AElig;"] = [198]
   m["AMP"] = [38]
@@ -2268,7 +2268,7 @@ fn init_entities() -> Map[String, Array[Int]] {
 
 ///|
 /// Get the entity map, initializing lazily if needed
-fn get_entities() -> Map[String, Array[Int]] {
+fn get_entities() -> Map[String, Array[Int32]] {
   match entity_map.val {
     Some(m) => m
     None => {
@@ -2282,6 +2282,6 @@ fn get_entities() -> Map[String, Array[Int]] {
 ///|
 /// Lookup a named character reference (without the leading &)
 /// Returns array of codepoints if found
-pub fn lookup_entity(name : String) -> Array[Int]? {
+pub fn lookup_entity(name : String) -> Array[Int32]? {
   get_entities().get(name)
 }

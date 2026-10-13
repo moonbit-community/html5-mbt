@@ -3,8 +3,8 @@ name = "moonbit-community/html"
 version = "0.2.1"
 
 import {
-  "moonbitlang/x@0.4.38",
-  "moonbitlang/quickcheck@0.14.0",
+  "moonbitlang/x@0.5.5",
+  "moonbitlang/quickcheck@0.15.0",
 }
 
 readme = "README.md"
