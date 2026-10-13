@@ -18,7 +18,7 @@
 
 ///|
 test "smoke/tokenizer/simple_text" {
-  let (tokens, _) = tokenize("Hello")
+  let (tokens, _) = @src.tokenize("Hello")
   assert_true(
     tokens
     is [
@@ -34,7 +34,7 @@ test "smoke/tokenizer/simple_text" {
 
 ///|
 test "smoke/tokenizer/simple_tag" {
-  let (tokens, _) = tokenize("<div>")
+  let (tokens, _) = @src.tokenize("<div>")
   assert_true(
     tokens is [StartTag(name="div", attrs=[], self_closing=false), EOF],
   )
@@ -42,7 +42,7 @@ test "smoke/tokenizer/simple_tag" {
 
 ///|
 test "smoke/tokenizer/tag_with_text" {
-  let (tokens, _) = tokenize("<p>Hello</p>")
+  let (tokens, _) = @src.tokenize("<p>Hello</p>")
   assert_true(
     tokens
     is [
@@ -60,13 +60,13 @@ test "smoke/tokenizer/tag_with_text" {
 
 ///|
 test "smoke/tokenizer/self_closing" {
-  let (tokens, _) = tokenize("<br/>")
+  let (tokens, _) = @src.tokenize("<br/>")
   assert_true(tokens is [StartTag(name="br", attrs=[], self_closing=true), EOF])
 }
 
 ///|
 test "smoke/tokenizer/attribute" {
-  let (tokens, _) = tokenize("<div class=\"foo\">")
+  let (tokens, _) = @src.tokenize("<div class=\"foo\">")
   assert_true(
     tokens
     is [
@@ -82,13 +82,13 @@ test "smoke/tokenizer/attribute" {
 
 ///|
 test "smoke/tokenizer/comment" {
-  let (tokens, _) = tokenize("<!-- comment -->")
+  let (tokens, _) = @src.tokenize("<!-- comment -->")
   assert_true(tokens is [Comment(" comment "), EOF])
 }
 
 ///|
 test "smoke/tokenizer/doctype" {
-  let (tokens, _) = tokenize("<!DOCTYPE html>")
+  let (tokens, _) = @src.tokenize("<!DOCTYPE html>")
   assert_true(
     tokens
     is [
@@ -105,21 +105,21 @@ test "smoke/tokenizer/doctype" {
 
 ///|
 test "smoke/tree/simple_html" {
-  let doc = parse("<html><head></head><body></body></html>")
+  let doc = @src.parse("<html><head></head><body></body></html>")
   // Just verify it doesn't crash and creates nodes
   assert_true((doc.nodes.length() > 0) is true)
 }
 
 ///|
 test "smoke/tree/implicit_html" {
-  let doc = parse("<p>Hello</p>")
+  let doc = @src.parse("<p>Hello</p>")
   // Parser should create implicit html, head, body
   assert_true((doc.nodes.length() > 0) is true)
 }
 
 ///|
 test "smoke/tree/basic_structure" {
-  let doc = parse(
+  let doc = @src.parse(
     "<!DOCTYPE html><html><head><title>Test</title></head><body><p>Hello</p></body></html>",
   )
   assert_true((doc.nodes.length() > 0) is true)
@@ -128,14 +128,14 @@ test "smoke/tree/basic_structure" {
 ///|
 test "smoke/tree/script_unclosed_with_comment" {
   // Regression test for reprocess loop bug
-  let doc = parse("<script><!--<")
+  let doc = @src.parse("<script><!--<")
   assert_true((doc.nodes.length() > 0) is true)
 }
 
 ///|
 test "smoke/tree/adoption_agency" {
   // Test adoption agency algorithm produces correct tree
-  let doc = parse("<a><p></a></p>")
+  let doc = @src.parse("<a><p></a></p>")
   assert_eq(
     doc.dump(),
     (
@@ -151,7 +151,7 @@ test "smoke/tree/adoption_agency" {
 
 ///|
 test "smoke/tree/foster_parenting" {
-  let doc = parse("<table><a>1<p>2</a>3</p>")
+  let doc = @src.parse("<table><a>1<p>2</a>3</p>")
   assert_eq(
     doc.dump(),
     (
@@ -172,13 +172,13 @@ test "smoke/tree/foster_parenting" {
 ///|
 test "smoke/tree/malformed_end_tag" {
   // Test end tag with attribute-like content (no closing >)
-  let doc = parse("</b test")
+  let doc = @src.parse("</b test")
   assert_true((doc.nodes.length() > 0) is true)
 }
 
 ///|
 test "smoke/tree/script_with_style_endtag" {
-  let doc = parse("<script></style></script>")
+  let doc = @src.parse("<script></style></script>")
   assert_eq(
     doc.dump(),
     (
@@ -193,7 +193,7 @@ test "smoke/tree/script_with_style_endtag" {
 
 ///|
 test "smoke/tree/malformed_url_tag" {
-  let doc = parse("<rdar://problem/6869687>")
+  let doc = @src.parse("<rdar://problem/6869687>")
   assert_eq(
     doc.dump(),
     (
@@ -209,7 +209,7 @@ test "smoke/tree/malformed_url_tag" {
 
 ///|
 test "smoke/tree/body_attr_merge" {
-  let doc = parse("<body foo='bar'><body foo='baz' yo='mama'>")
+  let doc = @src.parse("<body foo='bar'><body foo='baz' yo='mama'>")
   assert_eq(
     doc.dump(),
     (

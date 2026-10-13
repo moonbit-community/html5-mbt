@@ -102,21 +102,21 @@ pub fn Document::dump(self : Document) -> String {
 ///|
 /// Get child node IDs for a given node.
 #declaration_only
-pub fn Document::get_children(self : Document, node_id : Int) -> Array[Int] {
+pub fn Document::get_children(self : Document, node_id : Int32) -> Array[Int32] {
   ...
 }
 
 ///|
 /// Get the parent node ID. Returns NO_NODE (-1) if no parent.
 #declaration_only
-pub fn Document::get_parent(self : Document, node_id : Int) -> Int {
+pub fn Document::get_parent(self : Document, node_id : Int32) -> Int32 {
   ...
 }
 
 ///|
 /// Get the tag name of an element node.
 #declaration_only
-pub fn Document::get_tag_name(self : Document, node_id : Int) -> String? {
+pub fn Document::get_tag_name(self : Document, node_id : Int32) -> String? {
   ...
 }
 
@@ -125,7 +125,7 @@ pub fn Document::get_tag_name(self : Document, node_id : Int) -> String? {
 #declaration_only
 pub fn Document::get_attribute(
   self : Document,
-  node_id : Int,
+  node_id : Int32,
   name : String,
 ) -> String? {
   ...
@@ -136,7 +136,7 @@ pub fn Document::get_attribute(
 #declaration_only
 pub fn Document::has_attribute(
   self : Document,
-  node_id : Int,
+  node_id : Int32,
   name : String,
 ) -> Bool {
   ...
@@ -147,7 +147,7 @@ pub fn Document::has_attribute(
 #declaration_only
 pub fn Document::set_attribute(
   self : Document,
-  node_id : Int,
+  node_id : Int32,
   name : String,
   value : String,
 ) -> Unit {
@@ -157,28 +157,28 @@ pub fn Document::set_attribute(
 ///|
 /// Get the concatenated text content of a node and its descendants.
 #declaration_only
-pub fn Document::get_text_content(self : Document, node_id : Int) -> String {
+pub fn Document::get_text_content(self : Document, node_id : Int32) -> String {
   ...
 }
 
 ///|
 /// Get the namespace of an element node.
 #declaration_only
-pub fn Document::get_ns(self : Document, node_id : Int) -> Namespace? {
+pub fn Document::get_ns(self : Document, node_id : Int32) -> Namespace? {
   ...
 }
 
 ///|
 /// Get the Element struct for a node, if it is an element.
 #declaration_only
-pub fn Document::get_element(self : Document, node_id : Int) -> Element? {
+pub fn Document::get_element(self : Document, node_id : Int32) -> Element? {
   ...
 }
 
 ///|
 /// Get the raw Node for a given node ID.
 #declaration_only
-pub fn Document::get_node(self : Document, node_id : Int) -> Node? {
+pub fn Document::get_node(self : Document, node_id : Int32) -> Node? {
   ...
 }
 
@@ -187,7 +187,7 @@ pub fn Document::get_node(self : Document, node_id : Int) -> Node? {
 #declaration_only
 pub fn Document::is_element(
   self : Document,
-  node_id : Int,
+  node_id : Int32,
   tag_name : String,
   ns : Namespace,
 ) -> Bool {
@@ -199,7 +199,7 @@ pub fn Document::is_element(
 #declaration_only
 pub fn Document::is_html_element(
   self : Document,
-  node_id : Int,
+  node_id : Int32,
   tag_name : String,
 ) -> Bool {
   ...
@@ -212,7 +212,7 @@ pub fn Document::is_html_element(
 ///|
 /// Add a new node to the document. Returns the node ID.
 #declaration_only
-pub fn Document::add_node(self : Document, node : Node) -> Int {
+pub fn Document::add_node(self : Document, node : Node) -> Int32 {
   ...
 }
 
@@ -221,8 +221,8 @@ pub fn Document::add_node(self : Document, node : Node) -> Int {
 #declaration_only
 pub fn Document::append_child(
   self : Document,
-  parent_id : Int,
-  child_id : Int,
+  parent_id : Int32,
+  child_id : Int32,
 ) -> Unit {
   ...
 }
@@ -232,9 +232,9 @@ pub fn Document::append_child(
 #declaration_only
 pub fn Document::insert_before(
   self : Document,
-  parent_id : Int,
-  new_node_id : Int,
-  ref_node_id : Int,
+  parent_id : Int32,
+  new_node_id : Int32,
+  ref_node_id : Int32,
 ) -> Unit {
   ...
 }
@@ -244,8 +244,8 @@ pub fn Document::insert_before(
 #declaration_only
 pub fn Document::remove_child(
   self : Document,
-  parent_id : Int,
-  child_id : Int,
+  parent_id : Int32,
+  child_id : Int32,
 ) -> Unit {
   ...
 }
@@ -253,7 +253,10 @@ pub fn Document::remove_child(
 ///|
 /// Get the template content node ID for a `<template>` element.
 #declaration_only
-pub fn Document::get_template_content(self : Document, node_id : Int) -> Int {
+pub fn Document::get_template_content(
+  self : Document,
+  node_id : Int32,
+) -> Int32 {
   ...
 }
 
@@ -369,7 +372,7 @@ pub fn TreeBuilder::parse(self : TreeBuilder) -> Document {
 ///
 /// Returns the code points for the character reference, or None if not found.
 #declaration_only
-pub fn lookup_entity(name : String) -> Array[Int]? {
+pub fn lookup_entity(name : String) -> Array[Int32]? {
   ...
 }
 

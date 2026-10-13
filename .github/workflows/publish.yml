@@ -23,7 +23,7 @@ jobs:
 
       - name: Install MoonBit
         run: |
-          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash -s 'pre-release'
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash -s latest
           echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
 
       - name: Show MoonBit version
@@ -38,7 +38,7 @@ jobs:
         run: |
           set -euo pipefail
           moon fmt --check
-          moon check --target all --deny-warn
+          moon check --target all --warn-list +73+79 --deny-warn
           moon info --target all
           git diff --exit-code
           python3 scripts/generate_conformance_tests.py --check
