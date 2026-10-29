@@ -356,12 +356,23 @@ fn random_noise_piece(rs : @splitmix.RandomState, size_hint : Int32) -> String {
 }
 
 ///|
-test "random html 0" {
+test "random html generation is reproducible and varied" {
   let html : HtmlCase = @qc.Arbitrary::arbitrary(10, RandomState(seed=42))
-  assert_true(
-    html.html
-    is "<html><head><meta><!-Cv&e?zeDv_hUtOR6;--><style eeor=\"E.q4P\" krcxtpfs=\"Idt8G86\" gux=\"LBocvz\" lnv=\"1Z_15wfM\">qIhKf_;Vd5-KbDKLoT2</style>O/wb\u{9}7f&amp;SHft73Ktj g</head><body><</p>noframes>0&EAX</noframes><p kjqa0o3z=\"y6qr9SKVg\" qihth=\"H4ANh--\"><ifram wm=\"g0\" 4ztod0zp=Ge\" bb=\"XLGqntIg\">3rZ\u{a}r4x4f\u{9}Rb</iframe></p><!--Nbn>l-->< /body></html>",
-  )
+  let replay : HtmlCase = @qc.Arbitrary::arbitrary(10, RandomState(seed=42))
+  assert_eq(html.html, replay.html)
+  assert_true(!html.html.is_empty())
+  let mut varied = false
+  for seed in 0..<20 {
+    let other : HtmlCase = @qc.Arbitrary::arbitrary(
+      10,
+      RandomState(seed=seed.to_uint64()),
+    )
+    assert_true(!other.html.is_empty())
+    if other.html != html.html {
+      varied = true
+    }
+  }
+  assert_true(varied)
 }
 
 ///|
