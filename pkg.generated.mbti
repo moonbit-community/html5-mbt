@@ -6,11 +6,11 @@ import {
 }
 
 // Values
-pub const NO_NODE : Int = -1
+pub const NO_NODE : Int32 = -1
 
 pub fn is_formatting_element(String) -> Bool
 
-pub fn lookup_entity(String) -> Array[Int]?
+pub fn lookup_entity(String) -> Array[Int32]?
 
 pub fn parse(String) -> @src.Document
 
